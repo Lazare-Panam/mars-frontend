@@ -1,185 +1,279 @@
 'use client';
 
-import { useState } from 'react';
-import { Box, Typography, InputBase, useScrollTrigger } from '@mui/material';
-import Image from 'next/image';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import SearchIcon from '@mui/icons-material/Search';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import MegaMenuPanel from './MegaMenuPanel';
+import Image from 'next/image';
+import {
+  AppBar,
+  Toolbar,
+  Container,
+  Box,
+  Typography,
+  IconButton,
+  Drawer,
+  Collapse,
+  useTheme,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from './navData';
+import MegaMenuPanel from './MegaMenuPanel';
 
-function NavLink({ item, openLabel, setOpenLabel }: {
-  item: NavItem;
-  openLabel: string | null;
-  setOpenLabel: (label: string | null) => void;
-}) {
-  const isOpen = openLabel === item.label;
+const Navbar: React.FC = () => {
+  const theme = useTheme();
+  const INK = theme.palette.text.primary;
+  const RUST = theme.palette.text.secondary;
+  const PAPER = theme.palette.background.default;
+  const ACCENT = theme.palette.primary.main;
+  const LINE = theme.palette.divider;
 
-  return (
-    <Box
-      onMouseEnter={() => item.megaMenu && setOpenLabel(item.label)}
-      sx={{ position: 'relative' }}
-    >
-      <Typography
-        component={Link}
-        href={item.href}
-        sx={{
-          fontWeight: 700,
-          fontSize: '0.9rem',
-          color: isOpen ? 'primary.main' : 'text.primary',
-          textDecoration: 'none',
-          display: 'inline-block',
-          py: 1,
-          '&:hover': { color: 'primary.main' },
-        }}
-      >
-        {item.label}
-      </Typography>
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-      {item.megaMenu && isOpen && <MegaMenuPanel columns={item.megaMenu} />}
-    </Box>
-  );
-}
+  const handleEnter = (label: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenMenu(label);
+  };
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
+  };
 
-export default function Navbar() {
-  const [openLabel, setOpenLabel] = useState<string | null>(null);
-  const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 30 });
+  const activeItem = LEFT_NAV.find((i) => i.label === openMenu);
 
   return (
-    <Box
-      component="header"
-      onMouseLeave={() => setOpenLabel(null)}
-      sx={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 30,
-        bgcolor: scrolled ? 'rgba(255,255,255,0.98)' : '#fff',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? 'none' : '1px solid',
-        borderColor: 'rgba(0,0,0,0.08)',
-        boxShadow: scrolled ? '0 2px 12px rgba(0,0,0,0.06)' : 'none',
-        transition: 'all 0.25s ease',
-      }}
-    >
-      {/* utility row */}
-      <Box sx={{ borderBottom: '1px solid', borderColor: 'rgba(0,0,0,0.06)' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-            gap: 3,
-            maxWidth: '1280px',
-            mx: 'auto',
-            px: { xs: 3, md: 8 },
-            py: 1,
-          }}
-        >
-          <Box
-            component={Link}
-            href="#"
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0.5,
-              color: 'text.secondary',
-              textDecoration: 'none',
-              fontSize: '0.8rem',
-              '&:hover': { color: 'primary.main' },
-            }}
-          >
-            <InfoOutlinedIcon sx={{ fontSize: 16 }} />
-            <Typography sx={{ fontSize: '0.8rem' }}>Product Inquiry</Typography>
-          </Box>
-        </Box>
-      </Box>
-
-      {/* main row */}
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          maxWidth: '1280px',
-          mx: 'auto',
-          px: { xs: 3, md: 8 },
-          py: 2,
-        }}
+    <>
+      <AppBar
+        position="sticky"
+        elevation={0}
+        sx={{ bgcolor: PAPER, color: INK, borderBottom: `1px solid ${LINE}` }}
+        onMouseLeave={handleLeave}
       >
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-          {LEFT_NAV.map((item) => (
-            <NavLink key={item.label} item={item} openLabel={openLabel} setOpenLabel={setOpenLabel} />
+        <Container maxWidth="xl">
+          <Toolbar disableGutters sx={{ height: 88, justifyContent: 'space-between' }}>
+            {/* Logo */}
+            <Box
+              component={Link}
+              href="/"
+              sx={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}
+            >
+              <Image
+                src="https://pblol2.blob.core.windows.net/mars-valves/logo.jpg"
+                alt="MARS Valve"
+                width={120}
+                height={40}
+                priority
+                style={{ objectFit: 'contain', height: 40, width: 'auto' }}
+              />
+            </Box>
+
+            {/* Left nav (desktop) */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', gap: 4, ml: 6 }}>
+              {LEFT_NAV.map((item) => {
+                const active = openMenu === item.label;
+                return (
+                  <Box key={item.label} onMouseEnter={() => item.megaMenu && handleEnter(item.label)}>
+                    <Box
+                      component={Link}
+                      href="/"
+                      sx={{
+                        position: 'relative',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 0.5,
+                        textDecoration: 'none',
+                        color: active ? INK : RUST,
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        py: 3,
+                        transition: 'color 0.15s ease',
+                        '&:hover': { color: INK },
+                      }}
+                    >
+                      {item.label}
+                      {item.megaMenu && (
+                        <KeyboardArrowDownIcon
+                          sx={{
+                            fontSize: 16,
+                            transition: 'transform 0.2s ease',
+                            transform: active ? 'rotate(180deg)' : 'none',
+                            color: active ? ACCENT : RUST,
+                          }}
+                        />
+                      )}
+                      <Box
+                        sx={{
+                          position: 'absolute',
+                          bottom: 14,
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: active ? 22 : 0,
+                          height: 2,
+                          bgcolor: ACCENT,
+                          transition: 'width 0.2s ease',
+                        }}
+                      />
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+
+            {/* Right nav (desktop) */}
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+              {RIGHT_NAV.map((item) => (
+                <Box
+                  key={item.label}
+                  component={Link}
+                  href="/"
+                  sx={{
+                    textDecoration: 'none',
+                    color: RUST,
+                    fontSize: '0.82rem',
+                    fontWeight: 500,
+                    transition: 'color 0.15s ease',
+                    '&:hover': { color: INK },
+                  }}
+                >
+                  {item.label}
+                </Box>
+              ))}
+              <Box
+                component={Link}
+                href="/"
+                sx={{
+                  textDecoration: 'none',
+                  border: `1.5px solid ${ACCENT}`,
+                  color: ACCENT,
+                  fontWeight: 600,
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  px: 2.5,
+                  py: 1,
+                  transition: 'all 0.15s ease',
+                  '&:hover': { bgcolor: ACCENT, color: theme.palette.primary.contrastText },
+                }}
+              >
+                Get a Quote
+              </Box>
+            </Box>
+
+            {/* Mobile trigger */}
+            <IconButton onClick={() => setMobileOpen(true)} sx={{ display: { md: 'none' }, color: INK }}>
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
+
+        {/* Mega menu */}
+        {openMenu && activeItem?.megaMenu && (
+          <Box onMouseEnter={() => activeItem && handleEnter(activeItem.label)}>
+            <MegaMenuPanel columns={activeItem.megaMenu} />
+          </Box>
+        )}
+      </AppBar>
+
+      {/* Mobile drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        slotProps={{ paper: { sx: { width: '100%', maxWidth: 360, bgcolor: PAPER } } }}
+      >
+        <Box sx={{ p: 2.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: `1px solid ${LINE}` }}>
+          <Typography sx={{ fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.06em' }}>MENU</Typography>
+          <IconButton onClick={() => setMobileOpen(false)}>
+            <CloseIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ display: 'flex', flexDirection: 'column', px: 1.5, py: 1 }}>
+          {[...LEFT_NAV, ...RIGHT_NAV].map((item: NavItem) => (
+            <Box key={item.label} sx={{ borderBottom: `1px solid ${LINE}` }}>
+              <Box
+                onClick={() =>
+                  item.megaMenu
+                    ? setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                    : setMobileOpen(false)
+                }
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  py: 2,
+                  px: 1,
+                  cursor: 'pointer',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  letterSpacing: '0.02em',
+                  color: INK,
+                }}
+              >
+                {item.megaMenu ? (
+                  item.label
+                ) : (
+                  <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    {item.label}
+                  </Link>
+                )}
+                {item.megaMenu && (
+                  <ExpandMoreIcon
+                    sx={{
+                      fontSize: 18,
+                      color: RUST,
+                      transition: 'transform 0.2s ease',
+                      transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none',
+                    }}
+                  />
+                )}
+              </Box>
+              {item.megaMenu && (
+                <Collapse in={mobileExpanded === item.label}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', pb: 2, pl: 2, gap: 2 }}>
+                    {item.megaMenu.map((col) => (
+                      <Box key={col.heading}>
+                        <Typography
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: '0.68rem',
+                            letterSpacing: '0.06em',
+                            textTransform: 'uppercase',
+                            color: ACCENT,
+                            mb: 1,
+                          }}
+                        >
+                          {col.heading}
+                        </Typography>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                          {col.items.map((it) => (
+                            <Box
+                              key={it.label}
+                              component={Link}
+                              href="/"
+                              sx={{ textDecoration: 'none', color: RUST, fontSize: '0.85rem' }}
+                            >
+                              {it.label}
+                            </Box>
+                          ))}
+                        </Box>
+                      </Box>
+                    ))}
+                  </Box>
+                </Collapse>
+              )}
+            </Box>
           ))}
         </Box>
-
-        <Box
-          component={Link}
-          href="/"
-          sx={{ display: 'flex', alignItems: 'center', gap: 1.5, textDecoration: 'none', flexShrink: 0 }}
-        >
-          <Box sx={{ position: 'relative', width: 44, height: 44 }}>
-            <Image
-              src="https://pblol2.blob.core.windows.net/mars-valves/logo.jpg"
-              alt="MARS Valves UK logo"
-              fill
-              style={{ objectFit: 'contain' }}
-              sizes="44px"
-            />
-          </Box>
-          <Typography
-            sx={{
-              fontFamily: 'serif',
-              fontWeight: 700,
-              fontSize: { xs: '1rem', md: '1.3rem' },
-              color: 'text.primary',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            MARS VALVES UK
-          </Typography>
-        </Box>
-
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
-          {RIGHT_NAV.map((item) => (
-            <NavLink key={item.label} item={item} openLabel={openLabel} setOpenLabel={setOpenLabel} />
-          ))}
-        </Box>
-      </Box>
-
-      {/* always-visible search row */}
-      <Box sx={{ bgcolor: '#FAF6F4', borderTop: '1px solid', borderColor: 'rgba(0,0,0,0.06)', py: 1 }}>
-        <Box
-          sx={{
-            maxWidth: '1280px',
-            mx: 'auto',
-            px: { xs: 3, md: 8 },
-          }}
-        >
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
-              bgcolor: '#fff',
-              border: '1px solid',
-              borderColor: 'rgba(0,0,0,0.1)',
-              borderRadius: '4px',
-              px: 2,
-              py: 0.75,
-              maxWidth: 420,
-              '&:focus-within': { borderColor: 'primary.main' },
-              transition: 'border-color 0.15s ease',
-            }}
-          >
-            <SearchIcon sx={{ fontSize: 18, color: 'text.secondary' }} />
-            <InputBase
-              placeholder="Search valves, fittings, certificates…"
-              sx={{ fontSize: '0.85rem', width: '100%', '& input': { p: 0 } }}
-            />
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+      </Drawer>
+    </>
   );
-}
+};
+
+export default Navbar;
