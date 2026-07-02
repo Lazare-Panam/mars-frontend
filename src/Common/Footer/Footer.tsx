@@ -68,7 +68,7 @@ export default function Footer() {
             <Box sx={{ position: "relative", width: 40, height: 40 }}>
               <Image
                 src="https://pblol2.blob.core.windows.net/mars-valves/logo.jpg"
-                alt="MARS Valves UK logo"
+                alt="MARS Valve UK logo"
                 fill
                 style={{ objectFit: "contain" }}
                 sizes="40px"
@@ -82,7 +82,7 @@ export default function Footer() {
                 color: "#fff",
               }}
             >
-              MARS VALVES UK
+              MARS Valve UK
             </Typography>
           </Box>
 
@@ -106,7 +106,7 @@ export default function Footer() {
                 sx={{ fontSize: 16, color: "primary.light" }}
               />
               <Typography sx={{ fontSize: "0.85rem" }}>
-                sales@marsvalvesuk.com
+                sales@marsvalveuk.com
               </Typography>
             </Box>
             <Box
@@ -121,7 +121,7 @@ export default function Footer() {
                 sx={{ fontSize: 16, color: "primary.light" }}
               />
               <Typography sx={{ fontSize: "0.85rem" }}>
-                +44 (0) 000 000 0000
+                +44 7368 1379917
               </Typography>
             </Box>
             <Box
@@ -196,7 +196,7 @@ export default function Footer() {
           <Typography
             sx={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}
           >
-            © {new Date().getFullYear()} MARS Valves UK. All rights reserved.
+            © {new Date().getFullYear()} MARS Valve UK. All rights reserved.
           </Typography>
 
           <Box sx={{ display: "flex", gap: 1 }}>
