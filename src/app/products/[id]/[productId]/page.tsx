@@ -1,7 +1,8 @@
 'use client';
 
 import { use } from 'react';
-import { Box, Grid, Typography, CircularProgress, Divider } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { Box, Grid, Typography, CircularProgress, Divider, Button } from '@mui/material';
 import { useProductDetail } from '@/api/useProductDetail';
 import ProductDetailHero from './components/ProductDetailHero';
 import ProductDetailImage from './components/ProductDetailImage';
@@ -16,6 +17,7 @@ export default function ProductDetailPage({
   params: Promise<{ id: string; productId: string }>;
 }) {
   const { id, productId } = use(params);
+  const router = useRouter();
   const { data, isLoading, isError } = useProductDetail(id, productId);
 
   if (isLoading) {
@@ -41,7 +43,6 @@ export default function ProductDetailPage({
 
       <Box sx={{ maxWidth: '1280px', mx: 'auto', px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
 
-        {/* Top section — image + details */}
         <Grid container spacing={{ xs: 6, md: 10 }}>
           <Grid size={{ xs: 12, md: 5 }}>
             <ProductDetailImage image={data.image} name={data.name} />
@@ -56,11 +57,30 @@ export default function ProductDetailPage({
               <ProductSpecsTable specs={data.specs} />
               <ProductFeatureChips features={data.features} />
               <ProductApplicationsList applications={data.applications} />
+
+              {/* View All Models button */}
+              <Button
+                onClick={() => router.push(`/products/${id}/${productId}/variants`)}
+                variant="contained"
+                sx={{
+                  alignSelf: 'flex-start',
+                  bgcolor: 'primary.main',
+                  color: '#fff',
+                  fontWeight: 700,
+                  borderRadius: '4px',
+                  textTransform: 'none',
+                  px: 3,
+                  py: 1.25,
+                  boxShadow: 'none',
+                  '&:hover': { bgcolor: 'primary.dark', boxShadow: 'none' },
+                }}
+              >
+                View All Models
+              </Button>
             </Box>
           </Grid>
         </Grid>
 
-        {/* Related products — always rendered, component handles empty */}
         <Box sx={{ mt: { xs: 8, md: 12 } }}>
           <Divider sx={{ mb: { xs: 6, md: 8 } }} />
           <RelatedProducts catalogId={id} productIds={data.relatedProducts ?? []} />
