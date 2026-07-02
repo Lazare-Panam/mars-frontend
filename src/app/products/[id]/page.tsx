@@ -1,13 +1,15 @@
 'use client';
 
 import { use } from 'react';
+import { useRouter } from 'next/navigation';
 import { Box, Grid, Typography, CircularProgress } from '@mui/material';
 import { useProductCatalog } from '@/api/useProductCatalog';
-import ProductHero  from '../components/ProductHero';
+import ProductHero from '../components/ProductHero';
 import ProductCard from './components/ProductCard';
 
 export default function ProductCatalogPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const router = useRouter();
   const { data, isLoading, isError } = useProductCatalog(id);
 
   if (isLoading) {
@@ -41,7 +43,7 @@ export default function ProductCatalogPage({ params }: { params: Promise<{ id: s
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
                 <ProductCard
                   {...product}
-                  onClick={(id) => console.log('clicked', id)}
+                  onClick={(productId) => router.push(`/products/${id}/${productId}`)}
                 />
               </Grid>
             ))}

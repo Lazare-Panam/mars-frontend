@@ -19,28 +19,9 @@ export const LEFT_NAV: NavItem[] = [
       {
         heading: 'Ball Valves',
         items: [
-          { label: 'One-Piece Ball Valve', href: '#' },
-          { label: 'Two-Piece Ball Valve', href: '#' },
-          { label: 'Three-Piece Ball Valve', href: '#' },
-          { label: 'Eco Three-Piece Ball Valve', href: '#' },
-        ],
-      },
-      {
-        heading: 'Specialty Ball Valves',
-        items: [
-          { label: 'Fire-Safe Ball Valve', href: '#' },
-          { label: 'High-Pressure Ball Valve', href: '#' },
-          { label: 'PFA-Lined Ball Valve', href: '#' },
-          { label: 'Three-Way Ball Valve', href: '#' },
-        ],
-      },
-      {
-        heading: 'Process & Control',
-        items: [
-          { label: 'Flanged Ball Valve', href: '#' },
-          { label: 'Gate Valve', href: '#' },
-          { label: 'Segment Control Valve', href: '#' },
-          { label: 'V-Port Ball Valve', href: '#' },
+          { label: 'One-Piece Ball Valve', href: '/products/one-piece-ball-valves' },
+          { label: 'Fire-Safe Ball Valve', href: '/products/fire-safe-ball-valves' },
+          { label: 'V-Port Ball Valve', href: '/products/v-port-ball-valves' },
         ],
       },
     ],

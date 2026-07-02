@@ -19,7 +19,7 @@ export interface ProductCatalog {
 }
 
 const fetchCatalog = async (id: string): Promise<ProductCatalog> => {
-  const { data } = await axiosClient.get(`/api/productcatalog/${id}`);
+  const { data } = await axiosClient.get(`/api/product/${id}`);
   return data;
 };
 
