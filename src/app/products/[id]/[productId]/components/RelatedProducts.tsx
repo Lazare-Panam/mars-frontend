@@ -7,7 +7,7 @@ import { useProductDetail } from '@/api/useProductDetail';
 
 function RelatedProductCard({ catalogId, productId }: { catalogId: string; productId: string }) {
   const router = useRouter();
-  const { data, isLoading } = useProductDetail(catalogId, productId);
+  const { data, isLoading } = useProductDetail(catalogId);
 
   if (isLoading) {
     return (

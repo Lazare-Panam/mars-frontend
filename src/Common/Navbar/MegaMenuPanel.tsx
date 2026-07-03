@@ -31,7 +31,7 @@ export default function MegaMenuPanel({ columns }: { columns: MegaMenuColumn[] }
           minHeight: 320,
         }}
       >
-        {/* left sidebar: category tabs */}
+        {/* Left sidebar */}
         <Box
           sx={{
             width: 240,
@@ -46,18 +46,23 @@ export default function MegaMenuPanel({ columns }: { columns: MegaMenuColumn[] }
             return (
               <Box
                 key={col.heading}
+                component={Link}
+                href={col.href}
                 onMouseEnter={() => setActiveTab(col)}
                 sx={{
+                  display: 'block',
+                  textDecoration: 'none',
                   px: 3,
                   py: 1.5,
                   cursor: 'pointer',
                   fontWeight: isActive ? 700 : 500,
                   fontSize: '0.9rem',
                   color: isActive ? 'primary.main' : 'text.primary',
-                  bgcolor: isActive ? 'primary.light' : 'transparent',
+                  bgcolor: isActive ? 'rgba(231,57,15,0.06)' : 'transparent',
                   borderLeft: '3px solid',
                   borderColor: isActive ? 'primary.main' : 'transparent',
                   transition: 'all 0.15s ease',
+                  '&:hover': { color: 'primary.main' },
                 }}
               >
                 {col.heading}
@@ -66,9 +71,11 @@ export default function MegaMenuPanel({ columns }: { columns: MegaMenuColumn[] }
           })}
         </Box>
 
-        {/* right content: items for active tab */}
+        {/* Right content */}
         <Box sx={{ flex: 1, py: 4, px: 5 }}>
           <Typography
+            component={Link}
+            href={activeTab.href}
             sx={{
               color: 'primary.main',
               fontSize: '0.7rem',
@@ -76,6 +83,9 @@ export default function MegaMenuPanel({ columns }: { columns: MegaMenuColumn[] }
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
               mb: 3,
+              display: 'block',
+              textDecoration: 'none',
+              '&:hover': { textDecoration: 'underline' },
             }}
           >
             {activeTab.heading}

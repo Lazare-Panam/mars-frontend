@@ -1,17 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosClient from "./axiosClient";
 
+export enum ProductType {
+  ProductListing = 0,
+  Grid = 1
+}
+
 export interface ProductItem {
   id: string;
   name: string;
   description: string;
   thumbnailImage: string;
-  specs: Record<string, string>;
-  features: string[];
+  type: ProductType;
+  specs?: Record<string, string>;
+  features?: string[];
 }
 
 export interface ProductCatalog {
   id: string;
+  type: ProductType;
   bannerTitle: string;
   bannerSubtitle: string;
   bannerImage: string;

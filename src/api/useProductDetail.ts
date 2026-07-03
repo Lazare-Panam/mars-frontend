@@ -14,15 +14,15 @@ export interface ProductDetail {
   relatedProducts: string[];
 }
 
-const fetchProductDetail = async (catalogId: string, productId: string): Promise<ProductDetail> => {
-  const { data } = await axiosClient.get(`/api/product/${catalogId}/products/${productId}`);
+const fetchProductDetail = async (id: string): Promise<ProductDetail> => {
+  const { data } = await axiosClient.get(`/api/product/${id}/detail`);
   return data;
 };
 
-export const useProductDetail = (catalogId: string, productId: string) => {
+export const useProductDetail = (id: string) => {
   return useQuery({
-    queryKey: ["product", catalogId, productId],
-    queryFn: () => fetchProductDetail(catalogId, productId),
-    enabled: !!catalogId && !!productId,
+    queryKey: ["product-detail", id],
+    queryFn: () => fetchProductDetail(id),
+    enabled: !!id,
   });
 };

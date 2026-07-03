@@ -1,5 +1,6 @@
 'use client';
 
+import { ProductType } from '@/api/useProductCatalog';
 import { Box, Typography, Chip, Card, CardContent } from '@mui/material';
 import Image from 'next/image';
 
@@ -8,8 +9,9 @@ interface Props {
   name: string;
   description: string;
   thumbnailImage: string;
-  specs: Record<string, string>;
-  features: string[];
+  type?: ProductType;
+  specs?: Record<string, string>;
+  features?: string[];
   onClick: (id: string) => void;
 }
 
@@ -33,7 +35,6 @@ export default function ProductCard({ id, name, description, thumbnailImage, spe
         },
       }}
     >
-      {/* Image — white bg */}
       <Box sx={{ position: 'relative', pt: '65%', bgcolor: '#fff' }}>
         {thumbnailImage ? (
           <Image
@@ -50,10 +51,8 @@ export default function ProductCard({ id, name, description, thumbnailImage, spe
         )}
       </Box>
 
-      {/* Divider */}
       <Box sx={{ height: '1px', bgcolor: 'rgba(0,0,0,0.06)' }} />
 
-      {/* Content — warm bg */}
       <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: 2, flex: 1, bgcolor: '#FAF6F4' }}>
         <Box>
           <Typography sx={{ fontWeight: 700, fontSize: '1rem', color: 'text.primary', mb: 0.75 }}>
@@ -64,7 +63,7 @@ export default function ProductCard({ id, name, description, thumbnailImage, spe
           </Typography>
         </Box>
 
-        {specs && (
+        {specs && Object.keys(specs).length > 0 && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
             {Object.entries(specs).slice(0, 4).map(([label, value]) => (
               <Box key={label} sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -75,7 +74,7 @@ export default function ProductCard({ id, name, description, thumbnailImage, spe
           </Box>
         )}
 
-        {features?.length > 0 && (
+        {features && features.length > 0 && (
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75, mt: 'auto' }}>
             {features.map((f) => (
               <Chip
