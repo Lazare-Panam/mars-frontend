@@ -38,6 +38,11 @@ export default function RootLayout({
             <Footer />
           </QueryProvider>
           <Script
+            id="hs-script-loader"
+            src="//js-eu1.hs-scripts.com/147618935.js"
+            strategy="afterInteractive"
+          />
+          <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-8E3P3CPW72"
             strategy="afterInteractive"
           />
