@@ -16,7 +16,7 @@ export default function ProductVariantsPage({
   params: Promise<{ id: string; productId: string }>;
 }) {
   const { id, productId } = use(params);
-  const { data, isLoading, isError } = useProductVariants(id, productId);
+  const { data, isLoading, isError } = useProductVariants(id);
   const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>({});
 
   const allSpecKeys = useMemo(() => {
