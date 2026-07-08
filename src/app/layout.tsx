@@ -5,6 +5,10 @@ import Navbar from "@/Common/Navbar/Navbar";
 import Footer from "@/Common/Footer/Footer";
 import QueryProvider from "@/Common/QueryProvider";
 import Script from "next/script";
+import { Suspense } from "react";
+import CookieBanner from "@/Common/CookieBanner";
+import AppInsightsProvider from "@/Common/AppInsightsProvider";
+
 const geistSans = Geist({
   variable: "--font-body",
   subsets: ["latin"],
@@ -33,9 +37,13 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeRegistry>
           <QueryProvider>
+            <Suspense fallback={null}>
+              <AppInsightsProvider />
+            </Suspense>
             <Navbar />
             {children}
             <Footer />
+            <CookieBanner />
           </QueryProvider>
           <Script
             id="hs-script-loader"
@@ -48,11 +56,11 @@ export default function RootLayout({
           />
           <Script id="google-analytics-2" strategy="afterInteractive">
             {`
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8E3P3CPW72');
-  `}
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8E3P3CPW72');
+            `}
           </Script>
         </ThemeRegistry>
       </body>
