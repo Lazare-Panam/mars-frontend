@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.marsvalveuk.com
+
+# Sitemaps
+Sitemap: https://www.marsvalveuk.com/sitemap.xml
