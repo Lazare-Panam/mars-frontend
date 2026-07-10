@@ -1,85 +1,51 @@
-"use client";
+import type { Metadata } from "next";
+import { fetchCatalog, ProductCatalog } from "@/api/useProductCatalog";
+import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
 
-import { use } from "react";
-import { useRouter } from "next/navigation";
-import { Box, Grid, Typography, CircularProgress } from "@mui/material";
-import { ProductType, useProductCatalog } from "@/api/useProductCatalog";
-import ProductHero from "../components/ProductHero";
-import ProductCard from "./components/ProductCard";
-import ProductDetailContent from "../components/ProductDetailContent";
+type Props = { params: Promise<{ id: string }> };
 
-export default function ProductCatalogPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
-  const router = useRouter();
-  const { data, isLoading, isError } = useProductCatalog(id);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
 
-  if (isLoading) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "60vh",
-        }}
-      >
-        <CircularProgress color="primary" />
-      </Box>
-    );
+  let data: ProductCatalog | null = null;
+  try {
+    data = await fetchCatalog(id);
+  } catch {
+    // API unreachable, or product genuinely doesn't exist — fall back
+    // to generic metadata instead of crashing the whole route.
   }
 
-  if (isError || !data) {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "60vh",
-        }}
-      >
-        <Typography sx={{ color: "text.secondary" }}>
-          Failed to load products.
-        </Typography>
-      </Box>
-    );
+  if (!data) {
+    return { title: "Mars Valves" };
   }
 
-  if (data.type === ProductType.Grid) {
-    return <ProductDetailContent id={id} />;
-  }
+  const seo = data.seo;
+  const title = seo?.title ?? data.bannerTitle ?? "Mars Valves";
+  const description = seo?.description ?? data.bannerSubtitle ?? "";
+  const ogImage = seo?.ogImage ?? data.bannerImage;
 
-  return (
-    <>
-      <ProductHero
-        title={data.bannerTitle}
-        subtitle={data.bannerSubtitle}
-        bannerImage={data.bannerImage}
-      />
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          py: { xs: 6, md: 10 },
-          px: { xs: 3, md: 8 },
-        }}
-      >
-        <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
-          <Grid container spacing={3}>
-            {data.products.map((product) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
-                <ProductCard
-                  {...product}
-                  onClick={(productId) => router.push(`/products/${id}/${productId}`)}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Box>
-    </>
-  );
+  return {
+    title,
+    description,
+    alternates: seo?.canonical ? { canonical: seo.canonical } : undefined,
+    openGraph: {
+      type: "website",
+      siteName: "Mars Valves",
+      title,
+      description,
+      url: seo?.canonical,
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ogImage ? [ogImage] : undefined,
+    },
+  };
+}
+
+export default async function ProductCatalogPage({ params }: Props) {
+  const { id } = await params;
+  return <ProductCatalogPageClient id={id} />;
 }
