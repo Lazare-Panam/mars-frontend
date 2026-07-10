@@ -44,4 +44,13 @@ export const CATEGORIES = [
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-way-multi.jpg",
     href: "/products/multi-port-ball-valves",
   },
+  {
+    id: "metal-seated-ball-valves",
+    label: "Metal Seated Ball Valves",
+    description:
+      "Metal-to-metal sealing for high temperature and abrasive severe service applications.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/meta-seat/multi-port.jpg",
+    href: "/products/metal-seated-ball-valves",
+  },
 ];
