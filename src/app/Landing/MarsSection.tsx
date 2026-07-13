@@ -2,6 +2,22 @@
 
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
+
+const bodyText = {
+  color: "text.secondary",
+  fontSize: "1rem",
+  lineHeight: 1.75,
+  mb: 2.5,
+} as const;
+
+const heading = {
+  fontSize: "1.25rem",
+  fontWeight: 700,
+  color: "text.primary",
+  mt: 4,
+  mb: 1.5,
+} as const;
 
 export default function MarsSection() {
   return (
@@ -19,90 +35,36 @@ export default function MarsSection() {
       >
         {/* left: copy */}
         <Box sx={{ flex: 1 }}>
-          <Typography
-            component="span"
-            sx={{
-              color: "primary.main",
-              letterSpacing: "0.2em",
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              textTransform: "uppercase",
-            }}
-          >
-            Who We Are
+          <Typography component="h2" sx={{ ...heading, mt: 0 }}>
+            Who we are
           </Typography>
 
-          <Typography
-            component="h2"
-            sx={{
-              fontSize: { xs: "2rem", md: "2.75rem" },
-              fontWeight: 800,
-              color: "text.primary",
-              lineHeight: 1.15,
-              mt: 1,
-              mb: 3,
-            }}
-          >
-            There's only one MARS.
-          </Typography>
-
-          <Typography
-            sx={{
-              color: "text.secondary",
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              mb: 2.5,
-            }}
-          >
+          <Typography sx={bodyText}>
             We're{" "}
-            <Box
-              component="span"
-              sx={{ fontWeight: 700, color: "text.primary" }}
-            >
-              MARS Valve UK
+            <Box component="span" sx={{ fontWeight: 700, color: "text.primary" }}>
+              UK Mars Valves
             </Box>{" "}
-            — the original. The name has been imitated, copied, and stamped onto
-            valves that have nothing to do with the engineering, materials, or
-            standards we hold ourselves to. If it didn't come through us, it
-            isn't MARS.
+            — an authorised distributor of genuine MARS industrial valves,
+            supplying authentic products backed by full manufacturer
+            documentation, certification, and technical support.
           </Typography>
 
-          <Typography
-            sx={{
-              color: "text.secondary",
-              fontSize: "1rem",
-              lineHeight: 1.75,
-              mb: 2.5,
-            }}
-          >
-            Every valve that leaves our facility carries the same
-            certifications, the same fire-safe testing, the same tolerances —
-            whether it's a single fitting or a full pipeline order. That
-            consistency is what an imitator can't reproduce, because it isn't a
-            logo. It's a process, built over years, that doesn't transfer with a
-            name.
+          <Typography sx={bodyText}>
+            We work closely with manufacturers to deliver valves that meet
+            demanding industry standards. Every product we supply is
+            traceable and quality-assured, with the documentation engineers
+            and procurement teams expect.
           </Typography>
 
-          <Typography
-            component="h3"
-            sx={{
-              fontSize: "1.25rem",
-              fontWeight: 700,
-              color: "text.primary",
-              mt: 4,
-              mb: 1.5,
-            }}
-          >
-            Buy from the source
+          <Typography component="h3" sx={heading}>
+            Why buy from us?
           </Typography>
 
-          <Typography
-            sx={{ color: "text.secondary", fontSize: "1rem", lineHeight: 1.75 }}
-          >
-            If you're sourcing MARS valves, source them from us. Every series,
-            every certificate, every batch is traceable back to one place — not
-            a name licensed out, copied, or printed on a box that's never seen
-            our factory floor.
+          <Typography sx={bodyText}>
+            Whether you need a single valve or a complete project supply, we
+            offer competitive pricing, fast delivery, and expert technical
+            guidance — with knowledgeable support from enquiry through to
+            delivery.
           </Typography>
         </Box>
 
@@ -121,13 +83,19 @@ export default function MarsSection() {
               borderColor: "rgba(0,0,0,0.08)",
             }}
           >
-            <Image
-              src="https://pblol2.blob.core.windows.net/mars-valves/categories/fire-safe.jpg"
-              alt="MARS fire-safe ball valve, API 607 certified"
-              fill
-              style={{ objectFit: "contain", padding: "32px" }}
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            <Link
+              href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                alt="MARS fire-safe ball valve, API 607 certified"
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </Link>
           </Box>
         </Box>
       </Box>
