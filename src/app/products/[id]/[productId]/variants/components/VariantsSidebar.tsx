@@ -97,7 +97,7 @@ export default function VariantsSidebar({
       </Box>
 
       {specKeys.map((key, i) => {
-        if (key === "SKU"|| key === 'Price'|| key === 'price') return null;
+        if (key === "SKU" || key === "Price" || key === "price") return null;
         const options = filterOptions[key] ?? [];
         if (options.length <= 1) return null;
         const selected = activeFilters[key] ?? [];
