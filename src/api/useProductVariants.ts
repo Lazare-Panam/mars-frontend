@@ -10,6 +10,7 @@ export interface ProductSeriesVariants {
 
 export interface ProductVariant {
   id: string;
+  thumbnailImage?: string;
   specs: Record<string, string>;
 }
 
