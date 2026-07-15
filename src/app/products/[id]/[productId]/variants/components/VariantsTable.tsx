@@ -21,6 +21,7 @@ interface RowProps {
 
 function VariantRow({ variant, specKeys, thumbnailImage }: RowProps) {
   const [open, setOpen] = useState(false);
+  const image = variant.thumbnailImage || thumbnailImage;
 
   return (
     <>
@@ -35,6 +36,13 @@ function VariantRow({ variant, specKeys, thumbnailImage }: RowProps) {
           <IconButton size="small" onClick={() => setOpen(o => !o)}>
             {open ? <KeyboardArrowUpIcon fontSize="small" /> : <KeyboardArrowDownIcon fontSize="small" />}
           </IconButton>
+        </TableCell>
+        <TableCell sx={{ width: 56, py: 1 }}>
+          {image && (
+            <Box sx={{ width: 40, height: 40, border: '1px solid rgba(0,0,0,0.08)', borderRadius: '4px', bgcolor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+              <Image src={image} alt={variant.id} width={34} height={34} style={{ objectFit: 'contain' }} />
+            </Box>
+          )}
         </TableCell>
         {specKeys.map(key => (
           <TableCell key={key} sx={{ py: 1.5, fontSize: '0.875rem' }}>
@@ -52,13 +60,13 @@ function VariantRow({ variant, specKeys, thumbnailImage }: RowProps) {
       </TableRow>
 
       <TableRow>
-        <TableCell colSpan={specKeys.length + 1} sx={{ p: 0, borderBottom: open ? '1px solid rgba(0,0,0,0.08)' : 'none' }}>
+        <TableCell colSpan={specKeys.length + 2} sx={{ p: 0, borderBottom: open ? '1px solid rgba(0,0,0,0.08)' : 'none' }}>
           <Collapse in={open} unmountOnExit>
             <Box sx={{ p: 3, bgcolor: alpha(BRAND, 0.02), borderLeft: `4px solid ${BRAND}` }}>
               <Box sx={{ display: 'flex', gap: 4, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                {thumbnailImage && (
+                {image && (
                   <Box sx={{ width: 140, height: 140, flexShrink: 0, border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', bgcolor: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image src={thumbnailImage} alt={variant.id} width={120} height={120} style={{ objectFit: 'contain' }} />
+                    <Image src={image} alt={variant.id} width={120} height={120} style={{ objectFit: 'contain' }} />
                   </Box>
                 )}
                 <Box sx={{ flex: 1 }}>
@@ -131,6 +139,7 @@ export default function VariantsTable({ variants, specKeys, thumbnailImage }: Pr
         <TableHead>
           <TableRow>
             <TableCell sx={{ ...headerSx, width: 40 }} />
+            <TableCell sx={{ ...headerSx, width: 56 }} />
             {specKeys.map(key => (
               <TableCell key={key} sx={headerSx}>
                 <TableSortLabel
@@ -147,7 +156,7 @@ export default function VariantsTable({ variants, specKeys, thumbnailImage }: Pr
         <TableBody>
           {paginated.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={specKeys.length + 1} align="center" sx={{ py: 8 }}>
+              <TableCell colSpan={specKeys.length + 2} align="center" sx={{ py: 8 }}>
                 <Typography sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>No variants found.</Typography>
               </TableCell>
             </TableRow>
