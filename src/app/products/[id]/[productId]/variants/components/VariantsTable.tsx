@@ -105,7 +105,7 @@ interface Props {
 }
 
 export default function VariantsTable({ variants, specKeys, thumbnailImage }: Props) {
-  const [sortKey, setSortKey] = useState<string>(specKeys[0] ?? '');
+  const [sortKey, setSortKey] = useState<string>('');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
@@ -115,11 +115,13 @@ export default function VariantsTable({ variants, specKeys, thumbnailImage }: Pr
     else { setSortKey(key); setSortDir('asc'); }
   };
 
-  const sorted = [...variants].sort((a, b) => {
-    const av = a.specs[sortKey] ?? '';
-    const bv = b.specs[sortKey] ?? '';
-    return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
-  });
+  const sorted = sortKey
+    ? [...variants].sort((a, b) => {
+        const av = a.specs[sortKey] ?? '';
+        const bv = b.specs[sortKey] ?? '';
+        return sortDir === 'asc' ? av.localeCompare(bv) : bv.localeCompare(av);
+      })
+    : variants;
 
   const paginated = sorted.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
