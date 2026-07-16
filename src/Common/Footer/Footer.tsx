@@ -32,6 +32,7 @@ const FOOTER_COLUMNS = [
   {
     heading: "Resources",
     links: [
+      { label: "Returns Policy", href: "/return-policy" },
       { label: "Delivery Information", href: "/delivery-information" },
       { label: "Download", href: "#" },
       { label: "E-catalog", href: "#" },
