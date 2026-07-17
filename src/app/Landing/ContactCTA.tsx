@@ -1,9 +1,75 @@
 "use client";
 
-import { Box, Typography, Button, TextField } from "@mui/material";
+import * as React from "react";
+import { Box, Typography, Button, TextField, Alert, CircularProgress } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useSubmitEnquiry } from "@/api/useSubmitEnquiry";
+
+interface EnquiryFormData {
+  userName: string;
+  userEmail: string;
+  userCompany: string;
+  userCountry: string;
+  message: string;
+}
+
+const initialFormState: EnquiryFormData = {
+  userName: "",
+  userEmail: "",
+  userCompany: "",
+  userCountry: "",
+  message: "",
+};
+
+const fieldSx = {
+  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "primary.main",
+  },
+  "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
+};
 
 export default function ContactCTA() {
+  const [formData, setFormData] = React.useState<EnquiryFormData>(initialFormState);
+  const [errors, setErrors] = React.useState<Partial<Record<keyof EnquiryFormData, string>>>({});
+
+  const { mutate, isPending, isSuccess, isError, reset } = useSubmitEnquiry();
+
+  const handleChange = (field: keyof EnquiryFormData) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    if (errors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
+  const validate = (): boolean => {
+    const newErrors: Partial<Record<keyof EnquiryFormData, string>> = {};
+
+    if (!formData.userName.trim()) newErrors.userName = "Name is required";
+    if (!formData.userEmail.trim()) {
+      newErrors.userEmail = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.userEmail)) {
+      newErrors.userEmail = "Enter a valid email address";
+    }
+    if (!formData.userCompany.trim()) newErrors.userCompany = "Company is required";
+    if (!formData.message.trim()) newErrors.message = "Please describe your enquiry";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    mutate(formData, {
+      onSuccess: () => {
+        setFormData(initialFormState);
+      },
+    });
+  };
+
   return (
     <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#FAF6F4" }}>
       <Box
@@ -108,33 +174,66 @@ export default function ContactCTA() {
             boxShadow: "0 12px 32px rgba(0,0,0,0.06)",
           }}
         >
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
+          {isSuccess && (
+            <Alert severity="success" sx={{ mb: 2.5 }} onClose={reset}>
+              Thanks — your enquiry has been received.
+            </Alert>
+          )}
+          {isError && (
+            <Alert severity="error" sx={{ mb: 2.5 }} onClose={reset}>
+              Something went wrong. Please try again.
+            </Alert>
+          )}
+
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
             <TextField
               label="Full Name"
               variant="outlined"
               size="small"
               fullWidth
-              sx={{
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "primary.main",
-                  },
-                "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
-              }}
+              value={formData.userName}
+              onChange={handleChange("userName")}
+              error={!!errors.userName}
+              helperText={errors.userName}
+              disabled={isPending}
+              sx={fieldSx}
             />
             <TextField
               label="Email Address"
               variant="outlined"
               size="small"
               fullWidth
-              sx={{
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "primary.main",
-                  },
-                "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
-              }}
+              value={formData.userEmail}
+              onChange={handleChange("userEmail")}
+              error={!!errors.userEmail}
+              helperText={errors.userEmail}
+              disabled={isPending}
+              sx={fieldSx}
             />
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <TextField
+                label="Company"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={formData.userCompany}
+                onChange={handleChange("userCompany")}
+                error={!!errors.userCompany}
+                helperText={errors.userCompany}
+                disabled={isPending}
+                sx={fieldSx}
+              />
+              <TextField
+                label="Country"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={formData.userCountry}
+                onChange={handleChange("userCountry")}
+                disabled={isPending}
+                sx={fieldSx}
+              />
+            </Box>
             <TextField
               label="What do you need?"
               variant="outlined"
@@ -142,19 +241,20 @@ export default function ContactCTA() {
               fullWidth
               multiline
               rows={4}
-              sx={{
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                  {
-                    borderColor: "primary.main",
-                  },
-                "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
-              }}
+              value={formData.message}
+              onChange={handleChange("message")}
+              error={!!errors.message}
+              helperText={errors.message}
+              disabled={isPending}
+              sx={fieldSx}
             />
 
             <Button
+              type="submit"
               variant="contained"
               disableElevation
-              endIcon={<ArrowForwardIcon />}
+              disabled={isPending}
+              endIcon={isPending ? undefined : <ArrowForwardIcon />}
               sx={{
                 bgcolor: "primary.main",
                 color: "#fff",
@@ -166,7 +266,7 @@ export default function ContactCTA() {
                 "&:hover": { bgcolor: "primary.dark" },
               }}
             >
-              Send Enquiry
+              {isPending ? <CircularProgress size={22} color="inherit" /> : "Send Enquiry"}
             </Button>
           </Box>
         </Box>

@@ -8,6 +8,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 import CookieBanner from "@/Common/CookieBanner";
 import AppInsightsProvider from "@/Common/AppInsightsProvider";
+import ContactPrompt from "./Landing/ContactPrompt";
 
 const geistSans = Geist({
   variable: "--font-body",
@@ -51,6 +52,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <CookieBanner />
+              <ContactPrompt />
           </QueryProvider>
           <Script
             id="hs-script-loader"
