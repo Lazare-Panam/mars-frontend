@@ -174,16 +174,22 @@ const Navbar: React.FC = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 0.5,
+                  gap: 0.75,
                   textDecoration: "none",
-                  color: RUST,
-                  fontSize: "0.82rem",
-                  fontWeight: 500,
-                  transition: "color 0.15s ease",
-                  "&:hover": { color: INK },
+                  bgcolor: ACCENT,
+                  color: theme.palette.primary.contrastText,
+                  fontWeight: 700,
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.04em",
+                  px: 2,
+                  py: 1,
+                  transition: "background-color 0.15s ease",
+                  "&:hover": {
+                    bgcolor: theme.palette.primary.dark ?? "#A8270A",
+                  },
                 }}
               >
-                <StorefrontOutlinedIcon sx={{ fontSize: 20 }} />
+                <StorefrontOutlinedIcon sx={{ fontSize: 19 }} />
                 Shop
               </Box>
               <Box
@@ -206,7 +212,7 @@ const Navbar: React.FC = () => {
                   },
                 }}
               >
-                Get a Quote
+                enquiry
               </Box>
             </Box>
 
