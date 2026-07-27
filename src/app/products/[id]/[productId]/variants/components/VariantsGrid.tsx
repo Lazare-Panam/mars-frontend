@@ -84,7 +84,7 @@ function PriceBlock({ price }: { price?: string }) {
   );
 }
 
-function FeaturedCard({
+export function FeaturedCard({
   variant,
   productName,
   thumbnailImage,

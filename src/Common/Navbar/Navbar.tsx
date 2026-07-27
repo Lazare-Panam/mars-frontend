@@ -18,6 +18,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from "./navData";
 import MegaMenuPanel from "./MegaMenuPanel";
@@ -166,6 +167,25 @@ const Navbar: React.FC = () => {
                   {item.label}
                 </Box>
               ))}
+              <Box
+                component={Link}
+                href="/shop"
+                aria-label="Shop"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                  textDecoration: "none",
+                  color: RUST,
+                  fontSize: "0.82rem",
+                  fontWeight: 500,
+                  transition: "color 0.15s ease",
+                  "&:hover": { color: INK },
+                }}
+              >
+                <StorefrontOutlinedIcon sx={{ fontSize: 20 }} />
+                Shop
+              </Box>
               <Box
                 component={Link}
                 href="/contact"
