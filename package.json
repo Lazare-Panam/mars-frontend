@@ -12,7 +12,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@microsoft/applicationinsights-web": "^3.4.3",
-    "@mui/icons-material": "^9.1.1",
+    "@mui/icons-material": "^9.2.0",
     "@mui/material": "^9.1.2",
     "@mui/material-nextjs": "^9.1.1",
     "@tanstack/react-query": "^5.101.2",
@@ -21,7 +21,8 @@
     "next-sitemap": "^4.2.3",
     "react": "19.2.4",
     "react-cookie-consent": "^10.0.1",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
