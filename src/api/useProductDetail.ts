@@ -4,6 +4,7 @@ import axiosClient from "./axiosClient";
 export interface ProductDetail {
   id: string;
   catalogId: string;
+  datasheetId? : string ;
   name: string;
   description: string;
   image: string;
