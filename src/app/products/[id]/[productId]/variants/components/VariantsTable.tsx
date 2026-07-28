@@ -186,41 +186,65 @@ function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }:
 
       <TableCell sx={{ py: 1.5, width: 220 }}>
         <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}>
-          <IconButton
-            size="small"
-            onClick={handleAddToCart}
-            disabled={adding}
-            aria-label={`Add ${variant.id} to cart`}
-            sx={{
-              border: `1px solid ${alpha(BRAND, 0.4)}`,
-              borderRadius: "6px",
-              color: BRAND,
-              "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
-            }}
-          >
-            <AddShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
-          </IconButton>
+          {price ? (
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={handleAddToCart}
+              disabled={adding}
+              startIcon={<AddShoppingCartOutlinedIcon sx={{ fontSize: 16 }} />}
+              sx={{
+                textTransform: "none",
+                fontWeight: 700,
+                fontSize: "0.78rem",
+                borderRadius: "6px",
+                borderColor: alpha(BRAND, 0.4),
+                color: BRAND,
+                whiteSpace: "nowrap",
+                "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
+              }}
+            >
+              Add to Cart
+            </Button>
+          ) : (
+            <IconButton
+              size="small"
+              onClick={handleAddToCart}
+              disabled={adding}
+              aria-label={`Add ${variant.id} to cart`}
+              sx={{
+                border: `1px solid ${alpha(BRAND, 0.4)}`,
+                borderRadius: "6px",
+                color: BRAND,
+                "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
+              }}
+            >
+              <AddShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
+            </IconButton>
+          )}
 
-          <Button
-            variant="outlined"
-            size="small"
-            startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 15 }} />}
-            sx={{
-              textTransform: "none",
-              fontWeight: 700,
-              fontSize: "0.78rem",
-              borderRadius: "6px",
-              borderColor: alpha(BRAND, 0.4),
-              color: BRAND,
-              whiteSpace: "nowrap",
-              "&:hover": {
-                borderColor: BRAND,
-                bgcolor: alpha(BRAND, 0.06),
-              },
-            }}
-          >
-            Request Quote
-          </Button>
+          {!price && (
+            <Button
+              variant="outlined"
+              size="small"
+              startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 15 }} />}
+              sx={{
+                textTransform: "none",
+                fontWeight: 700,
+                fontSize: "0.78rem",
+                borderRadius: "6px",
+                borderColor: alpha(BRAND, 0.4),
+                color: BRAND,
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  borderColor: BRAND,
+                  bgcolor: alpha(BRAND, 0.06),
+                },
+              }}
+            >
+              Request Quote
+            </Button>
+          )}
         </Box>
       </TableCell>
     </TableRow>

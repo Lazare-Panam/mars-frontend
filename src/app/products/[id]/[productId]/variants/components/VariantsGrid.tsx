@@ -5,6 +5,7 @@ import { Box, Typography, Button, Pagination, Chip } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -245,7 +246,13 @@ export function FeaturedCard({
               e.preventDefault();
               e.stopPropagation();
             }}
-            startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 17 }} />}
+            startIcon={
+              price ? (
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 17 }} />
+              ) : (
+                <RequestQuoteOutlinedIcon sx={{ fontSize: 17 }} />
+              )
+            }
             sx={{
               textTransform: "none",
               fontWeight: 700,
@@ -258,7 +265,7 @@ export function FeaturedCard({
               "&:hover": { bgcolor: "#A8270A", boxShadow: "none" },
             }}
           >
-            Request Quote
+            {price ? "Buy" : "Request Quote"}
           </Button>
         </Box>
       </Box>
@@ -362,7 +369,13 @@ export function GridCard({
               e.preventDefault();
               e.stopPropagation();
             }}
-            startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 14 }} />}
+            startIcon={
+              price ? (
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 14 }} />
+              ) : (
+                <RequestQuoteOutlinedIcon sx={{ fontSize: 14 }} />
+              )
+            }
             sx={{
               textTransform: "none",
               fontWeight: 700,
@@ -374,7 +387,7 @@ export function GridCard({
               "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
             }}
           >
-            Request Quote
+            {price ? "Buy" : "Request Quote"}
           </Button>
         </Box>
       </Box>
