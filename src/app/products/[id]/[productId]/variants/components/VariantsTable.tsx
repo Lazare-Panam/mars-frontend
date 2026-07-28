@@ -14,13 +14,18 @@ import {
   Typography,
   Chip,
   Button,
+  IconButton,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
+import { useCartStore } from "@/store/useCartStore";
 
 const BRAND = "#E7390F";
 
@@ -65,11 +70,33 @@ interface RowProps {
   specKeys: string[];
   thumbnailImage: string;
   zebra: boolean;
+  onAddedToCart: () => void;
 }
 
-function VariantRow({ variant, specKeys, thumbnailImage, zebra }: RowProps) {
+function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }: RowProps) {
+  const addToCart = useCartStore((s) => s.addToCart);
+  const [adding, setAdding] = useState(false);
+
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
+
+  const handleAddToCart = async () => {
+    if (adding) return;
+
+    setAdding(true);
+    try {
+      await addToCart({
+        productId: variant.id,
+        productDescription: variant.specs["SKU"] ?? variant.id,
+        unitPrice: price ? parseFloat(price.replace(/,/g, "")) : 0,
+        quantity: 1,
+        pictureUrl: image ?? "",
+      });
+      onAddedToCart();
+    } finally {
+      setAdding(false);
+    }
+  };
 
   return (
     <TableRow
@@ -157,27 +184,44 @@ function VariantRow({ variant, specKeys, thumbnailImage, zebra }: RowProps) {
         </Box>
       </TableCell>
 
-      <TableCell sx={{ py: 1.5, width: 150 }}>
-        <Button
-          variant="outlined"
-          size="small"
-          startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 15 }} />}
-          sx={{
-            textTransform: "none",
-            fontWeight: 700,
-            fontSize: "0.78rem",
-            borderRadius: "6px",
-            borderColor: alpha(BRAND, 0.4),
-            color: BRAND,
-            whiteSpace: "nowrap",
-            "&:hover": {
-              borderColor: BRAND,
-              bgcolor: alpha(BRAND, 0.06),
-            },
-          }}
-        >
-          Request Quote
-        </Button>
+      <TableCell sx={{ py: 1.5, width: 220 }}>
+        <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}>
+          <IconButton
+            size="small"
+            onClick={handleAddToCart}
+            disabled={adding}
+            aria-label={`Add ${variant.id} to cart`}
+            sx={{
+              border: `1px solid ${alpha(BRAND, 0.4)}`,
+              borderRadius: "6px",
+              color: BRAND,
+              "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
+            }}
+          >
+            <AddShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
+          </IconButton>
+
+          <Button
+            variant="outlined"
+            size="small"
+            startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 15 }} />}
+            sx={{
+              textTransform: "none",
+              fontWeight: 700,
+              fontSize: "0.78rem",
+              borderRadius: "6px",
+              borderColor: alpha(BRAND, 0.4),
+              color: BRAND,
+              whiteSpace: "nowrap",
+              "&:hover": {
+                borderColor: BRAND,
+                bgcolor: alpha(BRAND, 0.06),
+              },
+            }}
+          >
+            Request Quote
+          </Button>
+        </Box>
       </TableCell>
     </TableRow>
   );
@@ -198,6 +242,7 @@ export default function VariantsTable({
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const displayKeys = specKeys.filter((key) => key !== "Price");
 
@@ -253,7 +298,7 @@ export default function VariantsTable({
             <TableCell sx={{ ...headerSx, width: 190, textAlign: "right" }}>
               Price
             </TableCell>
-            <TableCell sx={{ ...headerSx, width: 150 }} />
+            <TableCell sx={{ ...headerSx, width: 220 }} />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -277,6 +322,7 @@ export default function VariantsTable({
                 specKeys={displayKeys}
                 thumbnailImage={thumbnailImage}
                 zebra={i % 2 === 1}
+                onAddedToCart={() => setSnackbarOpen(true)}
               />
             ))
           )}
@@ -295,6 +341,17 @@ export default function VariantsTable({
         rowsPerPageOptions={[10, 25, 50]}
         sx={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
       />
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={2500}
+        onClose={() => setSnackbarOpen(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      >
+        <Alert severity="success" variant="filled" sx={{ fontWeight: 600 }}>
+          Added to cart
+        </Alert>
+      </Snackbar>
     </Paper>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -12,6 +12,7 @@ import {
   IconButton,
   Drawer,
   Collapse,
+  Badge,
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -19,9 +20,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from "./navData";
 import MegaMenuPanel from "./MegaMenuPanel";
+import { useCartStore } from "@/store/useCartStore";
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -36,6 +39,13 @@ const Navbar: React.FC = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const fetchBasket = useCartStore((s) => s.fetchBasket);
+  const itemCount = useCartStore((s) => s.itemCount());
+
+  useEffect(() => {
+    fetchBasket();
+  }, [fetchBasket]);
+
   const handleEnter = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(label);
@@ -45,6 +55,34 @@ const Navbar: React.FC = () => {
   };
 
   const activeItem = LEFT_NAV.find((i) => i.label === openMenu);
+  const filteredRightNav = RIGHT_NAV.filter(
+    (item) => item.label !== "Contact Us",
+  );
+
+  const CartButton = ({ size }: { size: number }) => (
+    <IconButton
+      component={Link}
+      href="/cart"
+      aria-label={`Cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+      sx={{ color: INK }}
+    >
+      <Badge
+        badgeContent={itemCount}
+        max={99}
+        invisible={itemCount === 0}
+        sx={{
+          "& .MuiBadge-badge": {
+            bgcolor: ACCENT,
+            color: theme.palette.primary.contrastText,
+            fontWeight: 700,
+            fontSize: "0.65rem",
+          },
+        }}
+      >
+        <ShoppingCartOutlinedIcon sx={{ fontSize: size }} />
+      </Badge>
+    </IconButton>
+  );
 
   return (
     <>
@@ -150,7 +188,7 @@ const Navbar: React.FC = () => {
                 gap: 4,
               }}
             >
-              {RIGHT_NAV.map((item) => (
+              {filteredRightNav.map((item) => (
                 <Box
                   key={item.label}
                   component={Link}
@@ -167,6 +205,7 @@ const Navbar: React.FC = () => {
                   {item.label}
                 </Box>
               ))}
+
               <Box
                 component={Link}
                 href="/shop"
@@ -192,6 +231,7 @@ const Navbar: React.FC = () => {
                 <StorefrontOutlinedIcon sx={{ fontSize: 19 }} />
                 Shop
               </Box>
+
               <Box
                 component={Link}
                 href="/contact"
@@ -214,15 +254,26 @@ const Navbar: React.FC = () => {
               >
                 enquiry
               </Box>
+
+              <CartButton size={24} />
             </Box>
 
             {/* Mobile trigger */}
-            <IconButton
-              onClick={() => setMobileOpen(true)}
-              sx={{ display: { md: "none" }, color: INK }}
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                alignItems: "center",
+                gap: 1,
+              }}
             >
-              <MenuIcon />
-            </IconButton>
+              <CartButton size={22} />
+              <IconButton
+                onClick={() => setMobileOpen(true)}
+                sx={{ color: INK }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
           </Toolbar>
         </Container>
 
@@ -267,7 +318,7 @@ const Navbar: React.FC = () => {
         </Box>
 
         <Box sx={{ display: "flex", flexDirection: "column", px: 1.5, py: 1 }}>
-          {[...LEFT_NAV, ...RIGHT_NAV].map((item: NavItem) => (
+          {[...LEFT_NAV, ...filteredRightNav].map((item: NavItem) => (
             <Box key={item.label} sx={{ borderBottom: `1px solid ${LINE}` }}>
               <Box
                 onClick={() =>

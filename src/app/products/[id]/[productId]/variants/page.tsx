@@ -4,20 +4,25 @@ import { use, useCallback, useMemo } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Box, Typography, CircularProgress } from "@mui/material";
 import { useProductVariants } from "@/api/useProductVariants";
-import VariantsGrid from "./components/VariantsGrid";
-import VariantsFilterBar from "./components/VariantsFilterbar";
+import VariantsSidebar from "./components/VariantsSidebar";
+import VariantsTable from "./components/VariantsTable";
+import VariantsActiveFilters from "./components/VariantsActiveFilters";
+import { alpha } from "@mui/material/styles";
 
-// 'sort' is managed separately from spec filters — never treated as one.
-const RESERVED_PARAMS = new Set<string>(["sort"]);
+const BRAND = "#E7390F";
+
+// Keys we manage ourselves in the query string that are NOT spec filters
+// (add 'sort', 'minPrice', 'maxPrice' here later if/when you build those)
+const RESERVED_PARAMS = new Set<string>([]);
 
 // Turns a raw string like `1/4" ~ 4"` or `Port Type` into a clean, URL-safe
 // slug like `1-4-4` or `port-type`. Used for BOTH filter keys and values.
 function slugify(value: string): string {
   return value
     .toLowerCase()
-    .replace(/["']/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/["']/g, "") // drop quote marks entirely
+    .replace(/[^a-z0-9]+/g, "-") // everything else (space, /, ~, etc.) -> dash
+    .replace(/^-+|-+$/g, ""); // trim leading/trailing dashes
 }
 
 export default function ProductVariantsPage({
@@ -31,22 +36,6 @@ export default function ProductVariantsPage({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  const sortKey = searchParams.get("sort") ?? "featured";
-
-  const setSortKey = useCallback(
-    (key: string) => {
-      const newParams = new URLSearchParams(searchParams.toString());
-      if (key === "featured") {
-        newParams.delete("sort");
-      } else {
-        newParams.set("sort", key);
-      }
-      const query = newParams.toString();
-      router.push(query ? `${pathname}?${query}` : pathname, { scroll: false });
-    },
-    [searchParams, pathname, router],
-  );
 
   const allSpecKeys = useMemo(() => {
     if (!data?.variants.length) return [];
@@ -71,6 +60,8 @@ export default function ProductVariantsPage({
     );
   }, [data, allSpecKeys]);
 
+  // Map each real spec key ("Size", "Port Type") to a clean lowercase URL
+  // param name ("size", "port-type"), and back again.
   const keyToParam = useMemo(() => {
     const map: Record<string, string> = {};
     allSpecKeys.forEach((key) => {
@@ -87,6 +78,7 @@ export default function ProductVariantsPage({
     return map;
   }, [keyToParam]);
 
+  // For each spec key, map slug -> real raw value (e.g. "1-4-4" -> `1/4" ~ 4"`).
   const slugToRawByKey = useMemo(() => {
     const map: Record<string, Record<string, string>> = {};
     Object.entries(filterOptions).forEach(([key, values]) => {
@@ -96,7 +88,7 @@ export default function ProductVariantsPage({
   }, [filterOptions]);
 
   // Derive activeFilters FROM the URL, converting param names and slugs back
-  // to real spec keys and raw values. 'sort' is skipped — it's reserved.
+  // to real spec keys and raw values.
   const activeFilters = useMemo(() => {
     const result: Record<string, string[]> = {};
     searchParams.forEach((value, param) => {
@@ -112,6 +104,8 @@ export default function ProductVariantsPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams.toString(), slugToRawByKey, paramToKey]);
 
+  // setActiveFilters has the same shape as the old useState setter (supports
+  // functional updates), so child components need zero changes.
   const setActiveFilters = useCallback(
     (updater: React.SetStateAction<Record<string, string[]>>) => {
       const next =
@@ -134,7 +128,7 @@ export default function ProductVariantsPage({
     [activeFilters, pathname, router, searchParams, keyToParam],
   );
 
-  const filteredVariants = useMemo(() => {
+  const filtered = useMemo(() => {
     if (!data?.variants) return [];
     return data.variants.filter((v) =>
       Object.entries(activeFilters).every(
@@ -179,33 +173,17 @@ export default function ProductVariantsPage({
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       {/* Hero */}
       <Box
-        sx={{
-          bgcolor: "#fff",
-          borderBottom: "1px solid rgba(0,0,0,0.08)",
-          px: { xs: 3, md: 8 },
-          py: { xs: 4, md: 5 },
-          position: "relative",
-        }}
+        sx={{ bgcolor: "#0a0604", px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
       >
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: "4px",
-            bgcolor: "primary.main",
-          }}
-        />
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
           <Typography
             sx={{
-              color: "primary.main",
+              color: "primary.light",
               letterSpacing: "0.2em",
               fontSize: "0.72rem",
               fontWeight: 700,
               textTransform: "uppercase",
-              mb: 1.5,
+              mb: 1,
             }}
           >
             Ball Valves
@@ -213,23 +191,19 @@ export default function ProductVariantsPage({
           <Typography
             component="h1"
             sx={{
-              color: "text.primary",
-              fontSize: { xs: "1.9rem", md: "2.6rem" },
+              color: "#fff",
+              fontSize: { xs: "1.8rem", md: "2.6rem" },
               fontWeight: 800,
               lineHeight: 1.1,
-              letterSpacing: "-0.01em",
-              mb: 1.5,
             }}
           >
             {data.name}
           </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Box sx={{ width: 28, height: 2, bgcolor: "primary.main" }} />
-            <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
-              {filteredVariants.length} model
-              {filteredVariants.length !== 1 ? "s" : ""} available
-            </Typography>
-          </Box>
+          <Typography
+            sx={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", mt: 1 }}
+          >
+            {filtered.length} model{filtered.length !== 1 ? "s" : ""} available
+          </Typography>
         </Box>
       </Box>
 
@@ -242,22 +216,60 @@ export default function ProductVariantsPage({
           py: { xs: 4, md: 6 },
         }}
       >
-        <VariantsFilterBar
-          variants={data.variants}
-          specKeys={allSpecKeys}
-          filterOptions={filterOptions}
+        <VariantsActiveFilters
           activeFilters={activeFilters}
           setActiveFilters={setActiveFilters}
         />
-        <VariantsGrid
-          variants={filteredVariants}
-          productName={data.name}
-          thumbnailImage={data.thumbnailImage}
-          sortKey={sortKey}
-          onSortChange={setSortKey}
-          categoryId={id}
-          productId={productId}
-        />
+
+        {filtered.length === 0 && (
+          <Box sx={{ py: 6, textAlign: "center" }}>
+            <Typography sx={{ color: "text.secondary", mb: 1 }}>
+              No variants match your filters.
+            </Typography>
+            <Typography
+              onClick={() => setActiveFilters({})}
+              sx={{
+                color: BRAND,
+                fontWeight: 700,
+                cursor: "pointer",
+                display: "inline-block",
+              }}
+            >
+              Clear all filters
+            </Typography>
+          </Box>
+        )}
+
+        <Box
+          sx={{
+            display: "flex",
+            gap: 0,
+            alignItems: "flex-start",
+            border: `1px solid ${alpha(BRAND, 0.15)}`,
+            borderRadius: "8px",
+            bgcolor: "#fff",
+          }}
+        >
+          <VariantsSidebar
+            specKeys={allSpecKeys}
+            filterOptions={filterOptions}
+            activeFilters={activeFilters}
+            setActiveFilters={setActiveFilters}
+          />
+          <Box
+            sx={{
+              flex: 1,
+              minWidth: 0,
+              borderLeft: "1px solid rgba(0,0,0,0.06)",
+            }}
+          >
+            <VariantsTable
+              variants={filtered}
+              specKeys={allSpecKeys}
+              thumbnailImage={data.thumbnailImage}
+            />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
