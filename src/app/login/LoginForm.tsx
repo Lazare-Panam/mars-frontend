@@ -71,16 +71,20 @@ export default function LoginForm() {
 
           switch (data?.code) {
             case "INVALID_CREDENTIALS":
-              setFormError(data.detail ?? data.title ?? "Invalid email or password.");
+              setFormError(
+                data.detail ?? data.title ?? "Invalid email or password.",
+              );
               break;
             case "ACCOUNT_LOCKED":
-              setFormError(data.detail ?? data.title ?? "Account locked. Try again later.");
+              setFormError(
+                data.detail ?? data.title ?? "Account locked. Try again later.",
+              );
               break;
             default:
               setFormError("Something went wrong. Please try again.");
           }
         },
-      }
+      },
     );
   };
 
@@ -117,7 +121,11 @@ export default function LoginForm() {
         <MuiLink
           component={NextLink}
           href="/register"
-          sx={{ color: "primary.main", fontWeight: 600, textDecoration: "underline" }}
+          sx={{
+            color: "primary.main",
+            fontWeight: 600,
+            textDecoration: "underline",
+          }}
         >
           Create an account
         </MuiLink>
@@ -164,7 +172,10 @@ export default function LoginForm() {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => setShowPassword((p) => !p)} edge="end">
+                  <IconButton
+                    onClick={() => setShowPassword((p) => !p)}
+                    edge="end"
+                  >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -173,7 +184,7 @@ export default function LoginForm() {
           }}
         />
 
-        <Box sx={{ textAlign: "right", mb: 3 }}>
+        {/* <Box sx={{ textAlign: "right", mb: 3 }}>
           <MuiLink
             component={NextLink}
             href="/forgot-password"
@@ -181,7 +192,7 @@ export default function LoginForm() {
           >
             Forgot password?
           </MuiLink>
-        </Box>
+        </Box> */}
 
         <Button
           type="submit"
