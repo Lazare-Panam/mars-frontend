@@ -234,6 +234,6 @@ export const RIGHT_NAV: NavItem[] = [
     href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
     newTab: true,
   },
-  { label: "News", href: "#" },
+  { label: "News", href: "/news" },
   { label: "Contact Us", href: "#" },
 ];
