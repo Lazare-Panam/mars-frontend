@@ -8,7 +8,7 @@ export const blogs: BlogData[] = [
     date: "July 29, 2026",
     category: "Technical",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-10-10.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-1.jpeg",
     excerpt:
       "How Mars fire-safe ball valves support reliable isolation in hazardous industrial applications, certified to API 607 and ISO 10497 across the Series 83, 88, 90, 90D and 91D ranges.",
     tags: ["Fire-Safe", "Ball Valves", "API 607", "ISO 10497", "Industrial"],
@@ -16,6 +16,7 @@ export const blogs: BlogData[] = [
       {
         heading: null,
         body: `Industrial systems carrying fuels, gases, solvents and other hazardous media require valves that can provide dependable isolation during both normal operation and emergency conditions.\n\nDuring a fire, extreme heat can damage soft valve seats, stem seals and body gaskets. A fire-safe ball valve is designed to limit internal and external leakage if these primary sealing components deteriorate.\n\nMars offers several fire-tested ball valve ranges, including the Series 83, Series 88, Series 90, Series 90D and Series 91D. These ranges carry fire-safe certification following testing by Southwest Research Institute and TÜV Germany.`,
+        image: "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-2.jpeg",
       },
       {
         heading: "What Makes a Ball Valve Fire-Safe?",

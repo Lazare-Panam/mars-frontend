@@ -15,6 +15,8 @@ import {
 interface BlogSection {
   heading: string | null;
   body: string;
+  image?: string;
+  imageCaption?: string;
 }
 
 interface BlogFaq {
@@ -140,6 +142,31 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
               </Typography>
             )}
             {renderBody(section.body)}
+
+            {section.image && (
+              <Box sx={{ mt: 3 }}>
+                <Box
+                  component="img"
+                  src={section.image}
+                  alt={section.imageCaption || blog.title}
+                  sx={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                  }}
+                />
+                {section.imageCaption && (
+                  <Typography
+                    variant="caption"
+                    sx={{ display: 'block', color: 'text.disabled', mt: 1, fontSize: '0.75rem' }}
+                  >
+                    {section.imageCaption}
+                  </Typography>
+                )}
+              </Box>
+            )}
           </Box>
         ))}
 
