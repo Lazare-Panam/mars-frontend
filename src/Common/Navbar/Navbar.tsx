@@ -193,6 +193,8 @@ const Navbar: React.FC = () => {
                   key={item.label}
                   component={Link}
                   href={item.href}
+                  target={item.newTab ? "_blank" : undefined}
+                  rel={item.newTab ? "noopener noreferrer" : undefined}
                   sx={{
                     textDecoration: "none",
                     color: RUST,
@@ -346,6 +348,8 @@ const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     href={item.href}
+                    target={item.newTab ? "_blank" : undefined}
+                    rel={item.newTab ? "noopener noreferrer" : undefined}
                     style={{ color: "inherit", textDecoration: "none" }}
                     onClick={() => setMobileOpen(false)}
                   >

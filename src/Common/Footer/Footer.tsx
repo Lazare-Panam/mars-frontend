@@ -15,7 +15,7 @@ const FOOTER_COLUMNS = [
     heading: "Company",
     links: [
       { label: "About Us", href: "#" },
-      { label: "MARS® Brand", href: "#" },
+      { label: "MARS® Brand", href: "/mars-brand" },
       { label: "Certificate", href: "#" },
       { label: "News", href: "#" },
     ],
@@ -34,8 +34,16 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Returns Policy", href: "/return-policy" },
       { label: "Delivery Information", href: "/delivery-information" },
-      { label: "Download", href: "#" },
-      { label: "E-catalog", href: "#" },
+      {
+        label: "Download",
+        href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
+        newTab: true,
+      },
+      {
+        label: "E-catalog",
+        href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
+        newTab: true,
+      },
       { label: "Contact Us", href: "#" },
     ],
   },
@@ -165,6 +173,8 @@ export default function Footer() {
                   key={link.label}
                   component={Link}
                   href={link.href}
+                  target={link.newTab ? "_blank" : undefined}
+                  rel={link.newTab ? "noopener noreferrer" : undefined}
                   sx={{
                     fontSize: "0.85rem",
                     color: "rgba(255,255,255,0.65)",
