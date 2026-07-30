@@ -267,6 +267,73 @@ export default function MarsBrandPage() {
 
       <Divider sx={{ borderColor: LINE }} />
 
+      {/* LEADERSHIP / PARTNERSHIP */}
+      <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
+        <Container maxWidth="md">
+          <Typography
+            sx={{
+              color: RUST,
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              textAlign: "center",
+              mb: 1.5,
+            }}
+          >
+            A Partnership Built on Trust
+          </Typography>
+          <Typography
+            component="h2"
+            sx={{
+              color: INK,
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontWeight: 700,
+              fontSize: { xs: "1.6rem", md: "2rem" },
+              textAlign: "center",
+              mb: { xs: 5, md: 7 },
+            }}
+          >
+            Valvenok &amp; MARS
+          </Typography>
+
+          <Box
+            sx={{
+              position: "relative",
+              maxWidth: 620,
+              mx: "auto",
+              border: `1px solid ${LINE}`,
+              p: { xs: 1.5, md: 2 },
+              bgcolor: theme.palette.background.paper,
+            }}
+          >
+            <Box sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}>
+              <Image
+                src="https://pblol2.blob.core.windows.net/mars-valves/Hero/max-lazare.jpg"
+                alt="Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of MARS®"
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </Box>
+
+            <Typography
+              sx={{
+                color: RUST,
+                fontSize: "0.8rem",
+                textAlign: "center",
+                mt: 2,
+                pb: 1,
+              }}
+            >
+              Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of
+              MARS®, representing the agreement between our companies.
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
+
+      <Divider sx={{ borderColor: LINE }} />
+
       {/* CERTIFICATE */}
       <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="md">
