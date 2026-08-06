@@ -15,7 +15,7 @@ export interface ProductDetail {
   relatedProducts: string[];
 }
 
-const fetchProductDetail = async (id: string): Promise<ProductDetail> => {
+export const fetchProductDetail = async (id: string): Promise<ProductDetail> => {
   const { data } = await axiosClient.get(`/api/product/${id}/detail`);
   return data;
 };
