@@ -4,6 +4,7 @@ import { Box, Chip, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Link from "next/link";
 import { blogs } from "./data/blog";
+import SeoButtons from "./components/SEOButtons";
 
 export default function NewsPage() {
   const featured = blogs[0];
@@ -94,6 +95,7 @@ export default function NewsPage() {
               mt: 2,
               maxWidth: 440,
               lineHeight: 1.75,
+              textTransform: "none",
             }}
           >
             {/* update this subline for the new brand */}
@@ -124,7 +126,13 @@ export default function NewsPage() {
             component="img"
             src={featured.heroImage}
             alt={featured.title}
-            sx={{ width: "100%", height: "auto", display: "block" }}
+            sx={{
+              width: "100%",
+              height: "100%",
+              minHeight: 280,
+              objectFit: "cover",
+              display: "block",
+            }}
           />
           <Box
             sx={{
@@ -148,13 +156,22 @@ export default function NewsPage() {
             />
             <Typography
               variant="h4"
-              sx={{ fontWeight: 700, color: "text.primary", lineHeight: 1.2 }}
+              sx={{
+                fontWeight: 700,
+                color: "text.primary",
+                lineHeight: 1.2,
+                mb: 1.5,
+              }}
             >
               {featured.title}
             </Typography>
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", lineHeight: 1.75 }}
+              sx={{
+                color: "text.secondary",
+                lineHeight: 1.75,
+                textTransform: "none",
+              }}
             >
               {featured.excerpt}
             </Typography>
@@ -238,6 +255,7 @@ export default function NewsPage() {
                       lineHeight: 1.65,
                       mb: 2,
                       flexGrow: 1,
+                      textTransform: "none",
                     }}
                   >
                     {blog.excerpt}
@@ -272,6 +290,7 @@ export default function NewsPage() {
           ))}
         </Grid>
       </Container>
+      <SeoButtons />
     </Box>
   );
 }

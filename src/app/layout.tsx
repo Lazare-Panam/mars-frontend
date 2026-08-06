@@ -19,10 +19,28 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
-  title: "MARS",
-  description: "MARS",
+  metadataBase: new URL("https://www.marsvalveuk.com"),
+  title: {
+    default: "Mars Valves | Industrial Valve Manufacturer",
+    template: "%s | Mars Valves",
+  },
+  description:
+    "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
+  openGraph: {
+    type: "website",
+    siteName: "Mars Valves",
+    title: "Mars Valves | Industrial Valve Manufacturer",
+    description:
+      "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
+    url: "https://www.marsvalveuk.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mars Valves | Industrial Valve Manufacturer",
+    description:
+      "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
+  },
 };
 
 export default function RootLayout({
@@ -52,13 +70,13 @@ export default function RootLayout({
             {children}
             <Footer />
             <CookieBanner />
-              <ContactPrompt />
+            <ContactPrompt />
           </QueryProvider>
-          <Script
+          {/* <Script
             id="hs-script-loader"
             src="//js-eu1.hs-scripts.com/147618935.js"
             strategy="afterInteractive"
-          />
+          /> */}
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-8E3P3CPW72"
             strategy="afterInteractive"
