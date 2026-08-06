@@ -54,11 +54,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* <script
+        <script
           data-cfasync="false"
           type="text/javascript"
           src="https://cdn.seoplatform.io/injector.js?websiteId=28583"
-        /> */}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeRegistry>
@@ -72,11 +72,11 @@ export default function RootLayout({
             <CookieBanner />
             <ContactPrompt />
           </QueryProvider>
-          {/* <Script
+          <Script
             id="hs-script-loader"
             src="//js-eu1.hs-scripts.com/147618935.js"
             strategy="afterInteractive"
-          /> */}
+          />
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-8E3P3CPW72"
             strategy="afterInteractive"
