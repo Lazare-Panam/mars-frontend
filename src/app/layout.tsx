@@ -36,11 +36,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <script
+        {/* <script
           data-cfasync="false"
           type="text/javascript"
           src="https://cdn.seoplatform.io/injector.js?websiteId=28583"
-        />
+        /> */}
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeRegistry>

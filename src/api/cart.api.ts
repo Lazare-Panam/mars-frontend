@@ -18,38 +18,51 @@ export interface CustomerBasket {
   updatedAt: string;
 }
 
+// Matches Mars.API.Models.Basket.AddToCartRequest exactly:
+// backend keys off SeriesId + VariantId to look up price server-side,
+// then stores the result under BasketItem.ProductId (= VariantId).
+// UnitPrice is intentionally NOT sent — CartService always recalculates
+// it from the repository, so a client-supplied price would be ignored anyway.
 export interface AddToCartRequest {
-  productId: string;
+  seriesId: string;
+  variantId: string;
   productDescription: string;
-  unitPrice: number;
   quantity: number;
   pictureUrl: string;
 }
 
 export const fetchBasket = async (): Promise<CustomerBasket> => {
-  const { data } = await axiosClient.get("/api/basket", { withCredentials: true });
+  const { data } = await axiosClient.get("/api/basket", {
+    withCredentials: true,
+  });
   return data;
 };
 
-export const addToCartRequest = async (request: AddToCartRequest): Promise<CustomerBasket> => {
-  const { data } = await axiosClient.post("/api/basket/items", request, { withCredentials: true });
+export const addToCartRequest = async (
+  request: AddToCartRequest,
+): Promise<CustomerBasket> => {
+  const { data } = await axiosClient.post("/api/basket/items", request, {
+    withCredentials: true,
+  });
   return data;
 };
 
 export const updateQuantityRequest = async (
   productId: string,
-  quantity: number
+  quantity: number,
 ): Promise<CustomerBasket> => {
   const { data } = await axiosClient.put(
     `/api/basket/items/${productId}`,
     { quantity },
-    { withCredentials: true }
+    { withCredentials: true },
   );
   return data;
 };
 
 export const removeItemRequest = async (productId: string): Promise<void> => {
-  await axiosClient.delete(`/api/basket/items/${productId}`, { withCredentials: true });
+  await axiosClient.delete(`/api/basket/items/${productId}`, {
+    withCredentials: true,
+  });
 };
 
 export const clearBasketRequest = async (): Promise<void> => {

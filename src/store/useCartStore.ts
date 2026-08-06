@@ -7,7 +7,7 @@ import {
   clearBasketRequest,
   type CustomerBasket,
   type AddToCartRequest,
-} from"@/api/cart.api";
+} from "@/api/cart.api";
 
 interface CartState {
   basket: CustomerBasket | null;
@@ -59,7 +59,7 @@ export const useCartStore = create<CartState>((set, get) => ({
               quantity <= 0
                 ? state.basket.items.filter((i) => i.productId !== productId)
                 : state.basket.items.map((i) =>
-                    i.productId === productId ? { ...i, quantity } : i
+                    i.productId === productId ? { ...i, quantity } : i,
                   ),
           }
         : state.basket,
@@ -78,7 +78,10 @@ export const useCartStore = create<CartState>((set, get) => ({
 
     set((state) => ({
       basket: state.basket
-        ? { ...state.basket, items: state.basket.items.filter((i) => i.productId !== productId) }
+        ? {
+            ...state.basket,
+            items: state.basket.items.filter((i) => i.productId !== productId),
+          }
         : state.basket,
     }));
 
@@ -101,6 +104,9 @@ export const useCartStore = create<CartState>((set, get) => ({
     }
   },
 
-  itemCount: () => get().basket?.items.reduce((sum, i) => sum + i.quantity, 0) ?? 0,
-  subtotal: () => get().basket?.items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0) ?? 0,
+  itemCount: () =>
+    get().basket?.items.reduce((sum, i) => sum + i.quantity, 0) ?? 0,
+  subtotal: () =>
+    get().basket?.items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0) ??
+    0,
 }));

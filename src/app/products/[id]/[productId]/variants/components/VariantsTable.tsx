@@ -67,13 +67,21 @@ function PriceCell({ price }: { price?: string }) {
 
 interface RowProps {
   variant: ProductVariant;
+  seriesId: string;
   specKeys: string[];
   thumbnailImage: string;
   zebra: boolean;
   onAddedToCart: () => void;
 }
 
-function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }: RowProps) {
+function VariantRow({
+  variant,
+  seriesId,
+  specKeys,
+  thumbnailImage,
+  zebra,
+  onAddedToCart,
+}: RowProps) {
   const addToCart = useCartStore((s) => s.addToCart);
   const [adding, setAdding] = useState(false);
 
@@ -85,10 +93,13 @@ function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }:
 
     setAdding(true);
     try {
+      // seriesId + variantId must match Mars.API.Models.Basket.AddToCartRequest
+      // (backend looks up price via GetPriceAsync(SeriesId, VariantId) —
+      // unitPrice is not sent, the server is the source of truth for price)
       await addToCart({
-        productId: variant.id,
+        seriesId,
+        variantId: variant.id,
         productDescription: variant.specs["SKU"] ?? variant.id,
-        unitPrice: price ? parseFloat(price.replace(/,/g, "")) : 0,
         quantity: 1,
         pictureUrl: image ?? "",
       });
@@ -179,7 +190,14 @@ function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }:
       })}
 
       <TableCell sx={{ py: 1.5, width: 190 }}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, justifyContent: "flex-end" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            justifyContent: "flex-end",
+          }}
+        >
           <PriceCell price={price} />
         </Box>
       </TableCell>
@@ -253,12 +271,14 @@ function VariantRow({ variant, specKeys, thumbnailImage, zebra, onAddedToCart }:
 
 interface Props {
   variants: ProductVariant[];
+  seriesId: string;
   specKeys: string[];
   thumbnailImage: string;
 }
 
 export default function VariantsTable({
   variants,
+  seriesId,
   specKeys,
   thumbnailImage,
 }: Props) {
@@ -303,7 +323,10 @@ export default function VariantsTable({
   };
 
   return (
-    <Paper elevation={0} sx={{ flex: 1, minWidth: 0, borderRadius: "8px", overflow: "hidden" }}>
+    <Paper
+      elevation={0}
+      sx={{ flex: 1, minWidth: 0, borderRadius: "8px", overflow: "hidden" }}
+    >
       <Table stickyHeader>
         <TableHead>
           <TableRow>
@@ -333,7 +356,9 @@ export default function VariantsTable({
                 align="center"
                 sx={{ py: 8 }}
               >
-                <Typography sx={{ color: "text.secondary", fontSize: "0.875rem" }}>
+                <Typography
+                  sx={{ color: "text.secondary", fontSize: "0.875rem" }}
+                >
                   No variants found.
                 </Typography>
               </TableCell>
@@ -343,6 +368,7 @@ export default function VariantsTable({
               <VariantRow
                 key={v.id}
                 variant={v}
+                seriesId={seriesId}
                 specKeys={displayKeys}
                 thumbnailImage={thumbnailImage}
                 zebra={i % 2 === 1}
