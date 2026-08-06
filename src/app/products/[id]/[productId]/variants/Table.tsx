@@ -264,10 +264,11 @@ export default function ProductVariantsPage({
             }}
           >
             <VariantsTable
-              variants={filtered}
-              specKeys={allSpecKeys}
-              thumbnailImage={data.thumbnailImage}
-            />
+  variants={filtered}
+  specKeys={allSpecKeys}
+  thumbnailImage={data.thumbnailImage}
+  seriesId={id}
+/>
           </Box>
         </Box>
       </Box>
