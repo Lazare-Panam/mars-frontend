@@ -16,7 +16,8 @@ export const blogs: BlogData[] = [
       {
         heading: null,
         body: `Industrial systems carrying fuels, gases, solvents and other hazardous media require valves that can provide dependable isolation during both normal operation and emergency conditions.\n\nDuring a fire, extreme heat can damage soft valve seats, stem seals and body gaskets. A fire-safe ball valve is designed to limit internal and external leakage if these primary sealing components deteriorate.\n\nMars offers several fire-tested ball valve ranges, including the Series 83, Series 88, Series 90, Series 90D and Series 91D. These ranges carry fire-safe certification following testing by Southwest Research Institute and TÜV Germany.`,
-        image: "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-2.jpeg",
+        image:
+          "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-2.jpeg",
       },
       {
         heading: "What Makes a Ball Valve Fire-Safe?",
@@ -58,6 +59,55 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Need help specifying a fire-safe valve?",
       body: "Get in touch with our team to talk through pressure ratings, materials, certification and end connections for your application.",
+      email: "sales@marsvalveuk.com",
+      phone: "+44 7368 1379917",
+    },
+  },
+  {
+    slug: "mars-valves-new-distribution-partners",
+    title: "Mars Valves Is Looking for New Distribution Partners",
+    date: "August 5, 2026",
+    category: "Distribution",
+    heroImage:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/eco-3.jpg",
+    excerpt:
+      "Mars Valves is expanding its international distribution network, inviting established industrial flow-control distributors to represent a comprehensive ball valve range built for demanding applications.",
+    tags: [
+      "Distribution",
+      "Partnership",
+      "Ball Valves",
+      "Industrial",
+      "Automation",
+    ],
+    sections: [
+      {
+        heading: null,
+        body: `Mars Valves is expanding its international distribution network and is looking to work with established distributors across the industrial flow-control sector.\n\nWith a comprehensive range of ball valves engineered for demanding applications, Mars Valves supports industries including oil and gas, chemical processing, petrochemical, power generation, marine, water treatment and general industrial services.\n\nThe product range includes floating and trunnion-mounted ball valves, fire-safe valves, metal-seated designs, automated valve solutions and specialist configurations for high-pressure, high-temperature and abrasive operating conditions.`,
+        image:
+          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/eco-3.jpg",
+      },
+      {
+        heading: "Built for Industrial Duty",
+        body: `Mars Valves products are built to serve demanding operating environments across a wide range of sectors, including:\n\n• Oil & Gas\n• Chemical\n• Power\n• Marine\n• Water\n• General Industry\n\nAutomated valve solutions, including electric actuated valves with manual override, extend the range into fully automated isolation packages suited to remote and safety-critical operation.`,
+      },
+      {
+        heading: "The Product Range",
+        body: `Selected models available to distribution partners include:\n\n• Three-Piece Ball Valve — full bore stainless steel, lever operated.\n• Pneumatic Actuated Valve — rack and pinion actuator, double acting or spring return.\n• Automated Valve Package — solenoid and limit switch box assemblies.\n• Multi-Port Valve — flanged and threaded ends for general industrial duty applications.\n• Sanitary Ball Valve — for higher pressure class pipeline service.\n• Metal-Seated Valve — for high-temperature and abrasive media.`,
+      },
+      {
+        heading: "Why Partner with Mars Valves?",
+        body: `The Mars Valves range spans floating and trunnion-mounted designs across the working pressure range, fire-safe certified constructions for hazardous service, metal-seated valves for high-temperature and abrasive media, and automated valve packages with specialist configurations.\n\nDistribution partners can benefit from:\n\n• A broad portfolio of industrial ball valve solutions.\n• Products manufactured to recognised international standards.\n• Full technical documentation and product certification.\n• Engineering and application support.\n• Solutions for both standard and demanding operating conditions.\n• Opportunities to expand within established and developing industrial markets.`,
+        image:
+          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/hp-3.png",
+      },
+      {
+        heading: "Engineered for Safety. Built to Perform.",
+        body: `Mars Valves is seeking experienced distributors with strong industry knowledge, established customer relationships and the capability to provide local commercial and technical support.\n\nCompanies interested in representing Mars Valves are invited to get in touch to discuss available distribution opportunities, product support and potential areas of cooperation.\n\nTo learn more about the Mars Valves product range or to request a catalogue, contact our team today.`,
+      },
+    ],
+    cta: {
+      heading: "Become a Mars Valves Distributor",
+      body: "Enquire about distribution opportunities or request a catalogue to learn more about the full Mars Valves product range.",
       email: "sales@marsvalveuk.com",
       phone: "+44 7368 1379917",
     },

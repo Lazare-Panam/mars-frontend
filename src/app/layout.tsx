@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const GA_MEASUREMENT_ID = "G-8E3P3CPW72";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.marsvalveuk.com"),
   title: {
@@ -78,15 +81,15 @@ export default function RootLayout({
             strategy="afterInteractive"
           />
           <Script
-            src="https://www.googletagmanager.com/gtag/js?id=G-8E3P3CPW72"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="afterInteractive"
           />
-          <Script id="google-analytics-2" strategy="afterInteractive">
+          <Script id="google-analytics" strategy="afterInteractive">
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-8E3P3CPW72');
+              gtag('config', '${GA_MEASUREMENT_ID}');
             `}
           </Script>
         </ThemeRegistry>
