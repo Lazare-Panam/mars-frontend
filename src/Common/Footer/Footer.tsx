@@ -14,10 +14,10 @@ const FOOTER_COLUMNS = [
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#" },
+      { label: "About Us", href: "/about" },
       { label: "MARS® Brand", href: "/mars-brand" },
       { label: "Certificate", href: "#" },
-      { label: "News", href: "#" },
+      { label: "News", href: "/news" },
     ],
   },
   {
