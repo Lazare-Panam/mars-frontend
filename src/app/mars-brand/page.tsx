@@ -219,26 +219,7 @@ export default function MarsBrandPage() {
             equivalence constitutes a violation of brand rights.
           </Typography>
 
-          <Typography
-            sx={{
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: { xs: "1rem", md: "1.1rem" },
-              lineHeight: 1.9,
-              color: INK,
-              mb: 5,
-            }}
-          >
-            Mars Valves UK is a sister company of Valvenok Ltd, and is an
-            authorized distributor of genuine MARS
-            <Box component="sup" sx={{ fontSize: "0.6em" }}>
-              ®
-            </Box>{" "}
-            ball valves. Every valve we sell carries the official MARS
-            <Box component="sup" sx={{ fontSize: "0.6em" }}>
-              ®
-            </Box>{" "}
-            logo and is backed by our authorization certificate, shown below.
-          </Typography>
+          
 
           <Box
             sx={{
