@@ -47,13 +47,19 @@ export default function MarsSection() {
             >
               An Authorised Mars Valves Distributor
             </Box>{" "}
-            — an authorised distributor of genuine MARS industrial valves,
-            supplying authentic products backed by full manufacturer
-            documentation, certification, and technical support.
+            — an authorised distributor of{" "}
+            <Box
+              component="span"
+              sx={{ fontWeight: 700, color: "text.primary" }}
+            >
+              Mars Valve Co., Ltd, Taiwan
+            </Box>
+            , supplying authentic MARS industrial valves backed by full
+            manufacturer documentation, certification, and technical support.
           </Typography>
 
           <Typography sx={bodyText}>
-            We work closely with manufacturers to deliver valves that meet
+            We work closely with the manufacturer to deliver valves that meet
             demanding industry standards. Every product we supply is traceable
             and quality-assured, with the documentation engineers and
             procurement teams expect.
