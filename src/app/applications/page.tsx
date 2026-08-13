@@ -32,7 +32,7 @@ const INDUSTRIES: Industry[] = [
     label: "Oil & Gas / Refining",
     icon: LocalFireDepartmentOutlinedIcon,
     image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af2176?fm=jpg&q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1726111262949-e22631a8c376?fm=jpg&q=80&w=1600&auto=format&fit=crop",
     description:
       "MARS ball valves are tested to the API 607 4th Edition fire-safe standard, one of the most demanding fire-test protocols in the industry. That rating matters most where it's needed most: upstream production, refining, and processing lines where a valve has to keep sealing even if the line around it is on fire.",
   },
