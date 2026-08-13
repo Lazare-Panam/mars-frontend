@@ -34,6 +34,7 @@ const Navbar: React.FC = () => {
   const PAPER = theme.palette.background.default;
   const ACCENT = theme.palette.primary.main;
   const LINE = theme.palette.divider;
+  const REGISTER_RED = "#D32F2F";
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -99,14 +100,34 @@ const Navbar: React.FC = () => {
   );
 
   const AccountButton = ({ size }: { size: number }) => (
-    <IconButton
+    <Box
       component={Link}
       href="/login"
       aria-label="Login or register"
-      sx={{ color: INK }}
+      sx={{
+        display: "inline-flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 0.25,
+        textDecoration: "none",
+        color: REGISTER_RED,
+        px: 0.5,
+      }}
     >
-      <PersonOutlineOutlinedIcon sx={{ fontSize: size }} />
-    </IconButton>
+      <PersonOutlineOutlinedIcon sx={{ fontSize: size, color: REGISTER_RED }} />
+      <Typography
+        sx={{
+          fontSize: "0.62rem",
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+          textTransform: "uppercase",
+          color: REGISTER_RED,
+          lineHeight: 1,
+        }}
+      >
+        Register
+      </Typography>
+    </Box>
   );
 
   return (
@@ -363,10 +384,12 @@ const Navbar: React.FC = () => {
                 fontWeight: 600,
                 fontSize: "0.9rem",
                 letterSpacing: "0.02em",
-                color: INK,
+                color: REGISTER_RED,
               }}
             >
-              <PersonOutlineOutlinedIcon sx={{ fontSize: 18, color: RUST }} />
+              <PersonOutlineOutlinedIcon
+                sx={{ fontSize: 18, color: REGISTER_RED }}
+              />
               Login / Register
             </Box>
           </Box>
