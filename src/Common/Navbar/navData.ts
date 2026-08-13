@@ -220,7 +220,7 @@ export const LEFT_NAV: NavItem[] = [
     ],
   },
   { label: "MARS® Brand", href: "/mars-brand" },
-  { label: "Certificate", href: "#" },
+  { label: "Applications", href: "/applications" },
 ];
 
 export const RIGHT_NAV: NavItem[] = [
