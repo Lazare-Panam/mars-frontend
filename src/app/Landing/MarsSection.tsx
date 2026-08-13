@@ -41,8 +41,11 @@ export default function MarsSection() {
 
           <Typography sx={bodyText}>
             We're{" "}
-            <Box component="span" sx={{ fontWeight: 700, color: "text.primary" }}>
-              UK Mars Valves
+            <Box
+              component="span"
+              sx={{ fontWeight: 700, color: "text.primary" }}
+            >
+              An Authorised Mars Valves Distributor
             </Box>{" "}
             — an authorised distributor of genuine MARS industrial valves,
             supplying authentic products backed by full manufacturer
@@ -51,9 +54,9 @@ export default function MarsSection() {
 
           <Typography sx={bodyText}>
             We work closely with manufacturers to deliver valves that meet
-            demanding industry standards. Every product we supply is
-            traceable and quality-assured, with the documentation engineers
-            and procurement teams expect.
+            demanding industry standards. Every product we supply is traceable
+            and quality-assured, with the documentation engineers and
+            procurement teams expect.
           </Typography>
 
           <Typography component="h3" sx={heading}>
