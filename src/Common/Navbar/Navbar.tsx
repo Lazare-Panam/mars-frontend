@@ -21,6 +21,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from "./navData";
 import MegaMenuPanel from "./MegaMenuPanel";
@@ -94,6 +95,17 @@ const Navbar: React.FC = () => {
       >
         <ShoppingCartOutlinedIcon sx={{ fontSize: size }} />
       </Badge>
+    </IconButton>
+  );
+
+  const AccountButton = ({ size }: { size: number }) => (
+    <IconButton
+      component={Link}
+      href="/login"
+      aria-label="Login or register"
+      sx={{ color: INK }}
+    >
+      <PersonOutlineOutlinedIcon sx={{ fontSize: size }} />
     </IconButton>
   );
 
@@ -270,6 +282,7 @@ const Navbar: React.FC = () => {
                 enquiry
               </Box>
 
+              <AccountButton size={24} />
               <CartButton size={24} />
             </Box>
 
@@ -281,6 +294,7 @@ const Navbar: React.FC = () => {
                 gap: 1,
               }}
             >
+              <AccountButton size={22} />
               <CartButton size={22} />
               <IconButton
                 onClick={() => setMobileOpen(true)}
@@ -333,6 +347,30 @@ const Navbar: React.FC = () => {
         </Box>
 
         <Box sx={{ display: "flex", flexDirection: "column", px: 1.5, py: 1 }}>
+          {/* Login / Register entry point */}
+          <Box sx={{ borderBottom: `1px solid ${LINE}` }}>
+            <Box
+              component={Link}
+              href="/login"
+              onClick={() => setMobileOpen(false)}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                py: 2,
+                px: 1,
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                letterSpacing: "0.02em",
+                color: INK,
+              }}
+            >
+              <PersonOutlineOutlinedIcon sx={{ fontSize: 18, color: RUST }} />
+              Login / Register
+            </Box>
+          </Box>
+
           {[...LEFT_NAV, ...filteredRightNav].map((item: NavItem) => (
             <Box key={item.label} sx={{ borderBottom: `1px solid ${LINE}` }}>
               <Box
