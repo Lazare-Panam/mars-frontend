@@ -1,18 +1,19 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import VerifiedIcon from '@mui/icons-material/Verified';
-import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
-import SpeedIcon from '@mui/icons-material/Speed';
-import CategoryIcon from '@mui/icons-material/Category';
+import { useEffect, useRef, useState } from "react";
+import { Box, Typography, Button } from "@mui/material";
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import VerifiedIcon from "@mui/icons-material/Verified";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import SpeedIcon from "@mui/icons-material/Speed";
+import CategoryIcon from "@mui/icons-material/Category";
 
 function CountUp({ target }: { target: string }) {
-  const numericPart = parseFloat(target.replace(/[^0-9.]/g, ''));
-  const prefix = target.match(/^[^0-9]*/)?.[0] ?? '';
-  const suffix = target.match(/[^0-9.]*$/)?.[0] ?? '';
+  const numericPart = parseFloat(target.replace(/[^0-9.]/g, ""));
+  const prefix = target.match(/^[^0-9]*/)?.[0] ?? "";
+  const suffix = target.match(/[^0-9.]*$/)?.[0] ?? "";
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const hasRun = useRef(false);
@@ -38,7 +39,7 @@ function CountUp({ target }: { target: string }) {
           requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     observer.observe(ref.current);
@@ -57,17 +58,33 @@ function CountUp({ target }: { target: string }) {
 }
 
 const STATS = [
-  { num: '2000', unit: 'PSI', label: 'MAX PRESSURE RATING' },
-  { num: '11', unit: '', label: 'BALL VALVE SERIES' },
-  { num: '316', unit: '', label: 'STAINLESS GRADE (CF8M)' },
-  { num: '100', unit: '%', label: 'API 607 FIRE-SAFE TESTED' },
+  { num: "2000", unit: "PSI", label: "MAX PRESSURE RATING" },
+  { num: "11", unit: "", label: "BALL VALVE SERIES" },
+  { num: "316", unit: "", label: "STAINLESS GRADE (CF8M)" },
+  { num: "100", unit: "%", label: "API 607 FIRE-SAFE TESTED" },
 ];
 
 const FEATURES = [
-  { icon: <VerifiedIcon fontSize="small" />, title: 'API 607 Certified', desc: 'Every fire-safe series independently tested for shut-off integrity under fire conditions.' },
-  { icon: <PrecisionManufacturingIcon fontSize="small" />, title: 'SS316 (CF8M) Construction', desc: 'Corrosion-resistant body material as standard across the range, not an upcharge option.' },
-  { icon: <SpeedIcon fontSize="small" />, title: 'Tight Shut-Off, Every Time', desc: 'Consistent tolerances from single fittings to full pipeline orders.' },
-  { icon: <CategoryIcon fontSize="small" />, title: 'Built By Hand, Tested By Hand', desc: 'Every series carries the weight of the people who built it — not a stamp, a standard.' },
+  {
+    icon: <VerifiedIcon fontSize="small" />,
+    title: "API 607 Certified",
+    desc: "Every fire-safe series independently tested for shut-off integrity under fire conditions.",
+  },
+  {
+    icon: <PrecisionManufacturingIcon fontSize="small" />,
+    title: "SS316 (CF8M) Construction",
+    desc: "Corrosion-resistant body material as standard across the range, not an upcharge option.",
+  },
+  {
+    icon: <SpeedIcon fontSize="small" />,
+    title: "Tight Shut-Off, Every Time",
+    desc: "Consistent tolerances from single fittings to full pipeline orders.",
+  },
+  {
+    icon: <CategoryIcon fontSize="small" />,
+    title: "Built By Hand, Tested By Hand",
+    desc: "Every series carries the weight of the people who built it — not a stamp, a standard.",
+  },
 ];
 
 export default function MarsStats() {
@@ -76,36 +93,44 @@ export default function MarsStats() {
       component="section"
       sx={{
         py: { xs: 8, md: 12 },
-        color: '#fff',
-        background: 'linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)',
+        color: "#fff",
+        background:
+          "linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)",
       }}
     >
       <Box
         sx={{
-          maxWidth: '1280px',
-          mx: 'auto',
+          maxWidth: "1280px",
+          mx: "auto",
           px: { xs: 3, md: 8 },
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: '7fr 5fr' },
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "7fr 5fr" },
           gap: 6,
-          alignItems: 'center',
+          alignItems: "center",
         }}
       >
         {/* left: copy + features + CTAs */}
         <Box>
           <Box
             sx={{
-              display: 'inline-flex',
-              alignItems: 'center',
+              display: "inline-flex",
+              alignItems: "center",
               gap: 1,
-              bgcolor: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.15)',
+              bgcolor: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.15)",
               px: 1.5,
               py: 0.5,
               mb: 3,
             }}
           >
-            <Typography sx={{ fontWeight: 900, fontSize: '0.7rem', letterSpacing: '0.05em', color: 'primary.light' }}>
+            <Typography
+              sx={{
+                fontWeight: 900,
+                fontSize: "0.7rem",
+                letterSpacing: "0.05em",
+                color: "primary.light",
+              }}
+            >
               THE ROLLS-ROYCE OF VALVES
             </Typography>
           </Box>
@@ -115,40 +140,60 @@ export default function MarsStats() {
             sx={{
               fontWeight: 800,
               mb: 2,
-              fontSize: { xs: '2.25rem', md: '3.2rem' },
+              fontSize: { xs: "2.25rem", md: "3.2rem" },
               lineHeight: 1.1,
-              color: '#fff',
+              color: "#fff",
             }}
           >
             Built by hand,
             <br />
-            <Box component="span" sx={{ color: 'rgba(255,255,255,0.55)', fontStyle: 'italic' }}>
+            <Box
+              component="span"
+              sx={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}
+            >
               proven by pressure.
             </Box>
           </Typography>
 
-          <Typography sx={{ color: 'rgba(255,255,255,0.7)', mb: 5, maxWidth: 550, lineHeight: 1.7 }}>
-            MARS exists because of the people behind it — engineers, machinists, and inspectors who
-            refused to let anything less than their best leave the factory floor. That's not a slogan.
-            It's the only standard we've ever known how to work to.
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.7)",
+              mb: 5,
+              maxWidth: 550,
+              lineHeight: 1.7,
+            }}
+          >
+            MARS exists because of the people behind it — engineers, machinists,
+            and inspectors who refused to let anything less than their best
+            leave the factory floor. That's not a slogan. It's the only standard
+            we've ever known how to work to.
           </Typography>
 
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
               gap: 3,
               mb: 5,
             }}
           >
             {FEATURES.map((feat) => (
-              <Box key={feat.title} sx={{ display: 'flex', gap: 1.5 }}>
-                <Box sx={{ mt: 0.3, color: 'primary.light' }}>{feat.icon}</Box>
+              <Box key={feat.title} sx={{ display: "flex", gap: 1.5 }}>
+                <Box sx={{ mt: 0.3, color: "primary.light" }}>{feat.icon}</Box>
                 <Box>
-                  <Typography sx={{ fontWeight: 700, fontSize: '0.9rem', color: '#fff' }}>
+                  <Typography
+                    sx={{ fontWeight: 700, fontSize: "0.9rem", color: "#fff" }}
+                  >
                     {feat.title}
                   </Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', lineHeight: 1.4, mt: 0.5 }}>
+                  <Typography
+                    sx={{
+                      color: "rgba(255,255,255,0.6)",
+                      fontSize: "0.8rem",
+                      lineHeight: 1.4,
+                      mt: 0.5,
+                    }}
+                  >
                     {feat.desc}
                   </Typography>
                 </Box>
@@ -156,32 +201,41 @@ export default function MarsStats() {
             ))}
           </Box>
 
-          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
             <Button
+              component={Link}
+              href="/products"
               variant="contained"
               disableElevation
               endIcon={<ArrowForwardIcon />}
               sx={{
-                bgcolor: 'primary.main',
-                color: '#fff',
+                bgcolor: "primary.main",
+                color: "#fff",
                 fontWeight: 800,
                 borderRadius: 0,
                 px: 3,
                 py: 1.2,
-                '&:hover': { bgcolor: 'primary.dark' },
+                "&:hover": { bgcolor: "primary.dark" },
               }}
             >
               VIEW FULL RANGE
             </Button>
             <Button
+              component={Link}
+              href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+              target="_blank"
+              rel="noopener noreferrer"
               variant="outlined"
               startIcon={<MenuBookIcon />}
               sx={{
-                color: '#fff',
-                borderColor: 'rgba(255,255,255,0.25)',
+                color: "#fff",
+                borderColor: "rgba(255,255,255,0.25)",
                 borderRadius: 0,
                 px: 3,
-                '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.06)' },
+                "&:hover": {
+                  borderColor: "#fff",
+                  bgcolor: "rgba(255,255,255,0.06)",
+                },
               }}
             >
               CERTIFICATION GUIDE
@@ -192,9 +246,9 @@ export default function MarsStats() {
         {/* right: stat grid */}
         <Box
           sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
           {STATS.map((stat) => (
@@ -202,29 +256,37 @@ export default function MarsStats() {
               key={stat.label}
               sx={{
                 p: 4,
-                textAlign: 'center',
-                border: '1px solid rgba(255,255,255,0.1)',
-                bgcolor: 'rgba(255,255,255,0.03)',
-                transition: '0.3s',
-                '&:hover': { bgcolor: 'rgba(255,255,255,0.06)', transform: 'translateY(-5px)' },
+                textAlign: "center",
+                border: "1px solid rgba(255,255,255,0.1)",
+                bgcolor: "rgba(255,255,255,0.03)",
+                transition: "0.3s",
+                "&:hover": {
+                  bgcolor: "rgba(255,255,255,0.06)",
+                  transform: "translateY(-5px)",
+                },
               }}
             >
               <Typography
                 sx={{
                   fontWeight: 800,
-                  fontSize: { xs: '1.8rem', md: '2.2rem' },
-                  color: '#fff',
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  justifyContent: 'center',
-                  fontVariantNumeric: 'tabular-nums',
+                  fontSize: { xs: "1.8rem", md: "2.2rem" },
+                  color: "#fff",
+                  display: "flex",
+                  alignItems: "baseline",
+                  justifyContent: "center",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
                 <CountUp target={stat.num} />
                 {stat.unit && (
                   <Typography
                     component="span"
-                    sx={{ fontSize: '1rem', ml: 0.5, fontWeight: 700, color: 'rgba(255,255,255,0.5)' }}
+                    sx={{
+                      fontSize: "1rem",
+                      ml: 0.5,
+                      fontWeight: 700,
+                      color: "rgba(255,255,255,0.5)",
+                    }}
                   >
                     {stat.unit}
                   </Typography>
@@ -232,10 +294,10 @@ export default function MarsStats() {
               </Typography>
               <Typography
                 sx={{
-                  color: 'rgba(255,255,255,0.65)',
+                  color: "rgba(255,255,255,0.65)",
                   fontWeight: 700,
-                  fontSize: '0.7rem',
-                  letterSpacing: '0.05em',
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.05em",
                   mt: 1,
                 }}
               >
