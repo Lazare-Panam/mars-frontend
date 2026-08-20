@@ -219,8 +219,6 @@ export default function MarsBrandPage() {
             equivalence constitutes a violation of brand rights.
           </Typography>
 
-          
-
           <Box
             sx={{
               borderTop: `1px solid ${LINE}`,
@@ -288,7 +286,9 @@ export default function MarsBrandPage() {
               bgcolor: theme.palette.background.paper,
             }}
           >
-            <Box sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}>
+            <Box
+              sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}
+            >
               <Image
                 src="https://pblol2.blob.core.windows.net/mars-valves/Hero/max-lazare.jpg"
                 alt="Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of MARS®"
@@ -386,7 +386,9 @@ export default function MarsBrandPage() {
               MARS®
             </Box>
 
-            <Box sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}>
+            <Box
+              sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}
+            >
               <Image
                 src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
                 alt="MARS® official trust certificate"
@@ -456,7 +458,7 @@ export default function MarsBrandPage() {
 
           <Box
             component="a"
-            href="mailto:sales@marsvalveuk.com"
+            href="mailto:sales@marsvalvenok.com"
             sx={{
               flexShrink: 0,
               textDecoration: "none",

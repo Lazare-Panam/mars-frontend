@@ -45,7 +45,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Become a Mars Valves Distributor",
       body: "Enquire about distribution opportunities or request a catalogue to learn more about the full Mars Valves product range.",
-      email: "sales@marsvalveuk.com",
+      email: "sales@marsvalvenok.com",
       phone: "+44 7368 1379917",
     },
   },
@@ -107,7 +107,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Need help specifying a fire-safe valve?",
       body: "Get in touch with our team to talk through pressure ratings, materials, certification and end connections for your application.",
-      email: "sales@marsvalveuk.com",
+      email: "sales@marsvalvenok.com",
       phone: "+44 7368 1379917",
     },
   },

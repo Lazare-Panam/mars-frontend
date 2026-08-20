@@ -116,7 +116,7 @@ export default function Footer() {
                 sx={{ fontSize: 16, color: "primary.light" }}
               />
               <Typography sx={{ fontSize: "0.85rem" }}>
-                sales@marsvalveuk.com
+                sales@marsvalvenok.com
               </Typography>
             </Box>
             <Box

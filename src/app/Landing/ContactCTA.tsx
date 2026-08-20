@@ -1,7 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Box, Typography, Button, TextField, Alert, CircularProgress } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Alert,
+  CircularProgress,
+} from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useSubmitEnquiry } from "@/api/useSubmitEnquiry";
 
@@ -29,19 +36,22 @@ const fieldSx = {
 };
 
 export default function ContactCTA() {
-  const [formData, setFormData] = React.useState<EnquiryFormData>(initialFormState);
-  const [errors, setErrors] = React.useState<Partial<Record<keyof EnquiryFormData, string>>>({});
+  const [formData, setFormData] =
+    React.useState<EnquiryFormData>(initialFormState);
+  const [errors, setErrors] = React.useState<
+    Partial<Record<keyof EnquiryFormData, string>>
+  >({});
 
   const { mutate, isPending, isSuccess, isError, reset } = useSubmitEnquiry();
 
-  const handleChange = (field: keyof EnquiryFormData) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
-  };
+  const handleChange =
+    (field: keyof EnquiryFormData) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+      if (errors[field]) {
+        setErrors((prev) => ({ ...prev, [field]: undefined }));
+      }
+    };
 
   const validate = (): boolean => {
     const newErrors: Partial<Record<keyof EnquiryFormData, string>> = {};
@@ -52,8 +62,10 @@ export default function ContactCTA() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.userEmail)) {
       newErrors.userEmail = "Enter a valid email address";
     }
-    if (!formData.userCompany.trim()) newErrors.userCompany = "Company is required";
-    if (!formData.message.trim()) newErrors.message = "Please describe your enquiry";
+    if (!formData.userCompany.trim())
+      newErrors.userCompany = "Company is required";
+    if (!formData.message.trim())
+      newErrors.message = "Please describe your enquiry";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -142,7 +154,7 @@ export default function ContactCTA() {
                 Email
               </Typography>
               <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
-                sales@marsvalveuk.com
+                sales@marsvalvenok.com
               </Typography>
             </Box>
             <Box>
@@ -185,7 +197,12 @@ export default function ContactCTA() {
             </Alert>
           )}
 
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}
+          >
             <TextField
               label="Full Name"
               variant="outlined"
@@ -266,7 +283,11 @@ export default function ContactCTA() {
                 "&:hover": { bgcolor: "primary.dark" },
               }}
             >
-              {isPending ? <CircularProgress size={22} color="inherit" /> : "Send Enquiry"}
+              {isPending ? (
+                <CircularProgress size={22} color="inherit" />
+              ) : (
+                "Send Enquiry"
+              )}
             </Button>
           </Box>
         </Box>
