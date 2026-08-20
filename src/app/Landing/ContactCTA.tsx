@@ -153,7 +153,10 @@ export default function ContactCTA() {
               >
                 Email
               </Typography>
-              <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
+              <Typography
+                className="no-capitalize"
+                sx={{ color: "text.secondary", fontSize: "0.9rem" }}
+              >
                 sales@marsvalvenok.com
               </Typography>
             </Box>

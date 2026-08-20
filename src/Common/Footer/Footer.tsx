@@ -115,7 +115,10 @@ export default function Footer() {
               <EmailOutlinedIcon
                 sx={{ fontSize: 16, color: "primary.light" }}
               />
-              <Typography sx={{ fontSize: "0.85rem" }}>
+              <Typography
+                className="no-capitalize"
+                sx={{ fontSize: "0.85rem" }}
+              >
                 sales@marsvalvenok.com
               </Typography>
             </Box>

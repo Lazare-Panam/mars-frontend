@@ -29,6 +29,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: "capitalize",
+          "&.no-capitalize": {
+            textTransform: "none",
+          },
         },
       },
     },
@@ -36,6 +39,9 @@ const theme = createTheme({
       styleOverrides: {
         label: {
           textTransform: "capitalize",
+          "&.no-capitalize": {
+            textTransform: "none",
+          },
         },
       },
     },
