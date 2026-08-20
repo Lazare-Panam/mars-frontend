@@ -52,7 +52,7 @@ export default function MarsSection() {
               component="span"
               sx={{ fontWeight: 700, color: "primary.dark" }}
             >
-              An Authorised Mars Valves Distributor
+              Mars Valvenok, An Authorised Mars Valves Distributor
             </Box>{" "}
             — an authorised distributor of genuine MARS industrial valves,
             supplying authentic products backed by full manufacturer
