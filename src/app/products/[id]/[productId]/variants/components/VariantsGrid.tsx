@@ -27,9 +27,8 @@ export function parsePrice(price?: string): number | null {
   return Number.isNaN(n) ? null : n;
 }
 
-// Builds a readable title out of the non-reference spec values, prefixed
-// with the Mars brand name, e.g.
-// `Mars Heavy Duty Fire-Safe Ball Valve — 1/4", Full Port, WCB, 2000 PSI, PTFE/RTFE`
+// Builds a short, spec-led title, e.g.
+// `1/4", Full Port, WCB — Heavy Duty Fire-Safe Ball Valve`
 export function buildTitle(
   productName: string,
   variant: ProductVariant,
@@ -37,8 +36,7 @@ export function buildTitle(
   const parts = Object.entries(variant.specs)
     .filter(([k]) => k !== "SKU" && k !== "Price")
     .map(([, v]) => v);
-  const name = `Mars ${productName}`;
-  return parts.length ? `${name} — ${parts.join(", ")}` : name;
+  return parts.length ? `${parts.join(", ")} — ${productName}` : productName;
 }
 
 // The variant detail page lives at /products/[categoryId]/[productId]/variants/[sku]

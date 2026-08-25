@@ -14,7 +14,7 @@ export interface ProductVariant {
   specs: Record<string, string>;
 }
 
-const fetchVariants = async (id: string): Promise<ProductSeriesVariants> => {
+export const fetchVariants = async (id: string): Promise<ProductSeriesVariants> => {
   const { data } = await axiosClient.get(`/api/product/${id}/variants`);
   return data;
 };
