@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import { Box, Typography, Grid } from '@mui/material';
 import ProductCategoryCard from './components/ProductCategoryCard';
 import { CATEGORIES } from './data/categories';
+
+export const metadata: Metadata = {
+  title: 'Products',
+  description:
+    'One-piece, two-piece, three-piece, flanged, multi-port, and metal-seated ball valves engineered for industrial fluid control.',
+};
+
 export default function ProductsPage() {
   return (
     <>

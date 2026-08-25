@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://www.marsvalveuk.com',
+  siteUrl: 'https://www.marsvalvenok.com/',
   generateRobotsTxt: true,
   changefreq: 'weekly',
   

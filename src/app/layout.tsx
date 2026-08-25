@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 const GA_MEASUREMENT_ID = "G-8E3P3CPW72";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.marsvalveuk.com"),
+  metadataBase: new URL("https://www.marsvalvenok.com/"),
   title: {
     default: "Mars Valves | Industrial Valve Manufacturer",
     template: "%s | Mars Valves",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Mars Valves | Industrial Valve Manufacturer",
     description:
       "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
-    url: "https://www.marsvalveuk.com",
+    url: "https://www.marsvalvenok.com/",
   },
   twitter: {
     card: "summary_large_image",

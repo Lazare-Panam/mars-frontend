@@ -19,23 +19,23 @@ import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionMan
 const VALUES = [
   {
     icon: EngineeringOutlinedIcon,
-    title: "Engineering Integrity",
-    body: "Every valve we supply is specified, tested, and documented to the standard the application actually demands — not the standard that's cheapest to claim.",
+    title: "Spec-Driven",
+    body: "Every valve is selected, tested, and documented against the actual operating conditions of the application — pressure, media, temperature, cycle life.",
   },
   {
     icon: VerifiedIcon,
-    title: "Genuine, Always",
-    body: "Every MARS® valve is our own — designed, quality-controlled, and manufactured to a proprietary specification, and carrying the official mark to prove it.",
+    title: "Proprietary Manufacturing",
+    body: "MARS® ball valves are designed and quality-controlled in-house by MarsValvenok, built to a specification we own — not a relabeled catalog product.",
   },
   {
     icon: HandshakeOutlinedIcon,
-    title: "Long-Term Partnerships",
-    body: "Our relationships with manufacturers and customers are built to last years, not one order. That's what lets us stand behind what we sell.",
+    title: "Direct Supply Chain",
+    body: "No re-sellers between design and delivery. We control the specification, the QC process, and the documentation from source to shipment.",
   },
   {
     icon: PublicOutlinedIcon,
-    title: "Built for the Field",
-    body: "Oil & gas, water treatment, chemical processing, power — our valves are chosen by engineers who can't afford a failure in the field.",
+    title: "Field-Proven",
+    body: "Deployed across oil & gas, water treatment, chemical processing, and power generation — environments with no tolerance for valve failure.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function AboutUsPage() {
       >
         <Image
           src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="Valvenok engineering and manufacturing"
+          alt="MarsValvenok engineering and manufacturing"
           fill
           priority
           style={{ objectFit: "cover" }}
@@ -110,9 +110,9 @@ export default function AboutUsPage() {
               maxWidth: 780,
             }}
           >
-            Engineered Trust,
+            Valves Specified,
             <br />
-            Delivered Every Day.
+            Tested, Verified.
           </Typography>
 
           <Typography
@@ -124,8 +124,8 @@ export default function AboutUsPage() {
               lineHeight: 1.6,
             }}
           >
-            We supply genuine, authorized valve solutions to industries that
-            cannot afford to compromise on quality.
+            MarsValvenok supplies ball valves manufactured, quality-controlled,
+            and documented to the standards industrial systems require.
           </Typography>
         </Container>
       </Box>
@@ -188,28 +188,12 @@ export default function AboutUsPage() {
               mb: 3,
             }}
           >
-            MarsValvenok was founded on a simple premise: the industries we
-            serve — oil & gas, water treatment, chemical processing, power
-            generation — depend on components that perform exactly as specified,
-            every single time. A valve that fails quietly in the field is never
-            just an inconvenience. It's a safety risk, a production loss, and a
-            broken promise to the people relying on it.
-          </Typography>
-
-          <Typography
-            sx={{
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: { xs: "1rem", md: "1.1rem" },
-              lineHeight: 1.9,
-              color: INK,
-              mb: 3,
-            }}
-          >
-            That premise shaped everything about how we operate. We work
-            directly with authorized manufacturers, maintain strict chain-of
-            custody on every product line we carry, and back what we sell with
-            documentation our customers can actually verify — not just a promise
-            on a spec sheet.
+            MarsValvenok supplies ball valves for oil & gas, water treatment,
+            chemical processing, and power generation — systems where a
+            component has to perform exactly as specified, every cycle. We
+            work directly with manufacturers, hold a strict chain of custody on
+            every product line, and back each valve with documentation our
+            customers can verify against the actual spec, not a sales sheet.
           </Typography>
 
           <Typography
@@ -221,13 +205,12 @@ export default function AboutUsPage() {
               mb: 0,
             }}
           >
-            Today, that same standard lives on in MARS
+            That standard is built into MARS
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>
-            , our own ball valve brand — engineered, quality-controlled, and
-            backed by Valvenok Ltd, and the clearest expression of the standard
-            we hold ourselves to.
+            , our own ball valve brand — designed, quality-controlled, and
+            manufactured in-house by MarsValvenok.
           </Typography>
         </Box>
       </Container>
@@ -353,9 +336,9 @@ export default function AboutUsPage() {
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
-            is Valvenok's own ball valve brand — designed and quality controlled
-            in-house, and sold only through us and our authorized distributors.
-            When you buy MARS
+            is MarsValvenok's own ball valve brand — designed and
+            quality-controlled in-house, sold only through us and our
+            authorized distributors. When you buy MARS
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>
