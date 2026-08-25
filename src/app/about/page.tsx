@@ -188,12 +188,12 @@ export default function AboutUsPage() {
               mb: 3,
             }}
           >
-            Valvenok was founded on a simple premise: the industries we serve —
-            oil & gas, water treatment, chemical processing, power generation —
-            depend on components that perform exactly as specified, every single
-            time. A valve that fails quietly in the field is never just an
-            inconvenience. It's a safety risk, a production loss, and a broken
-            promise to the people relying on it.
+            MarsValvenok was founded on a simple premise: the industries we
+            serve — oil & gas, water treatment, chemical processing, power
+            generation — depend on components that perform exactly as specified,
+            every single time. A valve that fails quietly in the field is never
+            just an inconvenience. It's a safety risk, a production loss, and a
+            broken promise to the people relying on it.
           </Typography>
 
           <Typography
