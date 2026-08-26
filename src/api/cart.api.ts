@@ -31,6 +31,29 @@ export interface AddToCartRequest {
   pictureUrl: string;
 }
 
+// Matches Mars.API.Models.Basket.QuoteRequestItem.
+// UnitPrice is nullable server-side (decimal?) — an item can genuinely have
+// no price yet, distinct from the basket's price-defaults-to-0 behavior.
+export interface QuoteRequestItem {
+  id: string;
+  productId: string;
+  productDescription: string;
+  unitPrice: number | null;
+  quantity: number;
+  pictureUrl: string;
+  quoteRequestId: string;
+}
+
+// Matches Mars.API.Models.Basket.QuoteRequest, returned by
+// POST /api/basket/submit-for-quote.
+export interface QuoteRequest {
+  quoteRequestId: string;
+  userId: string;
+  items: QuoteRequestItem[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export const fetchBasket = async (): Promise<CustomerBasket> => {
   const { data } = await axiosClient.get("/api/basket", {
     withCredentials: true,
@@ -67,4 +90,21 @@ export const removeItemRequest = async (productId: string): Promise<void> => {
 
 export const clearBasketRequest = async (): Promise<void> => {
   await axiosClient.delete("/api/basket", { withCredentials: true });
+};
+
+// POST /api/basket/submit-for-quote — [Authorize]'d on the backend.
+// BasketController.SubmitForQuote returns:
+//   401 if the JWT is missing/invalid (Unauthorized())
+//   400 "Your basket is empty." if there are no items (BadRequest(string))
+//   200 QuoteRequest on success, and the basket is deleted server-side.
+// axiosClient's interceptor already attaches the Bearer token when one is
+// stored, so no extra header handling is needed here — just let 401/400
+// reject normally so the caller can branch on error.response.status.
+export const submitForQuoteRequest = async (): Promise<QuoteRequest> => {
+  const { data } = await axiosClient.post(
+    "/api/basket/submit-for-quote",
+    null,
+    { withCredentials: true },
+  );
+  return data;
 };

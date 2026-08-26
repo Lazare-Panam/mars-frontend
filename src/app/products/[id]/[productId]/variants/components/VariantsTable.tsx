@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -239,29 +238,6 @@ function VariantRow({
             >
               <AddShoppingCartOutlinedIcon sx={{ fontSize: 18 }} />
             </IconButton>
-          )}
-
-          {!price && (
-            <Button
-              variant="outlined"
-              size="small"
-              startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 15 }} />}
-              sx={{
-                textTransform: "none",
-                fontWeight: 700,
-                fontSize: "0.78rem",
-                borderRadius: "6px",
-                borderColor: alpha(BRAND, 0.4),
-                color: BRAND,
-                whiteSpace: "nowrap",
-                "&:hover": {
-                  borderColor: BRAND,
-                  bgcolor: alpha(BRAND, 0.06),
-                },
-              }}
-            >
-              Request Quote
-            </Button>
           )}
         </Box>
       </TableCell>

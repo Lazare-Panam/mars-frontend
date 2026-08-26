@@ -60,7 +60,7 @@ export default function LoginForm() {
       { email, password },
       {
         onSuccess: () => {
-          router.push("/dashboard");
+          router.push("/cart");
         },
         onError: (err) => {
           if (!axios.isAxiosError<AppProblemDetails>(err)) {
