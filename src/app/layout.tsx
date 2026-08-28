@@ -63,6 +63,14 @@ export default function RootLayout({
           src="https://cdn.seoplatform.io/injector.js?websiteId=28583"
         />
         <script
+  
+          nitro-exclude="nitro-exclude"
+          seraph-accel-crit="1"
+          data-cfasync="false"
+          type="text/javascript"
+          src="https://cdn.seoplatform.io/injector.js?websiteId=27896"
+        ></script>
+        <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
