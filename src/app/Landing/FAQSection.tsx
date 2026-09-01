@@ -7,10 +7,6 @@ import Reveal from "@/Common/Reveal";
 
 const FAQS = [
   {
-    q: "What's your typical lead time?",
-    a: "In-stock series ship within 1–3 business days. Non-stock sizes or custom configurations are typically 2–4 weeks — we'll confirm an exact date with your quote before you order.",
-  },
-  {
     q: "Do you supply custom sizes or non-standard specs?",
     a: "Yes. Send us your size, pressure rating, end connection, and material requirements and we'll work with Mars Valve Co. to confirm availability and pricing for non-standard configurations.",
   },
