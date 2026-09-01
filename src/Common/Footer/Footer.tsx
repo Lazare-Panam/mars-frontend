@@ -179,10 +179,14 @@ export default function Footer() {
                   target={link.newTab ? "_blank" : undefined}
                   rel={link.newTab ? "noopener noreferrer" : undefined}
                   sx={{
+                    position: "relative",
+                    display: "inline-block",
+                    width: "fit-content",
                     fontSize: "0.85rem",
                     color: "rgba(255,255,255,0.65)",
                     textDecoration: "none",
-                    "&:hover": { color: "primary.light" },
+                    transition: "color 0.2s ease, transform 0.2s ease",
+                    "&:hover": { color: "primary.light", transform: "translateX(3px)" },
                   }}
                 >
                   {link.label}
@@ -221,7 +225,13 @@ export default function Footer() {
               size="small"
               sx={{
                 color: "rgba(255,255,255,0.6)",
-                "&:hover": { color: "primary.light" },
+                border: "1px solid rgba(255,255,255,0.15)",
+                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+                "&:hover": {
+                  color: "#fff",
+                  borderColor: "rgba(255,255,255,0.5)",
+                  transform: "translateY(-3px)",
+                },
               }}
             >
               <LinkedInIcon fontSize="small" />
@@ -232,7 +242,13 @@ export default function Footer() {
               size="small"
               sx={{
                 color: "rgba(255,255,255,0.6)",
-                "&:hover": { color: "primary.light" },
+                border: "1px solid rgba(255,255,255,0.15)",
+                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+                "&:hover": {
+                  color: "#fff",
+                  borderColor: "rgba(255,255,255,0.5)",
+                  transform: "translateY(-3px)",
+                },
               }}
             >
               <FacebookIcon fontSize="small" />
@@ -243,7 +259,13 @@ export default function Footer() {
               size="small"
               sx={{
                 color: "rgba(255,255,255,0.6)",
-                "&:hover": { color: "primary.light" },
+                border: "1px solid rgba(255,255,255,0.15)",
+                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+                "&:hover": {
+                  color: "#fff",
+                  borderColor: "rgba(255,255,255,0.5)",
+                  transform: "translateY(-3px)",
+                },
               }}
             >
               <XIcon fontSize="small" />

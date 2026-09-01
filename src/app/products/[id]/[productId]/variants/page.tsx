@@ -8,6 +8,7 @@ import VariantsSidebar from "./components/VariantsSidebar";
 import VariantsTable from "./components/VariantsTable";
 import VariantsActiveFilters from "./components/VariantsActiveFilters";
 import { alpha } from "@mui/material/styles";
+import Reveal from "@/Common/Reveal";
 
 const BRAND = "#E7390F";
 
@@ -175,6 +176,7 @@ export default function ProductVariantsPage({
       <Box
         sx={{ bgcolor: "#0a0604", px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
       >
+        <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
           <Typography
             sx={{
@@ -205,6 +207,7 @@ export default function ProductVariantsPage({
             {filtered.length} model{filtered.length !== 1 ? "s" : ""} available
           </Typography>
         </Box>
+        </Reveal>
       </Box>
 
       {/* Content */}
@@ -240,37 +243,39 @@ export default function ProductVariantsPage({
           </Box>
         )}
 
-        <Box
-          sx={{
-            display: "flex",
-            gap: 0,
-            alignItems: "flex-start",
-            border: `1px solid ${alpha(BRAND, 0.15)}`,
-            borderRadius: "8px",
-            bgcolor: "#fff",
-          }}
-        >
-          <VariantsSidebar
-            specKeys={allSpecKeys}
-            filterOptions={filterOptions}
-            activeFilters={activeFilters}
-            setActiveFilters={setActiveFilters}
-          />
+        <Reveal delay={100}>
           <Box
             sx={{
-              flex: 1,
-              minWidth: 0,
-              borderLeft: "1px solid rgba(0,0,0,0.06)",
+              display: "flex",
+              gap: 0,
+              alignItems: "flex-start",
+              border: `1px solid ${alpha(BRAND, 0.15)}`,
+              borderRadius: "8px",
+              bgcolor: "#fff",
             }}
           >
-            <VariantsTable
-              variants={filtered}
-              seriesId={productId}
+            <VariantsSidebar
               specKeys={allSpecKeys}
-              thumbnailImage={data.thumbnailImage}
+              filterOptions={filterOptions}
+              activeFilters={activeFilters}
+              setActiveFilters={setActiveFilters}
             />
+            <Box
+              sx={{
+                flex: 1,
+                minWidth: 0,
+                borderLeft: "1px solid rgba(0,0,0,0.06)",
+              }}
+            >
+              <VariantsTable
+                variants={filtered}
+                seriesId={productId}
+                specKeys={allSpecKeys}
+                thumbnailImage={data.thumbnailImage}
+              />
+            </Box>
           </Box>
-        </Box>
+        </Reveal>
       </Box>
     </Box>
   );

@@ -4,6 +4,8 @@ import { Box, Container, Typography, Divider, useTheme } from "@mui/material";
 import Image from "next/image";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import GppMaybeOutlinedIcon from "@mui/icons-material/GppMaybeOutlined";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function MarsBrandPage() {
   const theme = useTheme();
@@ -50,53 +52,55 @@ export default function MarsBrandPage() {
             pb: { xs: 5, md: 8 },
           }}
         >
-          <Typography
-            sx={{
-              color: "#fff",
-              fontSize: "0.72rem",
-              fontWeight: 700,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              mb: 2,
-              opacity: 0.85,
-            }}
-          >
-            An Official Statement from MARS®
-          </Typography>
+          <Reveal>
+            <Typography
+              sx={{
+                color: "#fff",
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                mb: 2,
+                opacity: 0.85,
+              }}
+            >
+              An Official Statement from MARS®
+            </Typography>
 
-          <Typography
-            component="h1"
-            sx={{
-              color: "#fff",
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontWeight: 700,
-              fontSize: { xs: "2.4rem", md: "4rem" },
-              lineHeight: 1.05,
-              letterSpacing: "-0.01em",
-              maxWidth: 780,
-            }}
-          >
-            No Logo.
-            <br />
-            No MARS
-            <Box component="sup" sx={{ fontSize: "0.5em" }}>
-              ®
-            </Box>
-            .
-          </Typography>
+            <Typography
+              component="h1"
+              sx={{
+                color: "#fff",
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                fontWeight: 700,
+                fontSize: { xs: "2.4rem", md: "4rem" },
+                lineHeight: 1.05,
+                letterSpacing: "-0.01em",
+                maxWidth: 780,
+              }}
+            >
+              No Logo.
+              <br />
+              No MARS
+              <Box component="sup" sx={{ fontSize: "0.5em" }}>
+                ®
+              </Box>
+              .
+            </Typography>
 
-          <Typography
-            sx={{
-              color: "rgba(255,255,255,0.82)",
-              fontSize: { xs: "0.95rem", md: "1.05rem" },
-              mt: 2.5,
-              maxWidth: 560,
-              lineHeight: 1.6,
-            }}
-          >
-            Imitation can copy the appearance of a valve. It cannot copy the
-            engineering, reliability, and brand spirit behind it.
-          </Typography>
+            <Typography
+              sx={{
+                color: "rgba(255,255,255,0.82)",
+                fontSize: { xs: "0.95rem", md: "1.05rem" },
+                mt: 2.5,
+                maxWidth: 560,
+                lineHeight: 1.6,
+              }}
+            >
+              Imitation can copy the appearance of a valve. It cannot copy the
+              engineering, reliability, and brand spirit behind it.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
@@ -104,6 +108,7 @@ export default function MarsBrandPage() {
 
       {/* THE STATEMENT */}
       <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
+        <Reveal>
         <Box
           sx={{
             border: `1px solid ${LINE}`,
@@ -111,6 +116,16 @@ export default function MarsBrandPage() {
             px: { xs: 3, md: 8 },
             py: { xs: 5, md: 7 },
             position: "relative",
+            transition:
+              "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+            "&:hover": {
+              borderColor: "primary.main",
+              transform: "translateY(-4px)",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+            },
+            "&:hover .brand-icon": {
+              transform: "scale(1.1) rotate(-6deg)",
+            },
           }}
         >
           {/* corner mark, top-left */}
@@ -228,7 +243,14 @@ export default function MarsBrandPage() {
               gap: 1.5,
             }}
           >
-            <VerifiedIcon sx={{ color: ACCENT, fontSize: 22 }} />
+            <VerifiedIcon
+              className="brand-icon"
+              sx={{
+                color: ACCENT,
+                fontSize: 22,
+                transition: "transform 0.25s ease",
+              }}
+            />
             <Typography
               sx={{
                 fontFamily: "Georgia, 'Times New Roman', serif",
@@ -242,6 +264,7 @@ export default function MarsBrandPage() {
             </Typography>
           </Box>
         </Box>
+        </Reveal>
       </Container>
 
       <Divider sx={{ borderColor: LINE }} />
@@ -249,67 +272,87 @@ export default function MarsBrandPage() {
       {/* LEADERSHIP / PARTNERSHIP */}
       <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="md">
-          <Typography
-            sx={{
-              color: RUST,
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              mb: 1.5,
-            }}
-          >
-            A Partnership Built on Trust
-          </Typography>
-          <Typography
-            component="h2"
-            sx={{
-              color: INK,
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontWeight: 700,
-              fontSize: { xs: "1.6rem", md: "2rem" },
-              textAlign: "center",
-              mb: { xs: 5, md: 7 },
-            }}
-          >
-            Valvenok &amp; MARS
-          </Typography>
-
-          <Box
-            sx={{
-              position: "relative",
-              maxWidth: 620,
-              mx: "auto",
-              border: `1px solid ${LINE}`,
-              p: { xs: 1.5, md: 2 },
-              bgcolor: theme.palette.background.paper,
-            }}
-          >
-            <Box
-              sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}
-            >
-              <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/Hero/max-lazare.jpg"
-                alt="Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of MARS®"
-                fill
-                style={{ objectFit: "contain" }}
-              />
-            </Box>
-
+          <Reveal>
             <Typography
               sx={{
                 color: RUST,
-                fontSize: "0.8rem",
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
                 textAlign: "center",
-                mt: 2,
-                pb: 1,
+                mb: 1.5,
               }}
             >
-              Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of
-              MARS®, representing the agreement between our companies.
+              A Partnership Built on Trust
             </Typography>
-          </Box>
+            <Typography
+              component="h2"
+              sx={{
+                color: INK,
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                fontWeight: 700,
+                fontSize: { xs: "1.6rem", md: "2rem" },
+                textAlign: "center",
+                mb: { xs: 5, md: 7 },
+              }}
+            >
+              Valvenok &amp; MARS
+            </Typography>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <Box
+              sx={{
+                position: "relative",
+                maxWidth: 620,
+                mx: "auto",
+                border: `1px solid ${LINE}`,
+                p: { xs: 1.5, md: 2 },
+                bgcolor: theme.palette.background.paper,
+                transition:
+                  "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+                "&:hover": {
+                  borderColor: "primary.main",
+                  transform: "translateY(-4px)",
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                },
+                "&:hover .brand-photo": {
+                  transform: "scale(1.06)",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "4/3",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src="https://pblol2.blob.core.windows.net/mars-valves/Hero/max-lazare.jpg"
+                  alt="Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of MARS®"
+                  fill
+                  className="brand-photo"
+                  style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
+                />
+              </Box>
+
+              <Typography
+                sx={{
+                  color: RUST,
+                  fontSize: "0.8rem",
+                  textAlign: "center",
+                  mt: 2,
+                  pb: 1,
+                }}
+              >
+                Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of
+                MARS®, representing the agreement between our companies.
+              </Typography>
+            </Box>
+          </Reveal>
         </Container>
       </Box>
 
@@ -318,33 +361,36 @@ export default function MarsBrandPage() {
       {/* CERTIFICATE */}
       <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="md">
-          <Typography
-            sx={{
-              color: RUST,
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              textAlign: "center",
-              mb: 1.5,
-            }}
-          >
-            Official Trust Certificate
-          </Typography>
-          <Typography
-            component="h2"
-            sx={{
-              color: INK,
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontWeight: 700,
-              fontSize: { xs: "1.6rem", md: "2rem" },
-              textAlign: "center",
-              mb: { xs: 5, md: 7 },
-            }}
-          >
-            Verified. Authorized. Genuine.
-          </Typography>
+          <Reveal>
+            <Typography
+              sx={{
+                color: RUST,
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                textAlign: "center",
+                mb: 1.5,
+              }}
+            >
+              Official Trust Certificate
+            </Typography>
+            <Typography
+              component="h2"
+              sx={{
+                color: INK,
+                fontFamily: "Georgia, 'Times New Roman', serif",
+                fontWeight: 700,
+                fontSize: { xs: "1.6rem", md: "2rem" },
+                textAlign: "center",
+                mb: { xs: 5, md: 7 },
+              }}
+            >
+              Verified. Authorized. Genuine.
+            </Typography>
+          </Reveal>
 
+          <Reveal delay={150}>
           <Box
             sx={{
               position: "relative",
@@ -353,6 +399,16 @@ export default function MarsBrandPage() {
               border: `1px solid ${LINE}`,
               p: { xs: 1.5, md: 2 },
               bgcolor: theme.palette.background.paper,
+              transition:
+                "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+              "&:hover": {
+                borderColor: "primary.main",
+                transform: "translateY(-4px)",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+              },
+              "&:hover .brand-photo": {
+                transform: "scale(1.06)",
+              },
             }}
           >
             {/* rotated stamp */}
@@ -387,13 +443,19 @@ export default function MarsBrandPage() {
             </Box>
 
             <Box
-              sx={{ position: "relative", width: "100%", aspectRatio: "4/3" }}
+              sx={{
+                position: "relative",
+                width: "100%",
+                aspectRatio: "4/3",
+                overflow: "hidden",
+              }}
             >
               <Image
                 src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
                 alt="MARS® official trust certificate"
                 fill
-                style={{ objectFit: "contain" }}
+                className="brand-photo"
+                style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
               />
             </Box>
 
@@ -413,6 +475,7 @@ export default function MarsBrandPage() {
               ball valves.
             </Typography>
           </Box>
+          </Reveal>
         </Container>
       </Box>
 
@@ -420,6 +483,7 @@ export default function MarsBrandPage() {
 
       {/* REPORT COUNTERFEIT CTA */}
       <Container maxWidth="md" sx={{ py: { xs: 8, md: 10 } }}>
+        <Reveal>
         <Box
           sx={{
             display: "flex",
@@ -430,11 +494,27 @@ export default function MarsBrandPage() {
             border: `1px solid ${LINE}`,
             px: { xs: 3, md: 5 },
             py: { xs: 4, md: 5 },
+            transition:
+              "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+            "&:hover": {
+              borderColor: "primary.main",
+              transform: "translateY(-4px)",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+            },
+            "&:hover .brand-icon": {
+              transform: "scale(1.1) rotate(-6deg)",
+            },
           }}
         >
           <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
             <GppMaybeOutlinedIcon
-              sx={{ color: ACCENT, fontSize: 30, mt: 0.5 }}
+              className="brand-icon"
+              sx={{
+                color: ACCENT,
+                fontSize: 30,
+                mt: 0.5,
+                transition: "transform 0.25s ease",
+              }}
             />
             <Box>
               <Typography
@@ -456,31 +536,36 @@ export default function MarsBrandPage() {
             </Box>
           </Box>
 
-          <Box
-            component="a"
-            href="mailto:sales@marsvalvenok.com"
-            sx={{
-              flexShrink: 0,
-              textDecoration: "none",
-              border: `1.5px solid ${ACCENT}`,
-              color: ACCENT,
-              fontWeight: 700,
-              fontSize: "0.78rem",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              px: 3,
-              py: 1.5,
-              transition: "all 0.15s ease",
-              whiteSpace: "nowrap",
-              "&:hover": {
-                bgcolor: ACCENT,
-                color: theme.palette.primary.contrastText,
-              },
-            }}
-          >
-            Report a Counterfeit
-          </Box>
+          <MagneticWrap strength={0.25}>
+            <Box
+              component="a"
+              href="mailto:sales@marsvalvenok.com"
+              sx={{
+                flexShrink: 0,
+                display: "inline-block",
+                textDecoration: "none",
+                border: `1.5px solid ${ACCENT}`,
+                color: ACCENT,
+                fontWeight: 700,
+                fontSize: "0.78rem",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                px: 3,
+                py: 1.5,
+                transition: "all 0.15s ease",
+                whiteSpace: "nowrap",
+                "&:hover": {
+                  bgcolor: ACCENT,
+                  color: theme.palette.primary.contrastText,
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              Report a Counterfeit
+            </Box>
+          </MagneticWrap>
         </Box>
+        </Reveal>
       </Container>
     </Box>
   );

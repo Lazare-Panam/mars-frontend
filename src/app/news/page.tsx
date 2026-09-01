@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Link from "next/link";
 import { blogs } from "./data/blog";
 import SeoButtons from "./components/SEOButtons";
+import Reveal from "@/Common/Reveal";
 
 export default function NewsPage() {
   const featured = blogs[0];
@@ -65,226 +66,254 @@ export default function NewsPage() {
             mx: "auto",
           }}
         >
-          <Typography
-            variant="overline"
-            sx={{
-              color: "primary.light",
-              letterSpacing: 6,
-              fontSize: "0.7rem",
-              display: "block",
-              mb: 2,
-            }}
-          >
-            Latest News
-          </Typography>
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: 700,
-              color: "#fff",
-              lineHeight: 1.1,
-              maxWidth: 560,
-            }}
-          >
-            Insights, Stories & Updates
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              color: "rgba(255,255,255,0.7)",
-              mt: 2,
-              maxWidth: 440,
-              lineHeight: 1.75,
-              textTransform: "none",
-            }}
-          >
-            {/* update this subline for the new brand */}
-            Updates, stories and insights from our team.
-          </Typography>
+          <Reveal>
+            <Typography
+              variant="overline"
+              sx={{
+                color: "primary.light",
+                letterSpacing: 6,
+                fontSize: "0.7rem",
+                display: "block",
+                mb: 2,
+              }}
+            >
+              Latest News
+            </Typography>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 700,
+                color: "#fff",
+                lineHeight: 1.1,
+                maxWidth: 560,
+              }}
+            >
+              Insights, Stories & Updates
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "rgba(255,255,255,0.7)",
+                mt: 2,
+                maxWidth: 440,
+                lineHeight: 1.75,
+                textTransform: "none",
+              }}
+            >
+              {/* update this subline for the new brand */}
+              Updates, stories and insights from our team.
+            </Typography>
+          </Reveal>
         </Box>
       </Box>
 
       <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
         {/* Featured */}
-        <Box
-          component={Link}
-          href={`/news/${featured.slug}`}
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            mb: 8,
-            textDecoration: "none",
-            border: "1px solid",
-            borderColor: "divider",
-            transition: "border-color 0.2s ease",
-            borderRadius: "8px",
-            overflow: "hidden",
-            "&:hover": { borderColor: "primary.main" },
-          }}
-        >
+        <Reveal>
           <Box
-            component="img"
-            src={featured.heroImage}
-            alt={featured.title}
+            component={Link}
+            href={`/news/${featured.slug}`}
             sx={{
-              width: "100%",
-              height: "100%",
-              minHeight: 280,
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
-          <Box
-            sx={{
-              p: { xs: 3, md: 5 },
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              bgcolor: "background.default",
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+              mb: 8,
+              textDecoration: "none",
+              border: "1px solid",
+              borderColor: "divider",
+              transition:
+                "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+              borderRadius: "8px",
+              overflow: "hidden",
+              "&:hover": {
+                borderColor: "primary.main",
+                transform: "translateY(-4px)",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+              },
+              "&:hover .featured-img": { transform: "scale(1.06)" },
             }}
           >
-            <Chip
-              label={featured.category}
-              size="small"
-              color="primary"
+            <Box sx={{ overflow: "hidden" }}>
+              <Box
+                component="img"
+                className="featured-img"
+                src={featured.heroImage}
+                alt={featured.title}
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  minHeight: 280,
+                  objectFit: "cover",
+                  display: "block",
+                  transition: "transform 0.5s ease",
+                }}
+              />
+            </Box>
+            <Box
               sx={{
-                borderRadius: 0,
-                fontWeight: 600,
-                width: "fit-content",
-                mb: 2,
-              }}
-            />
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 700,
-                color: "text.primary",
-                lineHeight: 1.2,
-                mb: 1.5,
-              }}
-            >
-              {featured.title}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: "text.secondary",
-                lineHeight: 1.75,
-                textTransform: "none",
+                p: { xs: 3, md: 5 },
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                bgcolor: "background.default",
               }}
             >
-              {featured.excerpt}
-            </Typography>
+              <Chip
+                label={featured.category}
+                size="small"
+                color="primary"
+                sx={{
+                  borderRadius: 0,
+                  fontWeight: 600,
+                  width: "fit-content",
+                  mb: 2,
+                }}
+              />
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 700,
+                  color: "text.primary",
+                  lineHeight: 1.2,
+                  mb: 1.5,
+                }}
+              >
+                {featured.title}
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "text.secondary",
+                  lineHeight: 1.75,
+                  textTransform: "none",
+                }}
+              >
+                {featured.excerpt}
+              </Typography>
+            </Box>
           </Box>
-        </Box>
+        </Reveal>
 
         {/* Rest */}
         <Grid container spacing={3}>
-          {rest.map((blog) => (
+          {rest.map((blog, i) => (
             <Grid key={blog.slug} size={{ xs: 12, sm: 6, md: 4 }}>
-              <Box
-                component={Link}
-                href={`/news/${blog.slug}`}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textDecoration: "none",
-                  border: "1px solid",
-                  borderColor: "divider",
-                  height: "100%",
-                  bgcolor: "background.default",
-                  transition: "border-color 0.2s ease",
-                  "&:hover": { borderColor: "primary.main" },
-                  "&:hover .blog-title": { color: "primary.main" },
-                }}
-              >
+              <Box sx={{ height: "100%", "& > div": { height: "100%" } }}>
+                <Reveal delay={Math.min((i + 1) * 80, 400)}>
                 <Box
-                  component="img"
-                  src={blog.heroImage}
-                  alt={blog.title}
+                  component={Link}
+                  href={`/news/${blog.slug}`}
                   sx={{
-                    width: "100%",
-                    height: 200,
-                    objectFit: "cover",
-                    display: "block",
-                    bgcolor: "background.paper",
-                    borderBottom: "1px solid",
-                    borderColor: "divider",
-                  }}
-                />
-                <Box
-                  sx={{
-                    p: 3,
-                    flexGrow: 1,
                     display: "flex",
                     flexDirection: "column",
+                    textDecoration: "none",
+                    border: "1px solid",
+                    borderColor: "divider",
+                    height: "100%",
+                    bgcolor: "background.default",
+                    transition:
+                      "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+                    "&:hover": {
+                      borderColor: "primary.main",
+                      transform: "translateY(-4px)",
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                    },
+                    "&:hover .blog-title": { color: "primary.main" },
+                    "&:hover .blog-thumb": { transform: "scale(1.06)" },
                   }}
                 >
-                  <Chip
-                    label={blog.category}
-                    size="small"
-                    variant="outlined"
-                    color="primary"
-                    sx={{
-                      borderRadius: 0,
-                      fontWeight: 600,
-                      width: "fit-content",
-                      mb: 1.5,
-                      fontSize: "0.7rem",
-                    }}
-                  />
-                  <Typography
-                    variant="h6"
-                    className="blog-title"
-                    sx={{
-                      fontSize: "0.95rem",
-                      fontWeight: 700,
-                      color: "text.primary",
-                      lineHeight: 1.3,
-                      mb: 1.5,
-                      transition: "color 0.2s ease",
-                    }}
-                  >
-                    {blog.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "text.secondary",
-                      fontSize: "0.8rem",
-                      lineHeight: 1.65,
-                      mb: 2,
-                      flexGrow: 1,
-                      textTransform: "none",
-                    }}
-                  >
-                    {blog.excerpt}
-                  </Typography>
+                  <Box sx={{ overflow: "hidden" }}>
+                    <Box
+                      component="img"
+                      className="blog-thumb"
+                      src={blog.heroImage}
+                      alt={blog.title}
+                      sx={{
+                        width: "100%",
+                        height: 200,
+                        objectFit: "cover",
+                        display: "block",
+                        bgcolor: "background.paper",
+                        borderBottom: "1px solid",
+                        borderColor: "divider",
+                        transition: "transform 0.5s ease",
+                      }}
+                    />
+                  </Box>
                   <Box
                     sx={{
+                      p: 3,
+                      flexGrow: 1,
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      mt: "auto",
+                      flexDirection: "column",
                     }}
                   >
-                    <Typography
-                      variant="caption"
-                      sx={{ color: "text.disabled" }}
-                    >
-                      {blog.date}
-                    </Typography>
-                    <Typography
+                    <Chip
+                      label={blog.category}
+                      size="small"
+                      variant="outlined"
+                      color="primary"
                       sx={{
-                        color: "primary.main",
-                        fontSize: "0.78rem",
+                        borderRadius: 0,
+                        fontWeight: 600,
+                        width: "fit-content",
+                        mb: 1.5,
+                        fontSize: "0.7rem",
+                      }}
+                    />
+                    <Typography
+                      variant="h6"
+                      className="blog-title"
+                      sx={{
+                        fontSize: "0.95rem",
                         fontWeight: 700,
+                        color: "text.primary",
+                        lineHeight: 1.3,
+                        mb: 1.5,
+                        transition: "color 0.2s ease",
                       }}
                     >
-                      Read →
+                      {blog.title}
                     </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "text.secondary",
+                        fontSize: "0.8rem",
+                        lineHeight: 1.65,
+                        mb: 2,
+                        flexGrow: 1,
+                        textTransform: "none",
+                      }}
+                    >
+                      {blog.excerpt}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        mt: "auto",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{ color: "text.disabled" }}
+                      >
+                        {blog.date}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: "primary.main",
+                          fontSize: "0.78rem",
+                          fontWeight: 700,
+                        }}
+                      >
+                        Read →
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
+              </Reveal>
               </Box>
             </Grid>
           ))}

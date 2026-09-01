@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Box } from "@mui/material";
 import ContactForm from "./ContactForm";
+import Reveal from "@/Common/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,7 +22,9 @@ export default function ContactPage() {
         bgcolor: "background.default",
       }}
     >
-      <ContactForm />
+      <Reveal>
+        <ContactForm />
+      </Reveal>
     </Box>
   );
 }

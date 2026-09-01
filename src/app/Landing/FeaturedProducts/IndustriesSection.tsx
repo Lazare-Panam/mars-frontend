@@ -3,6 +3,7 @@
 import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/Common/Reveal";
 
 type Application = {
   label: string;
@@ -45,22 +46,27 @@ function ApplicationTile({ app }: { app: Application }) {
       sx={{
         position: "relative",
         height: "100%",
-        minHeight: 160,
+        minHeight: 200,
         gridColumn: app.large ? { xs: "span 2", md: "span 2" } : "span 1",
         gridRow: app.large ? { xs: "span 1", md: "span 2" } : "span 1",
         display: "flex",
         alignItems: "flex-end",
         overflow: "hidden",
+        cursor: "pointer",
+        "&:hover .app-tile-img": { transform: "scale(1.08)" },
+        "&:hover .app-tile-veil": { background: "rgba(0,0,0,0.15)" },
       }}
     >
       <Image
         src={app.image}
         alt={app.label}
         fill
-        style={{ objectFit: "cover" }}
+        className="app-tile-img"
+        style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
         sizes="(max-width: 768px) 50vw, 25vw"
       />
       <Box
+        className="app-tile-veil"
         sx={{
           position: "absolute",
           inset: 0,
@@ -108,55 +114,59 @@ export default function IndustriesSection() {
             py: { xs: 6, md: 0 },
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
-            <Box sx={{ width: 32, height: 1, bgcolor: "primary.main" }} />
+          <Reveal>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2, justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box sx={{ width: 32, height: 1, bgcolor: "primary.main" }} />
+              <Typography
+                sx={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.15em",
+                  color: "primary.main",
+                  textTransform: "uppercase",
+                }}
+              >
+                Valves, Controls &amp; Accessories
+              </Typography>
+            </Box>
+
             <Typography
+              component="h2"
               sx={{
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.15em",
-                color: "primary.main",
-                textTransform: "uppercase",
+                fontSize: { xs: "2rem", md: "2.5rem" },
+                fontWeight: 800,
+                color: "text.primary",
+                mb: 3,
               }}
             >
-              Valves, Controls &amp; Accessories
+              Applications
             </Typography>
-          </Box>
 
-          <Typography
-            component="h2"
-            sx={{
-              fontSize: { xs: "2rem", md: "2.5rem" },
-              fontWeight: 800,
-              color: "text.primary",
-              mb: 3,
-            }}
-          >
-            Applications
-          </Typography>
-
-          <Button
-            component={Link}
-            href="/applications"
-            variant="outlined"
-            sx={{
-              px: 3,
-              py: 1,
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              letterSpacing: "0.05em",
-              borderRadius: "2px",
-              borderColor: "primary.main",
-              color: "primary.main",
-              "&:hover": {
-                bgcolor: "primary.main",
-                color: "#fff",
+            <Button
+              component={Link}
+              href="/applications"
+              variant="outlined"
+              sx={{
+                px: 3,
+                py: 1,
+                fontWeight: 700,
+                fontSize: "0.8rem",
+                letterSpacing: "0.05em",
+                borderRadius: "2px",
                 borderColor: "primary.main",
-              },
-            }}
-          >
-            Explore More
-          </Button>
+                color: "primary.main",
+                transition: "background-color 0.2s ease, color 0.2s ease, transform 0.2s ease",
+                "&:hover": {
+                  bgcolor: "primary.main",
+                  color: "#fff",
+                  borderColor: "primary.main",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              Explore More
+            </Button>
+          </Reveal>
         </Box>
 
         {/* right: photo mosaic */}
@@ -164,7 +174,7 @@ export default function IndustriesSection() {
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gridAutoRows: 160,
+            gridAutoRows: 200,
           }}
         >
           {APPLICATIONS.map((app) => (

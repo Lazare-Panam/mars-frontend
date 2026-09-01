@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fetchCatalog, ProductCatalog } from "@/api/useProductCatalog";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
+import Reveal from "@/Common/Reveal";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -62,5 +63,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductCatalogPage({ params }: Props) {
   const { id } = await params;
-  return <ProductCatalogPageClient id={id} />;
+  return (
+    <Reveal y={12}>
+      <ProductCatalogPageClient id={id} />
+    </Reveal>
+  );
 }

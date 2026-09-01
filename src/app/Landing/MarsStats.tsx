@@ -9,6 +9,7 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import SpeedIcon from "@mui/icons-material/Speed";
 import CategoryIcon from "@mui/icons-material/Category";
+import Reveal from "@/Common/Reveal";
 
 function CountUp({ target }: { target: string }) {
   const numericPart = parseFloat(target.replace(/[^0-9.]/g, ""));
@@ -92,6 +93,8 @@ export default function MarsStats() {
     <Box
       component="section"
       sx={{
+        position: "relative",
+        overflow: "hidden",
         py: { xs: 8, md: 12 },
         color: "#fff",
         background:
@@ -100,6 +103,19 @@ export default function MarsStats() {
     >
       <Box
         sx={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          maskImage: "radial-gradient(circle at 75% 30%, #000 0%, transparent 70%)",
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "relative",
           maxWidth: "1280px",
           mx: "auto",
           px: { xs: 3, md: 8 },
@@ -110,6 +126,7 @@ export default function MarsStats() {
         }}
       >
         {/* left: copy + features + CTAs */}
+        <Reveal>
         <Box>
           <Box
             sx={{
@@ -215,7 +232,8 @@ export default function MarsStats() {
                 borderRadius: 0,
                 px: 3,
                 py: 1.2,
-                "&:hover": { bgcolor: "primary.dark" },
+                transition: "background-color 0.2s ease, transform 0.2s ease",
+                "&:hover": { bgcolor: "primary.dark", transform: "translateY(-2px)" },
               }}
             >
               VIEW FULL RANGE
@@ -232,9 +250,11 @@ export default function MarsStats() {
                 borderColor: "rgba(255,255,255,0.25)",
                 borderRadius: 0,
                 px: 3,
+                transition: "border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease",
                 "&:hover": {
                   borderColor: "#fff",
                   bgcolor: "rgba(255,255,255,0.06)",
+                  transform: "translateY(-2px)",
                 },
               }}
             >
@@ -242,6 +262,7 @@ export default function MarsStats() {
             </Button>
           </Box>
         </Box>
+        </Reveal>
 
         {/* right: stat grid */}
         <Box

@@ -29,6 +29,8 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import Image from "next/image";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuthStore } from "@/store/useAuthStore";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function CartPage() {
   const {
@@ -164,33 +166,35 @@ export default function CartPage() {
       }}
     >
       <Container maxWidth="lg">
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 1.5,
-            mb: 4,
-          }}
-        >
-          <ShoppingCartOutlinedIcon
-            sx={{ color: "primary.main", fontSize: 32 }}
-          />
-          <Typography variant="h4" sx={{ fontWeight: 700 }}>
-            Your Cart
-          </Typography>
-          {itemCount > 0 && (
-            <Chip
-              label={`${itemCount} ${itemCount === 1 ? "item" : "items"}`}
-              size="small"
-              sx={{
-                bgcolor: "primary.light",
-                color: "primary.dark",
-                fontWeight: 600,
-              }}
+        <Reveal>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 1.5,
+              mb: 4,
+            }}
+          >
+            <ShoppingCartOutlinedIcon
+              sx={{ color: "primary.main", fontSize: 32 }}
             />
-          )}
-        </Box>
+            <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              Your Cart
+            </Typography>
+            {itemCount > 0 && (
+              <Chip
+                label={`${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+                size="small"
+                sx={{
+                  bgcolor: "primary.light",
+                  color: "primary.dark",
+                  fontWeight: 600,
+                }}
+              />
+            )}
+          </Box>
+        </Reveal>
 
         {error && (
           <Alert severity="error" sx={{ mb: 3 }}>
@@ -232,29 +236,35 @@ export default function CartPage() {
         )}
 
         {items.length === 0 ? (
-          <Card
-            variant="outlined"
-            sx={{
-              py: 8,
-              textAlign: "center",
-              borderStyle: "dashed",
-              borderColor: "divider",
-              bgcolor: "transparent",
-            }}
-          >
-            <ShoppingCartOutlinedIcon
-              sx={{ fontSize: 48, color: "text.secondary", mb: 2 }}
-            />
-            <Typography variant="h6" gutterBottom>
-              Your cart is empty
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              Browse our valve and fitting ranges to get started.
-            </Typography>
-            <Button variant="contained" color="primary" href="/products">
-              Continue Shopping
-            </Button>
-          </Card>
+          <Reveal>
+            <Card
+              variant="outlined"
+              sx={{
+                py: 8,
+                textAlign: "center",
+                borderStyle: "dashed",
+                borderColor: "divider",
+                bgcolor: "transparent",
+              }}
+            >
+              <ShoppingCartOutlinedIcon
+                sx={{ fontSize: 48, color: "text.secondary", mb: 2 }}
+              />
+              <Typography variant="h6" gutterBottom>
+                Your cart is empty
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ mb: 3 }}
+              >
+                Browse our valve and fitting ranges to get started.
+              </Typography>
+              <Button variant="contained" color="primary" href="/products">
+                Continue Shopping
+              </Button>
+            </Card>
+          </Reveal>
         ) : (
           <Grid container spacing={4}>
             <Grid size={{ xs: 12, md: 8 }}>
@@ -269,6 +279,10 @@ export default function CartPage() {
                       alignItems: "center",
                       gap: 2,
                       borderColor: "divider",
+                      transition: "background-color 0.2s ease",
+                      "&:hover": {
+                        bgcolor: "rgba(231,57,15,0.03)",
+                      },
                     }}
                   >
                     <Box
@@ -351,6 +365,12 @@ export default function CartPage() {
                             confirmRemoveId === item.productId
                               ? "warning.main"
                               : "divider",
+                          transition:
+                            "background-color 0.2s ease, transform 0.2s ease",
+                          "&:hover": {
+                            bgcolor: "rgba(231,57,15,0.08)",
+                            transform: "scale(1.05)",
+                          },
                         }}
                         aria-label={
                           item.quantity <= 1
@@ -371,7 +391,16 @@ export default function CartPage() {
                           setConfirmRemoveId(null);
                           updateQuantity(item.productId, item.quantity + 1);
                         }}
-                        sx={{ border: "1px solid", borderColor: "divider" }}
+                        sx={{
+                          border: "1px solid",
+                          borderColor: "divider",
+                          transition:
+                            "background-color 0.2s ease, transform 0.2s ease",
+                          "&:hover": {
+                            bgcolor: "rgba(231,57,15,0.08)",
+                            transform: "scale(1.05)",
+                          },
+                        }}
                         aria-label={`Increase quantity of ${item.productDescription}`}
                       >
                         <AddIcon fontSize="small" />
@@ -388,7 +417,14 @@ export default function CartPage() {
 
                     <IconButton
                       onClick={() => removeItem(item.productId)}
-                      sx={{ color: "text.secondary" }}
+                      sx={{
+                        color: "text.secondary",
+                        transition: "color 0.2s ease, transform 0.2s ease",
+                        "&:hover": {
+                          color: "error.main",
+                          transform: "scale(1.1)",
+                        },
+                      }}
                       aria-label={`Remove ${item.productDescription}`}
                     >
                       <DeleteIcon fontSize="small" />
@@ -399,6 +435,7 @@ export default function CartPage() {
             </Grid>
 
             <Grid size={{ xs: 12, md: 4 }}>
+              <Reveal>
               <Card
                 variant="outlined"
                 sx={{
@@ -486,22 +523,32 @@ export default function CartPage() {
                   </Typography>
                 </Box>
 
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  fullWidth
-                  onClick={handleOpenSubmitFlow}
-                  disabled={isSubmittingQuote}
-                >
-                  {isSubmittingQuote ? (
-                    <CircularProgress size={22} color="inherit" />
-                  ) : hasUnpricedItems ? (
-                    "Request Quote"
-                  ) : (
-                    "Proceed to Checkout"
-                  )}
-                </Button>
+                <Box sx={{ display: "grid" }}>
+                  <MagneticWrap strength={0.15}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      fullWidth
+                      onClick={handleOpenSubmitFlow}
+                      disabled={isSubmittingQuote}
+                      sx={{
+                        transition: "transform 0.2s ease",
+                        "&:hover": {
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                    >
+                      {isSubmittingQuote ? (
+                        <CircularProgress size={22} color="inherit" />
+                      ) : hasUnpricedItems ? (
+                        "Request Quote"
+                      ) : (
+                        "Proceed to Checkout"
+                      )}
+                    </Button>
+                  </MagneticWrap>
+                </Box>
                 <Button
                   variant="text"
                   color="inherit"
@@ -512,6 +559,7 @@ export default function CartPage() {
                   Continue Shopping
                 </Button>
               </Card>
+              </Reveal>
             </Grid>
           </Grid>
         )}

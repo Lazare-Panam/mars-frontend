@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchBasket = useCartStore((s) => s.fetchBasket);
@@ -47,6 +48,13 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     fetchBasket();
   }, [fetchBasket]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleEnter = (label: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -135,13 +143,23 @@ const Navbar: React.FC = () => {
       <AppBar
         position="sticky"
         elevation={0}
-        sx={{ bgcolor: PAPER, color: INK, borderBottom: `1px solid ${LINE}` }}
+        sx={{
+          bgcolor: PAPER,
+          color: INK,
+          borderBottom: `1px solid ${LINE}`,
+          boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
+          transition: "box-shadow 0.25s ease",
+        }}
         onMouseLeave={handleLeave}
       >
         <Container maxWidth="xl">
           <Toolbar
             disableGutters
-            sx={{ height: 88, justifyContent: "space-between" }}
+            sx={{
+              height: scrolled ? 68 : 88,
+              justifyContent: "space-between",
+              transition: "height 0.25s ease",
+            }}
           >
             {/* Logo */}
             <Box

@@ -8,6 +8,7 @@ import {
   FeaturedCard,
 } from "../products/[id]/[productId]/variants/components/VariantsGrid";
 import { ProductVariant } from "@/api/useProductVariants";
+import Reveal from "@/Common/Reveal";
 
 const BRAND = "#E7390F";
 const CATEGORY_ID = "ball-valves";
@@ -249,6 +250,7 @@ export default function ShopLandingPage() {
             bgcolor: "primary.main",
           }}
         />
+        <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto", textAlign: "center" }}>
           <Typography
             sx={{
@@ -323,6 +325,7 @@ export default function ShopLandingPage() {
             </Box>
           </Box>
         </Box>
+        </Reveal>
       </Box>
 
       {/* Content */}
@@ -335,29 +338,35 @@ export default function ShopLandingPage() {
         }}
       >
         {/* Featured */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
-          <Box sx={{ width: 3, height: 20, bgcolor: BRAND }} />
-          <Typography sx={{ fontSize: "1.3rem", fontWeight: 800 }}>
-            Featured
-          </Typography>
-        </Box>
-        <FeaturedCard
-          variant={FEATURED_PICK.variant}
-          productName={FEATURED_PICK.productName}
-          thumbnailImage={FEATURED_PICK.thumbnailImage}
-          categoryId={CATEGORY_ID}
-          productId={FEATURED_PICK.productId}
-        />
+        <Reveal>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
+            <Box sx={{ width: 3, height: 20, bgcolor: BRAND }} />
+            <Typography sx={{ fontSize: "1.3rem", fontWeight: 800 }}>
+              Featured
+            </Typography>
+          </Box>
+        </Reveal>
+        <Reveal>
+          <FeaturedCard
+            variant={FEATURED_PICK.variant}
+            productName={FEATURED_PICK.productName}
+            thumbnailImage={FEATURED_PICK.thumbnailImage}
+            categoryId={CATEGORY_ID}
+            productId={FEATURED_PICK.productId}
+          />
+        </Reveal>
 
         {/* Rest of the shelf */}
-        <Box
-          sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3, mt: 5 }}
-        >
-          <Box sx={{ width: 3, height: 20, bgcolor: BRAND }} />
-          <Typography sx={{ fontSize: "1.3rem", fontWeight: 800 }}>
-            More Products
-          </Typography>
-        </Box>
+        <Reveal>
+          <Box
+            sx={{ display: "flex", alignItems: "center", gap: 1, mb: 3, mt: 5 }}
+          >
+            <Box sx={{ width: 3, height: 20, bgcolor: BRAND }} />
+            <Typography sx={{ fontSize: "1.3rem", fontWeight: 800 }}>
+              More Products
+            </Typography>
+          </Box>
+        </Reveal>
         <Box
           sx={{
             display: "grid",
@@ -367,15 +376,16 @@ export default function ShopLandingPage() {
         >
           {ALL_VARIANTS.filter(
             (v) => v.variant.id !== FEATURED_PICK.variant.id,
-          ).map(({ productId, productName, thumbnailImage, variant }) => (
-            <GridCard
-              key={variant.id}
-              variant={variant}
-              productName={productName}
-              thumbnailImage={thumbnailImage}
-              categoryId={CATEGORY_ID}
-              productId={productId}
-            />
+          ).map(({ productId, productName, thumbnailImage, variant }, i) => (
+            <Reveal key={variant.id} delay={Math.min(i * 50, 400)}>
+              <GridCard
+                variant={variant}
+                productName={productName}
+                thumbnailImage={thumbnailImage}
+                categoryId={CATEGORY_ID}
+                productId={productId}
+              />
+            </Reveal>
           ))}
         </Box>
       </Box>

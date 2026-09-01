@@ -7,6 +7,7 @@ import BlockIcon from "@mui/icons-material/Block";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import { alpha } from "@mui/material/styles";
+import Reveal from "@/Common/Reveal";
 
 const returnPoints = [
   {
@@ -35,42 +36,46 @@ const InfoCard = ({
   icon,
   title,
   text,
+  index,
 }: {
   icon: React.ReactNode;
   title: string;
   text: string;
+  index: number;
 }) => (
   <Grid size={{ xs: 12, sm: 6 }}>
-    <Stack
-      spacing={2}
-      sx={{
-        height: "100%",
-        p: 4,
-        bgcolor: "#fff",
-        border: "1px solid",
-        borderColor: "divider",
-        transition: "all 0.3s ease",
-        "&:hover": {
-          borderColor: "primary.main",
-          boxShadow: (theme) =>
-            `0 15px 30px ${alpha(theme.palette.primary.main, 0.12)}`,
-        },
-      }}
-    >
-      <Box sx={{ color: "primary.main", display: "flex" }}>{icon}</Box>
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: 800, color: "text.primary" }}
+    <Reveal delay={Math.min(index * 60, 300)}>
+      <Stack
+        spacing={2}
+        sx={{
+          height: "100%",
+          p: 4,
+          bgcolor: "#fff",
+          border: "1px solid",
+          borderColor: "divider",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            borderColor: "primary.main",
+            boxShadow: (theme) =>
+              `0 15px 30px ${alpha(theme.palette.primary.main, 0.12)}`,
+          },
+        }}
       >
-        {title}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ color: "text.secondary", lineHeight: 1.7 }}
-      >
-        {text}
-      </Typography>
-    </Stack>
+        <Box sx={{ color: "primary.main", display: "flex" }}>{icon}</Box>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontWeight: 800, color: "text.primary" }}
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.secondary", lineHeight: 1.7 }}
+        >
+          {text}
+        </Typography>
+      </Stack>
+    </Reveal>
   </Grid>
 );
 
@@ -104,29 +109,31 @@ const ReturnsPolicyPage = () => {
             </Typography>
             <Box sx={{ width: 40, height: "1px", bgcolor: "primary.main" }} />
           </Stack>
-          <Typography
-            variant="h2"
-            sx={{ fontWeight: 800, fontSize: { xs: "2.25rem", md: "3rem" } }}
-          >
-            Returns{" "}
-            <Box component="span" sx={{ color: "primary.main" }}>
-              Policy
-            </Box>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
-          >
-            We want you to be happy with your order. If something isn't
-            right, here's how returns work.
-          </Typography>
+          <Reveal>
+            <Typography
+              variant="h2"
+              sx={{ fontWeight: 800, fontSize: { xs: "2.25rem", md: "3rem" } }}
+            >
+              Returns{" "}
+              <Box component="span" sx={{ color: "primary.main" }}>
+                Policy
+              </Box>
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
+            >
+              We want you to be happy with your order. If something isn't
+              right, here's how returns work.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
       <Container maxWidth="lg" sx={{ py: 10 }}>
         <Grid container spacing={3}>
           {returnPoints.map((p, i) => (
-            <InfoCard key={i} {...p} />
+            <InfoCard key={i} {...p} index={i} />
           ))}
         </Grid>
       </Container>

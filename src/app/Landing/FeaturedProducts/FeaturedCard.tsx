@@ -1,28 +1,61 @@
 "use client";
 
-import { Box, Typography, Chip, Stack, Button } from "@mui/material";
+import { useRef } from "react";
+import { Box, Typography, Chip, Stack } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { FeaturedValve } from "./featuredValveData";
 
 export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
+  const cardRef = useRef<HTMLAnchorElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(900px) rotateX(${(-py * 8).toFixed(2)}deg) rotateY(${(px * 8).toFixed(2)}deg) translateY(-6px)`;
+  };
+
+  const handleMouseLeave = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = "";
+  };
+
   return (
     <Box
+      component={Link}
+      href={valve.href}
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       sx={{
         flex: "0 0 auto",
-        width: { xs: 260, sm: 300 },
+        width: { xs: 280, sm: 340 },
+        height: 480,
+        display: "flex",
+        flexDirection: "column",
         bgcolor: "#fff",
         border: "1px solid",
         borderColor: "rgba(0,0,0,0.08)",
         borderRadius: "4px",
         overflow: "hidden",
-        transition: "border-color 0.2s ease, transform 0.2s ease",
+        textDecoration: "none",
+        color: "inherit",
+        cursor: "pointer",
+        transition: "border-color 0.2s ease, transform 0.15s ease, box-shadow 0.3s ease",
+        willChange: "transform",
         "&:hover": {
           borderColor: "primary.main",
-          transform: "translateY(-4px)",
+          boxShadow: "0 24px 48px rgba(0,0,0,0.16)",
         },
         "&:hover .mars-card-divider": {
           borderColor: "primary.main",
+        },
+        "&:hover .mars-card-cta": {
+          textDecoration: "underline",
         },
       }}
     >
@@ -30,7 +63,8 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
         sx={{
           position: "relative",
           width: "100%",
-          height: 180,
+          height: 220,
+          flexShrink: 0,
           bgcolor: "#fff",
         }}
       >
@@ -64,6 +98,9 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
         className="mars-card-divider"
         sx={{
           p: 2.5,
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
           borderTop: "1px solid",
           borderColor: "rgba(0,0,0,0.08)",
           transition: "border-color 0.2s ease",
@@ -89,6 +126,10 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
             fontWeight: 700,
             color: "text.primary",
             mb: 1,
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
           }}
         >
           {valve.title}
@@ -100,6 +141,10 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
             color: "text.secondary",
             mb: 1.5,
             lineHeight: 1.5,
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
           }}
         >
           {valve.description}
@@ -127,22 +172,45 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
           ))}
         </Stack>
 
-        <Button
-          component={Link}
-          href={valve.href}
-          size="small"
+        <Box
           sx={{
-            color: "primary.main",
-            fontWeight: 700,
-            textTransform: "none",
-            p: 0,
-            minWidth: 0,
-            cursor: "inherit",
-            "&:hover": { bgcolor: "transparent", textDecoration: "underline" },
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            pt: 1.5,
+            mt: "auto",
+            borderTop: "1px solid rgba(0,0,0,0.06)",
           }}
         >
-          View Series →
-        </Button>
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "0.65rem",
+                color: "text.secondary",
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
+              }}
+            >
+              From
+            </Typography>
+            <Typography
+              sx={{ fontSize: "1.15rem", fontWeight: 800, color: "text.primary" }}
+            >
+              £{valve.price}
+            </Typography>
+          </Box>
+
+          <Typography
+            className="mars-card-cta"
+            sx={{
+              color: "primary.main",
+              fontWeight: 700,
+              fontSize: "0.85rem",
+            }}
+          >
+            View &amp; Buy →
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

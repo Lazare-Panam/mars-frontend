@@ -1,70 +1,185 @@
-'use client';
+"use client";
 
-import { Box, Typography } from '@mui/material';
-import { keyframes } from '@mui/material/styles';
-import FeaturedCard from './FeaturedCard';
-import { FEATURED_VALVES } from './featuredValveData';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Box, Typography, IconButton } from "@mui/material";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import FeaturedCard from "./FeaturedCard";
+import { FEATURED_VALVES } from "./featuredValveData";
+import Reveal from "@/Common/Reveal";
 
-const scroll = keyframes`
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-`;
+const CARD_GAP = 24;
+const AUTOPLAY_MS = 3200;
+
+const arrowBtnSx = {
+  width: 40,
+  height: 40,
+  border: "1px solid",
+  borderColor: "primary.main",
+  borderRadius: "2px",
+  color: "primary.main",
+  transition: "background-color 0.2s ease, color 0.2s ease",
+  "&:hover": {
+    bgcolor: "primary.main",
+    color: "#fff",
+  },
+} as const;
 
 export default function FeaturedProducts() {
-  // duplicate the array so the loop is seamless
-  const track = [...FEATURED_VALVES, ...FEATURED_VALVES];
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const isDragging = useRef(false);
+  const dragged = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartScroll = useRef(0);
+
+  const scrollByCard = useCallback((dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-card]");
+    const step = (card?.offsetWidth ?? 320) + CARD_GAP;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el) return;
+    isDragging.current = true;
+    dragged.current = false;
+    dragStartX.current = e.clientX;
+    dragStartScroll.current = el.scrollLeft;
+    setPaused(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging.current) return;
+    const el = trackRef.current;
+    if (!el) return;
+    const dx = e.clientX - dragStartX.current;
+    if (Math.abs(dx) > 5) dragged.current = true;
+    el.scrollLeft = dragStartScroll.current - dx;
+  };
+
+  const endDrag = () => {
+    isDragging.current = false;
+    setPaused(false);
+  };
+
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (dragged.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      const el = trackRef.current;
+      if (!el) return;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollByCard(1);
+      }
+    }, AUTOPLAY_MS);
+    return () => clearInterval(id);
+  }, [paused, scrollByCard]);
 
   return (
-    <Box component="section" sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
-      <Box sx={{ maxWidth: '1280px', mx: 'auto', px: { xs: 3, md: 8 }, mb: 5 }}>
-        <Typography
-          component="span"
-          sx={{
-            color: 'primary.main',
-            letterSpacing: '0.3em',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-          }}
-        >
-          Featured Range
-        </Typography>
-        <Typography
-          component="h2"
-          sx={{
-            fontSize: { xs: '1.75rem', md: '2.5rem' },
-            fontWeight: 800,
-            color: 'text.primary',
-            mt: 1,
-          }}
-        >
-          Built for every line, every condition.
-        </Typography>
-      </Box>
-
-      <Box
-        sx={{
-          width: '100%',
-          overflow: 'hidden',
-          maskImage:
-            'linear-gradient(90deg, transparent 0%, #000 5%, #000 95%, transparent 100%)',
-        }}
-      >
+    <Box component="section" sx={{ py: { xs: 6, md: 10 }, bgcolor: "background.default" }}>
+      <Reveal>
         <Box
           sx={{
-            display: 'flex',
-            gap: 3,
-            width: 'max-content',
-            px: 3,
-            py: 2,
-            animation: `${scroll} 35s linear infinite`,
-            '&:hover': { animationPlayState: 'paused' },
+            maxWidth: "1280px",
+            mx: "auto",
+            px: { xs: 3, md: 8 },
+            mb: 5,
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 2,
           }}
         >
-          {track.map((valve, i) => (
-            <FeaturedCard key={`${valve.code}-${i}`} valve={valve} />
-          ))}
+          <Box>
+            <Typography
+              component="span"
+              sx={{
+                color: "primary.main",
+                letterSpacing: "0.3em",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+              }}
+            >
+              Featured Range
+            </Typography>
+            <Typography
+              component="h2"
+              sx={{
+                fontSize: { xs: "1.75rem", md: "2.5rem" },
+                fontWeight: 800,
+                color: "text.primary",
+                mt: 1,
+              }}
+            >
+              Built for every line, every condition.
+            </Typography>
+          </Box>
+
+          <Box sx={{ display: { xs: "none", sm: "flex" }, gap: 1 }}>
+            <IconButton
+              onClick={() => scrollByCard(-1)}
+              aria-label="Previous products"
+              sx={arrowBtnSx}
+            >
+              <ArrowBackIosNewIcon sx={{ fontSize: 16 }} />
+            </IconButton>
+            <IconButton
+              onClick={() => scrollByCard(1)}
+              aria-label="Next products"
+              sx={arrowBtnSx}
+            >
+              <ArrowForwardIosIcon sx={{ fontSize: 16 }} />
+            </IconButton>
+          </Box>
         </Box>
+      </Reveal>
+
+      <Box
+        ref={trackRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => {
+          setPaused(false);
+          endDrag();
+        }}
+        onTouchStart={() => setPaused(true)}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onClickCapture={handleClickCapture}
+        sx={{
+          display: "flex",
+          gap: `${CARD_GAP}px`,
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+          px: { xs: 3, md: 8 },
+          pb: 2,
+          cursor: "grab",
+          userSelect: "none",
+          "&:active": { cursor: "grabbing" },
+          "&::-webkit-scrollbar": { display: "none" },
+          scrollbarWidth: "none",
+        }}
+      >
+        {FEATURED_VALVES.map((valve) => (
+          <Box key={valve.code} data-card sx={{ scrollSnapAlign: "start" }}>
+            <FeaturedCard valve={valve} />
+          </Box>
+        ))}
       </Box>
     </Box>
   );

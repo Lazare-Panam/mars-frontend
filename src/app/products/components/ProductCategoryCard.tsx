@@ -26,17 +26,23 @@ export default function ProductCategoryCard({ label, description, image, href }:
         borderColor: 'rgba(0,0,0,0.08)',
         borderRadius: '6px',
         overflow: 'hidden',
-        transition: 'box-shadow 0.2s ease, transform 0.2s ease',
-        '&:hover': { boxShadow: '0 12px 32px rgba(0,0,0,0.10)', transform: 'translateY(-2px)' },
+        transition: 'border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
+        '&:hover': {
+          borderColor: 'primary.main',
+          transform: 'translateY(-4px)',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+        },
+        '&:hover .product-thumb-img': { transform: 'scale(1.06)' },
       }}
     >
       {/* Image area — white background */}
-      <Box sx={{ position: 'relative', pt: '65%', bgcolor: '#fff' }}>
+      <Box sx={{ position: 'relative', pt: '65%', bgcolor: '#fff', overflow: 'hidden' }}>
         <Image
           src={image}
           alt={label}
           fill
-          style={{ objectFit: 'contain', padding: '32px' }}
+          className="product-thumb-img"
+          style={{ objectFit: 'contain', padding: '32px', transition: 'transform 0.5s ease' }}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </Box>

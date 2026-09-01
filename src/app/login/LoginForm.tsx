@@ -13,9 +13,11 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import Grow from "@mui/material/Grow";
 import NextLink from "next/link";
 import { useLogin } from "@/api/useAuth";
 import axios from "axios";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 const ERROR_SOFT = "#B3453A";
 const ERROR_SOFT_BG = "rgba(179, 69, 58, 0.06)";
@@ -24,11 +26,15 @@ const fieldSx = {
   "& .MuiOutlinedInput-root": {
     backgroundColor: "#F4F4F4",
     borderRadius: 0,
+    transition: "box-shadow 0.2s ease",
     "& fieldset": { borderColor: "transparent" },
     "&.Mui-error": {
       backgroundColor: ERROR_SOFT_BG,
       "& fieldset": { borderColor: ERROR_SOFT },
     },
+  },
+  "& .MuiOutlinedInput-root.Mui-focused": {
+    boxShadow: "0 0 0 4px rgba(231,57,15,0.12)",
   },
   "& .MuiFormHelperText-root": { fontWeight: 600, ml: 0 },
   "& .MuiFormHelperText-root.Mui-error": { color: ERROR_SOFT },
@@ -132,7 +138,7 @@ export default function LoginForm() {
       </Typography>
 
       <Box component="form" onSubmit={handleSubmit} noValidate>
-        {formError && (
+        <Grow in={Boolean(formError)} unmountOnExit>
           <Typography
             variant="body2"
             sx={{
@@ -146,7 +152,7 @@ export default function LoginForm() {
           >
             {formError}
           </Typography>
-        )}
+        </Grow>
 
         <TextField
           label="Email"
@@ -194,18 +200,29 @@ export default function LoginForm() {
           </MuiLink>
         </Box> */}
 
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          size="large"
-          disabled={isPending}
-          endIcon={!isPending && <ChevronRightIcon />}
-          sx={{ borderRadius: 0, py: 1.75, fontWeight: 700, boxShadow: "none" }}
-        >
-          {isPending ? "SIGNING IN..." : "SIGN IN"}
-        </Button>
+        <Box sx={{ display: "grid" }}>
+          <MagneticWrap strength={0.15}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              size="large"
+              disabled={isPending}
+              endIcon={!isPending && <ChevronRightIcon />}
+              sx={{
+                borderRadius: 0,
+                py: 1.75,
+                fontWeight: 700,
+                boxShadow: "none",
+                transition: "transform 0.2s ease",
+                "&:hover": { transform: "translateY(-2px)" },
+              }}
+            >
+              {isPending ? "SIGNING IN..." : "SIGN IN"}
+            </Button>
+          </MagneticWrap>
+        </Box>
       </Box>
     </Box>
   );

@@ -9,6 +9,9 @@ import { Suspense } from "react";
 import CookieBanner from "@/Common/CookieBanner";
 import AppInsightsProvider from "@/Common/AppInsightsProvider";
 import ContactPrompt from "./Landing/ContactPrompt";
+import BackToTop from "@/Common/BackToTop";
+import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
+import ScrollProgress from "@/Common/ScrollProgress";
 
 const geistSans = Geist({
   variable: "--font-body",
@@ -86,6 +89,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeRegistry>
           <QueryProvider>
+            <ScrollProgress />
             <Suspense fallback={null}>
               <AppInsightsProvider />
             </Suspense>
@@ -94,6 +98,8 @@ export default function RootLayout({
             <Footer />
             <CookieBanner />
             <ContactPrompt />
+            <BackToTop />
+            <QuickEnquiryButton />
           </QueryProvider>
           <Script
             id="hs-script-loader"

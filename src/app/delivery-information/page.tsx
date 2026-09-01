@@ -19,6 +19,7 @@ import EventBusyIcon from "@mui/icons-material/EventBusy";
 import BlockIcon from "@mui/icons-material/Block";
 import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { alpha } from "@mui/material/styles";
+import Reveal from "@/Common/Reveal";
 
 const deliveryPoints = [
   {
@@ -70,42 +71,46 @@ const InfoCard = ({
   icon,
   title,
   text,
+  index,
 }: {
   icon: React.ReactNode;
   title: string;
   text: string;
+  index: number;
 }) => (
   <Grid size={{ xs: 12, sm: 6 }}>
-    <Stack
-      spacing={2}
-      sx={{
-        height: "100%",
-        p: 4,
-        bgcolor: "#fff",
-        border: "1px solid",
-        borderColor: "divider",
-        transition: "all 0.3s ease",
-        "&:hover": {
-          borderColor: "primary.main",
-          boxShadow: (theme) =>
-            `0 15px 30px ${alpha(theme.palette.primary.main, 0.12)}`,
-        },
-      }}
-    >
-      <Box sx={{ color: "primary.main", display: "flex" }}>{icon}</Box>
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: 800, color: "text.primary" }}
+    <Reveal delay={Math.min(index * 60, 300)}>
+      <Stack
+        spacing={2}
+        sx={{
+          height: "100%",
+          p: 4,
+          bgcolor: "#fff",
+          border: "1px solid",
+          borderColor: "divider",
+          transition: "all 0.3s ease",
+          "&:hover": {
+            borderColor: "primary.main",
+            boxShadow: (theme) =>
+              `0 15px 30px ${alpha(theme.palette.primary.main, 0.12)}`,
+          },
+        }}
       >
-        {title}
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ color: "text.secondary", lineHeight: 1.7 }}
-      >
-        {text}
-      </Typography>
-    </Stack>
+        <Box sx={{ color: "primary.main", display: "flex" }}>{icon}</Box>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontWeight: 800, color: "text.primary" }}
+        >
+          {title}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.secondary", lineHeight: 1.7 }}
+        >
+          {text}
+        </Typography>
+      </Stack>
+    </Reveal>
   </Grid>
 );
 
@@ -141,22 +146,24 @@ const DeliveryReturnsPage = () => {
             </Typography>
             <Box sx={{ width: 40, height: "1px", bgcolor: "primary.main" }} />
           </Stack>
-          <Typography
-            variant="h2"
-            sx={{ fontWeight: 800, fontSize: { xs: "2.25rem", md: "3rem" } }}
-          >
-            Delivery{" "}
-            <Box component="span" sx={{ color: "primary.main" }}>
-              & Returns
-            </Box>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
-          >
-            Everything you need to know about how we ship your order, and how to
-            return or exchange it if it's not right.
-          </Typography>
+          <Reveal>
+            <Typography
+              variant="h2"
+              sx={{ fontWeight: 800, fontSize: { xs: "2.25rem", md: "3rem" } }}
+            >
+              Delivery{" "}
+              <Box component="span" sx={{ color: "primary.main" }}>
+                & Returns
+              </Box>
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
+            >
+              Everything you need to know about how we ship your order, and how to
+              return or exchange it if it's not right.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
@@ -190,21 +197,23 @@ const DeliveryReturnsPage = () => {
       <Container maxWidth="lg" sx={{ py: 10 }}>
         {tab === 0 && (
           <Stack spacing={6}>
-            <Box sx={{ maxWidth: 700 }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
-                Delivery Information
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.7 }}
-              >
-                All orders are dispatched directly from our warehouse. Lead
-                times below apply to standard stock items.
-              </Typography>
-            </Box>
+            <Reveal>
+              <Box sx={{ maxWidth: 700 }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
+                  Delivery Information
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                >
+                  All orders are dispatched directly from our warehouse. Lead
+                  times below apply to standard stock items.
+                </Typography>
+              </Box>
+            </Reveal>
             <Grid container spacing={3}>
               {deliveryPoints.map((p, i) => (
-                <InfoCard key={i} {...p} />
+                <InfoCard key={i} {...p} index={i} />
               ))}
             </Grid>
           </Stack>
@@ -212,21 +221,23 @@ const DeliveryReturnsPage = () => {
 
         {tab === 1 && (
           <Stack spacing={6}>
-            <Box sx={{ maxWidth: 700 }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
-                Returns Policy
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{ color: "text.secondary", lineHeight: 1.7 }}
-              >
-                We want you to be happy with your order. If something isn't
-                right, here's how returns work.
-              </Typography>
-            </Box>
+            <Reveal>
+              <Box sx={{ maxWidth: 700 }}>
+                <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
+                  Returns Policy
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                >
+                  We want you to be happy with your order. If something isn't
+                  right, here's how returns work.
+                </Typography>
+              </Box>
+            </Reveal>
             <Grid container spacing={3}>
               {returnPoints.map((p, i) => (
-                <InfoCard key={i} {...p} />
+                <InfoCard key={i} {...p} index={i} />
               ))}
             </Grid>
           </Stack>

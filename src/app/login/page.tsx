@@ -10,6 +10,7 @@ import Link from "@mui/material/Link";
 import LoginForm from "./LoginForm";
 import RegisterInfo from "./RegisterInfo";
 import TermsModal from "./TermsModal";
+import Reveal from "@/Common/Reveal";
 
 export default function LoginPage() {
   const [showTerms, setShowTerms] = React.useState(false);
@@ -36,7 +37,9 @@ export default function LoginPage() {
         >
           {/* --- LEFT: LOGIN + LEGAL TEXT --- */}
           <Box sx={{ flex: 1, width: "100%", maxWidth: 480 }}>
-            <LoginForm />
+            <Reveal>
+              <LoginForm />
+            </Reveal>
 
             <Typography
               variant="caption"

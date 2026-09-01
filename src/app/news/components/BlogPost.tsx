@@ -11,6 +11,8 @@ import {
   AccordionDetails,
   Button,
 } from '@mui/material';
+import Reveal from '@/Common/Reveal';
+import MagneticWrap from '@/Common/MagneticWrap';
 
 interface BlogSection {
   heading: string | null;
@@ -106,23 +108,26 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
             mx: 'auto',
           }}
         >
-          <Chip
-            label={blog.category}
-            size="small"
-            sx={{ mb: 2, fontWeight: 600, borderRadius: 0, width: 'fit-content', bgcolor: 'primary.main', color: 'primary.contrastText' }}
-          />
-          <Typography variant="h2" sx={{ fontWeight: 700, color: '#fff', lineHeight: 1.15, mb: 1.5, fontSize: { xs: '1.8rem', md: '2.8rem' } }}>
-            {blog.title}
-          </Typography>
-          <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
-            {blog.date}
-          </Typography>
+          <Reveal>
+            <Chip
+              label={blog.category}
+              size="small"
+              sx={{ mb: 2, fontWeight: 600, borderRadius: 0, width: 'fit-content', bgcolor: 'primary.main', color: 'primary.contrastText' }}
+            />
+            <Typography variant="h2" sx={{ fontWeight: 700, color: '#fff', lineHeight: 1.15, mb: 1.5, fontSize: { xs: '1.8rem', md: '2.8rem' } }}>
+              {blog.title}
+            </Typography>
+            <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
+              {blog.date}
+            </Typography>
+          </Reveal>
         </Box>
       </Box>
 
       {/* Content */}
       <Container maxWidth="md" sx={{ py: { xs: 6, md: 10 } }}>
 
+        <Reveal>
         {/* Excerpt */}
         <Typography
           variant="h6"
@@ -209,6 +214,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
             <Chip key={t} label={t} size="small" variant="outlined" sx={{ borderRadius: 0, fontSize: '0.75rem' }} />
           ))}
         </Box>
+        </Reveal>
 
         <Divider sx={{ mb: 6 }} />
 
@@ -234,15 +240,17 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, flexShrink: 0 }}>
-              <Button
-                variant="contained"
-                color="primary"
-                component="a"
-                href={`mailto:${blog.cta.email}`}
-                sx={{ borderRadius: 0, px: 3, py: 1.25, fontWeight: 600, textTransform: 'none' }}
-              >
-                {blog.cta.email}
-              </Button>
+              <MagneticWrap>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component="a"
+                  href={`mailto:${blog.cta.email}`}
+                  sx={{ borderRadius: 0, px: 3, py: 1.25, fontWeight: 600, textTransform: 'none' }}
+                >
+                  {blog.cta.email}
+                </Button>
+              </MagneticWrap>
               <Button
                 variant="outlined"
                 component="a"

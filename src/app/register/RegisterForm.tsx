@@ -11,11 +11,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
+import Grow from "@mui/material/Grow";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import NextLink from "next/link";
 import TermsModal from "../login/TermsModal";
+import MagneticWrap from "@/Common/MagneticWrap";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import PercentOutlinedIcon from "@mui/icons-material/PercentOutlined";
@@ -29,11 +31,15 @@ const fieldSx = {
   "& .MuiOutlinedInput-root": {
     backgroundColor: "#F4F4F4",
     borderRadius: 0,
+    transition: "box-shadow 0.2s ease",
     "& fieldset": { borderColor: "transparent" },
     "&.Mui-error": {
       backgroundColor: ERROR_SOFT_BG,
       "& fieldset": { borderColor: ERROR_SOFT },
     },
+  },
+  "& .MuiOutlinedInput-root.Mui-focused": {
+    boxShadow: "0 0 0 4px rgba(231,57,15,0.12)",
   },
   "& .MuiFormHelperText-root": { fontWeight: 600, ml: 0 },
   "& .MuiFormHelperText-root.Mui-error": { color: ERROR_SOFT },
@@ -293,7 +299,7 @@ export default function RegisterForm() {
         </Box>
 
         <Box component="form" onSubmit={handleRegister} noValidate>
-          {formError && (
+          <Grow in={Boolean(formError)} unmountOnExit>
             <Typography
               variant="body2"
               sx={{
@@ -307,7 +313,7 @@ export default function RegisterForm() {
             >
               {formError}
             </Typography>
-          )}
+          </Grow>
 
           <Typography
             variant="subtitle2"
@@ -503,22 +509,26 @@ export default function RegisterForm() {
             >
               CANCEL
             </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={isPending}
-              endIcon={!isPending && <ChevronRightIcon />}
-              sx={{
-                borderRadius: 0,
-                px: 8,
-                py: 2,
-                fontWeight: 700,
-                boxShadow: "none",
-              }}
-            >
-              {isPending ? "CREATING..." : "CREATE ACCOUNT"}
-            </Button>
+            <MagneticWrap>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                disabled={isPending}
+                endIcon={!isPending && <ChevronRightIcon />}
+                sx={{
+                  borderRadius: 0,
+                  px: 8,
+                  py: 2,
+                  fontWeight: 700,
+                  boxShadow: "none",
+                  transition: "transform 0.2s ease",
+                  "&:hover": { transform: "translateY(-2px)" },
+                }}
+              >
+                {isPending ? "CREATING..." : "CREATE ACCOUNT"}
+              </Button>
+            </MagneticWrap>
           </Box>
 
           <Typography

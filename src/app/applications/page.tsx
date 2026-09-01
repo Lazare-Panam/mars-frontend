@@ -8,6 +8,7 @@ import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined";
 import DirectionsBoatFilledOutlinedIcon from "@mui/icons-material/DirectionsBoatFilledOutlined";
 import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
+import Reveal from "@/Common/Reveal";
 
 type Industry = {
   label: string;
@@ -90,45 +91,47 @@ export default function ApplicationsPage() {
         }}
       >
         <Container maxWidth="lg">
-          <Typography
-            component="span"
-            sx={{
-              color: "primary.light",
-              letterSpacing: "0.3em",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              textTransform: "uppercase",
-            }}
-          >
-            Applications
-          </Typography>
-          <Typography
-            component="h1"
-            sx={{
-              mt: 1.5,
-              fontSize: { xs: "2.25rem", md: "3.25rem" },
-              fontWeight: 800,
-              lineHeight: 1.15,
-              maxWidth: 760,
-            }}
-          >
-            Where MARS valves go to work
-          </Typography>
-          <Typography
-            sx={{
-              mt: 2,
-              color: "rgba(255,255,255,0.75)",
-              fontSize: "1.05rem",
-              lineHeight: 1.7,
-              maxWidth: 640,
-            }}
-          >
-            MARS Valve Co., Ltd is an ISO 9001 certified manufacturer of
-            stainless steel ball valves, tested to the API 607 4th Edition
-            fire-safe standard. That combination of build quality and fire-safe
-            certification is why MARS valves are specified across demanding
-            process and industrial environments worldwide.
-          </Typography>
+          <Reveal>
+            <Typography
+              component="span"
+              sx={{
+                color: "primary.light",
+                letterSpacing: "0.3em",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                textTransform: "uppercase",
+              }}
+            >
+              Applications
+            </Typography>
+            <Typography
+              component="h1"
+              sx={{
+                mt: 1.5,
+                fontSize: { xs: "2.25rem", md: "3.25rem" },
+                fontWeight: 800,
+                lineHeight: 1.15,
+                maxWidth: 760,
+              }}
+            >
+              Where MARS valves go to work
+            </Typography>
+            <Typography
+              sx={{
+                mt: 2,
+                color: "rgba(255,255,255,0.75)",
+                fontSize: "1.05rem",
+                lineHeight: 1.7,
+                maxWidth: 640,
+              }}
+            >
+              MARS Valve Co., Ltd is an ISO 9001 certified manufacturer of
+              stainless steel ball valves, tested to the API 607 4th Edition
+              fire-safe standard. That combination of build quality and fire-safe
+              certification is why MARS valves are specified across demanding
+              process and industrial environments worldwide.
+            </Typography>
+          </Reveal>
         </Container>
       </Box>
 
@@ -140,6 +143,7 @@ export default function ApplicationsPage() {
             const imageFirst = i % 2 === 0;
             return (
               <Grid key={industry.label} size={{ xs: 12 }}>
+                <Reveal y={32}>
                 <Box
                   sx={{
                     display: "flex",
@@ -149,6 +153,8 @@ export default function ApplicationsPage() {
                     },
                     gap: { xs: 3, md: 6 },
                     alignItems: "center",
+                    "&:hover .app-industry-img": { transform: "scale(1.06)" },
+                    "&:hover .app-industry-icon": { transform: "scale(1.1) rotate(-6deg)" },
                   }}
                 >
                   <Box
@@ -165,7 +171,8 @@ export default function ApplicationsPage() {
                       src={industry.image}
                       alt={industry.label}
                       fill
-                      style={{ objectFit: "cover" }}
+                      className="app-industry-img"
+                      style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
                       sizes="(max-width: 900px) 100vw, 50vw"
                     />
                   </Box>
@@ -180,6 +187,7 @@ export default function ApplicationsPage() {
                       }}
                     >
                       <Box
+                        className="app-industry-icon"
                         sx={{
                           width: 44,
                           height: 44,
@@ -189,6 +197,7 @@ export default function ApplicationsPage() {
                           alignItems: "center",
                           justifyContent: "center",
                           flexShrink: 0,
+                          transition: "transform 0.3s ease",
                         }}
                       >
                         <Icon sx={{ color: "primary.main", fontSize: 22 }} />
@@ -215,6 +224,7 @@ export default function ApplicationsPage() {
                     </Typography>
                   </Box>
                 </Box>
+                </Reveal>
               </Grid>
             );
           })}

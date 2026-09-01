@@ -14,6 +14,8 @@ import {
 import { ProductType, useProductCatalog } from "@/api/useProductCatalog";
 import ProductCard from "./ProductCard";
 import ProductDetailContent from "../../components/ProductDetailContent";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function ProductCatalogPageClient({ id }: { id: string }) {
   const router = useRouter();
@@ -83,88 +85,92 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
         }}
       >
         <Container maxWidth="lg">
-          {hero.overline && (
-            <Typography
-              variant="overline"
-              sx={{
-                color: "primary.main",
-                letterSpacing: 3,
-                fontSize: 11,
-                fontWeight: 700,
-              }}
-            >
-              {hero.overline}
-            </Typography>
-          )}
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: 38, md: 68 },
-              fontWeight: 900,
-              color: "#fff",
-              mt: 1,
-              mb: 3,
-              lineHeight: 1.08,
-              maxWidth: 750,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            {hero.title}
-            {hero.titleAccent && (
-              <>
-                <br />
-                <Box component="span" sx={{ color: "primary.main" }}>
-                  {hero.titleAccent}
-                </Box>
-              </>
-            )}
-          </Typography>
-          {hero.subtitle && (
-            <Typography
-              sx={{
-                fontSize: { xs: 16, md: 19 },
-                color: "rgba(255,255,255,0.88)",
-                maxWidth: 580,
-                mb: 5,
-                lineHeight: 1.75,
-              }}
-            >
-              {hero.subtitle}
-            </Typography>
-          )}
-          <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-            {hero.primaryCta && (
-              <Button
-                href={hero.primaryCta.link}
-                variant="contained"
-                size="large"
-                sx={{ borderRadius: 0, px: 4, py: 1.5, fontWeight: 700 }}
-              >
-                {hero.primaryCta.label}
-              </Button>
-            )}
-            {hero.secondaryCta && (
-              <Button
-                variant="outlined"
-                size="large"
-                href={hero.secondaryCta.link}
+          <Reveal>
+            {hero.overline && (
+              <Typography
+                variant="overline"
                 sx={{
-                  borderColor: "rgba(255,255,255,0.5)",
-                  color: "#fff",
-                  borderRadius: 0,
-                  px: 4,
-                  py: 1.5,
-                  fontWeight: 600,
-                  "&:hover": {
-                    bgcolor: "rgba(255,255,255,0.08)",
-                    borderColor: "#fff",
-                  },
+                  color: "primary.main",
+                  letterSpacing: 3,
+                  fontSize: 11,
+                  fontWeight: 700,
                 }}
               >
-                {hero.secondaryCta.label}
-              </Button>
+                {hero.overline}
+              </Typography>
             )}
-          </Box>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: { xs: 38, md: 68 },
+                fontWeight: 900,
+                color: "#fff",
+                mt: 1,
+                mb: 3,
+                lineHeight: 1.08,
+                maxWidth: 750,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {hero.title}
+              {hero.titleAccent && (
+                <>
+                  <br />
+                  <Box component="span" sx={{ color: "primary.main" }}>
+                    {hero.titleAccent}
+                  </Box>
+                </>
+              )}
+            </Typography>
+            {hero.subtitle && (
+              <Typography
+                sx={{
+                  fontSize: { xs: 16, md: 19 },
+                  color: "rgba(255,255,255,0.88)",
+                  maxWidth: 580,
+                  mb: 5,
+                  lineHeight: 1.75,
+                }}
+              >
+                {hero.subtitle}
+              </Typography>
+            )}
+            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+              {hero.primaryCta && (
+                <MagneticWrap>
+                  <Button
+                    href={hero.primaryCta.link}
+                    variant="contained"
+                    size="large"
+                    sx={{ borderRadius: 0, px: 4, py: 1.5, fontWeight: 700 }}
+                  >
+                    {hero.primaryCta.label}
+                  </Button>
+                </MagneticWrap>
+              )}
+              {hero.secondaryCta && (
+                <Button
+                  variant="outlined"
+                  size="large"
+                  href={hero.secondaryCta.link}
+                  sx={{
+                    borderColor: "rgba(255,255,255,0.5)",
+                    color: "#fff",
+                    borderRadius: 0,
+                    px: 4,
+                    py: 1.5,
+                    fontWeight: 600,
+                    "&:hover": {
+                      bgcolor: "rgba(255,255,255,0.08)",
+                      borderColor: "#fff",
+                    },
+                  }}
+                >
+                  {hero.secondaryCta.label}
+                </Button>
+              )}
+            </Box>
+          </Reveal>
         </Container>
       </Box>
 
@@ -301,14 +307,16 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
             </Typography>
           )}
           <Grid container spacing={3}>
-            {data.products.map((product) => (
+            {data.products.map((product, i) => (
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.id}>
-                <ProductCard
-                  {...product}
-                  onClick={(pid: string) =>
-                    router.push(`/products/${id}/${pid}`)
-                  }
-                />
+                <Reveal delay={Math.min(i * 60, 400)}>
+                  <ProductCard
+                    {...product}
+                    onClick={(pid: string) =>
+                      router.push(`/products/${id}/${pid}`)
+                    }
+                  />
+                </Reveal>
               </Grid>
             ))}
           </Grid>

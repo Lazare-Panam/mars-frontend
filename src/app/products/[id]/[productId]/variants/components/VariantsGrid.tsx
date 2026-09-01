@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
+import Reveal from "@/Common/Reveal";
 
 const BRAND = "#E7390F";
 const PAGE_SIZE = 12;
@@ -118,6 +119,16 @@ export function FeaturedCard({
         justifyContent: "center",
         textDecoration: "none",
         color: "inherit",
+        transition:
+          "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+        "&:hover": {
+          borderColor: "primary.main",
+          transform: "translateY(-4px)",
+          boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+        },
+        "&:hover .product-thumb-img": {
+          transform: "scale(1.06)",
+        },
       }}
     >
       <Box sx={{ position: "relative", flexShrink: 0 }}>
@@ -155,7 +166,8 @@ export function FeaturedCard({
               alt={variant.id}
               width={260}
               height={260}
-              style={{ objectFit: "contain" }}
+              className="product-thumb-img"
+              style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
             />
           )}
         </Box>
@@ -300,10 +312,15 @@ export function GridCard({
         overflow: "hidden",
         textDecoration: "none",
         color: "inherit",
-        transition: "box-shadow 0.15s ease, transform 0.15s ease",
+        transition:
+          "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
         "&:hover": {
-          boxShadow: `0 4px 16px ${alpha("#000", 0.08)}`,
+          borderColor: "primary.main",
+          boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
           transform: "translateY(-2px)",
+        },
+        "&:hover .product-thumb-img": {
+          transform: "scale(1.06)",
         },
       }}
     >
@@ -316,6 +333,7 @@ export function GridCard({
           justifyContent: "center",
           borderBottom: "1px solid rgba(0,0,0,0.06)",
           borderRadius: 0,
+          overflow: "hidden",
         }}
       >
         {image && (
@@ -324,7 +342,8 @@ export function GridCard({
             alt={variant.id}
             width={130}
             height={130}
-            style={{ objectFit: "contain" }}
+            className="product-thumb-img"
+            style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
           />
         )}
       </Box>
@@ -518,13 +537,15 @@ export default function VariantsGrid({
 
       {/* Featured (cheapest) */}
       {featured && (
-        <FeaturedCard
-          variant={featured}
-          productName={productName}
-          thumbnailImage={thumbnailImage}
-          categoryId={categoryId}
-          productId={productId}
-        />
+        <Reveal>
+          <FeaturedCard
+            variant={featured}
+            productName={productName}
+            thumbnailImage={thumbnailImage}
+            categoryId={categoryId}
+            productId={productId}
+          />
+        </Reveal>
       )}
 
       {/* Grid */}
@@ -536,15 +557,16 @@ export default function VariantsGrid({
           mb: 4,
         }}
       >
-        {pageItems.map((v) => (
-          <GridCard
-            key={v.id}
-            variant={v}
-            productName={productName}
-            thumbnailImage={thumbnailImage}
-            categoryId={categoryId}
-            productId={productId}
-          />
+        {pageItems.map((v, i) => (
+          <Reveal key={v.id} delay={Math.min(i * 50, 400)}>
+            <GridCard
+              variant={v}
+              productName={productName}
+              thumbnailImage={thumbnailImage}
+              categoryId={categoryId}
+              productId={productId}
+            />
+          </Reveal>
         ))}
       </Box>
 

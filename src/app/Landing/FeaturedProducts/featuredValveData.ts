@@ -6,67 +6,71 @@ export type FeaturedValve = {
   specs: string[];
   image: string;
   href: string;
+  price: string;
 };
 
+// Sourced from the live shop catalog (src/app/shop/page.tsx) — the cheapest
+// priced variant of each product, so what's shown here is buyable, in
+// stock, and matches what the shop page charges.
 export const FEATURED_VALVES: FeaturedValve[] = [
   {
-    code: 'MV-FS',
-    title: 'Fire-Safe Ball Valve',
-    subtitle: 'API 607 Fire-Safe Certified',
+    code: "V33",
+    title: "3/4/5-Way Ball Valve",
+    subtitle: "Multi-Port Flow Diversion",
     description:
-      'Maintains shut-off integrity under fire conditions — critical isolation for hazardous areas.',
-    specs: ['API 607', 'SS316'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/fire-safe.jpg',
-    href: '#',
+      "T-port configuration for flexible diversion, mixing or splitting service across multiple lines.",
+    specs: ['1/4"~1/2"', "CF8M"],
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-4-5.png",
+    href: "/products/ball-valves/three-four-five-way-ball-valve/variants/v33-123-1-4into1-2in-t-port-bare-shaft",
+    price: "161.70",
   },
   {
-    code: 'MV-HP',
-    title: 'High-Pressure Ball Valve',
-    subtitle: 'High-Pressure Series',
+    code: "V36SN",
+    title: "Sanitary Multi-Port Ball Valve",
+    subtitle: "T-Clamp / OD Tube End",
     description:
-      'Heavy-duty construction engineered for elevated pressure ratings and reliable isolation.',
-    specs: ['Up to 2000 PSI', 'Heavy-Duty'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/series-hp.jpg',
-    href: '#',
+      "Cavity filler seat design built for sanitary process lines — clean-in-place ready, SS316 body.",
+    specs: ['1/2"', "SS316"],
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/sanitary-ball-valves/multi-port-san.jpg",
+    href: "/products/ball-valves/sanitary-multi-port-ball-valve/variants/v36sn-1020-1-2in-cavity-filler-seat-w-handle",
+    price: "165.24",
   },
   {
-    code: 'MV-FL',
-    title: 'Flanged Ball Valve',
-    subtitle: 'Flanged End Connections',
+    code: "V20",
+    title: "Economical 2-Piece Ball Valve",
+    subtitle: "Full Port, 1000 PSI",
     description:
-      'Direct pipeline integration with standard flange face options for process plant service.',
-    specs: ['ANSI · PN', 'Full Bore'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/flanged.jpg',
-    href: '#',
+      "Reliable, cost-effective isolation for general service lines — PTFE seats, NPT/BSP/BSPT ends.",
+    specs: ["1000 PSI", "CF8M"],
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/eco-2.jpg",
+    href: "/products/ball-valves/economical-two-piece-ball-valve/variants/V20-20-1-4IN-W-O-LOCK",
+    price: "11.55",
   },
   {
-    code: 'MV-PFA',
-    title: 'PFA-Lined Ball Valve',
-    subtitle: 'Corrosion-Resistant Lining',
+    code: "V77",
+    title: "High Performance 3-Piece Ball Valve",
+    subtitle: "1000 PSI Rated",
     description:
-      'Full PFA lining protects against chemical attack while maintaining tight shut-off.',
-    specs: ['PFA Lined', 'Acid Service'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/pfa-lining.jpg',
-    href: '#',
+      "Three-piece design for easy in-line maintenance, with RPTFE/PTFE seats and SS316 stem.",
+    specs: ["1000 PSI", "SS316 Stem"],
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/hp-3.png",
+    href: "/products/ball-valves/high-performance-three-piece-ball-valve/variants/v77-1-4in-w-o-handle",
+    price: "27.72",
   },
   {
-    code: 'MV-3W',
-    title: 'Three-Way Ball Valve',
-    subtitle: 'Multi-Port Flow Diversion',
+    code: "V77SN",
+    title: "High Performance Sanitary Ball Valve",
+    subtitle: "T-Clamp End Connection",
     description:
-      'L-port and T-port configurations for flexible diversion, mixing or splitting service.',
-    specs: ['L-Port · T-Port', 'OEM'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/three-way.jpg',
-    href: '#',
-  },
-  {
-    code: 'MV-VP',
-    title: 'V-Port Ball Valve',
-    subtitle: 'Characterised V-Port Control',
-    description:
-      'Equal-percentage flow characteristics for precise throttling and process control.',
-    specs: ['Control Service', 'V-Port Ball'],
-    image: 'https://pblol2.blob.core.windows.net/mars-valves/categories/v-port.png',
-    href: '#',
+      "Sanitary-grade three-piece valve for hygienic process service — CF3M body, SS316L stem.",
+    specs: ['1/2"', "CF3M"],
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/sanitary-ball-valves/hp-san.png",
+    href: "/products/ball-valves/high-performance-sanitary-ball-valve/variants/v77sn-10-2a-1-2in-t-clamp-std-ptfe-seat",
+    price: "43.27",
   },
 ];

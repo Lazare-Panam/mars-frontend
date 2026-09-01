@@ -17,15 +17,22 @@ export default function ProductCard({
   return (
     <Card variant="outlined" sx={{
       borderRadius: 0, height: "100%", display: "flex", flexDirection: "column",
-      border: "1px solid #e8e8e8", transition: "box-shadow 0.2s",
-      "&:hover": { boxShadow: (t) => `0 4px 24px ${t.palette.primary.main}1A` },
+      border: "1px solid #e8e8e8",
+      transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+      "&:hover": {
+        borderColor: "primary.main",
+        transform: "translateY(-4px)",
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      },
+      "&:hover .product-thumb-img": { transform: "scale(1.06)" },
     }}>
       <Box sx={{
         display: "flex", justifyContent: "center", alignItems: "center",
         bgcolor: "background.paper", p: 3, borderBottom: "1px solid #f0f0f0", minHeight: 220,
+        overflow: "hidden",
       }}>
-        <CardMedia component="img" image={thumbnailImage} alt={name}
-          sx={{ width: "100%", maxWidth: 200, height: 180, objectFit: "contain" }} />
+        <CardMedia component="img" image={thumbnailImage} alt={name} className="product-thumb-img"
+          sx={{ width: "100%", maxWidth: 200, height: 180, objectFit: "contain", transition: "transform 0.5s ease" }} />
       </Box>
 
       <CardContent sx={{ flexGrow: 1, p: 3 }}>

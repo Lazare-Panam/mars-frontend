@@ -8,9 +8,12 @@ import {
   TextField,
   Alert,
   CircularProgress,
+  Grow,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useSubmitEnquiry } from "@/api/useSubmitEnquiry";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 interface EnquiryFormData {
   userName: string;
@@ -29,8 +32,14 @@ const initialFormState: EnquiryFormData = {
 };
 
 const fieldSx = {
+  "& .MuiOutlinedInput-root": {
+    transition: "box-shadow 0.2s ease",
+  },
   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: "primary.main",
+  },
+  "& .MuiOutlinedInput-root.Mui-focused": {
+    boxShadow: "0 0 0 4px rgba(231,57,15,0.12)",
   },
   "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
 };
@@ -83,7 +92,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#FAF6F4" }}>
+    <Box id="contact" component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#FAF6F4" }}>
       <Box
         sx={{
           maxWidth: "1280px",
@@ -96,6 +105,7 @@ export default function ContactCTA() {
         }}
       >
         {/* left: copy */}
+        <Reveal>
         <Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
             <Box sx={{ width: 32, height: 1, bgcolor: "primary.main" }} />
@@ -177,8 +187,10 @@ export default function ContactCTA() {
             </Box>
           </Box>
         </Box>
+        </Reveal>
 
         {/* right: contact form card */}
+        <Reveal delay={150} y={32}>
         <Box
           sx={{
             bgcolor: "#fff",
@@ -189,16 +201,16 @@ export default function ContactCTA() {
             boxShadow: "0 12px 32px rgba(0,0,0,0.06)",
           }}
         >
-          {isSuccess && (
+          <Grow in={isSuccess} unmountOnExit>
             <Alert severity="success" sx={{ mb: 2.5 }} onClose={reset}>
               Thanks — your enquiry has been received.
             </Alert>
-          )}
-          {isError && (
+          </Grow>
+          <Grow in={isError} unmountOnExit>
             <Alert severity="error" sx={{ mb: 2.5 }} onClose={reset}>
               Something went wrong. Please try again.
             </Alert>
-          )}
+          </Grow>
 
           <Box
             component="form"
@@ -269,31 +281,35 @@ export default function ContactCTA() {
               sx={fieldSx}
             />
 
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation
-              disabled={isPending}
-              endIcon={isPending ? undefined : <ArrowForwardIcon />}
-              sx={{
-                bgcolor: "primary.main",
-                color: "#fff",
-                fontWeight: 700,
-                borderRadius: "2px",
-                py: 1.3,
-                textTransform: "none",
-                fontSize: "0.95rem",
-                "&:hover": { bgcolor: "primary.dark" },
-              }}
-            >
-              {isPending ? (
-                <CircularProgress size={22} color="inherit" />
-              ) : (
-                "Send Enquiry"
-              )}
-            </Button>
+            <MagneticWrap strength={0.15}>
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation
+                disabled={isPending}
+                endIcon={isPending ? undefined : <ArrowForwardIcon />}
+                sx={{
+                  bgcolor: "primary.main",
+                  color: "#fff",
+                  fontWeight: 700,
+                  borderRadius: "2px",
+                  py: 1.3,
+                  textTransform: "none",
+                  fontSize: "0.95rem",
+                  transition: "background-color 0.2s ease, transform 0.2s ease",
+                  "&:hover": { bgcolor: "primary.dark", transform: "translateY(-2px)" },
+                }}
+              >
+                {isPending ? (
+                  <CircularProgress size={22} color="inherit" />
+                ) : (
+                  "Send Enquiry"
+                )}
+              </Button>
+            </MagneticWrap>
           </Box>
         </Box>
+        </Reveal>
       </Box>
     </Box>
   );

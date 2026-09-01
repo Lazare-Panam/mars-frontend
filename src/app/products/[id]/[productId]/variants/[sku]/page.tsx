@@ -9,6 +9,8 @@ import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useProductVariants, ProductVariant } from "@/api/useProductVariants";
 import { GridCard, buildTitle, parsePrice } from "../components/VariantsGrid";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 const BRAND = "#E7390F";
 const RELATED_COUNT = 4;
@@ -77,20 +79,28 @@ export default function VariantDetailPage({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              overflow: "hidden",
+              "&:hover .product-thumb-img": {
+                transform: "scale(1.06)",
+              },
             }}
           >
-            {image && (
-              <Image
-                src={image}
-                alt={variant.id}
-                width={340}
-                height={340}
-                style={{ objectFit: "contain" }}
-              />
-            )}
+            <Reveal>
+              {image && (
+                <Image
+                  src={image}
+                  alt={variant.id}
+                  width={340}
+                  height={340}
+                  className="product-thumb-img"
+                  style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
+                />
+              )}
+            </Reveal>
           </Box>
 
           {/* Details */}
+          <Reveal delay={100}>
           <Box sx={{ flex: 1, minWidth: 0 }}>
             <Typography sx={{ fontSize: "0.75rem", fontWeight: 900, letterSpacing: "0.08em", color: BRAND, textTransform: "uppercase", mb: 1.5 }}>
               {data.name}
@@ -136,36 +146,45 @@ export default function VariantDetailPage({
               <Typography sx={{ fontWeight: 800, fontSize: "2rem", color: "text.primary" }}>
                 {price ? `£${price}` : "Login to view price"}
               </Typography>
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 19 }} />}
-                sx={{
-                  textTransform: "none",
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  borderRadius: 0,
-                  bgcolor: BRAND,
-                  boxShadow: "none",
-                  px: 4,
-                  "&:hover": { bgcolor: "#A8270A", boxShadow: "none" },
-                }}
-              >
-                Request Quote
-              </Button>
+              <MagneticWrap>
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<RequestQuoteOutlinedIcon sx={{ fontSize: 19 }} />}
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: 700,
+                    fontSize: "0.95rem",
+                    borderRadius: 0,
+                    bgcolor: BRAND,
+                    boxShadow: "none",
+                    px: 4,
+                    "&:hover": {
+                      bgcolor: "#A8270A",
+                      boxShadow: "none",
+                      transform: "translateY(-2px)",
+                    },
+                  }}
+                >
+                  Request Quote
+                </Button>
+              </MagneticWrap>
             </Box>
           </Box>
+          </Reveal>
         </Box>
 
         {/* Related products */}
         {related.length > 0 && (
           <Box sx={{ mt: { xs: 6, md: 8 } }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2.5 }}>
-              <Box sx={{ width: 3, height: 18, bgcolor: BRAND }} />
-              <Typography sx={{ fontSize: "1.1rem", fontWeight: 800 }}>
-                Related Products
-              </Typography>
-            </Box>
+            <Reveal>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2.5 }}>
+                <Box sx={{ width: 3, height: 18, bgcolor: BRAND }} />
+                <Typography sx={{ fontSize: "1.1rem", fontWeight: 800 }}>
+                  Related Products
+                </Typography>
+              </Box>
+            </Reveal>
             <Box
               sx={{
                 display: "grid",
@@ -173,15 +192,16 @@ export default function VariantDetailPage({
                 gap: 2,
               }}
             >
-              {related.map((v: ProductVariant) => (
-                <GridCard
-                  key={v.id}
-                  variant={v}
-                  productName={data.name}
-                  thumbnailImage={data.thumbnailImage}
-                  categoryId={id}
-                  productId={productId}
-                />
+              {related.map((v: ProductVariant, i: number) => (
+                <Reveal key={v.id} delay={Math.min(i * 50, 400)}>
+                  <GridCard
+                    variant={v}
+                    productName={data.name}
+                    thumbnailImage={data.thumbnailImage}
+                    categoryId={id}
+                    productId={productId}
+                  />
+                </Reveal>
               ))}
             </Box>
           </Box>

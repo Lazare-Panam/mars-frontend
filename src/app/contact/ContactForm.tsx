@@ -10,8 +10,11 @@ import {
   Alert,
   CircularProgress,
   Grid,
+  Grow,
 } from '@mui/material';
 import { useSubmitEnquiry } from '@/api/useSubmitEnquiry';
+import Reveal from '@/Common/Reveal';
+import MagneticWrap from '@/Common/MagneticWrap';
 
 interface EnquiryFormData {
   userName: string;
@@ -27,6 +30,15 @@ const initialFormState: EnquiryFormData = {
   userCompany: '',
   userCountry: '',
   message: '',
+};
+
+const fieldSx = {
+  '& .MuiOutlinedInput-root': {
+    transition: 'box-shadow 0.2s ease',
+  },
+  '& .MuiOutlinedInput-root.Mui-focused': {
+    boxShadow: '0 0 0 4px rgba(231,57,15,0.12)',
+  },
 };
 
 export default function ContactForm() {
@@ -83,24 +95,27 @@ export default function ContactForm() {
         borderRadius: 2,
       }}
     >
-      <Typography variant="h4" sx={{ fontWeight: 'bold' }} gutterBottom>
-        Get in touch
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-        Send us your technical enquiry and our team will get back to you shortly.
-      </Typography>
+      <Reveal>
+        <Typography variant="h4" sx={{ fontWeight: 'bold' }} gutterBottom>
+          Get in touch
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+          Send us your technical enquiry and our team will get back to you shortly.
+        </Typography>
+      </Reveal>
 
-      {isSuccess && (
+      <Grow in={isSuccess} unmountOnExit>
         <Alert severity="success" sx={{ mb: 3 }} onClose={reset}>
           Thanks — your enquiry has been received. We'll be in touch soon.
         </Alert>
-      )}
-      {isError && (
+      </Grow>
+      <Grow in={isError} unmountOnExit>
         <Alert severity="error" sx={{ mb: 3 }} onClose={reset}>
           Something went wrong submitting your enquiry. Please try again.
         </Alert>
-      )}
+      </Grow>
 
+      <Reveal delay={150}>
       <Box component="form" onSubmit={handleSubmit} noValidate>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -112,6 +127,7 @@ export default function ContactForm() {
               error={!!errors.userName}
               helperText={errors.userName}
               disabled={isPending}
+              sx={fieldSx}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -124,6 +140,7 @@ export default function ContactForm() {
               error={!!errors.userEmail}
               helperText={errors.userEmail}
               disabled={isPending}
+              sx={fieldSx}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -135,6 +152,7 @@ export default function ContactForm() {
               error={!!errors.userCompany}
               helperText={errors.userCompany}
               disabled={isPending}
+              sx={fieldSx}
             />
           </Grid>
           <Grid size={{ xs: 12, md: 6 }}>
@@ -144,6 +162,7 @@ export default function ContactForm() {
               value={formData.userCountry}
               onChange={handleChange('userCountry')}
               disabled={isPending}
+              sx={fieldSx}
             />
           </Grid>
           <Grid size={12}>
@@ -157,23 +176,37 @@ export default function ContactForm() {
               multiline
               minRows={5}
               disabled={isPending}
+              sx={fieldSx}
             />
           </Grid>
           <Grid size={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-              fullWidth
-              disabled={isPending}
-              sx={{ py: 1.5 }}
-            >
-              {isPending ? <CircularProgress size={24} color="inherit" /> : 'Submit Enquiry'}
-            </Button>
+            {/* flex column wrapper: MagneticWrap renders an inline-block Box,
+                which would let the fullWidth Button's width:100% collapse to
+                its intrinsic size. As a flex item in a column flex container
+                it gets blockified and stretched to full width instead. */}
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <MagneticWrap strength={0.15}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  fullWidth
+                  disabled={isPending}
+                  sx={{
+                    py: 1.5,
+                    transition: 'background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
+                    '&:hover': { transform: 'translateY(-2px)' },
+                  }}
+                >
+                  {isPending ? <CircularProgress size={24} color="inherit" /> : 'Submit Enquiry'}
+                </Button>
+              </MagneticWrap>
+            </Box>
           </Grid>
         </Grid>
       </Box>
+      </Reveal>
     </Paper>
   );
 }

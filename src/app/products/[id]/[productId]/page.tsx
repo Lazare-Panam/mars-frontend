@@ -17,6 +17,8 @@ import ProductSpecsTable from "./components/ProductSpecsTable";
 import ProductFeatureChips from "./components/ProductFeatureChips";
 import ProductApplicationsList from "./components/ProductApplicationsList";
 import RelatedProducts from "./components/RelatedProducts";
+import Reveal from "@/Common/Reveal";
+import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function ProductDetailPage({
   params,
@@ -72,9 +74,12 @@ export default function ProductDetailPage({
       >
         <Grid container spacing={{ xs: 6, md: 10 }}>
           <Grid size={{ xs: 12, md: 5 }}>
-            <ProductDetailImage image={data.image} name={data.name} />
+            <Reveal>
+              <ProductDetailImage image={data.image} name={data.name} />
+            </Reveal>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
+            <Reveal delay={100}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <Typography
                 sx={{
@@ -89,26 +94,33 @@ export default function ProductDetailPage({
               <ProductSpecsTable specs={data.specs} />
               <ProductFeatureChips features={data.features} />
               <ProductApplicationsList applications={data.applications} />
-              <Button
-                onClick={() =>
-                  router.push(`/products/${id}/${productId}/variants`)
-                }
-                variant="contained"
-                sx={{
-                  alignSelf: "flex-start",
-                  bgcolor: "primary.main",
-                  color: "#fff",
-                  fontWeight: 700,
-                  borderRadius: "4px",
-                  textTransform: "none",
-                  px: 3,
-                  py: 1.25,
-                  boxShadow: "none",
-                  "&:hover": { bgcolor: "primary.dark", boxShadow: "none" },
-                }}
-              >
-                View All Models
-              </Button>
+              <Box sx={{ alignSelf: "flex-start" }}>
+                <MagneticWrap>
+                  <Button
+                    onClick={() =>
+                      router.push(`/products/${id}/${productId}/variants`)
+                    }
+                    variant="contained"
+                    sx={{
+                      bgcolor: "primary.main",
+                      color: "#fff",
+                      fontWeight: 700,
+                      borderRadius: "4px",
+                      textTransform: "none",
+                      px: 3,
+                      py: 1.25,
+                      boxShadow: "none",
+                      "&:hover": {
+                        bgcolor: "primary.dark",
+                        boxShadow: "none",
+                        transform: "translateY(-2px)",
+                      },
+                    }}
+                  >
+                    View All Models
+                  </Button>
+                </MagneticWrap>
+              </Box>
               {data.datasheetId && (
                 <Button
                   component="a"
@@ -136,15 +148,18 @@ export default function ProductDetailPage({
                 </Button>
               )}
             </Box>
+            </Reveal>
           </Grid>
         </Grid>
-        <Box sx={{ mt: { xs: 8, md: 12 } }}>
-          <Divider sx={{ mb: { xs: 6, md: 8 } }} />
-          <RelatedProducts
-            catalogId={id}
-            productIds={data.relatedProducts ?? []}
-          />
-        </Box>
+        <Reveal>
+          <Box sx={{ mt: { xs: 8, md: 12 } }}>
+            <Divider sx={{ mb: { xs: 6, md: 8 } }} />
+            <RelatedProducts
+              catalogId={id}
+              productIds={data.relatedProducts ?? []}
+            />
+          </Box>
+        </Reveal>
       </Box>
     </Box>
   );
