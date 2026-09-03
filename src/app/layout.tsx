@@ -12,7 +12,7 @@ import ContactPrompt from "./Landing/ContactPrompt";
 import BackToTop from "@/Common/BackToTop";
 import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
 import ScrollProgress from "@/Common/ScrollProgress";
-
+/** */
 const geistSans = Geist({
   variable: "--font-body",
   subsets: ["latin"],
@@ -65,7 +65,7 @@ export default function RootLayout({
           seraph-accel-crit="1"
           data-cfasync="false"
           type="text/javascript"
-          src="https://cdn.seoplatform.io/injector.js?websiteId=27896"
+          src="https://cdn.seoplatform.io/injector.js?websiteId=28796"
         ></script>
         <script
           type="text/javascript"
@@ -100,6 +100,9 @@ export default function RootLayout({
             src="//js-eu1.hs-scripts.com/147618935.js"
             strategy="afterInteractive"
           />
+          
+          
+          
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="afterInteractive"
