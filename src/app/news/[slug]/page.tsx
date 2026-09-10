@@ -3,7 +3,7 @@ import BlogPost from "../components/BlogPost";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-const SITE_NAME = "Your Brand"; // <-- set this
+const SITE_NAME = "MARS Valvenok";
 
 export async function generateMetadata({
   params,
@@ -13,9 +13,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return {};
+  const title = blog.seoTitle ?? blog.title.split(":")[0].trim();
   return {
-    title: blog.title.split(":")[0].trim() + ` | ${SITE_NAME}`,
-    description: blog.excerpt,
+    title: `${title} | ${SITE_NAME}`,
+    description: blog.metaDescription ?? blog.excerpt,
+    alternates: { canonical: `/news/${slug}` },
   };
 }
 
@@ -27,7 +29,19 @@ export default async function BlogPage({
   const { slug } = await params;
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return notFound();
-  return <BlogPost blog={blog} />;
+  return (
+    <>
+      {blog.jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(blog.jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+      <BlogPost blog={blog} />
+    </>
+  );
 }
 
 export function generateStaticParams() {

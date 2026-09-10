@@ -36,14 +36,17 @@ interface BlogCta {
 export interface BlogData {
   slug: string;
   title: string;
+  seoTitle?: string;
   date: string;
   category: string;
   heroImage: string;
   excerpt: string;
+  metaDescription?: string;
   tags: string[];
   sections: BlogSection[];
   faq?: BlogFaq[];
   cta?: BlogCta;
+  jsonLd?: object;
 }
 
 const ChevronIcon = () => (
