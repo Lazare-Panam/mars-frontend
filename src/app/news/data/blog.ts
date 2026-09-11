@@ -214,6 +214,7 @@ export const blogs: BlogData[] = [
     slug: "actuated-ball-valves",
     title: "Actuated Ball Valve Packages",
     seoTitle: "Actuated Ball Valve Packages",
+    titleOverride: "Actuated Ball Valve Packages | MARS Valvenok UK Supply",
     date: "September 10, 2026",
     category: "Technical",
     heroImage:

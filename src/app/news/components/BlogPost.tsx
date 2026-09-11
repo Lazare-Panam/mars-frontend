@@ -37,6 +37,7 @@ export interface BlogData {
   slug: string;
   title: string;
   seoTitle?: string;
+  titleOverride?: string;
   date: string;
   category: string;
   heroImage: string;

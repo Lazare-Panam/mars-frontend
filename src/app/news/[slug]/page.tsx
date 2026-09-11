@@ -15,7 +15,7 @@ export async function generateMetadata({
   if (!blog) return {};
   const title = blog.seoTitle ?? blog.title.split(":")[0].trim();
   return {
-    title: `${title} | ${SITE_NAME}`,
+    title: blog.titleOverride ? { absolute: blog.titleOverride } : `${title} | ${SITE_NAME}`,
     description: blog.metaDescription ?? blog.excerpt,
     alternates: { canonical: `/news/${slug}` },
   };
