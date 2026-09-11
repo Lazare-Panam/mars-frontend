@@ -178,7 +178,7 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "Summary and next step",
-        body: `Actuated ball valves are the dependable way to automate isolation and control, provided they are sized from real torque data, built on ISO 5211 direct-mount interfaces to cut backlash, and documented to the certifications your project requires.\n\nFor packaged solutions and verified documentation, explore our actuated valve range or speak with technical sales for a matched assembly.`,
+        body: `Actuated ball valves are the dependable way to automate isolation and control, provided they are sized from real torque data, built on ISO 5211 direct-mount interfaces to cut backlash, and documented to the certifications your project requires.\n\nFor packaged solutions and verified documentation, explore our [actuated ball valve packages](/news/actuated-ball-valves) or see our [process control valve solutions](/news/control-valves) for modulating duty, or speak with technical sales for a matched assembly.`,
       },
     ],
     faq: [
@@ -234,11 +234,11 @@ export const blogs: BlogData[] = [
     sections: [
       {
         heading: "Engineered actuated ball valve solutions",
-        body: `An actuated ball valve from the MARS range is designed as a complete, field-ready package for remote, automated, or safety-critical isolation and control.\n\nTypical packages can include:\n\n• Direct-mount fire-safe ball valves (e.g. Series 88) for compact actuator mounting.\n• Electric actuators with manual override for safe local operation during maintenance.\n• Pneumatic rack-and-pinion actuators in double-acting or spring-return options.\n• Solenoid valves, limit switch boxes and other valve accessories to complete the automation loop.\n• Stainless steel and specialist alloys for corrosive, high-pressure, or high-temperature service.\n\nGenuine MARS automated packages are backed by manufacturer documentation, traceability, and technical support, helping engineers and buyers specify with confidence for oil and gas, chemical processing, power, water, marine, and general industrial applications.`,
+        body: `An actuated ball valve from the MARS range is designed as a complete, field-ready package for remote, automated, or safety-critical isolation and control.\n\nTypical packages can include:\n\n• Direct-mount fire-safe ball valves (e.g. Series 88) for compact actuator mounting.\n• Electric actuators with manual override for safe local operation during maintenance.\n• Pneumatic rack-and-pinion actuators in double-acting or spring-return options.\n• Solenoid valves, limit switch boxes and other valve accessories to complete the automation loop.\n• Stainless steel and specialist alloys for corrosive, high-pressure, or high-temperature service.\n\nGenuine MARS automated packages are backed by manufacturer documentation, traceability, and technical support, helping engineers and buyers specify with confidence for oil and gas, chemical processing, power, water, marine, and general industrial applications.\n\nNew to actuated valves? Start with our [actuated ball valve guide](/news/actuated-ball-valve-guide) for a walkthrough of how these assemblies work and how to size one.`,
       },
       {
         heading: "What to expect when specifying an actuated ball valve",
-        body: `MARS Valvenok supports both single-valve requirements and complete project supply. When you approach the team with an actuated ball valve enquiry, you can expect a structured, engineering-led process:\n\n1. Application review — the team will clarify process medium, pressure, temperature, required shut-off performance, end connections, line size, and whether fire-safe or specialist certification is required.\n\n2. Valve body and trim selection — based on your data, a suitable MARS body configuration is recommended, typically from the industrial ball valves range:\n• Two-piece or three-piece body designs.\n• Flanged or threaded end connections.\n• CF8M, CF3M, SS316/316L and other corrosion-resistant materials.\n• Options for high pressure ball valves and fire-safe construction where required.\n\n3. Seat and seal configuration — seat material (PTFE, RTFE, and other engineered options on specific series) is selected to match chemical compatibility, temperature, and cycling demands. Fire-safe configurations use soft seats with secondary metal sealing, as detailed in the fire-safe ranges.\n\n4. Actuator sizing and type — torque requirements, safety factors, operating speed, and available utilities are used to select between:\n• Electric actuators (for locations with power and remote signalling requirements).\n• Pneumatic rack-and-pinion actuators (using compressed air for fast, reliable stroking).\n• Spring-return configurations for fail-open or fail-closed safety positions.\nThese are drawn from the dedicated valve actuators range, including pneumatic valve actuators suitable for on/off and simple modulating duty.\n\n5. Automation and control interface — for integration into a wider control system or PLC, packages can incorporate:\n• Limit switch boxes for open/closed position feedback.\n• Solenoid valves for air control in pneumatic valve actuation systems.\n• Compatible accessories such as a digital valve positioner where a ball valve forms part of a wider process control valve strategy.\n\n6. Documentation and traceability — each genuine MARS actuated ball valve package is supplied with manufacturer documentation and traceability. Certification and test records can be provided to support project dossiers and compliance submissions.\n\nThroughout, the focus is on specifying to the level the application demands, not to the lowest available cost or minimal standard.`,
+        body: `MARS Valvenok supports both single-valve requirements and complete project supply. When you approach the team with an actuated ball valve enquiry, you can expect a structured, engineering-led process:\n\n1. Application review — the team will clarify process medium, pressure, temperature, required shut-off performance, end connections, line size, and whether fire-safe or specialist certification is required.\n\n2. Valve body and trim selection — based on your data, a suitable MARS body configuration is recommended, typically from the industrial ball valves range:\n• Two-piece or three-piece body designs.\n• Flanged or threaded end connections.\n• CF8M, CF3M, SS316/316L and other corrosion-resistant materials.\n• Options for high pressure ball valves and fire-safe construction where required.\n\n3. Seat and seal configuration — seat material (PTFE, RTFE, and other engineered options on specific series) is selected to match chemical compatibility, temperature, and cycling demands. Fire-safe configurations use soft seats with secondary metal sealing, as detailed in the fire-safe ranges.\n\n4. Actuator sizing and type — torque requirements, safety factors, operating speed, and available utilities are used to select between:\n• Electric actuators (for locations with power and remote signalling requirements).\n• Pneumatic rack-and-pinion actuators (using compressed air for fast, reliable stroking).\n• Spring-return configurations for fail-open or fail-closed safety positions.\nThese are drawn from the dedicated valve actuators range, including pneumatic valve actuators suitable for on/off and simple modulating duty.\n\n5. Automation and control interface — for integration into a wider control system or PLC, packages can incorporate:\n• Limit switch boxes for open/closed position feedback.\n• Solenoid valves for air control in pneumatic valve actuation systems.\n• Compatible accessories such as a digital valve positioner where a ball valve forms part of a wider [process control valve strategy](/news/control-valves).\n\n6. Documentation and traceability — each genuine MARS actuated ball valve package is supplied with manufacturer documentation and traceability. Certification and test records can be provided to support project dossiers and compliance submissions.\n\nThroughout, the focus is on specifying to the level the application demands, not to the lowest available cost or minimal standard.`,
       },
       {
         heading: "Electric and motorised ball valve options",
@@ -297,105 +297,32 @@ export const blogs: BlogData[] = [
       email: "sales@marsvalvenok.com",
       phone: "+44 7368 1379917",
     },
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebPage",
-          "@id": "https://www.marsvalvenok.com/news/actuated-ball-valves#webpage",
-          url: "https://www.marsvalvenok.com/news/actuated-ball-valves",
-          name: "Actuated ball valve",
-          description:
-            "MARS Valvenok supplies genuine MARS actuated ball valve packages, combining industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for demanding industrial service.",
-          inLanguage: "en-GB",
+    jsonLd: [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.marsvalvenok.com/news/actuated-ball-valves#webpage",
+        url: "https://www.marsvalvenok.com/news/actuated-ball-valves",
+        name: "Actuated ball valve",
+        description:
+          "MARS Valvenok supplies genuine MARS actuated ball valve packages, combining industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for demanding industrial service.",
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.marsvalvenok.com/news/actuated-ball-valves#service",
+        name: "Actuated ball valve packages",
+        description:
+          "Engineered actuated ball valve packages using genuine MARS ball valves with electric or pneumatic actuators, fire-safe options, and accessories for automated and safety-critical isolation and control in industrial applications.",
+        provider: {
+          "@type": "Organization",
+          name: "MARS Valvenok",
         },
-        {
-          "@type": "Service",
-          "@id": "https://www.marsvalvenok.com/news/actuated-ball-valves#service",
-          name: "Actuated ball valve packages",
-          description:
-            "Engineered actuated ball valve packages using genuine MARS ball valves with electric or pneumatic actuators, fire-safe options, and accessories for automated and safety-critical isolation and control in industrial applications.",
-          provider: {
-            "@type": "Organization",
-            name: "MARS Valvenok",
-          },
-          areaServed: [
-            { "@type": "Country", name: "United Kingdom" },
-            { "@type": "Place", name: "International" },
-          ],
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.marsvalvenok.com/news/actuated-ball-valves#faq",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "What is an actuated ball valve?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "An actuated ball valve is a ball valve operated by an electric or pneumatic actuator instead of a manual handle. The actuator rotates the ball to open or close the flow, allowing remote, automated, or safety-critical control in process and industrial systems.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Which industries use actuated ball valves in the UK?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "In the UK and internationally, MARS actuated ball valves are used across oil and gas, chemical processing, petrochemical, power generation, water treatment, marine and shipbuilding, industrial gas, OEM machinery, and general industry where reliable automated isolation is required.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How do I choose between an electric and pneumatic operated ball valve?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Selection typically depends on available utilities, response time, and safety requirements. Electric actuators suit locations with reliable power and control wiring. Pneumatic operated ball valve packages are preferred where compressed air is available, fast operation is needed, or fail-safe spring-return action is part of the safety design. The MARS Valvenok team will review your application and recommend a suitable configuration.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can I get a fire-safe actuated ball valve package in the UK?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. Fire-safe ball valve series from the MARS range are tested to API 607 and, on specific models such as Series 88, also to ISO 10497. These can be combined with suitable actuators and accessories to create complete actuated fire-safe assemblies for UK and international projects, subject to correct application specification.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Are documentation and certification provided with actuated valves?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Genuine MARS actuated valve packages are supplied with manufacturer documentation, certification references for the underlying valve series, and traceability information. This supports project quality dossiers, regulatory submissions, and internal standards compliance.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Do you supply single actuated ball valves, or only project quantities?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "MARS Valvenok supports both single-valve requirements and full project lists. Engineers can order a single actuated valve for a critical replacement, while procurement teams can work with the company to standardise packages across entire systems or facilities.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How quickly can actuated ball valve orders be delivered in the UK?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Standard stock items typically dispatch within 1–2 working days, with most UK deliveries arriving within 2–4 working days via courier. Lead times for special configurations or large project quantities will be confirmed at quotation and order stage.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can distributors source actuated valve packages from MARS Valvenok?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. The company actively works with established industrial valve distributors and flow-control specialists, offering them a comprehensive portfolio of ball valves, fire-safe options, actuation, and accessories supported by technical documentation and application support.",
-              },
-            },
-          ],
-        },
-      ],
-    },
+        areaServed: [
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Place", name: "International" },
+        ],
+      },
+    ],
   },
   {
     slug: "control-valves",
@@ -420,11 +347,11 @@ export const blogs: BlogData[] = [
     sections: [
       {
         heading: "Engineered process control using ball valves",
-        body: `MARS ball valves are designed for tough environments where a valve failure is not an option. For process control duties, the range includes:\n\n• One-piece, two-piece, three-piece and flanged ball valves for industrial pipelines.\n• Multi-port diversion and mixing options for process routing.\n• High-pressure and fire-safe series for hazardous and high-consequence lines.\n• Automated packages for remote and safety-critical operation.\n\nThese engineered process ball valves can be configured for on/off or throttling roles depending on the application, valve trim, and actuation method. Options such as the v-port ball valve provide characterised flow control where a more precise response is required than a standard bore ball valve.\n\nEvery genuine MARS valve supplied by MARS Valvenok comes with:\n\n• Manufacturer documentation and certification.\n• Clear traceability from order to installed valve.\n• Materials engineered for corrosive, high-pressure, or high-temperature service.\n• Fire-safe API 607 tested options for hazardous lines where required.`,
+        body: `MARS ball valves are designed for tough environments where a valve failure is not an option. For process control duties, the range includes:\n\n• One-piece, two-piece, three-piece and flanged ball valves for industrial pipelines.\n• Multi-port diversion and mixing options for process routing.\n• High-pressure and fire-safe series for hazardous and high-consequence lines.\n• Automated packages for remote and safety-critical operation.\n\nThese engineered process ball valves can be configured for on/off or throttling roles depending on the application, valve trim, and actuation method. Options such as the v-port ball valve provide characterised flow control where a more precise response is required than a standard bore ball valve.\n\nEvery genuine MARS valve supplied by MARS Valvenok comes with:\n\n• Manufacturer documentation and certification.\n• Clear traceability from order to installed valve.\n• Materials engineered for corrosive, high-pressure, or high-temperature service.\n• Fire-safe API 607 tested options for hazardous lines where required.\n\nNew to automated ball valves? See our [actuated ball valve guide](/news/actuated-ball-valve-guide) for a walkthrough of actuator types and sizing.`,
       },
       {
         heading: "What to expect when specifying a process control valve solution",
-        body: `MARS Valvenok focuses on helping engineers and buyers match each valve assembly to its real process conditions. A typical enquiry for a process control valve solution follows a clear path:\n\n1. Application briefing — you outline process medium, pressure, temperature, line size, required standards, and whether the duty is on/off or modulating.\n\n2. Valve and material selection — the team helps align body material (e.g. CF8M, CF3M, SS316/316L), seat material (PTFE, RTFE and specialist options on certain series), and end connections with the process data and plant standards.\n\n3. Control philosophy and actuation — for automatic control, MARS ball valves can be paired with pneumatic or electric actuation using the dedicated valve actuators range. Rack-and-pinion pneumatic options and electric units with manual override are available for remote or safety-critical service.\n\n4. Accessories and feedback — assemblies can be equipped with control valve accessories such as limit switch boxes, solenoid valves, and position feedback. Where digital feedback or finer control is required, a digital valve positioner can be specified on suitable actuated packages.\n\n5. Documentation and approval — once the configuration is agreed, you receive the technical documentation and certification required for project files, QA, and compliance checks.\n\n6. Build, test, and dispatch — valves and actuators are assembled and tested to the relevant standard. Standard stock items are dispatched from the warehouse in 1–2 working days, with typical UK delivery in 2–4 working days and tracking provided.`,
+        body: `MARS Valvenok focuses on helping engineers and buyers match each valve assembly to its real process conditions. A typical enquiry for a process control valve solution follows a clear path:\n\n1. Application briefing — you outline process medium, pressure, temperature, line size, required standards, and whether the duty is on/off or modulating.\n\n2. Valve and material selection — the team helps align body material (e.g. CF8M, CF3M, SS316/316L), seat material (PTFE, RTFE and specialist options on certain series), and end connections with the process data and plant standards.\n\n3. Control philosophy and actuation — for automatic control, MARS ball valves can be paired with pneumatic or electric actuation using the dedicated [valve actuators range](/news/actuated-ball-valves). Rack-and-pinion pneumatic options and electric units with manual override are available for remote or safety-critical service.\n\n4. Accessories and feedback — assemblies can be equipped with control valve accessories such as limit switch boxes, solenoid valves, and position feedback. Where digital feedback or finer control is required, a digital valve positioner can be specified on suitable actuated packages.\n\n5. Documentation and approval — once the configuration is agreed, you receive the technical documentation and certification required for project files, QA, and compliance checks.\n\n6. Build, test, and dispatch — valves and actuators are assembled and tested to the relevant standard. Standard stock items are dispatched from the warehouse in 1–2 working days, with typical UK delivery in 2–4 working days and tracking provided.`,
       },
       {
         heading: "Control valves, actuation, and automation",
@@ -479,104 +406,31 @@ export const blogs: BlogData[] = [
       email: "sales@marsvalvenok.com",
       phone: "+44 7368 1379917",
     },
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://www.marsvalvenok.com/#organization",
-          name: "MARS Valvenok",
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://www.marsvalvenok.com/news/control-valves#webpage",
-          url: "https://www.marsvalvenok.com/news/control-valves",
-          name: "Process control valve",
-          description:
-            "Process control valve solutions using genuine MARS ball valves, actuation and accessories for demanding industrial applications in the UK and overseas.",
-          mainEntity: { "@id": "https://www.marsvalvenok.com/news/control-valves#service" },
-          isPartOf: { "@id": "https://www.marsvalvenok.com/#organization" },
-        },
-        {
-          "@type": "Service",
-          "@id": "https://www.marsvalvenok.com/news/control-valves#service",
-          name: "Process control valve solutions",
-          description:
-            "Supply of genuine MARS industrial ball valves and ball-valve-based control assemblies with actuation, accessories, documentation and engineering support for process and industrial applications.",
-          provider: { "@id": "https://www.marsvalvenok.com/#organization" },
-          areaServed: [{ "@type": "Country", name: "United Kingdom" }],
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.marsvalvenok.com/news/control-valves#faqpage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: "Can a ball valve be used as a process control valve?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. While ball valves are widely used for on/off isolation, suitable designs and trims can be used for throttling and process control, particularly when combined with the right actuator and positioner. Options such as v-port ball valves provide more predictable control characteristics than a standard bore ball valve.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Do you supply process control valve packages in the UK?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. From its UK base, MARS Valvenok supplies ball valves, actuation, and accessories that can be combined into process control valve packages for sites across the United Kingdom. Standard stock dispatch is typically within 1–2 working days, subject to availability and configuration.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What information do I need to specify a process control valve?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Key data include process medium, pressure, temperature, line size, required certification, end connections, and whether the duty is on/off or modulating. With this information, the team can recommend a suitable MARS valve series, actuator type, and accessories.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can I get a process control valve solution shipped outside the UK?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. MARS Valvenok supplies internationally and supports overseas engineers and distributors who need documented, authorised ball valves and control assemblies. Delivery times vary by destination and customs, and indicative lead times are confirmed at order stage.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "What industries use your control valves and automated ball valves?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Applications span oil and gas, chemical processing, petrochemical, power generation, water and wastewater, marine, industrial gas, and general industrial machinery. The range is designed for hazardous, high-pressure, corrosive, and high-temperature environments where failure is not acceptable.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How do I verify that a process control valve assembly is genuine MARS?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Genuine MARS products carry the official MARS logo and are supplied with full manufacturer documentation and certification. MARS Valvenok is an authorised distributor and can provide traceability and paperwork to support QA and audit requirements.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Do you offer fire-safe options for process control valve duties?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. Fire-safe MARS ball valve series tested to API 607 are available for isolation and control on fire-risk lines, including applications in oil and gas, refining, chemical, and petrochemical service. Selection depends on line size, pressure class, materials, and required standards.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Can you support both single-valve and full project orders?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes. The company supplies everything from a single replacement valve to complete project packages, including industrial valve distributors who require documented, repeatable specifications for multiple sites.",
-              },
-            },
-          ],
-        },
-      ],
-    },
+    jsonLd: [
+      {
+        "@type": "Organization",
+        "@id": "https://www.marsvalvenok.com/#organization",
+        name: "MARS Valvenok",
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.marsvalvenok.com/news/control-valves#webpage",
+        url: "https://www.marsvalvenok.com/news/control-valves",
+        name: "Process control valve",
+        description:
+          "Process control valve solutions using genuine MARS ball valves, actuation and accessories for demanding industrial applications in the UK and overseas.",
+        mainEntity: { "@id": "https://www.marsvalvenok.com/news/control-valves#service" },
+        isPartOf: { "@id": "https://www.marsvalvenok.com/#organization" },
+      },
+      {
+        "@type": "Service",
+        "@id": "https://www.marsvalvenok.com/news/control-valves#service",
+        name: "Process control valve solutions",
+        description:
+          "Supply of genuine MARS industrial ball valves and ball-valve-based control assemblies with actuation, accessories, documentation and engineering support for process and industrial applications.",
+        provider: { "@id": "https://www.marsvalvenok.com/#organization" },
+        areaServed: [{ "@type": "Country", name: "United Kingdom" }],
+      },
+    ],
   },
 ];

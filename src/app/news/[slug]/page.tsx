@@ -14,11 +14,43 @@ export async function generateMetadata({
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return {};
   const title = blog.seoTitle ?? blog.title.split(":")[0].trim();
+  const fullTitle = blog.titleOverride ?? `${title} | ${SITE_NAME}`;
+  const description = blog.metaDescription ?? blog.excerpt;
   return {
-    title: blog.titleOverride ? { absolute: blog.titleOverride } : `${title} | ${SITE_NAME}`,
-    description: blog.metaDescription ?? blog.excerpt,
+    title: blog.titleOverride ? { absolute: fullTitle } : fullTitle,
+    description,
     alternates: { canonical: `/news/${slug}` },
+    openGraph: {
+      type: "article",
+      title: fullTitle,
+      description,
+      url: `/news/${slug}`,
+      images: [{ url: blog.heroImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+      images: [blog.heroImage],
+    },
   };
+}
+
+function buildJsonLd(blog: (typeof blogs)[number], slug: string) {
+  const graph = [...(blog.jsonLd ?? [])];
+  if (blog.faq && blog.faq.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `https://www.marsvalvenok.com/news/${slug}#faqpage`,
+      mainEntity: blog.faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
+  if (graph.length === 0) return null;
+  return { "@context": "https://schema.org", "@graph": graph };
 }
 
 export default async function BlogPage({
@@ -29,13 +61,14 @@ export default async function BlogPage({
   const { slug } = await params;
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return notFound();
+  const jsonLd = buildJsonLd(blog, slug);
   return (
     <>
-      {blog.jsonLd && (
+      {jsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(blog.jsonLd).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
       )}

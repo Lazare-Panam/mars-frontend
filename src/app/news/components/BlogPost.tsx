@@ -11,6 +11,7 @@ import {
   AccordionDetails,
   Button,
 } from '@mui/material';
+import Link from 'next/link';
 import Reveal from '@/Common/Reveal';
 import MagneticWrap from '@/Common/MagneticWrap';
 
@@ -47,7 +48,8 @@ export interface BlogData {
   sections: BlogSection[];
   faq?: BlogFaq[];
   cta?: BlogCta;
-  jsonLd?: object;
+  /** Extra schema.org nodes for this post's JSON-LD @graph (WebPage/Service/Organization etc). A FAQPage node is added automatically from `faq` if present. */
+  jsonLd?: object[];
 }
 
 const ChevronIcon = () => (
@@ -55,6 +57,28 @@ const ChevronIcon = () => (
     <path d="M6 9l6 6 6-6" />
   </svg>
 );
+
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+function renderInline(text: string) {
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+  let match: RegExpExecArray | null;
+  LINK_PATTERN.lastIndex = 0;
+  while ((match = LINK_PATTERN.exec(text))) {
+    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    const [, label, href] = match;
+    nodes.push(
+      <Link key={key++} href={href} style={{ color: 'inherit', textDecorationColor: 'currentColor' }}>
+        {label}
+      </Link>
+    );
+    lastIndex = LINK_PATTERN.lastIndex;
+  }
+  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
+  return nodes;
+}
 
 function renderBody(body: string) {
   return body.split('\n').map((line, i) => {
@@ -64,14 +88,14 @@ function renderBody(body: string) {
         <Box key={i} sx={{ display: 'flex', gap: 1.5, mb: 1 }}>
           <Box sx={{ width: 5, height: 5, borderRadius: '50%', bgcolor: 'primary.main', flexShrink: 0, mt: '10px' }} />
           <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.8, fontSize: '1rem' }}>
-            {line.replace('• ', '')}
+            {renderInline(line.replace('• ', ''))}
           </Typography>
         </Box>
       );
     }
     return (
       <Typography key={i} variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.9, fontSize: '1rem', mb: 2 }}>
-        {line}
+        {renderInline(line)}
       </Typography>
     );
   });
