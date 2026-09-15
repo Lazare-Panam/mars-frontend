@@ -143,7 +143,7 @@ export default function Hero() {
             component="h1"
             sx={{
               color: "#fff",
-              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem", lg: "5.25rem" },
+              fontSize: { xs: "2.75rem", sm: "4rem", md: "5.5rem", lg: "6.5rem" },
               fontWeight: 800,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
@@ -152,9 +152,7 @@ export default function Hero() {
           >
             Valves built to survive
             <br />
-            <Box component="span" sx={{ color: "primary.main" }}>
-              where nothing else can.
-            </Box>
+            this world.
           </Typography>
 
           <Typography
