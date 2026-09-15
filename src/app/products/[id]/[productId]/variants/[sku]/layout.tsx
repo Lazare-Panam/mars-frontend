@@ -31,7 +31,13 @@ export async function generateMetadata({
   try {
     data = await fetchVariants(productId);
   } catch (err) {
-    console.error(`[generateMetadata] fetchVariants(${productId}) failed:`, err);
+    // 404 = product has no variants; expected, so keep the build log quiet.
+    const status = (err as { response?: { status?: number } })?.response?.status;
+    if (status !== 404) {
+      console.error(
+        `[generateMetadata] fetchVariants(${productId}) failed (status ${status ?? "?"})`,
+      );
+    }
   }
 
   const variant = data?.variants.find((v) => v.id === sku);

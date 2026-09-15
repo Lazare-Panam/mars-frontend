@@ -16,10 +16,14 @@ export async function generateMetadata({
   try {
     data = await fetchProductDetail(productId);
   } catch (err) {
-    console.error(
-      `[generateMetadata] fetchProductDetail(${productId}) failed:`,
-      err,
-    );
+    // 404 just means this product has no detail record yet — expected for some
+    // catalog entries, so don't spam the build log with the full axios error.
+    const status = (err as { response?: { status?: number } })?.response?.status;
+    if (status !== 404) {
+      console.error(
+        `[generateMetadata] fetchProductDetail(${productId}) failed (status ${status ?? "?"})`,
+      );
+    }
   }
 
   if (!data) {

@@ -20,7 +20,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     data = await fetchCatalog(id);
   } catch (err) {
-    console.error(`[generateMetadata] fetchCatalog(${id}) failed:`, err);
+    const status = (err as { response?: { status?: number } })?.response?.status;
+    if (status !== 404) {
+      console.error(
+        `[generateMetadata] fetchCatalog(${id}) failed (status ${status ?? "?"})`,
+      );
+    }
   }
 
   if (!data) {
