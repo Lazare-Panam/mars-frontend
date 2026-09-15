@@ -1,11 +1,8 @@
 "use client";
 
-import { Box, Typography, IconButton } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import XIcon from "@mui/icons-material/X";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -138,7 +135,7 @@ export default function Footer() {
                 sx={{ fontSize: 16, color: "primary.light" }}
               />
               <Typography sx={{ fontSize: "0.85rem" }}>
-                +44 7368 1379917
+                +44 7368 137917
               </Typography>
             </Box>
             <Box
@@ -221,60 +218,6 @@ export default function Footer() {
           >
             © {new Date().getFullYear()} MARS Valvenok All rights reserved.
           </Typography>
-
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <IconButton
-              component={Link}
-              href="#"
-              size="small"
-              sx={{
-                color: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
-                "&:hover": {
-                  color: "#fff",
-                  borderColor: "rgba(255,255,255,0.5)",
-                  transform: "translateY(-3px)",
-                },
-              }}
-            >
-              <LinkedInIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              component={Link}
-              href="#"
-              size="small"
-              sx={{
-                color: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
-                "&:hover": {
-                  color: "#fff",
-                  borderColor: "rgba(255,255,255,0.5)",
-                  transform: "translateY(-3px)",
-                },
-              }}
-            >
-              <FacebookIcon fontSize="small" />
-            </IconButton>
-            <IconButton
-              component={Link}
-              href="#"
-              size="small"
-              sx={{
-                color: "rgba(255,255,255,0.6)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
-                "&:hover": {
-                  color: "#fff",
-                  borderColor: "rgba(255,255,255,0.5)",
-                  transform: "translateY(-3px)",
-                },
-              }}
-            >
-              <XIcon fontSize="small" />
-            </IconButton>
-          </Box>
         </Box>
       </Box>
     </Box>

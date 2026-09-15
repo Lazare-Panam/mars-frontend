@@ -182,7 +182,7 @@ export default function ContactCTA() {
                 Phone
               </Typography>
               <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
-                +44 7368 1379917
+                +44 7368 137917
               </Typography>
             </Box>
           </Box>

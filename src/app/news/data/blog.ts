@@ -46,7 +46,7 @@ export const blogs: BlogData[] = [
       heading: "Become a Mars Valves Distributor",
       body: "Enquire about distribution opportunities or request a catalogue to learn more about the full Mars Valves product range.",
       email: "sales@marsvalvenok.com",
-      phone: "+44 7368 1379917",
+      phone: "+44 7368 137917",
     },
   },
   {
@@ -108,7 +108,7 @@ export const blogs: BlogData[] = [
       heading: "Need help specifying a fire-safe valve?",
       body: "Get in touch with our team to talk through pressure ratings, materials, certification and end connections for your application.",
       email: "sales@marsvalvenok.com",
-      phone: "+44 7368 1379917",
+      phone: "+44 7368 137917",
     },
   },
   {
@@ -207,7 +207,7 @@ export const blogs: BlogData[] = [
       heading: "Need Help Specifying an Actuated Valve Package?",
       body: "Explore our actuated valve range or speak with our technical sales team for a fully documented, matched valve and actuator assembly.",
       email: "sales@marsvalvenok.com",
-      phone: "+44 7368 1379917",
+      phone: "+44 7368 137917",
     },
   },
   {
@@ -220,7 +220,7 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/hp-flanged.png",
     excerpt:
-      "Looking for an actuated ball valve package that is built for demanding industrial service, with full documentation and technical back-up? MARS Valvenok supplies genuine MARS automated ball valve solutions, combining proven industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for hazardous duty. For specification support or project pricing, contact the technical sales team via sales@marsvalvenok.com or call +44 7368 1379917.",
+      "Looking for an actuated ball valve package that is built for demanding industrial service, with full documentation and technical back-up? MARS Valvenok supplies genuine MARS automated ball valve solutions, combining proven industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for hazardous duty. For specification support or project pricing, contact the technical sales team via sales@marsvalvenok.com or call +44 7368 137917.",
     metaDescription:
       "Actuated ball valve packages engineered with MARS valves and electric or pneumatic actuators, with documentation, UK supply and technical support.",
     tags: [
@@ -295,7 +295,7 @@ export const blogs: BlogData[] = [
       heading: "Specify Your Next Actuated Ball Valve Package",
       body: "For your next actuated ball valve requirement — from a single critical replacement to a standardised project specification — contact MARS Valvenok to discuss application details, documentation needs, and supply options.",
       email: "sales@marsvalvenok.com",
-      phone: "+44 7368 1379917",
+      phone: "+44 7368 137917",
     },
     jsonLd: [
       {
@@ -333,7 +333,7 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-way-multi.jpg",
     excerpt:
-      "Looking for a process control valve solution you can specify with confidence? MARS Valvenok supplies genuine MARS industrial valves and ball-valve-based control assemblies for demanding process and industrial applications. From tight shut-off isolation to modulating duty with actuation and accessories, every valve is backed by traceability, documentation, and engineering support. Email sales@marsvalvenok.com or call +44 7368 1379917 to discuss your application and put a fully documented package in place.",
+      "Looking for a process control valve solution you can specify with confidence? MARS Valvenok supplies genuine MARS industrial valves and ball-valve-based control assemblies for demanding process and industrial applications. From tight shut-off isolation to modulating duty with actuation and accessories, every valve is backed by traceability, documentation, and engineering support. Email sales@marsvalvenok.com or call +44 7368 137917 to discuss your application and put a fully documented package in place.",
     metaDescription:
       "Process control valve solutions using genuine MARS ball valves, actuation and accessories for UK and international industrial applications. Enquire today.",
     tags: [
@@ -404,7 +404,7 @@ export const blogs: BlogData[] = [
       heading: "Talk to the Team About Your Next Process Control Valve Project",
       body: "Whether you are upgrading a single line or specifying a full skid, the MARS Valvenok team can help configure a ball-valve-based process control valve solution with the right materials, actuation, and certification.",
       email: "sales@marsvalvenok.com",
-      phone: "+44 7368 1379917",
+      phone: "+44 7368 137917",
     },
     jsonLd: [
       {
