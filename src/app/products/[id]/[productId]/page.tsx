@@ -17,15 +17,30 @@ type Props = { params: Promise<{ id: string; productId: string }> };
 export async function generateStaticParams() {
   const perCatalog = await Promise.all(
     CATEGORIES.map(async (cat) => {
+      let products: { id: string }[] = [];
       try {
         const catalog = await fetchCatalog(cat.id);
-        return (catalog.products ?? []).map((p) => ({
-          id: cat.id,
-          productId: p.id,
-        }));
+        products = catalog.products ?? [];
       } catch {
         return [];
       }
+      // Only emit a product-detail route when the product actually has a detail
+      // record. Grid-style series (e.g. the one-piece range) are presented via
+      // the category's /variants page and have no standalone detail page — so
+      // generating them here would just produce 404s in the build and sitemap.
+      const checked = await Promise.all(
+        products.map(async (p) => {
+          try {
+            await fetchProductDetail(p.id);
+            return { id: cat.id, productId: p.id };
+          } catch {
+            return null;
+          }
+        })
+      );
+      return checked.filter(
+        (x): x is { id: string; productId: string } => x !== null
+      );
     })
   );
   return perCatalog.flat();
