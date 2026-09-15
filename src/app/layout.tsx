@@ -12,6 +12,7 @@ import ContactPrompt from "./Landing/ContactPrompt";
 import BackToTop from "@/Common/BackToTop";
 import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
 import ScrollProgress from "@/Common/ScrollProgress";
+import { SITE_URL } from "@/lib/site";
 /** */
 const geistSans = Geist({
   variable: "--font-body",
@@ -26,7 +27,7 @@ const geistMono = Geist_Mono({
 const GA_MEASUREMENT_ID = "G-8E3P3CPW72";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.marsvalvenok.com/"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Mars Valves | Industrial Valve Manufacturer",
     template: "%s | Mars Valves",

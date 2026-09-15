@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
 import { fetchCatalog, ProductCatalog } from "@/api/useProductCatalog";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
+import { CATEGORIES } from "../data/categories";
+import { SITE_URL } from "@/lib/site";
 import Reveal from "@/Common/Reveal";
 
 type Props = { params: Promise<{ id: string }> };
+
+// Prerender one catalog page per category so every /products/{id} route is
+// emitted at build time (and therefore picked up by next-sitemap).
+export function generateStaticParams() {
+  return CATEGORIES.map((c) => ({ id: c.id }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -30,15 +38,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalPath = data.seo?.canonical
     ? (() => {
         try {
-          return new URL(data.seo!.canonical!, "https://www.marsvalvenok.com").pathname;
+          return new URL(data.seo!.canonical!, SITE_URL).pathname;
         } catch {
           return `/products/${id}`;
         }
       })()
     : undefined;
-  const canonical = canonicalPath
-    ? `https://www.marsvalvenok.com${canonicalPath}`
-    : undefined;
+  const canonical = canonicalPath ? `${SITE_URL}${canonicalPath}` : undefined;
 
   return {
     title,

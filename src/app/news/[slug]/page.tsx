@@ -2,6 +2,7 @@ import { blogs } from "../data/blog";
 import BlogPost from "../components/BlogPost";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
 const SITE_NAME = "MARS Valvenok";
 
@@ -41,7 +42,7 @@ function buildJsonLd(blog: (typeof blogs)[number], slug: string) {
   if (blog.faq && blog.faq.length > 0) {
     graph.push({
       "@type": "FAQPage",
-      "@id": `https://www.marsvalvenok.com/news/${slug}#faqpage`,
+      "@id": `${SITE_URL}/news/${slug}#faqpage`,
       mainEntity: blog.faq.map((f) => ({
         "@type": "Question",
         name: f.q,

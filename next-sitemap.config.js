@@ -1,7 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://www.marsvalvenok.com/',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.marsvalvenok.com/',
   generateRobotsTxt: true,
   changefreq: 'weekly',
-  
 }
