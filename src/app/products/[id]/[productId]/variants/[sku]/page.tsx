@@ -1,8 +1,10 @@
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
-import { fetchVariants } from "@/api/useProductVariants";
+import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
 import { CATEGORIES } from "../../../../data/categories";
 import { makeQueryClient } from "@/lib/getQueryClient";
+import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
+import { SITE_URL } from "@/lib/site";
 import VariantDetailClient from "./VariantDetailClient";
 
 type Props = {
@@ -55,9 +57,75 @@ export default async function VariantDetailPage({ params }: Props) {
     queryFn: () => fetchVariants(productId),
   });
 
+  // Build Product/Offer + breadcrumb JSON-LD from the prefetched data so it's in
+  // the static HTML (rich results). Offer is included only when a real price is
+  // published on the variant.
+  const series = queryClient.getQueryData<ProductSeriesVariants>([
+    "variants",
+    productId,
+  ]);
+  const variant = series?.variants.find((v) => v.id === sku);
+  const category = CATEGORIES.find((c) => c.id === id);
+
+  const specParts = variant
+    ? Object.entries(variant.specs)
+        .filter(([k]) => k !== "SKU" && k !== "Price")
+        .map(([, v]) => v)
+    : [];
+  const name =
+    variant && series
+      ? specParts.length
+        ? `${specParts.join(", ")} — ${series.name}`
+        : series.name
+      : "";
+  const priceRaw = variant?.specs["Price"];
+  const numericPrice = priceRaw
+    ? parseFloat(priceRaw.replace(/[^0-9.]/g, ""))
+    : NaN;
+  const image = variant?.thumbnailImage || series?.thumbnailImage;
+
+  const productLd =
+    variant && series
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name,
+          sku: variant.id,
+          ...(image ? { image } : {}),
+          brand: { "@type": "Brand", name: "MARS" },
+          ...(Number.isFinite(numericPrice)
+            ? {
+                offers: {
+                  "@type": "Offer",
+                  priceCurrency: "GBP",
+                  price: numericPrice.toFixed(2),
+                  availability: "https://schema.org/InStock",
+                  url: `${SITE_URL}/products/${id}/${productId}/variants/${sku}`,
+                },
+              }
+            : {}),
+        }
+      : null;
+
+  const crumbs = breadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    ...(category ? [{ name: category.label, path: `/products/${id}` }] : []),
+    ...(series
+      ? [{ name: series.name, path: `/products/${id}/${productId}` }]
+      : []),
+    ...(variant
+      ? [{ name, path: `/products/${id}/${productId}/variants/${sku}` }]
+      : []),
+  ]);
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <VariantDetailClient id={id} productId={productId} sku={sku} />
-    </HydrationBoundary>
+    <>
+      {productLd && <JsonLd data={productLd} />}
+      <JsonLd data={crumbs} />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <VariantDetailClient id={id} productId={productId} sku={sku} />
+      </HydrationBoundary>
+    </>
   );
 }

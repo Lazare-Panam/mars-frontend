@@ -1,8 +1,10 @@
+import { notFound } from "next/navigation";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
-import { fetchProductDetail } from "@/api/useProductDetail";
+import { fetchProductDetail, ProductDetail } from "@/api/useProductDetail";
 import { CATEGORIES } from "../../data/categories";
 import { makeQueryClient } from "@/lib/getQueryClient";
+import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import ProductDetailClient from "./ProductDetailClient";
 
 type Props = { params: Promise<{ id: string; productId: string }> };
@@ -40,9 +42,37 @@ export default async function ProductDetailPage({ params }: Props) {
     queryFn: () => fetchProductDetail(productId),
   });
 
+  // No detail record for this product (the API 404s, e.g. the one-piece series):
+  // return a real 404 instead of a page stuck on a loading spinner.
+  const detail = queryClient.getQueryData<ProductDetail>([
+    "product-detail",
+    productId,
+  ]);
+  if (!detail) notFound();
+
+  const category = CATEGORIES.find((c) => c.id === id);
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: detail.name,
+    ...(detail.description ? { description: detail.description } : {}),
+    ...(detail.image ? { image: detail.image } : {}),
+    brand: { "@type": "Brand", name: "MARS" },
+  };
+  const crumbs = breadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    ...(category ? [{ name: category.label, path: `/products/${id}` }] : []),
+    { name: detail.name, path: `/products/${id}/${productId}` },
+  ]);
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <ProductDetailClient id={id} productId={productId} />
-    </HydrationBoundary>
+    <>
+      <JsonLd data={productLd} />
+      <JsonLd data={crumbs} />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <ProductDetailClient id={id} productId={productId} />
+      </HydrationBoundary>
+    </>
   );
 }
