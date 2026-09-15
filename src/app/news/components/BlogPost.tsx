@@ -142,7 +142,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
               size="small"
               sx={{ mb: 2, fontWeight: 600, borderRadius: 0, width: 'fit-content', bgcolor: 'primary.main', color: 'primary.contrastText' }}
             />
-            <Typography variant="h2" sx={{ fontWeight: 700, color: '#fff', lineHeight: 1.15, mb: 1.5, fontSize: { xs: '1.8rem', md: '2.8rem' } }}>
+            <Typography component="h1" variant="h2" sx={{ fontWeight: 700, color: '#fff', lineHeight: 1.15, mb: 1.5, fontSize: { xs: '1.8rem', md: '2.8rem' } }}>
               {blog.title}
             </Typography>
             <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
@@ -158,6 +158,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
         <Reveal>
         {/* Excerpt */}
         <Typography
+          component="p"
           variant="h6"
           sx={{ fontWeight: 400, color: 'text.primary', lineHeight: 1.75, mb: 5, fontSize: '1.15rem', borderLeft: '3px solid', borderColor: 'primary.main', pl: 3 }}
         >
@@ -170,7 +171,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
         {blog.sections.map((section, i) => (
           <Box key={i} sx={{ mb: 5 }}>
             {section.heading && (
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 2.5, fontSize: { xs: '1.3rem', md: '1.6rem' } }}>
+              <Typography component="h2" variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 2.5, fontSize: { xs: '1.3rem', md: '1.6rem' } }}>
                 {section.heading}
               </Typography>
             )}
@@ -206,7 +207,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
         {/* FAQ */}
         {blog.faq && blog.faq.length > 0 && (
           <Box sx={{ mt: 6, mb: 6 }}>
-            <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 3, fontSize: { xs: '1.3rem', md: '1.6rem' } }}>
+            <Typography component="h2" variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 3, fontSize: { xs: '1.3rem', md: '1.6rem' } }}>
               Frequently Asked Questions
             </Typography>
             {blog.faq.map((item, i) => (
@@ -222,7 +223,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
                 }}
               >
                 <AccordionSummary expandIcon={<ChevronIcon />}>
-                  <Typography sx={{ fontWeight: 600, fontSize: '0.95rem', color: 'text.primary' }}>
+                  <Typography component="h3" sx={{ fontWeight: 600, fontSize: '0.95rem', color: 'text.primary' }}>
                     {item.q}
                   </Typography>
                 </AccordionSummary>

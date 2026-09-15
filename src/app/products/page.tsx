@@ -5,9 +5,10 @@ import { CATEGORIES } from './data/categories';
 import Reveal from '@/Common/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Products',
+  title: 'MARS Ball Valve Range UK — 1, 2 & 3-Piece, Flanged, Multi-Port',
   description:
     'One-piece, two-piece, three-piece, flanged, multi-port, and metal-seated ball valves engineered for industrial fluid control.',
+  alternates: { canonical: '/products' },
 };
 
 export default function ProductsPage() {
@@ -72,7 +73,7 @@ export default function ProductsPage() {
               component="h1"
               sx={{ color: '#fff', fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 800, lineHeight: 1.1, mb: 1.5 }}
             >
-              Products
+              MARS Stainless Steel Ball Valves
             </Typography>
             <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', maxWidth: 500 }}>
               Engineered for extreme conditions. Every valve certified, traceable, and built to last.

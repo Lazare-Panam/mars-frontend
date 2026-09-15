@@ -29,24 +29,24 @@ const GA_MEASUREMENT_ID = "G-8E3P3CPW72";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mars Valves | Industrial Valve Manufacturer",
-    template: "%s | Mars Valves",
+    default: "Mars Valvenok | Authorised MARS Valve Distributor UK",
+    template: "%s | Mars Valvenok",
   },
   description:
-    "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
+    "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
   openGraph: {
     type: "website",
-    siteName: "Mars Valves",
-    title: "Mars Valves | Industrial Valve Manufacturer",
+    siteName: "Mars Valvenok",
+    title: "Mars Valvenok | Authorised MARS Valve Distributor UK",
     description:
-      "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
-    url: "https://www.marsvalvenok.com/",
+      "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
+    url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mars Valves | Industrial Valve Manufacturer",
+    title: "Mars Valvenok | Authorised MARS Valve Distributor UK",
     description:
-      "Mars Valves manufactures industrial ball valves, flanged valves, and fire-safe valves engineered for performance, safety.",
+      "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
   },
 };
 
@@ -61,6 +61,33 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: "Mars Valvenok",
+                  url: SITE_URL,
+                  logo: "https://pblol2.blob.core.windows.net/mars-valves/logo.jpg",
+                  description:
+                    "Authorised UK distributor of MARS ball, flanged and fire-safe valves.",
+                  email: "sales@marsvalvenok.com",
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  url: SITE_URL,
+                  name: "Mars Valvenok",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+              ],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
         <script
           nitro-exclude="nitro-exclude"
           seraph-accel-crit="1"

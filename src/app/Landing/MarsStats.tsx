@@ -15,12 +15,18 @@ function CountUp({ target }: { target: string }) {
   const numericPart = parseFloat(target.replace(/[^0-9.]/g, ""));
   const prefix = target.match(/^[^0-9]*/)?.[0] ?? "";
   const suffix = target.match(/[^0-9.]*$/)?.[0] ?? "";
-  const [value, setValue] = useState(0);
+  // Start at the real target so the server-rendered HTML (and non-JS crawlers)
+  // show "2000", "100", etc. — never "0". The client-side count-up animation
+  // resets to 0 in the effect below, after hydration, so there's no mismatch.
+  const [value, setValue] = useState(numericPart);
   const ref = useRef<HTMLSpanElement>(null);
   const hasRun = useRef(false);
 
   useEffect(() => {
     if (!ref.current || Number.isNaN(numericPart)) return;
+
+    // Client only: drop to 0 so the scroll-triggered animation can count up.
+    setValue(0);
 
     const observer = new IntersectionObserver(
       ([entry]) => {

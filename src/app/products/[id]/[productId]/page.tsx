@@ -1,5 +1,8 @@
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
+import { fetchProductDetail } from "@/api/useProductDetail";
 import { CATEGORIES } from "../../data/categories";
+import { makeQueryClient } from "@/lib/getQueryClient";
 import ProductDetailClient from "./ProductDetailClient";
 
 type Props = { params: Promise<{ id: string; productId: string }> };
@@ -28,5 +31,18 @@ export async function generateStaticParams() {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { id, productId } = await params;
-  return <ProductDetailClient id={id} productId={productId} />;
+
+  // Prefetch the product detail server-side so the name, description, specs,
+  // features and applications render into the static HTML for crawlers.
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["product-detail", productId],
+    queryFn: () => fetchProductDetail(productId),
+  });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ProductDetailClient id={id} productId={productId} />
+    </HydrationBoundary>
+  );
 }

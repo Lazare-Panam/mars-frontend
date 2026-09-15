@@ -16,17 +16,21 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "MARS® Brand", href: "/mars-brand" },
-      { label: "Certificate", href: "#" },
+      {
+        label: "Certificate",
+        href: "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg",
+        newTab: true,
+      },
       { label: "News", href: "/news" },
     ],
   },
   {
     heading: "Products",
     links: [
-      { label: "Fire-Safe Ball Valve", href: "#" },
-      { label: "High-Pressure Ball Valve", href: "#" },
-      { label: "Flanged Ball Valve", href: "#" },
-      { label: "Gate Valve", href: "#" },
+      { label: "Two-Piece Ball Valves", href: "/products/two-piece-ball-valves" },
+      { label: "Three-Piece Ball Valves", href: "/products/three-piece-ball-valves" },
+      { label: "Flanged Ball Valves", href: "/products/flanged-ball-valves" },
+      { label: "Multi-Port Ball Valves", href: "/products/multi-port-ball-valves" },
     ],
   },
   {
@@ -44,7 +48,7 @@ const FOOTER_COLUMNS = [
         href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
         newTab: true,
       },
-      { label: "Contact Us", href: "#" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];

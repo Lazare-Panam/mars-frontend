@@ -43,7 +43,7 @@ export async function generateMetadata({
   const variant = data?.variants.find((v) => v.id === sku);
 
   if (!data || !variant) {
-    return { title: data?.name ?? "Mars Valves" };
+    return { title: data?.name ?? "Mars Valvenok" };
   }
 
   const title = buildTitle(data.name, variant);
@@ -61,7 +61,7 @@ export async function generateMetadata({
     description,
     openGraph: {
       type: "website",
-      siteName: "Mars Valves",
+      siteName: "Mars Valvenok",
       title,
       description,
       images: ogImage ? [{ url: ogImage }] : undefined,

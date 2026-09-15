@@ -1,6 +1,8 @@
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
 import { fetchVariants } from "@/api/useProductVariants";
 import { CATEGORIES } from "../../../../data/categories";
+import { makeQueryClient } from "@/lib/getQueryClient";
 import VariantDetailClient from "./VariantDetailClient";
 
 type Props = {
@@ -43,5 +45,19 @@ export async function generateStaticParams() {
 
 export default async function VariantDetailPage({ params }: Props) {
   const { id, productId, sku } = await params;
-  return <VariantDetailClient id={id} productId={productId} sku={sku} />;
+
+  // Prefetch the variant series server-side so the SKU spec table and price
+  // render into the static HTML for crawlers (the client component picks the
+  // right variant out of the hydrated series by sku).
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["variants", productId],
+    queryFn: () => fetchVariants(productId),
+  });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <VariantDetailClient id={id} productId={productId} sku={sku} />
+    </HydrationBoundary>
+  );
 }

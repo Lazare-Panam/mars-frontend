@@ -9,7 +9,15 @@ import ProcessSection from "./Landing/ProcessSection";
 import DistributorComparison from "./Landing/DistributorComparison";
 import FAQSection from "./Landing/FAQSection";
 import ValuePropBanner from "./Landing/ValuePropBanner";
-import TestimonialsSection from "./Landing/TestimonialsSection";
+import type { Metadata } from "next";
+// TestimonialsSection intentionally not rendered: it still contains placeholder
+// ("REPLACE — real customer quote goes here") entries. Re-add <TestimonialsSection/>
+// below only once TESTIMONIALS in that file holds real, named customer quotes.
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function Home() {
   return (
     <>
@@ -22,7 +30,6 @@ export default function Home() {
       <ProcessSection/>
       <IndustriesSection/>
       <MarsStats/>
-      <TestimonialsSection/>
       <FAQSection/>
       <ContactCTA/>
     </>

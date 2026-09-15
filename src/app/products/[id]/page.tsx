@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { fetchCatalog, ProductCatalog } from "@/api/useProductCatalog";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { fetchCatalog, ProductCatalog, ProductType } from "@/api/useProductCatalog";
+import { fetchProductDetail } from "@/api/useProductDetail";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
 import { CATEGORIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
+import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
 
 type Props = { params: Promise<{ id: string }> };
@@ -29,10 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   if (!data) {
-    return { title: "Mars Valves" };
+    return { title: "Mars Valvenok" };
   }
 
-  const title = data.seo?.title ?? data.bannerTitle ?? "Mars Valves";
+  // The %s | Mars Valvenok template (see root layout) appends the brand suffix,
+  // so strip any brand suffix the CMS already baked into the title — otherwise
+  // it renders "…| Mars Valves | Mars Valvenok".
+  const rawTitle = data.seo?.title ?? data.bannerTitle ?? "Mars Valvenok";
+  const title = rawTitle.replace(/\s*\|\s*Mars Valve(nok)?s?\s*$/i, "").trim();
   const description = data.seo?.description ?? data.bannerSubtitle ?? "";
   const ogImage = data.seo?.ogImage ?? data.bannerImage;
 
@@ -57,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: canonical ? { canonical } : undefined,
     openGraph: {
       type: "website",
-      siteName: "Mars Valves",
+      siteName: "Mars Valvenok",
       title,
       description,
       url: canonical,
@@ -74,9 +81,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductCatalogPage({ params }: Props) {
   const { id } = await params;
+
+  // Prefetch the catalog on the server and hand it to the client component via
+  // HydrationBoundary, so the hero, product grid and copy render into the static
+  // HTML (visible to non-JS/AI crawlers) instead of a loading spinner.
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ["catalog", id],
+    queryFn: () => fetchCatalog(id),
+  });
+
+  // Grid-type catalogs render <ProductDetailContent id={id} />, which reads
+  // useProductDetail(id) (keyed on the *category* id). Prefetch that too so the
+  // one-piece style catalog also server-renders instead of a spinner.
+  const catalog = queryClient.getQueryData<ProductCatalog>(["catalog", id]);
+  if (catalog?.type === ProductType.Grid) {
+    await queryClient.prefetchQuery({
+      queryKey: ["product-detail", id],
+      queryFn: () => fetchProductDetail(id),
+    });
+  }
+
   return (
-    <Reveal y={12}>
-      <ProductCatalogPageClient id={id} />
-    </Reveal>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Reveal y={12}>
+        <ProductCatalogPageClient id={id} />
+      </Reveal>
+    </HydrationBoundary>
   );
 }

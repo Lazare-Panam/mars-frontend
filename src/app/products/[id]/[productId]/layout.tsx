@@ -27,7 +27,7 @@ export async function generateMetadata({
   }
 
   if (!data) {
-    return { title: "Mars Valves" };
+    return { title: "Mars Valvenok" };
   }
 
   const { name: title, description, image: ogImage } = data;
@@ -37,7 +37,7 @@ export async function generateMetadata({
     description,
     openGraph: {
       type: "website",
-      siteName: "Mars Valves",
+      siteName: "Mars Valvenok",
       title,
       description,
       images: ogImage ? [{ url: ogImage }] : undefined,
