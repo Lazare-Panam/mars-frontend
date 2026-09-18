@@ -106,7 +106,7 @@ export default function VariantDetailClient({
             <Typography sx={{ fontSize: "0.75rem", fontWeight: 900, letterSpacing: "0.08em", color: BRAND, textTransform: "uppercase", mb: 1.5 }}>
               {data.name}
             </Typography>
-            <Typography sx={{ fontSize: { xs: "1.4rem", md: "1.8rem" }, fontWeight: 800, lineHeight: 1.25, mb: 2.5 }}>
+            <Typography component="h1" sx={{ fontSize: { xs: "1.4rem", md: "1.8rem" }, fontWeight: 800, lineHeight: 1.25, mb: 2.5 }}>
               {title}
             </Typography>
 

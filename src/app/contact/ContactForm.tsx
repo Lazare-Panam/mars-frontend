@@ -96,7 +96,7 @@ export default function ContactForm() {
       }}
     >
       <Reveal>
-        <Typography variant="h4" sx={{ fontWeight: 'bold' }} gutterBottom>
+        <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }} gutterBottom>
           Get in touch
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>

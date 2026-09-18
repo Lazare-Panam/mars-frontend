@@ -112,6 +112,7 @@ const ReturnsPolicyPage = () => {
           <Reveal>
             <Typography
               variant="h2"
+              component="h1"
               sx={{ fontWeight: 800, fontSize: { xs: "2.25rem", md: "3rem" } }}
             >
               Returns{" "}
