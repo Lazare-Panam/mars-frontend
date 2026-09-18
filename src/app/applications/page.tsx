@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Container, Typography, Grid } from "@mui/material";
 import Image from "next/image";
 import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
@@ -9,6 +7,7 @@ import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined";
 import DirectionsBoatFilledOutlinedIcon from "@mui/icons-material/DirectionsBoatFilledOutlined";
 import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
 import Reveal from "@/Common/Reveal";
+import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
 
 type Industry = {
   label: string;
@@ -79,7 +78,8 @@ const INDUSTRIES: Industry[] = [
   },
 ];
 
-export default function ApplicationsPage() {
+export default async function ApplicationsPage() {
+  const index = await buildProductIndex();
   return (
     <Box component="main" sx={{ bgcolor: "#fff" }}>
       {/* Hero */}
@@ -230,6 +230,24 @@ export default function ApplicationsPage() {
           })}
         </Grid>
       </Container>
+
+      {/* Full product & variant link index — gives every product/variant page a
+          second internal link (besides /product-index) from this page. */}
+      <Box sx={{ bgcolor: "background.default", py: { xs: 6, md: 8 } }}>
+        <Container maxWidth="lg">
+          <Typography
+            component="h2"
+            sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: 800, mb: 1 }}
+          >
+            Browse Every Valve
+          </Typography>
+          <Typography sx={{ color: "text.secondary", mb: 4 }}>
+            Every product and variant in the MARS range — jump straight to any
+            configuration.
+          </Typography>
+          <ProductLinkList index={index} />
+        </Container>
+      </Box>
     </Box>
   );
 }
