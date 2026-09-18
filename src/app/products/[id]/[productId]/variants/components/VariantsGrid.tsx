@@ -37,6 +37,11 @@ export function buildTitle(
   const parts = Object.entries(variant.specs)
     .filter(([k]) => k !== "SKU" && k !== "Price")
     .map(([, v]) => v);
+  // Series-level rows (SKU like "Series 28") can share identical specs with a
+  // sibling series, producing duplicate titles. Append the series id so each
+  // stays unique.
+  const sku = variant.specs["SKU"];
+  if (sku && /^series\b/i.test(sku)) parts.push(sku);
   return parts.length ? `${parts.join(", ")} — ${productName}` : productName;
 }
 
