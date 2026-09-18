@@ -1,0 +1,152 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { CATEGORIES } from "@/app/products/data/categories";
+import { fetchCatalog } from "@/api/useProductCatalog";
+import { fetchVariants, ProductVariant } from "@/api/useProductVariants";
+import { fetchProductDetail } from "@/api/useProductDetail";
+import { SITE_URL } from "@/lib/site";
+import styles from "./product-index.module.css";
+
+export const metadata: Metadata = {
+  title: "Product Index — Every MARS Ball Valve & Variant",
+  description:
+    "A complete browsable index of every MARS ball valve product and variant we stock, grouped by category. Jump straight to any size, port or seat configuration.",
+  alternates: { canonical: "/product-index" },
+  openGraph: {
+    type: "website",
+    siteName: "Mars Valvenok",
+    title: "Product Index — Every MARS Ball Valve & Variant",
+    description:
+      "A complete browsable index of every MARS ball valve product and variant we stock, grouped by category.",
+    url: `${SITE_URL}/product-index`,
+  },
+};
+
+// Server-rendered: this whole tree is fetched at build time and emitted as real
+// <a href> links in the static HTML, so crawlers (and JS-less visitors) can
+// reach every product and variant page. These pages are otherwise orphaned —
+// only present in the XML sitemap, with no internal links pointing at them.
+//
+// Intentionally plain semantic HTML + next/link (no MUI interactive components):
+// a Server Component cannot pass `component={Link}` to a Client Component, and
+// the links must land in the static HTML regardless of JS.
+
+type IndexVariant = { id: string; label: string };
+type IndexProduct = {
+  id: string;
+  name: string;
+  hasDetail: boolean;
+  variants: IndexVariant[];
+};
+type IndexCategory = { id: string; label: string; products: IndexProduct[] };
+
+// Compact, human-readable anchor text from a variant's specs (drops the raw SKU
+// and price), falling back to the id so a chip is never blank.
+function variantLabel(variant: ProductVariant): string {
+  const parts = Object.entries(variant.specs)
+    .filter(([k]) => k !== "SKU" && k !== "Price")
+    .map(([, v]) => v);
+  return parts.length ? parts.join(" · ") : variant.id;
+}
+
+async function buildIndex(): Promise<IndexCategory[]> {
+  return Promise.all(
+    CATEGORIES.map(async (cat) => {
+      let products: { id: string; name: string }[] = [];
+      try {
+        const catalog = await fetchCatalog(cat.id);
+        products = catalog.products ?? [];
+      } catch {
+        products = [];
+      }
+      const indexProducts = await Promise.all(
+        products.map(async (p) => {
+          // Fetch variants and probe the detail record in parallel. Some series
+          // (e.g. the one-piece range) have neither — commit 71a58a9 makes those
+          // product pages 404, so we must not link them here or we'd point at
+          // dead pages. Both throwing on 404 is expected and swallowed.
+          const [variants, hasDetail] = await Promise.all([
+            fetchVariants(p.id)
+              .then((data) =>
+                (data.variants ?? []).map((v) => ({
+                  id: v.id,
+                  label: variantLabel(v),
+                })),
+              )
+              .catch(() => [] as IndexVariant[]),
+            fetchProductDetail(p.id)
+              .then(() => true)
+              .catch(() => false),
+          ]);
+          return { id: p.id, name: p.name, hasDetail, variants };
+        }),
+      );
+      // Only keep products that actually resolve to a real page: a detail page
+      // and/or at least one variant page. Drops the 404-only series.
+      const linkable = indexProducts.filter(
+        (p) => p.hasDetail || p.variants.length > 0,
+      );
+      return { id: cat.id, label: cat.label, products: linkable };
+    }),
+  );
+}
+
+export default async function ProductIndexPage() {
+  const index = await buildIndex();
+
+  return (
+    <main className={styles.page}>
+      <h1 className={styles.h1}>Product Index</h1>
+      <p className={styles.lead}>
+        Every MARS ball valve product and variant we stock, grouped by category.
+        Select a product to view its full detail, or jump straight to a specific
+        variant.
+      </p>
+
+      {index.map((cat) => (
+        <section key={cat.id} className={styles.category}>
+          <h2 className={styles.catHeading}>
+            <Link href={`/products/${cat.id}`} className={styles.catLink}>
+              {cat.label}
+            </Link>
+          </h2>
+
+          {cat.products.length === 0 && (
+            <p className={styles.empty}>No products available.</p>
+          )}
+
+          {cat.products.map((product) => (
+            <div key={product.id} className={styles.product}>
+              <h3 className={styles.productHeading}>
+                {product.hasDetail ? (
+                  <Link
+                    href={`/products/${cat.id}/${product.id}`}
+                    className={styles.productLink}
+                  >
+                    {product.name}
+                  </Link>
+                ) : (
+                  product.name
+                )}
+              </h3>
+
+              {product.variants.length > 0 && (
+                <div className={styles.chips}>
+                  {product.variants.map((v) => (
+                    <Link
+                      key={v.id}
+                      href={`/products/${cat.id}/${product.id}/variants/${v.id}`}
+                      className={styles.chip}
+                    >
+                      {v.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+      ))}
+    </main>
+  );
+}

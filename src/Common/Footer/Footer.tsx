@@ -28,6 +28,7 @@ const FOOTER_COLUMNS = [
       { label: "Three-Piece Ball Valves", href: "/products/three-piece-ball-valves" },
       { label: "Flanged Ball Valves", href: "/products/flanged-ball-valves" },
       { label: "Multi-Port Ball Valves", href: "/products/multi-port-ball-valves" },
+      { label: "Product Index", href: "/product-index" },
     ],
   },
   {
