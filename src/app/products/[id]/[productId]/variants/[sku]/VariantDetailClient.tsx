@@ -6,7 +6,7 @@ import { alpha } from "@mui/material/styles";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import Image from "next/image";
 import { useProductVariants, ProductVariant } from "@/api/useProductVariants";
-import { GridCard, buildTitle, parsePrice } from "../components/VariantsGrid";
+import { GridCard, parsePrice } from "../components/VariantsGrid";
 import Reveal from "@/Common/Reveal";
 import MagneticWrap from "@/Common/MagneticWrap";
 
@@ -62,7 +62,31 @@ export default function VariantDetailClient({
 
   const image = variant.thumbnailImage || data.thumbnailImage;
   const price = variant.specs["Price"];
-  const title = buildTitle(data.name, variant);
+  // Concise, unique H1: keep only the specs that actually differ between this
+  // product's variants (drop the boilerplate every variant shares), or the
+  // "Series X" code for whole-series entries. The full spec string still lives
+  // in the <title> tag and the spec table below, so no information is lost.
+  // Series-level variants (slug like "series-f88") collapse to just the series
+  // code: every spec differs between series, so listing them all makes a
+  // 300-char heading. Sized variants use only the specs that differ between the
+  // *sized* siblings, dropping boilerplate every size shares. The full spec
+  // string still lives in the <title> tag and the spec table below.
+  const isSeries = /^series/i.test(sku);
+  const allSpecParts = Object.entries(variant.specs)
+    .filter(([k]) => k !== "SKU" && k !== "Price")
+    .map(([, v]) => v);
+  const sizedPeers = data.variants.filter((v) => !/^series/i.test(v.id));
+  const distinguishing = Object.entries(variant.specs)
+    .filter(([k]) => k !== "SKU" && k !== "Price")
+    .filter(([k, v]) => sizedPeers.some((o) => o.specs[k] !== v))
+    .map(([, v]) => v);
+  const seriesCode = `Series ${sku.replace(/^series-?/i, "").toUpperCase()}`.trim();
+  const h1Detail = isSeries
+    ? seriesCode
+    : distinguishing.length
+      ? distinguishing.join(", ")
+      : allSpecParts.join(", ");
+  const title = h1Detail ? `${h1Detail} — ${data.name}` : data.name;
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
