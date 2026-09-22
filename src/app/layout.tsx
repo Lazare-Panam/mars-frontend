@@ -143,6 +143,14 @@ export default function RootLayout({
               gtag('config', '${GA_MEASUREMENT_ID}');
             `}
           </Script>
+
+          {/* Google "Preferred sources" button (Subscribe with Google publisher.js). Renders into the
+              element carrying the `google-add-preferred-source-btn` attribute — see Common/Footer/Footer.tsx.
+              afterInteractive: the footer div is in the SSR HTML, so the script finds it once loaded. */}
+          <Script
+            src="https://news.google.com/swg/js/v1/publisher.js"
+            strategy="afterInteractive"
+          />
         </ThemeRegistry>
       </body>
     </html>

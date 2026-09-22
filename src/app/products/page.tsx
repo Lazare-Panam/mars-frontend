@@ -3,9 +3,10 @@ import { Box, Typography, Grid } from '@mui/material';
 import ProductCategoryCard from './components/ProductCategoryCard';
 import { CATEGORIES } from './data/categories';
 import Reveal from '@/Common/Reveal';
+import { fitBrandTitle } from '@/lib/seoTitle';
 
 export const metadata: Metadata = {
-  title: 'MARS Ball Valve Range UK — 1, 2 & 3-Piece, Flanged, Multi-Port',
+  title: fitBrandTitle('MARS Ball Valve Range UK — 1, 2 & 3-Piece, Flanged, Multi-Port'),
   description:
     'One-piece, two-piece, three-piece, flanged, multi-port, and metal-seated ball valves engineered for industrial fluid control.',
   alternates: { canonical: '/products' },

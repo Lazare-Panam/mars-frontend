@@ -5,6 +5,7 @@ import { fetchProductDetail } from "@/api/useProductDetail";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
 import { CATEGORIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
+import { fitBrandTitle } from "@/lib/seoTitle";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
 
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = canonicalPath ? `${SITE_URL}${canonicalPath}` : undefined;
 
   return {
-    title,
+    title: fitBrandTitle(title),
     description,
     alternates: canonical ? { canonical } : undefined,
     openGraph: {

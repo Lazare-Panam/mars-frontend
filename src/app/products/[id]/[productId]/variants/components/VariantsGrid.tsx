@@ -102,7 +102,11 @@ export function FeaturedCard({
   categoryId: string;
   productId: string;
 }) {
-  const image = variant.thumbnailImage || thumbnailImage;
+  const rawImage = variant.thumbnailImage || thumbnailImage;
+  // Guard against non-URL placeholders from the backend (next/image throws on
+  // a non-URL src and 500s the page).
+  const image =
+    rawImage && /^(https?:\/\/|\/)/.test(rawImage) ? rawImage : null;
   const price = variant.specs["Price"];
 
   return (
@@ -301,7 +305,11 @@ export function GridCard({
   categoryId: string;
   productId: string;
 }) {
-  const image = variant.thumbnailImage || thumbnailImage;
+  const rawImage = variant.thumbnailImage || thumbnailImage;
+  // Guard against non-URL placeholders from the backend (next/image throws on
+  // a non-URL src and 500s the page).
+  const image =
+    rawImage && /^(https?:\/\/|\/)/.test(rawImage) ? rawImage : null;
   const price = variant.specs["Price"];
 
   return (

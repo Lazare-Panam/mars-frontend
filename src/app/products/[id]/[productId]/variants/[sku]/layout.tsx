@@ -1,25 +1,9 @@
 import type { Metadata } from "next";
-import {
-  fetchVariants,
-  ProductSeriesVariants,
-  ProductVariant,
-} from "@/api/useProductVariants";
+import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
 import { canonicalCategoryFor } from "@/lib/canonicalCategory";
 import { SITE_URL } from "@/lib/site";
-
-// Mirrors buildTitle() in ../components/VariantsGrid.tsx, which is a client
-// component and can't be imported from server-only code like generateMetadata.
-function buildTitle(productName: string, variant: ProductVariant): string {
-  const parts = Object.entries(variant.specs)
-    .filter(([k]) => k !== "SKU" && k !== "Price")
-    .map(([, v]) => v);
-  // Series-level rows (SKU like "Series 28") can share identical specs with a
-  // sibling series, producing duplicate titles. Append the series id so each
-  // stays unique.
-  const sku = variant.specs["SKU"];
-  if (sku && /^series\b/i.test(sku)) parts.push(sku);
-  return parts.length ? `${parts.join(", ")} — ${productName}` : productName;
-}
+import { variantTitleParts } from "@/lib/variantTitle";
+import { fitBrandTitle } from "@/lib/seoTitle";
 
 type MetadataProps = {
   params: Promise<{ id: string; productId: string; sku: string }>;
@@ -53,7 +37,15 @@ export async function generateMetadata({
     return { title: data?.name ?? "Mars Valvenok" };
   }
 
-  const title = buildTitle(data.name, variant);
+  const { detail, name } = variantTitleParts(data, sku);
+  const readable = detail ? `${detail} — ${name}` : name;
+  // Keep the <title> within the ~65-char SERP guideline. For very long,
+  // multi-attribute variants (the V88 family) drop the product name so the
+  // unique distinguishing specs still fit; fitBrandTitle then drops the brand
+  // suffix when the result still wouldn't fit with it appended.
+  const metaTitle = fitBrandTitle(
+    readable.length > 65 && detail ? detail : readable,
+  );
   const specSummary = Object.entries(variant.specs)
     .filter(([k]) => k !== "SKU" && k !== "Price")
     .map(([, v]) => v)
@@ -71,20 +63,20 @@ export async function generateMetadata({
   const canonical = `${SITE_URL}/products/${canonicalCategory}/${productId}/variants/${sku}`;
 
   return {
-    title,
+    title: metaTitle,
     description,
     alternates: { canonical },
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
-      title,
+      title: readable,
       description,
       url: canonical,
       images: ogImage ? [{ url: ogImage }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: readable,
       description,
       images: ogImage ? [ogImage] : undefined,
     },
