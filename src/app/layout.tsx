@@ -88,13 +88,13 @@ export default function RootLayout({
             }).replace(/</g, "\\u003c"),
           }}
         />
-        {/* <script
+        <script
           nitro-exclude="nitro-exclude"
           seraph-accel-crit="1"
           data-cfasync="false"
           type="text/javascript"
           src="https://cdn.seoplatform.io/injector.js?websiteId=28796"
-        ></script> */}
+        ></script>
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
