@@ -150,9 +150,7 @@ export default function Hero() {
               ...fadeUp(mounted, 120),
             }}
           >
-            Valves built to survive
-            <br />
-            this world.
+            Ball valves for hazardous-area and process applications
           </Typography>
 
           <Typography

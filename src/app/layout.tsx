@@ -128,9 +128,6 @@ export default function RootLayout({
             src="//js-eu1.hs-scripts.com/147618935.js"
             strategy="afterInteractive"
           />
-          
-          
-          
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="afterInteractive"

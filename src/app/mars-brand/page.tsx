@@ -79,13 +79,7 @@ export default function MarsBrandPage() {
                 maxWidth: 780,
               }}
             >
-              No Logo.
-              <br />
-              No MARS
-              <Box component="sup" sx={{ fontSize: "0.5em" }}>
-                ®
-              </Box>
-              .
+              Mars valves: official authenticity and anti-counterfeit notice
             </Typography>
 
             <Typography

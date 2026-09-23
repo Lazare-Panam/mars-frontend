@@ -8,6 +8,16 @@ import DirectionsBoatFilledOutlinedIcon from "@mui/icons-material/DirectionsBoat
 import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
 import Reveal from "@/Common/Reveal";
 import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/applications" },
+  title: {
+    absolute: "marine valve and oil & gas valves applications- Mars valve",
+  },
+  description:
+    "MARS marine valve and oil & gas valve applications — API 607 fire-safe stainless steel ball valves for demanding marine, oil & gas, chemical and process environments.",
+};
 
 type Industry = {
   label: string;
@@ -114,7 +124,7 @@ export default async function ApplicationsPage() {
                 maxWidth: 760,
               }}
             >
-              Where MARS valves go to work
+              Marine valve solutions for demanding environments
             </Typography>
             <Typography
               sx={{

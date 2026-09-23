@@ -16,6 +16,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  title: {
+    absolute:
+      "Ball valves and industrial strainer solutions for industry – MARS Valve UK",
+  },
 };
 
 export default function Home() {
