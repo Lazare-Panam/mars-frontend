@@ -2,6 +2,102 @@ import { BlogData } from "../components/BlogPost";
 
 export const blogs: BlogData[] = [
   {
+    slug: "tri-clamp-sanitary-ball-valves-cf3m-vs-cf8m",
+    title:
+      "Tri-Clamp Sanitary Ball Valves: CF3M vs CF8M and When You Need Each",
+    seoTitle: "Tri-Clamp Sanitary Ball Valves: CF3M vs CF8M",
+    date: "September 29, 2026",
+    category: "Material Guide",
+    heroImage:
+      "https://pblol2.blob.core.windows.net/mars-valves/blogs/blog-image.jpeg",
+    excerpt:
+      "Both are 316-type stainless steel. The real difference is carbon content, and whether anyone is going to weld the valve.",
+    metaDescription:
+      "CF3M vs CF8M for tri-clamp sanitary ball valves: how carbon content and welding affect the choice, when you need CF3M (316L), when CF8M is enough, and what else to check on the datasheet.",
+    tags: [
+      "Sanitary Valves",
+      "Tri-Clamp",
+      "CF3M",
+      "CF8M",
+      "316L",
+      "Stainless Steel",
+    ],
+    sections: [
+      {
+        heading: "Key Takeaways",
+        body: `• CF3M is the low-carbon cast grade (≈ 316L). CF8M is the standard cast grade (≈ 316).\n• If the valve is welded in, or your spec calls for 316L product contact, choose CF3M.\n• For clamp-in general food and beverage duty, CF8M is usually enough and costs less.\n• Check the ball, stem, seats and clamp as well, not just the body.`,
+      },
+      {
+        heading: null,
+        body: `Choosing a sanitary ball valve usually comes down to one line on the datasheet: body material. For tri-clamp valves, that nearly always means CF3M or CF8M. The two look identical, perform almost identically in most media, and differ in price. So which one do you actually need?`,
+      },
+      {
+        heading: "What Is a Tri-Clamp Sanitary Ball Valve?",
+        body: `A tri-clamp (or clamp-end) ball valve has flanged ferrule ends that join to the pipework with a gasket and a hinged clamp. There are no threads to trap product and no welding, so the valve comes out in minutes for cleaning, inspection or a seat change.\n\nThat's why tri-clamp is the default connection in food, dairy, beverage, cosmetics and pharmaceutical plants. The same valves are usually offered with tube OD butt weld ends too, for lines where the valve is welded in permanently.\n\nGood to know: most sanitary ball valves are three-piece. Remove the body bolts and the centre section swings out, so you can replace the seats without cutting the valve out of the line.`,
+      },
+      {
+        heading: "CF3M vs CF8M: What Actually Differs?",
+        body: `Both are cast austenitic stainless steels defined in ASTM A351, and both contain molybdenum. That's what gives 316-type steel better chloride pitting resistance than 304. In most process media, their corrosion resistance is very similar.\n\nCF8M — cast equivalent of 316:\n• Max carbon: 0.08%\n• Welding: can sensitise near welds\n• Best for: clamp-in, general food & beverage\n• Cost: lower\n\nCF3M — cast equivalent of 316L:\n• Max carbon: 0.03%\n• Welding: resists sensitisation\n• Best for: welded lines, pharma, high-purity\n• Cost: usually a modest premium`,
+      },
+      {
+        heading: "Why Carbon Matters: Sensitisation",
+        body: `When austenitic stainless steel is heated to roughly 450–850 °C, which happens in the heat-affected zone next to a weld, carbon can combine with chromium to form chromium carbides along the grain boundaries. The metal next to those boundaries loses chromium, and with it some corrosion resistance.\n\nThis is called sensitisation, and it can lead to intergranular corrosion in service. Less carbon means fewer carbides can form. That is the whole point of the "L" grades.\n\nIf nobody will weld the valve body, and your spec doesn't call for 316L, the carbon difference rarely changes the outcome.`,
+      },
+      {
+        heading: "When You Need CF3M",
+        body: `• The valve is welded in. Tube OD butt weld or orbital weld ends put the body through a weld thermal cycle.\n• Your spec calls for 316L product contact. Common in pharmaceutical, biotech and high-purity work, and it applies to the ball and stem as well as the body.\n• Hot, aggressive cleaning. With frequent clean-in-place (CIP) cycles using strong chemicals, the extra margin is cheap insurance.\n• The line might change later. Today's clamp-in valve can end up welded into a revised skid. Specify CF3M now and you avoid a mixed-grade system.`,
+      },
+      {
+        heading: "When CF8M Is Enough",
+        body: `For a valve that's clamped in, never welded, and used in general food, beverage or utility service, CF8M is widely used and performs well. It has the same molybdenum-bearing, 316-type corrosion resistance, and it typically costs less.\n\nWatch out: choosing CF8M and then welding it in is the classic mistake. If there's any chance the valve will be welded, specify CF3M.`,
+      },
+      {
+        heading: "Beyond the Body Grade: What Else Matters",
+        body: `The body is only one choice on a sanitary valve datasheet. These often matter more for cleanability and service life:\n\n• Ball and stem. A CF3M body with a 316 ball and stem isn't a full 316L wetted path. Check all three.\n• True tube full port. The bore matches the tube ID, so there's no step to trap product or restrict cleaning.\n• Body cavity. Ball valves have a cavity around the ball where product can collect. Cavity filler seats fill most of it.\n• Seat material. PTFE is standard. Mars rates virgin PTFE seats from −50 °F to 400 °F (about −46 °C to 204 °C). Check the pressure–temperature curve for your conditions.\n• Clamp and gasket. These have their own pressure and temperature limits, which may be lower than the valve's. Check the whole joint.\n• Finish and approvals. Surface roughness (Ra), 3-A or EHEDG approval, and material certificates are usually specified separately. Ask for them in writing.`,
+      },
+      {
+        heading: "Mars Sanitary Ball Valves at a Glance",
+        body: `Mars offers two sanitary ball valve families. Both come in ½" to 4" (83SN: ½" to 2") with tri-clamp or tube OD butt weld ends, PTFE seats, and a 1,000 psi (≈ 69 bar) maximum rating.\n\n• Series 77SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port. See the [high performance sanitary ball valve](/products/ball-valves/high-performance-sanitary-ball-valve/variants).\n• Series 88SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port.\n• Series 83SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. ½"–2", true tube full port.\n• Series 33SN (multi-port) — CF3M body, CF3M or 316L ball / 316L stem. 3-, 4- and 5-way, cavity filler seats available. See the [sanitary multi-port ball valve](/products/ball-valves/sanitary-multi-port-ball-valve/variants).\n• Series 55SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Live-loaded stem, ISO 5211 pad.\n• Series 50SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Gland stem packing.\n\nWhich series for which line:\n\n• Welded pharma or high-purity lines: 77SN, 88SN or 83SN keep a low-carbon path through body, ball and stem.\n• Automated lines: 77SN and 88SN take an actuator directly. The 55SN has an ISO 5211 pad. See our [actuated ball valve guide](/news/actuated-ball-valve-guide).\n• Clamp-in food and beverage: 55SN or 50SN in CF8M keep costs down.\n• Diverting or mixing: 33SN multi-port replaces several two-way valves and cuts dead legs.`,
+      },
+      {
+        heading: "Common Specification Mistakes",
+        body: `• "316L" spec, 316 ball and stem — only the body is low carbon. If the spec means all wetted parts, check ball and stem.\n• CF8M, then welded in — the weld heat-affected zone can sensitise and later corrode at grain boundaries.\n• Valve rating checked, clamp ignored — the clamp and gasket can be the weakest part of the joint.\n• Ignoring the body cavity — trapped product is hard to clean. Consider cavity filler seats.\n• "Sanitary" taken to mean certified — sanitary describes the design. 3-A, EHEDG and food-contact compliance are separate documents.`,
+      },
+    ],
+    faq: [
+      {
+        q: "What is the difference between CF3M and CF8M?",
+        a: "Carbon content. CF3M has a maximum of 0.03% carbon and is the cast equivalent of 316L. CF8M allows up to 0.08% and is the cast equivalent of 316. Both contain molybdenum and have similar general corrosion resistance.",
+      },
+      {
+        q: "Is CF3M the same as 316L?",
+        a: 'CF3M is the cast grade that corresponds to wrought 316L. Valve bodies are usually cast, so a "316L" valve body is normally CF3M.',
+      },
+      {
+        q: "Do I need CF3M for a tri-clamp valve?",
+        a: "Not always. If the valve is clamped in, never welded, and your spec doesn't call for 316L, CF8M is usually adequate. Choose CF3M for welded ends, pharma or high-purity duty, or wherever 316L is specified.",
+      },
+      {
+        q: "Why does welding matter for CF8M?",
+        a: "Weld heat can make chromium carbides form at grain boundaries in higher-carbon stainless steel, which lowers corrosion resistance there. Low-carbon CF3M is much less prone to this.",
+      },
+      {
+        q: "What pressure is a tri-clamp ball valve rated for?",
+        a: "Mars sanitary ball valves are rated to 1,000 psi maximum (about 69 bar). The clamp and gasket have their own ratings, which may be lower, so check the complete joint for your pressure and temperature.",
+      },
+      {
+        q: "What are cavity filler seats?",
+        a: "Seats shaped to fill most of the space around the ball inside the body, reducing where product can collect. They're commonly specified for hygienic applications.",
+      },
+    ],
+    cta: {
+      heading: "Not Sure Which Grade Your Line Needs?",
+      body: "Tell us your media, cleaning regime, end connection and whether 316L is specified. We'll recommend the right Mars series and material.",
+      email: "sales@marsvalvenok.com",
+      phone: "+44 7368 137917",
+    },
+  },
+  {
     slug: "mars-valves-new-distribution-partners",
     title: "Mars Valves Is Looking for New Distribution Partners",
     date: "August 5, 2026",

@@ -156,7 +156,7 @@ export default function VariantDetailClient({
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 3, mb: 1 }}>
               <Typography sx={{ fontWeight: 800, fontSize: "2rem", color: "text.primary" }}>
-                {price ? `£${price}` : "Login to view price"}
+                {price ? `£${price}` : "Contact for price"}
               </Typography>
               <MagneticWrap>
                 <Button
