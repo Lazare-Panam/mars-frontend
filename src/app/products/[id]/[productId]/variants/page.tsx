@@ -9,6 +9,9 @@ import VariantsTable from "./components/VariantsTable";
 import VariantsActiveFilters from "./components/VariantsActiveFilters";
 import { alpha } from "@mui/material/styles";
 import Reveal from "@/Common/Reveal";
+import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { productCrumbs } from "@/lib/breadcrumbs";
+
 
 const BRAND = "#E7390F";
 
@@ -178,6 +181,15 @@ export default function ProductVariantsPage({
       >
         <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
+          <PageBreadcrumbs
+            items={productCrumbs({
+              categoryId: id,
+              product: { id: productId, name: data.name },
+              extra: [{ label: "All models" }],
+            })}
+            tone="onDark"
+            sx={{ mb: 2.5 }}
+          />
           <Typography
             sx={{
               color: "primary.light",

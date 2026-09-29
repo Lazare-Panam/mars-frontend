@@ -1,11 +1,14 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
+import PageBreadcrumbs from '@/Common/PageBreadcrumbs';
+import type { Crumb } from '@/lib/breadcrumbs';
 
-export default function ProductDetailHero({ name }: { name: string }) {
+export default function ProductDetailHero({ name, breadcrumbs }: { name: string; breadcrumbs?: Crumb[] }) {
   return (
     <Box sx={{ bgcolor: '#0a0604', px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
       <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
+        {breadcrumbs && <PageBreadcrumbs items={breadcrumbs} tone="onDark" sx={{ mb: 2.5 }} />}
         <Typography
           sx={{
             color: 'primary.light',

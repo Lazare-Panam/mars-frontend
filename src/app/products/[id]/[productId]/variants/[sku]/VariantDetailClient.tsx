@@ -6,7 +6,6 @@ import {
   Typography,
   Button,
   CircularProgress,
-  Breadcrumbs,
   Divider,
   Snackbar,
   Alert,
@@ -20,8 +19,9 @@ import { useProductVariants, ProductVariant } from "@/api/useProductVariants";
 import { useCartStore } from "@/store/useCartStore";
 import { parsePrice } from "../components/VariantsGrid";
 import Reveal from "@/Common/Reveal";
+import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { productCrumbs } from "@/lib/breadcrumbs";
 import { variantTitleParts } from "@/lib/variantTitle";
-import { CATEGORIES } from "../../../../data/categories";
 
 const BRAND = "#E7390F";
 const BRAND_DARK = "#A8270A";
@@ -101,14 +101,6 @@ export default function VariantDetailClient({
   // the <title> tag (see variantTitle.ts) so the two can't drift.
   const { detail } = variantTitleParts(data, sku);
   const specs = Object.entries(variant.specs).filter(([k]) => !HIDDEN_SPEC_KEYS.has(k));
-  const category = CATEGORIES.find((c) => c.id === id);
-  // Same trail as the BreadcrumbList JSON-LD in page.tsx.
-  const crumbs = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    ...(category ? [{ label: category.label, href: `/products/${id}` }] : []),
-    { label: data.name, href: `/products/${id}/${productId}` },
-  ];
 
   const handleAddToCart = async () => {
     if (adding) return;
@@ -133,39 +125,14 @@ export default function VariantDetailClient({
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <Box sx={{ maxWidth: 1200, mx: "auto", px: { xs: 3, md: 4 }, py: { xs: 4, md: 6 } }}>
         {/* Breadcrumb */}
-        <Breadcrumbs
-          separator="/"
-          aria-label="breadcrumb"
-          sx={{
-            mb: 4,
-            fontSize: "0.85rem",
-            "& .MuiBreadcrumbs-separator": { color: "text.disabled", mx: 0.75 },
-            "& .MuiBreadcrumbs-ol": { rowGap: 0.5 },
-          }}
-        >
-          {crumbs.map((c) => (
-            <Box
-              key={c.href}
-              component={NextLink}
-              href={c.href}
-              sx={{
-                color: "text.secondary",
-                textDecoration: "none",
-                fontWeight: 600,
-                transition: "color 0.15s",
-                "&:hover": { color: BRAND },
-              }}
-            >
-              {c.label}
-            </Box>
-          ))}
-          <Typography
-            aria-current="page"
-            sx={{ fontSize: "0.85rem", color: BRAND, fontWeight: 700, fontFamily: "monospace" }}
-          >
-            {skuLabel}
-          </Typography>
-        </Breadcrumbs>
+        <PageBreadcrumbs
+          items={productCrumbs({
+            categoryId: id,
+            product: { id: productId, name: data.name },
+            extra: [{ label: skuLabel, mono: true }],
+          })}
+          sx={{ mb: 4 }}
+        />
 
         <Box
           sx={{
