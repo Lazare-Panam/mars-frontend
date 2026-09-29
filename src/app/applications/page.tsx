@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 type Industry = {
   label: string;
   image: string;
+  imageAlt?: string;
   icon: typeof LocalFireDepartmentOutlinedIcon;
   description: string;
 };
@@ -61,7 +62,8 @@ const INDUSTRIES: Industry[] = [
     // economical, tri-clamp or tube OD butt weld ends, ½"–4", 1,000 psi.
     label: "Food, Beverage & Pharma",
     icon: LocalDrinkOutlinedIcon,
-    image: "https://pblol2.blob.core.windows.net/mars-valves/blogs/blog-image.jpeg",
+    image: "https://pblol2.blob.core.windows.net/hiflux/food-beverage-mars.jpg",
+    imageAlt: "Fresh food bowl representing the food and beverage industry",
     description:
       "Dairy, brewing, beverage, cosmetics and pharmaceutical lines need valves that clean easily and never trap product. MARS sanitary ball valves come with tri-clamp or tube OD butt weld ends in ½\" to 4\", with low-carbon CF3M (316L) bodies for welded, high-purity and clean-in-place service, and economical CF8M options for clamp-in food and beverage duty.",
   },
@@ -190,7 +192,7 @@ export default async function ApplicationsPage() {
                   >
                     <Image
                       src={industry.image}
-                      alt={industry.label}
+                      alt={industry.imageAlt ?? industry.label}
                       fill
                       className="app-industry-img"
                       style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
