@@ -21,6 +21,7 @@ import { parsePrice } from "../components/VariantsGrid";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { productCrumbs } from "@/lib/breadcrumbs";
+import { useQuoteStore } from "@/store/useQuoteStore";
 import { variantTitleParts } from "@/lib/variantTitle";
 
 const BRAND = "#E7390F";
@@ -47,6 +48,7 @@ export default function VariantDetailClient({
 }) {
   const { data, isLoading, isError } = useProductVariants(productId);
   const addToCart = useCartStore((s) => s.addToCart);
+  const setQuote = useQuoteStore((s) => s.setRequest);
   const [adding, setAdding] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -313,6 +315,7 @@ export default function VariantDetailClient({
                   disableElevation
                   component={NextLink}
                   href="/contact"
+                  onClick={() => setQuote({ sku: skuLabel, product: data.name })}
                   startIcon={<RequestQuoteOutlinedIcon />}
                   sx={{
                     mt: 3,

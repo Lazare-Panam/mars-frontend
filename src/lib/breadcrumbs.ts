@@ -21,7 +21,11 @@ export function productCrumbs({
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     { label: category?.label ?? categoryId, href: `/products/${categoryId}` },
-    ...(product ? [{ label: product.name, href: `/products/${categoryId}/${product.id}` }] : []),
+    // Single-product categories (e.g. one-piece) use the same id for the
+    // category and the product, so skip the product level there.
+    ...(product && product.id !== categoryId
+      ? [{ label: product.name, href: `/products/${categoryId}/${product.id}` }]
+      : []),
     ...extra,
   ];
 }
