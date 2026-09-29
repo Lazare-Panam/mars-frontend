@@ -6,7 +6,7 @@ import Reveal from '@/Common/Reveal';
 import { fitBrandTitle } from '@/lib/seoTitle';
 
 export const metadata: Metadata = {
-  title: fitBrandTitle('valve check and Y strainer solutions with industrial ball valves'),
+  title: fitBrandTitle('MARS Industrial Ball Valves — Full Range'),
   description:
     'One-piece, two-piece, three-piece, flanged, multi-port, and metal-seated ball valves engineered for industrial fluid control.',
   alternates: { canonical: '/products' },

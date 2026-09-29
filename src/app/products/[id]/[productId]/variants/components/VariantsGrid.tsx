@@ -11,6 +11,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
 import Reveal from "@/Common/Reveal";
+import { variantImageAlt } from "@/lib/variantTitle";
 
 const BRAND = "#E7390F";
 const PAGE_SIZE = 12;
@@ -172,7 +173,7 @@ export function FeaturedCard({
           {image && (
             <Image
               src={image}
-              alt={variant.id}
+              alt={variantImageAlt(productName, variant)}
               width={260}
               height={260}
               className="product-thumb-img"
@@ -352,7 +353,7 @@ export function GridCard({
         {image && (
           <Image
             src={image}
-            alt={variant.id}
+            alt={variantImageAlt(productName, variant)}
             width={130}
             height={130}
             className="product-thumb-img"

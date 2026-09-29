@@ -8,6 +8,7 @@ import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
+import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -56,13 +57,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           return `/products/${id}`;
         }
       })()
-    : undefined;
-  const canonical = canonicalPath ? `${SITE_URL}${canonicalPath}` : undefined;
+    : `/products/${id}`;
+  const canonical = `${SITE_URL}${canonicalPath}`;
 
   return {
     title: fitBrandTitle(title),
     description,
-    alternates: canonical ? { canonical } : undefined,
+    alternates: { canonical },
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
@@ -103,11 +104,21 @@ export default async function ProductCatalogPage({ params }: Props) {
     });
   }
 
+  const category = CATEGORIES.find((c) => c.id === id);
+  const crumbs = breadcrumbList([
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: category?.label ?? catalog?.bannerTitle ?? id, path: `/products/${id}` },
+  ]);
+
   return (
-    <HydrationBoundary state={dehydrate(queryClient)}>
-      <Reveal y={12}>
-        <ProductCatalogPageClient id={id} />
-      </Reveal>
-    </HydrationBoundary>
+    <>
+      <JsonLd data={crumbs} />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <Reveal y={12}>
+          <ProductCatalogPageClient id={id} />
+        </Reveal>
+      </HydrationBoundary>
+    </>
   );
 }
