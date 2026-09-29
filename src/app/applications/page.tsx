@@ -6,6 +6,7 @@ import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
 import WaterDropOutlinedIcon from "@mui/icons-material/WaterDropOutlined";
 import DirectionsBoatFilledOutlinedIcon from "@mui/icons-material/DirectionsBoatFilledOutlined";
 import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
+import LocalDrinkOutlinedIcon from "@mui/icons-material/LocalDrinkOutlined";
 import Reveal from "@/Common/Reveal";
 import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
 import type { Metadata } from "next";
@@ -53,6 +54,16 @@ const INDUSTRIES: Industry[] = [
       "https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?fm=jpg&q=80&w=1600&auto=format&fit=crop",
     description:
       "Chemical plants move corrosive, high-purity, or hazardous media through miles of pipework, often at extreme temperatures and pressures. Stainless steel construction and fire-safe sealing give operators a valve that holds up to aggressive media without becoming the weak point in the line.",
+  },
+  {
+    // Grounded in the MARS sanitary range published on this site (see the
+    // CF3M vs CF8M tri-clamp post): 77SN/88SN/83SN/33SN in CF3M, 55SN/50SN
+    // economical, tri-clamp or tube OD butt weld ends, ½"–4", 1,000 psi.
+    label: "Food, Beverage & Pharma",
+    icon: LocalDrinkOutlinedIcon,
+    image: "https://pblol2.blob.core.windows.net/mars-valves/blogs/blog-image.jpeg",
+    description:
+      "Dairy, brewing, beverage, cosmetics and pharmaceutical lines need valves that clean easily and never trap product. MARS sanitary ball valves come with tri-clamp or tube OD butt weld ends in ½\" to 4\", with low-carbon CF3M (316L) bodies for welded, high-purity and clean-in-place service, and economical CF8M options for clamp-in food and beverage duty.",
   },
   {
     label: "General Machinery",

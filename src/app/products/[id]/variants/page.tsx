@@ -168,6 +168,7 @@ export default function ProductVariantsPage({
               <VariantsTable
                 variants={filtered}
                 specKeys={allSpecKeys}
+                productName={data.name}
                 thumbnailImage={data.thumbnailImage}
                 seriesId={id}
               />

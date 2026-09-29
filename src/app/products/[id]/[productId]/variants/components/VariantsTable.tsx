@@ -25,6 +25,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
 import { useCartStore } from "@/store/useCartStore";
+import { variantImageAlt } from "@/lib/variantTitle";
 
 const BRAND = "#E7390F";
 
@@ -67,6 +68,7 @@ function PriceCell({ price }: { price?: string }) {
 interface RowProps {
   variant: ProductVariant;
   seriesId: string;
+  productName: string;
   specKeys: string[];
   thumbnailImage: string;
   zebra: boolean;
@@ -76,6 +78,7 @@ interface RowProps {
 function VariantRow({
   variant,
   seriesId,
+  productName,
   specKeys,
   thumbnailImage,
   zebra,
@@ -138,7 +141,7 @@ function VariantRow({
           >
             <Image
               src={image}
-              alt={variant.id}
+              alt={variantImageAlt(productName, variant)}
               width={46}
               height={46}
               style={{ objectFit: "contain" }}
@@ -248,6 +251,7 @@ function VariantRow({
 interface Props {
   variants: ProductVariant[];
   seriesId: string;
+  productName: string;
   specKeys: string[];
   thumbnailImage: string;
 }
@@ -255,6 +259,7 @@ interface Props {
 export default function VariantsTable({
   variants,
   seriesId,
+  productName,
   specKeys,
   thumbnailImage,
 }: Props) {
@@ -345,6 +350,7 @@ export default function VariantsTable({
                 key={v.id}
                 variant={v}
                 seriesId={seriesId}
+                productName={productName}
                 specKeys={displayKeys}
                 thumbnailImage={thumbnailImage}
                 zebra={i % 2 === 1}

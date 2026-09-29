@@ -37,8 +37,40 @@ export async function generateMetadata({
   };
 }
 
+// "September 29, 2026" -> "2026-09-29"; undefined if the date can't be parsed.
+function isoDate(date: string): string | undefined {
+  const d = new Date(`${date} UTC`);
+  return Number.isNaN(d.getTime()) ? undefined : d.toISOString().slice(0, 10);
+}
+
 function buildJsonLd(blog: (typeof blogs)[number], slug: string) {
-  const graph = [...(blog.jsonLd ?? [])];
+  const url = `${SITE_URL}/news/${slug}`;
+  const published = isoDate(blog.date);
+  const graph: object[] = [
+    ...(blog.jsonLd ?? []),
+    {
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      headline: blog.title,
+      description: blog.metaDescription ?? blog.excerpt,
+      image: [blog.heroImage],
+      ...(published ? { datePublished: published, dateModified: published } : {}),
+      author: { "@id": `${SITE_URL}/#organization` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      mainEntityOfPage: url,
+      keywords: blog.tags.join(", "),
+      articleSection: blog.category,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "News", item: `${SITE_URL}/news` },
+        { "@type": "ListItem", position: 3, name: blog.title, item: url },
+      ],
+    },
+  ];
   if (blog.faq && blog.faq.length > 0) {
     graph.push({
       "@type": "FAQPage",
@@ -50,7 +82,6 @@ function buildJsonLd(blog: (typeof blogs)[number], slug: string) {
       })),
     });
   }
-  if (graph.length === 0) return null;
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
@@ -65,14 +96,12 @@ export default async function BlogPage({
   const jsonLd = buildJsonLd(blog, slug);
   return (
     <>
-      {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <BlogPost blog={blog} />
     </>
   );

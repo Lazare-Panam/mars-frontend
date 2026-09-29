@@ -271,6 +271,7 @@ export default function ProductVariantsPage({
                 variants={filtered}
                 seriesId={productId}
                 specKeys={allSpecKeys}
+                productName={data.name}
                 thumbnailImage={data.thumbnailImage}
               />
             </Box>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fetchProductDetail, ProductDetail } from "@/api/useProductDetail";
+import { canonicalCategoryFor } from "@/lib/canonicalCategory";
 
 type MetadataProps = { params: Promise<{ id: string; productId: string }> };
 type LayoutProps = {
@@ -10,7 +11,7 @@ type LayoutProps = {
 export async function generateMetadata({
   params,
 }: MetadataProps): Promise<Metadata> {
-  const { productId } = await params;
+  const { id, productId } = await params;
 
   let data: ProductDetail | null = null;
   try {
@@ -32,14 +33,21 @@ export async function generateMetadata({
 
   const { name: title, description, image: ogImage } = data;
 
+  // A product can be listed under more than one category; point every copy at
+  // one canonical URL (same rule as the variant pages).
+  const canonicalCategory = (await canonicalCategoryFor(productId)) ?? id;
+  const canonical = `/products/${canonicalCategory}/${productId}`;
+
   return {
     title,
     description,
+    alternates: { canonical },
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
       title,
       description,
+      url: canonical,
       images: ogImage ? [{ url: ogImage }] : undefined,
     },
     twitter: {

@@ -26,13 +26,13 @@ const VALUES = [
   },
   {
     icon: VerifiedIcon,
-    title: "Proprietary Manufacturing",
-    body: "MARS® ball valves are designed and quality-controlled in-house by MarsValvenok, built to a specification we own — not a relabeled catalog product.",
+    title: "Authorised Distributor",
+    body: "Mars Valvenok is an authorised UK distributor of Mars Valve Co., Ltd. Every MARS® valve we supply is genuine stock, backed by the manufacturer's documentation and warranty.",
   },
   {
     icon: HandshakeOutlinedIcon,
     title: "Direct Supply Chain",
-    body: "No re-sellers between design and delivery. We control the specification, the QC process, and the documentation from source to shipment.",
+    body: "Supplied through an authorised channel from Mars Valve Co. — no grey-market stock. Every order ships with manufacturer documentation and full traceability.",
   },
   {
     icon: PublicOutlinedIcon,
@@ -61,7 +61,7 @@ export default function AboutUsPage() {
       >
         <Image
           src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="MarsValvenok engineering and manufacturing"
+          alt="MARS industrial ball valves supplied by Mars Valvenok"
           fill
           priority
           style={{ objectFit: "cover" }}
@@ -127,8 +127,9 @@ export default function AboutUsPage() {
                 lineHeight: 1.6,
               }}
             >
-              MarsValvenok supplies ball valves manufactured, quality-controlled,
-              and documented to the standards industrial systems require.
+              Mars Valvenok is an authorised UK distributor of Mars Valve Co.,
+              Ltd., supplying genuine MARS® ball valves documented to the
+              standards industrial systems require.
             </Typography>
           </Reveal>
         </Container>
@@ -198,7 +199,7 @@ export default function AboutUsPage() {
             MarsValvenok supplies ball valves for oil & gas, water treatment,
             chemical processing, and power generation — systems where a
             component has to perform exactly as specified, every cycle. We
-            work directly with manufacturers, hold a strict chain of custody on
+            work directly with Mars Valve Co., hold a strict chain of custody on
             every product line, and back each valve with documentation our
             customers can verify against the actual spec, not a sales sheet.
           </Typography>
@@ -212,12 +213,13 @@ export default function AboutUsPage() {
               mb: 0,
             }}
           >
-            That standard is built into MARS
+            That standard starts with MARS
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>
-            , our own ball valve brand — designed, quality-controlled, and
-            manufactured in-house by MarsValvenok.
+            , the ball valve range designed and manufactured by Mars Valve Co.,
+            Ltd. in Taiwan. As an authorised UK distributor, we supply it with
+            the full manufacturer documentation and warranty.
           </Typography>
         </Box>
         </Reveal>
@@ -359,13 +361,14 @@ export default function AboutUsPage() {
               <Box component="sup" sx={{ fontSize: "0.6em" }}>
                 ®
               </Box>{" "}
-              is MarsValvenok's own ball valve brand — designed and
-              quality-controlled in-house, sold only through us and our
-              authorized distributors. When you buy MARS
+              valves are designed and manufactured by Mars Valve Co., Ltd.
+              Mars Valvenok is an authorised UK distributor, so when you buy
+              MARS
               <Box component="sup" sx={{ fontSize: "0.6em" }}>
                 ®
-              </Box>
-              , you're buying directly from the people who engineered it.
+              </Box>{" "}
+              from us you get genuine stock with the full manufacturer
+              documentation and warranty.
             </Typography>
           </Reveal>
         </Container>

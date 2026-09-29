@@ -41,7 +41,7 @@ export default function ProductCard({
             {tag}
           </Typography>
         )}
-        <Typography variant="h6" sx={{ fontWeight: 800, color: "text.primary", mt: 0.5, mb: 0.5, fontSize: "1.05rem" }}>
+        <Typography variant="h6" component="h2" sx={{ fontWeight: 800, color: "text.primary", mt: 0.5, mb: 0.5, fontSize: "1.05rem" }}>
           {name}{subtitle ? ` — ${subtitle}` : ""}
         </Typography>
         {materialBadge && (

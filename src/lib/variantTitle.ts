@@ -1,4 +1,4 @@
-import { ProductSeriesVariants } from "@/api/useProductVariants";
+import { ProductSeriesVariants, ProductVariant } from "@/api/useProductVariants";
 
 // Shared concise variant naming, used by BOTH the visible <h1>
 // (VariantDetailClient) and the <title> (variant layout generateMetadata) so
@@ -32,4 +32,11 @@ export function variantTitleParts(
         .map(([, val]) => val)
         .join(", ");
   return { detail, name: series.name };
+}
+
+// Descriptive image alt text for a variant, e.g.
+// "MARS Economical 2-Piece Ball Valve, 1/4 Inch, V20-20-1-4IN-W-O-LOCK".
+export function variantImageAlt(productName: string, variant: ProductVariant): string {
+  const sku = variant.specs["SKU"] ?? variant.id;
+  return [`MARS ${productName}`, variant.specs["Size"], sku].filter(Boolean).join(", ");
 }
