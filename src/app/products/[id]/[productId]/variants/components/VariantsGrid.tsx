@@ -6,7 +6,7 @@ import { alpha } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
@@ -72,9 +72,9 @@ function PriceBlock({ price }: { price?: string }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        router.push("/login");
+        router.push("/contact");
       }}
-      startIcon={<LockOutlinedIcon sx={{ fontSize: 13 }} />}
+      startIcon={<MailOutlinedIcon sx={{ fontSize: 13 }} />}
       sx={{
         textTransform: "none",
         fontWeight: 700,
@@ -84,7 +84,7 @@ function PriceBlock({ price }: { price?: string }) {
         "&:hover": { bgcolor: "transparent", textDecoration: "underline" },
       }}
     >
-      Login to view price
+      Contact for price
     </Button>
   );
 }
@@ -447,7 +447,7 @@ export default function VariantsGrid({
   const [page, setPage] = useState(1);
 
   // Cheapest variant with an actual numeric price becomes the featured card.
-  // If nothing has a visible price (all gated behind login), fall back to
+  // If no variant has a price listed, fall back to
   // the first variant so the section still renders something sensible.
   const featured = useMemo(() => {
     const priced = variants

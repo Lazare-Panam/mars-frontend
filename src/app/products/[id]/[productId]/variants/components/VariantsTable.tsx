@@ -19,7 +19,7 @@ import {
   Alert,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -46,9 +46,9 @@ function PriceCell({ price }: { price?: string }) {
   return (
     <Button
       component={NextLink}
-      href="/login"
+      href="/contact"
       size="small"
-      startIcon={<LockOutlinedIcon sx={{ fontSize: 14 }} />}
+      startIcon={<MailOutlinedIcon sx={{ fontSize: 14 }} />}
       sx={{
         textTransform: "none",
         fontWeight: 700,
@@ -59,7 +59,7 @@ function PriceCell({ price }: { price?: string }) {
         "&:hover": { bgcolor: alpha(BRAND, 0.06) },
       }}
     >
-      Login to view price
+      Contact for price
     </Button>
   );
 }
@@ -194,7 +194,7 @@ function VariantRow({
             display: "flex",
             alignItems: "center",
             gap: 1.5,
-            justifyContent: "flex-end",
+            justifyContent: "center",
           }}
         >
           <PriceCell price={price} />
@@ -318,7 +318,7 @@ export default function VariantsTable({
                 </TableSortLabel>
               </TableCell>
             ))}
-            <TableCell sx={{ ...headerSx, width: 190, textAlign: "right" }}>
+            <TableCell sx={{ ...headerSx, width: 190, textAlign: "center" }}>
               Price
             </TableCell>
             <TableCell sx={{ ...headerSx, width: 220 }} />
