@@ -32,6 +32,21 @@ import { useCartStore } from "@/store/useCartStore";
 
 const BRAND = "#E7390F";
 
+// Price + action columns stay pinned to the right edge while wide spec tables
+// scroll sideways, so the price and cart button are always visible. Pinned
+// cells need an opaque background (row tints are translucent), so these are
+// the row colours pre-blended onto white.
+const ACTION_WIDTH = 150;
+const PRICE_WIDTH = 140;
+const ROW_BG = "#fff";
+const ROW_BG_ZEBRA = "#fcfcfc";
+const ROW_BG_OPEN = "#fef9f8";
+const pinned = (right: number) => ({
+  position: "sticky" as const,
+  right,
+  zIndex: 2,
+});
+
 // Spec keys that read as reference/lookup data rather than a shoppable
 // attribute — styled smaller and muted instead of like a normal spec.
 const REFERENCE_KEYS = new Set(["SKU"]);
@@ -94,6 +109,7 @@ function VariantRow({
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
   const detailHref = `/products/${id}/${seriesId}/variants/${variant.id}`;
+  const rowBg = open ? ROW_BG_OPEN : zebra ? ROW_BG_ZEBRA : ROW_BG;
   const goToDetail = () => router.push(detailHref);
 
   const handleAddToCart = async () => {
@@ -233,7 +249,14 @@ function VariantRow({
       })}
 
       <TableCell
-        sx={{ py: 1.5, width: 190 }}
+        sx={{
+          py: 1.5,
+          width: PRICE_WIDTH,
+          minWidth: PRICE_WIDTH,
+          ...pinned(ACTION_WIDTH),
+          bgcolor: rowBg,
+          boxShadow: `-8px 0 8px -8px ${alpha("#000", 0.12)}`,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         <Box
@@ -249,7 +272,13 @@ function VariantRow({
       </TableCell>
 
       <TableCell
-        sx={{ py: 1.5, width: 220 }}
+        sx={{
+          py: 1.5,
+          width: ACTION_WIDTH,
+          minWidth: ACTION_WIDTH,
+          ...pinned(0),
+          bgcolor: rowBg,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         <Box sx={{ display: "flex", gap: 1, justifyContent: "flex-end" }}>
@@ -477,6 +506,7 @@ export default function VariantsTable({
       elevation={0}
       sx={{ flex: 1, minWidth: 0, borderRadius: "8px", overflow: "hidden" }}
     >
+      <Box sx={{ overflowX: "auto" }}>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
@@ -493,10 +523,22 @@ export default function VariantsTable({
                 </TableSortLabel>
               </TableCell>
             ))}
-            <TableCell sx={{ ...headerSx, width: 190, textAlign: "center" }}>
+            <TableCell
+              sx={{
+                ...headerSx,
+                width: PRICE_WIDTH,
+                minWidth: PRICE_WIDTH,
+                textAlign: "center",
+                ...pinned(ACTION_WIDTH),
+                zIndex: 4,
+                boxShadow: `-8px 0 8px -8px ${alpha("#000", 0.12)}`,
+              }}
+            >
               Price
             </TableCell>
-            <TableCell sx={{ ...headerSx, width: 220 }} />
+            <TableCell
+              sx={{ ...headerSx, width: ACTION_WIDTH, minWidth: ACTION_WIDTH, ...pinned(0), zIndex: 4 }}
+            />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -529,6 +571,7 @@ export default function VariantsTable({
           )}
         </TableBody>
       </Table>
+      </Box>
       <TablePagination
         component="div"
         count={sorted.length}
