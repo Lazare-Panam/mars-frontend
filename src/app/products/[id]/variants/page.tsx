@@ -9,6 +9,9 @@ import VariantsSidebar from "../[productId]/variants/components/VariantsSidebar"
 import { alpha } from "@mui/material/styles";
 import VariantsActiveFilters from "../[productId]/variants/components/VariantsActiveFilters";
 import Reveal from "@/Common/Reveal";
+import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { productCrumbs } from "@/lib/breadcrumbs";
+import { CATEGORIES } from "../../data/categories";
 
 const BRAND = "#E7390F";
 
@@ -95,6 +98,20 @@ export default function ProductVariantsPage({
       >
         <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
+          <PageBreadcrumbs
+            items={
+              CATEGORIES.some((c) => c.id === id)
+                ? productCrumbs({ categoryId: id, extra: [{ label: "All models" }] })
+                : [
+                    { label: "Home", href: "/" },
+                    { label: "Products", href: "/products" },
+                    { label: data.name, href: `/products/${id}` },
+                    { label: "All models" },
+                  ]
+            }
+            tone="onDark"
+            sx={{ mb: 2.5 }}
+          />
           <Typography
             sx={{
               color: "primary.light",

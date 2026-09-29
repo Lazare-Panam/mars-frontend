@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { useProductDetail } from "@/api/useProductDetail";
 import ProductDetailHero from "./components/ProductDetailHero";
+import { productCrumbs } from "@/lib/breadcrumbs";
+
 import ProductDetailImage from "./components/ProductDetailImage";
 import ProductSpecsTable from "./components/ProductSpecsTable";
 import ProductFeatureChips from "./components/ProductFeatureChips";
@@ -63,7 +65,10 @@ export default function ProductDetailClient({
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
-      <ProductDetailHero name={data.name} />
+      <ProductDetailHero
+        name={data.name}
+        breadcrumbs={productCrumbs({ categoryId: id, product: { id: productId, name: data.name } })}
+      />
       <Box
         sx={{
           maxWidth: "1280px",

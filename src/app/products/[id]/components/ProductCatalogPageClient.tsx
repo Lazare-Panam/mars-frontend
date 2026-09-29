@@ -15,6 +15,9 @@ import { ProductType, useProductCatalog } from "@/api/useProductCatalog";
 import ProductCard from "./ProductCard";
 import ProductDetailContent from "../../components/ProductDetailContent";
 import Reveal from "@/Common/Reveal";
+import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { productCrumbs } from "@/lib/breadcrumbs";
+
 import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function ProductCatalogPageClient({ id }: { id: string }) {
@@ -86,6 +89,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
       >
         <Container maxWidth="lg">
           <Reveal>
+            <PageBreadcrumbs items={productCrumbs({ categoryId: id })} tone="onDark" sx={{ mb: 3 }} />
             {hero.overline && (
               <Typography
                 variant="overline"

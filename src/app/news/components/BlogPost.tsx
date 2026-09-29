@@ -14,6 +14,7 @@ import {
 import Link from 'next/link';
 import Reveal from '@/Common/Reveal';
 import MagneticWrap from '@/Common/MagneticWrap';
+import PageBreadcrumbs from '@/Common/PageBreadcrumbs';
 
 interface BlogSection {
   heading: string | null;
@@ -137,6 +138,15 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
           }}
         >
           <Reveal>
+            <PageBreadcrumbs
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'News', href: '/news' },
+                { label: blog.title },
+              ]}
+              tone="onDark"
+              sx={{ mb: 2.5, '& .MuiBreadcrumbs-li:last-of-type': { maxWidth: { xs: 220, md: 420 } }, '& .MuiBreadcrumbs-li:last-of-type p': { overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' } }}
+            />
             <Chip
               label={blog.category}
               size="small"
