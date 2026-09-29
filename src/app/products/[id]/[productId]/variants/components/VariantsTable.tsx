@@ -30,6 +30,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ProductVariant } from "@/api/useProductVariants";
 import { useCartStore } from "@/store/useCartStore";
 import { variantImageAlt } from "@/lib/variantTitle";
+import { useQuoteStore } from "@/store/useQuoteStore";
 
 const BRAND = "#E7390F";
 
@@ -52,7 +53,7 @@ const pinned = (right: number) => ({
 // attribute — styled smaller and muted instead of like a normal spec.
 const REFERENCE_KEYS = new Set(["SKU"]);
 
-function PriceCell({ price }: { price?: string }) {
+function PriceCell({ price, onQuote }: { price?: string; onQuote: () => void }) {
   if (price) {
     return (
       <Typography
@@ -67,6 +68,7 @@ function PriceCell({ price }: { price?: string }) {
     <Button
       component={NextLink}
       href="/contact"
+      onClick={onQuote}
       size="small"
       startIcon={<MailOutlinedIcon sx={{ fontSize: 14 }} />}
       sx={{
@@ -112,6 +114,8 @@ function VariantRow({
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
   const detailHref = `/products/${id}/${seriesId}/variants/${variant.id}`;
+  const setQuote = useQuoteStore((s) => s.setRequest);
+  const onQuote = () => setQuote({ sku: variant.specs["SKU"] ?? variant.id, product: productName });
   const rowBg = open ? ROW_BG_OPEN : zebra ? ROW_BG_ZEBRA : ROW_BG;
   const goToDetail = () => router.push(detailHref);
 
@@ -270,7 +274,7 @@ function VariantRow({
             justifyContent: "center",
           }}
         >
-          <PriceCell price={price} />
+          <PriceCell price={price} onQuote={onQuote} />
         </Box>
       </TableCell>
 
@@ -429,6 +433,7 @@ function VariantRow({
                     disableElevation
                     component={NextLink}
                     href="/contact"
+                    onClick={onQuote}
                     sx={{
                       textTransform: "none",
                       fontWeight: 700,

@@ -13,6 +13,8 @@ import {
   Grow,
 } from '@mui/material';
 import { useSubmitEnquiry } from '@/api/useSubmitEnquiry';
+import { quoteMessage } from '@/lib/quote';
+import { useQuoteStore } from '@/store/useQuoteStore';
 import Reveal from '@/Common/Reveal';
 import MagneticWrap from '@/Common/MagneticWrap';
 
@@ -42,7 +44,18 @@ const fieldSx = {
 };
 
 export default function ContactForm() {
-  const [formData, setFormData] = React.useState<EnquiryFormData>(initialFormState);
+  // Arriving from a "Request quote" button: the part number is handed over in
+  // memory (useQuoteStore), not the URL. Pre-fill the message once, then clear
+  // the store so a later visit to /contact starts blank. Still fully editable.
+  const clearQuote = useQuoteStore((s) => s.clear);
+  const [quote] = React.useState(() => useQuoteStore.getState().request);
+  const sku = quote?.sku ?? '';
+  const [formData, setFormData] = React.useState<EnquiryFormData>(() =>
+    quote ? { ...initialFormState, message: quoteMessage(quote.sku, quote.product) } : initialFormState,
+  );
+  React.useEffect(() => {
+    if (quote) clearQuote();
+  }, [quote, clearQuote]);
   const [errors, setErrors] = React.useState<Partial<Record<keyof EnquiryFormData, string>>>({});
 
   const { mutate, isPending, isSuccess, isError, reset } = useSubmitEnquiry();
@@ -97,10 +110,12 @@ export default function ContactForm() {
     >
       <Reveal>
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }} gutterBottom>
-          Get in touch
+          {sku ? 'Request a quote' : 'Get in touch'}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-          Send us your technical enquiry and our team will get back to you shortly.
+          {sku
+            ? `Add your details and quantity for ${sku} and our team will send you a price shortly.`
+            : 'Send us your technical enquiry and our team will get back to you shortly.'}
         </Typography>
       </Reveal>
 

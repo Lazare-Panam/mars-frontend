@@ -6,12 +6,15 @@ import { alpha } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CheckIcon from "@mui/icons-material/Check";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import Image from "next/image";
 import NextLink from "next/link";
 import { ProductVariant } from "@/api/useProductVariants";
 import Reveal from "@/Common/Reveal";
 import { variantImageAlt } from "@/lib/variantTitle";
+import { useQuoteStore } from "@/store/useQuoteStore";
+import { useCartStore } from "@/store/useCartStore";
 
 const BRAND = "#E7390F";
 const PAGE_SIZE = 12;
@@ -55,7 +58,34 @@ export function variantHref(
   return `/products/${categoryId}/${productId}/variants/${variant.id}`;
 }
 
-function PriceBlock({ price }: { price?: string }) {
+// Adds one of this variant to the basket (same request as the table and the
+// variant page; the server looks up the price). `added` flips on for a moment
+// so the button can confirm.
+function useAddVariantToCart(productId: string, variant: ProductVariant, image: string | null) {
+  const addToCart = useCartStore((s) => s.addToCart);
+  const [adding, setAdding] = useState(false);
+  const [added, setAdded] = useState(false);
+  const add = async () => {
+    if (adding) return;
+    setAdding(true);
+    try {
+      await addToCart({
+        seriesId: productId,
+        variantId: variant.id,
+        productDescription: variant.specs["SKU"] ?? variant.id,
+        quantity: 1,
+        pictureUrl: image ?? "",
+      });
+      setAdded(true);
+      setTimeout(() => setAdded(false), 1500);
+    } finally {
+      setAdding(false);
+    }
+  };
+  return { add, adding, added };
+}
+
+function PriceBlock({ price, onQuote }: { price?: string; onQuote: () => void }) {
   const router = useRouter();
 
   if (price) {
@@ -73,6 +103,7 @@ function PriceBlock({ price }: { price?: string }) {
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
+        onQuote();
         router.push("/contact");
       }}
       startIcon={<MailOutlinedIcon sx={{ fontSize: 13 }} />}
@@ -109,6 +140,10 @@ export function FeaturedCard({
   const image =
     rawImage && /^(https?:\/\/|\/)/.test(rawImage) ? rawImage : null;
   const price = variant.specs["Price"];
+  const router = useRouter();
+  const setQuote = useQuoteStore((s) => s.setRequest);
+  const onQuote = () => setQuote({ sku: variant.specs["SKU"] ?? variant.id, product: productName });
+  const cart = useAddVariantToCart(productId, variant, image);
 
   return (
     <Box
@@ -257,18 +292,27 @@ export function FeaturedCard({
               £{price}
             </Typography>
           ) : (
-            <PriceBlock price={price} />
+            <PriceBlock price={price} onQuote={onQuote} />
           )}
           <Button
             variant="contained"
             size="medium"
+            disabled={cart.adding}
             onClick={(e) => {
+              // The card itself links to the variant page; the button adds to
+              // the basket (priced) or opens the pre-filled quote form.
               e.preventDefault();
               e.stopPropagation();
+              if (price) {
+                cart.add();
+                return;
+              }
+              onQuote();
+              router.push("/contact");
             }}
             startIcon={
               price ? (
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 17 }} />
+                cart.added ? <CheckIcon sx={{ fontSize: 17 }} /> : <ShoppingCartOutlinedIcon sx={{ fontSize: 17 }} />
               ) : (
                 <RequestQuoteOutlinedIcon sx={{ fontSize: 17 }} />
               )
@@ -285,7 +329,7 @@ export function FeaturedCard({
               "&:hover": { bgcolor: "#A8270A", boxShadow: "none" },
             }}
           >
-            {price ? "Buy" : "Request Quote"}
+            {price ? (cart.added ? "Added" : "Add to Cart") : "Request Quote"}
           </Button>
         </Box>
       </Box>
@@ -312,6 +356,10 @@ export function GridCard({
   const image =
     rawImage && /^(https?:\/\/|\/)/.test(rawImage) ? rawImage : null;
   const price = variant.specs["Price"];
+  const router = useRouter();
+  const setQuote = useQuoteStore((s) => s.setRequest);
+  const onQuote = () => setQuote({ sku: variant.specs["SKU"] ?? variant.id, product: productName });
+  const cart = useAddVariantToCart(productId, variant, image);
 
   return (
     <Box
@@ -379,7 +427,7 @@ export function GridCard({
         </Typography>
 
         <Box sx={{ mt: "auto" }}>
-          <PriceBlock price={price} />
+          <PriceBlock price={price} onQuote={onQuote} />
           {variant.specs["SKU"] && (
             <Typography
               sx={{
@@ -396,13 +444,22 @@ export function GridCard({
             fullWidth
             variant="outlined"
             size="small"
+            disabled={cart.adding}
             onClick={(e) => {
+              // The card itself links to the variant page; the button adds to
+              // the basket (priced) or opens the pre-filled quote form.
               e.preventDefault();
               e.stopPropagation();
+              if (price) {
+                cart.add();
+                return;
+              }
+              onQuote();
+              router.push("/contact");
             }}
             startIcon={
               price ? (
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 14 }} />
+                cart.added ? <CheckIcon sx={{ fontSize: 14 }} /> : <ShoppingCartOutlinedIcon sx={{ fontSize: 14 }} />
               ) : (
                 <RequestQuoteOutlinedIcon sx={{ fontSize: 14 }} />
               )
@@ -418,7 +475,7 @@ export function GridCard({
               "&:hover": { borderColor: BRAND, bgcolor: alpha(BRAND, 0.06) },
             }}
           >
-            {price ? "Buy" : "Request Quote"}
+            {price ? (cart.added ? "Added" : "Add to Cart") : "Request Quote"}
           </Button>
         </Box>
       </Box>
