@@ -55,6 +55,7 @@ export default function Footer() {
   return (
     <Box
       component="footer"
+      id="footer"
       sx={{
         background:
           "linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)",
@@ -101,8 +102,8 @@ export default function Footer() {
           <Typography
             sx={{ fontSize: "0.85rem", lineHeight: 1.7, mb: 3, maxWidth: 320 }}
           >
-            API 607 fire-safe certified ball valves, gate valves, and process
-            valves — engineered and certified to one standard, every time.
+            Authorised UK distributor of MARS ball valves from Mars Valve Co.,
+            Ltd., Taiwan.
           </Typography>
 
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>

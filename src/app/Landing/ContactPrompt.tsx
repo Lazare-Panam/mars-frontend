@@ -91,8 +91,8 @@ export default function ContactPrompt() {
           Looking for something specific?
         </Typography>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-          Skip the scrolling — talk to us directly. We'll give you the best
-          price in the market, fast.
+          Skip the scrolling — talk to us directly. Send your spec and
+          we&apos;ll come back with the right series and a price.
         </Typography>
 
         <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>

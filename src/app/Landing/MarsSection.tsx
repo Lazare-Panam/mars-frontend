@@ -22,7 +22,7 @@ const heading = {
 
 export default function MarsSection() {
   return (
-    <Box component="section" sx={{ py: { xs: 6, md: 10 }, bgcolor: "#fff" }}>
+    <Box component="section" id="who-we-are" sx={{ py: { xs: 6, md: 10 }, bgcolor: "#fff" }}>
       <Box
         sx={{
           maxWidth: "1280px",
@@ -42,29 +42,27 @@ export default function MarsSection() {
             </Typography>
 
             <Typography sx={bodyText}>
-              We're{" "}
+              Mars Valvenok is an{" "}
               <Box
                 component="span"
                 sx={{ fontWeight: 700, color: "text.primary" }}
               >
-                An Authorised Mars Valves Distributor
-              </Box>{" "}
-              — an authorised distributor of{" "}
-              <Box
-                component="span"
-                sx={{ fontWeight: 700, color: "text.primary" }}
-              >
-                Mars Valve Co., Ltd, Taiwan
+                authorised UK distributor of MARS industrial valves
               </Box>
-              , supplying authentic MARS industrial valves backed by full
-              manufacturer documentation, certification, and technical support.
+              , appointed by the manufacturer,{" "}
+              <Box
+                component="span"
+                sx={{ fontWeight: 700, color: "text.primary" }}
+              >
+                Mars Valve Co., Ltd. of Taichung, Taiwan
+              </Box>
+              .
             </Typography>
 
             <Typography sx={bodyText}>
-              We work closely with the manufacturer to deliver valves that meet
-              demanding industry standards. Every product we supply is traceable
-              and quality-assured, with the documentation engineers and
-              procurement teams expect.
+              We supply genuine MARS valves with the manufacturer&apos;s
+              documentation, pricing online for standard items, and technical
+              help choosing the right series, material and end connection.
             </Typography>
 
             <Typography component="h3" sx={heading}>
@@ -72,10 +70,9 @@ export default function MarsSection() {
             </Typography>
 
             <Typography sx={bodyText}>
-              Whether you need a single valve or a complete project supply, we
-              offer competitive pricing, fast delivery, and expert technical
-              guidance — with knowledgeable support from enquiry through to
-              delivery.
+              Single valves or full project orders. Prices shown online for
+              standard items, datasheets and certificates on request, and a
+              team that answers with specifications, not just a price.
             </Typography>
           </Box>
         </Reveal>
@@ -108,7 +105,7 @@ export default function MarsSection() {
               >
                 <Image
                   src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
-                  alt="MARS fire-safe ball valve, API 607 certified"
+                  alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
                   fill
                   style={{ objectFit: "contain" }}
                   sizes="(max-width: 768px) 100vw, 50vw"

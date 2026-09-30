@@ -9,31 +9,62 @@ import ProcessSection from "./Landing/ProcessSection";
 import DistributorComparison from "./Landing/DistributorComparison";
 import FAQSection from "./Landing/FAQSection";
 import ValuePropBanner from "./Landing/ValuePropBanner";
+import ShopByType from "./Landing/ShopByType";
+import { HOME_FAQS } from "./Landing/homeFaqs";
+import { JsonLd } from "@/lib/jsonLd";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 // TestimonialsSection intentionally not rendered: it still contains placeholder
 // ("REPLACE — real customer quote goes here") entries. Re-add <TestimonialsSection/>
 // below only once TESTIMONIALS in that file holds real, named customer quotes.
 
+const TITLE = "MARS Ball Valves UK — Authorised Distributor | Mars Valvenok";
+const DESCRIPTION =
+  "Authorised UK distributor of MARS ball valves from Mars Valve Co., Taiwan. 2-piece, 3-piece, flanged, sanitary and fire-safe ranges. Prices online.";
+
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  title: {
-    absolute: "MARS Ball Valves UK — Authorised Distributor | Mars Valvenok",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
+  // Page-level openGraph/twitter replace the root layout's objects wholesale,
+  // so the shared fields are repeated here.
+  openGraph: {
+    type: "website",
+    siteName: "Mars Valvenok",
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
   },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+};
+
+// Organization schema lives in the root layout (site-wide); FAQPage is
+// homepage-only.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.text },
+  })),
 };
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqSchema} />
       <Hero/>
       <TrustBar/>
       <MarsSection/>
       <DistributorComparison/>
       <ValuePropBanner/>
       <FeaturedProducts/>
+      <ShopByType/>
       <ProcessSection/>
       <IndustriesSection/>
       <MarsStats/>
-      <FAQSection/>
+      <FAQSection id="faq" faqs={HOME_FAQS.map(({ q, a }) => ({ q, a }))} />
       <ContactCTA/>
     </>
   );

@@ -4,51 +4,35 @@ import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/Common/Reveal";
-import type { IndustryId } from "@/app/applications/industries";
+import { INDUSTRIES, type IndustryId } from "@/app/applications/industries";
 
 type Application = {
   label: string;
   /** Section on /applications this tile jumps to. */
   anchor: IndustryId;
-  image: string;
-  large?: boolean;
+  /** "large" = 2×2, "wide" = 2×1 on desktop; together the 7 tiles fill 4×3. */
+  size?: "large" | "wide";
 };
 
 const APPLICATIONS: Application[] = [
-  {
-    label: "Chemical Industry",
-    anchor: "chemical",
-    image:
-      "https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?fm=jpg&q=80&w=1600&auto=format&fit=crop",
-    large: true,
-  },
-  {
-    label: "General Machinery",
-    anchor: "machinery",
-    image:
-      "https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    label: "Power Generation",
-    anchor: "power",
-    image:
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    label: "Water Supply Industry",
-    anchor: "water",
-    image:
-      "https://images.unsplash.com/photo-1767274714714-dda4c25c6376?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    label: "Marine & Shipbuilding",
-    anchor: "marine",
-    image:
-      "https://images.unsplash.com/photo-1670121180530-cfcba4438038?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-  },
+  { label: "Oil & gas and refining", anchor: "oil-gas", size: "large" },
+  { label: "Chemical processing", anchor: "chemical" },
+  { label: "Food, beverage & pharmaceutical", anchor: "food-pharma" },
+  { label: "Power generation", anchor: "power" },
+  { label: "Water supply", anchor: "water" },
+  { label: "Marine & shipbuilding", anchor: "marine", size: "wide" },
+  { label: "General machinery", anchor: "machinery", size: "wide" },
 ];
 
+// Same photos and alt text as the /applications sections.
+function industryFor(anchor: IndustryId) {
+  const industry = INDUSTRIES.find((i) => i.id === anchor);
+  if (!industry) throw new Error(`No /applications section "${anchor}"`);
+  return industry;
+}
+
 function ApplicationTile({ app }: { app: Application }) {
+  const { image, imageAlt } = industryFor(app.anchor);
   return (
     <Box
       component={Link}
@@ -59,8 +43,8 @@ function ApplicationTile({ app }: { app: Application }) {
         position: "relative",
         height: "100%",
         minHeight: 200,
-        gridColumn: app.large ? { xs: "span 2", md: "span 2" } : "span 1",
-        gridRow: app.large ? { xs: "span 1", md: "span 2" } : "span 1",
+        gridColumn: app.size ? "span 2" : "span 1",
+        gridRow: app.size === "large" ? { xs: "span 1", md: "span 2" } : "span 1",
         display: "flex",
         alignItems: "flex-end",
         overflow: "hidden",
@@ -70,8 +54,8 @@ function ApplicationTile({ app }: { app: Application }) {
       }}
     >
       <Image
-        src={app.image}
-        alt={app.label}
+        src={image}
+        alt={imageAlt}
         fill
         className="app-tile-img"
         style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
@@ -107,7 +91,7 @@ function ApplicationTile({ app }: { app: Application }) {
 
 export default function IndustriesSection() {
   return (
-    <Box component="section" sx={{ bgcolor: "#fff" }}>
+    <Box component="section" id="applications" sx={{ bgcolor: "#fff" }}>
       <Box
         sx={{
           display: "grid",
@@ -138,7 +122,7 @@ export default function IndustriesSection() {
                   textTransform: "uppercase",
                 }}
               >
-                Valves, Controls &amp; Accessories
+                Applications
               </Typography>
             </Box>
 
@@ -151,7 +135,7 @@ export default function IndustriesSection() {
                 mb: 3,
               }}
             >
-              Applications
+              Where MARS valves are used
             </Typography>
 
             <Button
@@ -176,7 +160,7 @@ export default function IndustriesSection() {
                 },
               }}
             >
-              Explore More
+              See all applications
             </Button>
           </Reveal>
         </Box>
@@ -185,7 +169,7 @@ export default function IndustriesSection() {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: { xs: "repeat(2, 1fr)", md: "repeat(4, 1fr)" },
             gridAutoRows: 200,
           }}
         >

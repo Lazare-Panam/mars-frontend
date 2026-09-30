@@ -5,14 +5,14 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Reveal from "@/Common/Reveal";
 
 const POINTS = [
-  "Direct from the manufacturer",
-  "No middleman markup",
-  "Same certified quality, lower price",
+  "Supplied direct from Mars Valve Co.",
+  "Prices online for standard items",
+  "Quotes for project and non-standard orders",
 ];
 
 export default function ValuePropBanner() {
   return (
-    <Box component="section" sx={{ bgcolor: "primary.main", py: { xs: 5, md: 6 } }}>
+    <Box component="section" id="pricing" sx={{ bgcolor: "primary.main", py: { xs: 5, md: 6 } }}>
       <Reveal>
         <Box
           sx={{
@@ -37,12 +37,12 @@ export default function ValuePropBanner() {
                 mb: 0.5,
               }}
             >
-              Buy direct. Skip the double margin.
+              Clear prices, supplied direct from the manufacturer
             </Typography>
             <Typography sx={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", maxWidth: 520 }}>
-              We work directly with Mars Valve Co., Taiwan — no reseller
-              chain, no markup stacked on markup. You get the same certified
-              valve for less.
+              We buy directly from Mars Valve Co. in Taiwan and publish prices
+              for standard items online, so you can compare before you
+              enquire.
             </Typography>
           </Box>
 

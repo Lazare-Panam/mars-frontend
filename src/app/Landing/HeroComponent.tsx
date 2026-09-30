@@ -47,6 +47,7 @@ export default function Hero() {
   return (
     <Box
       component="section"
+      id="hero"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       sx={{
@@ -136,21 +137,21 @@ export default function Hero() {
               ...fadeUp(mounted, 0),
             }}
           >
-            Engineered for Extreme Conditions
+            Authorised UK distributor · Mars Valve Co., Ltd., Taiwan
           </Typography>
 
           <Typography
             component="h1"
             sx={{
               color: "#fff",
-              fontSize: { xs: "1.75rem", sm: "1rem", md: "3.5rem", lg: "3.5rem" },
+              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "3.5rem" },
               fontWeight: 800,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
               ...fadeUp(mounted, 120),
             }}
           >
-            Ball valves for hazardous-area and process applications
+            MARS ball valves, supplied in the UK by an authorised distributor
           </Typography>
 
           <Typography
@@ -161,9 +162,9 @@ export default function Hero() {
               ...fadeUp(mounted, 240),
             }}
           >
-            API 607, ATEX, and SIL 3 certified actuated and process valves for
-            oil &amp; gas, chemical, and hazardous-area applications — trusted
-            across the harshest environments on Earth.
+            Stainless steel 2-piece, 3-piece, flanged, multi-port and sanitary
+            ball valves, with fire-safe series tested to API 607. Genuine MARS
+            stock, manufacturer documentation, and prices you can see online.
           </Typography>
 
           <Stack
@@ -174,7 +175,7 @@ export default function Hero() {
             <MagneticWrap>
               <Button
                 component={Link}
-                href="/products"
+                href="/shop"
                 variant="contained"
                 size="large"
                 sx={{
@@ -188,7 +189,7 @@ export default function Hero() {
                   "&:hover": { transform: "translateY(-2px)" },
                 }}
               >
-                Explore the Range
+                Shop the Range
               </Button>
             </MagneticWrap>
             <MagneticWrap>

@@ -1,55 +1,20 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import Link from "next/link";
 import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Reveal from "@/Common/Reveal";
 
-const FAQS: { q: string; a: ReactNode }[] = [
-  {
-    q: "Do you supply custom sizes or non-standard specs?",
-    a: (
-      <>
-        Yes.{" "}
-        <Link href="/contact" style={{ color: "inherit", fontWeight: 600 }}>
-          Send us your requirements
-        </Link>{" "}
-        (size, pressure rating, end connection and material) and we&apos;ll work
-        with Mars Valve Co. to confirm availability and pricing for non-standard
-        configurations.
-      </>
-    ),
-  },
-  {
-    q: "Is there a minimum order quantity?",
-    a: "No minimum for standard catalog items — we supply single valves as well as full pipeline orders. Custom or non-stock configurations may carry a manufacturer MOQ, which we'll flag upfront.",
-  },
-  {
-    q: "Do you ship internationally?",
-    a: "Yes, we ship worldwide. Every order includes full documentation for customs clearance, plus certification paperwork for hazardous-area and fire-safe applications where required.",
-  },
-  {
-    q: "What certifications come with each valve?",
-    a: "Certification depends on the series — fire-safe ranges carry API 607 testing, hazardous-area actuated valves carry ATEX and SIL 3 documentation. Full manufacturer certificates are provided with every order.",
-  },
-  {
-    q: "What's your returns and warranty policy?",
-    a: "Unused valves in original packaging can be returned within 30 days. All products carry the full Mars Valve Co. manufacturer warranty — something only available through an authorised distributor.",
-  },
-];
-
 type Props = {
-  /** Defaults to the homepage FAQs. */
-  faqs?: { q: string; a: ReactNode }[];
+  faqs: { q: string; a: ReactNode }[];
   heading?: string;
   id?: string;
   bgcolor?: string;
 };
 
 export default function FAQSection({
-  faqs = FAQS,
-  heading = "Questions procurement teams actually ask.",
+  faqs,
+  heading = "Questions procurement teams ask",
   id,
   bgcolor = "#fff",
 }: Props) {

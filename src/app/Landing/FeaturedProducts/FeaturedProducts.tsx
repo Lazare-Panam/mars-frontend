@@ -99,7 +99,7 @@ export default function FeaturedProducts() {
   }, [paused, scrollByCard]);
 
   return (
-    <Box component="section" sx={{ py: { xs: 6, md: 10 }, bgcolor: "background.default" }}>
+    <Box component="section" id="range" sx={{ py: { xs: 6, md: 10 }, bgcolor: "background.default" }}>
       <Reveal>
         <Box
           sx={{
@@ -136,7 +136,7 @@ export default function FeaturedProducts() {
                 mt: 1,
               }}
             >
-              Built for every line, every condition.
+              Featured MARS ball valves
             </Typography>
           </Box>
 

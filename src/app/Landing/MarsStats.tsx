@@ -7,8 +7,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
-import SpeedIcon from "@mui/icons-material/Speed";
-import CategoryIcon from "@mui/icons-material/Category";
+import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
+import TuneIcon from "@mui/icons-material/Tune";
 import Reveal from "@/Common/Reveal";
 
 function CountUp({ target }: { target: string }) {
@@ -64,33 +64,36 @@ function CountUp({ target }: { target: string }) {
   );
 }
 
+// Each stat is checked against the product catalog (mars-api): the metal
+// seated high-pressure valve is rated 6,000 PSI (most series 1,000–2,000),
+// fire-safe series 28/83/88/90/90D/91D, sizes run 1/8" to 12".
 const STATS = [
-  { num: "2000", unit: "PSI", label: "MAX PRESSURE RATING" },
-  { num: "11", unit: "", label: "BALL VALVE SERIES" },
-  { num: "316", unit: "", label: "STAINLESS GRADE (CF8M)" },
-  { num: "100", unit: "%", label: "API 607 FIRE-SAFE TESTED" },
+  { num: "6000", unit: "PSI", label: "MAX PRESSURE, DEPENDING ON SERIES" },
+  { num: "6", unit: "", label: "API 607 FIRE-SAFE SERIES" },
+  { num: "12", unit: "″", label: "LARGEST SIZE (RANGE STARTS AT ⅛″)" },
+  { num: "316", unit: "", label: "STAINLESS GRADE (CF8M / CF3M)" },
 ];
 
 const FEATURES = [
   {
     icon: <VerifiedIcon fontSize="small" />,
-    title: "API 607 Certified",
-    desc: "Every fire-safe series independently tested for shut-off integrity under fire conditions.",
+    title: "Fire-Safe Series",
+    desc: "Selected series tested to API 607: Series 28, 83, 88, 90, 90D and 91D.",
   },
   {
     icon: <PrecisionManufacturingIcon fontSize="small" />,
-    title: "SS316 (CF8M) Construction",
-    desc: "Corrosion-resistant body material as standard across the range, not an upcharge option.",
+    title: "Stainless As Standard",
+    desc: "CF8M (316) and CF3M (316L) bodies across the stainless range.",
   },
   {
-    icon: <SpeedIcon fontSize="small" />,
-    title: "Tight Shut-Off, Every Time",
-    desc: "Consistent tolerances from single fittings to full pipeline orders.",
+    icon: <BuildCircleOutlinedIcon fontSize="small" />,
+    title: "Direct Mount Design",
+    desc: "Actuators bolt straight to selected series, with no bracket or coupling.",
   },
   {
-    icon: <CategoryIcon fontSize="small" />,
-    title: "Built By Hand, Tested By Hand",
-    desc: "Every series carries the weight of the people who built it — not a stamp, a standard.",
+    icon: <TuneIcon fontSize="small" />,
+    title: "Seat Options",
+    desc: "PTFE, RPTFE, PEEK, metal seats and more, matched to your media.",
   },
 ];
 
@@ -98,6 +101,7 @@ export default function MarsStats() {
   return (
     <Box
       component="section"
+      id="mars-brand"
       sx={{
         position: "relative",
         overflow: "hidden",
@@ -154,7 +158,7 @@ export default function MarsStats() {
                 color: "primary.light",
               }}
             >
-              THE ROLLS-ROYCE OF VALVES
+              THE MARS® BRAND
             </Typography>
           </Box>
 
@@ -168,13 +172,13 @@ export default function MarsStats() {
               color: "#fff",
             }}
           >
-            Built by hand,
+            Made by Mars Valve Co.
             <br />
             <Box
               component="span"
               sx={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}
             >
-              proven by pressure.
+              in Taiwan.
             </Box>
           </Typography>
 
@@ -186,10 +190,10 @@ export default function MarsStats() {
               lineHeight: 1.7,
             }}
           >
-            MARS exists because of the people behind it — engineers, machinists,
-            and inspectors who refused to let anything less than their best
-            leave the factory floor. That's not a slogan. It's the only standard
-            we've ever known how to work to.
+            MARS valves are designed and manufactured by Mars Valve Co., Ltd.
+            in Taichung, Taiwan, with casting, machining, finishing and assembly
+            under one roof. Mars Valvenok supplies the range in the UK as an
+            authorised distributor.
           </Typography>
 
           <Box
@@ -242,7 +246,7 @@ export default function MarsStats() {
                 "&:hover": { bgcolor: "primary.dark", transform: "translateY(-2px)" },
               }}
             >
-              VIEW FULL RANGE
+              VIEW THE FULL RANGE
             </Button>
             <Button
               component={Link}
@@ -264,7 +268,7 @@ export default function MarsStats() {
                 },
               }}
             >
-              CERTIFICATION GUIDE
+              LETTER OF AUTHORISATION
             </Button>
           </Box>
         </Box>

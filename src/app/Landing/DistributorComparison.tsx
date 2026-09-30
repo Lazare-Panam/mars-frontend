@@ -5,36 +5,34 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Reveal from "@/Common/Reveal";
 
+// Framed as authorised vs unauthorised, never against other authorised
+// distributors (Mars Valve UK Ltd. is one too, per the authorisation letter).
 const POINTS = [
   {
-    good: "Full manufacturer documentation with every order",
-    bad: "Documentation missing, incomplete, or unverifiable",
+    good: "Genuine MARS valves from Mars Valve Co.",
+    bad: "Origin can't always be verified",
   },
   {
-    good: "Genuine API 607 / ATEX / SIL 3 test certificates",
-    bad: "No traceable certification — pass-off risk on hazardous sites",
+    good: "Manufacturer certificates for the series ordered",
+    bad: "Certificates missing, incomplete or unverifiable",
   },
   {
-    good: "Full Mars Valve Co. manufacturer warranty honoured",
-    bad: "Warranty void — no manufacturer relationship to fall back on",
+    good: "Manufacturer warranty honoured",
+    bad: "No manufacturer relationship to fall back on",
   },
   {
-    good: "Direct technical support from a Mars-trained team",
-    bad: "No manufacturer support if something goes wrong on-site",
+    good: "Technical support on selection and specification",
+    bad: "Limited or no technical support",
   },
   {
-    good: "Full batch and serial traceability on every valve",
-    bad: "No traceability — origin and test history unknown",
-  },
-  {
-    good: "Consistent SS316 (CF8M) construction as standard",
-    bad: "Material grade unverified, sometimes substituted",
+    good: "Material grade as specified (CF8M / CF3M)",
+    bad: "Material grade not always verified",
   },
 ];
 
 export default function DistributorComparison() {
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
+    <Box component="section" id="authorised" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
       <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto", px: { xs: 3, md: 8 }, mb: { xs: 5, md: 7 }, textAlign: "center" }}>
           <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -56,12 +54,12 @@ export default function DistributorComparison() {
             component="h2"
             sx={{ fontSize: { xs: "2rem", md: "2.5rem" }, fontWeight: 800, color: "text.primary", mb: 2 }}
           >
-            Authorised distributor vs. grey market.
+            Why buy from an authorised distributor
           </Typography>
           <Typography sx={{ color: "text.secondary", maxWidth: 600, mx: "auto", lineHeight: 1.7 }}>
-            Unauthorised resellers can undercut on price — but on hazardous or
-            fire-safe applications, missing paperwork is the difference
-            between a valid safety case and a liability.
+            On hazardous or fire-safe duty, the documentation matters as much
+            as the valve. Buying from an authorised distributor means you know
+            where the valve came from.
           </Typography>
         </Box>
       </Reveal>
@@ -103,7 +101,7 @@ export default function DistributorComparison() {
                 mb: 2.5,
               }}
             >
-              Authorised Mars Distributor
+              From an authorised distributor
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
               {POINTS.map((p) => (
@@ -133,7 +131,7 @@ export default function DistributorComparison() {
           </Box>
         </Reveal>
 
-        {/* Grey market column */}
+        {/* Unauthorised column */}
         <Reveal delay={120}>
           <Box
             sx={{
@@ -161,7 +159,7 @@ export default function DistributorComparison() {
                 mb: 2.5,
               }}
             >
-              Grey Market / Unauthorised Reseller
+              From an unauthorised seller
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
               {POINTS.map((p) => (

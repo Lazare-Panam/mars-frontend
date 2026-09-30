@@ -74,8 +74,10 @@ export default function RootLayout({
                   url: SITE_URL,
                   logo: "https://pblol2.blob.core.windows.net/mars-valves/logo.jpg",
                   description:
-                    "Authorised UK distributor of MARS ball, flanged and fire-safe valves.",
+                    "Authorised UK distributor of MARS ball valves from Mars Valve Co., Ltd., Taiwan.",
                   email: "sales@marsvalvenok.com",
+                  telephone: "+44 7368 137917",
+                  address: { "@type": "PostalAddress", addressCountry: "GB" },
                 },
                 {
                   "@type": "WebSite",

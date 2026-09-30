@@ -73,7 +73,7 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
       >
         <Image
           src={valve.image}
-          alt={valve.title}
+          alt={valve.alt}
           fill
           draggable={false}
           style={{ objectFit: "contain", padding: "12px" }}

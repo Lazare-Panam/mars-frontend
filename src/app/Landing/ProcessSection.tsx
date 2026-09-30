@@ -24,8 +24,8 @@ const STEPS = [
   {
     icon: <FactCheckIcon />,
     num: "02",
-    title: "Certified Pricing, Fast",
-    desc: "We respond with datasheets, certifications, and pricing — usually same day.",
+    title: "Pricing and Datasheets",
+    desc: "We reply with datasheets, certificates for the series and pricing, usually same day.",
   },
   {
     icon: <TaskAltIcon />,
@@ -62,7 +62,7 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
+    <Box component="section" id="how-it-works" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
       <Reveal>
         <Box
           sx={{

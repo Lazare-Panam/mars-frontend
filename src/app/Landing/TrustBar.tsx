@@ -5,30 +5,26 @@ import Image from "next/image";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import ShieldIcon from "@mui/icons-material/Shield";
 import ScienceIcon from "@mui/icons-material/Science";
 import Reveal from "@/Common/Reveal";
 
+// Only badges backed by a document on file. ATEX and SIL 3 are series-specific
+// and stay off until those certificates are held (homepage build sheet, block 2).
 const CREDENTIALS = [
   {
     icon: <LocalFireDepartmentIcon fontSize="small" />,
-    label: "API 607",
-    desc: "Fire-Safe Certified",
-  },
-  {
-    icon: <ShieldIcon fontSize="small" />,
-    label: "ATEX",
-    desc: "Hazardous Area Rated",
-  },
-  {
-    icon: <VerifiedIcon fontSize="small" />,
-    label: "SIL 3",
-    desc: "Safety Integrity Level",
+    label: "API 607 fire-safe",
+    desc: "Selected series: 28, 83, 88, 90, 90D, 91D",
   },
   {
     icon: <ScienceIcon fontSize="small" />,
-    label: "SS316 (CF8M)",
-    desc: "Corrosion-Resistant Standard",
+    label: "SS316 (CF8M) / CF3M",
+    desc: "Standard across the stainless range",
+  },
+  {
+    icon: <VerifiedIcon fontSize="small" />,
+    label: "Authorised by Mars Valve Co.",
+    desc: "Letter of authorisation on file",
   },
 ];
 
@@ -36,6 +32,7 @@ export default function TrustBar() {
   return (
     <Box
       component="section"
+      id="certifications"
       sx={{
         position: "relative",
         bgcolor: "background.default",
@@ -83,7 +80,7 @@ export default function TrustBar() {
                   textTransform: "uppercase",
                 }}
               >
-                Certified &amp; Compliant
+                Documented and traceable
               </Typography>
             </Box>
 
@@ -97,7 +94,7 @@ export default function TrustBar() {
                 mb: 2,
               }}
             >
-              Every valve leaves the factory with the paperwork to prove it.
+              The paperwork your compliance team needs, from the manufacturer
             </Typography>
 
             <Typography
@@ -108,14 +105,16 @@ export default function TrustBar() {
                 lineHeight: 1.7,
               }}
             >
-              Independently tested and fully documented, so your procurement
-              and compliance teams never have to chase paperwork.
+              MARS valves are manufactured by Mars Valve Co., Ltd. in Taiwan.
+              We supply the manufacturer&apos;s certificates and datasheets for
+              the series you order, so your procurement and compliance teams
+              don&apos;t have to chase them.
             </Typography>
 
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
                 gap: { xs: 3, md: 4 },
               }}
             >
@@ -207,7 +206,7 @@ export default function TrustBar() {
             >
               <Image
                 src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
-                alt="MARS fire-safe ball valve, API 607 certified"
+                alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
                 fill
                 style={{ objectFit: "contain", padding: "16px" }}
                 sizes="(max-width: 768px) 100vw, 45vw"
@@ -227,7 +226,7 @@ export default function TrustBar() {
                   textAlign: "center",
                 }}
               >
-                VIEW FULL CERTIFICATE ↗
+                VIEW LETTER OF AUTHORISATION ↗
               </Box>
             </Box>
           </Link>

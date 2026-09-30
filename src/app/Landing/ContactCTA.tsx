@@ -132,9 +132,7 @@ export default function ContactCTA() {
               mb: 2.5,
             }}
           >
-            Talk to us. We'll give you
-            <br />
-            the best price in the market.
+            Talk to us about your application
           </Typography>
 
           <Typography
@@ -146,9 +144,9 @@ export default function ContactCTA() {
               maxWidth: 480,
             }}
           >
-            Whether it's a single valve or a full pipeline order, our team
-            responds fast with specs, certifications, and pricing — no
-            middlemen, no guesswork.
+            A single valve or a full project order: send your size, pressure,
+            end connection and media, and we&apos;ll come back with the right
+            series, datasheets and a price.
           </Typography>
 
           <Box sx={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
