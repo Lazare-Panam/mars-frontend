@@ -22,6 +22,16 @@ export const SERIES = [
     href: "/products/series-20-20",
     pricesHref: "/products/series-20-20/variants",
   },
+  {
+    id: "series-22",
+    label: "Series 22",
+    description:
+      "2-piece direct mount full port ball valves with ISO 5211 mounting pad for actuated service.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/hp-2.png",
+    href: "/products/series-22",
+    pricesHref: "/products/series-22/variants",
+  },
 ];
 
 export const CATEGORIES = [

@@ -33,22 +33,32 @@ export const LEFT_NAV: NavItem[] = [
         href: "/products",
         items: [
           {
-            label: "Series 10-10",
+            label: "One Piece Ball Valves",
             href: "/products/series-10-10",
             subItems: [
               {
-                label: "View Prices",
+                label: "Series 10-10",
                 href: "/products/series-10-10/variants",
               },
             ],
           },
           {
-            label: "Series 20-20",
+            label: "Economial Two Piece Ball Valves",
             href: "/products/series-20-20",
             subItems: [
               {
-                label: "View Prices",
+                label: "Series 20-20",
                 href: "/products/series-20-20/variants",
+              },
+            ],
+          },
+          {
+            label: "High Performance 2 Piece Ball Valves",
+            href: "/products/series-22",
+            subItems: [
+              {
+                label: "Series 22",
+                href: "/products/series-22/variants",
               },
             ],
           },
