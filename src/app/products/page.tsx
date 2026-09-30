@@ -5,6 +5,7 @@ import CollapsibleSection from './components/CollapsibleSection';
 import { CATEGORIES, SERIES } from './data/categories';
 import Reveal from '@/Common/Reveal';
 import { fitBrandTitle } from '@/lib/seoTitle';
+import { BANNER_DARK } from "@/theme/brand";
 
 export const metadata: Metadata = {
   title: fitBrandTitle('MARS Industrial Ball Valves — Full Range'),
@@ -24,7 +25,7 @@ export default function ProductsPage() {
           display: 'flex',
           alignItems: 'flex-end',
           overflow: 'hidden',
-          bgcolor: '#0a0604',
+          bgcolor: BANNER_DARK,
         }}
       >
         <Box
@@ -44,7 +45,7 @@ export default function ProductsPage() {
           sx={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(180deg, rgba(10,6,4,0.2) 0%, rgba(10,6,4,0.9) 100%)',
+            background: 'linear-gradient(180deg, rgba(74,18,6,0.2) 0%, rgba(74,18,6,0.9) 100%)',
           }}
         />
         <Box

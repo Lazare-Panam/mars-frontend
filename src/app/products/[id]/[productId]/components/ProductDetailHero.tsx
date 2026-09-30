@@ -3,10 +3,11 @@
 import { Box, Typography } from '@mui/material';
 import PageBreadcrumbs from '@/Common/PageBreadcrumbs';
 import type { Crumb } from '@/lib/breadcrumbs';
+import { BANNER_GRADIENT } from "@/theme/brand";
 
 export default function ProductDetailHero({ name, breadcrumbs }: { name: string; breadcrumbs?: Crumb[] }) {
   return (
-    <Box sx={{ bgcolor: '#0a0604', px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
+    <Box sx={{ background: BANNER_GRADIENT, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
       <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
         {breadcrumbs && <PageBreadcrumbs items={breadcrumbs} tone="onDark" sx={{ mb: 2.5 }} />}
         <Typography

@@ -8,6 +8,7 @@ import VariantsSidebar from "./components/VariantsSidebar";
 import VariantsTable from "./components/VariantsTable";
 import VariantsActiveFilters from "./components/VariantsActiveFilters";
 import { alpha } from "@mui/material/styles";
+import { BANNER_GRADIENT } from "@/theme/brand";
 
 const BRAND = "#E7390F";
 
@@ -173,7 +174,7 @@ export default function ProductVariantsPage({
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       {/* Hero */}
       <Box
-        sx={{ bgcolor: "#0a0604", px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
+        sx={{ background: BANNER_GRADIENT, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
       >
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
           <Typography

@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
+import { BANNER_DARK } from "@/theme/brand";
 
 interface Props {
   title: string;
@@ -17,7 +18,7 @@ export default function ProductHero({ title, subtitle, bannerImage }: Props) {
         display: 'flex',
         alignItems: 'flex-end',
         overflow: 'hidden',
-        bgcolor: '#0a0604',
+        bgcolor: BANNER_DARK,
       }}
     >
       {bannerImage && (
@@ -39,7 +40,7 @@ export default function ProductHero({ title, subtitle, bannerImage }: Props) {
         sx={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg, rgba(10,6,4,0.3) 0%, rgba(10,6,4,0.85) 100%)',
+          background: 'linear-gradient(180deg, rgba(74,18,6,0.3) 0%, rgba(74,18,6,0.85) 100%)',
         }}
       />
       <Box

@@ -81,7 +81,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url("${hero.bannerImage}")`,
+          backgroundImage: `linear-gradient(rgba(74,18,6,0.52), rgba(74,18,6,0.52)), url("${hero.bannerImage}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           py: { xs: 8, md: 12 },

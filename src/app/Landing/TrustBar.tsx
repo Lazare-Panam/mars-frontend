@@ -217,7 +217,7 @@ export default function TrustBar() {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  bgcolor: "rgba(10,6,4,0.85)",
+                  bgcolor: "rgba(74,18,6,0.85)",
                   color: "#fff",
                   fontSize: "0.72rem",
                   fontWeight: 700,

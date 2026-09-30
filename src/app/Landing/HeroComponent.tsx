@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Box, Typography, Stack, Button } from "@mui/material";
 import MagneticWrap from "@/Common/MagneticWrap";
+import { BANNER_DARK } from "@/theme/brand";
 
 const fadeUp = (visible: boolean, delayMs: number) => ({
   opacity: visible ? 1 : 0,
@@ -56,7 +57,7 @@ export default function Hero() {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        bgcolor: "#0a0604",
+        bgcolor: BANNER_DARK,
       }}
     >
       <Box
@@ -85,7 +86,7 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            "linear-gradient(180deg, rgba(10,6,4,0.85) 0%, rgba(10,6,4,0.45) 45%, rgba(10,6,4,0.92) 100%)",
+            "linear-gradient(180deg, rgba(74,18,6,0.85) 0%, rgba(74,18,6,0.45) 45%, rgba(74,18,6,0.92) 100%)",
         }}
       />
 

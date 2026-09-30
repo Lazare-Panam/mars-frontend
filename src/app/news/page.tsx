@@ -49,7 +49,7 @@ export default function NewsPage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%)",
+              "linear-gradient(to right, rgba(74,18,6,0.72) 0%, rgba(74,18,6,0.3) 60%, rgba(74,18,6,0.1) 100%)",
           }}
         />
         <Box

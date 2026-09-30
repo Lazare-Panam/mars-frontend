@@ -14,6 +14,7 @@ import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
 import { INDUSTRIES, FAQS, URLS, type IndustryId, type Item } from "./industries";
 import type { Metadata } from "next";
+import { BANNER_GRADIENT } from "@/theme/brand";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/applications" },
@@ -101,7 +102,7 @@ export default async function ApplicationsPage() {
       <JsonLd data={faqSchema} />
 
       {/* 1. Intro */}
-      <Box id="intro" sx={{ bgcolor: "#0a0604", color: "#fff", py: { xs: 8, md: 12 } }}>
+      <Box id="intro" sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Reveal>
             <Typography
@@ -320,7 +321,7 @@ export default async function ApplicationsPage() {
       </Container>
 
       {/* 11. Not sure which valve? */}
-      <Box id="help" sx={{ bgcolor: "#0a0604", color: "#fff", py: { xs: 7, md: 9 } }}>
+      <Box id="help" sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 7, md: 9 } }}>
         <Container maxWidth="md">
           <Reveal>
             <Typography component="h2" sx={{ ...h2Sx, color: "#fff", mb: 2 }}>

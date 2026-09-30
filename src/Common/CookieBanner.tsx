@@ -2,6 +2,7 @@
 
 import CookieConsent from 'react-cookie-consent';
 import appInsights from '@/lib/appInsights';
+import { BANNER_DARK } from "@/theme/brand";
 
 export default function CookieBanner() {
   return (
@@ -13,7 +14,7 @@ export default function CookieBanner() {
       cookieName="mars-cookie-consent"
       expires={365}
       style={{
-        background: '#0a0604',
+        background: BANNER_DARK,
         borderTop: '1px solid rgba(255,255,255,0.1)',
         alignItems: 'center',
         fontSize: '0.85rem',

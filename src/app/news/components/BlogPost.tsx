@@ -125,7 +125,7 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
           alt={blog.title}
           sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
-        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(74,18,6,0.75) 0%, rgba(74,18,6,0.3) 60%, rgba(74,18,6,0.1) 100%)' }} />
         <Box
           sx={{
             position: 'relative',

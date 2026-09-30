@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Box, Typography, Button, Divider, Chip, Grid } from '@mui/material';
 import Image from 'next/image';
 import { ProductCatalog } from '@/api/useProductCatalog';
+import { BANNER_GRADIENT } from "@/theme/brand";
 
 interface Props {
   data: ProductCatalog;
@@ -19,7 +20,7 @@ export default function ProductDetailView({ data, id }: Props) {
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
       {/* Hero */}
-      <Box sx={{ bgcolor: '#0a0604', px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
+      <Box sx={{ background: BANNER_GRADIENT, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
         <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
           <Typography sx={{ color: 'primary.light', letterSpacing: '0.2em', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', mb: 1 }}>
             Ball Valves
