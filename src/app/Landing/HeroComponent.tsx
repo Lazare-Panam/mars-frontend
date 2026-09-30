@@ -143,7 +143,7 @@ export default function Hero() {
             component="h1"
             sx={{
               color: "#fff",
-              fontSize: { xs: "2.75rem", sm: "4rem", md: "5.5rem", lg: "6.5rem" },
+              fontSize: { xs: "1.75rem", sm: "1rem", md: "3.5rem", lg: "3.5rem" },
               fontWeight: 800,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
