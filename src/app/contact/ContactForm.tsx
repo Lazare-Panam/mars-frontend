@@ -23,6 +23,7 @@ interface EnquiryFormData {
   userEmail: string;
   userCompany: string;
   userCountry: string;
+  product: string;
   message: string;
 }
 
@@ -31,6 +32,7 @@ const initialFormState: EnquiryFormData = {
   userEmail: '',
   userCompany: '',
   userCountry: '',
+  product: '',
   message: '',
 };
 
@@ -51,7 +53,9 @@ export default function ContactForm() {
   const [quote] = React.useState(() => useQuoteStore.getState().request);
   const sku = quote?.sku ?? '';
   const [formData, setFormData] = React.useState<EnquiryFormData>(() =>
-    quote ? { ...initialFormState, message: quoteMessage(quote.sku, quote.product) } : initialFormState,
+    quote
+      ? { ...initialFormState, product: quote.sku, message: quoteMessage(quote.sku, quote.product) }
+      : initialFormState,
   );
   React.useEffect(() => {
     if (quote) clearQuote();
@@ -89,7 +93,14 @@ export default function ContactForm() {
     e.preventDefault();
     if (!validate()) return;
 
-    mutate(formData, {
+    // The enquiry API has no product field, so the part number rides at the
+    // top of the message.
+    const { product, ...rest } = formData;
+    const payload = product.trim()
+      ? { ...rest, message: `Product / part number: ${product.trim()}\n\n${rest.message}` }
+      : rest;
+
+    mutate(payload, {
       onSuccess: () => {
         setFormData(initialFormState);
       },
@@ -109,13 +120,13 @@ export default function ContactForm() {
       }}
     >
       <Reveal>
-        <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }} gutterBottom>
-          {sku ? 'Request a quote' : 'Get in touch'}
+        <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold' }} gutterBottom>
+          {sku ? 'Request a quote' : 'Send your enquiry'}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
           {sku
             ? `Add your details and quantity for ${sku} and our team will send you a price shortly.`
-            : 'Send us your technical enquiry and our team will get back to you shortly.'}
+            : 'Fill in your details and requirements and our team will get back to you.'}
         </Typography>
       </Reveal>
 
@@ -176,6 +187,16 @@ export default function ContactForm() {
               label="Country"
               value={formData.userCountry}
               onChange={handleChange('userCountry')}
+              disabled={isPending}
+              sx={fieldSx}
+            />
+          </Grid>
+          <Grid size={12}>
+            <TextField
+              fullWidth
+              label="Product or part number (optional)"
+              value={formData.product}
+              onChange={handleChange('product')}
               disabled={isPending}
               sx={fieldSx}
             />

@@ -1,14 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
+import Link from "next/link";
 import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Reveal from "@/Common/Reveal";
 
-const FAQS = [
+const FAQS: { q: string; a: ReactNode }[] = [
   {
     q: "Do you supply custom sizes or non-standard specs?",
-    a: "Yes. Send us your size, pressure rating, end connection, and material requirements and we'll work with Mars Valve Co. to confirm availability and pricing for non-standard configurations.",
+    a: (
+      <>
+        Yes.{" "}
+        <Link href="/contact" style={{ color: "inherit", fontWeight: 600 }}>
+          Send us your requirements
+        </Link>{" "}
+        (size, pressure rating, end connection and material) and we&apos;ll work
+        with Mars Valve Co. to confirm availability and pricing for non-standard
+        configurations.
+      </>
+    ),
   },
   {
     q: "Is there a minimum order quantity?",
@@ -32,7 +43,7 @@ export default function FAQSection() {
   const [expanded, setExpanded] = useState<string | false>(false);
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
+    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
       <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto", px: { xs: 3, md: 8 }, mb: { xs: 5, md: 6 }, textAlign: "center" }}>
           <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -69,7 +80,7 @@ export default function FAQSection() {
               elevation={0}
               square
               sx={{
-                bgcolor: "#fff",
+                bgcolor: "background.default",
                 border: "1px solid",
                 borderColor: "rgba(0,0,0,0.08)",
                 borderRadius: "4px !important",

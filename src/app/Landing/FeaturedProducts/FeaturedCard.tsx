@@ -33,8 +33,11 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
       onMouseLeave={handleMouseLeave}
       sx={{
         flex: "0 0 auto",
-        width: { xs: 280, sm: 340 },
-        height: 480,
+        // Sized by the track (see cardsPerView in FeaturedProducts).
+        width: "100%",
+        // min, not fixed: a two-line title must not push the price out of view.
+        // The row stretches every card to the tallest one.
+        minHeight: 480,
         display: "flex",
         flexDirection: "column",
         bgcolor: "#fff",
@@ -72,6 +75,7 @@ export default function FeaturedCard({ valve }: { valve: FeaturedValve }) {
           src={valve.image}
           alt={valve.title}
           fill
+          draggable={false}
           style={{ objectFit: "contain", padding: "12px" }}
           sizes="300px"
         />

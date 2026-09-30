@@ -318,7 +318,7 @@ const Navbar: React.FC = () => {
                   },
                 }}
               >
-                enquiry
+                Contact
               </Box>
 
               <AccountButton size={24} />

@@ -235,5 +235,5 @@ export const RIGHT_NAV: NavItem[] = [
     newTab: true,
   },
   { label: "News", href: "/news" },
-  { label: "Contact Us", href: "#" },
+  { label: "Contact Us", href: "/contact" },
 ];

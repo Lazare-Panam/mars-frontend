@@ -1,3 +1,12 @@
+import { SHOP_PRODUCTS } from "@/app/shop/shopData";
+
+/** Image for a product exactly as the shop page shows it. */
+function shopImage(productId: string): string {
+  const product = SHOP_PRODUCTS.find((p) => p.productId === productId);
+  if (!product) throw new Error(`No shop product "${productId}"`);
+  return product.thumbnailImage;
+}
+
 export type FeaturedValve = {
   code: string;
   title: string;
@@ -11,7 +20,8 @@ export type FeaturedValve = {
 
 // Sourced from the live shop catalog (src/app/shop/page.tsx) — the cheapest
 // priced variant of each product, so what's shown here is buyable, in
-// stock, and matches what the shop page charges.
+// stock, and matches what the shop page charges. Images come straight from
+// the shop data so the two never drift apart.
 export const FEATURED_VALVES: FeaturedValve[] = [
   {
     code: "V33",
@@ -20,8 +30,7 @@ export const FEATURED_VALVES: FeaturedValve[] = [
     description:
       "T-port configuration for flexible diversion, mixing or splitting service across multiple lines.",
     specs: ['1/4"~1/2"', "CF8M"],
-    image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-4-5.png",
+    image: shopImage("three-four-five-way-ball-valve"),
     href: "/products/ball-valves/three-four-five-way-ball-valve/variants/v33-123-1-4into1-2in-t-port-bare-shaft",
     price: "161.70",
   },
@@ -32,8 +41,7 @@ export const FEATURED_VALVES: FeaturedValve[] = [
     description:
       "Cavity filler seat design built for sanitary process lines — clean-in-place ready, SS316 body.",
     specs: ['1/2"', "SS316"],
-    image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/sanitary-ball-valves/multi-port-san.jpg",
+    image: shopImage("sanitary-multi-port-ball-valve"),
     href: "/products/ball-valves/sanitary-multi-port-ball-valve/variants/v36sn-1020-1-2in-cavity-filler-seat-w-handle",
     price: "165.24",
   },
@@ -44,8 +52,7 @@ export const FEATURED_VALVES: FeaturedValve[] = [
     description:
       "Reliable, cost-effective isolation for general service lines — PTFE seats, NPT/BSP/BSPT ends.",
     specs: ["1000 PSI", "CF8M"],
-    image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/eco-2.jpg",
+    image: shopImage("economical-two-piece-ball-valve"),
     href: "/products/ball-valves/economical-two-piece-ball-valve/variants/V20-20-1-4IN-W-O-LOCK",
     price: "11.55",
   },
@@ -56,8 +63,7 @@ export const FEATURED_VALVES: FeaturedValve[] = [
     description:
       "Three-piece design for easy in-line maintenance, with RPTFE/PTFE seats and SS316 stem.",
     specs: ["1000 PSI", "SS316 Stem"],
-    image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/hp-3.png",
+    image: shopImage("high-performance-three-piece-ball-valve"),
     href: "/products/ball-valves/high-performance-three-piece-ball-valve/variants/v77-1-4in-w-o-handle",
     price: "27.72",
   },
@@ -68,8 +74,7 @@ export const FEATURED_VALVES: FeaturedValve[] = [
     description:
       "Sanitary-grade three-piece valve for hygienic process service — CF3M body, SS316L stem.",
     specs: ['1/2"', "CF3M"],
-    image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/sanitary-ball-valves/hp-san.png",
+    image: shopImage("high-performance-sanitary-ball-valve"),
     href: "/products/ball-valves/high-performance-sanitary-ball-valve/variants/v77sn-10-2a-1-2in-t-clamp-std-ptfe-seat",
     price: "43.27",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Box, Typography } from "@mui/material";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ForumOutlined";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
@@ -13,7 +14,12 @@ const STEPS = [
     icon: <ChatBubbleOutlineIcon />,
     num: "01",
     title: "Send Your Spec",
-    desc: "Tell us size, pressure rating, and application — one message or a full BOM.",
+    desc: (
+      <>
+        Tell us size, pressure rating, and application — one message or a full
+        BOM. <Link href="/contact" style={{ color: "inherit", fontWeight: 600 }}>Send us your spec</Link>.
+      </>
+    ),
   },
   {
     icon: <FactCheckIcon />,

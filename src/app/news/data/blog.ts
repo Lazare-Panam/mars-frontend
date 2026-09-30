@@ -93,6 +93,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Not Sure Which Grade Your Line Needs?",
       body: "Tell us your media, cleaning regime, end connection and whether 316L is specified. We'll recommend the right Mars series and material.",
+      contactLabel: "Discuss your application",
       email: "sales@marsvalvenok.com",
       phone: "+44 7368 137917",
     },
@@ -202,7 +203,7 @@ export const blogs: BlogData[] = [
     ],
     cta: {
       heading: "Need help specifying a fire-safe valve?",
-      body: "Get in touch with our team to talk through pressure ratings, materials, certification and end connections for your application.",
+      body: "Not sure whether your line needs an API 607 valve? [Ask which series are fire-safe](/contact) and we'll send the certificate.",
       email: "sales@marsvalvenok.com",
       phone: "+44 7368 137917",
     },
@@ -301,7 +302,7 @@ export const blogs: BlogData[] = [
     ],
     cta: {
       heading: "Need Help Specifying an Actuated Valve Package?",
-      body: "Explore our actuated valve range or speak with our technical sales team for a fully documented, matched valve and actuator assembly.",
+      body: "Need a valve, actuator and solenoid supplied as one package? [Talk to us about an actuated package](/contact).",
       email: "sales@marsvalvenok.com",
       phone: "+44 7368 137917",
     },

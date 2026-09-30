@@ -194,7 +194,7 @@ export default function Hero() {
             <MagneticWrap>
               <Button
                 component={Link}
-                href="/contact"
+                href="/contact#enquiry"
                 variant="outlined"
                 size="large"
                 sx={{

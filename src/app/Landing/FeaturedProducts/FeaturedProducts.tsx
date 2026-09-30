@@ -9,6 +9,9 @@ import { FEATURED_VALVES } from "./featuredValveData";
 import Reveal from "@/Common/Reveal";
 
 const CARD_GAP = 24;
+
+/** Width that fits exactly `n` cards in the track, so none is cut off at the edge. */
+const cardsPerView = (n: number) => `calc((100% - ${(n - 1) * CARD_GAP}px) / ${n})`;
 const AUTOPLAY_MS = 3200;
 
 const arrowBtnSx = {
@@ -42,6 +45,9 @@ export default function FeaturedProducts() {
   }, []);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    // Touch and pen already scroll the track natively; drag-to-scroll is
+    // only for mouse.
+    if (e.pointerType !== "mouse") return;
     const el = trackRef.current;
     if (!el) return;
     isDragging.current = true;
@@ -49,7 +55,6 @@ export default function FeaturedProducts() {
     dragStartX.current = e.clientX;
     dragStartScroll.current = el.scrollLeft;
     setPaused(true);
-    e.currentTarget.setPointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -57,7 +62,12 @@ export default function FeaturedProducts() {
     const el = trackRef.current;
     if (!el) return;
     const dx = e.clientX - dragStartX.current;
-    if (Math.abs(dx) > 5) dragged.current = true;
+    // Capture only once it's really a drag. Capturing on pointerdown would
+    // retarget the click to the track, so tapping a card never followed its link.
+    if (!dragged.current && Math.abs(dx) > 5) {
+      dragged.current = true;
+      e.currentTarget.setPointerCapture(e.pointerId);
+    }
     el.scrollLeft = dragStartScroll.current - dx;
   };
 
@@ -149,6 +159,9 @@ export default function FeaturedProducts() {
         </Box>
       </Reveal>
 
+      {/* Padding lives on this wrapper, not the scroll box, so cards clip at
+          the column edge instead of sliding through the side gutters. */}
+      <Box sx={{ maxWidth: "1280px", mx: "auto", px: { xs: 3, md: 8 } }}>
       <Box
         ref={trackRef}
         onMouseEnter={() => setPaused(true)}
@@ -166,8 +179,9 @@ export default function FeaturedProducts() {
           gap: `${CARD_GAP}px`,
           overflowX: "auto",
           scrollSnapType: "x mandatory",
-          px: { xs: 3, md: 8 },
-          pb: 2,
+          // Room for the hover lift and shadow, which the scroll box would clip.
+          pt: 1.5,
+          pb: 4,
           cursor: "grab",
           userSelect: "none",
           "&:active": { cursor: "grabbing" },
@@ -176,10 +190,20 @@ export default function FeaturedProducts() {
         }}
       >
         {FEATURED_VALVES.map((valve) => (
-          <Box key={valve.code} data-card sx={{ scrollSnapAlign: "start" }}>
+          <Box
+            key={valve.code}
+            data-card
+            sx={{
+              scrollSnapAlign: "start",
+              display: "flex",
+              flex: "0 0 auto",
+              width: { xs: cardsPerView(1), sm: cardsPerView(2), lg: cardsPerView(3) },
+            }}
+          >
             <FeaturedCard valve={valve} />
           </Box>
         ))}
+      </Box>
       </Box>
     </Box>
   );

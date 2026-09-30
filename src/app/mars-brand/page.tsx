@@ -2,6 +2,7 @@
 
 import { Box, Container, Typography, Divider, useTheme } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import GppMaybeOutlinedIcon from "@mui/icons-material/GppMaybeOutlined";
 import Reveal from "@/Common/Reveal";
@@ -525,7 +526,11 @@ export default function MarsBrandPage() {
                 sx={{ fontSize: "0.9rem", color: RUST, maxWidth: 440 }}
               >
                 We actively investigate and act against unauthorized use of the
-                MARS® name and mark. Report it to our technical sales team.
+                MARS® name and mark.{" "}
+                <Link href="/contact" style={{ color: ACCENT }}>
+                  Report it to us
+                </Link>
+                .
               </Typography>
             </Box>
           </Box>

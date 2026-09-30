@@ -30,7 +30,10 @@ interface BlogFaq {
 
 interface BlogCta {
   heading: string;
+  /** Supports inline [label](/path) links. */
   body: string;
+  /** Label for a primary button linking to /contact. */
+  contactLabel?: string;
   email: string;
   phone: string;
 }
@@ -275,13 +278,26 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
                 {blog.cta.heading}
               </Typography>
               <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, maxWidth: 420 }}>
-                {blog.cta.body}
+                {renderInline(blog.cta.body)}
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, flexShrink: 0 }}>
+              {blog.cta.contactLabel && (
+                <MagneticWrap>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    component={Link}
+                    href="/contact"
+                    sx={{ borderRadius: 0, px: 3, py: 1.25, fontWeight: 600, textTransform: 'none', width: '100%' }}
+                  >
+                    {blog.cta.contactLabel}
+                  </Button>
+                </MagneticWrap>
+              )}
               <MagneticWrap>
                 <Button
-                  variant="contained"
+                  variant={blog.cta.contactLabel ? 'outlined' : 'contained'}
                   color="primary"
                   component="a"
                   href={`mailto:${blog.cta.email}`}

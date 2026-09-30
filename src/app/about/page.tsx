@@ -368,7 +368,11 @@ export default function AboutUsPage() {
                 ®
               </Box>{" "}
               from us you get genuine stock with the full manufacturer
-              documentation and warranty.
+              documentation and warranty. For help choosing a series,{" "}
+              <Link href="/contact" style={{ color: ACCENT }}>
+                get in touch with our team
+              </Link>
+              .
             </Typography>
           </Reveal>
         </Container>

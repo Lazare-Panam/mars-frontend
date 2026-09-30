@@ -1,5 +1,6 @@
 import { Box, Container, Typography, Grid } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
 import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
 import BoltOutlinedIcon from "@mui/icons-material/BoltOutlined";
@@ -26,6 +27,8 @@ type Industry = {
   imageAlt?: string;
   icon: typeof LocalFireDepartmentOutlinedIcon;
   description: string;
+  /** Fills the "Discuss your … application" link to /contact. */
+  ctaName: string;
 };
 
 // Copy grounded in what MARS Valve Co., Ltd (Taiwan) actually publishes about
@@ -42,6 +45,7 @@ type Industry = {
 const INDUSTRIES: Industry[] = [
   {
     label: "Oil & Gas / Refining",
+    ctaName: "oil & gas",
     icon: LocalFireDepartmentOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1726111262949-e22631a8c376?fm=jpg&q=80&w=1600&auto=format&fit=crop",
@@ -50,6 +54,7 @@ const INDUSTRIES: Industry[] = [
   },
   {
     label: "Chemical Processing",
+    ctaName: "chemical processing",
     icon: OpacityOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?fm=jpg&q=80&w=1600&auto=format&fit=crop",
@@ -61,6 +66,7 @@ const INDUSTRIES: Industry[] = [
     // CF3M vs CF8M tri-clamp post): 77SN/88SN/83SN/33SN in CF3M, 55SN/50SN
     // economical, tri-clamp or tube OD butt weld ends, ½"–4", 1,000 psi.
     label: "Food, Beverage & Pharma",
+    ctaName: "food, beverage or pharma",
     icon: LocalDrinkOutlinedIcon,
     image: "https://pblol2.blob.core.windows.net/hiflux/food-beverage-mars.jpg",
     imageAlt: "Fresh food bowl representing the food and beverage industry",
@@ -69,6 +75,7 @@ const INDUSTRIES: Industry[] = [
   },
   {
     label: "General Machinery",
+    ctaName: "machinery",
     icon: PrecisionManufacturingOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?fm=jpg&q=80&w=1200&auto=format&fit=crop",
@@ -77,6 +84,7 @@ const INDUSTRIES: Industry[] = [
   },
   {
     label: "Power Generation",
+    ctaName: "power generation",
     icon: BoltOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=1200&auto=format&fit=crop",
@@ -85,6 +93,7 @@ const INDUSTRIES: Industry[] = [
   },
   {
     label: "Water Supply",
+    ctaName: "water supply",
     icon: WaterDropOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1767274714714-dda4c25c6376?fm=jpg&q=80&w=1200&auto=format&fit=crop",
@@ -93,6 +102,7 @@ const INDUSTRIES: Industry[] = [
   },
   {
     label: "Marine & Shipbuilding",
+    ctaName: "marine",
     icon: DirectionsBoatFilledOutlinedIcon,
     image:
       "https://images.unsplash.com/photo-1670121180530-cfcba4438038?fm=jpg&q=80&w=1200&auto=format&fit=crop",
@@ -244,6 +254,16 @@ export default async function ApplicationsPage() {
                       }}
                     >
                       {industry.description}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        mt: 2,
+                        "& a": { color: "primary.main", fontWeight: 700 },
+                      }}
+                    >
+                      <Link href="/contact">
+                        Discuss your {industry.ctaName} application
+                      </Link>
                     </Typography>
                   </Box>
                 </Box>
