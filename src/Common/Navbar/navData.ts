@@ -29,7 +29,33 @@ export const LEFT_NAV: NavItem[] = [
     href: "/products",
     megaMenu: [
       {
-        heading: "Ball Valves",
+        heading: "By Series",
+        href: "/products",
+        items: [
+          {
+            label: "Series 10-10",
+            href: "/products/series-10-10",
+            subItems: [
+              {
+                label: "View Prices",
+                href: "/products/series-10-10/variants",
+              },
+            ],
+          },
+          {
+            label: "Series 20-20",
+            href: "/products/series-20-20",
+            subItems: [
+              {
+                label: "View Prices",
+                href: "/products/series-20-20/variants",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Mars Ball Valves",
         href: "/products",
         items: [
           {

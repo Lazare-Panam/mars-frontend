@@ -1,3 +1,29 @@
+// Series that are single (Grid-type) catalogs with prices directly in their
+// /variants table — shown in the "Ball Valves by Series" section with a
+// "View Prices" action. Verified live: /api/product/{id}/variants -> 200.
+export const SERIES = [
+  {
+    id: "series-10-10",
+    label: "Series 10-10",
+    description:
+      "Robust 1-piece reduced port ball valves rated to 2000 PSI for high pressure threaded-line service.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/one-piece/10-10.png",
+    href: "/products/series-10-10",
+    pricesHref: "/products/series-10-10/variants",
+  },
+  {
+    id: "series-20-20",
+    label: "Series 20-20",
+    description:
+      "2-piece full port ball valves rated to 1000 PSI for general industrial service.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/eco-2.jpg",
+    href: "/products/series-20-20",
+    pricesHref: "/products/series-20-20/variants",
+  },
+];
+
 export const CATEGORIES = [
   {
     id: "one-piece-ball-valves",
