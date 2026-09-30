@@ -9,120 +9,99 @@ import DirectionsBoatFilledOutlinedIcon from "@mui/icons-material/DirectionsBoat
 import OpacityOutlinedIcon from "@mui/icons-material/OpacityOutlined";
 import LocalDrinkOutlinedIcon from "@mui/icons-material/LocalDrinkOutlined";
 import Reveal from "@/Common/Reveal";
+import FAQSection from "@/app/Landing/FAQSection";
+import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
+import { INDUSTRIES, FAQS, URLS, type IndustryId, type Item } from "./industries";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/applications" },
   title: {
-    absolute: "marine valve and oil & gas valves applications- Mars valve",
+    absolute: "Ball Valve Applications by Industry | MARS Valves UK",
   },
   description:
-    "MARS marine valve and oil & gas valve applications — API 607 fire-safe stainless steel ball valves for demanding marine, oil & gas, chemical and process environments.",
+    "MARS ball valves for oil & gas, chemical, food & pharma, power, water and marine. Find the right series, material and end connection for your industry.",
 };
 
-type Industry = {
-  label: string;
-  image: string;
-  imageAlt?: string;
-  icon: typeof LocalFireDepartmentOutlinedIcon;
-  description: string;
-  /** Fills the "Discuss your … application" link to /contact. */
-  ctaName: string;
+const ICONS: Record<IndustryId, typeof LocalFireDepartmentOutlinedIcon> = {
+  "oil-gas": LocalFireDepartmentOutlinedIcon,
+  chemical: OpacityOutlinedIcon,
+  "food-pharma": LocalDrinkOutlinedIcon,
+  power: BoltOutlinedIcon,
+  water: WaterDropOutlinedIcon,
+  marine: DirectionsBoatFilledOutlinedIcon,
+  machinery: PrecisionManufacturingOutlinedIcon,
 };
 
-// Copy grounded in what MARS Valve Co., Ltd (Taiwan) actually publishes about
-// itself: ISO 9001 certified manufacturer of stainless steel ball valves,
-// known specifically for API 607 4th Edition fire-safe test certification,
-// which is called out by the manufacturer as its advantage in Oil & Gas,
-// Refining, and Chemical applications. The other sectors (general machinery,
-// power generation, water supply, marine) reflect the industries stainless
-// ball valves are broadly used in and match the categories already used
-// elsewhere on this site (IndustriesSection component) — but haven't been
-// independently verified as named MARS Valve reference sectors the way
-// Oil & Gas/Chemical have. Worth checking against MARS's own literature
-// before treating every sector claim here as gospel.
-const INDUSTRIES: Industry[] = [
-  {
-    label: "Oil & Gas / Refining",
-    ctaName: "oil & gas",
-    icon: LocalFireDepartmentOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1726111262949-e22631a8c376?fm=jpg&q=80&w=1600&auto=format&fit=crop",
-    description:
-      "MARS ball valves are tested to the API 607 4th Edition fire-safe standard, one of the most demanding fire-test protocols in the industry. That rating matters most where it's needed most: upstream production, refining, and processing lines where a valve has to keep sealing even if the line around it is on fire.",
-  },
-  {
-    label: "Chemical Processing",
-    ctaName: "chemical processing",
-    icon: OpacityOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?fm=jpg&q=80&w=1600&auto=format&fit=crop",
-    description:
-      "Chemical plants move corrosive, high-purity, or hazardous media through miles of pipework, often at extreme temperatures and pressures. Stainless steel construction and fire-safe sealing give operators a valve that holds up to aggressive media without becoming the weak point in the line.",
-  },
-  {
-    // Grounded in the MARS sanitary range published on this site (see the
-    // CF3M vs CF8M tri-clamp post): 77SN/88SN/83SN/33SN in CF3M, 55SN/50SN
-    // economical, tri-clamp or tube OD butt weld ends, ½"–4", 1,000 psi.
-    label: "Food, Beverage & Pharma",
-    ctaName: "food, beverage or pharma",
-    icon: LocalDrinkOutlinedIcon,
-    image: "https://pblol2.blob.core.windows.net/hiflux/food-beverage-mars.jpg",
-    imageAlt: "Fresh food bowl representing the food and beverage industry",
-    description:
-      "Dairy, brewing, beverage, cosmetics and pharmaceutical lines need valves that clean easily and never trap product. MARS sanitary ball valves come with tri-clamp or tube OD butt weld ends in ½\" to 4\", with low-carbon CF3M (316L) bodies for welded, high-purity and clean-in-place service, and economical CF8M options for clamp-in food and beverage duty.",
-  },
-  {
-    label: "General Machinery",
-    ctaName: "machinery",
-    icon: PrecisionManufacturingOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-    description:
-      "From compressed air and hydraulic circuits to process skids and OEM equipment builds, general industrial machinery depends on valves that are consistent batch to batch — so equipment builders can design around a known, repeatable spec.",
-  },
-  {
-    label: "Power Generation",
-    ctaName: "power generation",
-    icon: BoltOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Power plants run continuously, often for years between planned outages. Isolation and control valves in steam, cooling, and auxiliary systems need to hold a seal reliably under sustained thermal cycling and pressure.",
-  },
-  {
-    label: "Water Supply",
-    ctaName: "water supply",
-    icon: WaterDropOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1767274714714-dda4c25c6376?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Municipal and industrial water systems call for valves that resist corrosion over long service lives with minimal maintenance — stainless construction is built for exactly that kind of long-duty, low-intervention use.",
-  },
-  {
-    label: "Marine & Shipbuilding",
-    ctaName: "marine",
-    icon: DirectionsBoatFilledOutlinedIcon,
-    image:
-      "https://images.unsplash.com/photo-1670121180530-cfcba4438038?fm=jpg&q=80&w=1200&auto=format&fit=crop",
-    description:
-      "Onboard piping — fuel, ballast, cooling, and fire main systems — operates in a corrosive marine environment where a valve failure isn't a quick fix. Reliability and corrosion resistance are non-negotiable at sea.",
-  },
-];
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const crumbs = breadcrumbList([
+  { name: "Home", path: "/" },
+  { name: "Applications", path: "/applications" },
+]);
+
+const linkSx = { "& a": { color: "primary.main", fontWeight: 600 } };
+
+const h2Sx = {
+  fontSize: { xs: "1.5rem", md: "2rem" },
+  fontWeight: 800,
+  color: "text.primary",
+};
+
+const h3Sx = {
+  fontSize: "0.72rem",
+  fontWeight: 700,
+  letterSpacing: "0.12em",
+  textTransform: "uppercase",
+  color: "primary.main",
+  mt: 2.5,
+  mb: 0.75,
+} as const;
+
+function ItemText({ item }: { item: Item }) {
+  if (typeof item === "string") return <>{item}</>;
+  return (
+    <>
+      {item.before}
+      <Link href={item.href}>{item.link}</Link>
+      {item.after}
+    </>
+  );
+}
+
+function ItemList({ items }: { items: Item[] }) {
+  return (
+    <Box
+      component="ul"
+      sx={{ m: 0, pl: 2.5, color: "text.secondary", fontSize: "0.95rem", lineHeight: 1.8, ...linkSx }}
+    >
+      {items.map((item, i) => (
+        <li key={i}>
+          <ItemText item={item} />
+        </li>
+      ))}
+    </Box>
+  );
+}
 
 export default async function ApplicationsPage() {
   const index = await buildProductIndex();
   return (
     <Box component="main" sx={{ bgcolor: "#fff" }}>
-      {/* Hero */}
-      <Box
-        sx={{
-          bgcolor: "#0a0604",
-          color: "#fff",
-          py: { xs: 8, md: 12 },
-        }}
-      >
+      <JsonLd data={crumbs} />
+      <JsonLd data={faqSchema} />
+
+      {/* 1. Intro */}
+      <Box id="intro" sx={{ bgcolor: "#0a0604", color: "#fff", py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Reveal>
             <Typography
@@ -147,126 +126,192 @@ export default async function ApplicationsPage() {
                 maxWidth: 760,
               }}
             >
-              Marine valve solutions for demanding environments
+              MARS ball valve applications by industry
             </Typography>
             <Typography
-              sx={{
-                mt: 2,
-                color: "rgba(255,255,255,0.75)",
-                fontSize: "1.05rem",
-                lineHeight: 1.7,
-                maxWidth: 640,
-              }}
+              sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
             >
-              MARS Valve Co., Ltd is an ISO 9001 certified manufacturer of
-              stainless steel ball valves, tested to the API 607 4th Edition
-              fire-safe standard. That combination of build quality and fire-safe
-              certification is why MARS valves are specified across demanding
-              process and industrial environments worldwide.
+              MARS valves are manufactured by Mars Valve Co., Ltd. in Taiwan, an
+              ISO 9001 certified manufacturer. The range covers stainless steel
+              ball valves in two-piece, three-piece, flanged, multi-port,
+              sanitary and metal-seated designs, with selected series
+              fire-tested to API 607.
+            </Typography>
+            <Typography
+              sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
+            >
+              Mars Valvenok supplies the range in the UK as an authorised
+              distributor. Choose your industry below to see which series,
+              materials and end connections fit your duty.
             </Typography>
           </Reveal>
         </Container>
       </Box>
 
-      {/* Industry sections */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
-        <Grid container spacing={{ xs: 6, md: 8 }}>
-          {INDUSTRIES.map((industry, i) => {
-            const Icon = industry.icon;
-            const imageFirst = i % 2 === 0;
-            return (
-              <Grid key={industry.label} size={{ xs: 12 }}>
-                <Reveal y={32}>
+      {/* 2. Industry quick-finder */}
+      <Box id="quick-finder" sx={{ bgcolor: "background.default", py: { xs: 5, md: 7 } }}>
+        <Container maxWidth="lg">
+          <Box
+            component="nav"
+            aria-label="Jump to an industry"
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(4, 1fr)" },
+              gap: 2,
+            }}
+          >
+            {INDUSTRIES.map((industry) => {
+              const Icon = ICONS[industry.id];
+              return (
                 <Box
+                  key={industry.id}
+                  component="a"
+                  href={`#${industry.id}`}
                   sx={{
                     display: "flex",
-                    flexDirection: {
-                      xs: "column",
-                      md: imageFirst ? "row" : "row-reverse",
+                    gap: 1.5,
+                    alignItems: "flex-start",
+                    p: 2.5,
+                    bgcolor: "#fff",
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    borderRadius: "4px",
+                    textDecoration: "none",
+                    color: "inherit",
+                    transition: "border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
+                    "&:hover": {
+                      borderColor: "primary.main",
+                      boxShadow: "0 12px 28px rgba(0,0,0,0.08)",
+                      transform: "translateY(-2px)",
                     },
-                    gap: { xs: 3, md: 6 },
-                    alignItems: "center",
-                    "&:hover .app-industry-img": { transform: "scale(1.06)" },
-                    "&:hover .app-industry-icon": { transform: "scale(1.1) rotate(-6deg)" },
                   }}
                 >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: { xs: "100%", md: "50%" },
-                      height: { xs: 260, sm: 340, md: 380 },
-                      borderRadius: "6px",
-                      overflow: "hidden",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Image
-                      src={industry.image}
-                      alt={industry.imageAlt ?? industry.label}
-                      fill
-                      className="app-industry-img"
-                      style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
-                      sizes="(max-width: 900px) 100vw, 50vw"
-                    />
-                  </Box>
-
-                  <Box sx={{ width: { xs: "100%", md: "50%" } }}>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1.5,
-                        mb: 2,
-                      }}
-                    >
-                      <Box
-                        className="app-industry-icon"
-                        sx={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: "50%",
-                          bgcolor: "primary.light",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                          transition: "transform 0.3s ease",
-                        }}
-                      >
-                        <Icon sx={{ color: "primary.main", fontSize: 22 }} />
-                      </Box>
-                      <Typography
-                        component="h2"
-                        sx={{
-                          fontSize: { xs: "1.4rem", md: "1.65rem" },
-                          fontWeight: 800,
-                          color: "text.primary",
-                        }}
-                      >
-                        {industry.label}
-                      </Typography>
-                    </Box>
-                    <Typography
-                      sx={{
-                        color: "text.secondary",
-                        fontSize: "1rem",
-                        lineHeight: 1.75,
-                      }}
-                    >
-                      {industry.description}
+                  <Icon sx={{ color: "primary.main", fontSize: 26, flexShrink: 0, mt: 0.25 }} />
+                  <Box>
+                    <Typography sx={{ fontWeight: 700, color: "text.primary", fontSize: "0.98rem" }}>
+                      {industry.label}
                     </Typography>
-                    <Typography
-                      sx={{
-                        mt: 2,
-                        "& a": { color: "primary.main", fontWeight: 700 },
-                      }}
-                    >
-                      <Link href="/contact">
-                        Discuss your {industry.ctaName} application
-                      </Link>
+                    <Typography sx={{ color: "text.secondary", fontSize: "0.85rem", lineHeight: 1.5, mt: 0.25 }}>
+                      {industry.hook}
                     </Typography>
                   </Box>
                 </Box>
+              );
+            })}
+          </Box>
+        </Container>
+      </Box>
+
+      {/* 3–10. Industry sections */}
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
+        <Grid container spacing={{ xs: 8, md: 10 }}>
+          {INDUSTRIES.map((industry, i) => {
+            const Icon = ICONS[industry.id];
+            const imageFirst = i % 2 === 0;
+            return (
+              <Grid
+                key={industry.id}
+                id={industry.id}
+                component="section"
+                size={{ xs: 12 }}
+                sx={{ scrollMarginTop: 96 }}
+              >
+                <Reveal y={32}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: { xs: "column", md: imageFirst ? "row" : "row-reverse" },
+                      gap: { xs: 3, md: 6 },
+                      alignItems: "center",
+                      "&:hover .app-industry-img": { transform: "scale(1.06)" },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: "relative",
+                        width: { xs: "100%", md: "45%" },
+                        height: { xs: 240, sm: 320, md: 420 },
+                        borderRadius: "6px",
+                        overflow: "hidden",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Image
+                        src={industry.image}
+                        alt={industry.imageAlt}
+                        fill
+                        className="app-industry-img"
+                        style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                        sizes="(max-width: 900px) 100vw, 45vw"
+                      />
+                    </Box>
+
+                    <Box sx={{ width: { xs: "100%", md: "55%" } }}>
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2 }}>
+                        <Box
+                          sx={{
+                            width: 44,
+                            height: 44,
+                            borderRadius: "50%",
+                            bgcolor: "primary.light",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                          }}
+                        >
+                          <Icon sx={{ color: "primary.main", fontSize: 22 }} />
+                        </Box>
+                        <Typography component="h2" sx={{ ...h2Sx, fontSize: { xs: "1.4rem", md: "1.65rem" } }}>
+                          {industry.heading}
+                        </Typography>
+                      </Box>
+                      <Typography sx={{ color: "text.secondary", fontSize: "1rem", lineHeight: 1.75 }}>
+                        {industry.intro}
+                      </Typography>
+
+                      <Typography component="h3" sx={h3Sx}>
+                        Typical duties
+                      </Typography>
+                      <ItemList items={industry.duties} />
+
+                      {industry.specify && (
+                        <>
+                          <Typography component="h3" sx={h3Sx}>
+                            What to specify
+                          </Typography>
+                          <ItemList items={industry.specify} />
+                        </>
+                      )}
+
+                      <Typography component="h3" sx={h3Sx}>
+                        Recommended MARS valves
+                      </Typography>
+                      <ItemList items={industry.recommended} />
+
+                      {industry.readNext && (
+                        <Typography sx={{ mt: 2, color: "text.secondary", fontSize: "0.95rem", ...linkSx }}>
+                          Read next:{" "}
+                          <Link href={industry.readNext.href}>{industry.readNext.link}</Link>
+                        </Typography>
+                      )}
+
+                      <Box
+                        sx={{
+                          mt: 3,
+                          p: 2,
+                          bgcolor: "background.default",
+                          borderLeft: "3px solid",
+                          borderColor: "primary.main",
+                          fontSize: "0.95rem",
+                          color: "text.primary",
+                          ...linkSx,
+                        }}
+                      >
+                        {industry.cta.lead && <>{industry.cta.lead} </>}
+                        <Link href="/contact">{industry.cta.link}</Link>
+                      </Box>
+                    </Box>
+                  </Box>
                 </Reveal>
               </Grid>
             );
@@ -274,19 +319,81 @@ export default async function ApplicationsPage() {
         </Grid>
       </Container>
 
-      {/* Full product & variant link index — gives every product/variant page a
-          second internal link (besides /product-index) from this page. */}
-      <Box sx={{ bgcolor: "background.default", py: { xs: 6, md: 8 } }}>
+      {/* 11. Not sure which valve? */}
+      <Box id="help" sx={{ bgcolor: "#0a0604", color: "#fff", py: { xs: 7, md: 9 } }}>
+        <Container maxWidth="md">
+          <Reveal>
+            <Typography component="h2" sx={{ ...h2Sx, color: "#fff", mb: 2 }}>
+              Not sure which valve your application needs?
+            </Typography>
+            <Typography sx={{ color: "rgba(255,255,255,0.75)", mb: 1.5 }}>
+              Send us five details and we&apos;ll recommend the right MARS series:
+            </Typography>
+            <Box component="ul" sx={{ m: 0, pl: 2.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.9 }}>
+              <li>Media</li>
+              <li>Pressure and temperature</li>
+              <li>Size and end connection</li>
+              <li>Manual or actuated</li>
+              <li>Certificates you need</li>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                mt: 4,
+                // Styled from here: a Server Component can't hand Link to Box's
+                // `component` prop.
+                "& .help-primary": {
+                  bgcolor: "primary.main",
+                  color: "#fff",
+                  fontWeight: 700,
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: "2px",
+                  textDecoration: "none",
+                  "&:hover": { bgcolor: "primary.dark" },
+                },
+              }}
+            >
+              <Link href="/contact" className="help-primary">
+                Discuss your application
+              </Link>
+              <Box
+                component="a"
+                href={URLS.catalogue}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  border: "1px solid rgba(255,255,255,0.4)",
+                  color: "#fff",
+                  fontWeight: 700,
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: "2px",
+                  textDecoration: "none",
+                  "&:hover": { borderColor: "#fff" },
+                }}
+              >
+                Download the e-catalogue
+              </Box>
+            </Box>
+          </Reveal>
+        </Container>
+      </Box>
+
+      {/* 12. FAQ — same accordion as the homepage */}
+      <FAQSection id="faq" heading="What engineers ask before specifying a valve." faqs={FAQS} />
+
+      {/* 13. Browse every valve — gives every product/variant page a second
+          internal link (besides /product-index) from this page. */}
+      <Box id="browse" sx={{ bgcolor: "background.default", py: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">
-          <Typography
-            component="h2"
-            sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: 800, mb: 1 }}
-          >
+          <Typography component="h2" sx={{ ...h2Sx, mb: 1 }}>
             Browse Every Valve
           </Typography>
           <Typography sx={{ color: "text.secondary", mb: 4 }}>
-            Every product and variant in the MARS range — jump straight to any
-            configuration.
+            Every MARS product and variant, grouped by valve type.
           </Typography>
           <ProductLinkList index={index} />
         </Container>

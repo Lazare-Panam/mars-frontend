@@ -9,6 +9,9 @@ import { fitBrandTitle } from "@/lib/seoTitle";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
+import Link from "next/link";
+import { Container, Typography } from "@mui/material";
+import { CATEGORY_INDUSTRIES, INDUSTRIES } from "@/app/applications/industries";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -105,6 +108,9 @@ export default async function ProductCatalogPage({ params }: Props) {
   }
 
   const category = CATEGORIES.find((c) => c.id === id);
+  const usedIn = (CATEGORY_INDUSTRIES[id] ?? [])
+    .map((industryId) => INDUSTRIES.find((i) => i.id === industryId))
+    .filter((i) => i !== undefined);
   const crumbs = breadcrumbList([
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
@@ -119,6 +125,26 @@ export default async function ProductCatalogPage({ params }: Props) {
           <ProductCatalogPageClient id={id} />
         </Reveal>
       </HydrationBoundary>
+      {usedIn.length > 0 && (
+        <Container
+          maxWidth="lg"
+          sx={{
+            py: 4,
+            color: "text.secondary",
+            "& a": { color: "primary.main", fontWeight: 600 },
+          }}
+        >
+          <Typography className="no-capitalize">
+            Used in:{" "}
+            {usedIn.map((industry, i) => (
+              <span key={industry.id}>
+                {i > 0 && ", "}
+                <Link href={`/applications#${industry.id}`}>{industry.label}</Link>
+              </span>
+            ))}
+          </Typography>
+        </Container>
+      )}
     </>
   );
 }

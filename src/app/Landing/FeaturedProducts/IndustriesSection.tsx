@@ -4,9 +4,12 @@ import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/Common/Reveal";
+import type { IndustryId } from "@/app/applications/industries";
 
 type Application = {
   label: string;
+  /** Section on /applications this tile jumps to. */
+  anchor: IndustryId;
   image: string;
   large?: boolean;
 };
@@ -14,27 +17,32 @@ type Application = {
 const APPLICATIONS: Application[] = [
   {
     label: "Chemical Industry",
+    anchor: "chemical",
     image:
       "https://images.unsplash.com/photo-1726731782158-fcf6822b6ca4?fm=jpg&q=80&w=1600&auto=format&fit=crop",
     large: true,
   },
   {
     label: "General Machinery",
+    anchor: "machinery",
     image:
       "https://images.unsplash.com/photo-1716191299980-a6e8827ba10b?fm=jpg&q=80&w=1200&auto=format&fit=crop",
   },
   {
     label: "Power Generation",
+    anchor: "power",
     image:
       "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?fm=jpg&q=80&w=1200&auto=format&fit=crop",
   },
   {
     label: "Water Supply Industry",
+    anchor: "water",
     image:
       "https://images.unsplash.com/photo-1767274714714-dda4c25c6376?fm=jpg&q=80&w=1200&auto=format&fit=crop",
   },
   {
     label: "Marine & Shipbuilding",
+    anchor: "marine",
     image:
       "https://images.unsplash.com/photo-1670121180530-cfcba4438038?fm=jpg&q=80&w=1200&auto=format&fit=crop",
   },
@@ -43,7 +51,11 @@ const APPLICATIONS: Application[] = [
 function ApplicationTile({ app }: { app: Application }) {
   return (
     <Box
+      component={Link}
+      href={`/applications#${app.anchor}`}
+      aria-label={`${app.label} applications`}
       sx={{
+        textDecoration: "none",
         position: "relative",
         height: "100%",
         minHeight: 200,

@@ -39,11 +39,26 @@ const FAQS: { q: string; a: ReactNode }[] = [
   },
 ];
 
-export default function FAQSection() {
+type Props = {
+  /** Defaults to the homepage FAQs. */
+  faqs?: { q: string; a: ReactNode }[];
+  heading?: string;
+  id?: string;
+  bgcolor?: string;
+};
+
+export default function FAQSection({
+  faqs = FAQS,
+  heading = "Questions procurement teams actually ask.",
+  id,
+  bgcolor = "#fff",
+}: Props) {
   const [expanded, setExpanded] = useState<string | false>(false);
+  // Items sit on the opposite shade of the section so they stay visible.
+  const itemBg = bgcolor === "#fff" ? "background.default" : "#fff";
 
   return (
-    <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
+    <Box component="section" id={id} sx={{ py: { xs: 8, md: 12 }, bgcolor, scrollMarginTop: 96 }}>
       <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto", px: { xs: 3, md: 8 }, mb: { xs: 5, md: 6 }, textAlign: "center" }}>
           <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.5, mb: 2 }}>
@@ -65,13 +80,13 @@ export default function FAQSection() {
             component="h2"
             sx={{ fontSize: { xs: "2rem", md: "2.5rem" }, fontWeight: 800, color: "text.primary" }}
           >
-            Questions procurement teams actually ask.
+            {heading}
           </Typography>
         </Box>
       </Reveal>
 
       <Box sx={{ maxWidth: 860, mx: "auto", px: { xs: 3, md: 8 } }}>
-        {FAQS.map((item, i) => (
+        {faqs.map((item, i) => (
           <Reveal key={item.q} delay={Math.min(i * 60, 300)}>
             <Accordion
               expanded={expanded === item.q}
@@ -80,7 +95,7 @@ export default function FAQSection() {
               elevation={0}
               square
               sx={{
-                bgcolor: "background.default",
+                bgcolor: itemBg,
                 border: "1px solid",
                 borderColor: "rgba(0,0,0,0.08)",
                 borderRadius: "4px !important",
