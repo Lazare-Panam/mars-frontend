@@ -33,35 +33,35 @@ export const LEFT_NAV: NavItem[] = [
         href: "/products",
         items: [
           {
-            label: "Series 10-10",
+            label: "Series 10-10 (One-Piece Ball Valve)",
             href: "/products/series-10-10",
           },
           {
-            label: "Series 20-20",
+            label: "Series 20-20 (Two-Piece Ball Valve)",
             href: "/products/series-20-20",
           },
           {
-            label: "Series 22",
+            label: "Series 22 (Two-Piece Direct Mount Ball Valve)",
             href: "/products/series-22",
           },
           {
-            label: "Series 77",
+            label: "Series 77 (Three-Piece Direct Mount Ball Valve)",
             href: "/products/series-77",
           },
           {
-            label: "Series 77SN",
+            label: "Series 77SN (Three-Piece Sanitary Ball Valve)",
             href: "/products/series-77sn",
           },
           {
-            label: "Series 83",
+            label: "Series 83 (Three-Piece Fire Safe Ball Valve)",
             href: "/products/series-83",
           },
           {
-            label: "Series 88",
+            label: "Series 88 (Three-Piece Metal Seated Ball Valve)",
             href: "/products/series-88",
           },
           {
-            label: "Series 90D",
+            label: "Series 90D (Two-Piece Flanged Metal Seated Ball Valve)",
             href: "/products/series-90d",
           },
         ],

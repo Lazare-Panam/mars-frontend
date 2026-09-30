@@ -86,7 +86,7 @@ export default function MegaMenuPanel({
         {/* Level 2 - items for active heading (single column) */}
         <Box
           sx={{
-            width: 300,
+            width: 460,
             flexShrink: 0,
             borderRight: hoveredItem?.subItems?.length ? "1px solid" : "none",
             borderColor: "rgba(0,0,0,0.06)",
