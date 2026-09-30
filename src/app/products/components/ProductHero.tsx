@@ -40,7 +40,7 @@ export default function ProductHero({ title, subtitle, bannerImage }: Props) {
         sx={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(180deg, rgba(74,18,6,0.3) 0%, rgba(74,18,6,0.85) 100%)',
+         
         }}
       />
       <Box

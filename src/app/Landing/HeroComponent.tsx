@@ -85,8 +85,7 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           zIndex: 1,
-          background:
-            "linear-gradient(180deg, rgba(74,18,6,0.85) 0%, rgba(74,18,6,0.45) 45%, rgba(74,18,6,0.92) 100%)",
+         
         }}
       />
 
