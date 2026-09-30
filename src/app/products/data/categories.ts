@@ -32,6 +32,26 @@ export const SERIES = [
     href: "/products/series-22",
     pricesHref: "/products/series-22/variants",
   },
+  {
+    id: "series-77",
+    label: "Series 77",
+    description:
+      "3-piece high performance direct mount ball valves with full port and a wide range of end connections.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-77.png",
+    href: "/products/series-77",
+    pricesHref: "/products/series-77/variants",
+  },
+  {
+    id: "series-77sn",
+    label: "Series 77SN",
+    description:
+      "3-piece high performance sanitary ball valves with Tri-clamp and OD tube ends for hygienic process lines.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
+    href: "/products/series-77sn",
+    pricesHref: "/products/series-77sn/variants",
+  },
 ];
 
 export const CATEGORIES = [

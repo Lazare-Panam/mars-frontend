@@ -103,7 +103,7 @@ export default function ProductsPage() {
       {/* By Series — collapsible; white bg to contrast the tinted sections around it */}
       <Box sx={{ bgcolor: '#fff', py: { xs: 6, md: 10 }, px: { xs: 3, md: 8 } }}>
         <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
-          <CollapsibleSection title="By Series">
+          <CollapsibleSection title="Mars Ball Valves">
             <Grid container rowSpacing={{ xs: 6, md: 9 }} columnSpacing={{ xs: 4, md: 8 }}>
               {SERIES.map((s, i) => (
                 <Grid size={{ xs: 12, md: 6 }} key={s.id}>
@@ -130,7 +130,7 @@ export default function ProductsPage() {
                 mb: { xs: 4, md: 6 },
               }}
             >
-              Mars Ball Valves
+              Categories
             </Typography>
           </Reveal>
           <Grid container rowSpacing={{ xs: 6, md: 9 }} columnSpacing={{ xs: 4, md: 8 }}>

@@ -29,43 +29,63 @@ export const LEFT_NAV: NavItem[] = [
     href: "/products",
     megaMenu: [
       {
-        heading: "By Series",
+        heading: "Mars Ball Valves",
         href: "/products",
         items: [
           {
-            label: "One Piece Ball Valves",
+            label: "Series 10-10",
             href: "/products/series-10-10",
             subItems: [
               {
-                label: "Series 10-10",
+                label: "View Prices",
                 href: "/products/series-10-10/variants",
               },
             ],
           },
           {
-            label: "Economial Two Piece Ball Valves",
+            label: "Series 20-20",
             href: "/products/series-20-20",
             subItems: [
               {
-                label: "Series 20-20",
+                label: "View Prices",
                 href: "/products/series-20-20/variants",
               },
             ],
           },
           {
-            label: "High Performance 2 Piece Ball Valves",
+            label: "Series 22",
             href: "/products/series-22",
             subItems: [
               {
-                label: "Series 22",
+                label: "View Prices",
                 href: "/products/series-22/variants",
+              },
+            ],
+          },
+          {
+            label: "Series 77",
+            href: "/products/series-77",
+            subItems: [
+              {
+                label: "View Prices",
+                href: "/products/series-77/variants",
+              },
+            ],
+          },
+          {
+            label: "Series 77SN",
+            href: "/products/series-77sn",
+            subItems: [
+              {
+                label: "View Prices",
+                href: "/products/series-77sn/variants",
               },
             ],
           },
         ],
       },
       {
-        heading: "Mars Ball Valves",
+        heading: "Categories",
         href: "/products",
         items: [
           {
