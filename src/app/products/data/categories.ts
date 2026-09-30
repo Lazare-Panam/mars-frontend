@@ -52,6 +52,36 @@ export const SERIES = [
     href: "/products/series-77sn",
     pricesHref: "/products/series-77sn/variants",
   },
+  {
+    id: "series-83",
+    label: "Series 83",
+    description:
+      "3-piece fire safe ball valves certified to API 607 7th Edition, rated to 2000 PSI.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-83.png",
+    href: "/products/series-83",
+    pricesHref: "/products/series-83/variants",
+  },
+  {
+    id: "series-88",
+    label: "Series 88",
+    description:
+      "3-piece fire safe metal seated ball valves with direct mount design for severe service up to 2000 PSI.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-88.png",
+    href: "/products/series-88",
+    pricesHref: "/products/series-88/variants",
+  },
+  {
+    id: "series-90d",
+    label: "Series 90D",
+    description:
+      "2-piece fire safe flanged metal seated ball valves, full port, from 1/2\" to 12\".",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-90d.jpg",
+    href: "/products/series-90d",
+    pricesHref: "/products/series-90d/variants",
+  },
 ];
 
 export const CATEGORIES = [

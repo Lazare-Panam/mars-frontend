@@ -35,52 +35,34 @@ export const LEFT_NAV: NavItem[] = [
           {
             label: "Series 10-10",
             href: "/products/series-10-10",
-            subItems: [
-              {
-                label: "View Prices",
-                href: "/products/series-10-10/variants",
-              },
-            ],
           },
           {
             label: "Series 20-20",
             href: "/products/series-20-20",
-            subItems: [
-              {
-                label: "View Prices",
-                href: "/products/series-20-20/variants",
-              },
-            ],
           },
           {
             label: "Series 22",
             href: "/products/series-22",
-            subItems: [
-              {
-                label: "View Prices",
-                href: "/products/series-22/variants",
-              },
-            ],
           },
           {
             label: "Series 77",
             href: "/products/series-77",
-            subItems: [
-              {
-                label: "View Prices",
-                href: "/products/series-77/variants",
-              },
-            ],
           },
           {
             label: "Series 77SN",
             href: "/products/series-77sn",
-            subItems: [
-              {
-                label: "View Prices",
-                href: "/products/series-77sn/variants",
-              },
-            ],
+          },
+          {
+            label: "Series 83",
+            href: "/products/series-83",
+          },
+          {
+            label: "Series 88",
+            href: "/products/series-88",
+          },
+          {
+            label: "Series 90D",
+            href: "/products/series-90d",
           },
         ],
       },
