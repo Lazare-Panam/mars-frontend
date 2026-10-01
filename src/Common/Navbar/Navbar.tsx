@@ -26,6 +26,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from "./navData";
 import MegaMenuPanel from "./MegaMenuPanel";
+import CategoryBar from "./CategoryBar";
 import { useCartStore } from "@/store/useCartStore";
 
 const Navbar: React.FC = () => {
@@ -153,6 +154,9 @@ const Navbar: React.FC = () => {
         }}
         onMouseLeave={handleLeave}
       >
+        {/* Wrapper so the Products mega menu opens right under the main row,
+            over the category bar, rather than below it. */}
+        <Box sx={{ position: "relative" }}>
         <Container maxWidth="xl">
           <Toolbar
             disableGutters
@@ -386,6 +390,9 @@ const Navbar: React.FC = () => {
             <MegaMenuPanel columns={activeItem.megaMenu} />
           </Box>
         )}
+        </Box>
+
+        <CategoryBar />
       </AppBar>
 
       {/* Mobile drawer */}

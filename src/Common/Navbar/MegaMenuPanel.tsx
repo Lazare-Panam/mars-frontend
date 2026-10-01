@@ -20,26 +20,30 @@ export default function MegaMenuPanel({
   };
 
   return (
+    // The outer layer spans the page but is invisible and lets the pointer
+    // through; only the inner box is drawn, so the menu opens as a box rather
+    // than across the full page width.
     <Box
       sx={{
         position: "absolute",
         top: "100%",
         left: 0,
         right: 0,
-        bgcolor: "#fff",
-        borderTop: "1px solid",
-        borderColor: "rgba(0,0,0,0.08)",
-        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-        zIndex: 20,
+        zIndex: 30,
+        px: { xs: 3, md: 8 },
+        pointerEvents: "none",
       }}
     >
       <Box
         sx={{
-          maxWidth: "1280px",
+          maxWidth: "1152px",
           mx: "auto",
-          px: { xs: 3, md: 8 },
           display: "flex",
           minHeight: 320,
+          bgcolor: "#fff",
+          border: "1px solid rgba(0,0,0,0.08)",
+          boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+          pointerEvents: "auto",
         }}
       >
         {/* Level 1 - Left sidebar (headings) */}
