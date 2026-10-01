@@ -42,8 +42,8 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         links: SERIES.map((series) => ({ label: series.label, href: series.href })),
       },
       {
-        // One column for all three body constructions (1, 2 and 3-piece).
-        heading: "By Construction",
+        // One column for the 1, 2 and 3-piece ranges.
+        heading: "By Category",
         href: P,
         links: [
           { label: "One-Piece Ball Valves", href: `${P}/one-piece-ball-valves` },
