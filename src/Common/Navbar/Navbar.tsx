@@ -20,6 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
+import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
@@ -182,7 +183,7 @@ const Navbar: React.FC = () => {
               sx={{
                 display: { xs: "none", md: "flex" },
                 flexDirection: "row",
-                gap: 4,
+                gap: { md: 1.5, lg: 2.5, xl: 4 },
                 ml: 6,
               }}
             >
@@ -249,7 +250,8 @@ const Navbar: React.FC = () => {
                 display: { xs: "none", md: "flex" },
                 flexDirection: "row",
                 alignItems: "center",
-                gap: 4,
+                // Tighter on laptop widths so the extra Credit button fits.
+                gap: { md: 1.5, lg: 2.5, xl: 4 },
               }}
             >
               {filteredRightNav.map((item) => (
@@ -271,6 +273,39 @@ const Navbar: React.FC = () => {
                   {item.label}
                 </Box>
               ))}
+
+              <Box
+                component={Link}
+                href="/credit-application"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  textDecoration: "none",
+                  border: `1.5px solid ${ACCENT}`,
+                  color: ACCENT,
+                  fontWeight: 700,
+                  fontSize: "0.78rem",
+                  letterSpacing: "0.04em",
+                  px: 2,
+                  py: 1,
+                  whiteSpace: "nowrap",
+                  transition: "background-color 0.15s ease, color 0.15s ease",
+                  "&:hover": {
+                    bgcolor: ACCENT,
+                    color: theme.palette.primary.contrastText,
+                  },
+                }}
+              >
+                <CreditCardOutlinedIcon sx={{ fontSize: 19 }} />
+                {/* Short label on laptop widths so the nav doesn't wrap. */}
+                <Box component="span" sx={{ display: { xs: "none", xl: "inline" } }}>
+                  Apply for Credit
+                </Box>
+                <Box component="span" sx={{ display: { xs: "inline", xl: "none" } }}>
+                  Credit
+                </Box>
+              </Box>
 
               <Box
                 component={Link}

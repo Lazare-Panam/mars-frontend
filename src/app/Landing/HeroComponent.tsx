@@ -66,7 +66,7 @@ export default function Hero() {
         muted
         loop
         playsInline
-        src="https://pblol2.blob.core.windows.net/mars-valves/home/mars_valve-hero.mp4"
+        src="https://pblol2.blob.core.windows.net/mars-valves/landing2.mp4"
         sx={{
           position: "absolute",
           inset: 0,
