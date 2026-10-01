@@ -67,7 +67,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
     subtitle: data.bannerSubtitle,
     bannerImage: data.bannerImage,
     primaryCta: { label: "Explore Range", link: "#products" },
-    secondaryCta: { label: "Request Quote", link: "/enquiry" },
+   
   };
 
   return (
