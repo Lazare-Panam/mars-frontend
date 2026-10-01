@@ -56,7 +56,7 @@ export default function MarsSection() {
               >
                 Mars Valve Co., Ltd. of Taichung, Taiwan
               </Box>
-              .
+              . We are part of Valvenok Ltd.
             </Typography>
 
             <Typography sx={bodyText}>

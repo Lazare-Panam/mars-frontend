@@ -26,6 +26,9 @@ module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.marsvalvenok.com/',
   generateRobotsTxt: true,
   autoLastmod: false,
+  // Variant detail pages canonicalise to their parent product page, so only
+  // the parent belongs in the sitemap. (The /variants listing page stays.)
+  exclude: ['/products/*/*/variants/*'],
   transform: async (config, loc) => ({
     loc,
     lastmod: BLOG_DATES[loc] ?? (loc === '/news' ? NEWEST_POST : undefined),

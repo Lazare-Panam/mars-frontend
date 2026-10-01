@@ -71,6 +71,7 @@ export default function RootLayout({
                   "@type": "Organization",
                   "@id": `${SITE_URL}/#organization`,
                   name: "Mars Valvenok",
+                  legalName: "Valvenok Ltd",
                   url: SITE_URL,
                   logo: "https://pblol2.blob.core.windows.net/mars-valves/logo.jpg",
                   description:

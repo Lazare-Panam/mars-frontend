@@ -55,12 +55,15 @@ export async function generateMetadata({
     : `${data.name}, SKU: ${variant.id}.`;
   const ogImage = variant.thumbnailImage || data.thumbnailImage;
 
-  // Point every variant URL at its product's real subcategory so the duplicate
-  // reachable under the umbrella "ball-valves" slug (and any other unvalidated
-  // [id]) is folded into one canonical page. Falls back to the visited id for
-  // products that only live under the umbrella (e.g. sanitary valves).
+  // Variant pages are canonicalised to their parent product page (SEO audit,
+  // 29 Sep 2026): ~290 thin, deep variant URLs were each ranking at positions
+  // 11-59, so the product page now collects that authority instead. The real
+  // subcategory is used so the umbrella "ball-valves" duplicate folds in too;
+  // it falls back to the visited id for products that only live under the
+  // umbrella (e.g. sanitary valves). Variant pages stay live for customers and
+  // are left out of the sitemap (next-sitemap.config.js).
   const canonicalCategory = (await canonicalCategoryFor(productId)) ?? id;
-  const canonical = `${SITE_URL}/products/${canonicalCategory}/${productId}/variants/${sku}`;
+  const canonical = `${SITE_URL}/products/${canonicalCategory}/${productId}`;
 
   return {
     title: metaTitle,

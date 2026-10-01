@@ -12,32 +12,57 @@ import Image from "next/image";
 import Link from "next/link";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
+import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
 import Reveal from "@/Common/Reveal";
 import MagneticWrap from "@/Common/MagneticWrap";
 
+const LETTER_URL =
+  "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg";
+
+// Each claim here is backed by a document on file (the Mars Valve Co. letter
+// of authorisation) or matches the homepage copy (SEO audit, 29 Sep 2026).
 const VALUES = [
   {
-    icon: EngineeringOutlinedIcon,
-    title: "Spec-Driven",
-    body: "Every valve is selected, tested, and documented against the actual operating conditions of the application — pressure, media, temperature, cycle life.",
-  },
-  {
     icon: VerifiedIcon,
-    title: "Authorised Distributor",
-    body: "Mars Valvenok is an authorised UK distributor of Mars Valve Co., Ltd. Every MARS® valve we supply is genuine stock, backed by the manufacturer's documentation and warranty.",
+    title: "Authorised by the Manufacturer",
+    body: "Mars Valve Co., Ltd. has authorised Valvenok Ltd to market, distribute and sell MARS® valves in the United Kingdom. Every MARS valve we supply is genuine, with the manufacturer's documentation and warranty.",
   },
   {
     icon: HandshakeOutlinedIcon,
-    title: "Direct Supply Chain",
-    body: "Supplied through an authorised channel from Mars Valve Co. — no grey-market stock. Every order ships with manufacturer documentation and full traceability.",
+    title: "Supplied Direct",
+    body: "We buy directly from Mars Valve Co. in Taiwan and supply the manufacturer's certificates and datasheets for the series you order.",
   },
   {
-    icon: PublicOutlinedIcon,
-    title: "Field-Proven",
-    body: "Deployed across oil & gas, water treatment, chemical processing, and power generation — environments with no tolerance for valve failure.",
+    icon: EngineeringOutlinedIcon,
+    title: "Technical Help",
+    body: "We help you choose the right series, body and seat material, and end connection for your pressure, temperature and media.",
+  },
+  {
+    icon: SellOutlinedIcon,
+    title: "Prices Online",
+    body: "Prices for standard items are published online, so you can compare before you enquire. We quote for project and non-standard orders.",
+  },
+];
+
+// Who's who: the three names people confuse (SEO audit: "must state plainly
+// what marsvalvenok is").
+const ENTITIES = [
+  {
+    role: "The manufacturer",
+    name: "Mars Valve Co., Ltd.",
+    detail: "Designs and manufactures MARS® valves in Taichung, Taiwan.",
+  },
+  {
+    role: "The UK distributor",
+    name: "Valvenok Ltd",
+    detail: "Authorised by Mars Valve Co. to market, distribute and sell MARS valves in the United Kingdom.",
+  },
+  {
+    role: "This website",
+    name: "Mars Valvenok",
+    detail: "Valvenok's website for the MARS range: specifications, prices, datasheets and quotes.",
   },
 ];
 
@@ -71,7 +96,7 @@ export default function AboutUsPage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(180deg, rgba(15,15,15,0.35) 0%, rgba(15,15,15,0.75) 100%)",
+              "linear-gradient(180deg, rgba(74,18,6,0.35) 0%, rgba(74,18,6,0.75) 100%)",
           }}
         />
 
@@ -98,7 +123,7 @@ export default function AboutUsPage() {
                 opacity: 0.85,
               }}
             >
-              About Us
+              About Mars Valvenok
             </Typography>
 
             <Typography
@@ -113,9 +138,13 @@ export default function AboutUsPage() {
                 maxWidth: 780,
               }}
             >
-              Valves Specified,
+              Authorised UK distributor
               <br />
-              Tested, Verified.
+              of MARS
+              <Box component="sup" sx={{ fontSize: "0.45em" }}>
+                ®
+              </Box>{" "}
+              ball valves
             </Typography>
 
             <Typography
@@ -127,9 +156,9 @@ export default function AboutUsPage() {
                 lineHeight: 1.6,
               }}
             >
-              Mars Valvenok is an authorised UK distributor of Mars Valve Co.,
-              Ltd., supplying genuine MARS® ball valves documented to the
-              standards industrial systems require.
+              Mars Valvenok is the MARS® valve website of Valvenok Ltd,
+              authorised by the manufacturer, Mars Valve Co., Ltd. of Taichung,
+              Taiwan, to supply MARS valves in the United Kingdom.
             </Typography>
           </Reveal>
         </Container>
@@ -196,12 +225,11 @@ export default function AboutUsPage() {
               mb: 3,
             }}
           >
-            MarsValvenok supplies ball valves for oil & gas, water treatment,
-            chemical processing, and power generation — systems where a
-            component has to perform exactly as specified, every cycle. We
-            work directly with Mars Valve Co., hold a strict chain of custody on
-            every product line, and back each valve with documentation our
-            customers can verify against the actual spec, not a sales sheet.
+            Mars Valvenok is run by Valvenok Ltd, a UK valve distributor. Mars
+            Valve Co., Ltd. has authorised Valvenok to market, distribute and
+            sell MARS valves in the United Kingdom, and this website is where
+            we publish the MARS range: specifications, prices for standard
+            items, datasheets and quotes.
           </Typography>
 
           <Typography
@@ -218,9 +246,54 @@ export default function AboutUsPage() {
               ®
             </Box>
             , the ball valve range designed and manufactured by Mars Valve Co.,
-            Ltd. in Taiwan. As an authorised UK distributor, we supply it with
-            the full manufacturer documentation and warranty.
+            Ltd. in Taiwan. We buy directly from the manufacturer and supply
+            genuine MARS valves with the manufacturer&apos;s documentation and
+            warranty.{" "}
+            <a href={LETTER_URL} target="_blank" rel="noopener noreferrer" style={{ color: ACCENT }}>
+              View our letter of authorisation
+            </a>
+            .
           </Typography>
+
+          <Box
+            component="dl"
+            sx={{
+              mt: 5,
+              mb: 0,
+              borderTop: `1px solid ${LINE}`,
+              display: "grid",
+              gridTemplateColumns: { xs: "1fr", sm: "180px 1fr" },
+            }}
+          >
+            {ENTITIES.map((entity) => (
+              <Box key={entity.role} sx={{ display: "contents" }}>
+                <Typography
+                  component="dt"
+                  sx={{
+                    pt: 2.5,
+                    pb: { xs: 0, sm: 2.5 },
+                    borderBottom: { xs: "none", sm: `1px solid ${LINE}` },
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: ACCENT,
+                  }}
+                >
+                  {entity.role}
+                </Typography>
+                <Box
+                  component="dd"
+                  sx={{ m: 0, pt: { xs: 0.5, sm: 2.5 }, pb: 2.5, borderBottom: `1px solid ${LINE}` }}
+                >
+                  <Typography sx={{ fontWeight: 700, color: INK }}>{entity.name}</Typography>
+                  <Typography sx={{ color: RUST, fontSize: "0.95rem", lineHeight: 1.6 }}>
+                    {entity.detail}
+                  </Typography>
+                </Box>
+              </Box>
+            ))}
+          </Box>
         </Box>
         </Reveal>
       </Container>

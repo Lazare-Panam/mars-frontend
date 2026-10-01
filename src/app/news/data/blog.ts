@@ -2,6 +2,67 @@ import { BlogData } from "../components/BlogPost";
 
 export const blogs: BlogData[] = [
   {
+    // Specs are taken from the MARS catalogue data in mars-api (1 Oct 2026).
+    slug: "one-piece-vs-two-piece-vs-three-piece-ball-valves",
+    title: "1-Piece vs 2-Piece vs 3-Piece Ball Valves: How to Choose",
+    date: "October 1, 2026",
+    category: "Selection Guide",
+    heroImage:
+      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+    excerpt:
+      "Body construction is the first decision when you specify a ball valve. Here is how one-piece, two-piece and three-piece MARS ball valves compare on port size, pressure, end connections and maintenance.",
+    metaDescription:
+      "One-piece, two-piece or three-piece ball valve? Compare port size, pressure rating, end connections and maintenance across the MARS range.",
+    tags: ["Ball Valves", "Selection Guide", "1-Piece", "2-Piece", "3-Piece"],
+    sections: [
+      {
+        heading: null,
+        body: `The first decision when you specify a ball valve is how its body is built. "One-piece", "two-piece" and "three-piece" describe how many parts the body is made from, and that choice decides the size of the bore, the end connections available, how the valve is maintained and what it costs.\n\nThis guide compares the three designs using the MARS ranges we supply, so every figure below is a real catalogue value rather than a general rule.`,
+      },
+      {
+        heading: "One-Piece Ball Valves",
+        body: `A one-piece valve has a body made from a single casting. Because there is no joint to open, the ball is fitted through the end of the body, which means the bore has to be smaller than the pipe: one-piece valves are reduced port. They generally can't be taken apart for repair, so a worn valve is replaced rather than serviced.\n\nThe MARS one-piece range covers Series 10-10, 10-30, 10-40, 10-50, F10-20, F10-30, F10-50 and F10-60:\n\n• Sizes from 1/8" to 2".\n• Pressure ratings up to 2,000 PSI (Series 10-10, F10-50 and F10-60).\n• Threaded ends: NPT, BSP or BSPT.\n• A direct-mount version (F10-20) for actuators, and a fire-safe version (F10-60).\n\nOne-piece valves suit small-bore, general on/off service where low cost matters more than repairability: water, air and utility lines, and instrumentation. [Browse one-piece ball valves](/products/one-piece-ball-valves).`,
+      },
+      {
+        heading: "Two-Piece Ball Valves",
+        body: `A two-piece valve has a body in two parts that are joined around the ball. Opening that joint lets a full-size ball and seats be fitted, so most two-piece valves are full port, with a bore the same size as the pipe. The valve can be taken apart to replace the seats, but it has to be removed from the line first.\n\nThe MARS two-piece range:\n\n• Economical 2-Piece Ball Valve: full port, 1/4" to 2", 1,000 PSI, CF8M body, PTFE seats, -20°C to +180°C.\n• High Performance 2-Piece Ball Valve: full port, 1/4" to 2", 1,000 PSI, CF8M or WCB body, PTFE or RTFE seats, -20°C to +200°C.\n• High Pressure Ball Valve: reduced port, 1/4" to 2", 2,000 PSI, CF8M body, PTFE or RTFE seats.\n\nAll three have threaded NPT, BSP or BSPT ends. Two-piece valves are the usual choice for full-bore isolation on threaded lines at a moderate price. [Browse two-piece ball valves](/products/two-piece-ball-valves).`,
+      },
+      {
+        heading: "Three-Piece Ball Valves",
+        body: `A three-piece valve has a centre body, which holds the ball and seats, clamped between two end caps by body bolts. The end caps stay connected to the pipe, so the centre section can be removed for maintenance without cutting or unscrewing the valve from the line. That is called in-line maintenance, and it is the main reason to choose a three-piece design.\n\nThe MARS three-piece range:\n\n• Economical 3-Piece Ball Valve: full port, 1/4" to 2", 1,000 PSI, CF8M body, PTFE seats.\n• High Performance 3-Piece Ball Valve: full port, 1/4" to 4", 1,000 PSI, CF8M or WCB body, PTFE or RTFE seats, -20°C to +200°C, with threaded, butt weld, socket weld or flanged ends and a direct-mount option for actuators.\n• Steam Jacketed Ball Valve: full port, 1/4" to 2", carbon-filled RTFE seats, for media that need trace heating to stay liquid, such as bitumen, resins and adhesives.\n\nThree-piece valves suit welded lines, valves that will be serviced often, and automated valves. [Browse three-piece ball valves](/products/three-piece-ball-valves).`,
+      },
+      {
+        heading: "Side-by-Side Comparison",
+        body: `• Port: one-piece is reduced port; two-piece is full port (except the High Pressure series); three-piece is full port.\n• Sizes in the MARS range: one-piece 1/8" to 2"; two-piece 1/4" to 2"; three-piece 1/4" to 4".\n• Maximum pressure: one-piece up to 2,000 PSI; two-piece up to 2,000 PSI (High Pressure series); three-piece 1,000 PSI.\n• End connections: one-piece and two-piece are threaded (NPT, BSP, BSPT); three-piece adds butt weld, socket weld and flanged ends (High Performance series).\n• Maintenance: one-piece is replaced; two-piece is repaired after removal from the line; three-piece is repaired in-line.\n• Cost: one-piece is the lowest, three-piece the highest.`,
+      },
+      {
+        heading: "Which Should You Choose?",
+        body: `• Choose one-piece for small, low-cost, general on/off service where you would replace the valve rather than repair it.\n• Choose two-piece for full-bore isolation on threaded lines at a moderate price.\n• Choose three-piece when the valve will be welded in, serviced often, or fitted with an actuator, because it can be maintained without removing it from the pipe.\n\nIf the line needs fire-safe isolation, read our guide to [fire-safe ball valves](/news/fire-safe-ball-valves). For hygienic lines, see [Tri-Clamp Sanitary Ball Valves: CF3M vs CF8M](/news/tri-clamp-sanitary-ball-valves-cf3m-vs-cf8m).`,
+      },
+    ],
+    faq: [
+      {
+        q: "What is the difference between a 2-piece and a 3-piece ball valve?",
+        a: "A two-piece valve has to be removed from the pipe before it can be taken apart. A three-piece valve has a centre body clamped between two end caps, so the centre section can be removed for maintenance while the end connections stay in the line.",
+      },
+      {
+        q: "Is a one-piece ball valve full bore?",
+        a: "No. The ball is fitted through the end of a single-piece body, so one-piece valves are reduced port. Every MARS one-piece series is reduced port.",
+      },
+      {
+        q: "Can a 3-piece ball valve be repaired without removing it from the pipe?",
+        a: "Yes. That is the main advantage of the design: undo the body bolts and the centre section, with the ball and seats, can be serviced while the end connections stay welded or screwed to the pipe.",
+      },
+    ],
+    cta: {
+      heading: "Not Sure Which Body Style Your Line Needs?",
+      body: "Send us your size, pressure, end connection and media, and we'll recommend the right MARS series.",
+      contactLabel: "Discuss your application",
+      email: "sales@marsvalvenok.com",
+      phone: "+44 7368 137917",
+    },
+  },
+  {
     slug: "tri-clamp-sanitary-ball-valves-cf3m-vs-cf8m",
     title:
       "Tri-Clamp Sanitary Ball Valves: CF3M vs CF8M and When You Need Each",
