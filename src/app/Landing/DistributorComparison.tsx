@@ -32,7 +32,7 @@ const POINTS = [
 
 export default function DistributorComparison() {
   return (
-    <Box component="section" id="authorised" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
+    <Box component="section" id="authorised" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
       <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto", px: { xs: 3, md: 8 }, mb: { xs: 5, md: 7 }, textAlign: "center" }}>
           <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.5, mb: 2 }}>

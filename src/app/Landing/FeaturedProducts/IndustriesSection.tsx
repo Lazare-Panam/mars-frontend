@@ -91,7 +91,7 @@ function ApplicationTile({ app }: { app: Application }) {
 
 export default function IndustriesSection() {
   return (
-    <Box component="section" id="applications" sx={{ bgcolor: "#fff" }}>
+    <Box component="section" id="applications" sx={{ bgcolor: "background.default" }}>
       <Box
         sx={{
           display: "grid",

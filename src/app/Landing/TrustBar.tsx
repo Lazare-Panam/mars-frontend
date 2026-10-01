@@ -35,7 +35,7 @@ export default function TrustBar() {
       id="certifications"
       sx={{
         position: "relative",
-        bgcolor: "background.default",
+        bgcolor: "#fff",
         py: { xs: 7, md: 10 },
         borderBottom: "1px solid rgba(0,0,0,0.06)",
         overflow: "hidden",

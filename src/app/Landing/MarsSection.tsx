@@ -22,7 +22,7 @@ const heading = {
 
 export default function MarsSection() {
   return (
-    <Box component="section" id="who-we-are" sx={{ py: { xs: 6, md: 10 }, bgcolor: "#fff" }}>
+    <Box component="section" id="who-we-are" sx={{ py: { xs: 6, md: 10 }, bgcolor: "background.default" }}>
       <Box
         sx={{
           maxWidth: "1280px",

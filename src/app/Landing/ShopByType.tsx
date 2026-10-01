@@ -5,56 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Reveal from "@/Common/Reveal";
-
-const IMG = "https://pblol2.blob.core.windows.net/mars-valves/ball-valves";
+import { VALVE_TYPES } from "./valveTypes";
 
 // Links go to the category pages, which otherwise are only linked from the
-// footer and nav (homepage build sheet, block 7). Images are the products'
-// own photos from the catalog.
-const TYPES = [
-  {
-    label: "Two-piece ball valves",
-    line: "Economical isolation, threaded ends",
-    href: "/products/two-piece-ball-valves",
-    image: `${IMG}/two-piece/eco-2.jpg`,
-    alt: "MARS two-piece stainless steel ball valve",
-  },
-  {
-    label: "Three-piece ball valves",
-    line: "In-line maintenance, weld or thread",
-    href: "/products/three-piece-ball-valves",
-    image: `${IMG}/three-piece/hp-3.png`,
-    alt: "MARS three-piece stainless steel ball valve",
-  },
-  {
-    label: "Flanged ball valves",
-    line: "ANSI / DIN flanged, fire-safe options",
-    href: "/products/flanged-ball-valves",
-    image: `${IMG}/flanged/hp-flanged.png`,
-    alt: "MARS flanged ball valve",
-  },
-  {
-    label: "Multi-port ball valves",
-    line: "3-, 4- and 5-way, T- or L-port",
-    href: "/products/multi-port-ball-valves",
-    image: `${IMG}/multi-port-valve/3-way-multi.jpg`,
-    alt: "MARS 3-way multi-port ball valve",
-  },
-  {
-    label: "Sanitary ball valves",
-    line: "Tri-clamp and tube OD, CF3M",
-    href: "/products/sanitary-ball-valves",
-    image: `${IMG}/sanitary-ball-valves/hp-san.png`,
-    alt: "MARS sanitary ball valve with tri-clamp ends",
-  },
-  {
-    label: "Metal seated ball valves",
-    line: "Abrasive and high-temperature service",
-    href: "/products/metal-seated-ball-valves",
-    image: `${IMG}/meta-seat/3-p.jpg`,
-    alt: "MARS metal seated three-piece ball valve",
-  },
-];
+// footer and nav (homepage build sheet, block 7).
 
 export default function ShopByType() {
   return (
@@ -92,7 +46,7 @@ export default function ShopByType() {
             gap: 3,
           }}
         >
-          {TYPES.map((t, i) => (
+          {VALVE_TYPES.map((t, i) => (
             <Reveal key={t.href} delay={Math.min(i * 60, 300)}>
               <Box
                 component={Link}

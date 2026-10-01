@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import { Box, Typography, Grid } from '@mui/material';
-import ProductCategoryRow from './components/ProductCategoryRow';
-import CollapsibleSection from './components/CollapsibleSection';
-import { CATEGORIES, SERIES } from './data/categories';
+import { Box, Typography } from '@mui/material';
+import ProductRangeSections from './components/ProductRangeSections';
 import Reveal from '@/Common/Reveal';
 import { fitBrandTitle } from '@/lib/seoTitle';
 import { BANNER_DARK } from "@/theme/brand";
@@ -101,50 +99,7 @@ export default function ProductsPage() {
         </Box>
       </Box>
 
-      {/* By Series — collapsible; white bg to contrast the tinted sections around it */}
-      <Box sx={{ bgcolor: '#fff', py: { xs: 6, md: 10 }, px: { xs: 3, md: 8 } }}>
-        <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
-          <CollapsibleSection title="Mars Ball Valves">
-            <Grid container rowSpacing={{ xs: 6, md: 9 }} columnSpacing={{ xs: 4, md: 8 }}>
-              {SERIES.map((s, i) => (
-                <Grid size={{ xs: 12, md: 6 }} key={s.id}>
-                  <Reveal delay={Math.min(i * 60, 400)}>
-                    <ProductCategoryRow {...s} />
-                  </Reveal>
-                </Grid>
-              ))}
-            </Grid>
-          </CollapsibleSection>
-        </Box>
-      </Box>
-
-      {/* Mars Ball Valves — 2-up grid, each cell: text left + image right */}
-      <Box sx={{ bgcolor: 'background.default', py: { xs: 6, md: 10 }, px: { xs: 3, md: 8 } }}>
-        <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
-          <Reveal>
-            <Typography
-              component="h2"
-              sx={{
-                fontWeight: 800,
-                fontSize: { xs: '1.6rem', md: '2rem' },
-                letterSpacing: '-0.02em',
-                mb: { xs: 4, md: 6 },
-              }}
-            >
-              Categories
-            </Typography>
-          </Reveal>
-          <Grid container rowSpacing={{ xs: 6, md: 9 }} columnSpacing={{ xs: 4, md: 8 }}>
-            {CATEGORIES.map((cat, i) => (
-              <Grid size={{ xs: 12, md: 6 }} key={cat.id}>
-                <Reveal delay={Math.min(i * 60, 400)}>
-                  <ProductCategoryRow {...cat} />
-                </Reveal>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      </Box>
+      <ProductRangeSections />
     </>
   );
 }

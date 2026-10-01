@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Box, Typography, Stack, Button } from "@mui/material";
 import MagneticWrap from "@/Common/MagneticWrap";
+import ProductFinder from "./ProductFinder";
 import { BANNER_DARK } from "@/theme/brand";
 
 const fadeUp = (visible: boolean, delayMs: number) => ({
@@ -135,9 +136,29 @@ export default function Hero() {
           maxWidth: "1280px",
           mx: "auto",
           px: { xs: 3, md: 8 },
+          py: { xs: 6, md: 8 },
+          // Desktop: product finder on the left, headline on the right (as on
+          // marsselect.co.uk). Smaller screens: headline first, finder below.
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", lg: "400px minmax(0, 1fr)" },
+          gap: { xs: 5, lg: 6 },
+          alignItems: "center",
         }}
       >
-        <Stack spacing={3} sx={{ maxWidth: 720 }}>
+        <Stack
+          spacing={3}
+          sx={{
+            maxWidth: 720,
+            order: { xs: 1, lg: 2 },
+            justifySelf: { lg: "end" },
+            // On desktop the headline sits over the brightest part of the
+            // video, so it gets a dark see-through panel to stay readable.
+            bgcolor: { lg: "rgba(8,16,28,0.72)" },
+            backdropFilter: { lg: "blur(6px)" },
+            borderRadius: { lg: "6px" },
+            p: { lg: 5 },
+          }}
+        >
           <Typography
             component="span"
             sx={{
@@ -156,7 +177,9 @@ export default function Hero() {
             component="h1"
             sx={{
               color: "#fff",
-              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "3.5rem" },
+              // Slightly smaller on large screens, where it shares the row with
+              // the product finder, so it stays on three lines.
+              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "3rem" },
               fontWeight: 800,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
@@ -232,6 +255,10 @@ export default function Hero() {
             </MagneticWrap>
           </Stack>
         </Stack>
+
+        <Box sx={{ maxWidth: 440, width: "100%", order: { xs: 2, lg: 1 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
+          <ProductFinder />
+        </Box>
       </Box>
 
       <Box

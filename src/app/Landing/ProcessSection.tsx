@@ -62,7 +62,7 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <Box component="section" id="how-it-works" sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}>
+    <Box component="section" id="how-it-works" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff" }}>
       <Reveal>
         <Box
           sx={{

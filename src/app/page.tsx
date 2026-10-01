@@ -9,7 +9,7 @@ import ProcessSection from "./Landing/ProcessSection";
 import DistributorComparison from "./Landing/DistributorComparison";
 import FAQSection from "./Landing/FAQSection";
 import ValuePropBanner from "./Landing/ValuePropBanner";
-import ShopByType from "./Landing/ShopByType";
+import ProductRangeSections from "./products/components/ProductRangeSections";
 import { HOME_FAQS } from "./Landing/homeFaqs";
 import { JsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -55,12 +55,15 @@ export default function Home() {
     <>
       <JsonLd data={faqSchema} />
       <Hero/>
+      {/* Same series + categories sections as /products. */}
+      <ProductRangeSections />
+      {/* Section backgrounds alternate white / cream down the page, with the
+          two orange bands (ValuePropBanner, MarsStats) as accents. */}
+      <ValuePropBanner/>
       <TrustBar/>
       <MarsSection/>
       <DistributorComparison/>
-      <ValuePropBanner/>
       <FeaturedProducts/>
-      <ShopByType/>
       <ProcessSection/>
       <IndustriesSection/>
       <MarsStats/>
