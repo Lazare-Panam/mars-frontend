@@ -7,6 +7,11 @@ export interface BasketItem {
   unitPrice: number;
   quantity: number;
   pictureUrl: string;
+  // Client-local only. The basket is now built in the store without hitting
+  // the API, so each item has to remember the seriesId it came from in order
+  // to rebuild an AddToCartRequest when the basket is synced to the server at
+  // submit-for-quote time. Never sent back by the server.
+  seriesId?: string;
 }
 
 export interface CustomerBasket {
@@ -29,6 +34,10 @@ export interface AddToCartRequest {
   productDescription: string;
   quantity: number;
   pictureUrl: string;
+  // Client-local only — carried so the store can show a running subtotal
+  // while the basket lives entirely client-side. Stripped before the request
+  // is sent to the server, which recalculates price itself anyway.
+  unitPrice?: number;
 }
 
 // Matches Mars.API.Models.Basket.QuoteRequestItem.

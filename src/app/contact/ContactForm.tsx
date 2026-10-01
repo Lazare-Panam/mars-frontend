@@ -13,7 +13,7 @@ import {
   Grow,
 } from '@mui/material';
 import { useSubmitEnquiry } from '@/api/useSubmitEnquiry';
-import { quoteMessage } from '@/lib/quote';
+import { quoteMessage, cartQuoteMessage } from '@/lib/quote';
 import { useQuoteStore } from '@/store/useQuoteStore';
 import Reveal from '@/Common/Reveal';
 import MagneticWrap from '@/Common/MagneticWrap';
@@ -52,11 +52,20 @@ export default function ContactForm() {
   const clearQuote = useQuoteStore((s) => s.clear);
   const [quote] = React.useState(() => useQuoteStore.getState().request);
   const sku = quote?.sku ?? '';
-  const [formData, setFormData] = React.useState<EnquiryFormData>(() =>
-    quote
-      ? { ...initialFormState, product: quote.sku, message: quoteMessage(quote.sku, quote.product) }
-      : initialFormState,
-  );
+  // A cart hand-off carries every line in `items`; a single product page
+  // hand-off carries just `sku`/`product`. Pre-fill the matching message and
+  // leave the single "product" field blank for carts (the parts are already
+  // itemized in the message body).
+  const cartLines = quote?.items ?? null;
+  const [formData, setFormData] = React.useState<EnquiryFormData>(() => {
+    if (cartLines && cartLines.length > 0) {
+      return { ...initialFormState, product: '', message: cartQuoteMessage(cartLines) };
+    }
+    if (quote) {
+      return { ...initialFormState, product: quote.sku, message: quoteMessage(quote.sku, quote.product) };
+    }
+    return initialFormState;
+  });
   React.useEffect(() => {
     if (quote) clearQuote();
   }, [quote, clearQuote]);

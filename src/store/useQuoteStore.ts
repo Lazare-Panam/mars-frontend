@@ -1,8 +1,19 @@
 import { create } from "zustand";
 
+export interface QuoteLine {
+  sku: string;
+  product?: string;
+  quantity: number;
+}
+
 export interface QuoteRequest {
   sku: string;
   product?: string;
+  // Present when a whole cart is handed over (see CartPage "Proceed to quote").
+  // When set, ContactForm pre-fills an itemized message from these lines
+  // instead of the single-part message; `sku`/`product` above stay as the
+  // first line so the single-item callers are unaffected.
+  items?: QuoteLine[];
 }
 
 interface QuoteState {

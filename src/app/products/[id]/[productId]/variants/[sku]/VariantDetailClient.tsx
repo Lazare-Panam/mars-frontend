@@ -108,14 +108,17 @@ export default function VariantDetailClient({
     if (adding) return;
     setAdding(true);
     try {
-      // seriesId + variantId must match Mars.API.Models.Basket.AddToCartRequest;
-      // the server looks up the price itself, so unitPrice is not sent.
+      // seriesId + variantId must match Mars.API.Models.Basket.AddToCartRequest.
+      // The basket is held client-side until checkout, so unitPrice is passed
+      // here for the local subtotal; it's stripped before the server sync,
+      // which recalculates price itself.
       await addToCart({
         seriesId: productId,
         variantId: variant.id,
         productDescription: skuLabel,
         quantity: 1,
         pictureUrl: image ?? "",
+        unitPrice: parsePrice(price) ?? 0,
       });
       setAdded(true);
     } finally {

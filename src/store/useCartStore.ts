@@ -1,184 +1,131 @@
 import { create } from "zustand";
-import { isAxiosError } from "axios";
+import { persist, createJSONStorage } from "zustand/middleware";
 import {
-  fetchBasket,
-  addToCartRequest,
-  updateQuantityRequest,
-  removeItemRequest,
-  clearBasketRequest,
-  submitForQuoteRequest,
   type CustomerBasket,
+  type BasketItem,
   type AddToCartRequest,
-  type QuoteRequest,
 } from "@/api/cart.api";
-
-// Distinguishes *why* submitForQuote failed so the UI can react differently
-// (prompt login vs. show a plain error) instead of collapsing everything
-// into one generic message.
-export type SubmitQuoteError =
-  | { kind: "not-authenticated" }
-  | { kind: "empty-basket" }
-  | { kind: "unknown"; message: string };
 
 interface CartState {
   basket: CustomerBasket | null;
+  // Kept so existing callers (CartPage's initial-load spinner) still compile.
+  // Always false now that the basket never loads from the network.
   isLoading: boolean;
   error: string | null;
-
-  isSubmittingQuote: boolean;
-  lastQuoteRequest: QuoteRequest | null;
-  submitQuoteError: SubmitQuoteError | null;
 
   fetchBasket: () => Promise<void>;
   addToCart: (request: AddToCartRequest) => Promise<void>;
   updateQuantity: (productId: string, quantity: number) => Promise<void>;
   removeItem: (productId: string) => Promise<void>;
   clearBasket: () => Promise<void>;
-  submitForQuote: () => Promise<QuoteRequest | null>;
-  clearSubmitQuoteError: () => void;
-  setSubmitQuoteError: (error: SubmitQuoteError) => void;
 
   itemCount: () => number;
   subtotal: () => number;
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
-  basket: null,
-  isLoading: false,
-  error: null,
+// Builds a CustomerBasket-shaped object around a fresh item list. The basket
+// lives entirely in this (persisted) store — customerBasketId/sessionId are
+// local placeholders; there is no server-side basket anymore. On "Proceed to
+// quote" the items are handed to useQuoteStore and the user finishes the
+// enquiry on /contact, the same pattern the product pages already use.
+const withItems = (
+  previous: CustomerBasket | null,
+  items: BasketItem[],
+): CustomerBasket => {
+  const now = new Date().toISOString();
+  return {
+    customerBasketId: previous?.customerBasketId ?? "local",
+    sessionId: previous?.sessionId ?? "local",
+    userId: previous?.userId,
+    items,
+    createdAt: previous?.createdAt ?? now,
+    updatedAt: now,
+  };
+};
 
-  isSubmittingQuote: false,
-  lastQuoteRequest: null,
-  submitQuoteError: null,
+export const useCartStore = create<CartState>()(
+  persist(
+    (set, get) => ({
+      basket: null,
+      isLoading: false,
+      error: null,
 
-  fetchBasket: async () => {
-    set({ isLoading: true, error: null });
-    try {
-      const basket = await fetchBasket();
-      set({ basket, isLoading: false });
-    } catch {
-      set({ error: "Could not load your cart.", isLoading: false });
-    }
-  },
+      // No-op: the basket is sourced entirely from the persisted store now,
+      // not the server. Kept on the interface so existing callers (Navbar,
+      // CartPage) don't need to change.
+      fetchBasket: async () => {},
 
-  addToCart: async (request) => {
-    try {
-      const basket = await addToCartRequest(request);
-      set({ basket, error: null });
-    } catch {
-      set({ error: "Couldn't add that item." });
-    }
-  },
+      // Local-only. No network call — the item is merged into the store.
+      addToCart: async (request) => {
+        set((state) => {
+          const items = state.basket ? [...state.basket.items] : [];
+          const idx = items.findIndex((i) => i.productId === request.variantId);
 
-  updateQuantity: async (productId, quantity) => {
-    const previous = get().basket;
-
-    set((state) => ({
-      basket: state.basket
-        ? {
-            ...state.basket,
-            items:
-              quantity <= 0
-                ? state.basket.items.filter((i) => i.productId !== productId)
-                : state.basket.items.map((i) =>
-                    i.productId === productId ? { ...i, quantity } : i,
-                  ),
+          if (idx >= 0) {
+            items[idx] = {
+              ...items[idx],
+              quantity: items[idx].quantity + request.quantity,
+            };
+          } else {
+            items.push({
+              id: request.variantId,
+              productId: request.variantId,
+              seriesId: request.seriesId,
+              productDescription: request.productDescription,
+              unitPrice: request.unitPrice ?? 0,
+              quantity: request.quantity,
+              pictureUrl: request.pictureUrl,
+            });
           }
-        : state.basket,
-    }));
 
-    try {
-      const basket = await updateQuantityRequest(productId, quantity);
-      set({ basket, error: null });
-    } catch {
-      set({ basket: previous, error: "Couldn't update that item." });
-    }
-  },
+          return { basket: withItems(state.basket, items), error: null };
+        });
+      },
 
-  removeItem: async (productId) => {
-    const previous = get().basket;
+      // Local-only. quantity <= 0 removes the item, matching the behavior the
+      // cart UI relies on.
+      updateQuantity: async (productId, quantity) => {
+        set((state) => {
+          if (!state.basket) return state;
+          const items =
+            quantity <= 0
+              ? state.basket.items.filter((i) => i.productId !== productId)
+              : state.basket.items.map((i) =>
+                  i.productId === productId ? { ...i, quantity } : i,
+                );
+          return { basket: withItems(state.basket, items), error: null };
+        });
+      },
 
-    set((state) => ({
-      basket: state.basket
-        ? {
-            ...state.basket,
-            items: state.basket.items.filter((i) => i.productId !== productId),
-          }
-        : state.basket,
-    }));
+      // Local-only.
+      removeItem: async (productId) => {
+        set((state) => {
+          if (!state.basket) return state;
+          const items = state.basket.items.filter(
+            (i) => i.productId !== productId,
+          );
+          return { basket: withItems(state.basket, items), error: null };
+        });
+      },
 
-    try {
-      await removeItemRequest(productId);
-      set({ error: null });
-    } catch {
-      set({ basket: previous, error: "Couldn't remove that item." });
-    }
-  },
+      // Local-only.
+      clearBasket: async () => {
+        set({ basket: null, error: null });
+      },
 
-  clearBasket: async () => {
-    const previous = get().basket;
-    set({ basket: null });
-
-    try {
-      await clearBasketRequest();
-    } catch {
-      set({ basket: previous, error: "Couldn't clear your cart." });
-    }
-  },
-
-  // Submits the current basket as an RFQ. Does NOT check auth itself —
-  // the caller (CartPage) checks useAuthStore().isAuthenticated first so
-  // an anonymous user gets an inline prompt instead of firing a request
-  // that's guaranteed to 401. This still handles a 401 that slips through
-  // (e.g. token expired between page load and click) as "not-authenticated"
-  // rather than a generic error.
-  submitForQuote: async () => {
-    set({ isSubmittingQuote: true, submitQuoteError: null });
-    try {
-      const quoteRequest = await submitForQuoteRequest();
-      // Backend deletes the basket on success (CartService.DeleteBasketAsync
-      // in BasketController.SubmitForQuote) — mirror that client-side rather
-      // than refetching, since a refetch would just come back empty anyway.
-      set({
-        basket: null,
-        lastQuoteRequest: quoteRequest,
-        isSubmittingQuote: false,
-        submitQuoteError: null,
-      });
-      return quoteRequest;
-    } catch (err) {
-      let submitQuoteError: SubmitQuoteError;
-      if (isAxiosError(err)) {
-        if (err.response?.status === 401) {
-          submitQuoteError = { kind: "not-authenticated" };
-        } else if (err.response?.status === 400) {
-          // BasketController returns BadRequest("Your basket is empty.")
-          // as a plain string body — treat any 400 here as the empty-basket
-          // case, since that's the only 400 this endpoint sends today.
-          submitQuoteError = { kind: "empty-basket" };
-        } else {
-          submitQuoteError = {
-            kind: "unknown",
-            message: "Couldn't submit your quote request. Please try again.",
-          };
-        }
-      } else {
-        submitQuoteError = {
-          kind: "unknown",
-          message: "Couldn't submit your quote request. Please try again.",
-        };
-      }
-      set({ isSubmittingQuote: false, submitQuoteError });
-      return null;
-    }
-  },
-
-  clearSubmitQuoteError: () => set({ submitQuoteError: null }),
-  setSubmitQuoteError: (submitQuoteError) => set({ submitQuoteError }),
-
-  itemCount: () =>
-    get().basket?.items.reduce((sum, i) => sum + i.quantity, 0) ?? 0,
-  subtotal: () =>
-    get().basket?.items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0) ??
-    0,
-}));
+      itemCount: () =>
+        get().basket?.items.reduce((sum, i) => sum + i.quantity, 0) ?? 0,
+      subtotal: () =>
+        get().basket?.items.reduce(
+          (sum, i) => sum + i.unitPrice * i.quantity,
+          0,
+        ) ?? 0,
+    }),
+    {
+      name: "mars-cart",
+      storage: createJSONStorage(() => localStorage),
+      // Only the basket needs to survive a reload.
+      partialize: (state) => ({ basket: state.basket }),
+    },
+  ),
+);

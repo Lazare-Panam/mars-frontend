@@ -13,11 +13,6 @@ import {
   Chip,
   CircularProgress,
   Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
 } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -27,49 +22,26 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
-import { useAuthStore } from "@/store/useAuthStore";
+import { useQuoteStore } from "@/store/useQuoteStore";
 import Reveal from "@/Common/Reveal";
 import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function CartPage() {
-  const {
-    basket,
-    isLoading,
-    error,
-    fetchBasket,
-    updateQuantity,
-    removeItem,
-    submitForQuote,
-    isSubmittingQuote,
-    lastQuoteRequest,
-    submitQuoteError,
-    clearSubmitQuoteError,
-  } = useCartStore();
-  const { isAuthenticated, hydrate } = useAuthStore();
+  const { basket, isLoading, error, fetchBasket, updateQuantity, removeItem } =
+    useCartStore();
+  const setQuote = useQuoteStore((s) => s.setRequest);
+  const router = useRouter();
 
-  // Auth state is read from localStorage, which isn't available during SSR —
-  // hydrate() syncs the store to it on mount, same pattern the store already
-  // uses elsewhere.
   useEffect(() => {
-    hydrate();
     fetchBasket();
-  }, [fetchBasket, hydrate]);
+  }, [fetchBasket]);
 
   // Tracks the confirm-before-delete state for the qty-1 minus button
   // locally, keyed by productId, so only the row being confirmed shows the
   // warning rather than a global flag.
   const [confirmRemoveId, setConfirmRemoveId] = useState<string | null>(null);
-
-  // Two distinct dialogs, deliberately not merged into one boolean:
-  // - confirmQuoteOpen: "are you sure" gate before an authenticated user's
-  //   request actually fires (a real network call with side effects on the
-  //   backend — the basket gets deleted on success).
-  // - loginPromptOpen: shown instead of the confirm dialog when there's no
-  //   token, since submitting isn't even possible yet — the action here is
-  //   "go log in", not "confirm".
-  const [confirmQuoteOpen, setConfirmQuoteOpen] = useState(false);
-  const [loginPromptOpen, setLoginPromptOpen] = useState(false);
 
   const items = basket?.items ?? [];
   const itemCount = items.reduce((sum, i) => sum + i.quantity, 0);
@@ -93,20 +65,18 @@ export default function CartPage() {
     updateQuantity(productId, quantity - 1);
   };
 
-  // Entry point from the main button: branch on auth *before* opening any
-  // dialog, so an anonymous user never sees the confirm-and-submit dialog
-  // for a request that's guaranteed to 401.
-  const handleOpenSubmitFlow = () => {
-    if (!isAuthenticated) {
-      setLoginPromptOpen(true);
-      return;
-    }
-    setConfirmQuoteOpen(true);
-  };
-
-  const handleConfirmSubmit = async () => {
-    setConfirmQuoteOpen(false);
-    await submitForQuote();
+  // "Proceed to quote" hands the whole cart to the contact form using the
+  // same in-memory pattern the product pages use (useQuoteStore -> /contact):
+  // the message is pre-filled with every line, and the user finishes and sends
+  // the enquiry from there. No order/basket API call is made.
+  const handleRequestQuote = () => {
+    if (items.length === 0) return;
+    const lines = items.map((i) => ({
+      sku: i.productDescription,
+      quantity: i.quantity,
+    }));
+    setQuote({ sku: lines[0].sku, items: lines });
+    router.push("/contact");
   };
 
   if (isLoading && !basket) {
@@ -121,38 +91,6 @@ export default function CartPage() {
         }}
       >
         <CircularProgress color="primary" />
-      </Box>
-    );
-  }
-
-  // After a successful RFQ submission the basket is cleared, so show a
-  // confirmation instead of falling through to the empty-cart state, which
-  // would otherwise look identical and give no indication anything happened.
-  if (lastQuoteRequest) {
-    return (
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          minHeight: "100vh",
-          py: { xs: 3, md: 6 },
-        }}
-      >
-        <Container maxWidth="sm">
-          <Card variant="outlined" sx={{ p: 6, textAlign: "center" }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
-              Quote request submitted
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-              {`Reference: ${lastQuoteRequest.quoteRequestId}`}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              We&apos;ll be in touch with pricing and availability shortly.
-            </Typography>
-            <Button variant="contained" color="primary" href="/products">
-              Continue Shopping
-            </Button>
-          </Card>
-        </Container>
       </Box>
     );
   }
@@ -199,39 +137,6 @@ export default function CartPage() {
         {error && (
           <Alert severity="error" sx={{ mb: 3 }}>
             {error}
-          </Alert>
-        )}
-
-        {submitQuoteError?.kind === "empty-basket" && (
-          <Alert severity="info" sx={{ mb: 3 }} onClose={clearSubmitQuoteError}>
-            Your cart is empty — add an item before requesting a quote.
-          </Alert>
-        )}
-        {submitQuoteError?.kind === "not-authenticated" && (
-          <Alert
-            severity="warning"
-            sx={{ mb: 3 }}
-            onClose={clearSubmitQuoteError}
-            action={
-              <Button color="inherit" size="small" href="/login?redirect=/cart">
-                Log in
-              </Button>
-            }
-          >
-            {/* Covers the case where the token expired between page load and
-                the confirm dialog — the store still surfaces a 401 as this
-                same error kind, so it needs its own render path here too. */}
-            Please log in to submit a quote request. Your cart will be waiting
-            for you.
-          </Alert>
-        )}
-        {submitQuoteError?.kind === "unknown" && (
-          <Alert
-            severity="error"
-            sx={{ mb: 3 }}
-            onClose={clearSubmitQuoteError}
-          >
-            {submitQuoteError.message}
           </Alert>
         )}
 
@@ -530,8 +435,7 @@ export default function CartPage() {
                       color="primary"
                       size="large"
                       fullWidth
-                      onClick={handleOpenSubmitFlow}
-                      disabled={isSubmittingQuote}
+                      onClick={handleRequestQuote}
                       sx={{
                         transition: "transform 0.2s ease",
                         "&:hover": {
@@ -539,13 +443,7 @@ export default function CartPage() {
                         },
                       }}
                     >
-                      {isSubmittingQuote ? (
-                        <CircularProgress size={22} color="inherit" />
-                      ) : hasUnpricedItems ? (
-                        "Request Quote"
-                      ) : (
-                        "Proceed to Checkout"
-                      )}
+                      Request Quote
                     </Button>
                   </MagneticWrap>
                 </Box>
@@ -564,71 +462,6 @@ export default function CartPage() {
           </Grid>
         )}
       </Container>
-
-      {/* Confirm-before-submit modal — only reachable when isAuthenticated,
-          since handleOpenSubmitFlow routes anonymous users to the login
-          dialog instead. */}
-      <Dialog
-        open={confirmQuoteOpen}
-        onClose={() => setConfirmQuoteOpen(false)}
-        aria-labelledby="confirm-quote-title"
-      >
-        <DialogTitle id="confirm-quote-title">
-          Submit this quote request?
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            {`You're about to submit ${itemCount} ${
-              itemCount === 1 ? "item" : "items"
-            } for a quote. Your cart will be cleared once it's submitted.`}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setConfirmQuoteOpen(false)} color="inherit">
-            Cancel
-          </Button>
-          <Button
-            onClick={handleConfirmSubmit}
-            variant="contained"
-            color="primary"
-            autoFocus
-          >
-            Submit Quote Request
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      {/* Login-required modal — shown instead of the confirm dialog when
-          there's no valid token, so the user isn't asked to "confirm" a
-          submission that can't succeed. */}
-      <Dialog
-        open={loginPromptOpen}
-        onClose={() => setLoginPromptOpen(false)}
-        aria-labelledby="login-required-title"
-      >
-        <DialogTitle id="login-required-title">
-          Log in to request a quote
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            You&apos;ll need to be logged in to submit a quote request. Your
-            cart will still be here when you get back.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setLoginPromptOpen(false)} color="inherit">
-            Cancel
-          </Button>
-          <Button
-            href="/login?redirect=/cart"
-            variant="contained"
-            color="primary"
-            autoFocus
-          >
-            Log In
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 }
