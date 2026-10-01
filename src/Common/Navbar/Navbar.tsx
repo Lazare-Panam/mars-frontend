@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -25,8 +25,9 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 import { LEFT_NAV, RIGHT_NAV, type NavItem } from "./navData";
-import MegaMenuPanel from "./MegaMenuPanel";
 import CategoryBar from "./CategoryBar";
+import { CATEGORY_BAR } from "./categoryBarData";
+import { useCategoryMenu } from "./useCategoryMenu";
 import { useCartStore } from "@/store/useCartStore";
 
 const Navbar: React.FC = () => {
@@ -38,11 +39,9 @@ const Navbar: React.FC = () => {
   const LINE = theme.palette.divider;
   const REGISTER_RED = "#D32F2F";
 
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchBasket = useCartStore((s) => s.fetchBasket);
   const itemCount = useCartStore((s) => s.itemCount());
@@ -58,15 +57,18 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleEnter = (label: string) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpenMenu(label);
-  };
-  const handleLeave = () => {
-    closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
-  };
-
-  const activeItem = LEFT_NAV.find((i) => i.label === openMenu);
+  // On desktop, "Products" (the item with a megaMenu) no longer has its own
+  // dropdown: hovering it opens the category bar's first dropdown instead.
+  // (megaMenu data is still used by the mobile drawer.)
+  const categoryOpen = useCategoryMenu((s) => s.open);
+  const openCategory = useCategoryMenu((s) => s.openItem);
+  const scheduleCategoryClose = useCategoryMenu((s) => s.scheduleClose);
+  const closeCategory = useCategoryMenu((s) => s.close);
+  const openProducts = () => openCategory(CATEGORY_BAR[0].label);
+  // Touch screens have no hover: the first tap on Products shows the bar,
+  // a second tap follows the link. Recorded at pointerdown, before the
+  // hover/focus events a tap also fires.
+  const productsTap = React.useRef({ isTouch: false, wasOpen: false });
   const filteredRightNav = RIGHT_NAV.filter(
     (item) => item.label !== "Contact Us",
   );
@@ -152,11 +154,8 @@ const Navbar: React.FC = () => {
           boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
           transition: "box-shadow 0.25s ease",
         }}
-        onMouseLeave={handleLeave}
+        onMouseLeave={scheduleCategoryClose}
       >
-        {/* Wrapper so the Products mega menu opens right under the main row,
-            over the category bar, rather than below it. */}
-        <Box sx={{ position: "relative" }}>
         <Container maxWidth="xl">
           <Toolbar
             disableGutters
@@ -192,17 +191,29 @@ const Navbar: React.FC = () => {
               }}
             >
               {LEFT_NAV.map((item) => {
-                const active = openMenu === item.label;
+                // Products shows as open while any category dropdown is open.
+                const active = !!item.megaMenu && categoryOpen !== null;
                 return (
                   <Box
                     key={item.label}
-                    onMouseEnter={() =>
-                      item.megaMenu && handleEnter(item.label)
-                    }
+                    // Other header links close the products dropdown.
+                    onMouseEnter={() => (item.megaMenu ? openProducts() : closeCategory())}
+                    onFocus={() => item.megaMenu && openProducts()}
                   >
                     <Box
                       component={Link}
                       href={item.href}
+                      onPointerDown={(e: React.PointerEvent) => {
+                        if (item.megaMenu) {
+                          productsTap.current = { isTouch: e.pointerType !== "mouse", wasOpen: categoryOpen !== null };
+                        }
+                      }}
+                      onClick={(e: React.MouseEvent) => {
+                        if (item.megaMenu && productsTap.current.isTouch && !productsTap.current.wasOpen) {
+                          e.preventDefault();
+                          openProducts();
+                        }
+                      }}
                       sx={{
                         position: "relative",
                         display: "inline-flex",
@@ -383,14 +394,6 @@ const Navbar: React.FC = () => {
             </Box>
           </Toolbar>
         </Container>
-
-        {/* Mega menu */}
-        {openMenu && activeItem?.megaMenu && (
-          <Box onMouseEnter={() => activeItem && handleEnter(activeItem.label)}>
-            <MegaMenuPanel columns={activeItem.megaMenu} />
-          </Box>
-        )}
-        </Box>
 
         <CategoryBar />
       </AppBar>

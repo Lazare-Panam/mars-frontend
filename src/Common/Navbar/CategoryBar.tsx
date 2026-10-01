@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { CATEGORY_BAR, type CategoryBarItem } from "./categoryBarData";
+import { useCategoryMenu } from "./useCategoryMenu";
 
 /**
  * Product category bar under the main header, with a dropdown per category
@@ -13,6 +14,10 @@ import { CATEGORY_BAR, type CategoryBarItem } from "./categoryBarData";
  * - Mouse: hovering a category opens its dropdown; no click needed.
  * - Touch: the first tap opens the dropdown, a second tap follows the link.
  * - Keyboard: focusing a category opens it; Escape closes it.
+ * - Hovering "Products" in the main header opens the first category here
+ *   (it replaces the old Products dropdown), via the shared useCategoryMenu.
+ * - The bar is hidden until then: it only appears while a dropdown is open,
+ *   and it floats over the page so nothing below jumps when it shows.
  * The dropdown is a box the width of the bar, not the full page.
  */
 export default function CategoryBar() {
@@ -23,21 +28,11 @@ export default function CategoryBar() {
   const ACCENT = theme.palette.primary.main; // MARS red, #E7390F
   const LINE = theme.palette.divider;
 
-  const [open, setOpen] = useState<string | null>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Open state lives in a shared store so the header's Products link can open it.
+  const { open, openItem, scheduleClose, close } = useCategoryMenu();
   // Recorded at pointerdown, before the hover and focus events a tap also
   // fires, so a click can tell "first tap" from "tap on an open menu".
   const tap = useRef<{ isTouch: boolean; wasOpen: boolean }>({ isTouch: false, wasOpen: false });
-
-  const openItem = (label: string) => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpen(label);
-  };
-  // A short delay, so crossing the gap between the bar and the box doesn't close it.
-  const scheduleClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpen(null), 150);
-  };
 
   const handlePointerDown = (e: React.PointerEvent, item: CategoryBarItem) => {
     tap.current = { isTouch: e.pointerType !== "mouse", wasOpen: open === item.label };
@@ -50,24 +45,38 @@ export default function CategoryBar() {
       e.preventDefault();
       openItem(item.label);
     } else {
-      setOpen(null);
+      close();
     }
   };
 
   const active = CATEGORY_BAR.find((item) => item.label === open);
 
+  // Hidden until Products (or a category) is hovered.
+  if (!active) return null;
+
   return (
     <Box
       component="nav"
       aria-label="Product categories"
+      onMouseEnter={() => openItem(active.label)}
       onMouseLeave={scheduleClose}
-      onKeyDown={(e) => e.key === "Escape" && setOpen(null)}
+      onKeyDown={(e) => e.key === "Escape" && close()}
       sx={{
         display: { xs: "none", md: "block" },
-        position: "relative",
+        // Floats just under the header instead of pushing the page down.
+        position: "absolute",
+        top: "100%",
+        left: 0,
+        right: 0,
+        zIndex: 25,
         bgcolor: "#fff",
         borderTop: `1px solid ${LINE}`,
         borderBottom: `1px solid ${LINE}`,
+        animation: "categoryBarIn 0.18s ease",
+        "@keyframes categoryBarIn": {
+          from: { opacity: 0, transform: "translateY(-4px)" },
+          to: { opacity: 1, transform: "none" },
+        },
       }}
     >
       <Container maxWidth="lg">
@@ -163,7 +172,7 @@ export default function CategoryBar() {
                 <Typography
                   component={Link}
                   href={column.href}
-                  onClick={() => setOpen(null)}
+                  onClick={close}
                   // Small orange uppercase heading, as in the Products dropdown.
                   sx={{
                     display: "block",
@@ -190,7 +199,7 @@ export default function CategoryBar() {
                       <Typography
                         component={Link}
                         href={link.href}
-                        onClick={() => setOpen(null)}
+                        onClick={close}
                         sx={{
                           display: "block",
                           py: 0.6,
