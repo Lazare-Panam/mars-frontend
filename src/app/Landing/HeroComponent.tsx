@@ -66,26 +66,38 @@ export default function Hero() {
         muted
         loop
         playsInline
-        src="https://pblol2.blob.core.windows.net/mars-valves/landing2.mp4"
+        src="https://pblol2.blob.core.windows.net/mars-valves/MARS_ball_valve_3D_video_20261001121052.mp4"
         sx={{
           position: "absolute",
           inset: 0,
           width: "100%",
           height: "100%",
+          // Fill the hero (no black bands). Anchored bottom-right: the valve
+          // stays in view, and the video's own black band and "3-PIECE DESIGN"
+          // title at its top edge are cropped off so they don't compete with
+          // the headline.
           objectFit: "cover",
+          objectPosition: "right bottom",
           zIndex: 0,
           transform: `translateY(${parallax}px) scale(1.08)`,
           willChange: "transform",
         }}
       />
 
-      {/* dark gradient so text stays legible over footage */}
+      {/* Steel-blue fade to match the video's tones: solid behind the text,
+          clear over the valve. On phones the text spans the full width, so
+          the fade runs bottom-to-top instead. */}
       <Box
         sx={{
           position: "absolute",
           inset: 0,
           zIndex: 1,
-         
+          background: {
+            xs: "linear-gradient(0deg, rgba(8,16,28,0.92) 0%, rgba(8,16,28,0.75) 55%, rgba(8,16,28,0.45) 100%)",
+            // Two layers: a top fade that hides the video's black band and
+            // burned-in title, and the left-to-right fade behind the text.
+            md: "linear-gradient(180deg, rgba(8,16,28,0.97) 0%, rgba(8,16,28,0.85) 12%, rgba(8,16,28,0) 30%), linear-gradient(90deg, rgba(8,16,28,0.92) 0%, rgba(8,16,28,0.8) 35%, rgba(8,16,28,0.35) 60%, rgba(8,16,28,0) 80%)",
+          },
         }}
       />
 
