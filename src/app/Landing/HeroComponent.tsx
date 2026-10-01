@@ -54,7 +54,9 @@ export default function Hero() {
       onMouseLeave={handleMouseLeave}
       sx={{
         position: "relative",
-        minHeight: { xs: "90vh", md: "100vh" },
+        // Fill the screen below the top bar, header and benefits strip (~161px),
+        // so the whole hero, finder included, fits without scrolling.
+        minHeight: { xs: "90vh", md: "calc(100svh - 161px)" },
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
@@ -138,17 +140,17 @@ export default function Hero() {
           maxWidth: { xs: "1280px", lg: "1536px", xl: "1800px" },
           mx: "auto",
           px: { xs: 3, md: 8, lg: 3, xl: 6 },
-          py: { xs: 6, md: 8 },
+          py: { xs: 6, md: 3 },
           // One column on the left: headline, then the product finder below it.
           // The right side is left empty so the valve video stays visible.
           display: "grid",
           gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 840px) 1fr", xl: "minmax(0, 1000px) 1fr" },
-          rowGap: { xs: 5, lg: 4 },
+          rowGap: { xs: 5, lg: 3 },
           alignItems: "start",
         }}
       >
         <Stack
-          spacing={3}
+          spacing={{ xs: 3, lg: 2 }}
           sx={{
             // Wide text block on desktop, so the copy runs in long lines.
             maxWidth: { xs: 720, lg: 840, xl: 1000 },
@@ -188,6 +190,8 @@ export default function Hero() {
             sx={{
               color: "rgba(255,255,255,0.75)",
               fontSize: { xs: "1rem", md: "1.15rem", lg: "1.05rem" },
+              // On short desktop screens, drop the sentence so the finder fits.
+              "@media (min-width: 1200px) and (max-height: 960px)": { display: "none" },
               // Two lines on wide screens.
               maxWidth: { xs: 560, lg: 840, xl: 920 },
               ...fadeUp(mounted, 240),

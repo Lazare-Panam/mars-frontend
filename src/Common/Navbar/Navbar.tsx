@@ -72,6 +72,8 @@ const Navbar: React.FC = () => {
   const filteredRightNav = RIGHT_NAV.filter(
     (item) => item.label !== "Contact Us",
   );
+  // Desktop shows the e-catalogue in the red top bar instead.
+  const desktopRightNav = filteredRightNav.filter((item) => item.label !== "E-Catalogue");
 
   const CartButton = ({ size }: { size: number }) => (
     <IconButton
@@ -129,10 +131,10 @@ const Navbar: React.FC = () => {
       <PersonOutlineOutlinedIcon sx={{ fontSize: size, color: REGISTER_RED }} />
       <Typography
         sx={{
-          fontSize: "0.62rem",
+          fontSize: "0.7rem",
           fontWeight: 700,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
+          letterSpacing: "0.01em",
+          textTransform: "none",
           color: REGISTER_RED,
           lineHeight: 1,
         }}
@@ -221,10 +223,10 @@ const Navbar: React.FC = () => {
                         gap: 0.5,
                         textDecoration: "none",
                         color: active ? INK : RUST,
-                        fontSize: "0.78rem",
+                        fontSize: "0.88rem",
                         fontWeight: 600,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
+                        letterSpacing: "0.01em",
+                        textTransform: "none",
                         py: 3,
                         transition: "color 0.15s ease",
                         "&:hover": { color: INK },
@@ -269,7 +271,7 @@ const Navbar: React.FC = () => {
                 gap: { md: 1.5, lg: 2.5, xl: 4 },
               }}
             >
-              {filteredRightNav.map((item) => (
+              {desktopRightNav.map((item) => (
                 <Box
                   key={item.label}
                   component={Link}
@@ -356,9 +358,9 @@ const Navbar: React.FC = () => {
                   border: `1.5px solid ${ACCENT}`,
                   color: ACCENT,
                   fontWeight: 600,
-                  fontSize: "0.74rem",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
+                  fontSize: "0.84rem",
+                  letterSpacing: "0.01em",
+                  textTransform: "none",
                   px: 2.5,
                   py: 1,
                   transition: "all 0.15s ease",

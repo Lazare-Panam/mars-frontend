@@ -262,13 +262,10 @@ export const LEFT_NAV: NavItem[] = [
 ];
 
 export const RIGHT_NAV: NavItem[] = [
+  // Was two links ("Download" and "E-catalog") to the same PDF. On desktop it
+  // now lives in the red top bar (TopBar.tsx); the mobile drawer lists it here.
   {
-    label: "Download",
-    href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
-    newTab: true,
-  },
-  {
-    label: "E-catalog",
+    label: "E-Catalogue",
     href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
     newTab: true,
   },

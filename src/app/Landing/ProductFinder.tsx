@@ -94,7 +94,7 @@ export default function ProductFinder() {
           boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
         }}
       >
-        <Box sx={{ textAlign: "center", px: 3, pt: 3, pb: 2.5, borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+        <Box sx={{ textAlign: "center", px: 3, pt: { xs: 3, md: 2 }, pb: { xs: 2.5, md: 1.75 }, borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
           <Typography sx={{ color: "text.primary", fontSize: "1rem" }}>Quickly find what you need</Typography>
           <Typography sx={{ color: "primary.main", fontWeight: 800, fontSize: "1.5rem", lineHeight: 1.25 }}>
             Use our product finder
@@ -106,7 +106,7 @@ export default function ProductFinder() {
             onSubmit={handleSearch}
             sx={{
               position: "relative",
-              mt: 2,
+              mt: { xs: 2, md: 1.5 },
               display: "flex",
               alignItems: "center",
               gap: 1,
@@ -252,7 +252,9 @@ export default function ProductFinder() {
                     alignItems: "center",
                     gap: 2,
                     px: 2.5,
-                    py: 1.25,
+                    py: { xs: 1.25, md: 0.75 },
+                    // Tighter rows on short desktop screens so the card fits.
+                    "@media (min-width: 900px) and (max-height: 880px)": { py: 0.4 },
                     color: isActive ? "#fff" : "text.primary",
                     bgcolor: isActive ? "primary.main" : "transparent",
                     borderTop: i === 0 ? "none" : "1px solid rgba(0,0,0,0.06)",

@@ -37,12 +37,7 @@ const FOOTER_COLUMNS = [
       { label: "Returns Policy", href: "/return-policy" },
       { label: "Delivery Information", href: "/delivery-information" },
       {
-        label: "Download",
-        href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
-        newTab: true,
-      },
-      {
-        label: "E-catalog",
+        label: "Download E-Catalogue (PDF)",
         href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
         newTab: true,
       },

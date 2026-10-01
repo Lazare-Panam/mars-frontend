@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ThemeRegistry from "@/theme/ThemeRegistry";
+import TopBar from "@/Common/Navbar/TopBar";
+import BenefitsStrip from "@/Common/Navbar/BenefitsStrip";
 import Navbar from "@/Common/Navbar/Navbar";
 import Footer from "@/Common/Footer/Footer";
 import QueryProvider from "@/Common/QueryProvider";
@@ -118,7 +120,9 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <AppInsightsProvider />
             </Suspense>
+            <TopBar />
             <Navbar />
+            <BenefitsStrip />
             {children}
             <Footer />
             <CookieBanner />
