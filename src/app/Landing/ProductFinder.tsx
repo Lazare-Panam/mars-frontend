@@ -13,6 +13,37 @@ import { VALVE_TYPES, searchProducts } from "./valveTypes";
 
 type ValveType = (typeof VALVE_TYPES)[number];
 
+// Popular searches cycled through in the search box hint.
+const POPULAR = ["Series 77", "Series 77SN", "Series 83", "Series 88", "Series 90D", "Flanged ball valves", "Sanitary valves"];
+
+/**
+ * Typewriter hint: types a popular search letter by letter, pauses, deletes
+ * it, then moves to the next one. Paused while the user is typing.
+ */
+function useTypedHint(paused: boolean) {
+  const [index, setIndex] = useState(0);
+  const [length, setLength] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const word = POPULAR[index];
+    let delay = deleting ? 45 : 90;
+    if (!deleting && length === word.length) delay = 1600; // pause on the full word
+    if (deleting && length === 0) delay = 300; // short gap before the next word
+    const id = setTimeout(() => {
+      if (!deleting && length === word.length) setDeleting(true);
+      else if (deleting && length === 0) {
+        setDeleting(false);
+        setIndex((i) => (i + 1) % POPULAR.length);
+      } else setLength((l) => l + (deleting ? -1 : 1));
+    }, delay);
+    return () => clearTimeout(id);
+  }, [paused, index, length, deleting]);
+
+  return { full: POPULAR[index], typed: POPULAR[index].slice(0, length) };
+}
+
 /**
  * "Quickly find what you need" card for the hero (modelled on marsselect.co.uk).
  * Clicking a range highlights it and opens a details panel with that range's
@@ -27,6 +58,7 @@ export default function ProductFinder() {
 
   // While typing, matching products replace the list of ranges.
   const searching = query.trim().length > 0;
+  const hint = useTypedHint(query.length > 0);
   const results = searchProducts(query);
 
   const handleSearch = (e: React.FormEvent) => {
@@ -73,6 +105,7 @@ export default function ProductFinder() {
             role="search"
             onSubmit={handleSearch}
             sx={{
+              position: "relative",
               mt: 2,
               display: "flex",
               alignItems: "center",
@@ -92,10 +125,49 @@ export default function ProductFinder() {
                 setQuery(e.target.value);
                 setSelected(null);
               }}
-              placeholder="Search products, e.g. Series 88 or flanged"
-              inputProps={{ "aria-label": "Search products" }}
+              inputProps={{ "aria-label": "Search products, for example Series 77 or Series 88" }}
               sx={{ flex: 1, fontSize: "0.9rem" }}
             />
+            {/* Animated hint, shown over the empty box: "Search for Series 77". */}
+            {!query && (
+              <Box
+                aria-hidden
+                data-testid="search-hint"
+                sx={{
+                  position: "absolute",
+                  left: 44,
+                  right: 12,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  pointerEvents: "none",
+                  fontSize: "0.9rem",
+                  color: "text.disabled",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  textAlign: "left",
+                }}
+              >
+                Search for{" "}
+                <Box component="span" sx={{ color: "primary.main", fontWeight: 700 }}>
+                  {hint.typed}
+                </Box>
+                {/* Blinking cursor */}
+                <Box
+                  component="span"
+                  sx={{
+                    display: "inline-block",
+                    width: "2px",
+                    height: "1em",
+                    ml: "1px",
+                    verticalAlign: "-0.15em",
+                    bgcolor: "primary.main",
+                    animation: "hintBlink 1s steps(1) infinite",
+                    "@keyframes hintBlink": { "50%": { opacity: 0 } },
+                  }}
+                />
+              </Box>
+            )}
             {searching && (
               <IconButton size="small" aria-label="Clear search" onClick={() => setQuery("")} sx={{ p: 0.25 }}>
                 <CloseIcon sx={{ fontSize: 16 }} />
@@ -210,6 +282,7 @@ export default function ProductFinder() {
             );
           })}
         </Box>
+
       </Box>
 
       {/* Desktop: details panel opens beside the card. */}

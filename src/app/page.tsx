@@ -1,7 +1,5 @@
-import FeaturedProducts from "./Landing/FeaturedProducts/FeaturedProducts";
 import Hero from "./Landing/HeroComponent";
 import MarsSection from "./Landing/MarsSection";
-import IndustriesSection from "./Landing/FeaturedProducts/IndustriesSection";
 import MarsStats from "./Landing/MarsStats";
 import ContactCTA from "./Landing/ContactCTA";
 import TrustBar from "./Landing/TrustBar";
@@ -63,9 +61,7 @@ export default function Home() {
       <TrustBar/>
       <MarsSection/>
       <DistributorComparison/>
-      <FeaturedProducts/>
       <ProcessSection/>
-      <IndustriesSection/>
       <MarsStats/>
       <FAQSection id="faq" faqs={HOME_FAQS.map(({ q, a }) => ({ q, a }))} />
       <ContactCTA/>

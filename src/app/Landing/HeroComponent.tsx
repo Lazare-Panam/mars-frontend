@@ -97,7 +97,7 @@ export default function Hero() {
             xs: "linear-gradient(0deg, rgba(8,16,28,0.92) 0%, rgba(8,16,28,0.75) 55%, rgba(8,16,28,0.45) 100%)",
             // Two layers: a top fade that hides the video's black band and
             // burned-in title, and the left-to-right fade behind the text.
-            md: "linear-gradient(180deg, rgba(8,16,28,0.97) 0%, rgba(8,16,28,0.85) 12%, rgba(8,16,28,0) 30%), linear-gradient(90deg, rgba(8,16,28,0.92) 0%, rgba(8,16,28,0.8) 35%, rgba(8,16,28,0.35) 60%, rgba(8,16,28,0) 80%)",
+            md: "linear-gradient(180deg, rgba(8,16,28,0.97) 0%, rgba(8,16,28,0.85) 12%, rgba(8,16,28,0) 30%), linear-gradient(90deg, rgba(8,16,28,0.94) 0%, rgba(8,16,28,0.85) 42%, rgba(8,16,28,0.3) 62%, rgba(8,16,28,0) 74%)",
           },
         }}
       />
@@ -133,30 +133,26 @@ export default function Hero() {
           position: "relative",
           zIndex: 3,
           width: "100%",
-          maxWidth: "1280px",
+          // Wider than the header on big screens, so the column sits closer
+          // to the left edge and leaves more room for the video.
+          maxWidth: { xs: "1280px", lg: "1536px", xl: "1800px" },
           mx: "auto",
-          px: { xs: 3, md: 8 },
+          px: { xs: 3, md: 8, lg: 3, xl: 6 },
           py: { xs: 6, md: 8 },
-          // Desktop: product finder on the left, headline on the right (as on
-          // marsselect.co.uk). Smaller screens: headline first, finder below.
+          // One column on the left: headline, then the product finder below it.
+          // The right side is left empty so the valve video stays visible.
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", lg: "400px minmax(0, 1fr)" },
-          gap: { xs: 5, lg: 6 },
-          alignItems: "center",
+          gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 840px) 1fr", xl: "minmax(0, 1000px) 1fr" },
+          rowGap: { xs: 5, lg: 4 },
+          alignItems: "start",
         }}
       >
         <Stack
           spacing={3}
           sx={{
-            maxWidth: 720,
-            order: { xs: 1, lg: 2 },
-            justifySelf: { lg: "end" },
-            // On desktop the headline sits over the brightest part of the
-            // video, so it gets a dark see-through panel to stay readable.
-            bgcolor: { lg: "rgba(8,16,28,0.72)" },
-            backdropFilter: { lg: "blur(6px)" },
-            borderRadius: { lg: "6px" },
-            p: { lg: 5 },
+            // Wide text block on desktop, so the copy runs in long lines.
+            maxWidth: { xs: 720, lg: 840, xl: 1000 },
+            gridColumn: { lg: 1 },
           }}
         >
           <Typography
@@ -177,9 +173,8 @@ export default function Hero() {
             component="h1"
             sx={{
               color: "#fff",
-              // Slightly smaller on large screens, where it shares the row with
-              // the product finder, so it stays on three lines.
-              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "3rem" },
+              // Fits on two lines in the desktop column above the finder.
+              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "2.6rem" },
               fontWeight: 800,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
@@ -192,8 +187,9 @@ export default function Hero() {
           <Typography
             sx={{
               color: "rgba(255,255,255,0.75)",
-              fontSize: { xs: "1rem", md: "1.15rem" },
-              maxWidth: 560,
+              fontSize: { xs: "1rem", md: "1.15rem", lg: "1.05rem" },
+              // Two lines on wide screens.
+              maxWidth: { xs: 560, lg: 840, xl: 920 },
               ...fadeUp(mounted, 240),
             }}
           >
@@ -256,7 +252,7 @@ export default function Hero() {
           </Stack>
         </Stack>
 
-        <Box sx={{ maxWidth: 440, width: "100%", order: { xs: 2, lg: 1 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
+        <Box sx={{ maxWidth: 440, width: "100%", gridColumn: { lg: 1 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
           <ProductFinder />
         </Box>
       </Box>
