@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Box, Container } from "@mui/material";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -18,6 +19,42 @@ const BENEFITS = [
   { label: "Prices Online For Standard Items", href: "/shop", icon: SellOutlinedIcon },
 ];
 
+/** Phones: one benefit at a time, centred, changing every few seconds. */
+function MobileTicker() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % BENEFITS.length), 3500);
+    return () => clearInterval(id);
+  }, []);
+  const { label, href, icon: Icon } = BENEFITS[index];
+  return (
+    <Box
+      component={Link}
+      href={href}
+      key={label}
+      aria-live="polite"
+      sx={{
+        display: { xs: "flex", md: "none" },
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 1,
+        px: 2,
+        py: 1.1,
+        color: "primary.main",
+        textDecoration: "none",
+        fontSize: "0.82rem",
+        fontWeight: 500,
+        textAlign: "center",
+        animation: "benefitIn 0.4s ease",
+        "@keyframes benefitIn": { from: { opacity: 0, transform: "translateY(4px)" }, to: { opacity: 1, transform: "none" } },
+      }}
+    >
+      {label}
+      <Icon sx={{ fontSize: 18, flexShrink: 0 }} />
+    </Box>
+  );
+}
+
 export default function BenefitsStrip() {
   return (
     <Box
@@ -25,7 +62,8 @@ export default function BenefitsStrip() {
       aria-label="Why buy from us"
       sx={{ bgcolor: "#fff", borderBottom: "1px solid", borderColor: "divider" }}
     >
-      <Container maxWidth="xl" disableGutters>
+      <MobileTicker />
+      <Container maxWidth="xl" disableGutters sx={{ display: { xs: "none", md: "block" } }}>
         <Box
           component="ul"
           sx={{

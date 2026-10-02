@@ -68,27 +68,7 @@ export default function LoginPage() {
               and Privacy Notice.
             </Typography>
 
-            <Typography
-              variant="caption"
-              sx={{ display: "block", mt: 2, color: "text.disabled" }}
-            >
-              Are you an administrator?{" "}
-              <Link
-                component="button"
-                onClick={() => router.push("/admin-login")}
-                sx={{
-                  color: "text.secondary",
-                  fontSize: "inherit",
-                  textDecoration: "none",
-                  "&:hover": {
-                    textDecoration: "underline",
-                    color: "primary.main",
-                  },
-                }}
-              >
-                Admin Login
-              </Link>
-            </Typography>
+           
           </Box>
 
           <Divider

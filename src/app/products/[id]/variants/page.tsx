@@ -163,8 +163,10 @@ export default function ProductVariantsPage({
           <Box
             sx={{
               display: "flex",
+              // Stack the filters above the table on phones.
+              flexDirection: { xs: "column", md: "row" },
               gap: 0,
-              alignItems: "flex-start",
+              alignItems: { xs: "stretch", md: "flex-start" },
               border: `1px solid ${alpha(BRAND, 0.15)}`,
               borderRadius: "8px",
               bgcolor: "#fff",
@@ -180,7 +182,8 @@ export default function ProductVariantsPage({
               sx={{
                 flex: 1,
                 minWidth: 0,
-                borderLeft: "1px solid rgba(0,0,0,0.06)",
+                borderLeft: { md: "1px solid rgba(0,0,0,0.06)" },
+                borderTop: { xs: "1px solid rgba(0,0,0,0.06)", md: "none" },
               }}
             >
               <VariantsTable

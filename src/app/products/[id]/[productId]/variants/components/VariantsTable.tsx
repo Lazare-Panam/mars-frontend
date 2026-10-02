@@ -464,6 +464,133 @@ interface Props {
   thumbnailImage: string;
 }
 
+
+/**
+ * Phone layout: one card per variant instead of a wide table, so the product
+ * (photo, SKU, key specs) is visible next to its price and Add to Cart button.
+ */
+function VariantCard({
+  variant,
+  seriesId,
+  productName,
+  specKeys,
+  thumbnailImage,
+  onAddedToCart,
+}: Omit<RowProps, "zebra">) {
+  const addToCart = useCartStore((s) => s.addToCart);
+  const [adding, setAdding] = useState(false);
+  const { id } = useParams<{ id: string }>();
+  const setQuote = useQuoteStore((s) => s.setRequest);
+
+  const image = variant.thumbnailImage || thumbnailImage;
+  const price = variant.specs["Price"];
+  const sku = variant.specs["SKU"] ?? variant.id;
+  const detailHref = `/products/${id}/${seriesId}/variants/${variant.id}`;
+  const onQuote = () => setQuote({ sku, product: productName });
+  const specs = specKeys.filter((k) => k !== "SKU" && variant.specs[k]);
+
+  const handleAddToCart = async () => {
+    if (adding) return;
+    setAdding(true);
+    try {
+      await addToCart({
+        seriesId,
+        variantId: variant.id,
+        productDescription: sku,
+        quantity: 1,
+        pictureUrl: image ?? "",
+      });
+      onAddedToCart();
+    } finally {
+      setAdding(false);
+    }
+  };
+
+  return (
+    <Box sx={{ p: 2, borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+      <Box
+        component={NextLink}
+        href={detailHref}
+        sx={{ display: "flex", gap: 1.5, textDecoration: "none", color: "inherit" }}
+      >
+        {image && (
+          <Box
+            sx={{
+              width: 64,
+              height: 64,
+              flexShrink: 0,
+              border: "1px solid rgba(0,0,0,0.08)",
+              borderRadius: "8px",
+              bgcolor: "#fff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src={image}
+              alt={variantImageAlt(productName, variant)}
+              width={54}
+              height={54}
+              style={{ objectFit: "contain" }}
+            />
+          </Box>
+        )}
+        <Box sx={{ minWidth: 0 }}>
+          <Typography sx={{ fontSize: "0.72rem", fontFamily: "monospace", color: BRAND, wordBreak: "break-all" }}>
+            {sku}
+          </Typography>
+          <Typography sx={{ fontSize: "0.82rem", color: "text.secondary", lineHeight: 1.5, mt: 0.25 }}>
+            {specs.map((k) => variant.specs[k]).join(" · ")}
+          </Typography>
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 1, mt: 1.5 }}>
+        <PriceCell price={price} onQuote={onQuote} />
+        {price ? (
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={handleAddToCart}
+            disabled={adding}
+            startIcon={<AddShoppingCartOutlinedIcon sx={{ fontSize: 16 }} />}
+            sx={{
+              textTransform: "none",
+              fontWeight: 700,
+              fontSize: "0.8rem",
+              borderRadius: "6px",
+              borderColor: alpha(BRAND, 0.4),
+              color: BRAND,
+              whiteSpace: "nowrap",
+            }}
+          >
+            Add to Cart
+          </Button>
+        ) : (
+          <Button
+            variant="outlined"
+            size="small"
+            component={NextLink}
+            href={detailHref}
+            sx={{
+              textTransform: "none",
+              fontWeight: 700,
+              fontSize: "0.8rem",
+              borderRadius: "6px",
+              borderColor: alpha(BRAND, 0.4),
+              color: BRAND,
+            }}
+          >
+            View details
+          </Button>
+        )}
+      </Box>
+    </Box>
+  );
+}
+
 export default function VariantsTable({
   variants,
   seriesId,
@@ -516,7 +643,28 @@ export default function VariantsTable({
       elevation={0}
       sx={{ flex: 1, minWidth: 0, borderRadius: "8px", overflow: "hidden" }}
     >
-      <Box sx={{ overflowX: "auto" }}>
+      {/* Phones: card list. Desktop: the full spec table. */}
+      <Box sx={{ display: { xs: "block", md: "none" } }}>
+        {paginated.length === 0 ? (
+          <Typography sx={{ color: "text.secondary", fontSize: "0.875rem", textAlign: "center", py: 6 }}>
+            No variants found.
+          </Typography>
+        ) : (
+          paginated.map((v) => (
+            <VariantCard
+              key={v.id}
+              variant={v}
+              seriesId={seriesId}
+              productName={productName}
+              specKeys={displayKeys}
+              thumbnailImage={thumbnailImage}
+              onAddedToCart={() => setSnackbarOpen(true)}
+            />
+          ))
+        )}
+      </Box>
+
+      <Box sx={{ overflowX: "auto", display: { xs: "none", md: "block" } }}>
       <Table stickyHeader>
         <TableHead>
           <TableRow>

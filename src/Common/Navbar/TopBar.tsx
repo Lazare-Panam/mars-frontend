@@ -22,7 +22,8 @@ export default function TopBar() {
     gap: 0.75,
     color: "#fff",
     textDecoration: "none",
-    fontSize: "0.78rem",
+    fontSize: { xs: "0.72rem", sm: "0.78rem" },
+    whiteSpace: "nowrap",
     fontWeight: 500,
     "&:hover": { textDecoration: "underline" },
   } as const;
@@ -31,10 +32,18 @@ export default function TopBar() {
     <Box sx={{ bgcolor: "primary.main", color: "#fff" }}>
       <Container
         maxWidth="xl"
-        sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 2, py: 0.75 }}
+        // Phones: phone + email centred on one line. Desktop: contact left,
+        // catalogue right.
+        sx={{
+          display: "flex",
+          justifyContent: { xs: "center", md: "space-between" },
+          alignItems: "center",
+          gap: 2,
+          py: 0.75,
+        }}
       >
         {/* Left: call or email. Right: the e-catalogue download. */}
-        <Box sx={{ display: "flex", gap: { xs: 2, md: 3 } }}>
+        <Box sx={{ display: "flex", gap: { xs: 2.5, md: 3 } }}>
           <Box component="a" href={`tel:${PHONE.replace(/\s/g, "")}`} sx={linkSx}>
             <PhoneOutlinedIcon sx={{ fontSize: 16 }} />
             {PHONE}

@@ -48,15 +48,16 @@ export default function VariantsSidebar({
   return (
     <Box
       sx={{
-        width: 220,
+        // Phones: full width above the table. Desktop: a sticky 220px column.
+        width: { xs: "100%", md: 220 },
         flexShrink: 0,
         p: 2,
         bgcolor: "#fff",
-        position: "sticky",
+        position: { xs: "static", md: "sticky" },
         top: 0,
-        alignSelf: "flex-start",
-        maxHeight: "100vh",
-        overflowY: "auto",
+        alignSelf: { xs: "stretch", md: "flex-start" },
+        maxHeight: { md: "100vh" },
+        overflowY: { md: "auto" },
         borderRadius: "6px",
         border: "1px solid rgba(0,0,0,0.08)",
         boxSizing: "border-box",
