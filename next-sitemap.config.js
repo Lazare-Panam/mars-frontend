@@ -28,7 +28,17 @@ module.exports = {
   autoLastmod: false,
   // Variant detail pages canonicalise to their parent product page, so only
   // the parent belongs in the sitemap. (The /variants listing page stays.)
-  exclude: ['/products/*/*/variants/*'],
+  // Also drop pages marked noindex (SE Ranking: "Noindex pages in XML
+  // sitemap"): sign-in, cart, account and the credit form.
+  exclude: [
+    '/products/*/*/variants/*',
+    '/login',
+    '/register',
+    '/cart',
+    '/credit-application',
+    '/dashboard',
+    '/dashboard/*',
+  ],
   transform: async (config, loc) => ({
     loc,
     lastmod: BLOG_DATES[loc] ?? (loc === '/news' ? NEWEST_POST : undefined),

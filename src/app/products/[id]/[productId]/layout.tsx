@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchProductDetail, ProductDetail } from "@/api/useProductDetail";
-import { canonicalCategoryFor } from "@/lib/canonicalCategory";
+import { canonicalProductPath } from "@/lib/canonicalCategory";
 
 type MetadataProps = { params: Promise<{ id: string; productId: string }> };
 type LayoutProps = {
@@ -35,8 +35,7 @@ export async function generateMetadata({
 
   // A product can be listed under more than one category; point every copy at
   // one canonical URL (same rule as the variant pages).
-  const canonicalCategory = (await canonicalCategoryFor(productId)) ?? id;
-  const canonical = `/products/${canonicalCategory}/${productId}`;
+  const canonical = await canonicalProductPath(id, productId);
 
   return {
     title,

@@ -2,6 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+  // Always put <title>/meta in the initial <head> instead of streaming it in
+  // later. With streaming, crawlers that don't run JS (SE Ranking's audit
+  // bot, and the Googlebot UA in our test) saw no title on server-rendered
+  // pages like /products/series-10-10/variants ("Title tag missing").
+  htmlLimitedBots: /.*/,
+  // Old "/enquiry" URL (still linked from outside the site) went 404; send
+  // it to the enquiry form on /contact instead.
+  async redirects() {
+    return [{ source: "/enquiry", destination: "/contact#enquiry", permanent: true }];
+  },
   images: {
     remotePatterns: [
       {

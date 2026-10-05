@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { canonicalCategoryFor } from "@/lib/canonicalCategory";
+import { canonicalProductPath } from "@/lib/canonicalCategory";
 
 type Props = {
   params: Promise<{ id: string; productId: string }>;
@@ -13,9 +13,8 @@ export async function generateMetadata({
   params,
 }: Pick<Props, "params">): Promise<Metadata> {
   const { id, productId } = await params;
-  const canonicalCategory = (await canonicalCategoryFor(productId)) ?? id;
   return {
-    alternates: { canonical: `/products/${canonicalCategory}/${productId}/variants` },
+    alternates: { canonical: `${await canonicalProductPath(id, productId)}/variants` },
   };
 }
 

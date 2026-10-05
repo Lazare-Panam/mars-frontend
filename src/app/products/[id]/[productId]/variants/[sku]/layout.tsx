@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
-import { canonicalCategoryFor } from "@/lib/canonicalCategory";
+import { canonicalProductPath } from "@/lib/canonicalCategory";
 import { SITE_URL } from "@/lib/site";
 import { variantTitleParts } from "@/lib/variantTitle";
 import { fitBrandTitle } from "@/lib/seoTitle";
@@ -62,8 +62,7 @@ export async function generateMetadata({
   // it falls back to the visited id for products that only live under the
   // umbrella (e.g. sanitary valves). Variant pages stay live for customers and
   // are left out of the sitemap (next-sitemap.config.js).
-  const canonicalCategory = (await canonicalCategoryFor(productId)) ?? id;
-  const canonical = `${SITE_URL}/products/${canonicalCategory}/${productId}`;
+  const canonical = `${SITE_URL}${await canonicalProductPath(id, productId)}`;
 
   return {
     title: metaTitle,

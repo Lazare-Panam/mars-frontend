@@ -1,4 +1,13 @@
-import { CATEGORIES } from "@/app/products/data/categories";
+import { CATEGORIES, SERIES } from "@/app/products/data/categories";
+
+// Ranges that have their own category page but aren't in CATEGORIES (the
+// /products grid). Checked after CATEGORIES, so a product listed in both keeps
+// its CATEGORIES home. Without these, e.g. sanitary products had two
+// self-canonical URLs (/products/ball-valves/... and /products/sanitary-ball-valves/...)
+// and SE Ranking flagged them as duplicate titles.
+const EXTRA_CATEGORY_IDS = ["sanitary-ball-valves", "fire-safe-ball-valves", "v-port-ball-valves"];
+
+const SERIES_IDS = new Set(SERIES.map((s) => s.id));
 import { fetchCatalog } from "@/api/useProductCatalog";
 
 // The /products/[id]/[productId]/... routes never validate [id] against the
@@ -14,18 +23,25 @@ let cache: Promise<Map<string, string>> | null = null;
 
 function buildMap(): Promise<Map<string, string>> {
   return Promise.all(
-    CATEGORIES.map(async (cat) => {
+    [...CATEGORIES.map((c) => c.id), ...EXTRA_CATEGORY_IDS].map(async (catId) => {
       try {
-        const catalog = await fetchCatalog(cat.id);
+        const catalog = await fetchCatalog(catId);
         return (catalog.products ?? []).map(
-          (p) => [p.id, cat.id] as [string, string],
+          (p) => [p.id, catId] as [string, string],
         );
       } catch {
         // A category that fails to load just contributes no mappings.
         return [] as [string, string][];
       }
     }),
-  ).then((pairs) => new Map(pairs.flat()));
+  ).then((pairs) => {
+    // First category wins, so CATEGORIES take priority over the extras.
+    const map = new Map<string, string>();
+    for (const [productId, catId] of pairs.flat()) {
+      if (!map.has(productId)) map.set(productId, catId);
+    }
+    return map;
+  });
 }
 
 // Returns the canonical category id for a product, or null if the product isn't
@@ -36,4 +52,19 @@ export function canonicalCategoryFor(
 ): Promise<string | null> {
   if (!cache) cache = buildMap();
   return cache.then((m) => m.get(productId) ?? null);
+}
+
+/**
+ * The one official URL for a product page. Series with their own page
+ * (/products/series-10-10) use that, instead of their copy under a category
+ * (/products/one-piece-ball-valves/series-10-10); everything else uses its
+ * real category, falling back to the visited one.
+ */
+export async function canonicalProductPath(
+  visitedCategoryId: string,
+  productId: string,
+): Promise<string> {
+  if (SERIES_IDS.has(productId)) return `/products/${productId}`;
+  const category = (await canonicalCategoryFor(productId)) ?? visitedCategoryId;
+  return `/products/${category}/${productId}`;
 }
