@@ -15,6 +15,7 @@ import Reveal from "@/Common/Reveal";
 import { variantImageAlt } from "@/lib/variantTitle";
 import { useQuoteStore } from "@/store/useQuoteStore";
 import { useCartStore } from "@/store/useCartStore";
+import { toAddToCartRequest } from "@/lib/cartRequest";
 
 const BRAND = "#E7390F";
 const PAGE_SIZE = 12;
@@ -69,15 +70,10 @@ function useAddVariantToCart(productId: string, variant: ProductVariant, image: 
     if (adding) return;
     setAdding(true);
     try {
-      await addToCart({
-        seriesId: productId,
-        variantId: variant.id,
-        productDescription: variant.specs["SKU"] ?? variant.id,
-        quantity: 1,
-        pictureUrl: image ?? "",
-      });
-      setAdded(true);
-      setTimeout(() => setAdded(false), 1500);
+      if (await addToCart(toAddToCartRequest(productId, variant, image))) {
+        setAdded(true);
+        setTimeout(() => setAdded(false), 1500);
+      }
     } finally {
       setAdding(false);
     }

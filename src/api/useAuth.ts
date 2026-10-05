@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axiosClient from "./axiosClient";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export interface RegisterPayload {
   firstName: string;
@@ -40,6 +41,21 @@ export const loginUser = async (
   return data;
 };
 
+export interface LogoutResponse {
+  message: string;
+}
+
+/**
+ * POST /api/Auth/logout (needs the Bearer token, which axiosClient attaches).
+ * The API uses stateless JWTs and no longer revokes tokens (mars-api 6ffe986),
+ * so this only records the logout on the server; the token keeps working until
+ * it expires unless the browser discards it, which logout() in lib/logout.ts does.
+ */
+export const logoutUser = async (): Promise<LogoutResponse> => {
+  const { data } = await axiosClient.post<LogoutResponse>("/api/Auth/logout");
+  return data;
+};
+
 export const useRegister = () => {
   return useMutation({
     mutationFn: registerUser,
@@ -50,8 +66,8 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: (payload: LoginPayload) => loginUser(payload),
     onSuccess: (data) => {
-      localStorage.setItem("authToken", data.token);
-      localStorage.setItem("authExpiration", data.expiration);
+      // Saves the token and tells listeners (navbar, My Account) about the login.
+      useAuthStore.getState().setToken(data.token, data.expiration);
     },
   });
 };

@@ -18,10 +18,12 @@ import {
   Snackbar,
   Alert,
   Collapse,
+  InputBase,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Image from "next/image";
@@ -29,6 +31,7 @@ import NextLink from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { ProductVariant } from "@/api/useProductVariants";
 import { useCartStore } from "@/store/useCartStore";
+import { toAddToCartRequest } from "@/lib/cartRequest";
 import { variantImageAlt } from "@/lib/variantTitle";
 import { useQuoteStore } from "@/store/useQuoteStore";
 
@@ -38,8 +41,8 @@ const BRAND = "#E7390F";
 // scroll sideways, so the price and cart button are always visible. Pinned
 // cells need an opaque background (row tints are translucent), so these are
 // the row colours pre-blended onto white.
-const ACTION_WIDTH = 150;
-const PRICE_WIDTH = 140;
+const ACTION_WIDTH = 140;
+const PRICE_WIDTH = 110;
 const ROW_BG = "#fff";
 const ROW_BG_ZEBRA = "#f5f6f8";
 const ROW_BG_OPEN = "#fef9f8";
@@ -139,14 +142,9 @@ function VariantRow({
       // seriesId + variantId must match Mars.API.Models.Basket.AddToCartRequest
       // (backend looks up price via GetPriceAsync(SeriesId, VariantId) —
       // unitPrice is not sent, the server is the source of truth for price)
-      await addToCart({
-        seriesId,
-        variantId: variant.id,
-        productDescription: variant.specs["SKU"] ?? variant.id,
-        quantity: 1,
-        pictureUrl: image ?? "",
-      });
-      onAddedToCart();
+      if (await addToCart(toAddToCartRequest(seriesId, variant, image))) {
+        onAddedToCart();
+      }
     } finally {
       setAdding(false);
     }
@@ -159,13 +157,17 @@ function VariantRow({
       sx={{
         cursor: "pointer",
         bgcolor: rowBg,
-        transition: "box-shadow 0.15s ease",
-        "& > td": { borderBottom: open ? "none" : ROW_BORDER },
-        "&:hover": {
-          boxShadow: `inset 3px 0 0 ${BRAND}, 0 1px 6px ${alpha("#000", 0.05)}`,
-          position: "relative",
-          zIndex: 1,
+        // Hover (like Hiflux): light red tint, a red bar on the left edge and
+        // the SKU turning red. Only colours change, so it stays smooth; no
+        // position/z-index/shadow changes that make the row re-layer.
+        "& > td": {
+          borderBottom: open ? "none" : ROW_BORDER,
+          transition: "background-color 0.2s ease, box-shadow 0.2s ease",
         },
+        "& > td:first-of-type": { boxShadow: "inset 3px 0 0 transparent" },
+        "&:hover > td": { bgcolor: "#fdf1ee" },
+        "&:hover > td:first-of-type": { boxShadow: `inset 3px 0 0 ${BRAND}` },
+        "&:hover .variant-sku": { color: BRAND, textDecoration: "underline" },
       }}
     >
       <TableCell sx={{ width: 48, py: 1.5, pr: 0 }}>
@@ -241,13 +243,19 @@ function VariantRow({
                 style={{ color: "inherit", textDecoration: "none" }}
               >
                 <Typography
+                  className="variant-sku"
                   sx={{
                     fontSize: "0.875rem",
                     fontWeight: 600,
                     fontFamily: "monospace",
+                    transition: "color 0.2s ease",
                     letterSpacing: "0.01em",
                     color: "#444",
-                    "&:hover": { color: BRAND, textDecoration: "underline" },
+                    // Long SKUs (e.g. Series 88) wrap at their hyphens instead
+                    // of stretching the table past the screen.
+                    maxWidth: 260,
+                    whiteSpace: "normal",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   {value}
@@ -510,14 +518,9 @@ function VariantCard({
     if (adding) return;
     setAdding(true);
     try {
-      await addToCart({
-        seriesId,
-        variantId: variant.id,
-        productDescription: sku,
-        quantity: 1,
-        pictureUrl: image ?? "",
-      });
-      onAddedToCart();
+      if (await addToCart(toAddToCartRequest(seriesId, variant, image))) {
+        onAddedToCart();
+      }
     } finally {
       setAdding(false);
     }
@@ -620,11 +623,13 @@ export default function VariantsTable({
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   const displayKeys = specKeys.filter((key) => key !== "Price");
   // Inline columns = the primary set that this series actually has, in order.
   // Fall back to all columns if a series shares none of the primary keys.
   const primaryInline = PRIMARY_KEYS.filter((k) => displayKeys.includes(k));
+  // Every spec column is shown (the expand arrow repeats them per model).
   const inlineKeys = primaryInline.length ? primaryInline : displayKeys;
 
   const handleSort = (key: string) => {
@@ -635,13 +640,23 @@ export default function VariantsTable({
     }
   };
 
+  // SKU search: every word must appear in the SKU (case-insensitive), so
+  // "1/2 lock" or "V10-10-1-2" both narrow the list.
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const searched = words.length
+    ? variants.filter((v) => {
+        const sku = (v.specs["SKU"] ?? v.id).toLowerCase();
+        return words.every((w) => sku.includes(w));
+      })
+    : variants;
+
   const sorted = sortKey
-    ? [...variants].sort((a, b) => {
+    ? [...searched].sort((a, b) => {
         const av = a.specs[sortKey] ?? "";
         const bv = b.specs[sortKey] ?? "";
         return sortDir === "asc" ? av.localeCompare(bv) : bv.localeCompare(av);
       })
-    : variants;
+    : searched;
 
   const paginated = sorted.slice(
     page * rowsPerPage,
@@ -657,7 +672,6 @@ export default function VariantsTable({
     letterSpacing: "0.08em",
     color: "#111",
     py: 2,
-    whiteSpace: "nowrap" as const,
   };
 
   return (
@@ -665,11 +679,76 @@ export default function VariantsTable({
       elevation={0}
       sx={{ flex: 1, minWidth: 0, borderRadius: 0, overflow: "hidden" }}
     >
+      {/* Header: "All Models", a live count, and the SKU search. */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 1.5,
+          px: { xs: 2, md: 3 },
+          py: 1.75,
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.25, flexWrap: "wrap", minWidth: 0 }}>
+          <Typography sx={{ fontWeight: 800, fontSize: "1.05rem", color: "text.primary" }}>
+            All Models
+          </Typography>
+          <Box
+            component="span"
+            sx={{
+              fontSize: "0.72rem",
+              fontWeight: 700,
+              color: BRAND,
+              bgcolor: alpha(BRAND, 0.08),
+              px: 1,
+              py: 0.25,
+              borderRadius: "4px",
+            }}
+          >
+            {searched.length} of {variants.length}
+          </Box>
+        </Box>
+        <Box
+          component="label"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            // Grows with the screen: full width on phones, ~30% on desktop.
+            width: { xs: "100%", sm: "45%", md: "35%", lg: "30%" },
+            minWidth: { sm: 260 },
+            maxWidth: 520,
+            px: 1.5,
+            py: 0.6,
+            border: "1px solid rgba(0,0,0,0.15)",
+            borderRadius: "6px",
+            bgcolor: "#fff",
+            transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+            "&:focus-within": { borderColor: BRAND, boxShadow: `0 0 0 3px ${alpha(BRAND, 0.12)}` },
+          }}
+        >
+          <SearchIcon sx={{ fontSize: 18, color: "text.disabled" }} />
+          <InputBase
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(0);
+            }}
+            placeholder="Search SKU…"
+            inputProps={{ "aria-label": "Search by SKU" }}
+            sx={{ flex: 1, fontSize: "0.875rem" }}
+          />
+        </Box>
+      </Box>
+
       {/* Phones: card list. Desktop: the full spec table. */}
       <Box sx={{ display: { xs: "block", md: "none" } }}>
         {paginated.length === 0 ? (
           <Typography sx={{ color: "text.secondary", fontSize: "0.875rem", textAlign: "center", py: 6 }}>
-            No variants found.
+            {query ? `No models match "${query.trim()}".` : "No variants found."}
           </Typography>
         ) : (
           paginated.map((v) => (
@@ -687,7 +766,8 @@ export default function VariantsTable({
       </Box>
 
       <Box sx={{ overflowX: "auto", display: { xs: "none", md: "block" } }}>
-      <Table stickyHeader>
+      {/* Narrower cell padding on smaller desktops so the table fits. */}
+      <Table stickyHeader sx={{ "& th, & td": { px: { md: 1.25, xl: 2 } } }}>
         <TableHead>
           <TableRow>
             <TableCell sx={{ ...headerSx, width: 48 }} />
@@ -729,7 +809,7 @@ export default function VariantsTable({
                 <Typography
                   sx={{ color: "text.secondary", fontSize: "0.875rem" }}
                 >
-                  No variants found.
+                  {query ? `No models match "${query.trim()}".` : "No variants found."}
                 </Typography>
               </TableCell>
             </TableRow>

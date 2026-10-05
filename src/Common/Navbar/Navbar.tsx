@@ -29,6 +29,12 @@ import CategoryBar from "./CategoryBar";
 import { CATEGORY_BAR } from "./categoryBarData";
 import { useCategoryMenu } from "./useCategoryMenu";
 import { useCartStore } from "@/store/useCartStore";
+import { useIsLoggedIn } from "@/lib/auth";
+import { useAuthStore } from "@/store/useAuthStore";
+import { logout } from "@/lib/logout";
+import { useRouter } from "next/navigation";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -43,12 +49,25 @@ const Navbar: React.FC = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
 
-  const fetchBasket = useCartStore((s) => s.fetchBasket);
   const itemCount = useCartStore((s) => s.itemCount());
 
+  // Logged in → "My Account" (saved cart); otherwise "Register".
+  const loggedIn = useIsLoggedIn();
+  const initials = useAuthStore((s) => s.initials);
+  const userName = useAuthStore((s) => s.userName);
+  const hydrateAuth = useAuthStore((s) => s.hydrate);
+  const router = useRouter();
+  const [accountMenuOpen, setAccountMenuOpen] = useState(false);
+  // Load the name/initials from the stored token after a page refresh.
   useEffect(() => {
-    fetchBasket();
-  }, [fetchBasket]);
+    hydrateAuth();
+  }, [hydrateAuth, loggedIn]);
+  const handleLogout = async () => {
+    setAccountMenuOpen(false);
+    await logout();
+    router.push("/");
+  };
+  const accountHref = loggedIn ? "/dashboard/carts" : "/login";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -113,36 +132,125 @@ const Navbar: React.FC = () => {
     </IconButton>
   );
 
-  const AccountButton = ({ size }: { size: number }) => (
-    <Box
-      component={Link}
-      href="/login"
-      aria-label="Login or register"
-      sx={{
-        display: "inline-flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 0.25,
-        textDecoration: "none",
-        color: REGISTER_RED,
-        px: 0.5,
-      }}
-    >
-      <PersonOutlineOutlinedIcon sx={{ fontSize: size, color: REGISTER_RED }} />
-      <Typography
-        sx={{
-          fontSize: "0.7rem",
-          fontWeight: 700,
-          letterSpacing: "0.01em",
-          textTransform: "none",
-          color: REGISTER_RED,
-          lineHeight: 1,
-        }}
+  // Logged out: "Register" link. Logged in: red circle with the user's
+  // initials; hovering (or tapping) it opens My Account / Logout.
+  const AccountButton = ({ size }: { size: number }) => {
+    if (!loggedIn) {
+      return (
+        <Box
+          component={Link}
+          href={accountHref}
+          aria-label="Login or register"
+          sx={{
+            display: "inline-flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 0.25,
+            textDecoration: "none",
+            color: REGISTER_RED,
+            px: 0.5,
+          }}
+        >
+          <PersonOutlineOutlinedIcon sx={{ fontSize: size, color: REGISTER_RED }} />
+          <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.01em", color: REGISTER_RED, lineHeight: 1 }}>
+            Register
+          </Typography>
+        </Box>
+      );
+    }
+
+    const menuItemSx = {
+      display: "flex",
+      alignItems: "center",
+      gap: 1.25,
+      width: "100%",
+      px: 2,
+      py: 1.1,
+      fontSize: "0.92rem",
+      textDecoration: "none",
+      color: INK,
+      bgcolor: "transparent",
+      border: "none",
+      cursor: "pointer",
+      font: "inherit",
+      textAlign: "left" as const,
+      "&:hover": { bgcolor: "rgba(231,57,15,0.06)" },
+    };
+
+    return (
+      <Box
+        onMouseEnter={() => setAccountMenuOpen(true)}
+        onMouseLeave={() => setAccountMenuOpen(false)}
+        sx={{ position: "relative" }}
       >
-        Register
-      </Typography>
-    </Box>
-  );
+        <Box
+          component="button"
+          type="button"
+          aria-label={userName ? `Account menu for ${userName}` : "Account menu"}
+          aria-haspopup="menu"
+          aria-expanded={accountMenuOpen}
+          onClick={() => setAccountMenuOpen((o) => !o)}
+          sx={{
+            width: size + 14,
+            height: size + 14,
+            borderRadius: "50%",
+            border: "none",
+            cursor: "pointer",
+            bgcolor: ACCENT,
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: size > 22 ? "0.85rem" : "0.78rem",
+            letterSpacing: "0.02em",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "box-shadow 0.15s ease",
+            "&:hover": { boxShadow: "0 0 0 3px rgba(231,57,15,0.2)" },
+          }}
+        >
+          {initials ?? <PersonOutlineOutlinedIcon sx={{ fontSize: size - 4 }} />}
+        </Box>
+
+        {accountMenuOpen && (
+          <Box
+            role="menu"
+            sx={{
+              position: "absolute",
+              top: "100%",
+              right: 0,
+              pt: 1, // hover bridge between the circle and the menu
+              zIndex: 40,
+            }}
+          >
+            <Box
+              sx={{
+                minWidth: 180,
+                bgcolor: "#fff",
+                border: `1px solid ${LINE}`,
+                borderRadius: "6px",
+                boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+                py: 0.75,
+              }}
+            >
+              {userName && (
+                <Typography sx={{ px: 2, pt: 0.5, pb: 1, fontSize: "0.78rem", color: RUST, borderBottom: `1px solid ${LINE}`, mb: 0.5 }}>
+                  {userName}
+                </Typography>
+              )}
+              <Box component={Link} href="/dashboard/carts" role="menuitem" onClick={() => setAccountMenuOpen(false)} sx={menuItemSx}>
+                <AccountCircleOutlinedIcon sx={{ fontSize: 20, color: ACCENT }} />
+                My Account
+              </Box>
+              <Box component="button" type="button" role="menuitem" onClick={handleLogout} sx={{ ...menuItemSx, color: ACCENT }}>
+                <LogoutIcon sx={{ fontSize: 20 }} />
+                Logout
+              </Box>
+            </Box>
+          </Box>
+        )}
+      </Box>
+    );
+  };
 
   return (
     <>
@@ -437,7 +545,7 @@ const Navbar: React.FC = () => {
           <Box sx={{ borderBottom: `1px solid ${LINE}` }}>
             <Box
               component={Link}
-              href="/login"
+              href={accountHref}
               onClick={() => setMobileOpen(false)}
               sx={{
                 display: "flex",
@@ -455,7 +563,7 @@ const Navbar: React.FC = () => {
               <PersonOutlineOutlinedIcon
                 sx={{ fontSize: 18, color: REGISTER_RED }}
               />
-              Login / Register
+              {loggedIn ? "My Account" : "Login / Register"}
             </Box>
           </Box>
 

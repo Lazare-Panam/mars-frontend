@@ -17,6 +17,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { useProductVariants, ProductVariant } from "@/api/useProductVariants";
 import { useCartStore } from "@/store/useCartStore";
+import { toAddToCartRequest } from "@/lib/cartRequest";
 import { parsePrice } from "../components/VariantsGrid";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
@@ -112,15 +113,9 @@ export default function VariantDetailClient({
       // The basket is held client-side until checkout, so unitPrice is passed
       // here for the local subtotal; it's stripped before the server sync,
       // which recalculates price itself.
-      await addToCart({
-        seriesId: productId,
-        variantId: variant.id,
-        productDescription: skuLabel,
-        quantity: 1,
-        pictureUrl: image ?? "",
-        unitPrice: parsePrice(price) ?? 0,
-      });
-      setAdded(true);
+      if (await addToCart(toAddToCartRequest(productId, variant, image))) {
+        setAdded(true);
+      }
     } finally {
       setAdding(false);
     }

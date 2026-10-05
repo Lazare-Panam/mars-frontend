@@ -7,17 +7,14 @@ export interface BasketItem {
   unitPrice: number;
   quantity: number;
   pictureUrl: string;
-  // Client-local only. The basket is now built in the store without hitting
-  // the API, so each item has to remember the seriesId it came from in order
-  // to rebuild an AddToCartRequest when the basket is synced to the server at
-  // submit-for-quote time. Never sent back by the server.
+  // The variant's series. Returned by the server for the saved cart; kept on
+  // cart-page items so they can be saved (the server prices by series + variant).
   seriesId?: string;
 }
 
 export interface CustomerBasket {
   customerBasketId: string;
   userId?: string;
-  sessionId: string;
   items: BasketItem[];
   createdAt: string;
   updatedAt: string;
@@ -40,80 +37,52 @@ export interface AddToCartRequest {
   unitPrice?: number;
 }
 
-// Matches Mars.API.Models.Basket.QuoteRequestItem.
-// UnitPrice is nullable server-side (decimal?) — an item can genuinely have
-// no price yet, distinct from the basket's price-defaults-to-0 behavior.
-export interface QuoteRequestItem {
-  id: string;
-  productId: string;
-  productDescription: string;
-  unitPrice: number | null;
-  quantity: number;
-  pictureUrl: string;
-  quoteRequestId: string;
-}
+// The saved cart belongs to the signed-in user (found by the user id in their
+// login token; axiosClient attaches it), so no cookies or session are involved.
+// The cart page itself lives in the browser (useCartStore) until "Save Cart".
 
-// Matches Mars.API.Models.Basket.QuoteRequest, returned by
-// POST /api/basket/submit-for-quote.
-export interface QuoteRequest {
-  quoteRequestId: string;
-  userId: string;
-  items: QuoteRequestItem[];
-  createdAt: string;
-  updatedAt: string;
-}
+// unitPrice is client-local (for the running subtotal); the server always
+// prices items itself, so it's never sent.
+const toServerItem = (item: AddToCartRequest) => ({
+  seriesId: item.seriesId,
+  variantId: item.variantId,
+  productDescription: item.productDescription,
+  quantity: item.quantity,
+  pictureUrl: item.pictureUrl,
+});
 
 export const fetchBasket = async (): Promise<CustomerBasket> => {
-  const { data } = await axiosClient.get("/api/basket", {
-    withCredentials: true,
-  });
+  const { data } = await axiosClient.get("/api/basket");
   return data;
 };
 
-export const addToCartRequest = async (
-  request: AddToCartRequest,
+// POST /api/basket: saves the cart page's items into the saved cart. Items
+// already saved have their quantities increased; new items are added.
+export const saveBasketRequest = async (
+  items: AddToCartRequest[],
 ): Promise<CustomerBasket> => {
-  const { data } = await axiosClient.post("/api/basket/items", request, {
-    withCredentials: true,
+  const { data } = await axiosClient.post("/api/basket", {
+    items: items.map(toServerItem),
   });
   return data;
 };
 
+// quantity 0 removes the item.
 export const updateQuantityRequest = async (
   productId: string,
   quantity: number,
 ): Promise<CustomerBasket> => {
   const { data } = await axiosClient.put(
-    `/api/basket/items/${productId}`,
+    `/api/basket/items/${encodeURIComponent(productId)}`,
     { quantity },
-    { withCredentials: true },
   );
   return data;
 };
 
 export const removeItemRequest = async (productId: string): Promise<void> => {
-  await axiosClient.delete(`/api/basket/items/${productId}`, {
-    withCredentials: true,
-  });
+  await axiosClient.delete(`/api/basket/items/${encodeURIComponent(productId)}`);
 };
 
 export const clearBasketRequest = async (): Promise<void> => {
-  await axiosClient.delete("/api/basket", { withCredentials: true });
-};
-
-// POST /api/basket/submit-for-quote — [Authorize]'d on the backend.
-// BasketController.SubmitForQuote returns:
-//   401 if the JWT is missing/invalid (Unauthorized())
-//   400 "Your basket is empty." if there are no items (BadRequest(string))
-//   200 QuoteRequest on success, and the basket is deleted server-side.
-// axiosClient's interceptor already attaches the Bearer token when one is
-// stored, so no extra header handling is needed here — just let 401/400
-// reject normally so the caller can branch on error.response.status.
-export const submitForQuoteRequest = async (): Promise<QuoteRequest> => {
-  const { data } = await axiosClient.post(
-    "/api/basket/submit-for-quote",
-    null,
-    { withCredentials: true },
-  );
-  return data;
+  await axiosClient.delete("/api/basket");
 };

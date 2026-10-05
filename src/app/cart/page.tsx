@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Container,
@@ -11,7 +11,6 @@ import {
   Button,
   Divider,
   Chip,
-  CircularProgress,
   Alert,
 } from "@mui/material";
 
@@ -24,19 +23,15 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
-import { useQuoteStore } from "@/store/useQuoteStore";
+import { useIsLoggedIn } from "@/lib/auth";
 import Reveal from "@/Common/Reveal";
 import MagneticWrap from "@/Common/MagneticWrap";
 
 export default function CartPage() {
-  const { basket, isLoading, error, fetchBasket, updateQuantity, removeItem } =
+  const { basket, isSaving, error, updateQuantity, removeItem, saveCart } =
     useCartStore();
-  const setQuote = useQuoteStore((s) => s.setRequest);
   const router = useRouter();
-
-  useEffect(() => {
-    fetchBasket();
-  }, [fetchBasket]);
+  const loggedIn = useIsLoggedIn();
 
   // Tracks the confirm-before-delete state for the qty-1 minus button
   // locally, keyed by productId, so only the row being confirmed shows the
@@ -47,8 +42,8 @@ export default function CartPage() {
   const itemCount = items.reduce((sum, i) => sum + i.quantity, 0);
   const hasUnpricedItems = items.some((i) => i.unitPrice === 0);
   const subtotal = items.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0);
-  const shipping = subtotal > 0 ? 12.5 : 0;
-  const total = subtotal + shipping;
+  // Shipping is confirmed later ("To be resolved"), so it isn't added here.
+  const total = subtotal;
 
   const handleDecrement = (productId: string, quantity: number) => {
     if (quantity <= 1) {
@@ -65,35 +60,15 @@ export default function CartPage() {
     updateQuantity(productId, quantity - 1);
   };
 
-  // "Proceed to quote" hands the whole cart to the contact form using the
-  // same in-memory pattern the product pages use (useQuoteStore -> /contact):
-  // the message is pre-filled with every line, and the user finishes and sends
-  // the enquiry from there. No order/basket API call is made.
-  const handleRequestQuote = () => {
+  // "Save Cart" sends the cart to the user's saved cart (My Account), where the
+  // items join anything saved before. Logged-out users log in first; the save
+  // then happens right after login (see LoginForm).
+  const handleSaveCart = async () => {
     if (items.length === 0) return;
-    const lines = items.map((i) => ({
-      sku: i.productDescription,
-      quantity: i.quantity,
-    }));
-    setQuote({ sku: lines[0].sku, items: lines });
-    router.push("/contact");
+    const result = await saveCart();
+    if (result === "saved") router.push("/dashboard/carts");
+    if (result === "login") router.push("/login?redirect=/dashboard/carts");
   };
-
-  if (isLoading && !basket) {
-    return (
-      <Box
-        sx={{
-          bgcolor: "background.default",
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <CircularProgress color="primary" />
-      </Box>
-    );
-  }
 
   return (
     <Box
@@ -435,7 +410,8 @@ export default function CartPage() {
                       color="primary"
                       size="large"
                       fullWidth
-                      onClick={handleRequestQuote}
+                      onClick={handleSaveCart}
+                      disabled={isSaving}
                       sx={{
                         transition: "transform 0.2s ease",
                         "&:hover": {
@@ -443,10 +419,19 @@ export default function CartPage() {
                         },
                       }}
                     >
-                      Request Quote
+                      {isSaving ? "Saving..." : loggedIn ? "Save Cart" : "Login to Save Cart"}
                     </Button>
                   </MagneticWrap>
                 </Box>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  className="no-capitalize"
+                  sx={{ display: "block", textAlign: "center", mt: 1 }}
+                >
+                  Your saved cart is kept under My Account, where you can
+                  request a quote.
+                </Typography>
                 <Button
                   variant="text"
                   color="inherit"

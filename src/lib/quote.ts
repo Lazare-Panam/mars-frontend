@@ -12,7 +12,7 @@ export interface QuoteLineInput {
 
 /**
  * The message ContactForm pre-fills when a whole cart is handed over from the
- * cart page — one line per item, so the enquiry email carries every part
+ * saved cart — one line per item, so the enquiry email carries every part
  * number and quantity. The user can still edit it before sending.
  */
 export function cartQuoteMessage(lines: QuoteLineInput[]): string {

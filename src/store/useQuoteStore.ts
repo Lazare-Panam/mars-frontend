@@ -9,7 +9,7 @@ export interface QuoteLine {
 export interface QuoteRequest {
   sku: string;
   product?: string;
-  // Present when a whole cart is handed over (see CartPage "Proceed to quote").
+  // Present when a whole cart is handed over (see the saved cart's "Submit Quotation Request").
   // When set, ContactForm pre-fills an itemized message from these lines
   // instead of the single-part message; `sku`/`product` above stay as the
   // first line so the single-item callers are unaffected.

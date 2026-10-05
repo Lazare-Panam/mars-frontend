@@ -211,6 +211,7 @@ export default function ProductVariantsPage({
       {/* Content */}
       <Box
         sx={{
+          // Full width (as on the live site), so every spec column fits.
           maxWidth: "100%",
           mx: "auto",
           px: 0,

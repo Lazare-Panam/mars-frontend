@@ -18,6 +18,7 @@ import NextLink from "next/link";
 import { useLogin } from "@/api/useAuth";
 import axios from "axios";
 import MagneticWrap from "@/Common/MagneticWrap";
+import { useCartStore } from "@/store/useCartStore";
 
 const ERROR_SOFT = "#B3453A";
 const ERROR_SOFT_BG = "rgba(179, 69, 58, 0.06)";
@@ -39,6 +40,10 @@ const fieldSx = {
   "& .MuiFormHelperText-root": { fontWeight: 600, ml: 0 },
   "& .MuiFormHelperText-root.Mui-error": { color: ERROR_SOFT },
 };
+
+// Only paths on this site (e.g. "/dashboard/carts"), never "//other-site.com".
+const safeRedirect = (redirect: string | null) =>
+  redirect && redirect.startsWith("/") && !redirect.startsWith("//") ? redirect : "/dashboard/carts";
 
 interface AppProblemDetails {
   type?: string;
@@ -65,8 +70,14 @@ export default function LoginForm() {
     login(
       { email, password },
       {
-        onSuccess: () => {
-          router.push("/cart");
+        onSuccess: async () => {
+          // "Save Cart" was clicked while logged out: save the cart now.
+          const cart = useCartStore.getState();
+          if (cart.pendingSave && (await cart.saveCart()) === "error") {
+            router.push("/cart");
+            return;
+          }
+          router.push(safeRedirect(new URLSearchParams(window.location.search).get("redirect")));
         },
         onError: (err) => {
           if (!axios.isAxiosError<AppProblemDetails>(err)) {
