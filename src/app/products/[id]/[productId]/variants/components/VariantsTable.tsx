@@ -41,17 +41,29 @@ const BRAND = "#E7390F";
 const ACTION_WIDTH = 150;
 const PRICE_WIDTH = 140;
 const ROW_BG = "#fff";
-const ROW_BG_ZEBRA = "#fcfcfc";
+const ROW_BG_ZEBRA = "#f5f6f8";
 const ROW_BG_OPEN = "#fef9f8";
-const pinned = (right: number) => ({
-  position: "sticky" as const,
-  right,
-  zIndex: 2,
-});
+const ROW_BORDER = "1px solid rgba(0,0,0,0.1)";
 
 // Spec keys that read as reference/lookup data rather than a shoppable
 // attribute — styled smaller and muted instead of like a normal spec.
 const REFERENCE_KEYS = new Set(["SKU"]);
+
+// Columns shown INLINE in the desktop table, in this order. Every other spec
+// still appears in the expandable row's full "Specifications" grid, so nothing
+// is hidden — this just keeps the table from overflowing under the pinned
+// Price / Add-to-Cart columns. Edit this list to change what shows inline.
+const PRIMARY_KEYS = [
+  "SKU",
+  "Size",
+  "Port",
+  "Pressure Rating",
+  "Body",
+  "Seats",
+  "Ends",
+  "Design",
+  "Locking Device",
+];
 
 function PriceCell({ price, onQuote }: { price?: string; onQuote: () => void }) {
   if (price) {
@@ -146,15 +158,11 @@ function VariantRow({
       onClick={goToDetail}
       sx={{
         cursor: "pointer",
-        bgcolor: open
-          ? alpha(BRAND, 0.03)
-          : zebra
-            ? alpha("#000", 0.012)
-            : "transparent",
-        transition: "box-shadow 0.15s ease, transform 0.15s ease",
-        "& > td": { borderBottom: open ? "none" : undefined },
+        bgcolor: rowBg,
+        transition: "box-shadow 0.15s ease",
+        "& > td": { borderBottom: open ? "none" : ROW_BORDER },
         "&:hover": {
-          boxShadow: `0 2px 12px ${alpha("#000", 0.08)}`,
+          boxShadow: `inset 3px 0 0 ${BRAND}, 0 1px 6px ${alpha("#000", 0.05)}`,
           position: "relative",
           zIndex: 1,
         },
@@ -210,7 +218,16 @@ function VariantRow({
         const isReference = REFERENCE_KEYS.has(key);
 
         return (
-          <TableCell key={key} sx={{ py: 1.75, fontSize: "0.875rem" }}>
+          <TableCell
+            key={key}
+            sx={{
+              py: 2.75,
+              fontSize: "0.875rem",
+              whiteSpace: "nowrap",
+              verticalAlign: "middle",
+              ...(isReference ? { minWidth: 160 } : {}),
+            }}
+          >
             {!value ? (
               <Typography sx={{ fontSize: "0.875rem", color: "text.disabled" }}>
                 —
@@ -225,10 +242,12 @@ function VariantRow({
               >
                 <Typography
                   sx={{
-                    fontSize: "0.72rem",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
                     fontFamily: "monospace",
-                    color: BRAND,
-                    "&:hover": { textDecoration: "underline" },
+                    letterSpacing: "0.01em",
+                    color: "#444",
+                    "&:hover": { color: BRAND, textDecoration: "underline" },
                   }}
                 >
                   {value}
@@ -240,10 +259,11 @@ function VariantRow({
                 size="small"
                 sx={{
                   fontSize: "0.72rem",
-                  fontWeight: 700,
-                  bgcolor: alpha(BRAND, 0.08),
-                  color: BRAND,
-                  borderRadius: "4px",
+                  fontWeight: 600,
+                  bgcolor: "#f3f3f5",
+                  color: "#333",
+                  border: "1px solid rgba(0,0,0,0.08)",
+                  borderRadius: "6px",
                 }}
               />
             ) : (
@@ -260,9 +280,7 @@ function VariantRow({
           py: 1.5,
           width: PRICE_WIDTH,
           minWidth: PRICE_WIDTH,
-          ...pinned(ACTION_WIDTH),
           bgcolor: rowBg,
-          boxShadow: `-8px 0 8px -8px ${alpha("#000", 0.12)}`,
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -283,7 +301,6 @@ function VariantRow({
           py: 1.5,
           width: ACTION_WIDTH,
           minWidth: ACTION_WIDTH,
-          ...pinned(0),
           bgcolor: rowBg,
         }}
         onClick={(e) => e.stopPropagation()}
@@ -605,6 +622,10 @@ export default function VariantsTable({
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const displayKeys = specKeys.filter((key) => key !== "Price");
+  // Inline columns = the primary set that this series actually has, in order.
+  // Fall back to all columns if a series shares none of the primary keys.
+  const primaryInline = PRIMARY_KEYS.filter((k) => displayKeys.includes(k));
+  const inlineKeys = primaryInline.length ? primaryInline : displayKeys;
 
   const handleSort = (key: string) => {
     if (sortKey === key) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
@@ -628,20 +649,21 @@ export default function VariantsTable({
   );
 
   const headerSx = {
-    bgcolor: "#fafafa",
-    borderBottom: "1px solid rgba(0,0,0,0.08)",
-    fontWeight: 600,
-    fontSize: "0.72rem",
+    bgcolor: "#fff",
+    borderBottom: "2px solid rgba(0,0,0,0.1)",
+    fontWeight: 700,
+    fontSize: "0.7rem",
     textTransform: "uppercase" as const,
-    letterSpacing: "0.06em",
-    color: "text.secondary",
-    py: 1.75,
+    letterSpacing: "0.08em",
+    color: "#111",
+    py: 2,
+    whiteSpace: "nowrap" as const,
   };
 
   return (
     <Paper
       elevation={0}
-      sx={{ flex: 1, minWidth: 0, borderRadius: "8px", overflow: "hidden" }}
+      sx={{ flex: 1, minWidth: 0, borderRadius: 0, overflow: "hidden" }}
     >
       {/* Phones: card list. Desktop: the full spec table. */}
       <Box sx={{ display: { xs: "block", md: "none" } }}>
@@ -670,7 +692,7 @@ export default function VariantsTable({
           <TableRow>
             <TableCell sx={{ ...headerSx, width: 48 }} />
             <TableCell sx={{ ...headerSx, width: 72 }} />
-            {displayKeys.map((key) => (
+            {inlineKeys.map((key) => (
               <TableCell key={key} sx={headerSx}>
                 <TableSortLabel
                   active={sortKey === key}
@@ -687,15 +709,12 @@ export default function VariantsTable({
                 width: PRICE_WIDTH,
                 minWidth: PRICE_WIDTH,
                 textAlign: "center",
-                ...pinned(ACTION_WIDTH),
-                zIndex: 4,
-                boxShadow: `-8px 0 8px -8px ${alpha("#000", 0.12)}`,
               }}
             >
               Price
             </TableCell>
             <TableCell
-              sx={{ ...headerSx, width: ACTION_WIDTH, minWidth: ACTION_WIDTH, ...pinned(0), zIndex: 4 }}
+              sx={{ ...headerSx, width: ACTION_WIDTH, minWidth: ACTION_WIDTH }}
             />
           </TableRow>
         </TableHead>
@@ -703,7 +722,7 @@ export default function VariantsTable({
           {paginated.length === 0 ? (
             <TableRow>
               <TableCell
-                colSpan={displayKeys.length + 4}
+                colSpan={inlineKeys.length + 4}
                 align="center"
                 sx={{ py: 8 }}
               >
@@ -721,7 +740,7 @@ export default function VariantsTable({
                 variant={v}
                 seriesId={seriesId}
                 productName={productName}
-                specKeys={displayKeys}
+                specKeys={inlineKeys}
                 thumbnailImage={thumbnailImage}
                 zebra={i % 2 === 1}
                 onAddedToCart={() => setSnackbarOpen(true)}

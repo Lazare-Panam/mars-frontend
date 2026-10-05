@@ -211,10 +211,10 @@ export default function ProductVariantsPage({
       {/* Content */}
       <Box
         sx={{
-          maxWidth: "1600px",
+          maxWidth: "100%",
           mx: "auto",
-          px: { xs: 2, md: 4 },
-          py: { xs: 4, md: 6 },
+          px: 0,
+          py: 0,
         }}
       >
         <VariantsActiveFilters
@@ -248,8 +248,6 @@ export default function ProductVariantsPage({
             flexDirection: { xs: "column", md: "row" },
             gap: 0,
             alignItems: { xs: "stretch", md: "flex-start" },
-            border: `1px solid ${alpha(BRAND, 0.15)}`,
-            borderRadius: "8px",
             bgcolor: "#fff",
           }}
         >
