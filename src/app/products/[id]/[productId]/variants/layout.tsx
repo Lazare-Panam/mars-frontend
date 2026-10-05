@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
+import { fetchProductDetail } from "@/api/useProductDetail";
 import { canonicalProductPath } from "@/lib/canonicalCategory";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { firstThatFits, modelsDescription } from "@/lib/seoDescription";
@@ -22,9 +23,20 @@ export async function generateMetadata({
   try {
     data = await fetchVariants(productId);
   } catch {
-    // No variants record: keep the canonical, inherit the rest.
+    // Handled below.
   }
-  if (!data) return { alternates: { canonical } };
+  // No models in the API for this product (e.g. economical-sanitary-ball-valve):
+  // the page has nothing on it, so keep it out of search results and point at
+  // the product page. Its own title stops it duplicating the product's.
+  if (!data || data.variants.length === 0) {
+    const productUrl = await canonicalProductPath(id, productId);
+    const name = await fetchProductDetail(productId).then((d) => d.name).catch(() => null);
+    return {
+      title: fitBrandTitle(`${name ?? "MARS Ball Valve"} — All Models`),
+      robots: { index: false, follow: true },
+      alternates: { canonical: productUrl },
+    };
+  }
 
   const base = firstThatFits([`${data.name} — All Models`, `${data.name} Models`, data.name]);
   const description = modelsDescription(data.name, data.variants.length);
