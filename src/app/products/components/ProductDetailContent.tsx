@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Box,
   Grid,
@@ -22,7 +22,6 @@ interface Props {
 }
 
 export default function ProductDetailContent({ id }: Props) {
-  const router = useRouter();
   const { data, isLoading, isError } = useProductDetail(id);
 
   if (isLoading) {
@@ -88,7 +87,9 @@ export default function ProductDetailContent({ id }: Props) {
               <ProductFeatureChips features={data.features} />
               <ProductApplicationsList applications={data.applications} />
               <Button
-                onClick={() => router.push(`/products/${id}/variants`)}
+                // A real link (not router.push) so crawlers can follow it.
+                component={Link}
+                href={`/products/${id}/variants`}
                 variant="contained"
                 sx={{
                   alignSelf: "flex-start",

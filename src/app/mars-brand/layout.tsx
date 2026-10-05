@@ -4,10 +4,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/mars-brand" },
   title: {
     absolute:
-      "Mars Valves: Genuine industrial valve supplier and distributers- Mars valve",
+      "Genuine MARS® Valves — Authenticity Notice | Mars Valvenok",
   },
   description:
-    "Official authenticity and anti-counterfeit notice from MARS® — how to verify genuine MARS ball valves and buy from an authorised industrial valve supplier and distributor.",
+    "Official MARS® authenticity and anti-counterfeit notice: how to verify genuine MARS ball valves and buy from an authorised UK distributor.",
 };
 
 export default function MarsBrandLayout({

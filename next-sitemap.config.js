@@ -19,6 +19,33 @@ function blogDates() {
 }
 
 const BLOG_DATES = blogDates();
+
+// Series with their own page (/products/series-10-10). Their copy under a
+// category (/products/one-piece-ball-valves/series-10-10) points Google at the
+// series page, so it must not be listed (SE Ranking: "Non-canonical pages in
+// XML sitemap"). Read from the series data so new series are picked up.
+function seriesIds() {
+  const src = fs.readFileSync(path.join(__dirname, 'src/app/products/data/categories.ts'), 'utf8');
+  const block = src.slice(src.indexOf('export const SERIES'), src.indexOf('export const CATEGORIES'));
+  return [...block.matchAll(/id:\s*"([^"]+)"/g)].map((m) => m[1]);
+}
+const SERIES_IDS = seriesIds();
+
+// Pages rendered on request, so next-sitemap can't discover them from the
+// build output; listed here so search engines find them.
+const EXTRA_PATHS = [
+  ...SERIES_IDS.flatMap((id) => [`/products/${id}`, `/products/${id}/variants`]),
+  '/products/sanitary-ball-valves',
+  '/products/sanitary-ball-valves/economical-sanitary-ball-valve',
+  '/products/sanitary-ball-valves/high-performance-sanitary-ball-valve',
+  '/products/sanitary-ball-valves/sanitary-butterfly-valve',
+  '/products/sanitary-ball-valves/sanitary-multi-port-ball-valve',
+  '/products/fire-safe-ball-valves',
+  '/products/v-port-ball-valves',
+];
+
+const isNonCanonicalSeriesCopy = (loc) =>
+  SERIES_IDS.some((id) => new RegExp(`^/products/[^/]+/${id}(/|$)`).test(loc));
 const NEWEST_POST = Object.values(BLOG_DATES).sort().pop();
 
 /** @type {import('next-sitemap').IConfig} */
@@ -39,7 +66,9 @@ module.exports = {
     '/dashboard',
     '/dashboard/*',
   ],
-  transform: async (config, loc) => ({
+  additionalPaths: async (config) =>
+    Promise.all(EXTRA_PATHS.map((loc) => config.transform(config, loc))),
+  transform: async (config, loc) => isNonCanonicalSeriesCopy(loc) ? null : ({
     loc,
     lastmod: BLOG_DATES[loc] ?? (loc === '/news' ? NEWEST_POST : undefined),
     alternateRefs: config.alternateRefs ?? [],

@@ -1,3 +1,4 @@
+import { fitDescription } from "@/lib/seoDescription";
 import { blogs } from "../data/blog";
 import BlogPost from "../components/BlogPost";
 import { notFound } from "next/navigation";
@@ -15,10 +16,12 @@ export async function generateMetadata({
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return {};
   const title = blog.seoTitle ?? blog.title.split(":")[0].trim();
-  const fullTitle = blog.titleOverride ?? `${title} | ${SITE_NAME}`;
-  const description = blog.metaDescription ?? blog.excerpt;
+  // Keep the brand suffix only if the full title still fits ~65 characters.
+  const branded = `${title} | ${SITE_NAME}`;
+  const fullTitle = blog.titleOverride ?? (branded.length <= 65 ? branded : title);
+  const description = fitDescription(blog.metaDescription ?? blog.excerpt);
   return {
-    title: blog.titleOverride ? { absolute: fullTitle } : fullTitle,
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: `/news/${slug}` },
     openGraph: {
@@ -102,7 +105,15 @@ export default async function BlogPage({
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <BlogPost blog={blog} />
+      <BlogPost
+        blog={blog}
+        // The next 3 posts in order (wrapping round), so every post ends up
+        // linked from three others, not only from /news.
+        related={[1, 2, 3]
+          .map((step) => blogs[(blogs.indexOf(blog) + step) % blogs.length])
+          .filter((b) => b.slug !== blog.slug)
+          .map((b) => ({ slug: b.slug, title: b.title, category: b.category }))}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Box,
   Grid,
@@ -28,7 +28,6 @@ export default function ProductDetailClient({
   id: string;
   productId: string;
 }) {
-  const router = useRouter();
   const { data, isLoading, isError } = useProductDetail(productId);
 
   if (isLoading) {
@@ -102,9 +101,9 @@ export default function ProductDetailClient({
               <Box sx={{ alignSelf: "flex-start" }}>
                 <MagneticWrap>
                   <Button
-                    onClick={() =>
-                      router.push(`/products/${id}/${productId}/variants`)
-                    }
+                    // A real link (not router.push) so crawlers can follow it.
+                    component={Link}
+                    href={`/products/${id}/${productId}/variants`}
                     variant="contained"
                     sx={{
                       bgcolor: "primary.main",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Box, Typography, Button, Divider, Chip, Grid } from '@mui/material';
 import Image from 'next/image';
 import { ProductCatalog } from '@/api/useProductCatalog';
@@ -12,7 +12,6 @@ interface Props {
 }
 
 export default function ProductDetailView({ data, id }: Props) {
-  const router = useRouter();
 
   // use first product's specs/features/image as the detail content
   const first = data.products?.[0];
@@ -99,7 +98,9 @@ export default function ProductDetailView({ data, id }: Props) {
 
               {/* View All Models */}
               <Button
-                onClick={() => router.push(`/products/${id}/variants`)}
+                // A real link (not router.push) so crawlers can follow it.
+                component={Link}
+                href={`/products/${id}/variants`}
                 variant="contained"
                 sx={{ alignSelf: 'flex-start', bgcolor: 'primary.main', color: '#fff', fontWeight: 700, borderRadius: '4px', textTransform: 'none', px: 3, py: 1.25, boxShadow: 'none', '&:hover': { bgcolor: 'primary.dark', boxShadow: 'none' } }}
               >

@@ -20,6 +20,11 @@ import { productCrumbs } from "@/lib/breadcrumbs";
 
 import MagneticWrap from "@/Common/MagneticWrap";
 
+// The catalog data (API) still links "Request Quote" to the old /enquiry
+// page, which doesn't exist (SE Ranking: internal links to a 3XX/4XX page).
+// Point it straight at the enquiry form instead.
+const ctaHref = (link: string) => (link === "/enquiry" ? "/contact#enquiry" : link);
+
 export default function ProductCatalogPageClient({ id }: { id: string }) {
   const router = useRouter();
   const theme = useTheme();
@@ -143,7 +148,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
               {hero.primaryCta && (
                 <MagneticWrap>
                   <Button
-                    href={hero.primaryCta.link}
+                    href={ctaHref(hero.primaryCta.link)}
                     variant="contained"
                     size="large"
                     sx={{ borderRadius: 0, px: 4, py: 1.5, fontWeight: 700 }}
@@ -156,7 +161,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                 <Button
                   variant="outlined"
                   size="large"
-                  href={hero.secondaryCta.link}
+                  href={ctaHref(hero.secondaryCta.link)}
                   sx={{
                     borderColor: "rgba(255,255,255,0.5)",
                     color: "#fff",
@@ -426,7 +431,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                   <Button
                     variant="contained"
                     size="large"
-                    href={data.cta.emailCta.link}
+                    href={ctaHref(data.cta.emailCta.link)}
                     sx={{ borderRadius: 0, px: 4, py: 1.5, fontWeight: 700 }}
                   >
                     {data.cta.emailCta.label}
@@ -436,7 +441,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                   <Button
                     variant="outlined"
                     size="large"
-                    href={data.cta.quoteCta.link}
+                    href={ctaHref(data.cta.quoteCta.link)}
                     sx={{
                       borderColor: "#ddd",
                       color: "text.primary",

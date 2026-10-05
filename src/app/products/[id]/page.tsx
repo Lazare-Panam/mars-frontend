@@ -6,6 +6,7 @@ import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
 import { CATEGORIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { fitDescription } from "@/lib/seoDescription";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // it renders "…| Mars Valves | Mars Valvenok".
   const rawTitle = data.seo?.title ?? data.bannerTitle ?? "Mars Valvenok";
   const title = rawTitle.replace(/\s*\|\s*Mars Valve(nok)?s?\s*$/i, "").trim();
-  const description = data.seo?.description ?? data.bannerSubtitle ?? "";
+  const description = fitDescription(data.seo?.description ?? data.bannerSubtitle ?? "");
   const ogImage = data.seo?.ogImage ?? data.bannerImage;
 
   // The CMS can return a canonical URL on a stale/retired domain (e.g. a

@@ -105,7 +105,14 @@ function renderBody(body: string) {
   });
 }
 
-export default function BlogPost({ blog }: { blog: BlogData }) {
+/** Up to 3 other posts linked at the end of each article, newest first. */
+export interface RelatedPost {
+  slug: string;
+  title: string;
+  category: string;
+}
+
+export default function BlogPost({ blog, related = [] }: { blog: BlogData; related?: RelatedPost[] }) {
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
 
@@ -259,6 +266,37 @@ export default function BlogPost({ blog }: { blog: BlogData }) {
         </Reveal>
 
         <Divider sx={{ mb: 6 }} />
+
+        {/* More articles: links every post from the others, not just /news. */}
+        {related.length > 0 && (
+          <Box sx={{ mb: 6 }}>
+            <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'primary.main', mb: 2 }}>
+              More articles
+            </Typography>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 2 }}>
+              {related.map((post) => (
+                <Box
+                  key={post.slug}
+                  component={Link}
+                  href={`/news/${post.slug}`}
+                  sx={{
+                    display: 'block',
+                    p: 2.5,
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    borderRadius: '4px',
+                    textDecoration: 'none',
+                    color: 'text.primary',
+                    transition: 'border-color 0.2s ease',
+                    '&:hover': { borderColor: 'primary.main' },
+                  }}
+                >
+                  <Typography sx={{ fontSize: '0.72rem', color: 'text.secondary', mb: 0.5 }}>{post.category}</Typography>
+                  <Typography sx={{ fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.4 }}>{post.title}</Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        )}
 
         {/* CTA */}
         {blog.cta && (

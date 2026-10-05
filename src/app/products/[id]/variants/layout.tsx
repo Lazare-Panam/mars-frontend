@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { firstThatFits, modelsDescription } from "@/lib/seoDescription";
 
 type MetadataProps = { params: Promise<{ id: string }> };
 type LayoutProps = {
@@ -37,16 +38,21 @@ export async function generateMetadata({
     return { title: "Mars Valvenok" };
   }
 
-  const title = fitBrandTitle(`${data.name} — All Models`);
+  // Shorter fallbacks for long names (e.g. Series 77SN) so the title fits.
+  const base = firstThatFits([`${data.name} — All Models`, `${data.name} Models`, data.name]);
+  const title = fitBrandTitle(base);
+  const description = modelsDescription(data.name, data.variants.length);
   const canonical = `${SITE_URL}/products/${id}/variants`;
 
   return {
     title,
+    description,
     alternates: { canonical },
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
-      title: `${data.name} — All Models`,
+      title: base,
+      description,
       url: canonical,
       images: data.thumbnailImage ? [{ url: data.thumbnailImage }] : undefined,
     },
