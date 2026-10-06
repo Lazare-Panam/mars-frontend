@@ -4,11 +4,25 @@ import { ProductSeriesVariants, ProductVariant } from "./useProductVariants";
 
 // --- Shapes returned by the new SQL-backed SeriesProduct API (Mars.API) ---
 
+export interface SeriesCertificate {
+  label: string;
+  url: string;
+}
+
 export interface SeriesCategory {
   categoryId: number;
   name: string;
   catalogUrl?: string | null;
   cadUrl?: string | null;
+  description?: string | null;
+  bodyMaterial?: string | null;
+  seatMaterial?: string | null;
+  design?: string | null;
+  temperatureRange?: string | null;
+  approvals?: string | null;
+  datasheetUrl?: string | null;
+  keyFeatures: string[];
+  certificates: SeriesCertificate[];
 }
 
 export interface SeriesFilter {
