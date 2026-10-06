@@ -39,7 +39,11 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "By Series",
         href: P,
         // Read from the series data, so new series pages appear here automatically.
-        links: SERIES.map((series) => ({ label: series.label, href: series.href })),
+        // Series 20-40 is the new SQL-backed configurator (/series/[categoryId]).
+        links: [
+          { label: "Series 20-40", href: "/series/1" },
+          ...SERIES.map((series) => ({ label: series.label, href: series.href })),
+        ],
       },
       {
         // One column for the 1, 2 and 3-piece ranges.

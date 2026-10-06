@@ -32,6 +32,11 @@ export const LEFT_NAV: NavItem[] = [
         heading: "Mars Ball Valves",
         href: "/products",
         items: [
+          
+          {
+            label: "Series 20-40",
+            href: "/series/1",
+          },
           {
             label: "Series 10-10 (One-Piece)",
             href: "/products/series-10-10",

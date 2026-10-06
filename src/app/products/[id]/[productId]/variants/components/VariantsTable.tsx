@@ -61,11 +61,14 @@ const PRIMARY_KEYS = [
   "Size",
   "Port",
   "Pressure Rating",
+  "Operating Pressure",
+  "End Connection",
   "Body",
   "Seats",
   "Ends",
   "Design",
   "Locking Device",
+  "Lock",
 ];
 
 function PriceCell({ price, onQuote }: { price?: string; onQuote: () => void }) {
@@ -124,7 +127,9 @@ function VariantRow({
   const [adding, setAdding] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const { id } = useParams<{ id: string }>();
+  // Route is /products/[id]/... but can also be reused under /series/[seriesId]/...
+  const routeParams = useParams<{ id?: string; seriesId?: string }>();
+  const id = routeParams.id ?? routeParams.seriesId ?? seriesId;
 
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
@@ -504,7 +509,8 @@ function VariantCard({
 }: Omit<RowProps, "zebra">) {
   const addToCart = useCartStore((s) => s.addToCart);
   const [adding, setAdding] = useState(false);
-  const { id } = useParams<{ id: string }>();
+  const routeParams = useParams<{ id?: string; seriesId?: string }>();
+  const id = routeParams.id ?? routeParams.seriesId ?? seriesId;
   const setQuote = useQuoteStore((s) => s.setRequest);
 
   const image = variant.thumbnailImage || thumbnailImage;
