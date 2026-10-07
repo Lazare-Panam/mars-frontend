@@ -47,8 +47,7 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
           ...SERIES
             .filter(
               (series) =>
-                series.href !== "/products/series-10-10" &&
-                series.href !== "/products/series-22",
+                series.id !== "series-10-10" && series.id !== "series-22",
             )
             .map((series) => ({ label: series.label, href: series.href })),
         ],

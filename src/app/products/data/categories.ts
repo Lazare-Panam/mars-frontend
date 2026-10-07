@@ -9,8 +9,8 @@ export const SERIES = [
       "Robust 1-piece reduced port ball valves rated to 2000 PSI for high pressure threaded-line service.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/one-piece/10-10.png",
-    href: "/products/series-10-10",
-    pricesHref: "/products/series-10-10/variants",
+    href: "/series/4",
+    pricesHref: "/series/4/variants",
   },
   {
     id: "series-20-20",
@@ -29,8 +29,8 @@ export const SERIES = [
       "2-piece direct mount full port ball valves with ISO 5211 mounting pad for actuated service.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/hp-2.png",
-    href: "/products/series-22",
-    pricesHref: "/products/series-22/variants",
+    href: "/series/3",
+    pricesHref: "/series/3/variants",
   },
   {
     id: "series-77",
