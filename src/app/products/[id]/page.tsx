@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog, ProductCatalog, ProductType } from "@/api/useProductCatalog";
 import { fetchProductDetail } from "@/api/useProductDetail";
+import { fetchVariants } from "@/api/useProductVariants";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
+import OnePieceSeriesCards from "./components/OnePieceSeriesCards";
 import { CATEGORIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
@@ -108,6 +110,16 @@ export default async function ProductCatalogPage({ params }: Props) {
     });
   }
 
+  // The One-Piece family renders a series-cards landing (one card per series)
+  // instead of the flat variant grid, so prefetch its variants.
+  const isOnePiece = id === "one-piece-ball-valves";
+  if (isOnePiece) {
+    await queryClient.prefetchQuery({
+      queryKey: ["variants", id],
+      queryFn: () => fetchVariants(id),
+    });
+  }
+
   const category = CATEGORIES.find((c) => c.id === id);
   const usedIn = (CATEGORY_INDUSTRIES[id] ?? [])
     .map((industryId) => INDUSTRIES.find((i) => i.id === industryId))
@@ -123,7 +135,11 @@ export default async function ProductCatalogPage({ params }: Props) {
       <JsonLd data={crumbs} />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Reveal y={12}>
-          <ProductCatalogPageClient id={id} />
+          {isOnePiece ? (
+            <OnePieceSeriesCards />
+          ) : (
+            <ProductCatalogPageClient id={id} />
+          )}
         </Reveal>
       </HydrationBoundary>
       {usedIn.length > 0 && (

@@ -60,7 +60,7 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "By Category",
         href: P,
         links: [
-          { label: "One-Piece Ball Valves", href: "/series/4" },
+          { label: "One-Piece Ball Valves", href: `${P}/one-piece-ball-valves` },
           { label: "Economical 2-Piece", href: `${P}/two-piece-ball-valves/economical-two-piece-ball-valve` },
           { label: "High Performance 2-Piece", href: `${P}/two-piece-ball-valves/high-performance-two-piece-ball-valve` },
           { label: "High Pressure 2-Piece", href: `${P}/two-piece-ball-valves/high-pressure-two-piece-ball-valve` },
