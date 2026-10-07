@@ -123,3 +123,73 @@ export const useSeriesVariants = (id: string) =>
     queryFn: () => fetchSeriesVariants(id),
     enabled: !!id,
   });
+
+// --- Server-side configurator (no full product download) ---
+
+export interface ConfiguratorValue {
+  value: string;
+  available: boolean;
+}
+
+export interface ConfiguratorOption {
+  filterId: number;
+  name: string;
+  sortOrder: number;
+  values: ConfiguratorValue[];
+}
+
+export interface ResolvedProduct {
+  productId: number;
+  partNumber: string;
+  productStatus: string;
+  familyDescription?: string | null;
+  detailDescription?: string | null;
+  imageUrl?: string | null;
+  price?: number | null;
+  specs: { filter: string; value: string }[];
+}
+
+export interface ConfiguratorState {
+  options: ConfiguratorOption[];
+  matchCount: number;
+  totalCount: number;
+  resolved: ResolvedProduct | null;
+  imageUrl?: string | null;
+}
+
+export const fetchConfiguratorState = async (
+  id: string,
+  selection: Record<string, string>,
+): Promise<ConfiguratorState> => {
+  const params = new URLSearchParams();
+  for (const [k, v] of Object.entries(selection)) params.append(`filters[${k}]`, v);
+  const qs = params.toString();
+  const { data } = await axiosClient.get<ConfiguratorState>(
+    `/api/SeriesProduct/categories/${id}/configure${qs ? `?${qs}` : ""}`,
+  );
+  return data;
+};
+
+export const fetchSeriesProduct = async (partNumber: string): Promise<ResolvedProduct> => {
+  const { data } = await axiosClient.get<ResolvedProduct>(
+    `/api/SeriesProduct/products/${encodeURIComponent(partNumber)}`,
+  );
+  return data;
+};
+
+export const useSeriesProduct = (partNumber: string) =>
+  useQuery({
+    queryKey: ["series-product", partNumber],
+    queryFn: () => fetchSeriesProduct(partNumber),
+    enabled: !!partNumber,
+  });
+
+export const useSeriesConfigurator = (id: string, selection: Record<string, string>) =>
+  useQuery({
+    queryKey: ["series-configurator", id, selection],
+    queryFn: () => fetchConfiguratorState(id, selection),
+    enabled: !!id,
+    // Keep the previous options on screen while the next selection resolves,
+    // so the buttons don't flash/empty between clicks.
+    placeholderData: (prev) => prev,
+  });

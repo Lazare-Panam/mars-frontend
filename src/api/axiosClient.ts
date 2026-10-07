@@ -4,7 +4,8 @@ import axios from "axios";
 // local dev). Falls back to the production API so existing deploys are
 // unaffected if the var is unset.
 //const baseUrl = "http://localhost:5177/";
-const baseUrl ="https://mars-api.mangobeach-29eb5614.ukwest.azurecontainerapps.io/";
+const baseUrl =
+  "https://mars-api.mangobeach-29eb5614.ukwest.azurecontainerapps.io/";
 
 const axiosClient = axios.create({
   baseURL: baseUrl,

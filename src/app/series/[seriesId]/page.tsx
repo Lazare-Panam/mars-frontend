@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo } from "react";
+import { use, useState } from "react";
 import {
   Box,
   Typography,
@@ -9,6 +9,7 @@ import {
   CircularProgress,
   Dialog,
   IconButton,
+  Skeleton,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
@@ -21,9 +22,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import NextLink from "next/link";
 import Image from "next/image";
 import {
-  useSeriesVariants,
   useSeriesCategory,
-  useSeriesFilters,
+  useSeriesConfigurator,
+  type ConfiguratorValue,
 } from "@/api/useSeriesCatalog";
 import { useQuoteStore } from "@/store/useQuoteStore";
 import Reveal from "@/Common/Reveal";
@@ -59,8 +60,6 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Turn a value like 1/4", 1 1/4", 2" or "1500 PSI" into a sortable number so
-// option chips read small-to-large instead of string-sorted.
 function magnitude(s: string): number {
   const str = s.replace(/["”]/g, "").trim();
   const mixed = str.match(/^(\d+)\s+(\d+)\/(\d+)/);
@@ -72,11 +71,98 @@ function magnitude(s: string): number {
   return NaN;
 }
 
-function sortValues(values: string[]): string[] {
-  const nums = values.map(magnitude);
-  return nums.every((n) => !Number.isNaN(n))
-    ? [...values].sort((a, b) => magnitude(a) - magnitude(b))
-    : [...values].sort((a, b) => a.localeCompare(b));
+function sortOptionValues(values: ConfiguratorValue[]): ConfiguratorValue[] {
+  return [...values].sort((a, b) => {
+    const ma = magnitude(a.value);
+    const mb = magnitude(b.value);
+    if (!Number.isNaN(ma) && !Number.isNaN(mb)) return ma - mb;
+    return a.value.localeCompare(b.value);
+  });
+}
+
+// Isolated so the hover-zoom's per-mousemove state updates only re-render the image.
+function ZoomImage({
+  src,
+  alt,
+  onOpen,
+}: {
+  src: string;
+  alt: string;
+  onOpen: () => void;
+}) {
+  const [hovering, setHovering] = useState(false);
+  const [origin, setOrigin] = useState("center");
+
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    setOrigin(`${x}% ${y}%`);
+  };
+
+  return (
+    <Box
+      onClick={onOpen}
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+      onMouseMove={onMove}
+      role="button"
+      aria-label="Zoom image"
+      sx={{
+        position: "relative",
+        border: "1px solid rgba(0,0,0,0.08)",
+        borderRadius: "14px",
+        bgcolor: "#fff",
+        minHeight: { xs: 320, md: 0 },
+        overflow: "hidden",
+        cursor: "zoom-in",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: { xs: 3, md: 4 },
+        boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
+        "&:hover .zoom-hint": { opacity: 1 },
+      }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={500}
+        height={500}
+        style={{
+          objectFit: "contain",
+          width: "100%",
+          height: "100%",
+          transformOrigin: origin,
+          transform: hovering ? "scale(2)" : "scale(1)",
+          transition: hovering ? "transform 0.08s ease-out" : "transform 0.25s ease",
+        }}
+      />
+      <Box
+        className="zoom-hint"
+        sx={{
+          position: "absolute",
+          bottom: 12,
+          right: 12,
+          display: "flex",
+          alignItems: "center",
+          gap: 0.5,
+          px: 1,
+          py: 0.5,
+          borderRadius: "6px",
+          bgcolor: "rgba(0,0,0,0.55)",
+          color: "#fff",
+          fontSize: "0.72rem",
+          fontWeight: 600,
+          opacity: 0.7,
+          transition: "opacity 0.2s ease",
+          pointerEvents: "none",
+        }}
+      >
+        <ZoomInIcon sx={{ fontSize: 16 }} /> Hover to zoom
+      </Box>
+    </Box>
+  );
 }
 
 export default function SeriesConfiguratorPage({
@@ -85,49 +171,18 @@ export default function SeriesConfiguratorPage({
   params: Promise<{ seriesId: string }>;
 }) {
   const { seriesId } = use(params);
-  const { data: series, isLoading, isError } = useSeriesVariants(seriesId);
   const { data: category } = useSeriesCategory(seriesId);
-  const { data: filters } = useSeriesFilters(seriesId);
   const setQuote = useQuoteStore((s) => s.setRequest);
 
   const [selection, setSelection] = useState<Record<string, string>>({});
   const [zoomOpen, setZoomOpen] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const [zoomOrigin, setZoomOrigin] = useState("center");
 
-  const handleZoomMove = (e: React.MouseEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    const y = ((e.clientY - r.top) / r.height) * 100;
-    setZoomOrigin(`${x}% ${y}%`);
-  };
-
-  const variants = series?.variants ?? [];
-
-  const matches = useMemo(
-    () =>
-      variants.filter((v) =>
-        Object.entries(selection).every(([k, val]) => v.specs[k] === val),
-      ),
-    [variants, selection],
-  );
-  const resolved = matches.length === 1 ? matches[0] : null;
-
-  const isAvailable = (filterName: string, value: string) =>
-    variants.some(
-      (v) =>
-        v.specs[filterName] === value &&
-        Object.entries(selection).every(
-          ([k, sv]) => k === filterName || v.specs[k] === sv,
-        ),
-    );
+  const { data: config, isLoading, isError, isFetching } = useSeriesConfigurator(seriesId, selection);
 
   const toggle = (filterName: string, value: string) =>
     setSelection((prev) =>
       prev[filterName] === value
-        ? Object.fromEntries(
-            Object.entries(prev).filter(([k]) => k !== filterName),
-          )
+        ? Object.fromEntries(Object.entries(prev).filter(([k]) => k !== filterName))
         : { ...prev, [filterName]: value },
     );
 
@@ -139,7 +194,7 @@ export default function SeriesConfiguratorPage({
     );
   }
 
-  if (isError || !series) {
+  if (isError || !config) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "60vh" }}>
         <Typography sx={{ color: "text.secondary" }}>Failed to load this series.</Typography>
@@ -147,11 +202,14 @@ export default function SeriesConfiguratorPage({
     );
   }
 
-  const image = resolved?.thumbnailImage || series.thumbnailImage;
-  const resolvedSku = resolved ? (resolved.specs["SKU"] ?? resolved.id) : null;
+  const name = category?.name ?? `Series ${seriesId}`;
+  const options = config.options;
+  const resolved = config.resolved;
+  const resolvedSku = resolved?.partNumber ?? null;
+  const image = resolved?.imageUrl || config.imageUrl || undefined;
 
   const onRequestQuote = () => {
-    if (resolvedSku) setQuote({ sku: resolvedSku, product: series.name });
+    if (resolvedSku) setQuote({ sku: resolvedSku, product: name });
   };
 
   const techAttrs = (
@@ -161,7 +219,7 @@ export default function SeriesConfiguratorPage({
       ["Seat Material", category?.seatMaterial],
       ["Temperature Range", category?.temperatureRange],
       ["Approvals", category?.approvals],
-      ...(filters ?? []).map((f) => [f.name, sortValues(f.values).join(", ")]),
+      ...options.map((o) => [o.name, sortOptionValues(o.values).map((v) => v.value).join(", ")]),
     ] as [string, string | null | undefined][]
   ).filter((e): e is [string, string] => Boolean(e[1]));
 
@@ -174,7 +232,7 @@ export default function SeriesConfiguratorPage({
             items={[
               { label: "Home", href: "/" },
               { label: "Products", href: "/products" },
-              { label: series.name },
+              { label: name },
             ]}
             sx={{ mb: 2 }}
           />
@@ -194,7 +252,7 @@ export default function SeriesConfiguratorPage({
             component="h1"
             sx={{ fontSize: { xs: "1.7rem", md: "2.2rem" }, fontWeight: 800, lineHeight: 1.1, color: "text.primary" }}
           >
-            {series.name}
+            {name}
           </Typography>
           {category?.design && (
             <Typography sx={{ color: "text.secondary", fontSize: "0.95rem", mt: 1 }}>
@@ -215,69 +273,8 @@ export default function SeriesConfiguratorPage({
               alignItems: "stretch",
             }}
           >
-            {/* Image card — hover to magnify, click for full lightbox */}
             {image && (
-              <Box
-                onClick={() => setZoomOpen(true)}
-                onMouseEnter={() => setHovering(true)}
-                onMouseLeave={() => setHovering(false)}
-                onMouseMove={handleZoomMove}
-                role="button"
-                aria-label="Zoom image"
-                sx={{
-                  position: "relative",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  borderRadius: "14px",
-                  bgcolor: "#fff",
-                  minHeight: { xs: 320, md: 0 },
-                  overflow: "hidden",
-                  cursor: "zoom-in",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  p: { xs: 3, md: 4 },
-                  boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
-                  "&:hover .zoom-hint": { opacity: 1 },
-                }}
-              >
-                <Image
-                  src={image}
-                  alt={resolvedSku ? `${series.name} — ${resolvedSku}` : series.name}
-                  width={500}
-                  height={500}
-                  style={{
-                    objectFit: "contain",
-                    width: "100%",
-                    height: "100%",
-                    transformOrigin: zoomOrigin,
-                    transform: hovering ? "scale(2)" : "scale(1)",
-                    transition: hovering ? "transform 0.08s ease-out" : "transform 0.25s ease",
-                  }}
-                />
-                <Box
-                  className="zoom-hint"
-                  sx={{
-                    position: "absolute",
-                    bottom: 12,
-                    right: 12,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 0.5,
-                    px: 1,
-                    py: 0.5,
-                    borderRadius: "6px",
-                    bgcolor: "rgba(0,0,0,0.55)",
-                    color: "#fff",
-                    fontSize: "0.72rem",
-                    fontWeight: 600,
-                    opacity: 0.7,
-                    transition: "opacity 0.2s ease",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <ZoomInIcon sx={{ fontSize: 16 }} /> Hover to zoom
-                </Box>
-              </Box>
+              <ZoomImage src={image} alt={resolvedSku ? `${name} — ${resolvedSku}` : name} onOpen={() => setZoomOpen(true)} />
             )}
 
             {/* Buy box */}
@@ -297,8 +294,8 @@ export default function SeriesConfiguratorPage({
                 Choose your options — we&apos;ll build the exact part number.
               </Typography>
 
-              {(filters ?? []).map((f) => (
-                <Box key={f.filterId} sx={{ mb: 2.5 }}>
+              {options.map((o) => (
+                <Box key={o.filterId} sx={{ mb: 2.5 }}>
                   <Typography
                     sx={{
                       fontSize: "0.7rem",
@@ -309,18 +306,18 @@ export default function SeriesConfiguratorPage({
                       mb: 1,
                     }}
                   >
-                    {f.name}
+                    {o.name}
                   </Typography>
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                    {sortValues(f.values).map((v) => {
-                      const selected = selection[f.name] === v;
-                      const available = isAvailable(f.name, v);
+                    {sortOptionValues(o.values).map((v) => {
+                      const selected = selection[o.name] === v.value;
+                      const available = v.available;
                       return (
                         <ButtonBase
-                          key={v}
+                          key={v.value}
                           focusRipple
                           disabled={!available}
-                          onClick={available ? () => toggle(f.name, v) : undefined}
+                          onClick={available ? () => toggle(o.name, v.value) : undefined}
                           sx={{
                             minWidth: 60,
                             px: 2,
@@ -343,7 +340,7 @@ export default function SeriesConfiguratorPage({
                               : {},
                           }}
                         >
-                          {v}
+                          {v.value}
                         </ButtonBase>
                       );
                     })}
@@ -352,24 +349,28 @@ export default function SeriesConfiguratorPage({
               ))}
 
               {/* Result */}
-              <Box
-                sx={{
-                  mt: 3,
-                  pt: 3,
-                  borderTop: "1px solid rgba(0,0,0,0.08)",
-                }}
-              >
-                {resolved ? (
+              <Box sx={{ mt: 3, pt: 3, borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+                {isFetching ? (
+                  <Box>
+                    <Skeleton animation="wave" variant="text" width={110} height={14} />
+                    <Skeleton animation="wave" variant="text" width={220} sx={{ fontSize: "1.4rem" }} />
+                    <Skeleton animation="wave" variant="text" width={90} sx={{ fontSize: "1.3rem", mb: 1 }} />
+                    <Skeleton animation="wave" variant="rounded" width={170} height={42} />
+                  </Box>
+                ) : resolved ? (
                   <>
                     <Typography sx={{ fontSize: "0.66rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "text.secondary", mb: 0.5 }}>
                       Your part number
                     </Typography>
-                    <Typography sx={{ fontFamily: "monospace", fontSize: { xs: "1.15rem", md: "1.4rem" }, fontWeight: 700, wordBreak: "break-all", mb: 1 }}>
+                    <Typography sx={{ fontFamily: "monospace", fontSize: { xs: "1.15rem", md: "1.4rem" }, fontWeight: 700, wordBreak: "break-all", mb: 0.75 }}>
                       {resolvedSku}
                     </Typography>
-                    {resolved.specs["Price"] ? (
+                    <Typography sx={{ color: "text.secondary", fontSize: "0.82rem", mb: 1.75 }}>
+                      {resolved.specs.map((s) => s.value).join(" · ")}
+                    </Typography>
+                    {resolved.price != null ? (
                       <Typography sx={{ fontWeight: 800, fontSize: "1.3rem", mb: 2 }}>
-                        £{resolved.specs["Price"]}
+                        £{resolved.price.toFixed(2)}
                       </Typography>
                     ) : (
                       <Typography sx={{ color: "text.secondary", fontSize: "0.85rem", mb: 2 }}>
@@ -387,21 +388,34 @@ export default function SeriesConfiguratorPage({
                     >
                       Request a Quote
                     </Button>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2.5, mt: 2 }}>
+                      {["More details", "Lead time", "Bulk pricing"].map((label) => (
+                        <Box
+                          key={label}
+                          component={NextLink}
+                          href="/contact"
+                          onClick={onRequestQuote}
+                          sx={{
+                            fontSize: "0.8rem",
+                            fontWeight: 600,
+                            color: "text.secondary",
+                            textDecoration: "none",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 0.4,
+                            "&:hover": { color: BRAND },
+                          }}
+                        >
+                          {label}
+                          <ArrowForwardIcon sx={{ fontSize: 13 }} />
+                        </Box>
+                      ))}
+                    </Box>
                   </>
                 ) : (
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1, color: "text.secondary" }}>
-                    <Box
-                      sx={{
-                        fontSize: "0.72rem",
-                        fontWeight: 700,
-                        color: BRAND,
-                        bgcolor: "rgba(231,57,15,0.08)",
-                        px: 1,
-                        py: 0.4,
-                        borderRadius: "5px",
-                      }}
-                    >
-                      {matches.length}
+                    <Box sx={{ fontSize: "0.72rem", fontWeight: 700, color: BRAND, bgcolor: "rgba(231,57,15,0.08)", px: 1, py: 0.4, borderRadius: "5px" }}>
+                      {config.matchCount}
                     </Box>
                     <Typography sx={{ fontSize: "0.9rem" }}>
                       {Object.keys(selection).length === 0
@@ -418,7 +432,7 @@ export default function SeriesConfiguratorPage({
                 endIcon={<ArrowForwardIcon />}
                 sx={{ mt: 2, textTransform: "none", fontWeight: 700, color: BRAND, px: 0 }}
               >
-                Or browse all {series.variants.length} models
+                Or browse all {config.totalCount} models
               </Button>
             </Box>
           </Box>
@@ -441,14 +455,7 @@ export default function SeriesConfiguratorPage({
             <Reveal delay={80}>
               <Box>
                 <SectionTitle>Key features</SectionTitle>
-                <Box
-                  sx={{
-                    display: "grid",
-                    gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-                    gap: 1.5,
-                    maxWidth: 820,
-                  }}
-                >
+                <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, gap: 1.5, maxWidth: 820 }}>
                   {category.keyFeatures.map((feat, i) => (
                     <Box key={i} sx={{ display: "flex", gap: 1.25, alignItems: "flex-start" }}>
                       <CheckIcon sx={{ fontSize: 18, color: BRAND, mt: "1px", flexShrink: 0 }} />
@@ -466,30 +473,13 @@ export default function SeriesConfiguratorPage({
             <Reveal delay={100}>
               <Box>
                 <SectionTitle>Technical attributes</SectionTitle>
-                <Box
-                  sx={{
-                    border: "1px solid rgba(0,0,0,0.1)",
-                    borderRadius: "12px",
-                    overflow: "hidden",
-                    bgcolor: "#fff",
-                    maxWidth: 820,
-                  }}
-                >
+                <Box sx={{ border: "1px solid rgba(0,0,0,0.1)", borderRadius: "12px", overflow: "hidden", bgcolor: "#fff", maxWidth: 820 }}>
                   {techAttrs.map(([label, value], i) => (
-                    <Box
-                      key={label}
-                      sx={{
-                        display: "flex",
-                        bgcolor: i % 2 ? "#fafbfc" : "#fff",
-                        borderTop: i === 0 ? "none" : "1px solid rgba(0,0,0,0.06)",
-                      }}
-                    >
+                    <Box key={label} sx={{ display: "flex", bgcolor: i % 2 ? "#fafbfc" : "#fff", borderTop: i === 0 ? "none" : "1px solid rgba(0,0,0,0.06)" }}>
                       <Box sx={{ width: { xs: 140, sm: 220 }, flexShrink: 0, px: 2, py: 1.5, fontWeight: 700, fontSize: "0.85rem", borderRight: "1px solid rgba(0,0,0,0.06)" }}>
                         {label}
                       </Box>
-                      <Box sx={{ px: 2, py: 1.5, fontSize: "0.85rem", color: "text.secondary" }}>
-                        {value}
-                      </Box>
+                      <Box sx={{ px: 2, py: 1.5, fontSize: "0.85rem", color: "text.secondary" }}>{value}</Box>
                     </Box>
                   ))}
                 </Box>
@@ -535,7 +525,7 @@ export default function SeriesConfiguratorPage({
           {image && (
             <Image
               src={image}
-              alt={resolvedSku ? `${series.name} — ${resolvedSku}` : series.name}
+              alt={resolvedSku ? `${name} — ${resolvedSku}` : name}
               width={900}
               height={900}
               style={{ objectFit: "contain", width: "100%", height: "auto", maxHeight: "80vh" }}

@@ -111,6 +111,7 @@ interface RowProps {
   specKeys: string[];
   thumbnailImage: string;
   zebra: boolean;
+  detailBasePath?: string;
   onAddedToCart: () => void;
 }
 
@@ -121,6 +122,7 @@ function VariantRow({
   specKeys,
   thumbnailImage,
   zebra,
+  detailBasePath,
   onAddedToCart,
 }: RowProps) {
   const addToCart = useCartStore((s) => s.addToCart);
@@ -133,7 +135,9 @@ function VariantRow({
 
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
-  const detailHref = `/products/${id}/${seriesId}/variants/${variant.id}`;
+  const detailHref = detailBasePath
+    ? `${detailBasePath}/${variant.id}`
+    : `/products/${id}/${seriesId}/variants/${variant.id}`;
   const setQuote = useQuoteStore((s) => s.setRequest);
   const onQuote = () => setQuote({ sku: variant.specs["SKU"] ?? variant.id, product: productName });
   const rowBg = open ? ROW_BG_OPEN : zebra ? ROW_BG_ZEBRA : ROW_BG;
@@ -492,6 +496,7 @@ interface Props {
   productName: string;
   specKeys: string[];
   thumbnailImage: string;
+  detailBasePath?: string;
 }
 
 
@@ -505,6 +510,7 @@ function VariantCard({
   productName,
   specKeys,
   thumbnailImage,
+  detailBasePath,
   onAddedToCart,
 }: Omit<RowProps, "zebra">) {
   const addToCart = useCartStore((s) => s.addToCart);
@@ -516,7 +522,9 @@ function VariantCard({
   const image = variant.thumbnailImage || thumbnailImage;
   const price = variant.specs["Price"];
   const sku = variant.specs["SKU"] ?? variant.id;
-  const detailHref = `/products/${id}/${seriesId}/variants/${variant.id}`;
+  const detailHref = detailBasePath
+    ? `${detailBasePath}/${variant.id}`
+    : `/products/${id}/${seriesId}/variants/${variant.id}`;
   const onQuote = () => setQuote({ sku, product: productName });
   const specs = specKeys.filter((k) => k !== "SKU" && variant.specs[k]);
 
@@ -623,6 +631,7 @@ export default function VariantsTable({
   productName,
   specKeys,
   thumbnailImage,
+  detailBasePath,
 }: Props) {
   const [sortKey, setSortKey] = useState<string>("");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
@@ -765,6 +774,7 @@ export default function VariantsTable({
               productName={productName}
               specKeys={displayKeys}
               thumbnailImage={thumbnailImage}
+              detailBasePath={detailBasePath}
               onAddedToCart={() => setSnackbarOpen(true)}
             />
           ))
@@ -829,6 +839,7 @@ export default function VariantsTable({
                 specKeys={inlineKeys}
                 thumbnailImage={thumbnailImage}
                 zebra={i % 2 === 1}
+                detailBasePath={detailBasePath}
                 onAddedToCart={() => setSnackbarOpen(true)}
               />
             ))

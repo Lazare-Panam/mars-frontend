@@ -14,6 +14,7 @@ import ContactPrompt from "./Landing/ContactPrompt";
 import BackToTop from "@/Common/BackToTop";
 import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
 import ScrollProgress from "@/Common/ScrollProgress";
+import NavProgress from "@/Common/NavProgress";
 import { SITE_URL } from "@/lib/site";
 /** */
 const geistSans = Geist({
@@ -117,6 +118,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <QueryProvider>
             <ScrollProgress />
+            <NavProgress />
             <Suspense fallback={null}>
               <AppInsightsProvider />
             </Suspense>

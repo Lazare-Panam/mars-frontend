@@ -172,6 +172,7 @@ export default function SeriesVariantsPage({
                 productName={data.name}
                 thumbnailImage={data.thumbnailImage}
                 seriesId={seriesId}
+                detailBasePath={`/series/${seriesId}/variants`}
               />
             </Box>
           </Box>
