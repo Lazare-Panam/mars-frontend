@@ -19,8 +19,8 @@ export const SERIES = [
       "2-piece full port ball valves rated to 1000 PSI for general industrial service.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/eco-2.jpg",
-    href: "/products/series-20-20",
-    pricesHref: "/products/series-20-20/variants",
+    href: "/series/5",
+    pricesHref: "/series/5/variants",
   },
   {
     id: "series-22",

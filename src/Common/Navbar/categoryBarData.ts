@@ -42,12 +42,15 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         // Series 20-40 is the new SQL-backed configurator (/series/[categoryId]).
         links: [
           { label: "Series 10-10", href: "/series/4" },
+          { label: "Series 20-20", href: "/series/5" },
           { label: "Series 20-40", href: "/series/1" },
           { label: "Series 22", href: "/series/3" },
           ...SERIES
             .filter(
               (series) =>
-                series.id !== "series-10-10" && series.id !== "series-22",
+                series.id !== "series-10-10" &&
+                series.id !== "series-20-20" &&
+                series.id !== "series-22",
             )
             .map((series) => ({ label: series.label, href: series.href })),
         ],
@@ -57,7 +60,7 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "By Category",
         href: P,
         links: [
-          { label: "One-Piece Ball Valves", href: `${P}/one-piece-ball-valves` },
+          { label: "One-Piece Ball Valves", href: "/series/4" },
           { label: "Economical 2-Piece", href: `${P}/two-piece-ball-valves/economical-two-piece-ball-valve` },
           { label: "High Performance 2-Piece", href: `${P}/two-piece-ball-valves/high-performance-two-piece-ball-valve` },
           { label: "High Pressure 2-Piece", href: `${P}/two-piece-ball-valves/high-pressure-two-piece-ball-valve` },
