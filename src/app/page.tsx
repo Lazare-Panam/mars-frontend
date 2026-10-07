@@ -60,8 +60,6 @@ export default function Home() {
       <ValuePropBanner/>
       <TrustBar/>
       <MarsSection/>
-      <DistributorComparison/>
-      <ProcessSection/>
       <MarsStats/>
       <FAQSection id="faq" faqs={HOME_FAQS.map(({ q, a }) => ({ q, a }))} />
       <ContactCTA/>
