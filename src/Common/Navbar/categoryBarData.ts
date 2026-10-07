@@ -42,7 +42,10 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         // Series 20-40 is the new SQL-backed configurator (/series/[categoryId]).
         links: [
           { label: "Series 20-40", href: "/series/1" },
-          ...SERIES.map((series) => ({ label: series.label, href: series.href })),
+          { label: "Series 22", href: "/series/3" },
+          ...SERIES
+            .filter((series) => series.href !== "/products/series-22")
+            .map((series) => ({ label: series.label, href: series.href })),
         ],
       },
       {
