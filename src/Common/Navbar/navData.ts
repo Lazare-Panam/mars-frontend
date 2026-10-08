@@ -66,7 +66,7 @@ export const LEFT_NAV: NavItem[] = [
           },
           {
             label: "Series 77SN (Three-Piece Sanitary)",
-            href: "/products/series-77sn",
+            href: "/series/9",
           },
           {
             label: "Series 83 (Three-Piece Fire Safe)",

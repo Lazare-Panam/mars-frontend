@@ -69,8 +69,8 @@ export const SERIES = [
       "3-piece high performance sanitary ball valves with Tri-clamp and OD tube ends for hygienic process lines.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
-    href: "/products/series-77sn",
-    pricesHref: "/products/series-77sn/variants",
+    href: "/series/9",
+    pricesHref: "/series/9/variants",
   },
   {
     id: "series-83",
