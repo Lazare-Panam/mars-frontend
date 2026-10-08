@@ -61,6 +61,10 @@ export const LEFT_NAV: NavItem[] = [
             href: "/series/7",
           },
           {
+            label: "Series 50 (Three-Piece)",
+            href: "/series/10",
+          },
+          {
             label: "Series 77 (Three-Piece Direct Mount)",
             href: "/series/8",
           },

@@ -53,6 +53,16 @@ export const SERIES = [
     pricesHref: "/series/7/variants",
   },
   {
+    id: "series-50",
+    label: "Series 50",
+    description:
+      "3-piece full bore maintainable ball valves with blow-out proof stem, lockable lever and steam-rated carbon-filled R-PTFE seats.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/catalogs/series-50.jpg",
+    href: "/series/10",
+    pricesHref: "/series/10/variants",
+  },
+  {
     id: "series-77",
     label: "Series 77",
     description:
