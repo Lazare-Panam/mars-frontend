@@ -33,6 +33,16 @@ export const SERIES = [
     pricesHref: "/series/3/variants",
   },
   {
+    id: "series-33",
+    label: "Series 33",
+    description:
+      "3-way full port direct mount ball valves with ISO 5211 pad and L/T port for diverting and mixing service.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/s33.jpg",
+    href: "/series/6",
+    pricesHref: "/series/6/variants",
+  },
+  {
     id: "series-77",
     label: "Series 77",
     description:

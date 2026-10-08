@@ -62,13 +62,6 @@ export const fetchSeriesCategory = async (
   return cats.find((c) => String(c.categoryId) === id) ?? null;
 };
 
-export const fetchSeriesFilters = async (id: string): Promise<SeriesFilter[]> => {
-  const { data } = await axiosClient.get<SeriesFilter[]>(
-    `/api/SeriesProduct/categories/${id}/filters`,
-  );
-  return data;
-};
-
 // Adapts the SeriesProduct API response into the same ProductSeriesVariants
 // shape the existing VariantsTable / VariantsSidebar already consume, so those
 // components are reused unchanged. Each product becomes a "variant" whose specs
@@ -107,13 +100,6 @@ export const useSeriesCategory = (id: string) =>
   useQuery({
     queryKey: ["series-category", id],
     queryFn: () => fetchSeriesCategory(id),
-    enabled: !!id,
-  });
-
-export const useSeriesFilters = (id: string) =>
-  useQuery({
-    queryKey: ["series-filters", id],
-    queryFn: () => fetchSeriesFilters(id),
     enabled: !!id,
   });
 
@@ -162,7 +148,8 @@ export const fetchConfiguratorState = async (
   selection: Record<string, string>,
 ): Promise<ConfiguratorState> => {
   const params = new URLSearchParams();
-  for (const [k, v] of Object.entries(selection)) params.append(`filters[${k}]`, v);
+  for (const [k, v] of Object.entries(selection))
+    params.append(`filters[${k}]`, v);
   const qs = params.toString();
   const { data } = await axiosClient.get<ConfiguratorState>(
     `/api/SeriesProduct/categories/${id}/configure${qs ? `?${qs}` : ""}`,
@@ -170,7 +157,9 @@ export const fetchConfiguratorState = async (
   return data;
 };
 
-export const fetchSeriesProduct = async (partNumber: string): Promise<ResolvedProduct> => {
+export const fetchSeriesProduct = async (
+  partNumber: string,
+): Promise<ResolvedProduct> => {
   const { data } = await axiosClient.get<ResolvedProduct>(
     `/api/SeriesProduct/products/${encodeURIComponent(partNumber)}`,
   );
@@ -184,7 +173,10 @@ export const useSeriesProduct = (partNumber: string) =>
     enabled: !!partNumber,
   });
 
-export const useSeriesConfigurator = (id: string, selection: Record<string, string>) =>
+export const useSeriesConfigurator = (
+  id: string,
+  selection: Record<string, string>,
+) =>
   useQuery({
     queryKey: ["series-configurator", id, selection],
     queryFn: () => fetchConfiguratorState(id, selection),
