@@ -1,32 +1,47 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
+import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
+import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
+import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
+import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import Reveal from "@/Common/Reveal";
 
-// Framed as authorised vs unauthorised, never against other authorised
-// distributors (Mars Valve UK Ltd. is one too, per the authorisation letter).
+// Says what we offer without comparing against anyone else. (This replaced an
+// "authorised vs unauthorised seller" table, which read as a dig at other
+// sellers.)
 const POINTS = [
   {
-    good: "Genuine MARS valves from Mars Valve Co.",
-    bad: "Origin can't always be verified",
+    icon: VerifiedOutlinedIcon,
+    title: "Authorised by the manufacturer",
+    text: "Letter of authorisation from Mars Valve Co., Ltd. available to view.",
   },
   {
-    good: "Manufacturer certificates for the series ordered",
-    bad: "Certificates missing, incomplete or unverifiable",
+    icon: DescriptionOutlinedIcon,
+    title: "Traceable documentation",
+    text: "Manufacturer certificates and datasheets for the series you order.",
   },
   {
-    good: "Manufacturer warranty honoured",
-    bad: "No manufacturer relationship to fall back on",
+    icon: ScienceOutlinedIcon,
+    title: "Material confirmation",
+    text: "CF8M (316) or CF3M (316L), as specified on your order.",
   },
   {
-    good: "Technical support on selection and specification",
-    bad: "Limited or no technical support",
+    icon: ShieldOutlinedIcon,
+    title: "Warranty",
+    text: "Mars Valve Co. manufacturer warranty, honoured through us.",
   },
   {
-    good: "Material grade as specified (CF8M / CF3M)",
-    bad: "Material grade not always verified",
+    icon: SupportAgentOutlinedIcon,
+    title: "Technical support",
+    text: "Help choosing series, seat material, end connection and actuation.",
+  },
+  {
+    icon: WorkspacePremiumOutlinedIcon,
+    title: "JOSCAR-registered supplier",
+    text: "Registered on JOSCAR for approved-vendor lists.",
   },
 ];
 
@@ -46,7 +61,7 @@ export default function DistributorComparison() {
                 textTransform: "uppercase",
               }}
             >
-              Why It Matters
+              Why Order From Us
             </Typography>
             <Box sx={{ width: 32, height: 1, bgcolor: "primary.main" }} />
           </Box>
@@ -54,137 +69,53 @@ export default function DistributorComparison() {
             component="h2"
             sx={{ fontSize: { xs: "2rem", md: "2.5rem" }, fontWeight: 800, color: "text.primary", mb: 2 }}
           >
-            Why buy from an authorised distributor
+            What you get when you order from Mars Valvenok
           </Typography>
           <Typography sx={{ color: "text.secondary", maxWidth: 600, mx: "auto", lineHeight: 1.7 }}>
             On hazardous or fire-safe duty, the documentation matters as much
-            as the valve. Buying from an authorised distributor means you know
-            where the valve came from.
+            as the valve.
           </Typography>
         </Box>
       </Reveal>
 
       <Box
+        component="ul"
         sx={{
-          maxWidth: 1000,
+          maxWidth: 1180,
           mx: "auto",
           px: { xs: 3, md: 8 },
+          my: 0,
+          listStyle: "none",
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-          gap: { xs: 3, md: 0 },
+          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", lg: "repeat(3, 1fr)" },
+          gap: 2.5,
         }}
       >
-        {/* Authorised column */}
-        <Reveal>
-          <Box
-            sx={{
-              border: "2px solid",
-              borderColor: "primary.main",
-              borderRadius: { xs: "6px", md: "6px 0 0 6px" },
-              p: { xs: 3, md: 4 },
-              height: "100%",
-              bgcolor: "rgba(231,57,15,0.03)",
-            }}
-          >
-            <Typography
+        {POINTS.map(({ icon: Icon, title, text }, i) => (
+          <Reveal key={title} delay={i * 80}>
+            <Box
+              component="li"
               sx={{
-                display: "inline-block",
-                bgcolor: "primary.main",
-                color: "#fff",
-                fontWeight: 800,
-                fontSize: "0.72rem",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                px: 1.5,
-                py: 0.5,
-                borderRadius: "2px",
-                mb: 2.5,
+                height: "100%",
+                p: 3,
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: "6px",
+                bgcolor: "rgba(231,57,15,0.02)",
+                transition: "border-color 0.2s ease, background-color 0.2s ease",
+                "&:hover": { borderColor: "primary.main", bgcolor: "rgba(231,57,15,0.05)" },
               }}
             >
-              From an authorised distributor
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-              {POINTS.map((p) => (
-                <Box
-                  key={p.good}
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    alignItems: "flex-start",
-                    p: 1,
-                    mx: -1,
-                    borderRadius: "4px",
-                    transition: "background-color 0.2s ease, transform 0.2s ease",
-                    "&:hover": {
-                      bgcolor: "rgba(231,57,15,0.06)",
-                      transform: "translateX(3px)",
-                    },
-                  }}
-                >
-                  <CheckCircleIcon sx={{ color: "primary.main", fontSize: 20, mt: "1px", flexShrink: 0 }} />
-                  <Typography sx={{ color: "text.primary", fontSize: "0.92rem", lineHeight: 1.5 }}>
-                    {p.good}
-                  </Typography>
-                </Box>
-              ))}
+              <Icon sx={{ color: "primary.main", fontSize: 28, mb: 1.5 }} />
+              <Typography sx={{ fontWeight: 700, fontSize: "1rem", color: "text.primary", mb: 0.75 }}>
+                {title}
+              </Typography>
+              <Typography sx={{ color: "text.secondary", fontSize: "0.9rem", lineHeight: 1.6 }}>
+                {text}
+              </Typography>
             </Box>
-          </Box>
-        </Reveal>
-
-        {/* Unauthorised column */}
-        <Reveal delay={120}>
-          <Box
-            sx={{
-              border: "2px solid",
-              borderColor: "rgba(0,0,0,0.1)",
-              borderRadius: { xs: "6px", md: "0 6px 6px 0" },
-              borderLeft: { xs: "2px solid rgba(0,0,0,0.1)", md: "none" },
-              p: { xs: 3, md: 4 },
-              height: "100%",
-              bgcolor: "rgba(0,0,0,0.02)",
-            }}
-          >
-            <Typography
-              sx={{
-                display: "inline-block",
-                bgcolor: "rgba(0,0,0,0.08)",
-                color: "text.secondary",
-                fontWeight: 800,
-                fontSize: "0.72rem",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                px: 1.5,
-                py: 0.5,
-                borderRadius: "2px",
-                mb: 2.5,
-              }}
-            >
-              From an unauthorised seller
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-              {POINTS.map((p) => (
-                <Box
-                  key={p.bad}
-                  sx={{
-                    display: "flex",
-                    gap: 1.5,
-                    alignItems: "flex-start",
-                    p: 1,
-                    mx: -1,
-                    borderRadius: "4px",
-                    transition: "background-color 0.2s ease",
-                    "&:hover": { bgcolor: "rgba(0,0,0,0.04)" },
-                  }}
-                >
-                  <CancelIcon sx={{ color: "rgba(0,0,0,0.3)", fontSize: 20, mt: "1px", flexShrink: 0 }} />
-                  <Typography sx={{ color: "text.secondary", fontSize: "0.92rem", lineHeight: 1.5 }}>
-                    {p.bad}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
-          </Box>
-        </Reveal>
+          </Reveal>
+        ))}
       </Box>
     </Box>
   );

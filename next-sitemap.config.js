@@ -24,17 +24,30 @@ const BLOG_DATES = blogDates();
 // category (/products/one-piece-ball-valves/series-10-10) points Google at the
 // series page, so it must not be listed (SE Ranking: "Non-canonical pages in
 // XML sitemap"). Read from the series data so new series are picked up.
-function seriesIds() {
+function seriesEntries() {
   const src = fs.readFileSync(path.join(__dirname, 'src/app/products/data/categories.ts'), 'utf8');
   const block = src.slice(src.indexOf('export const SERIES'), src.indexOf('export const CATEGORIES'));
-  return [...block.matchAll(/id:\s*"([^"]+)"/g)].map((m) => m[1]);
+  return [...block.matchAll(/id:\s*"([^"]+)"[\s\S]*?href:\s*"([^"]+)"/g)].map((m) => ({ id: m[1], href: m[2] }));
 }
-const SERIES_IDS = seriesIds();
+const SERIES = seriesEntries();
+const SERIES_IDS = SERIES.map((s) => s.id);
+
+// Series on the catalogue route (/series/N), read from the series data and the
+// Products menu (Series 20-40 is only in the menu). Their old /products/{id}
+// pages canonicalise to these, so only the /series URLs are listed.
+function catalogueSeriesPaths() {
+  const menu = fs.readFileSync(path.join(__dirname, 'src/Common/Navbar/categoryBarData.ts'), 'utf8');
+  const fromMenu = [...menu.matchAll(/href:\s*"(\/series\/\d+)"/g)].map((m) => m[1]);
+  const fromData = SERIES.filter((s) => s.href.startsWith('/series/')).map((s) => s.href);
+  return [...new Set([...fromData, ...fromMenu])];
+}
+const CATALOGUE_SERIES = catalogueSeriesPaths();
 
 // Pages rendered on request, so next-sitemap can't discover them from the
 // build output; listed here so search engines find them.
 const EXTRA_PATHS = [
-  ...SERIES_IDS.flatMap((id) => [`/products/${id}`, `/products/${id}/variants`]),
+  ...SERIES.filter((s) => !s.href.startsWith('/series/')).flatMap((s) => [`/products/${s.id}`, `/products/${s.id}/variants`]),
+  ...CATALOGUE_SERIES.flatMap((p) => [p, `${p}/variants`]),
   '/products/sanitary-ball-valves',
   '/products/sanitary-ball-valves/economical-sanitary-ball-valve',
   '/products/sanitary-ball-valves/high-performance-sanitary-ball-valve',

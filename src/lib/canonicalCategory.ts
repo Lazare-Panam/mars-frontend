@@ -8,6 +8,13 @@ import { CATEGORIES, SERIES } from "@/app/products/data/categories";
 const EXTRA_CATEGORY_IDS = ["sanitary-ball-valves", "fire-safe-ball-valves", "v-port-ball-valves"];
 
 const SERIES_IDS = new Set(SERIES.map((s) => s.id));
+
+// Series whose page moved to the catalogue route (/series/N). Their old
+// /products/{id} pages point Google at the new URL instead of competing with it.
+export function movedSeriesHref(productId: string): { page: string; variants: string } | null {
+  const s = SERIES.find((x) => x.id === productId && x.href.startsWith("/series/"));
+  return s ? { page: s.href, variants: s.pricesHref ?? `${s.href}/variants` } : null;
+}
 import { fetchCatalog } from "@/api/useProductCatalog";
 
 // The /products/[id]/[productId]/... routes never validate [id] against the

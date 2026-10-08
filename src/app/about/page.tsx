@@ -440,7 +440,7 @@ export default function AboutUsPage() {
               <Box component="sup" sx={{ fontSize: "0.6em" }}>
                 ®
               </Box>{" "}
-              from us you get genuine stock with the full manufacturer
+              from us you get genuine MARS valves with the full manufacturer
               documentation and warranty. For help choosing a series,{" "}
               <Link href="/contact" style={{ color: ACCENT }}>
                 get in touch with our team

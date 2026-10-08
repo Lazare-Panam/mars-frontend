@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { makeQueryClient } from "@/lib/getQueryClient";
 import { fetchSeriesVariants } from "@/api/useSeriesCatalog";
 import { ProductSeriesVariants } from "@/api/useProductVariants";
 import { SITE_URL } from "@/lib/site";
@@ -53,6 +55,11 @@ export async function generateMetadata({
   };
 }
 
-export default function SeriesVariantsLayout({ children }: LayoutProps) {
-  return children;
+// Prefetch the models on the server so the heading and table are in the HTML
+// crawlers read, not only after the page loads in a browser.
+export default async function SeriesVariantsLayout({ params, children }: LayoutProps) {
+  const { seriesId } = await params;
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({ queryKey: ["series-variants", seriesId], queryFn: () => fetchSeriesVariants(seriesId) });
+  return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
 }

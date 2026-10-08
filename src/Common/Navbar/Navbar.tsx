@@ -306,6 +306,7 @@ const Navbar: React.FC = () => {
                 return (
                   <Box
                     key={item.label}
+                    sx={item.wideOnly ? { display: { md: "none", lg: "block" } } : undefined}
                     // Other header links close the products dropdown.
                     onMouseEnter={() => (item.megaMenu ? openProducts() : closeCategory())}
                     onFocus={() => item.megaMenu && openProducts()}
@@ -567,7 +568,8 @@ const Navbar: React.FC = () => {
             </Box>
           </Box>
 
-          {[...LEFT_NAV, ...filteredRightNav].map((item: NavItem) => (
+          {/* Phones: Actuated Packages in the menu too (the strip only shows it in rotation). */}
+          {[...LEFT_NAV, { label: "Actuated Packages", href: "/actuated-packages" }, ...filteredRightNav].map((item: NavItem) => (
             <Box key={item.label} sx={{ borderBottom: `1px solid ${LINE}` }}>
               <Box
                 onClick={() =>

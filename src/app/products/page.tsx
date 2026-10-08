@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import { Box, Typography } from '@mui/material';
 import ProductRangeSections from './components/ProductRangeSections';
 import Reveal from '@/Common/Reveal';
-import { fitBrandTitle } from '@/lib/seoTitle';
 import { BANNER_DARK } from "@/theme/brand";
 
 export const metadata: Metadata = {
-  title: fitBrandTitle('MARS Industrial Ball Valves — Full Range'),
+  title: { absolute: 'Valve Check Solutions with Industrial Ball Valves' },
   description:
     'One-piece, two-piece, three-piece, flanged, multi-port, and metal-seated ball valves engineered for industrial fluid control.',
   alternates: { canonical: '/products' },
@@ -74,26 +73,10 @@ export default function ProductsPage() {
               component="h1"
               sx={{ color: '#fff', fontSize: { xs: '2.5rem', md: '3.5rem' }, fontWeight: 800, lineHeight: 1.1, mb: 1.5 }}
             >
-              Industrial ball valves for extreme, certified performance
+              Industrial ball valves for demanding applications
             </Typography>
             <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1rem', maxWidth: 500 }}>
               Engineered for extreme conditions. Every valve certified, traceable, and built to last.
-            </Typography>
-          </Reveal>
-        </Box>
-      </Box>
-
-      {/* Intro copy */}
-      <Box sx={{ bgcolor: 'background.default', pt: { xs: 6, md: 9 }, px: { xs: 3, md: 8 } }}>
-        <Box sx={{ maxWidth: 900, mx: 'auto' }}>
-          <Reveal>
-            <Typography sx={{ color: 'text.secondary', fontSize: '1.05rem', lineHeight: 1.8 }}>
-              Engineered for extreme conditions, our industrial ball valves are designed to
-              perform reliably in demanding applications. Every valve is certified, traceable,
-              and built to last, giving you confidence in safety, compliance, and long-term
-              operation. API 607 fire-safe certified ball valves, gate valves, and process valves
-              engineered and certified to one standard, every time — whether used as a primary
-              shut-off, valve check solution, or as part of a wider process control system.
             </Typography>
           </Reveal>
         </Box>

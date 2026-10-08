@@ -20,6 +20,8 @@ export type NavItem = {
   href: string;
   megaMenu?: MegaMenuColumn[];
   newTab?: boolean;
+  /** Desktop header shows it only from the lg breakpoint (too tight below). */
+  wideOnly?: boolean;
 };
 
 export const LEFT_NAV: NavItem[] = [
@@ -271,6 +273,7 @@ export const LEFT_NAV: NavItem[] = [
   },
   { label: "MARS® Brand", href: "/mars-brand" },
   { label: "Applications", href: "/applications" },
+  { label: "Certifications", href: "/certifications", wideOnly: true },
 ];
 
 export const RIGHT_NAV: NavItem[] = [

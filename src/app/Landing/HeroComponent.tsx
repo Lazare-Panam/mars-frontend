@@ -183,7 +183,7 @@ export default function Hero() {
               ...fadeUp(mounted, 120),
             }}
           >
-            MARS ball valves, supplied in the UK by an authorised distributor
+            Ball valve solutions for certified industrial applications
           </Typography>
 
           <Typography
@@ -199,7 +199,7 @@ export default function Hero() {
           >
             Stainless steel 2-piece, 3-piece, flanged, multi-port and sanitary
             ball valves, with fire-safe series tested to API 607. Genuine MARS
-            stock, manufacturer documentation, and prices you can see online.
+            valves, manufacturer documentation, and prices you can see online.
           </Typography>
 
           <Stack

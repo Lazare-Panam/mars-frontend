@@ -33,7 +33,7 @@ export async function generateMetadata({
   }
 
   const title = fitBrandTitle(data.name);
-  const description = `${data.name} — ${data.variants.length} stocked models. Filter by size, end connection, operating pressure and lock, and request a quote.`;
+  const description = `${data.name} — ${data.variants.length} models. Filter by size, end connection, operating pressure and lock, and request a quote.`;
   const canonical = `${SITE_URL}/series/${seriesId}`;
 
   return {

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { makeQueryClient } from "@/lib/getQueryClient";
 import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
 import { SITE_URL } from "@/lib/site";
+import { movedSeriesHref } from "@/lib/canonicalCategory";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { firstThatFits, modelsDescription } from "@/lib/seoDescription";
 
@@ -42,7 +45,8 @@ export async function generateMetadata({
   const base = firstThatFits([`${data.name} — All Models`, `${data.name} Models`, data.name]);
   const title = fitBrandTitle(base);
   const description = modelsDescription(data.name, data.variants.length);
-  const canonical = `${SITE_URL}/products/${id}/variants`;
+  const moved = movedSeriesHref(id);
+  const canonical = `${SITE_URL}${moved ? moved.variants : `/products/${id}/variants`}`;
 
   return {
     title,
@@ -59,6 +63,11 @@ export async function generateMetadata({
   };
 }
 
-export default function ProductVariantsLayout({ children }: LayoutProps) {
-  return children;
+// Prefetch the models on the server so the heading and table are in the HTML
+// crawlers read, not only after the page loads in a browser.
+export default async function ProductVariantsLayout({ params, children }: LayoutProps) {
+  const { id } = await params;
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({ queryKey: ["variants", id], queryFn: () => fetchVariants(id) });
+  return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
 }

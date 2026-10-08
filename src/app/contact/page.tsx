@@ -5,6 +5,7 @@ import ContactForm from "./ContactForm";
 import Reveal from "@/Common/Reveal";
 import { JsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import { ADDRESS } from "@/lib/address";
 
 const EMAIL = "sales@marsvalvenok.com";
 const PHONE = "+44 7368 137917";
@@ -126,7 +127,9 @@ export default function ContactPage() {
               <li>
                 Phone: <a href={`tel:${PHONE.replace(/\s/g, "")}`}>{PHONE}</a>
               </li>
-              <li>United Kingdom</li>
+              <li>
+                Address: {ADDRESS.name}, {ADDRESS.street}, {ADDRESS.locality}, {ADDRESS.postcode}, {ADDRESS.country}
+              </li>
             </Box>
           </Box>
         </Reveal>

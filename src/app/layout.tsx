@@ -16,6 +16,7 @@ import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
 import ScrollProgress from "@/Common/ScrollProgress";
 import NavProgress from "@/Common/NavProgress";
 import { SITE_URL } from "@/lib/site";
+import { ADDRESS } from "@/lib/address";
 /** */
 const geistSans = Geist({
   variable: "--font-body",
@@ -81,7 +82,13 @@ export default function RootLayout({
                     "Authorised UK distributor of MARS ball valves from Mars Valve Co., Ltd., Taiwan.",
                   email: "sales@marsvalvenok.com",
                   telephone: "+44 7368 137917",
-                  address: { "@type": "PostalAddress", addressCountry: "GB" },
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: ADDRESS.street,
+                    addressLocality: ADDRESS.locality,
+                    postalCode: ADDRESS.postcode,
+                    addressCountry: ADDRESS.countryCode,
+                  },
                 },
                 {
                   "@type": "WebSite",

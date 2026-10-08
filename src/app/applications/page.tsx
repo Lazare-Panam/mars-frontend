@@ -19,7 +19,7 @@ import { BANNER_GRADIENT } from "@/theme/brand";
 export const metadata: Metadata = {
   alternates: { canonical: "/applications" },
   title: {
-    absolute: "Ball Valve Applications by Industry | MARS Valves UK",
+    absolute: "Marine Valve and Oil & Gas Valve Applications – MARS Valve",
   },
   description:
     "MARS ball valves for oil & gas, chemical, food & pharma, power, water and marine. Find the right series, material and end connection for your industry.",
@@ -127,7 +127,7 @@ export default async function ApplicationsPage() {
                 maxWidth: 760,
               }}
             >
-              MARS ball valve applications by industry
+              Marine valve solutions for demanding environments
             </Typography>
             <Typography
               sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}

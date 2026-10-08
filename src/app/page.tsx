@@ -16,7 +16,7 @@ import type { Metadata } from "next";
 // ("REPLACE — real customer quote goes here") entries. Re-add <TestimonialsSection/>
 // below only once TESTIMONIALS in that file holds real, named customer quotes.
 
-const TITLE = "MARS Ball Valves UK — Authorised Distributor | Mars Valvenok";
+const TITLE = "Ball Valve and Industrial Valves Manufacturer in the UK - Mars Valve";
 const DESCRIPTION =
   "Authorised UK distributor of MARS ball valves from Mars Valve Co., Taiwan. 2-piece, 3-piece, flanged, sanitary and fire-safe ranges. Prices online.";
 

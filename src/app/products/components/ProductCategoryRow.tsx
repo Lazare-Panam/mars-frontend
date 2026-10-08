@@ -12,6 +12,8 @@ interface Props {
   href: string;
   /** When set, a "View Prices" row is shown linking straight to the variants table. */
   pricesHref?: string;
+  /** "row": text left, photo right (default). "card": photo on top in a bordered card. */
+  layout?: 'row' | 'card';
 }
 
 export default function ProductCategoryRow({
@@ -20,18 +22,41 @@ export default function ProductCategoryRow({
   image,
   href,
   pricesHref,
+  layout = 'row',
 }: Props) {
+  const card = layout === 'card';
   return (
     <Box
-      sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', sm: 'row' },
-        gap: { xs: 2, md: 3 },
-        alignItems: 'flex-start',
-      }}
+      sx={
+        card
+          ? {
+              display: 'flex',
+              flexDirection: 'column',
+              height: '100%',
+              bgcolor: '#fff',
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: '6px',
+              overflow: 'hidden',
+              transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+              '&:hover': { borderColor: 'primary.main', boxShadow: '0 12px 32px rgba(0,0,0,0.08)' },
+            }
+          : {
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: 2, md: 3 },
+              alignItems: 'flex-start',
+            }
+      }
     >
-      {/* TEXT (left) */}
-      <Box sx={{ flex: '1 1 0', minWidth: 0, order: { xs: 2, sm: 1 } }}>
+      {/* TEXT (left, or below the photo in a card) */}
+      <Box
+        sx={
+          card
+            ? { order: 2, p: 3, pt: 2.5, flex: 1, display: 'flex', flexDirection: 'column' }
+            : { flex: '1 1 0', minWidth: 0, order: { xs: 2, sm: 1 } }
+        }
+      >
         <Typography
           component="h2"
           sx={{
@@ -45,7 +70,7 @@ export default function ProductCategoryRow({
           {label}
         </Typography>
         <Typography
-          sx={{ color: 'text.secondary', fontSize: '0.9rem', lineHeight: 1.7, mb: 3 }}
+          sx={{ color: 'text.secondary', fontSize: '0.9rem', lineHeight: 1.7, mb: 3, flex: card ? 1 : undefined }}
         >
           {description}
         </Typography>
@@ -61,26 +86,39 @@ export default function ProductCategoryRow({
         )}
       </Box>
 
-      {/* IMAGE (right) */}
+      {/* IMAGE (right, or on top in a card) */}
       <Box
         component={Link}
         href={href}
         aria-label={`View ${label}`}
-        sx={{
-          flex: { xs: '1 1 auto', sm: '0 0 42%' },
-          order: { xs: 1, sm: 2 },
-          width: '100%',
-          position: 'relative',
-          height: { xs: 220, md: 240 },
-          display: 'block',
-        }}
+        sx={
+          card
+            ? {
+                order: 1,
+                position: 'relative',
+                height: { xs: 220, md: 250 },
+                display: 'block',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+                '& img': { transition: 'transform 0.3s ease' },
+                '&:hover img': { transform: 'scale(1.05)' },
+              }
+            : {
+                flex: { xs: '1 1 auto', sm: '0 0 42%' },
+                order: { xs: 1, sm: 2 },
+                width: '100%',
+                position: 'relative',
+                height: { xs: 220, md: 240 },
+                display: 'block',
+              }
+        }
       >
         <Image
           src={image}
           alt={label}
           fill
-          style={{ objectFit: 'contain' }}
-          sizes="(max-width: 768px) 100vw, 21vw"
+          style={{ objectFit: 'contain', padding: card ? 20 : undefined }}
+          sizes={card ? '(max-width: 900px) 100vw, 380px' : '(max-width: 768px) 100vw, 21vw'}
         />
       </Box>
     </Box>

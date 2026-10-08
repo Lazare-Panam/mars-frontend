@@ -4,27 +4,36 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import ScienceIcon from "@mui/icons-material/Science";
 import Reveal from "@/Common/Reveal";
 
-// Only badges backed by a document on file. ATEX and SIL 3 are series-specific
-// and stay off until those certificates are held (homepage build sheet, block 2).
+// Only badges backed by a manufacturer certificate (see /certifications).
 const CREDENTIALS = [
   {
     icon: <LocalFireDepartmentIcon fontSize="small" />,
     label: "API 607 fire-safe",
     desc: "Selected series: 28, 83, 88, 90, 90D, 91D",
+    href: "/certifications#fire-safe",
   },
   {
     icon: <ScienceIcon fontSize="small" />,
-    label: "SS316 (CF8M) / CF3M",
-    desc: "Standard across the stainless range",
+    label: "SIL 3 capable",
+    desc: "exida · IEC 61508, selected series",
+    href: "/certifications#sil-3",
+  },
+  {
+    icon: <WorkspacePremiumIcon fontSize="small" />,
+    label: "ISO 9001 manufacturer",
+    desc: "Mars Valve Co. quality system, LRQA",
+    href: "/certifications#iso-9001",
   },
   {
     icon: <VerifiedIcon fontSize="small" />,
     label: "Authorised by Mars Valve Co.",
     desc: "Letter of authorisation on file",
+    href: "/certifications#distributor",
   },
 ];
 
@@ -121,11 +130,14 @@ export default function TrustBar() {
               {CREDENTIALS.map((c) => (
                 <Box
                   key={c.label}
+                  component={Link}
+                  href={c.href}
                   sx={{
                     display: "flex",
                     alignItems: "center",
                     gap: 1.5,
-                    cursor: "default",
+                    textDecoration: "none",
+                    "&:hover .cred-label": { color: "primary.main" },
                     "&:hover .cred-icon": {
                       bgcolor: "primary.main",
                       color: "#fff",
@@ -152,8 +164,10 @@ export default function TrustBar() {
                   </Box>
                   <Box>
                     <Typography
+                      className="cred-label"
                       sx={{
                         color: "text.primary",
+                        transition: "color 0.2s ease",
                         fontWeight: 800,
                         fontSize: "0.9rem",
                         letterSpacing: "0.02em",
@@ -175,6 +189,24 @@ export default function TrustBar() {
                   </Box>
                 </Box>
               ))}
+            </Box>
+            <Box
+              component={Link}
+              href="/certifications"
+              sx={{
+                display: "inline-flex",
+                mt: 4,
+                color: "primary.main",
+                fontWeight: 700,
+                fontSize: "0.92rem",
+                textDecoration: "none",
+                borderBottom: "2px solid",
+                borderColor: "primary.main",
+                pb: 0.25,
+                "&:hover": { color: "primary.dark", borderColor: "primary.dark" },
+              }}
+            >
+              View all certifications &amp; downloads →
             </Box>
           </Box>
         </Reveal>
@@ -232,6 +264,7 @@ export default function TrustBar() {
           </Link>
         </Reveal>
       </Box>
+
     </Box>
   );
 }

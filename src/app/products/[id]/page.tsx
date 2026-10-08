@@ -8,6 +8,8 @@ import OnePieceSeriesCards from "./components/OnePieceSeriesCards";
 import { CATEGORIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { CATEGORY_SEO } from "@/lib/categorySeo";
+import { movedSeriesHref } from "@/lib/canonicalCategory";
 import { fitDescription } from "@/lib/seoDescription";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import Reveal from "@/Common/Reveal";
@@ -48,6 +50,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // it renders "…| Mars Valves | Mars Valvenok".
   const rawTitle = data.seo?.title ?? data.bannerTitle ?? "Mars Valvenok";
   const title = rawTitle.replace(/\s*\|\s*Mars Valve(nok)?s?\s*$/i, "").trim();
+  // Marketing's SEO title wins over the CMS one (see lib/categorySeo).
+  const seoTitle = CATEGORY_SEO[id]?.title;
   const description = fitDescription(data.seo?.description ?? data.bannerSubtitle ?? "");
   const ogImage = data.seo?.ogImage ?? data.bannerImage;
 
@@ -64,10 +68,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         }
       })()
     : `/products/${id}`;
-  const canonical = `${SITE_URL}${canonicalPath}`;
+  const moved = movedSeriesHref(id);
+  const canonical = `${SITE_URL}${moved ? moved.page : canonicalPath}`;
 
   return {
-    title: fitBrandTitle(title),
+    title: seoTitle ? { absolute: seoTitle } : fitBrandTitle(title),
     description,
     alternates: { canonical },
     openGraph: {

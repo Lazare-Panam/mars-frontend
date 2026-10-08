@@ -17,6 +17,7 @@ import ProductDetailContent from "../../components/ProductDetailContent";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { productCrumbs } from "@/lib/breadcrumbs";
+import { CATEGORY_SEO } from "@/lib/categorySeo";
 
 import MagneticWrap from "@/Common/MagneticWrap";
 
@@ -65,7 +66,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
     return <ProductDetailContent id={id} />;
   }
 
-  const hero = data.hero ?? {
+  const baseHero = data.hero ?? {
     overline: undefined,
     title: data.bannerTitle,
     titleAccent: undefined,
@@ -74,6 +75,9 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
     primaryCta: { label: "Explore Range", link: "#products" },
    
   };
+  // Marketing's SEO heading replaces the API one (see lib/categorySeo).
+  const seoH1 = CATEGORY_SEO[id]?.h1;
+  const hero = seoH1 ? { ...baseHero, title: seoH1, titleAccent: undefined } : baseHero;
 
   return (
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
@@ -111,7 +115,8 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: 38, md: 68 },
+                // Sentence-length SEO headings get a smaller size.
+                fontSize: seoH1 ? { xs: 34, md: 52 } : { xs: 38, md: 68 },
                 fontWeight: 900,
                 color: "#fff",
                 mt: 1,

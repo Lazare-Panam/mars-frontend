@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/return-policy" },
   title: "Returns Policy",
   description:
     "Our returns policy: 30-day return window, faulty goods process, and how to start a return.",

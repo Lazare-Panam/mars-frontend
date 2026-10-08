@@ -11,7 +11,9 @@ import {
   Tab,
 } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import PublicIcon from "@mui/icons-material/Public";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import PlaceIcon from "@mui/icons-material/Place";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
@@ -21,26 +23,40 @@ import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { alpha } from "@mui/material/styles";
 import Reveal from "@/Common/Reveal";
 
+// Only what's confirmed (Oct 2026): UK supply only (the MARS authorisation
+// covers the UK), UK stock series, 4–5 week factory lead time, packages made
+// to order. Dispatch days, delivery charges and tracking are confirmed per
+// order rather than promised here.
 const deliveryPoints = [
   {
-    icon: <LocalShippingIcon />,
-    title: "Standard Delivery",
-    text: "Orders dispatch within 1–2 working days and typically arrive in 2–4 working days via courier.",
+    icon: <Inventory2Icon />,
+    title: "UK Stock",
+    text: "We hold UK stock of MARS Series 10-10, 20-40, 77 and 88. Stock availability and the dispatch date are confirmed with your order.",
   },
   {
-    icon: <PublicIcon />,
-    title: "International Shipping",
-    text: "International lead times vary by destination and customs clearance — we'll confirm an estimated arrival at checkout or order confirmation.",
+    icon: <LocalShippingIcon />,
+    title: "Factory Items",
+    text: "Series and sizes not held in UK stock are supplied from the MARS factory with a lead time of 4–5 weeks, confirmed when you order.",
+  },
+  {
+    icon: <PrecisionManufacturingIcon />,
+    title: "Actuated Packages",
+    text: "Valve and actuator packages are made to order, not held ready-made. The lead time is confirmed with your quote.",
+  },
+  {
+    icon: <PlaceIcon />,
+    title: "UK Delivery Only",
+    text: "We supply MARS valves to customers in the United Kingdom only, as an authorised UK distributor.",
   },
   {
     icon: <PaymentsIcon />,
     title: "Delivery Costs",
-    text: "Free delivery on orders over £50. Smaller orders incur a flat courier charge, calculated at checkout.",
+    text: "Delivery charges depend on the size and weight of the order and are confirmed on your quote or at checkout.",
   },
   {
     icon: <TrackChangesIcon />,
-    title: "Order Tracking",
-    text: "A tracking link is emailed as soon as your order leaves our warehouse.",
+    title: "Order Updates",
+    text: "We keep you updated on your order and send dispatch details when it leaves us. For an update at any time, contact our team.",
   },
 ];
 
@@ -53,7 +69,7 @@ const returnPoints = [
   {
     icon: <BlockIcon />,
     title: "Non-Returnable Items",
-    text: "Perishable, personalised, or made-to-order items are excluded from returns unless faulty or damaged.",
+    text: "Made-to-order items, including actuated packages and factory-ordered valves, can't be returned unless faulty or damaged.",
   },
   {
     icon: <BuildCircleIcon />,
@@ -161,8 +177,8 @@ const DeliveryReturnsPage = () => {
               variant="body1"
               sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
             >
-              Everything you need to know about how we ship your order, and how to
-              return or exchange it if it's not right.
+              How we supply MARS valves in the UK, our lead times, and how to
+              return an order if something isn&apos;t right.
             </Typography>
           </Reveal>
         </Container>
@@ -207,8 +223,10 @@ const DeliveryReturnsPage = () => {
                   variant="body1"
                   sx={{ color: "text.secondary", lineHeight: 1.7 }}
                 >
-                  All orders are dispatched directly from our warehouse. Lead
-                  times below apply to standard stock items.
+                  We supply MARS valves within the United Kingdom. Lead times
+                  depend on whether your series and size is held in UK stock or
+                  ordered from the factory; we confirm the lead time and delivery
+                  cost with every quote and order.
                 </Typography>
               </Box>
             </Reveal>

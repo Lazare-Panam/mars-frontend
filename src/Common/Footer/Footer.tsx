@@ -1,4 +1,5 @@
 "use client";
+import { ADDRESS } from "@/lib/address";
 
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -13,11 +14,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "About Us", href: "/about" },
       { label: "MARS® Brand", href: "/mars-brand" },
-      {
-        label: "Certificate",
-        href: "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg",
-        newTab: true,
-      },
+      { label: "Certifications", href: "/certifications" },
       { label: "News", href: "/news" },
     ],
   },
@@ -30,6 +27,7 @@ const FOOTER_COLUMNS = [
       { label: "Multi-Port Ball Valves", href: "/products/multi-port-ball-valves" },
       { label: "Sanitary Ball Valves", href: "/products/sanitary-ball-valves" },
       { label: "Fire Safe Ball Valves", href: "/products/fire-safe-ball-valves" },
+      { label: "Actuated Packages", href: "/actuated-packages" },
       { label: "V-Port Ball Valves", href: "/products/v-port-ball-valves" },
       { label: "Product Index", href: "/product-index" },
     ],
@@ -149,8 +147,14 @@ export default function Footer() {
               <LocationOnOutlinedIcon
                 sx={{ fontSize: 16, color: "primary.light", mt: 0.2 }}
               />
-              <Typography sx={{ fontSize: "0.85rem" }}>
-                United Kingdom
+              <Typography component="address" sx={{ fontSize: "0.85rem", fontStyle: "normal", lineHeight: 1.6 }}>
+                {ADDRESS.name}
+                <br />
+                {ADDRESS.street}
+                <br />
+                {ADDRESS.locality}, {ADDRESS.postcode}
+                <br />
+                {ADDRESS.country}
               </Typography>
             </Box>
           </Box>

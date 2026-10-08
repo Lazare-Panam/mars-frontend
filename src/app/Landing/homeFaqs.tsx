@@ -51,8 +51,8 @@ export const HOME_FAQS: { q: string; a: ReactNode; text: string }[] = [
   },
   {
     q: "Do you ship internationally?",
-    text: "Yes. Every order includes the documentation needed for customs clearance.",
-    a: "Yes. Every order includes the documentation needed for customs clearance.",
+    text: "No. We're an authorised MARS distributor for the United Kingdom, so we supply customers in the UK only.",
+    a: "No. We're an authorised MARS distributor for the United Kingdom, so we supply customers in the UK only.",
   },
   {
     q: "What certifications come with each valve?",

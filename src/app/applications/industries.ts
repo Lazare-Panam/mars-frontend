@@ -23,8 +23,7 @@ export const URLS = {
   sanitaryMultiPort: "/products/sanitary-ball-valves/sanitary-multi-port-ball-valve",
   sanitaryEconomical: "/products/sanitary-ball-valves/economical-sanitary-ball-valve",
   sanitaryButterfly: "/products/sanitary-ball-valves/sanitary-butterfly-valve",
-  // There is no actuated category page; this post covers the packages.
-  actuated: "/news/actuated-ball-valves",
+  actuated: "/actuated-packages",
   fireSafeBlog: "/news/fire-safe-ball-valves",
   triClampBlog: "/news/tri-clamp-sanitary-ball-valves-cf3m-vs-cf8m",
   catalogue: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
