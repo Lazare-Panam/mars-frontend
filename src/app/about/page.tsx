@@ -14,9 +14,8 @@ import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
-import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
 import Reveal from "@/Common/Reveal";
-import MagneticWrap from "@/Common/MagneticWrap";
+import CtaBand from "@/Common/CtaBand";
 
 const LETTER_URL =
   "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg";
@@ -453,77 +452,12 @@ export default function AboutUsPage() {
 
       <Divider sx={{ borderColor: LINE }} />
 
-      {/* MANUFACTURING / CAPABILITY STRIP */}
-      <Container maxWidth="md" sx={{ py: { xs: 8, md: 10 } }}>
-        <Reveal>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: { xs: "flex-start", md: "center" },
-            justifyContent: "space-between",
-            gap: 3,
-            border: `1px solid ${LINE}`,
-            px: { xs: 3, md: 5 },
-            py: { xs: 4, md: 5 },
-            transition: "border-color 0.25s ease, box-shadow 0.25s ease",
-            "&:hover": { borderColor: ACCENT, boxShadow: "0 16px 36px rgba(0,0,0,0.08)" },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
-            <PrecisionManufacturingOutlinedIcon
-              sx={{ color: ACCENT, fontSize: 30, mt: 0.5 }}
-            />
-            <Box>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: "1.05rem",
-                  color: INK,
-                  mb: 0.5,
-                }}
-              >
-                Want to work with us?
-              </Typography>
-              <Typography
-                sx={{ fontSize: "0.9rem", color: RUST, maxWidth: 440 }}
-              >
-                Reach out to our technical sales team to discuss specifications,
-                lead times, or authorized distribution.
-              </Typography>
-            </Box>
-          </Box>
-
-          <MagneticWrap strength={0.2}>
-            <Box
-              component={Link}
-              href="/contact"
-              sx={{
-                flexShrink: 0,
-                display: "inline-block",
-                textDecoration: "none",
-                border: `1.5px solid ${ACCENT}`,
-                color: ACCENT,
-                fontWeight: 700,
-                fontSize: "0.78rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                px: 3,
-                py: 1.5,
-                transition: "all 0.15s ease",
-                whiteSpace: "nowrap",
-                "&:hover": {
-                  bgcolor: ACCENT,
-                  color: theme.palette.primary.contrastText,
-                },
-              }}
-            >
-              Contact Sales
-            </Box>
-          </MagneticWrap>
-        </Box>
-        </Reveal>
-      </Container>
+      <CtaBand
+        title="Want to work with us?"
+        text="Reach out to our technical sales team to discuss specifications, lead times or a quote for your project."
+        primary={{ label: "Contact Sales", href: "/contact#enquiry" }}
+        secondary={{ label: "Browse Products", href: "/products" }}
+      />
     </Box>
   );
 }

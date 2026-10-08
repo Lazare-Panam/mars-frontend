@@ -6,6 +6,8 @@ import { CATEGORIES } from "../../data/categories";
 import { makeQueryClient } from "@/lib/getQueryClient";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import ProductDetailClient from "./ProductDetailClient";
+import SeriesFamilyPage from "../../components/SeriesFamilyPage";
+import { findFamily } from "../../data/seriesFamilies";
 
 type Props = { params: Promise<{ id: string; productId: string }> };
 
@@ -48,6 +50,11 @@ export async function generateStaticParams() {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { id, productId } = await params;
+
+  // "By category" ranges (economical 2-piece, high performance 3-piece...)
+  // show the series grid from data/seriesFamilies.ts.
+  const family = findFamily(id, productId);
+  if (family) return <SeriesFamilyPage family={family} />;
 
   // Prefetch the product detail server-side so the name, description, specs,
   // features and applications render into the static HTML for crawlers.

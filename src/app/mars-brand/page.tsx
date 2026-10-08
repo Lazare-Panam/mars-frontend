@@ -2,11 +2,9 @@
 
 import { Box, Container, Typography, Divider, useTheme } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import GppMaybeOutlinedIcon from "@mui/icons-material/GppMaybeOutlined";
 import Reveal from "@/Common/Reveal";
-import MagneticWrap from "@/Common/MagneticWrap";
+import CtaBand from "@/Common/CtaBand";
 
 export default function MarsBrandPage() {
   const theme = useTheme();
@@ -477,95 +475,12 @@ export default function MarsBrandPage() {
       <Divider sx={{ borderColor: LINE }} />
 
       {/* REPORT COUNTERFEIT CTA */}
-      <Container maxWidth="md" sx={{ py: { xs: 8, md: 10 } }}>
-        <Reveal>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: { xs: "flex-start", md: "center" },
-            justifyContent: "space-between",
-            gap: 3,
-            border: `1px solid ${LINE}`,
-            px: { xs: 3, md: 5 },
-            py: { xs: 4, md: 5 },
-            transition:
-              "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-            "&:hover": {
-              borderColor: "primary.main",
-              transform: "translateY(-4px)",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-            },
-            "&:hover .brand-icon": {
-              transform: "scale(1.1) rotate(-6deg)",
-            },
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
-            <GppMaybeOutlinedIcon
-              className="brand-icon"
-              sx={{
-                color: ACCENT,
-                fontSize: 30,
-                mt: 0.5,
-                transition: "transform 0.25s ease",
-              }}
-            />
-            <Box>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: "1.05rem",
-                  color: INK,
-                  mb: 0.5,
-                }}
-              >
-                Seen a counterfeit MARS® valve?
-              </Typography>
-              <Typography
-                sx={{ fontSize: "0.9rem", color: RUST, maxWidth: 440 }}
-              >
-                We actively investigate and act against unauthorized use of the
-                MARS® name and mark.{" "}
-                <Link href="/contact" style={{ color: ACCENT }}>
-                  Report it to us
-                </Link>
-                .
-              </Typography>
-            </Box>
-          </Box>
-
-          <MagneticWrap strength={0.25}>
-            <Box
-              component="a"
-              href="mailto:sales@marsvalvenok.com"
-              sx={{
-                flexShrink: 0,
-                display: "inline-block",
-                textDecoration: "none",
-                border: `1.5px solid ${ACCENT}`,
-                color: ACCENT,
-                fontWeight: 700,
-                fontSize: "0.78rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                px: 3,
-                py: 1.5,
-                transition: "all 0.15s ease",
-                whiteSpace: "nowrap",
-                "&:hover": {
-                  bgcolor: ACCENT,
-                  color: theme.palette.primary.contrastText,
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              Report a Counterfeit
-            </Box>
-          </MagneticWrap>
-        </Box>
-        </Reveal>
-      </Container>
+      <CtaBand
+        title="Seen a counterfeit MARS® valve?"
+        text="We actively investigate and act against unauthorised use of the MARS® name and mark. Send us the details and photos."
+        primary={{ label: "Report a Counterfeit", href: "mailto:sales@marsvalvenok.com", external: true }}
+        secondary={{ label: "Contact Us", href: "/contact#enquiry" }}
+      />
     </Box>
   );
 }

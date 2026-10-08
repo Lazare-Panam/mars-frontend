@@ -296,8 +296,9 @@ const Navbar: React.FC = () => {
               sx={{
                 display: { xs: "none", md: "flex" },
                 flexDirection: "row",
-                gap: { md: 1.5, lg: 2.5, xl: 4 },
-                ml: 6,
+                whiteSpace: "nowrap",
+                gap: { md: 1.5, lg: 2, xl: 3.5 },
+                ml: { md: 3, xl: 6 },
               }}
             >
               {LEFT_NAV.map((item) => {
@@ -306,7 +307,13 @@ const Navbar: React.FC = () => {
                 return (
                   <Box
                     key={item.label}
-                    sx={item.wideOnly ? { display: { md: "none", lg: "block" } } : undefined}
+                    sx={
+                      typeof item.wideOnly === "number"
+                        ? { display: "none", [`@media (min-width:${item.wideOnly}px)`]: { display: "block" } }
+                        : item.wideOnly
+                          ? { display: { md: "none", lg: "block" } }
+                          : undefined
+                    }
                     // Other header links close the products dropdown.
                     onMouseEnter={() => (item.megaMenu ? openProducts() : closeCategory())}
                     onFocus={() => item.megaMenu && openProducts()}
@@ -568,8 +575,7 @@ const Navbar: React.FC = () => {
             </Box>
           </Box>
 
-          {/* Phones: Actuated Packages in the menu too (the strip only shows it in rotation). */}
-          {[...LEFT_NAV, { label: "Actuated Packages", href: "/actuated-packages" }, ...filteredRightNav].map((item: NavItem) => (
+          {[...LEFT_NAV, ...filteredRightNav].map((item: NavItem) => (
             <Box key={item.label} sx={{ borderBottom: `1px solid ${LINE}` }}>
               <Box
                 onClick={() =>

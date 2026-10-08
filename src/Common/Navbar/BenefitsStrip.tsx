@@ -4,19 +4,19 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Box, Container } from "@mui/material";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import PrecisionManufacturingOutlinedIcon from "@mui/icons-material/PrecisionManufacturingOutlined";
+import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 
 // Benefits strip under the header. Trade-first wording (per the Oct 2026
 // marketing plan): prices for standard items, quotes for projects, trade
-// accounts, and dispatch promised only for stock items. Actuated packages sit
-// here (certifications are in the main menu); trade accounts are covered by
+// accounts, and dispatch promised only for stock items. The authorised-distributor
+// claim sits here (packages and certifications are in the main menu); trade accounts are covered by
 // the Credit button in the header. Lead time: factory items 4–5 weeks.
 const BENEFITS = [
   { label: "Prices Online For Standard Items", href: "/shop", icon: SellOutlinedIcon },
   { label: "Quotes For Projects", href: "/contact#enquiry", icon: RequestQuoteOutlinedIcon },
-  { label: "Actuated Packages", href: "/actuated-packages", icon: PrecisionManufacturingOutlinedIcon },
+  { label: "Authorised MARS Distributor", href: "/mars-brand", icon: VerifiedOutlinedIcon },
   { label: "Factory Lead Time 4–5 Weeks", href: "/delivery-information", icon: LocalShippingOutlinedIcon },
 ];
 

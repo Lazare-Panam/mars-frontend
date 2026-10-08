@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Box, Container, Typography } from "@mui/material";
 import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import EventOutlinedIcon from "@mui/icons-material/EventOutlined";
@@ -10,6 +9,7 @@ import { BANNER_GRADIENT } from "@/theme/brand";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { CERT_GROUPS, FIRE_SAFE_SERIES } from "@/lib/certificates";
 import AccreditationBar from "@/Common/AccreditationBar";
+import CtaBand from "@/Common/CtaBand";
 
 const TITLE = "MARS Valve Certificates: API 607, SIL 3, ATEX & PED";
 const DESCRIPTION =
@@ -219,33 +219,13 @@ export default function CertificationsPage() {
         </Box>
       ))}
 
-      {/* CTA */}
-      <Box sx={{ py: { xs: 7, md: 9 }, textAlign: "center" }}>
-        <Container maxWidth="md">
-          <Typography component="h2" sx={{ fontSize: { xs: "1.6rem", md: "2rem" }, fontWeight: 800, mb: 1.5 }}>
-            Need certificates with your order?
-          </Typography>
-          <Typography sx={{ color: "text.secondary", mb: 3.5, lineHeight: 1.7 }}>
-            Tell us the series, size and material and we&apos;ll send the
-            datasheet and the matching certificates with your quote.
-          </Typography>
-          <Link href="/contact#enquiry" style={{ textDecoration: "none" }}>
-            <Box
-              component="span"
-              sx={{
-                display: "inline-block",
-                px: 4,
-                py: 1.75,
-                bgcolor: "primary.main",
-                color: "#fff",
-                fontWeight: 700,
-                "&:hover": { bgcolor: "primary.dark" },
-              }}
-            >
-              Request a Quote
-            </Box>
-          </Link>
-        </Container>
+      <Box sx={{ bgcolor: "#FAF6F4" }}>
+        <CtaBand
+          title="Need certificates with your order?"
+          text="Tell us the series, size and material and we'll send the datasheet and the matching certificates with your quote."
+          primary={{ label: "Request a Quote", href: "/contact#enquiry" }}
+          secondary={{ label: "Browse Products", href: "/products" }}
+        />
       </Box>
     </Box>
   );

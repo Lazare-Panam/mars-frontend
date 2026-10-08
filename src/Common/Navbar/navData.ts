@@ -20,8 +20,10 @@ export type NavItem = {
   href: string;
   megaMenu?: MegaMenuColumn[];
   newTab?: boolean;
-  /** Desktop header shows it only from the lg breakpoint (too tight below). */
-  wideOnly?: boolean;
+  /** Desktop header shows it only from the lg breakpoint (true) or from this
+   *  many px wide (number), because the header is too tight below that. It
+   *  is always in the phone menu. */
+  wideOnly?: boolean | number;
 };
 
 export const LEFT_NAV: NavItem[] = [
