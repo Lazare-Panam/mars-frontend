@@ -62,7 +62,7 @@ export const LEFT_NAV: NavItem[] = [
           },
           {
             label: "Series 77 (Three-Piece Direct Mount)",
-            href: "/products/series-77",
+            href: "/series/8",
           },
           {
             label: "Series 77SN (Three-Piece Sanitary)",

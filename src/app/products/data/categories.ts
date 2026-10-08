@@ -59,8 +59,8 @@ export const SERIES = [
       "3-piece high performance direct mount ball valves with full port and a wide range of end connections.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-77.png",
-    href: "/products/series-77",
-    pricesHref: "/products/series-77/variants",
+    href: "/series/8",
+    pricesHref: "/series/8/variants",
   },
   {
     id: "series-77sn",
