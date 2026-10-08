@@ -43,6 +43,16 @@ export const SERIES = [
     pricesHref: "/series/6/variants",
   },
   {
+    id: "series-36sn",
+    label: "Series 36SN",
+    description:
+      "Sanitary 3-way / 4-way full port direct mount ball valves with Tri-clamp or OD tube ends, FDA approved and 3-A certified.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-36sn.jpg",
+    href: "/series/7",
+    pricesHref: "/series/7/variants",
+  },
+  {
     id: "series-77",
     label: "Series 77",
     description:
