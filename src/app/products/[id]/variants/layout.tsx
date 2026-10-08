@@ -38,7 +38,12 @@ export async function generateMetadata({
   }
 
   if (!data) {
-    return { title: "Mars Valvenok" };
+    const moved = movedSeriesHref(id);
+    return {
+      title: "MARS Ball Valves — All Models",
+      robots: { index: false, follow: true },
+      ...(moved ? { alternates: { canonical: moved.variants } } : {}),
+    };
   }
 
   // Shorter fallbacks for long names (e.g. Series 77SN) so the title fits.

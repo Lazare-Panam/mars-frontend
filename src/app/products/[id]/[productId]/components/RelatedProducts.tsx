@@ -24,8 +24,8 @@ function RelatedProductCard({ catalogId, productId }: { catalogId: string; produ
       onClick={() => router.push(`/products/${catalogId}/${productId}`)}
       elevation={0}
       sx={{
-        border: '1px solid rgba(0,0,0,0.08)',
-        borderRadius: '6px',
+        border: '1px solid rgba(43,27,20,0.09)',
+        borderRadius: '16px',
         overflow: 'hidden',
         cursor: 'pointer',
         transition: 'box-shadow 0.2s ease, transform 0.2s ease',
@@ -35,13 +35,13 @@ function RelatedProductCard({ catalogId, productId }: { catalogId: string; produ
         },
       }}
     >
-      <Box sx={{ position: 'relative', pt: '65%', bgcolor: '#fff' }}>
+      <Box sx={{ position: 'relative', pt: '65%', background: 'radial-gradient(circle at 50% 40%, #FFFFFF 0%, #F6F1ED 100%)' }}>
         {data.image ? (
           <Image
             src={data.image}
             alt={data.name}
             fill
-            style={{ objectFit: 'contain', padding: '28px' }}
+            style={{ objectFit: 'contain', padding: '28px', mixBlendMode: 'multiply' }}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
@@ -51,7 +51,7 @@ function RelatedProductCard({ catalogId, productId }: { catalogId: string; produ
         )}
       </Box>
       <Box sx={{ height: '1px', bgcolor: 'rgba(0,0,0,0.06)' }} />
-      <CardContent sx={{ p: 2.5, bgcolor: '#FAF6F4' }}>
+      <CardContent sx={{ p: 2.5, bgcolor: '#fff' }}>
         <Typography sx={{ fontWeight: 700, fontSize: '0.95rem', color: 'text.primary', mb: 0.5 }}>
           {data.name}
         </Typography>

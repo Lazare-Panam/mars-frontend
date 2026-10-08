@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosClient from "./axiosClient";
+import { serverMemo } from "@/lib/serverMemo";
 
 export interface ProductSeriesVariants {
   id: string;
@@ -14,10 +15,11 @@ export interface ProductVariant {
   specs: Record<string, string>;
 }
 
-export const fetchVariants = async (id: string): Promise<ProductSeriesVariants> => {
-  const { data } = await axiosClient.get(`/api/product/${id}/variants`);
-  return data;
-};
+export const fetchVariants = (id: string): Promise<ProductSeriesVariants> =>
+  serverMemo(`variants:${id}`, async () => {
+    const { data } = await axiosClient.get(`/api/product/${id}/variants`);
+    return data;
+  });
 
 export const useProductVariants = (id: string) => {
   return useQuery({

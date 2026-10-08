@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useProductDetail } from "@/api/useProductDetail";
 import ProductDetailHero from "./components/ProductDetailHero";
+import { PRODUCT_MAXW } from "@/Common/product/ProductPageHero";
 import { productCrumbs } from "@/lib/breadcrumbs";
 
 import ProductDetailImage from "./components/ProductDetailImage";
@@ -63,20 +64,24 @@ export default function ProductDetailClient({
   }
 
   return (
-    <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: "#fff", minHeight: "100vh" }}>
       <ProductDetailHero
         name={data.name}
         breadcrumbs={productCrumbs({ categoryId: id, product: { id: productId, name: data.name } })}
+        actions={[
+          { label: "View All Models", href: `/products/${id}/${productId}/variants` },
+          { label: "Request a Quote", href: "/contact#enquiry" },
+        ]}
       />
       <Box
         sx={{
-          maxWidth: "1280px",
+          maxWidth: PRODUCT_MAXW,
           mx: "auto",
-          px: { xs: 3, md: 8 },
-          py: { xs: 6, md: 10 },
+          px: { xs: 3, md: 6 },
+          py: { xs: 5, md: 7 },
         }}
       >
-        <Grid container spacing={{ xs: 6, md: 10 }}>
+        <Grid container spacing={{ xs: 5, md: 8 }}>
           <Grid size={{ xs: 12, md: 5 }}>
             <Reveal>
               <ProductDetailImage image={data.image} name={data.name} />
@@ -87,14 +92,13 @@ export default function ProductDetailClient({
             <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <Typography
                 sx={{
-                  fontSize: "1rem",
+                  fontSize: "1.05rem",
                   color: "text.secondary",
-                  lineHeight: 1.75,
+                  lineHeight: 1.8,
                 }}
               >
                 {data.description}
               </Typography>
-              <Divider />
               <ProductSpecsTable specs={data.specs} />
               <ProductFeatureChips features={data.features} />
               <ProductApplicationsList applications={data.applications} />

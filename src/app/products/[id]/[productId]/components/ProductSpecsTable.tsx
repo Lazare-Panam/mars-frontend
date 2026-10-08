@@ -1,20 +1,32 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
+import { CARD_BORDER } from '@/Common/product/ProductPageHero';
 
 export default function ProductSpecsTable({ specs }: { specs: Record<string, string> }) {
   if (!specs || Object.keys(specs).length === 0) return null;
 
   return (
     <Box>
-      <Typography sx={{ fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'primary.main', mb: 2 }}>
+      <Typography sx={{ fontWeight: 800, fontSize: '1.05rem', color: 'text.primary', mb: 1.5 }}>
         Specifications
       </Typography>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
-        {Object.entries(specs).map(([label, value]) => (
-          <Box key={label} sx={{ display: 'flex', justifyContent: 'space-between', py: 1, borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
-            <Typography sx={{ color: 'text.secondary', fontSize: '0.85rem' }}>{label}</Typography>
-            <Typography sx={{ color: 'text.primary', fontWeight: 600, fontSize: '0.85rem' }}>{value}</Typography>
+      <Box sx={{ border: CARD_BORDER, borderRadius: '14px', overflow: 'hidden', bgcolor: '#fff' }}>
+        {Object.entries(specs).map(([label, value], i) => (
+          <Box
+            key={label}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              gap: 3,
+              px: 2.5,
+              py: 1.4,
+              bgcolor: i % 2 ? '#FCFAF8' : '#fff',
+              borderTop: i === 0 ? 'none' : '1px solid rgba(43,27,20,0.06)',
+            }}
+          >
+            <Typography sx={{ color: 'text.secondary', fontSize: '0.88rem', flexShrink: 0 }}>{label}</Typography>
+            <Typography sx={{ color: 'text.primary', fontWeight: 600, fontSize: '0.88rem', textAlign: 'right' }}>{value}</Typography>
           </Box>
         ))}
       </Box>

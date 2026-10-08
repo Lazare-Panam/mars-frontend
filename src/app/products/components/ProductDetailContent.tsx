@@ -16,6 +16,7 @@ import ProductDetailImage from "../[id]/[productId]/components/ProductDetailImag
 import ProductSpecsTable from "../[id]/[productId]/components/ProductSpecsTable";
 import ProductFeatureChips from "../[id]/[productId]/components/ProductFeatureChips";
 import ProductApplicationsList from "../[id]/[productId]/components/ProductApplicationsList";
+import { PRODUCT_MAXW } from "@/Common/product/ProductPageHero";
 import RelatedProducts from "../[id]/[productId]/components/RelatedProducts";
 interface Props {
   id: string;
@@ -57,32 +58,40 @@ export default function ProductDetailContent({ id }: Props) {
   }
 
   return (
-    <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
-      <ProductDetailHero name={data.name} breadcrumbs={productCrumbs({ categoryId: id })} />
+    <Box sx={{ bgcolor: "#fff", minHeight: "100vh" }}>
+      <ProductDetailHero
+        name={data.name}
+        breadcrumbs={productCrumbs({ categoryId: id })}
+        actions={[
+          { label: "View All Models", href: `/products/${id}/variants` },
+          { label: "Request a Quote", href: "/contact#enquiry" },
+        ]}
+      />
       <Box
         sx={{
-          maxWidth: "1280px",
+          maxWidth: PRODUCT_MAXW,
           mx: "auto",
-          px: { xs: 3, md: 8 },
-          py: { xs: 6, md: 10 },
+          px: { xs: 3, md: 6 },
+          py: { xs: 5, md: 7 },
         }}
       >
-        <Grid container spacing={{ xs: 6, md: 10 }}>
+        <Grid container spacing={{ xs: 5, md: 8 }}>
           <Grid size={{ xs: 12, md: 5 }}>
-            <ProductDetailImage image={data.image} name={data.name} />
+            <Box sx={{ position: { md: "sticky" }, top: { md: 100 } }}>
+              <ProductDetailImage image={data.image} name={data.name} />
+            </Box>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
               <Typography
                 sx={{
-                  fontSize: "1rem",
+                  fontSize: "1.05rem",
                   color: "text.secondary",
-                  lineHeight: 1.75,
+                  lineHeight: 1.8,
                 }}
               >
                 {data.description}
               </Typography>
-              <Divider />
               <ProductSpecsTable specs={data.specs} />
               <ProductFeatureChips features={data.features} />
               <ProductApplicationsList applications={data.applications} />
@@ -96,10 +105,10 @@ export default function ProductDetailContent({ id }: Props) {
                   bgcolor: "primary.main",
                   color: "#fff",
                   fontWeight: 700,
-                  borderRadius: "4px",
+                  borderRadius: "10px",
                   textTransform: "none",
-                  px: 3,
-                  py: 1.25,
+                  px: 3.5,
+                  py: 1.4,
                   boxShadow: "none",
                   "&:hover": { bgcolor: "primary.dark", boxShadow: "none" },
                 }}

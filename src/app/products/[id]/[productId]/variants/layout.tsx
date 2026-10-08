@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { fetchVariants, ProductSeriesVariants } from "@/api/useProductVariants";
 import { fetchProductDetail } from "@/api/useProductDetail";
-import { canonicalProductPath } from "@/lib/canonicalCategory";
+import { canonicalProductPath, movedSeriesHref } from "@/lib/canonicalCategory";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { firstThatFits, modelsDescription } from "@/lib/seoDescription";
 
@@ -17,7 +17,8 @@ export async function generateMetadata({
   params,
 }: Pick<Props, "params">): Promise<Metadata> {
   const { id, productId } = await params;
-  const canonical = `${await canonicalProductPath(id, productId)}/variants`;
+  const moved = movedSeriesHref(productId);
+  const canonical = moved ? moved.variants : `${await canonicalProductPath(id, productId)}/variants`;
 
   let data: ProductSeriesVariants | null = null;
   try {

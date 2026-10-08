@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { fetchSeriesVariants } from "@/api/useSeriesCatalog";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { makeQueryClient } from "@/lib/getQueryClient";
+import { fetchConfiguratorState, fetchSeriesCategory, fetchSeriesVariants } from "@/api/useSeriesCatalog";
 import { ProductSeriesVariants } from "@/api/useProductVariants";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
@@ -51,6 +53,14 @@ export async function generateMetadata({
   };
 }
 
-export default function SeriesLayout({ children }: LayoutProps) {
-  return children;
+// Prefetch the series and its configurator on the server so the heading,
+// specs and options are in the HTML crawlers read.
+export default async function SeriesLayout({ params, children }: LayoutProps) {
+  const { seriesId } = await params;
+  const queryClient = makeQueryClient();
+  await Promise.all([
+    queryClient.prefetchQuery({ queryKey: ["series-category", seriesId], queryFn: () => fetchSeriesCategory(seriesId) }),
+    queryClient.prefetchQuery({ queryKey: ["series-configurator", seriesId, {}], queryFn: () => fetchConfiguratorState(seriesId, {}) }),
+  ]);
+  return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
 }

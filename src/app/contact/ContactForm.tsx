@@ -6,17 +6,22 @@ import {
   TextField,
   Button,
   Typography,
-  Paper,
   Alert,
   CircularProgress,
   Grid,
   Grow,
+  InputAdornment,
 } from '@mui/material';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutlineOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutlined';
+import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
+import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useSubmitEnquiry } from '@/api/useSubmitEnquiry';
 import { quoteMessage, cartQuoteMessage } from '@/lib/quote';
 import { useQuoteStore } from '@/store/useQuoteStore';
-import Reveal from '@/Common/Reveal';
-import MagneticWrap from '@/Common/MagneticWrap';
 
 interface EnquiryFormData {
   userName: string;
@@ -36,14 +41,41 @@ const initialFormState: EnquiryFormData = {
   message: '',
 };
 
+const MAX_MESSAGE = 5000;
+
+// Labels sit above soft filled inputs; the outline only appears on focus.
 const fieldSx = {
   '& .MuiOutlinedInput-root': {
-    transition: 'box-shadow 0.2s ease',
+    bgcolor: '#F8F5F3',
+    borderRadius: '10px',
+    transition: 'box-shadow 0.2s ease, background-color 0.2s ease',
+    '& fieldset': { borderColor: 'transparent' },
+    '&:hover fieldset': { borderColor: 'rgba(43,27,20,0.15)' },
+    '&.Mui-focused': { bgcolor: '#fff', boxShadow: '0 0 0 4px rgba(231,57,15,0.12)' },
+    '&.Mui-focused fieldset': { borderColor: 'primary.main', borderWidth: '1.5px' },
   },
-  '& .MuiOutlinedInput-root.Mui-focused': {
-    boxShadow: '0 0 0 4px rgba(231,57,15,0.12)',
-  },
+  '& .MuiInputBase-input::placeholder': { color: 'text.secondary', opacity: 0.7 },
 };
+
+function FieldLabel({ children, required, hint }: { children: React.ReactNode; required?: boolean; hint?: string }) {
+  return (
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 0.75 }}>
+      <Typography component="span" sx={{ fontSize: '0.88rem', fontWeight: 700, color: 'text.primary' }}>
+        {children}
+        {required && <Box component="span" sx={{ color: 'primary.main', ml: 0.25 }}>*</Box>}
+      </Typography>
+      {hint && <Typography component="span" sx={{ fontSize: '0.75rem', color: 'text.secondary' }}>{hint}</Typography>}
+    </Box>
+  );
+}
+
+const icon = (Icon: typeof PersonOutlineIcon) => ({
+  startAdornment: (
+    <InputAdornment position="start">
+      <Icon sx={{ fontSize: 19, color: 'text.secondary' }} />
+    </InputAdornment>
+  ),
+});
 
 export default function ContactForm() {
   // Arriving from a "Request quote" button: the part number is handed over in
@@ -116,104 +148,61 @@ export default function ContactForm() {
     });
   };
 
+  const field = (
+    key: keyof EnquiryFormData,
+    opts: { label: string; placeholder: string; required?: boolean; hint?: string; Icon?: typeof PersonOutlineIcon; type?: string },
+  ) => (
+    <>
+      <FieldLabel required={opts.required} hint={opts.hint}>{opts.label}</FieldLabel>
+      <TextField
+        fullWidth
+        type={opts.type}
+        placeholder={opts.placeholder}
+        value={formData[key]}
+        onChange={handleChange(key)}
+        error={!!errors[key]}
+        helperText={errors[key]}
+        disabled={isPending}
+        slotProps={{ input: opts.Icon ? icon(opts.Icon) : undefined }}
+        sx={fieldSx}
+      />
+    </>
+  );
+
   return (
-    <Paper
-      elevation={0}
-      sx={{
-        width: '100%',
-        maxWidth: 900,
-        p: { xs: 4, md: 6 },
-        border: '1px solid',
-        borderColor: 'primary.light',
-        borderRadius: 2,
-      }}
-    >
-      <Reveal>
-        <Typography variant="h5" component="h2" sx={{ fontWeight: 'bold' }} gutterBottom>
-          {sku ? 'Request a quote' : 'Send your enquiry'}
-        </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-          {sku
-            ? `Add your details and quantity for ${sku} and our team will send you a price shortly.`
-            : 'Fill in your details and requirements and our team will get back to you.'}
-        </Typography>
-      </Reveal>
+    <Box>
+      <Typography component="h2" sx={{ fontSize: { xs: '1.6rem', md: '1.9rem' }, fontWeight: 800, letterSpacing: '-0.01em', mb: 0.75 }}>
+        {sku ? 'Request a quote' : 'Send your enquiry'}
+      </Typography>
+      <Typography sx={{ color: 'text.secondary', mb: 3.5 }}>
+        {sku
+          ? `Add your details and quantity for ${sku} and our team will send you a price.`
+          : 'Fill in your details and requirements. Fields marked * are required.'}
+      </Typography>
 
       <Grow in={isSuccess} unmountOnExit>
-        <Alert severity="success" sx={{ mb: 3 }} onClose={reset}>
-          Thanks — your enquiry has been received. We'll be in touch soon.
+        <Alert severity="success" sx={{ mb: 3, borderRadius: '10px' }} onClose={reset}>
+          Thanks, your enquiry has been received. We&apos;ll be in touch soon.
         </Alert>
       </Grow>
       <Grow in={isError} unmountOnExit>
-        <Alert severity="error" sx={{ mb: 3 }} onClose={reset}>
+        <Alert severity="error" sx={{ mb: 3, borderRadius: '10px' }} onClose={reset}>
           Something went wrong submitting your enquiry. Please try again.
         </Alert>
       </Grow>
 
-      <Reveal delay={150}>
       <Box component="form" onSubmit={handleSubmit} noValidate>
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              label="Name"
-              value={formData.userName}
-              onChange={handleChange('userName')}
-              error={!!errors.userName}
-              helperText={errors.userName}
-              disabled={isPending}
-              sx={fieldSx}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              label="Email"
-              type="email"
-              value={formData.userEmail}
-              onChange={handleChange('userEmail')}
-              error={!!errors.userEmail}
-              helperText={errors.userEmail}
-              disabled={isPending}
-              sx={fieldSx}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              label="Company"
-              value={formData.userCompany}
-              onChange={handleChange('userCompany')}
-              error={!!errors.userCompany}
-              helperText={errors.userCompany}
-              disabled={isPending}
-              sx={fieldSx}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <TextField
-              fullWidth
-              label="Country"
-              value={formData.userCountry}
-              onChange={handleChange('userCountry')}
-              disabled={isPending}
-              sx={fieldSx}
-            />
-          </Grid>
+        <Grid container spacing={2.5}>
+          <Grid size={{ xs: 12, md: 6 }}>{field('userName', { label: 'Name', placeholder: 'Jane Smith', required: true, Icon: PersonOutlineIcon })}</Grid>
+          <Grid size={{ xs: 12, md: 6 }}>{field('userEmail', { label: 'Email', placeholder: 'jane@company.com', required: true, Icon: MailOutlineIcon, type: 'email' })}</Grid>
+          <Grid size={{ xs: 12, md: 6 }}>{field('userCompany', { label: 'Company', placeholder: 'Company name', required: true, Icon: BusinessOutlinedIcon })}</Grid>
+          <Grid size={{ xs: 12, md: 6 }}>{field('userCountry', { label: 'Country', placeholder: 'United Kingdom', Icon: PublicOutlinedIcon })}</Grid>
+          <Grid size={12}>{field('product', { label: 'Product or part number', placeholder: 'e.g. Series 77, 1" NPT', hint: 'Optional', Icon: Inventory2OutlinedIcon })}</Grid>
           <Grid size={12}>
+            <FieldLabel required>Message</FieldLabel>
             <TextField
               fullWidth
-              label="Product or part number (optional)"
-              value={formData.product}
-              onChange={handleChange('product')}
-              disabled={isPending}
-              sx={fieldSx}
-            />
-          </Grid>
-          <Grid size={12}>
-            <TextField
-              fullWidth
-              label="Message"
+              placeholder="Size, pressure, end connection, media, quantity and anything else that helps us quote."
               value={formData.message}
               onChange={handleChange('message')}
               error={!!errors.message}
@@ -221,37 +210,43 @@ export default function ContactForm() {
               multiline
               minRows={5}
               disabled={isPending}
+              slotProps={{ htmlInput: { maxLength: MAX_MESSAGE } }}
               sx={fieldSx}
             />
+            <Typography sx={{ textAlign: 'right', fontSize: '0.75rem', color: 'text.secondary', mt: 0.75 }}>
+              {formData.message.length} / {MAX_MESSAGE}
+            </Typography>
           </Grid>
           <Grid size={12}>
-            {/* flex column wrapper: MagneticWrap renders an inline-block Box,
-                which would let the fullWidth Button's width:100% collapse to
-                its intrinsic size. As a flex item in a column flex container
-                it gets blockified and stretched to full width instead. */}
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <MagneticWrap strength={0.15}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  fullWidth
-                  disabled={isPending}
-                  sx={{
-                    py: 1.5,
-                    transition: 'background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease',
-                    '&:hover': { transform: 'translateY(-2px)' },
-                  }}
-                >
-                  {isPending ? <CircularProgress size={24} color="inherit" /> : 'Submit Enquiry'}
-                </Button>
-              </MagneticWrap>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, color: 'text.secondary', fontSize: '0.82rem' }}>
+                <LockOutlinedIcon sx={{ fontSize: 16 }} />
+                We only use your details to reply to this enquiry.
+              </Box>
+              <Button
+                type="submit"
+                variant="contained"
+                disableElevation
+                disabled={isPending}
+                endIcon={isPending ? undefined : <ArrowForwardIcon />}
+                sx={{
+                  px: 3.5,
+                  py: 1.4,
+                  borderRadius: '10px',
+                  textTransform: 'none',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  boxShadow: '0 10px 24px rgba(231,57,15,0.28)',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 14px 30px rgba(231,57,15,0.34)' },
+                }}
+              >
+                {isPending ? <CircularProgress size={22} color="inherit" /> : 'Submit Enquiry'}
+              </Button>
             </Box>
           </Grid>
         </Grid>
       </Box>
-      </Reveal>
-    </Paper>
+    </Box>
   );
 }

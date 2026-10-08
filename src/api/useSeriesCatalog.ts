@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosClient from "./axiosClient";
+import { serverMemo } from "@/lib/serverMemo";
 import { ProductSeriesVariants, ProductVariant } from "./useProductVariants";
 
 // --- Shapes returned by the new SQL-backed SeriesProduct API (Mars.API) ---
@@ -48,12 +49,11 @@ interface SeriesProductDto {
   specs: SeriesSpec[];
 }
 
-export const fetchSeriesCategories = async (): Promise<SeriesCategory[]> => {
-  const { data } = await axiosClient.get<SeriesCategory[]>(
-    `/api/SeriesProduct/categories`,
-  );
-  return data;
-};
+export const fetchSeriesCategories = (): Promise<SeriesCategory[]> =>
+  serverMemo("series-categories", async () => {
+    const { data } = await axiosClient.get<SeriesCategory[]>(`/api/SeriesProduct/categories`);
+    return data;
+  });
 
 export const fetchSeriesCategory = async (
   id: string,
@@ -71,8 +71,8 @@ export const fetchSeriesVariants = async (
 ): Promise<ProductSeriesVariants> => {
   const [cats, productsRes] = await Promise.all([
     fetchSeriesCategories(),
-    axiosClient.get<SeriesProductDto[]>(
-      `/api/SeriesProduct/categories/${id}/products`,
+    serverMemo(`series-products:${id}`, () =>
+      axiosClient.get<SeriesProductDto[]>(`/api/SeriesProduct/categories/${id}/products`),
     ),
   ]);
 

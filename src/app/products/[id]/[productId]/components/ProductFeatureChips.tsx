@@ -1,30 +1,39 @@
 'use client';
 
-import { Box, Typography, Chip } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
+import { CARD_BORDER } from '@/Common/product/ProductPageHero';
 
 export default function ProductFeatureChips({ features }: { features: string[] }) {
   if (!features?.length) return null;
 
   return (
     <Box>
-      <Typography sx={{ fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'primary.main', mb: 2 }}>
+      <Typography sx={{ fontWeight: 800, fontSize: '1.05rem', color: 'text.primary', mb: 1.5 }}>
         Features
       </Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
         {features.map((f) => (
-          <Chip
+          <Box
             key={f}
-            label={f}
-            size="small"
+            component="span"
             sx={{
-              fontSize: '0.75rem',
-              height: 26,
-              bgcolor: 'rgba(231,57,15,0.08)',
-              color: 'primary.main',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 0.75,
+              px: 1.5,
+              py: 0.75,
+              borderRadius: '999px',
+              border: CARD_BORDER,
+              bgcolor: '#fff',
+              fontSize: '0.82rem',
               fontWeight: 600,
-              borderRadius: '3px',
+              color: 'text.primary',
             }}
-          />
+          >
+            <CheckIcon sx={{ fontSize: 15, color: 'primary.main' }} />
+            {f}
+          </Box>
         ))}
       </Box>
     </Box>

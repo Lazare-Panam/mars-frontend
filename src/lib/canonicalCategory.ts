@@ -71,7 +71,13 @@ export async function canonicalProductPath(
   visitedCategoryId: string,
   productId: string,
 ): Promise<string> {
+  // Series that moved to /series/N point straight there (no canonical chain
+  // via /products/{series}); a product id equal to its category id is the
+  // category page itself (e.g. /products/one-piece-ball-valves/one-piece-ball-valves).
+  const moved = movedSeriesHref(productId);
+  if (moved) return moved.page;
   if (SERIES_IDS.has(productId)) return `/products/${productId}`;
+  if (productId === visitedCategoryId) return `/products/${productId}`;
   const category = (await canonicalCategoryFor(productId)) ?? visitedCategoryId;
   return `/products/${category}/${productId}`;
 }

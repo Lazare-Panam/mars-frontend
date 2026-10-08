@@ -1,4 +1,4 @@
-import { CATEGORIES } from "@/app/products/data/categories";
+import { CATEGORIES, SERIES } from "@/app/products/data/categories";
 
 export type Crumb = { label: string; href?: string; mono?: boolean };
 
@@ -16,7 +16,7 @@ export function productCrumbs({
   product?: { id: string; name: string };
   extra?: Crumb[];
 }): Crumb[] {
-  const category = CATEGORIES.find((c) => c.id === categoryId);
+  const category = CATEGORIES.find((c) => c.id === categoryId) ?? SERIES.find((c) => c.id === categoryId);
   return [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },

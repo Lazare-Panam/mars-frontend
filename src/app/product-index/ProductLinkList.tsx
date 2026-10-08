@@ -99,7 +99,8 @@ export default function ProductLinkList({
               <h3 className={styles.productHeading}>
                 {product.hasDetail ? (
                   <Link
-                    href={`/products/${cat.id}/${product.id}`}
+                    // A product with the category's own id is the category page.
+                    href={product.id === cat.id ? `/products/${cat.id}` : `/products/${cat.id}/${product.id}`}
                     className={styles.productLink}
                   >
                     {product.name}

@@ -5,7 +5,7 @@ import { fetchProductDetail } from "@/api/useProductDetail";
 import { fetchVariants } from "@/api/useProductVariants";
 import ProductCatalogPageClient from "./components/ProductCatalogPageClient";
 import OnePieceSeriesCards from "./components/OnePieceSeriesCards";
-import { CATEGORIES } from "../data/categories";
+import { CATEGORIES, SERIES } from "../data/categories";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { CATEGORY_SEO } from "@/lib/categorySeo";
@@ -42,7 +42,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   if (!data) {
-    return { title: "Mars Valvenok" };
+    // No catalogue record (e.g. a series that moved to /series/N): name the
+    // page after the series/category and point Google at the live URL, so it
+    // never ships the generic "Mars Valvenok" title twice.
+    const moved = movedSeriesHref(id);
+    const label = [...CATEGORIES, ...SERIES].find((c) => c.id === id)?.label;
+    return {
+      title: label ?? "MARS Ball Valves",
+      ...(moved ? { alternates: { canonical: moved.page }, robots: { index: false, follow: true } } : {}),
+    };
   }
 
   // The %s | Mars Valvenok template (see root layout) appends the brand suffix,
