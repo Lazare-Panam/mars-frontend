@@ -44,7 +44,7 @@ export const VALVE_TYPES = [
       { name: "High Performance 2-Piece Flanged Ball Valve", href: `/products/flanged-ball-valves/high-performance-two-piece-flanged-ball-valve`, image: `${IMG}/flanged/hp-flanged.png` },
       { name: "Wafer Type Flanged Ball Valve", href: `/products/flanged-ball-valves/wafer-type-flanged-ball-valve`, image: `${IMG}/flanged/water-type.png` },
       { name: "3-Piece Flanged Ball Valve", href: `/products/flanged-ball-valves/three-piece-flanged-ball-valve`, image: `${IMG}/flanged/3-piece.jpg` },
-      { name: "Steam Jacketed Ball Valve", href: `/products/flanged-ball-valves/steam-jacketed-flanged-ball-valve`, image: `${IMG}/flanged/3-piece.jpg` },
+      { name: "Steam Jacketed Ball Valve", href: `/products/flanged-ball-valves/steam-jacketed-flanged-ball-valve`, image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/steam-jacketed-flanged-ball-valve/series-90j.jpg" },
     ],
     image: `${IMG}/flanged/hp-flanged.png`,
     alt: "MARS flanged ball valve",
