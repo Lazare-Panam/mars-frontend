@@ -8,7 +8,7 @@ export const SERIES = [
     description:
       "Robust 1-piece reduced port ball valves rated to 2000 PSI for high pressure threaded-line service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/one-piece/10-10.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/one-piece-ball-valves/series-10-10.png",
     href: "/series/4",
     pricesHref: "/series/4/variants",
   },
@@ -18,7 +18,7 @@ export const SERIES = [
     description:
       "2-piece full port ball valves rated to 1000 PSI for general industrial service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/eco-2.jpg",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
     href: "/series/5",
     pricesHref: "/series/5/variants",
   },
@@ -28,7 +28,7 @@ export const SERIES = [
     description:
       "2-piece direct mount full port ball valves with ISO 5211 mounting pad for actuated service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/two-piece/hp-2.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-two-piece-ball-valve/series-22.png",
     href: "/series/3",
     pricesHref: "/series/3/variants",
   },
@@ -58,7 +58,7 @@ export const SERIES = [
     description:
       "3-piece full bore maintainable ball valves with blow-out proof stem, lockable lever and steam-rated carbon-filled R-PTFE seats.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/catalogs/series-50.jpg",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-three-piece-ball-valve/series-50.jpg",
     href: "/series/10",
     pricesHref: "/series/10/variants",
   },
@@ -68,7 +68,7 @@ export const SERIES = [
     description:
       "3-piece high performance direct mount ball valves with full port and a wide range of end connections.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-77.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-77.png",
     href: "/series/8",
     pricesHref: "/series/8/variants",
   },
@@ -88,7 +88,7 @@ export const SERIES = [
     description:
       "3-piece fire safe ball valves certified to API 607 7th Edition, rated to 2000 PSI.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-83.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-83.png",
     href: "/products/series-83",
     pricesHref: "/products/series-83/variants",
   },
@@ -98,7 +98,7 @@ export const SERIES = [
     description:
       "3-piece fire safe metal seated ball valves with direct mount design for severe service up to 2000 PSI.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-88.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-88.png",
     href: "/products/series-88",
     pricesHref: "/products/series-88/variants",
   },
@@ -121,7 +121,7 @@ export const CATEGORIES = [
     description:
       "Compact, high pressure stainless steel ball valves for industrial fluid control.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/one-piece/10-10.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/one-piece-ball-valves/series-10-10.png",
     href: "/products/one-piece-ball-valves",
   },
   {
@@ -130,7 +130,7 @@ export const CATEGORIES = [
     description:
       "Versatile two-piece ball valves available in economical, high performance, and high pressure variants.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/one-piece/10-10.png",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
     href: "/products/two-piece-ball-valves",
   },
   {
@@ -139,7 +139,7 @@ export const CATEGORIES = [
     description:
       "Fully maintainable three-piece ball valves for process and industrial applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/eco-3.jpg",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-three-piece-ball-valve/series-50.jpg",
     href: "/products/three-piece-ball-valves",
   },
   {
