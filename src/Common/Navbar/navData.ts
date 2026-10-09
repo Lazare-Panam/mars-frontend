@@ -78,7 +78,7 @@ export const LEFT_NAV: NavItem[] = [
           },
           {
             label: "Series 83 (Three-Piece Fire Safe)",
-            href: "/products/series-83",
+            href: "/series/12",
           },
           {
             label: "Series 88 (Three-Piece Metal Seated)",

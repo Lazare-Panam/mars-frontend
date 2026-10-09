@@ -99,8 +99,8 @@ export const SERIES = [
       "3-piece fire safe ball valves certified to API 607 7th Edition, rated to 2000 PSI.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-83.png",
-    href: "/products/series-83",
-    pricesHref: "/products/series-83/variants",
+    href: "/series/12",
+    pricesHref: "/series/12/variants",
   },
   {
     id: "series-88",
