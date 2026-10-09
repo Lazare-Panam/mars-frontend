@@ -63,6 +63,16 @@ export const SERIES = [
     pricesHref: "/series/10/variants",
   },
   {
+    id: "series-50sn",
+    label: "Series 50SN",
+    description:
+      "3-piece full bore hygienic manual ball valves with cavity-filled PTFE seats and Tri-clamp or short-welding ends, FDA compliant.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-50sn.png",
+    href: "/series/11",
+    pricesHref: "/series/11/variants",
+  },
+  {
     id: "series-77",
     label: "Series 77",
     description:
