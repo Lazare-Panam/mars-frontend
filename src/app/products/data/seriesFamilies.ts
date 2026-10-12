@@ -27,6 +27,8 @@ export type SeriesFamily = {
   title: string;
   kind: string;
   intro: string;
+  /** Links to the sub-ranges, shown on a category-level page (crawlable). */
+  types?: { label: string; href: string }[];
   series: FamilySeries[];
 };
 
@@ -187,6 +189,11 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
   {
     categoryId: "multi-port-ball-valves",
     title: "Multi-Port Ball Valves",
+    types: [
+      { label: "3-Way Ball Valves", href: "/products/multi-port-ball-valves/three-way-multi-port-ball-valve" },
+      { label: "3/4/5-Way Ball Valves", href: "/products/multi-port-ball-valves/three-four-five-way-ball-valve" },
+      { label: "Diverter Ball Valves", href: "/products/multi-port-ball-valves/diverter-ball-valve" },
+    ],
     kind: "Multi-port",
     intro: "3-way, 4-way and 5-way MARS ball valves for diverting, mixing and switching flow, including direct-mount, flanged and diverter designs.",
     series: [

@@ -251,6 +251,35 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
             {configurable ? "Configure online where marked, or ask us for any series." : "Ask us for sizes, materials and a price on any series."}
           </Typography>
         </Box>
+        {family.types && family.types.length > 0 && (
+          <Box component="nav" aria-label="Browse by type" sx={{ display: "flex", flexWrap: "wrap", gap: 1.25, mb: 3.5 }}>
+            {family.types.map((t) => (
+              <Box
+                key={t.href}
+                component={Link}
+                href={t.href}
+                sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  px: 2,
+                  py: 1,
+                  borderRadius: "999px",
+                  bgcolor: "#fff",
+                  border: CARD_BORDER,
+                  color: "text.primary",
+                  fontWeight: 700,
+                  fontSize: "0.9rem",
+                  textDecoration: "none",
+                  transition: "border-color .15s ease, color .15s ease",
+                  "&:hover": { borderColor: "primary.main", color: "primary.main" },
+                }}
+              >
+                {t.label} <ArrowForwardIcon sx={{ fontSize: 16 }} />
+              </Box>
+            ))}
+          </Box>
+        )}
         <Box sx={{ display: "grid", gap: 3, gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" } }}>
           {family.series.map((s) => (
             <SeriesCard key={s.name} s={s} title={family.title} />

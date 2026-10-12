@@ -6,6 +6,7 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
+import Link from "next/link";
 
 type ProductCardProps = {
   id: string;
@@ -15,18 +16,18 @@ type ProductCardProps = {
   thumbnailImage?: string;
   tag?: string;
   materialBadge?: string;
-  onClick: (id: string) => void;
+  /** Where "View range" goes; a real link so crawlers can follow it. */
+  href: string;
 };
 
 export default function ProductCard({
-  id,
   name,
   subtitle,
   description,
   thumbnailImage,
   tag,
   materialBadge,
-  onClick,
+  href,
 }: ProductCardProps) {
   return (
     <Card
@@ -146,7 +147,8 @@ export default function ProductCard({
           variant="contained"
           fullWidth
           size="small"
-          onClick={() => onClick(id)}
+          component={Link}
+          href={href}
           sx={{
             borderRadius: 0,
             fontWeight: 700,
