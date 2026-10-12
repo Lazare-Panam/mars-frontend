@@ -82,7 +82,7 @@ export const LEFT_NAV: NavItem[] = [
           },
           {
             label: "Series 88 (Three-Piece Metal Seated)",
-            href: "/products/series-88",
+            href: "/series/13",
           },
           {
             label: "Series 90D (Two-Piece Flanged Metal Seated)",

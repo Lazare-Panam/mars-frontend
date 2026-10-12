@@ -162,7 +162,7 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
           { label: "Series 22", href: "/series/3" },
           { label: "Series 33", href: "/series/6" },
           { label: "Series 77", href: "/series/8" },
-          { label: "Series 88", href: "/products/series-88" },
+          { label: "Series 88", href: "/series/13" },
         ],
       },
     ],

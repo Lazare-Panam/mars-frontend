@@ -109,8 +109,8 @@ export const SERIES = [
       "3-piece fire safe metal seated ball valves with direct mount design for severe service up to 2000 PSI.",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-88.png",
-    href: "/products/series-88",
-    pricesHref: "/products/series-88/variants",
+    href: "/series/13",
+    pricesHref: "/series/13/variants",
   },
   {
     id: "series-90d",
