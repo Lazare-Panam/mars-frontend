@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitBrandTitle } from "@/lib/seoTitle";
 import { fetchProductDetail, ProductDetail } from "@/api/useProductDetail";
 import { canonicalProductPath } from "@/lib/canonicalCategory";
 import { fitDescription } from "@/lib/seoDescription";
@@ -40,7 +41,8 @@ export async function generateMetadata({
   const canonical = await canonicalProductPath(id, productId);
 
   return {
-    title,
+    // Drop the " | Mars Valvenok" suffix when it would push the title past ~65 chars.
+    title: fitBrandTitle(title),
     description,
     alternates: { canonical },
     openGraph: {
