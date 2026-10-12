@@ -79,7 +79,11 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         {
           heading: "Multi-Port",
           href: `${P}/multi-port-ball-valves`,
-          links: [{ label: "View all multi-port ball valves", href: `${P}/multi-port-ball-valves` }],
+          links: [
+            { label: "3-Way Ball Valve", href: `${P}/multi-port-ball-valves/three-way-multi-port-ball-valve` },
+            { label: "3/4/5-Way Ball Valve", href: `${P}/multi-port-ball-valves/three-four-five-way-ball-valve` },
+            { label: "Diverter Ball Valve", href: `${P}/multi-port-ball-valves/diverter-ball-valve` },
+          ],
         },
         {
           heading: "V-Port",

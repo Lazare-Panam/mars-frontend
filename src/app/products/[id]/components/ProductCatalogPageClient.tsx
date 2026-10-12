@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import {
   Box,
@@ -27,7 +26,6 @@ import MagneticWrap from "@/Common/MagneticWrap";
 const ctaHref = (link: string) => (link === "/enquiry" ? "/contact#enquiry" : link);
 
 export default function ProductCatalogPageClient({ id }: { id: string }) {
-  const router = useRouter();
   const theme = useTheme();
   const { data, isLoading, isError } = useProductCatalog(id);
 
@@ -326,9 +324,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                 <Reveal delay={Math.min(i * 60, 400)}>
                   <ProductCard
                     {...product}
-                    onClick={(pid: string) =>
-                      router.push(`/products/${id}/${pid}`)
-                    }
+                    href={`/products/${id}/${product.id}`}
                   />
                 </Reveal>
               </Grid>
