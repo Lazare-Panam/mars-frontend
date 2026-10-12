@@ -86,7 +86,11 @@ export const LEFT_NAV: NavItem[] = [
           },
           {
             label: "Series 90D (Two-Piece Flanged Metal Seated)",
-            href: "/products/series-90d",
+            href: "/series/14",
+          },
+          {
+            label: "Series 99 (One-Piece Compact Wafer)",
+            href: "/series/15",
           },
         ],
       },

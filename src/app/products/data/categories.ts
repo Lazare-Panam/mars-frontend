@@ -119,8 +119,18 @@ export const SERIES = [
       "2-piece fire safe flanged metal seated ball valves, full port, from 1/2\" to 12\".",
     image:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-90d.jpg",
-    href: "/products/series-90d",
-    pricesHref: "/products/series-90d/variants",
+    href: "/series/14",
+    pricesHref: "/series/14/variants",
+  },
+  {
+    id: "series-99",
+    label: "Series 99",
+    description:
+      "1-piece compact wafer ball valves with ISO 5211 pad for direct actuator mounting, in PN16/40 and PN25/40 flange ratings.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-99.png",
+    href: "/series/15",
+    pricesHref: "/series/15/variants",
   },
 ];
 
