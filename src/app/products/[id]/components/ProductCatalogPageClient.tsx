@@ -19,6 +19,7 @@ import { productCrumbs } from "@/lib/breadcrumbs";
 import { CATEGORY_SEO } from "@/lib/categorySeo";
 
 import MagneticWrap from "@/Common/MagneticWrap";
+import { CATEGORIES } from "../../data/categories";
 
 // The catalog data (API) still links "Request Quote" to the old /enquiry
 // page, which doesn't exist (SE Ranking: internal links to a 3XX/4XX page).
@@ -324,7 +325,13 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                 <Reveal delay={Math.min(i * 60, 400)}>
                   <ProductCard
                     {...product}
-                    href={`/products/${id}/${product.id}`}
+                    href={
+                      // Category-type products (umbrella "Ball Valves" catalogue)
+                      // link to the category page itself.
+                      CATEGORIES.some((c) => c.id === product.id)
+                        ? `/products/${product.id}`
+                        : `/products/${id}/${product.id}`
+                    }
                   />
                 </Reveal>
               </Grid>

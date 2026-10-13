@@ -10,7 +10,7 @@ export const CATEGORY_SEO: Record<string, { h1?: string; title?: string }> = {
   },
   "multi-port-ball-valves": {
     h1: "Multi port valve solutions for reliable flow control",
-    title: "Multi Port Valve Solutions: L-Port and T-Port Ball Valves - Mars Valve",
+    title: "Multi Port Valves: L-Port & T-Port Ball Valves - Mars Valve",
   },
   "three-piece-ball-valves": {
     h1: "Three-piece ball valves for certified industrial performance",

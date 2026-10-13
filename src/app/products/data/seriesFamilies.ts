@@ -27,6 +27,8 @@ export type SeriesFamily = {
   title: string;
   kind: string;
   intro: string;
+  /** No "All Models" table exists for this range (backend has no models). */
+  noModelsPage?: boolean;
   /** Links to the sub-ranges, shown on a category-level page (crawlable). */
   types?: { label: string; href: string }[];
   series: FamilySeries[];
@@ -150,6 +152,7 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
   {
     categoryId: "multi-port-ball-valves",
     productId: "three-way-multi-port-ball-valve",
+    noModelsPage: true,
     title: "3-Way Multi-Port Ball Valves",
     kind: "3-way",
     intro: "Threaded 3-way and 4-way ball valves with L-port and T-port balls for diverting and mixing flow.",
@@ -179,6 +182,7 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
   {
     categoryId: "multi-port-ball-valves",
     productId: "diverter-ball-valve",
+    noModelsPage: true,
     title: "Diverter Ball Valves",
     kind: "Diverter",
     intro: "Diverter ball valves with side or bottom opening, rated up to 2250 PSI, for switching flow between lines.",
@@ -191,6 +195,7 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
   {
     categoryId: "multi-port-ball-valves",
     title: "Multi-Port Ball Valves",
+    noModelsPage: true,
     types: [
       { label: "3-Way Ball Valves", href: "/products/multi-port-ball-valves/three-way-multi-port-ball-valve" },
       { label: "3/4/5-Way Ball Valves", href: "/products/multi-port-ball-valves/three-four-five-way-ball-valve" },
@@ -268,3 +273,7 @@ SERIES_FAMILIES.push({
 
 export const findFamily = (categoryId: string, productId?: string) =>
   SERIES_FAMILIES.find((f) => f.categoryId === categoryId && f.productId === productId);
+
+/** The range's "All Models" table, or null when it has none. */
+export const familyModelsHref = (f: SeriesFamily): string | null =>
+  f.noModelsPage ? null : `/products/${f.categoryId}${f.productId ? `/${f.productId}` : ""}/variants`;

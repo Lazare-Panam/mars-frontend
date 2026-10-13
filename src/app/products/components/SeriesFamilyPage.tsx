@@ -7,7 +7,7 @@ import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import CtaBand from "@/Common/CtaBand";
 import { BANNER_GRADIENT } from "@/theme/brand";
 import { CATEGORIES } from "../data/categories";
-import type { FamilySeries, SeriesFamily } from "../data/seriesFamilies";
+import { familyModelsHref, type FamilySeries, type SeriesFamily } from "../data/seriesFamilies";
 
 // One page layout for every "by category" range (one-piece, economical
 // 2-piece, high performance 3-piece...). The content comes from
@@ -139,6 +139,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
   ];
   const showcase = family.series.slice(0, 3);
   const configurable = family.series.find((s) => s.action === "configure" && s.href);
+  const modelsHref = familyModelsHref(family);
 
   return (
     <Box sx={{ bgcolor: "#FAF6F4" }}>
@@ -247,9 +248,19 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
       <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 3, md: 6 }, py: { xs: 5, md: 7 } }}>
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 1, mb: 3 }}>
           <Typography component="h2" sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" } }}>Choose a series</Typography>
-          <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
-            {configurable ? "Configure online where marked, or ask us for any series." : "Ask us for sizes, materials and a price on any series."}
-          </Typography>
+          {modelsHref ? (
+            <Box
+              component={Link}
+              href={modelsHref}
+              sx={{ display: "inline-flex", alignItems: "center", gap: 0.75, color: "primary.main", fontWeight: 700, fontSize: "0.95rem", textDecoration: "none", "&:hover": { textDecoration: "underline" } }}
+            >
+              Compare all models &amp; prices <ArrowForwardIcon sx={{ fontSize: 18 }} />
+            </Box>
+          ) : (
+            <Typography sx={{ color: "text.secondary", fontSize: "0.9rem" }}>
+              {configurable ? "Configure online where marked, or ask us for any series." : "Ask us for sizes, materials and a price on any series."}
+            </Typography>
+          )}
         </Box>
         {family.types && family.types.length > 0 && (
           <Box component="nav" aria-label="Browse by type" sx={{ display: "flex", flexWrap: "wrap", gap: 1.25, mb: 3.5 }}>
@@ -292,7 +303,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
         title="Not sure which series you need?"
         text="Send us the size, pressure, end connection and media and we'll recommend the right valve, with a price."
         primary={{ label: "Ask Our Team", href: "/contact#enquiry" }}
-        secondary={{ label: "Browse All Products", href: "/products" }}
+        secondary={modelsHref ? { label: "Compare All Models", href: modelsHref } : { label: "Browse All Products", href: "/products" }}
       />
     </Box>
   );

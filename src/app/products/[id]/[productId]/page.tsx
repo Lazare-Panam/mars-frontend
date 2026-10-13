@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
 import { fetchProductDetail, ProductDetail } from "@/api/useProductDetail";
@@ -50,6 +50,14 @@ export async function generateStaticParams() {
 
 export default async function ProductDetailPage({ params }: Props) {
   const { id, productId } = await params;
+
+  // A "product" that is really a whole category (the backend's umbrella
+  // "Ball Valves" catalogue lists one-piece / two-piece / three-piece as its
+  // products) lives at /products/{category}: send this nested URL there
+  // instead of serving a duplicate or a 404.
+  if (id !== productId && CATEGORIES.some((c) => c.id === productId)) {
+    permanentRedirect(`/products/${productId}`);
+  }
 
   // "By category" ranges (economical 2-piece, high performance 3-piece...)
   // show the series grid from data/seriesFamilies.ts.
