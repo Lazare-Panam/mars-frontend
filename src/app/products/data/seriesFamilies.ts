@@ -271,6 +271,170 @@ SERIES_FAMILIES.push({
   ].filter((s): s is FamilySeries => Boolean(s)),
 });
 
+// Flanged ball valves: the backend's flanged catalogue sub-families. The
+// uni-body design is our SQL Series 91D (/series/45); the other five still
+// link to their legacy sub-pages until each gets its own SQL series. Tile
+// photos live on a different blob path than the mars-series-images base.
+const FLG = "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/";
+const FL = "/products/flanged-ball-valves";
+
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  title: "Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "MARS flanged ball valves in ANSI, DIN and JIS flange ratings for direct in-line installation — uni-body, two-piece, three-piece, wafer and steam-jacketed designs.",
+  series: [
+    {
+      name: "Uni Flanged",
+      image: FLG + "uni.png",
+      specs: [
+        ["Series", "91D"],
+        ["Design", "Uni-body flanged ball valve"],
+        ["Port", "Reduced port"],
+        ["Size", '1/2" – 6"'],
+        ["Pressure", "ANSI Class 150/300"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "PTFE / RTFE (others on request)"],
+      ],
+      href: `${FL}/uni-body-flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "Economical 2-Piece Flanged",
+      image: FLG + "eco.gif",
+      specs: [
+        ["Series", "93, 94D"],
+        ["Design", "2-piece economical flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 12"'],
+        ["Pressure", "ANSI Class 150/300, PN16/40, JIS 10K/20K"],
+        ["Body", "CF8M / WCB / Special Alloy"],
+        ["Seats", "PTFE / RTFE (Metal seat optional)"],
+      ],
+      href: `${FL}/economical-two-piece-flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "High Performance 2-Piece Flanged",
+      image: FLG + "hp-flanged.png",
+      specs: [
+        ["Design", "High performance 2-piece flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 12"'],
+        ["Pressure", "ANSI Class 150/300, PN16/40"],
+        ["Body", "CF8M / WCB / Special Alloy"],
+        ["Seats", "PTFE / RTFE"],
+      ],
+      href: `${FL}/high-performance-two-piece-flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "Wafer Type Flanged",
+      image: FLG + "water-type.png",
+      specs: [
+        ["Series", "99"],
+        ["Design", "Wafer type flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 6"'],
+        ["Pressure", "ANSI Class 150, PN16/40"],
+        ["Body", "CF8M"],
+        ["Seats", "PTFE / RTFE"],
+      ],
+      href: `${FL}/wafer-type-flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "3-Piece Flanged",
+      image: FLG + "3-piece.jpg",
+      specs: [
+        ["Design", "3-piece flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI Class 150/300"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "PTFE / RTFE"],
+      ],
+      href: `${FL}/three-piece-flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "Steam Jacketed Flanged",
+      image: FLG + "3-piece.jpg",
+      specs: [
+        ["Design", "Steam jacketed flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI Class 150/300"],
+        ["Body", "CF8M"],
+        ["Seats", "Carbon-filled RTFE"],
+      ],
+      href: `${FL}/steam-jacketed-flanged-ball-valve`,
+      action: "view" as const,
+    },
+  ],
+});
+
+// Uni-body flanged sub-page: one SQL series lives under it — Series 91D.
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  productId: "uni-body-flanged-ball-valve",
+  title: "Uni-Body Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "Compact uni-body flanged ball valve for general industrial service, in ANSI Class 150/300 flange ratings.",
+  series: [
+    {
+      name: "Series 91D",
+      image: FLG + "uni.png",
+      specs: flangedSpecs('1/2" – 6"', "ANSI Class 150/300", "Reduced port", "Uni-body flanged"),
+      href: "/series/45",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// Economical 2-piece flanged sub-page: two SQL series — Series 93 (large bore,
+// 5"-12") and the Direct Mount Series 94D (small bore, 1/2"-4").
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  productId: "economical-two-piece-flanged-ball-valve",
+  title: "Economical 2-Piece Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "Cost-effective 2-piece full-port flanged ball valves in ANSI, DIN and JIS flange ratings — Series 93 for large bores and the Direct Mount Series 94D for small bores.",
+  series: [
+    {
+      name: "Series 93",
+      image: FLG + "eco.gif",
+      specs: [
+        ["Design", "2-piece economical flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '5" – 12"'],
+        ["Pressure", "ANSI Class 150/300, PN16/40, JIS 10K/20K"],
+        ["Body", "CF8M / WCB / Special Alloy"],
+        ["Seats", "PTFE / RTFE (Metal seat optional)"],
+      ],
+      href: "/series/46",
+      action: "configure" as const,
+    },
+    {
+      name: "Series 94D",
+      image: FLG + "series94d.jpg",
+      specs: [
+        ["Design", "2-piece economical flanged ball valve, Direct Mount"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI Class 150, PN16"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "PTFE / RTFE"],
+      ],
+      href: "/series/47",
+      action: "configure" as const,
+    },
+  ],
+});
+
 export const findFamily = (categoryId: string, productId?: string) =>
   SERIES_FAMILIES.find((f) => f.categoryId === categoryId && f.productId === productId);
 
