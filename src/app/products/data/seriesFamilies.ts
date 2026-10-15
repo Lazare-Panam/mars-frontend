@@ -319,6 +319,7 @@ SERIES_FAMILIES.push({
       name: "High Performance 2-Piece Flanged",
       image: FLG + "hp-flanged.png",
       specs: [
+        ["Series", "90, 90D"],
         ["Design", "High performance 2-piece flanged ball valve"],
         ["Port", "Full port"],
         ["Size", '1/2" – 12"'],
@@ -430,6 +431,34 @@ SERIES_FAMILIES.push({
         ["Seats", "PTFE / RTFE"],
       ],
       href: "/series/47",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// High-performance 2-piece flanged sub-page: Series 90 and 90D. These are the
+// same fire-safe flanged valves shown on the fire-safe page (/series/44, /14) —
+// one series, two families, like Mars's own site.
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  productId: "high-performance-two-piece-flanged-ball-valve",
+  title: "High Performance 2-Piece Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "Heavy-duty 2-piece full-port flanged ball valves for demanding process service — fire-safe to API 607, in ANSI, DIN and JIS flange ratings.",
+  series: [
+    {
+      name: "Series 90",
+      image: IMG + "fire-safe-ball-valves/series-90.png",
+      specs: flangedSpecs('1/2" – 4"', "ANSI Class 150/300, PN16/40", "Full port", "2-piece fire safe flanged"),
+      href: "/series/44",
+      action: "configure" as const,
+    },
+    {
+      name: "Series 90D",
+      image: IMG + "fire-safe-ball-valves/series-90d.jpg",
+      specs: flangedSpecs('1/2" – 12"', "ANSI Class 150/300, PN16/40, JIS 10K/20K", "Full port", "2-piece fire safe flanged"),
+      href: "/series/14",
       action: "configure" as const,
     },
   ],
