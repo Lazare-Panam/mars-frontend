@@ -334,7 +334,7 @@ SERIES_FAMILIES.push({
       name: "Wafer Type Flanged",
       image: FLG + "water-type.png",
       specs: [
-        ["Series", "99"],
+        ["Series", "99, F98A, F98"],
         ["Design", "Wafer type flanged ball valve"],
         ["Port", "Full port"],
         ["Size", '1/2" – 6"'],
@@ -349,12 +349,13 @@ SERIES_FAMILIES.push({
       name: "3-Piece Flanged",
       image: FLG + "3-piece.jpg",
       specs: [
-        ["Design", "3-piece flanged ball valve"],
+        ["Series", "F85, F88, F89"],
+        ["Design", "3-piece flanged ball valve, high pressure"],
         ["Port", "Full port"],
         ["Size", '1/2" – 4"'],
-        ["Pressure", "ANSI Class 150/300"],
-        ["Body", "CF8M / WCB"],
-        ["Seats", "PTFE / RTFE"],
+        ["Pressure", "ANSI #600 – #2500"],
+        ["Body", "CF8M / WCB / Special Alloy"],
+        ["Seats", "Delrin / Peek / TFM1600"],
       ],
       href: `${FL}/three-piece-flanged-ball-valve`,
       action: "view" as const,
@@ -459,6 +460,120 @@ SERIES_FAMILIES.push({
       image: IMG + "fire-safe-ball-valves/series-90d.jpg",
       specs: flangedSpecs('1/2" – 12"', "ANSI Class 150/300, PN16/40, JIS 10K/20K", "Full port", "2-piece fire safe flanged"),
       href: "/series/14",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// Wafer-type flanged sub-page: Series 99 (already in the DB as /series/15) plus
+// the two new wafer series F98A (ISO 15848-1) and F98 (fire-safe, direct mount).
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  productId: "wafer-type-flanged-ball-valve",
+  title: "Wafer Type Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "Compact wafer-type ball valves for space-constrained installations — ISO 5211 direct-mount pads, in ANSI and DIN flange ratings.",
+  series: [
+    {
+      name: "Series 99",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-99.png",
+      specs: [
+        ["Design", "1-piece compact wafer ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "PN16/40, PN25/40"],
+        ["Body", "CF8M"],
+        ["Seats", "PTFE / RPTFE"],
+      ],
+      href: "/series/15",
+      action: "configure" as const,
+    },
+    {
+      name: "Series F98A, ISO 15848-1",
+      image: FLG + "series-98fa.jpg",
+      specs: [
+        ["Design", "Wafer type ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "PN10/40"],
+        ["Body", "1.4408 / 1.0619"],
+        ["Seats", "PTFE / RTFE"],
+        ["Emissions", "ISO 15848-1 certified"],
+      ],
+      href: "/series/48",
+      action: "configure" as const,
+    },
+    {
+      name: "Series F98, Fire Safe",
+      image: FLG + "series-98.jpg",
+      specs: [
+        ["Design", "Wafer type Direct Mount ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "PN16"],
+        ["Body", "1.4408 / 1.0619"],
+        ["Seats", "PTFE / RTFE"],
+        ["Fire safe", "Conforms to B16.34"],
+      ],
+      href: "/series/49",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// 3-piece flanged sub-page: high-pressure Series F85 (ANSI #2500) plus the two
+// fire-safe + ISO 15848-1 direct-mount series F88 (#600/#900) and F89 (#1500).
+SERIES_FAMILIES.push({
+  categoryId: "flanged-ball-valves",
+  productId: "three-piece-flanged-ball-valve",
+  title: "3-Piece Flanged Ball Valves",
+  kind: "Flanged",
+  intro:
+    "Fully maintainable 3-piece flanged ball valves for high-pressure process service — fire-safe and ISO 15848-1 options, in ANSI Class 600 to 2500.",
+  series: [
+    {
+      name: "Series F85",
+      image: FLG + "3-piece.jpg",
+      specs: [
+        ["Design", "3-piece flanged ball valve, high pressure"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 2"'],
+        ["Pressure", "ANSI #2500"],
+        ["Body", "CF8M"],
+        ["Seats", "Delrin / Peek"],
+      ],
+      href: "/series/50",
+      action: "configure" as const,
+    },
+    {
+      name: "Series F88, Fire Safe",
+      image: FLG + "series-f88.jpg",
+      specs: [
+        ["Design", "3-piece Direct Mount flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI #600 / #900"],
+        ["Body", "CF8M / WCB / Special Alloy"],
+        ["Seats", "Delrin / Peek / TFM1600"],
+        ["Certified", "Fire-safe, ISO 15848-1"],
+      ],
+      href: "/series/51",
+      action: "configure" as const,
+    },
+    {
+      name: "Series F89, Fire Safe",
+      image: FLG + "series-f89.jpg",
+      specs: [
+        ["Design", "3-piece Direct Mount flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 3"'],
+        ["Pressure", "ANSI #1500"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "Delrin / Peek"],
+        ["Certified", "Fire-safe, ISO 15848-1"],
+      ],
+      href: "/series/52",
       action: "configure" as const,
     },
   ],
