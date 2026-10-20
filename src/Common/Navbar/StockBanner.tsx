@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import StockNotifyDialog from "./StockNotifyDialog";
 
 // Code-built stock-update banner: red engineering-grid background, a headline
 // block, an animated conveyor of MARS crates, and two CTAs.
@@ -50,6 +52,7 @@ function Crate({ i }: { i: number }) {
 }
 
 export default function StockBanner() {
+  const [notifyOpen, setNotifyOpen] = useState(false);
   const btnBase = {
     display: "inline-flex",
     alignItems: "center",
@@ -66,6 +69,7 @@ export default function StockBanner() {
   } as const;
 
   return (
+    <>
     <Box
       component="section"
       aria-label="Stock update: a big MARS valve shipment is inbound from Taiwan to the UK"
@@ -225,10 +229,14 @@ export default function StockBanner() {
         {/* Right: CTAs */}
         <Box sx={{ display: "flex", gap: 1.25, flexShrink: 0 }}>
           <Box
-            component={Link}
-            href={ARTICLE}
+            component="button"
+            type="button"
+            onClick={() => setNotifyOpen(true)}
             sx={{
               ...btnBase,
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "inherit",
               bgcolor: "#fff",
               color: "primary.main",
               boxShadow: "0 6px 18px rgba(0,0,0,0.18)",
@@ -253,5 +261,7 @@ export default function StockBanner() {
         </Box>
       </Box>
     </Box>
+    <StockNotifyDialog open={notifyOpen} onClose={() => setNotifyOpen(false)} />
+    </>
   );
 }
