@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import ThemeRegistry from "@/theme/ThemeRegistry";
+import StockBanner from "@/Common/Navbar/StockBanner";
 import TopBar from "@/Common/Navbar/TopBar";
 import BenefitsStrip from "@/Common/Navbar/BenefitsStrip";
 import Navbar from "@/Common/Navbar/Navbar";
@@ -129,6 +130,7 @@ export default function RootLayout({
             <Suspense fallback={null}>
               <AppInsightsProvider />
             </Suspense>
+            <StockBanner />
             <TopBar />
             <Navbar />
             <BenefitsStrip />

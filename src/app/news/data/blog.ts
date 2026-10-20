@@ -2,6 +2,59 @@ import { BlogData } from "../components/BlogPost";
 
 export const blogs: BlogData[] = [
   {
+    slug: "mars-valve-stock-uk-november",
+    title: "Mars Valve Stock Lands in the UK in November",
+    seoTitle: "Mars Valve Stock Lands in the UK in November",
+    date: "October 20, 2026",
+    category: "Stock Update",
+    heroImage:
+      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+    excerpt:
+      "MARS valve stock lands in the UK this November and we're taking RFQs now. Early requests get priority on the first allocation — including the most-requested Series 77 (V77).",
+    metaDescription:
+      "Mars Valve stock lands in the UK this November. Send your RFQ now for priority on the V77, V88, V22 and MARS ball valves.",
+    tags: ["Stock Update", "MARS Valves", "V77", "UK Stock", "RFQ"],
+    sections: [
+      {
+        heading: null,
+        body: `MARS valve stock lands in the UK this November, and we're taking RFQs now. Early requests get priority on the first allocation of the shipment, so if a MARS line is on your list, now is the time to tell us.`,
+      },
+      {
+        heading: "What's Coming",
+        body: `The Series 77 (V77) has been our most-requested MARS line this year, so if it's on your list, now is the time to tell us. MARS ball valves are also coming into UK stock, and we're seeing steady interest in the V88 (Series 88) and V22 (Series 22) as well.`,
+      },
+      {
+        heading: "How to Get Priority Allocation",
+        body: `Send your RFQ with:\n\n• Model (e.g. V77)\n• Size and connection\n• Body and seat material\n• Quantity, and when you need it\n\nNot sure what you need? Send the application or an old part number and we'll match it.`,
+      },
+      {
+        heading: "Send Your RFQ",
+        body: `Early requests get priority on the November shipment. [Send your RFQ](/contact#enquiry) and we'll come straight back to you with availability and a price.`,
+      },
+    ],
+    faq: [
+      {
+        q: "When does the MARS stock arrive in the UK?",
+        a: "The next MARS allocation lands in the UK in November. Send your RFQ now and we'll confirm the arrival window for your models.",
+      },
+      {
+        q: "What is the Series 77 (V77)?",
+        a: "The Series 77 has been our most-requested MARS line this year. Tell us your size, connection, body and seat material and we'll quote it from the incoming November stock.",
+      },
+      {
+        q: "How do I reserve stock from the November shipment?",
+        a: "Send an RFQ with the model, size and connection, body and seat material, and quantity. Early requests get priority on the first allocation.",
+      },
+    ],
+    cta: {
+      heading: "Reserve Your November Allocation",
+      body: "Send your size, pressure, connection and quantity and we'll put your RFQ at the front of the November shipment.",
+      contactLabel: "Send your RFQ",
+      email: "sales@marsvalvenok.com",
+      phone: "+44 7368 137917",
+    },
+  },
+  {
     // Specs are taken from the MARS catalogue data in mars-api (1 Oct 2026).
     slug: "one-piece-vs-two-piece-vs-three-piece-ball-valves",
     title: "1-Piece vs 2-Piece vs 3-Piece Ball Valves: How to Choose",
