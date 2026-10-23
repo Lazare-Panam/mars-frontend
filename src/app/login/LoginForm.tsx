@@ -148,7 +148,7 @@ export default function LoginForm() {
         </MuiLink>
       </Typography>
 
-      <Box component="form" onSubmit={handleSubmit} noValidate>
+      <Box component="form" id="login" data-hs-do-not-collect="true" onSubmit={handleSubmit} noValidate>
         <Grow in={Boolean(formError)} unmountOnExit>
           <Typography
             variant="body2"

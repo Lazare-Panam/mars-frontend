@@ -102,6 +102,8 @@ export default function ProductFinder() {
 
           <Box
             component="form"
+            id="product-finder"
+            data-hs-do-not-collect="true"
             role="search"
             onSubmit={handleSearch}
             sx={{
