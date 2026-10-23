@@ -23,7 +23,7 @@ export default function BackToTop() {
         sx={{
           position: "fixed",
           right: { xs: 16, md: 32 },
-          bottom: { xs: 16, md: 32 },
+          bottom: { xs: 80, md: 100 }, // above WhatsAppButton
           zIndex: 1200,
           width: 48,
           height: 48,

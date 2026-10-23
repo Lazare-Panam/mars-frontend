@@ -14,6 +14,7 @@ import AppInsightsProvider from "@/Common/AppInsightsProvider";
 import ContactPrompt from "./Landing/ContactPrompt";
 import BackToTop from "@/Common/BackToTop";
 import QuickEnquiryButton from "@/Common/QuickEnquiryButton";
+import WhatsAppButton from "@/Common/WhatsAppButton";
 import ScrollProgress from "@/Common/ScrollProgress";
 import NavProgress from "@/Common/NavProgress";
 import { SITE_URL } from "@/lib/site";
@@ -140,6 +141,7 @@ export default function RootLayout({
             <ContactPrompt />
             <BackToTop />
             <QuickEnquiryButton />
+            <WhatsAppButton />
           </QueryProvider>
           <Script
             id="hs-script-loader"
