@@ -2,6 +2,58 @@ import { BlogData } from "../components/BlogPost";
 
 export const blogs: BlogData[] = [
   {
+    slug: "trade-credit-accounts-for-uk-businesses",
+    title: "Open a Trade Credit Account for MARS Ball Valves",
+    seoTitle: "Trade Credit Accounts for UK Businesses",
+    date: "October 26, 2026",
+    category: "Trade Accounts",
+    heroImage:
+      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+    excerpt:
+      "Approved UK businesses can now open a trade credit account with MARS Valvenok: up to 30 days to pay, with every application subject to review. Prices stay online and manufacturer paperwork still ships with every order.",
+    metaDescription:
+      "Approved UK businesses can open a trade credit account for MARS ball valves — up to 30 days to pay, subject to review. Apply online.",
+    tags: ["Trade Accounts", "Credit", "UK", "MARS Valves"],
+    sections: [
+      {
+        heading: null,
+        body: `Approved UK businesses can now open a trade credit account with MARS Valvenok and buy MARS ball valves on account rather than paying up front.\n\nThe account runs on up to 30 days to pay, and every application is subject to review before an account is opened.`,
+      },
+      {
+        heading: "The Terms",
+        body: `• Open to approved UK business customers.\n• Up to 30 days to pay — 30 days is the maximum term.\n• Every application is subject to review and approval before an account is opened.`,
+      },
+      {
+        heading: "What Doesn't Change",
+        body: `A credit account changes how you pay, not what you get:\n\n• Prices stay online, the same as for any order.\n• Manufacturer paperwork still ships with every order.`,
+      },
+      {
+        heading: "How to Apply",
+        body: `Fill in the online form and we'll review it. [Start your credit application](/credit-application) and we'll come back to you.`,
+      },
+    ],
+    faq: [
+      {
+        q: "Who can open a trade credit account?",
+        a: "Approved UK business customers. Every application is reviewed before an account is opened.",
+      },
+      {
+        q: "How long do I have to pay?",
+        a: "Accounts run on up to 30 days to pay, with 30 days as the maximum term.",
+      },
+      {
+        q: "Does a credit account change the price I pay?",
+        a: "No. Prices are shown online and are the same whether you pay up front or on account, and manufacturer paperwork ships with every order.",
+      },
+    ],
+    cta: {
+      heading: "Apply for a Trade Credit Account",
+      body: "Approved UK businesses can buy MARS ball valves on up to 30 days to pay, subject to review. [Start your credit application](/credit-application).",
+      email: "sales@marsvalvenok.com",
+      phone: "+44 7368 137917",
+    },
+  },
+  {
     slug: "mars-valve-stock-uk-november",
     title: "Mars Valve Stock Lands in the UK in November",
     seoTitle: "Mars Valve Stock Lands in the UK in November",

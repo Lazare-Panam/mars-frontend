@@ -71,6 +71,15 @@ const PRIMARY_KEYS = [
   "Lock",
 ];
 
+// Prices arrive as display strings (e.g. "1,234.50"); strip everything but
+// digits and the decimal point so they can be compared as numbers. Returns
+// null when there is no usable price, so those rows can be pushed to the end.
+function parsePrice(raw?: string): number | null {
+  if (!raw) return null;
+  const n = parseFloat(raw.replace(/[^0-9.]/g, ""));
+  return Number.isNaN(n) ? null : n;
+}
+
 function PriceCell({ price, onQuote }: { price?: string; onQuote: () => void }) {
   if (price) {
     return (
@@ -667,6 +676,17 @@ export default function VariantsTable({
 
   const sorted = sortKey
     ? [...searched].sort((a, b) => {
+        // Price is money: compare it numerically, not as text. A string sort
+        // would put "100" before "90". Rows with no price ("Contact for price")
+        // sink to the bottom in both directions so the real prices stay together.
+        if (sortKey === "Price") {
+          const ap = parsePrice(a.specs["Price"]);
+          const bp = parsePrice(b.specs["Price"]);
+          if (ap === null && bp === null) return 0;
+          if (ap === null) return 1;
+          if (bp === null) return -1;
+          return sortDir === "asc" ? ap - bp : bp - ap;
+        }
         const av = a.specs[sortKey] ?? "";
         const bv = b.specs[sortKey] ?? "";
         return sortDir === "asc" ? av.localeCompare(bv) : bv.localeCompare(av);
@@ -807,7 +827,13 @@ export default function VariantsTable({
                 textAlign: "center",
               }}
             >
-              Price
+              <TableSortLabel
+                active={sortKey === "Price"}
+                direction={sortKey === "Price" ? sortDir : "asc"}
+                onClick={() => handleSort("Price")}
+              >
+                Price
+              </TableSortLabel>
             </TableCell>
             <TableCell
               sx={{ ...headerSx, width: ACTION_WIDTH, minWidth: ACTION_WIDTH }}
