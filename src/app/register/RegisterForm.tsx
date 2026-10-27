@@ -298,7 +298,7 @@ export default function RegisterForm() {
           ))}
         </Box>
 
-        <Box component="form" onSubmit={handleRegister} noValidate>
+        <Box component="form" id="register" onSubmit={handleRegister} noValidate>
           <Grow in={Boolean(formError)} unmountOnExit>
             <Typography
               variant="body2"

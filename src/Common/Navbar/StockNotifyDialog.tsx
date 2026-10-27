@@ -79,7 +79,7 @@ export default function StockNotifyDialog({
             </Typography>
           </DialogTitle>
           <DialogContent>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 0.5 }}>
+            <Box component="form" id="get-notified" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 0.5 }}>
               {isError && (
                 <Alert severity="error" sx={{ fontSize: "0.85rem" }}>
                   Something went wrong. Please try again, or email{" "}

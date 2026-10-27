@@ -261,7 +261,7 @@ export default function CreditApplicationForm() {
       </Grow>
 
       <Reveal delay={150}>
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" id="credit-application" onSubmit={handleSubmit} noValidate>
           <Grid container spacing={3}>
             {/* 1. Company Details */}
             <Grid size={12}>

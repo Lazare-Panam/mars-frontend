@@ -191,7 +191,7 @@ export default function ContactForm() {
         </Alert>
       </Grow>
 
-      <Box component="form" onSubmit={handleSubmit} noValidate>
+      <Box component="form" id="contact-enquiry" onSubmit={handleSubmit} noValidate>
         <Grid container spacing={2.5}>
           <Grid size={{ xs: 12, md: 6 }}>{field('userName', { label: 'Name', placeholder: 'Jane Smith', required: true, Icon: PersonOutlineIcon })}</Grid>
           <Grid size={{ xs: 12, md: 6 }}>{field('userEmail', { label: 'Email', placeholder: 'jane@company.com', required: true, Icon: MailOutlineIcon, type: 'email' })}</Grid>
