@@ -642,7 +642,10 @@ export default function VariantsTable({
   thumbnailImage,
   detailBasePath,
 }: Props) {
-  const [sortKey, setSortKey] = useState<string>("");
+  // Default view: cheapest priced items first. The Price comparator pushes
+  // rows with no price ("Contact for price") to the bottom, so priced models
+  // always lead. Clicking any header switches to that column's sort.
+  const [sortKey, setSortKey] = useState<string>("Price");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
