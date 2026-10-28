@@ -8,7 +8,7 @@ export const blogs: BlogData[] = [
     date: "October 26, 2026",
     category: "Trade Accounts",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+      "https://pblol2.blob.core.windows.net/mars-valves/blog-mars.jpeg",
     excerpt:
       "Approved UK businesses can now open a trade credit account with MARS Valvenok: up to 30 days to pay, with every application subject to review. Prices stay online and manufacturer paperwork still ships with every order.",
     metaDescription:
@@ -60,7 +60,7 @@ export const blogs: BlogData[] = [
     date: "October 20, 2026",
     category: "Stock Update",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+      "https://pblol2.blob.core.windows.net/mars-valves/mars-stock-coming.jpeg",
     excerpt:
       "MARS valve stock lands in the UK this November and we're taking RFQs now. Early requests get priority on the first allocation — including the most-requested Series 77 (V77).",
     metaDescription:

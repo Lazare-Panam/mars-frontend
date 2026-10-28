@@ -30,6 +30,7 @@ import { useQuoteStore } from "@/store/useQuoteStore";
 import Reveal from "@/Common/Reveal";
 import { PRODUCT_MAXW, ProductSectionTitle } from "@/Common/product/ProductPageHero";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { seriesHeading, seriesSubheading } from "@/lib/seriesHeadings";
 
 const BRAND = "#E7390F";
 const MAXW = PRODUCT_MAXW;
@@ -189,6 +190,9 @@ export default function SeriesConfiguratorPage({
 
   const name = category?.name ?? `Series ${seriesId}`;
   const options = config.options;
+  const endConnections =
+    options.find((o) => o.name.toLowerCase() === "end connection")?.values.map((v) => v.value) ?? [];
+  const subheading = seriesSubheading(category?.design, endConnections);
   const resolved = config.resolved;
   const resolvedSku = resolved?.partNumber ?? null;
   const image = resolved?.imageUrl || config.imageUrl || undefined;
@@ -284,10 +288,10 @@ export default function SeriesConfiguratorPage({
               MARS Ball Valves
             </Typography>
             <Typography component="h1" sx={{ fontSize: { xs: "2.3rem", md: "3.2rem" }, fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.03em" }}>
-              {name}
+              {seriesHeading(name, category?.design)}
             </Typography>
-            {category?.design && (
-              <Typography sx={{ color: "text.secondary", fontSize: "1.05rem", mt: 1.25, lineHeight: 1.55 }}>{category.design}</Typography>
+            {subheading && (
+              <Typography sx={{ color: "text.secondary", fontSize: "1.05rem", mt: 1.25, lineHeight: 1.55 }}>{subheading}</Typography>
             )}
 
             {/* Spec strip */}

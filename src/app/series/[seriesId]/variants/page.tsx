@@ -2,13 +2,14 @@
 
 import { use, useState, useMemo } from "react";
 import { Box, Typography, CircularProgress } from "@mui/material";
-import { useSeriesVariants } from "@/api/useSeriesCatalog";
+import { useSeriesCategory, useSeriesVariants } from "@/api/useSeriesCatalog";
 import VariantsTable from "@/app/products/[id]/[productId]/variants/components/VariantsTable";
 import VariantsSidebar from "@/app/products/[id]/[productId]/variants/components/VariantsSidebar";
 import VariantsActiveFilters from "@/app/products/[id]/[productId]/variants/components/VariantsActiveFilters";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { BANNER_GRADIENT } from "@/theme/brand";
+import { seriesModelsHeading } from "@/lib/seriesHeadings";
 
 export default function SeriesVariantsPage({
   params,
@@ -17,6 +18,7 @@ export default function SeriesVariantsPage({
 }) {
   const { seriesId } = use(params);
   const { data, isLoading, isError } = useSeriesVariants(seriesId);
+  const { data: category } = useSeriesCategory(seriesId);
   const [activeFilters, setActiveFilters] = useState<Record<string, string[]>>(
     {},
   );
@@ -124,7 +126,7 @@ export default function SeriesVariantsPage({
                 lineHeight: 1.1,
               }}
             >
-              {data.name}
+              {seriesModelsHeading(data.name, category?.design)}
             </Typography>
             <Typography
               sx={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", mt: 1 }}

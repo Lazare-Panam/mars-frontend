@@ -15,6 +15,7 @@ import { useSeriesProduct, useSeriesCategory } from "@/api/useSeriesCatalog";
 import { useQuoteStore } from "@/store/useQuoteStore";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
+import { variantHeading } from "@/lib/seriesHeadings";
 
 const BRAND = "#E7390F";
 const MAXW = 1160;
@@ -71,7 +72,12 @@ export default function SeriesVariantDetailPage({
           </Typography>
           <Typography
             component="h1"
-            sx={{ fontFamily: "monospace", fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: 800, lineHeight: 1.1, wordBreak: "break-all" }}
+            sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: 800, lineHeight: 1.2, maxWidth: 900 }}
+          >
+            {variantHeading(seriesName, category?.design, product.specs)}
+          </Typography>
+          <Typography
+            sx={{ fontFamily: "monospace", fontSize: { xs: "0.95rem", md: "1.05rem" }, fontWeight: 700, color: "text.secondary", mt: 0.75, wordBreak: "break-all" }}
           >
             {product.partNumber}
           </Typography>

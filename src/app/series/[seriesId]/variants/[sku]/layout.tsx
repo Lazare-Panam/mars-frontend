@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { fetchSeriesCategory } from "@/api/useSeriesCatalog";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { makeQueryClient } from "@/lib/getQueryClient";
+import { fetchSeriesCategory, fetchSeriesProduct } from "@/api/useSeriesCatalog";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
 
@@ -20,6 +22,11 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   };
 }
 
-export default function SeriesSkuLayout({ children }: Props) {
-  return children;
+// Prefetch the model on the server so its heading and specs are in the HTML
+// crawlers read, not only after the page loads in a browser.
+export default async function SeriesSkuLayout({ params, children }: Props) {
+  const { sku } = await params;
+  const queryClient = makeQueryClient();
+  await queryClient.prefetchQuery({ queryKey: ["series-product", sku], queryFn: () => fetchSeriesProduct(sku) });
+  return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
 }
