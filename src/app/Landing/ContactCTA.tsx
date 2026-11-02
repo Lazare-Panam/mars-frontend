@@ -11,9 +11,16 @@ import {
   Grow,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useSubmitEnquiry } from "@/api/useSubmitEnquiry";
 import Reveal from "@/Common/Reveal";
 import MagneticWrap from "@/Common/MagneticWrap";
+
+// Public Turnstile site key. Hardcoded fallback mirrors axiosClient/site.ts: the
+// Static Web Apps build has no .env, so NEXT_PUBLIC_* vars need a default here or
+// the widget won't render in prod. Safe to hardcode — the site key is public.
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAFwfb1up9rSC3yQN";
 
 interface EnquiryFormData {
   userName: string;
@@ -51,6 +58,10 @@ export default function ContactCTA() {
     Partial<Record<keyof EnquiryFormData, string>>
   >({});
 
+  // Turnstile token + widget ref (tokens are single-use, so we reset after each submit).
+  const [captchaToken, setCaptchaToken] = React.useState("");
+  const turnstileRef = React.useRef<TurnstileInstance>(null);
+
   const { mutate, isPending, isSuccess, isError, reset } = useSubmitEnquiry();
 
   const handleChange =
@@ -83,10 +94,16 @@ export default function ContactCTA() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    if (!captchaToken) return; // Button is disabled without a token; guard anyway.
 
-    mutate(formData, {
+    mutate({ ...formData, captchaToken }, {
       onSuccess: () => {
         setFormData(initialFormState);
+      },
+      // A token is single-use; clear and refresh the widget after any attempt.
+      onSettled: () => {
+        setCaptchaToken("");
+        turnstileRef.current?.reset();
       },
     });
   };
@@ -280,12 +297,20 @@ export default function ContactCTA() {
               sx={fieldSx}
             />
 
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setCaptchaToken}
+              onExpire={() => setCaptchaToken("")}
+              onError={() => setCaptchaToken("")}
+            />
+
             <MagneticWrap strength={0.15}>
               <Button
                 type="submit"
                 variant="contained"
                 disableElevation
-                disabled={isPending}
+                disabled={isPending || !captchaToken}
                 endIcon={isPending ? undefined : <ArrowForwardIcon />}
                 sx={{
                   bgcolor: "primary.main",

@@ -19,9 +19,16 @@ import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { useSubmitEnquiry } from '@/api/useSubmitEnquiry';
 import { quoteMessage, cartQuoteMessage } from '@/lib/quote';
 import { useQuoteStore } from '@/store/useQuoteStore';
+
+// Public Turnstile site key. Hardcoded fallback mirrors axiosClient/site.ts: the
+// Static Web Apps build has no .env, so NEXT_PUBLIC_* vars need a default here or
+// the widget won't render in prod. Safe to hardcode — the site key is public.
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '0x4AAAAAAFwfb1up9rSC3yQN';
 
 interface EnquiryFormData {
   userName: string;
@@ -103,6 +110,10 @@ export default function ContactForm() {
   }, [quote, clearQuote]);
   const [errors, setErrors] = React.useState<Partial<Record<keyof EnquiryFormData, string>>>({});
 
+  // Turnstile token + a ref to the widget so we can reset it (tokens are single-use).
+  const [captchaToken, setCaptchaToken] = React.useState('');
+  const turnstileRef = React.useRef<TurnstileInstance>(null);
+
   const { mutate, isPending, isSuccess, isError, reset } = useSubmitEnquiry();
 
   const handleChange = (field: keyof EnquiryFormData) => (
@@ -133,17 +144,24 @@ export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    if (!captchaToken) return; // Button is disabled without a token; guard anyway.
 
     // The enquiry API has no product field, so the part number rides at the
     // top of the message.
     const { product, ...rest } = formData;
-    const payload = product.trim()
+    const base = product.trim()
       ? { ...rest, message: `Product / part number: ${product.trim()}\n\n${rest.message}` }
       : rest;
 
-    mutate(payload, {
+    mutate({ ...base, captchaToken }, {
       onSuccess: () => {
         setFormData(initialFormState);
+      },
+      // A token is single-use: whether the submit succeeded or failed, the old
+      // one is spent, so clear it and get a fresh challenge.
+      onSettled: () => {
+        setCaptchaToken('');
+        turnstileRef.current?.reset();
       },
     });
   };
@@ -218,6 +236,15 @@ export default function ContactForm() {
             </Typography>
           </Grid>
           <Grid size={12}>
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setCaptchaToken}
+              onExpire={() => setCaptchaToken('')}
+              onError={() => setCaptchaToken('')}
+            />
+          </Grid>
+          <Grid size={12}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center', justifyContent: 'space-between' }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, color: 'text.secondary', fontSize: '0.82rem' }}>
                 <LockOutlinedIcon sx={{ fontSize: 16 }} />
@@ -227,7 +254,7 @@ export default function ContactForm() {
                 type="submit"
                 variant="contained"
                 disableElevation
-                disabled={isPending}
+                disabled={isPending || !captchaToken}
                 endIcon={isPending ? undefined : <ArrowForwardIcon />}
                 sx={{
                   px: 3.5,

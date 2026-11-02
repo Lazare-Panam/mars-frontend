@@ -7,6 +7,9 @@ export interface EnquiryRequest {
   userCompany: string;
   userCountry: string;
   message: string;
+  // Cloudflare Turnstile token. The backend rejects the enquiry if this is
+  // missing or fails verification, so every caller must supply it.
+  captchaToken: string;
 }
 
 export interface NotificationResult {
