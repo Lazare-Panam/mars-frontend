@@ -16,7 +16,9 @@ import type { Metadata } from "next";
 // ("REPLACE — real customer quote goes here") entries. Re-add <TestimonialsSection/>
 // below only once TESTIMONIALS in that file holds real, named customer quotes.
 
-const TITLE = "Ball Valve & Industrial Valves Manufacturer UK - Mars Valve";
+// ≤60 chars (SERP guideline) and accurate: Mars Valvenok is an authorised
+// distributor of MARS valves, not the manufacturer.
+const TITLE = "Mars Ball Valves UK | Authorised Distributor – Mars Valvenok";
 const DESCRIPTION =
   "Authorised UK distributor of MARS ball valves from Mars Valve Co., Taiwan. 2-piece, 3-piece, flanged, sanitary and fire-safe ranges. Prices online.";
 

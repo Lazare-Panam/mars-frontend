@@ -61,7 +61,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Marketing's SEO title wins over the CMS one (see lib/categorySeo).
   const seoTitle = CATEGORY_SEO[id]?.title;
   const description = fitDescription(data.seo?.description ?? data.bannerSubtitle ?? "");
-  const ogImage = data.seo?.ogImage ?? data.bannerImage;
+  // Social-share image comes from the colocated opengraph-image.tsx (a branded,
+  // consistent per-category card). We intentionally no longer pull the CMS
+  // ogImage/bannerImage here — it was missing on most categories and a stray
+  // ships photo on multi-port.
 
   // The CMS can return a canonical URL on a stale/retired domain (e.g. a
   // pre-rename host). Keep only the path it points to and always resolve it
@@ -89,13 +92,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: canonical,
-      images: ogImage ? [{ url: ogImage }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ogImage ? [ogImage] : undefined,
     },
   };
 }

@@ -43,6 +43,9 @@ const FOOTER_COLUMNS = [
         newTab: true,
       },
       { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Cookie Policy", href: "/cookie-policy" },
     ],
   },
 ];
