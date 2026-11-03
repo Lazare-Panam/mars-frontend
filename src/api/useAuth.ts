@@ -11,6 +11,8 @@ export interface RegisterPayload {
   jobTitle: string;
   phoneNumber: string;
   country: string;
+  // Cloudflare Turnstile token; the backend rejects registration without it.
+  captchaToken: string;
 }
 
 export interface RegisterResponse {

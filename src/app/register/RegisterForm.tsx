@@ -21,8 +21,15 @@ import MagneticWrap from "@/Common/MagneticWrap";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import PercentOutlinedIcon from "@mui/icons-material/PercentOutlined";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useRegister } from "@/api/useAuth";
 import axios from "axios";
+
+// Public Turnstile site key. Hardcoded fallback mirrors axiosClient/site.ts: the
+// Static Web Apps build has no .env, so NEXT_PUBLIC_* vars need a default here or
+// the widget won't render in prod. Safe to hardcode — the site key is public.
+const TURNSTILE_SITE_KEY =
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "0x4AAAAAAFwfb1up9rSC3yQN";
 
 const ERROR_SOFT = "#B3453A";
 const ERROR_SOFT_BG = "rgba(179, 69, 58, 0.06)";
@@ -104,6 +111,10 @@ export default function RegisterForm() {
 
   const { mutate: register, isPending } = useRegister();
 
+  // Turnstile token + widget ref (tokens are single-use, so we reset after each attempt).
+  const [captchaToken, setCaptchaToken] = React.useState("");
+  const turnstileRef = React.useRef<TurnstileInstance>(null);
+
   const [formData, setFormData] = React.useState<FormData>({
     email: "",
     firstName: "",
@@ -132,6 +143,8 @@ export default function RegisterForm() {
       return;
     }
 
+    if (!captchaToken) return; // Button is disabled without a token; guard anyway.
+
     register(
       {
         firstName: formData.firstName,
@@ -142,10 +155,16 @@ export default function RegisterForm() {
         jobTitle: formData.jobTitle,
         phoneNumber: formData.phoneNumber,
         country: formData.country,
+        captchaToken,
       },
       {
         onSuccess: () => {
           router.push("/login");
+        },
+        // A token is single-use; clear and refresh the widget after any attempt.
+        onSettled: () => {
+          setCaptchaToken("");
+          turnstileRef.current?.reset();
         },
         onError: (err) => {
           if (!axios.isAxiosError<ErrorResponse>(err)) return;
@@ -491,6 +510,16 @@ export default function RegisterForm() {
             </Grid>
           </Grid>
 
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setCaptchaToken}
+              onExpire={() => setCaptchaToken("")}
+              onError={() => setCaptchaToken("")}
+            />
+          </Box>
+
           <Box
             sx={{
               display: "flex",
@@ -514,7 +543,7 @@ export default function RegisterForm() {
                 type="submit"
                 variant="contained"
                 color="primary"
-                disabled={isPending}
+                disabled={isPending || !captchaToken}
                 endIcon={!isPending && <ChevronRightIcon />}
                 sx={{
                   borderRadius: 0,
