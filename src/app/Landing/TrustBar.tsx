@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import ScienceIcon from "@mui/icons-material/Science";
@@ -214,7 +215,7 @@ export default function TrustBar() {
         {/* right: real certificate document */}
         <Reveal delay={150} y={32}>
           <Link
-            href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+            href={LETTER_OF_AUTHORISATION_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "block", textDecoration: "none" }}
@@ -237,7 +238,7 @@ export default function TrustBar() {
               }}
             >
               <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                src={LETTER_OF_AUTHORISATION_URL}
                 alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
                 fill
                 style={{ objectFit: "contain", padding: "16px" }}

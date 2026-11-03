@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
@@ -250,7 +251,7 @@ export default function MarsStats() {
             </Button>
             <Button
               component={Link}
-              href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+              href={LETTER_OF_AUTHORISATION_URL}
               target="_blank"
               rel="noopener noreferrer"
               variant="outlined"

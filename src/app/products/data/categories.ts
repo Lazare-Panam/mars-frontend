@@ -189,4 +189,31 @@ export const CATEGORIES = [
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/meta-seat/multi-port.jpg",
     href: "/products/metal-seated-ball-valves",
   },
+  {
+    id: "fire-safe-ball-valves",
+    label: "Fire Safe Ball Valves",
+    description:
+      "API 607 certified fire safe ball valves for critical and hazardous applications.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/fire-safe/series-28.jpg",
+    href: "/products/fire-safe-ball-valves",
+  },
+  {
+    id: "sanitary-ball-valves",
+    label: "Sanitary Ball Valves",
+    description:
+      "Hygienic ball valves designed for food, beverage, pharmaceutical and biotechnology applications.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-50sn.png",
+    href: "/products/sanitary-ball-valves",
+  },
+  {
+    id: "v-port-ball-valves",
+    label: "V-Port Ball Valves",
+    description:
+      "High performance V-port ball valves for precise flow control in demanding industrial applications.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/v-port/88v.png",
+    href: "/products/v-port-ball-valves",
+  },
 ];

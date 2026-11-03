@@ -16,9 +16,9 @@ import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
-const LETTER_URL =
-  "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg";
+const LETTER_URL = LETTER_OF_AUTHORISATION_URL;
 
 // Each claim here is backed by a document on file (the Mars Valve Co. letter
 // of authorisation) or matches the homepage copy (SEO audit, 29 Sep 2026).

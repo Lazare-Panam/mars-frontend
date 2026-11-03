@@ -4,6 +4,7 @@ import { makeQueryClient } from "@/lib/getQueryClient";
 import { fetchSeriesCategory, fetchSeriesProduct } from "@/api/useSeriesCatalog";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { VARIANT_META } from "@/lib/variantMeta";
 
 type Props = { params: Promise<{ seriesId: string; sku: string }>; children: React.ReactNode };
 
@@ -13,11 +14,16 @@ type Props = { params: Promise<{ seriesId: string; sku: string }>; children: Rea
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { seriesId, sku } = await params;
   const part = decodeURIComponent(sku);
+  // Hand-written per-SKU meta from the marketing sheet wins, verbatim, when we
+  // have one for this part number; otherwise fall back to the generic template.
+  const override = VARIANT_META[part];
   const series = await fetchSeriesCategory(seriesId).catch(() => null);
   const name = series?.name ?? "MARS ball valve";
   return {
-    title: fitBrandTitle(`${part} — ${name}`),
-    description: `MARS ${name} part number ${part}: specifications, price and quote request from an authorised UK distributor.`,
+    title: override ? { absolute: override.title } : fitBrandTitle(`${part} — ${name}`),
+    description:
+      override?.description ??
+      `MARS ${name} part number ${part}: specifications, price and quote request from an authorised UK distributor.`,
     alternates: { canonical: `${SITE_URL}/series/${seriesId}/variants` },
   };
 }

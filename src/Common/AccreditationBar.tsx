@@ -2,10 +2,11 @@ import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import Reveal from "@/Common/Reveal";
 import { JOSCAR_CERT, JOSCAR_LOGO } from "@/lib/joscar";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 // Accreditation logo bar (Certifications page). Only logos we hold the right
 // to show; add more (e.g. BVAA) here when they're in place.
-const LETTER = "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg";
+const LETTER = LETTER_OF_AUTHORISATION_URL;
 const ACCREDITATIONS = [
   { src: "https://pblol2.blob.core.windows.net/mars-valves/logo.jpg", alt: "MARS Valve logo", caption: "Authorised MARS distributor", href: LETTER, w: 130, h: 130 },
   { src: JOSCAR_LOGO, alt: "JOSCAR registered logo", caption: "View JOSCAR certificate", href: JOSCAR_CERT, w: 160, h: 130 },

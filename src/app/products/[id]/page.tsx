@@ -17,6 +17,7 @@ import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import Link from "next/link";
 import { Container, Typography } from "@mui/material";
 import { CATEGORY_INDUSTRIES, INDUSTRIES } from "@/app/applications/industries";
+import MultiPortExplainer from "./components/MultiPortExplainer";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -89,13 +90,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
-      title,
+      // Prefer the marketing SEO title (e.g. multi-port's "L-Port & T-Port")
+      // for the share card, falling back to the plain banner title.
+      title: seoTitle ?? title,
       description,
       url: canonical,
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: seoTitle ?? title,
       description,
     },
   };
@@ -151,6 +154,7 @@ export default async function ProductCatalogPage({ params }: Props) {
           )}
         </Reveal>
       </HydrationBoundary>
+      {id === "multi-port-ball-valves" && <MultiPortExplainer />}
       {usedIn.length > 0 && (
         <Container
           maxWidth="lg"

@@ -16,6 +16,7 @@ import { useQuoteStore } from "@/store/useQuoteStore";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { variantHeading } from "@/lib/seriesHeadings";
+import { VARIANT_META } from "@/lib/variantMeta";
 
 const BRAND = "#E7390F";
 const MAXW = 1160;
@@ -47,6 +48,8 @@ export default function SeriesVariantDetailPage({
   }
 
   const seriesName = category?.name ?? `Series ${seriesId}`;
+  // Hand-written per-SKU H1 from the marketing sheet, verbatim, when present.
+  const metaOverride = VARIANT_META[decodeURIComponent(sku)];
   const onRequestQuote = () =>
     setQuote({ sku: product.partNumber, product: seriesName });
 
@@ -74,7 +77,7 @@ export default function SeriesVariantDetailPage({
             component="h1"
             sx={{ fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: 800, lineHeight: 1.2, maxWidth: 900 }}
           >
-            {variantHeading(seriesName, category?.design, product.specs)}
+            {metaOverride?.h1 ?? variantHeading(seriesName, category?.design, product.specs)}
           </Typography>
           <Typography
             sx={{ fontFamily: "monospace", fontSize: { xs: "0.95rem", md: "1.05rem" }, fontWeight: 700, color: "text.secondary", mt: 0.75, wordBreak: "break-all" }}

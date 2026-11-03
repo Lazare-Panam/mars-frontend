@@ -5,6 +5,7 @@ import Image from "next/image";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 export default function MarsBrandPage() {
   const theme = useTheme();
@@ -63,7 +64,7 @@ export default function MarsBrandPage() {
                 opacity: 0.85,
               }}
             >
-              An Official Statement from MARS®
+              Authorised UK MARS® Distributor
             </Typography>
 
             <Typography
@@ -75,10 +76,10 @@ export default function MarsBrandPage() {
                 fontSize: { xs: "2.4rem", md: "4rem" },
                 lineHeight: 1.05,
                 letterSpacing: "-0.01em",
-                maxWidth: 780,
+                maxWidth: 820,
               }}
             >
-              Mars valves: official authenticity and anti-counterfeit notice
+              MARS valves: your authorised UK distributor
             </Typography>
 
             <Typography
@@ -86,18 +87,49 @@ export default function MarsBrandPage() {
                 color: "rgba(255,255,255,0.82)",
                 fontSize: { xs: "0.95rem", md: "1.05rem" },
                 mt: 2.5,
-                maxWidth: 560,
+                maxWidth: 600,
                 lineHeight: 1.6,
               }}
             >
-              Imitation can copy the appearance of a valve. It cannot copy the
-              engineering, reliability, and brand spirit behind it.
+              Mars Valvenok (Valvenok Ltd) is an authorised distributor of
+              genuine MARS® ball valves in the UK — supplied with a letter of
+              authorisation, not an imitation.
             </Typography>
           </Reveal>
         </Container>
       </Box>
 
       <Divider sx={{ borderColor: LINE }} />
+
+      {/* INTRO — authorised distributor positioning */}
+      <Container maxWidth="md" sx={{ pt: { xs: 8, md: 12 }, pb: { xs: 2, md: 4 } }}>
+        <Reveal>
+          <Typography
+            component="h2"
+            sx={{
+              color: INK,
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontWeight: 700,
+              fontSize: { xs: "1.6rem", md: "2rem" },
+              mb: 2.5,
+            }}
+          >
+            An authorised MARS® valves distributor in the UK
+          </Typography>
+          <Typography sx={{ color: RUST, fontSize: { xs: "1rem", md: "1.05rem" }, lineHeight: 1.85, mb: 2 }}>
+            Mars Valvenok supplies genuine MARS® ball valves — two-piece,
+            three-piece, flanged, multi-port, sanitary, fire-safe and
+            high-pressure ranges — direct from Mars Valve Co., Ltd. of Taiwan,
+            under a formal letter of authorisation. As an authorised UK
+            distributor, every valve we ship is an authentic MARS® product, held
+            in UK stock and backed by full certification and traceability.
+          </Typography>
+          <Typography sx={{ color: RUST, fontSize: { xs: "1rem", md: "1.05rem" }, lineHeight: 1.85 }}>
+            The notice below explains how to tell a genuine MARS® valve from a
+            copy, and why buying from an authorised distributor matters.
+          </Typography>
+        </Reveal>
+      </Container>
 
       {/* THE STATEMENT */}
       <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
@@ -444,7 +476,7 @@ export default function MarsBrandPage() {
               }}
             >
               <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                src={LETTER_OF_AUTHORISATION_URL}
                 alt="MARS® official trust certificate"
                 fill
                 className="brand-photo"

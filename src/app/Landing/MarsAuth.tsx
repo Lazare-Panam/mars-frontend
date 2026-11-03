@@ -3,6 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 const bodyText = {
   color: "text.secondary",
@@ -94,12 +95,12 @@ export default function MarsSection() {
             }}
           >
             <Link
-              href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+              href={LETTER_OF_AUTHORISATION_URL}
               target="_blank"
               rel="noopener noreferrer"
             >
               <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                src={LETTER_OF_AUTHORISATION_URL}
                 alt="MARS fire-safe ball valve, API 607 certified"
                 fill
                 style={{ objectFit: "contain" }}

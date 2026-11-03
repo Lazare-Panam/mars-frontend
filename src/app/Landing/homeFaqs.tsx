@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 // Homepage FAQ (build sheet block 11). Kept out of the "use client" FAQSection
 // so the server page can read the plain-text answers for the FAQPage schema.
 
-const LETTER_URL =
-  "https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg";
+const LETTER_URL = LETTER_OF_AUTHORISATION_URL;
 
 const linkStyle = { color: "inherit", fontWeight: 600 } as const;
 

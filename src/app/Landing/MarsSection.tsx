@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/Common/Reveal";
+import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 const bodyText = {
   color: "text.secondary",
@@ -99,12 +100,12 @@ export default function MarsSection() {
               }}
             >
               <Link
-                href="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                href={LETTER_OF_AUTHORISATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="https://pblol2.blob.core.windows.net/mars-valves/home/Trust-Certfilicate.jpeg"
+                  src={LETTER_OF_AUTHORISATION_URL}
                   alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
                   fill
                   style={{ objectFit: "contain" }}
