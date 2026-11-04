@@ -183,7 +183,7 @@ export default function Hero() {
               ...fadeUp(mounted, 120),
             }}
           >
-            Ball valve solutions for certified industrial applications
+            Genuine MARS ball valves from the authorised UK distributor
           </Typography>
 
           <Typography
@@ -197,9 +197,10 @@ export default function Hero() {
               ...fadeUp(mounted, 240),
             }}
           >
-            Stainless steel 2-piece, 3-piece, flanged, multi-port and sanitary
-            ball valves, with fire-safe series tested to API 607. Genuine MARS
-            valves, manufacturer documentation, and prices you can see online.
+            We supply the full MARS range, from 2- and 3-piece to flanged,
+            sanitary and API 607 fire-safe series, with manufacturer
+            documentation and prices for standard items online. Project and
+            non-standard orders are quoted with lead times confirmed up front.
           </Typography>
 
           <Stack
