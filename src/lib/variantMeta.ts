@@ -2503,4 +2503,164 @@ export const VARIANT_META: Record<string, VariantMeta> = {
     description: "MARS Series 83 2-1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a3236.58, order online.",
     h1: "MARS Series 83 2-1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
   },
+  "V50SN-1-2IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "1/2\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a332.80, order online.",
+    h1: "MARS 50SN 1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-1-2IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "1/2\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS",
+    description: "MARS 50SN 1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a338.65, order online.",
+    h1: "MARS 50SN 1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-1-2IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "1/2\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a332.03, order online.",
+    h1: "MARS 50SN 1/2\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-1-2IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "1/2\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a337.88, order online.",
+    h1: "MARS 50SN 1/2\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-3-4IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "3/4\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 3/4\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a332.65, order online.",
+    h1: "MARS 50SN 3/4\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-3-4IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "3/4\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS",
+    description: "MARS 50SN 3/4\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a341.73, order online.",
+    h1: "MARS 50SN 3/4\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-3-4IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "3/4\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 3/4\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a331.72, order online.",
+    h1: "MARS 50SN 3/4\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-3-4IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "3/4\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 3/4\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a340.96, order online.",
+    h1: "MARS 50SN 3/4\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-1IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "1\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 1\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a344.20, order online.",
+    h1: "MARS 50SN 1\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-1IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "1\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS 50SN",
+    description: "MARS 50SN 1\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a352.67, order online.",
+    h1: "MARS 50SN 1\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-1IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "1\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 1\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a343.27, order online.",
+    h1: "MARS 50SN 1\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-1IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "1\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 1\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a351.59, order online.",
+    h1: "MARS 50SN 1\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-1-1-2IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "1-1/2\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 1-1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a383.62, order online.",
+    h1: "MARS 50SN 1-1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-1-1-2IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "1-1/2\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS",
+    description: "MARS 50SN 1-1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a3103.03, order online.",
+    h1: "MARS 50SN 1-1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-1-1-2IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "1-1/2\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS",
+    description: "MARS 50SN 1-1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a381.47, order online.",
+    h1: "MARS 50SN 1-1/2\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-1-1-2IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "1-1/2\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 1-1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 1000 PSI. \u00a3101.02, order online.",
+    h1: "MARS 50SN 1-1/2\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-2IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "2\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a3116.27, order online.",
+    h1: "MARS 50SN 2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-2IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "2\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS 50SN",
+    description: "MARS 50SN 2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a3143.84, order online.",
+    h1: "MARS 50SN 2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-2IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "2\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 1000 PSI, -20 to 180\u00b0C. \u00a3113.04, order online.",
+    h1: "MARS 50SN 2\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-2IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "2\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 1000 PSI, -20 to 180\u00b0C. \u00a3140.60, order online.",
+    h1: "MARS 50SN 2\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-2-1-2IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "2-1/2\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 2-1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3215.75, order online.",
+    h1: "MARS 50SN 2-1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-2-1-2IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "2-1/2\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS",
+    description: "MARS 50SN 2-1/2\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3288.60, order online.",
+    h1: "MARS 50SN 2-1/2\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-2-1-2IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "2-1/2\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS",
+    description: "MARS 50SN 2-1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3210.36, order online.",
+    h1: "MARS 50SN 2-1/2\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-2-1-2IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "2-1/2\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 2-1/2\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3283.21, order online.",
+    h1: "MARS 50SN 2-1/2\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-3IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "3\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 3\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3364.59, order online.",
+    h1: "MARS 50SN 3\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-3IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "3\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS 50SN",
+    description: "MARS 50SN 3\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3482.40, order online.",
+    h1: "MARS 50SN 3\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-3IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "3\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 3\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3354.97, order online.",
+    h1: "MARS 50SN 3\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-3IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "3\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 3\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3378.22, order online.",
+    h1: "MARS 50SN 3\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
+  "V50SN-4IN-T-CLAMP-STD-PTFE-SEAT": {
+    title: "4\" Sanitary Ball Valve, Tri-Clamp, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 4\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3626.59, order online.",
+    h1: "MARS 50SN 4\" Three-Piece Sanitary Ball Valve, Tri-Clamp, Standard PTFE Seat",
+  },
+  "V50SN-4IN-T-CLAMP-PTFE-CAVITY-FILLER": {
+    title: "4\" Sanitary Ball Valve, Tri-Clamp, Cavity Filler | MARS 50SN",
+    description: "MARS 50SN 4\" three-piece manual sanitary ball valve, CF8M body, Tri-Clamp ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3896.86, order online.",
+    h1: "MARS 50SN 4\" Three-Piece Sanitary Ball Valve, Tri-Clamp, PTFE Cavity Filler Seat",
+  },
+  "V50SN-4IN-SHORT-WELDING-STD-PTFE-SEAT": {
+    title: "4\" Sanitary Ball Valve, Short Weld, PTFE Seat | MARS 50SN",
+    description: "MARS 50SN 4\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, standard PTFE seat, 800 PSI, -20 to 180\u00b0C. \u00a3610.61, order online.",
+    h1: "MARS 50SN 4\" Three-Piece Sanitary Ball Valve, Short Weld, Standard PTFE Seat",
+  },
+  "V50SN-4IN-SHORT-WELDING-PTFE-CAVITY-FILLER": {
+    title: "4\" Sanitary Ball Valve, Short Weld, Cavity Filler | MARS",
+    description: "MARS 50SN 4\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3880.88, order online.",
+    h1: "MARS 50SN 4\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
+  },
 };
