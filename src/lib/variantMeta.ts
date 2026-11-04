@@ -2663,4 +2663,884 @@ export const VARIANT_META: Record<string, VariantMeta> = {
     description: "MARS 50SN 4\" three-piece manual sanitary ball valve, CF8M body, short-weld ends, PTFE cavity-filler seat, 800 PSI, -20 to 180\u00b0C. \u00a3880.88, order online.",
     h1: "MARS 50SN 4\" Three-Piece Sanitary Ball Valve, Short Weld, PTFE Cavity Filler Seat",
   },
+  "V50-CF8M-1-4IN-BSP-PTFE-W-O-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-BSP-PTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-BSP-RPTFE-W-O-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-BSP-RPTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-NPT-PTFE-W-O-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-NPT-PTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-NPT-RPTFE-W-O-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-NPT-RPTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-SW-PTFE-W-O-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-SW-PTFE-W-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-SW-RPTFE-W-O-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-SW-RPTFE-W-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-BW-PTFE-W-O-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-BW-PTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-4IN-BW-RPTFE-W-O-LOCK": {
+    title: "1/4\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-4IN-BW-RPTFE-W-LOCK": {
+    title: "1/4\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 1/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 1/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-BSP-PTFE-W-O-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-BSP-PTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-BSP-RPTFE-W-O-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-BSP-RPTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-NPT-PTFE-W-O-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-NPT-PTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-NPT-RPTFE-W-O-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-NPT-RPTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-SW-PTFE-W-O-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-SW-PTFE-W-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-SW-RPTFE-W-O-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-SW-RPTFE-W-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-BW-PTFE-W-O-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-BW-PTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-8IN-BW-RPTFE-W-O-LOCK": {
+    title: "3/8\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a317.32, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-8IN-BW-RPTFE-W-LOCK": {
+    title: "3/8\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 3/8\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a317.52, order online.",
+    h1: "MARS Series 50 3/8\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-BSP-PTFE-W-O-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-BSP-PTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-BSP-RPTFE-W-O-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-BSP-RPTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-NPT-PTFE-W-O-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-NPT-PTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-NPT-RPTFE-W-O-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-NPT-RPTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-SW-PTFE-W-O-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-SW-PTFE-W-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-SW-RPTFE-W-O-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-SW-RPTFE-W-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-BW-PTFE-W-O-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-BW-PTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-2IN-BW-RPTFE-W-O-LOCK": {
+    title: "1/2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a321.56, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-2IN-BW-RPTFE-W-LOCK": {
+    title: "1/2\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a321.95, order online.",
+    h1: "MARS Series 50 1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-BSP-PTFE-W-O-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-BSP-PTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-BSP-RPTFE-W-O-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-BSP-RPTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-NPT-PTFE-W-O-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-NPT-PTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-NPT-RPTFE-W-O-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-NPT-RPTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-SW-PTFE-W-O-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-SW-PTFE-W-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-SW-RPTFE-W-O-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-SW-RPTFE-W-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-BW-PTFE-W-O-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-BW-PTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3-4IN-BW-RPTFE-W-O-LOCK": {
+    title: "3/4\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a327.33, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3-4IN-BW-RPTFE-W-LOCK": {
+    title: "3/4\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 3/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a327.72, order online.",
+    h1: "MARS Series 50 3/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-BSP-PTFE-W-O-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-BSP-PTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-BSP-RPTFE-W-O-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-BSP-RPTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-NPT-PTFE-W-O-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-NPT-PTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-NPT-RPTFE-W-O-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-NPT-RPTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-SW-PTFE-W-O-LOCK": {
+    title: "1\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-SW-PTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, Socket Weld, PTFE, Locking",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-SW-RPTFE-W-O-LOCK": {
+    title: "1\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-SW-RPTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-BW-PTFE-W-O-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-BW-PTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 1\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1IN-BW-RPTFE-W-O-LOCK": {
+    title: "1\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a335.03, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1IN-BW-RPTFE-W-LOCK": {
+    title: "1\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 1\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a335.42, order online.",
+    h1: "MARS Series 50 1\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-BSP-PTFE-W-O-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-BSP-PTFE-W-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-BSP-RPTFE-W-O-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-BSP-RPTFE-W-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-NPT-PTFE-W-O-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-NPT-PTFE-W-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-NPT-RPTFE-W-O-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-NPT-RPTFE-W-LOCK": {
+    title: "1-1/4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-SW-PTFE-W-O-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-SW-PTFE-W-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-SW-RPTFE-W-O-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-SW-RPTFE-W-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-BW-PTFE-W-O-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-BW-PTFE-W-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Butt Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-4IN-BW-RPTFE-W-O-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a339.89, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-4IN-BW-RPTFE-W-LOCK": {
+    title: "1-1/4\" 3-Piece Ball Valve, Butt Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a340.19, order online.",
+    h1: "MARS Series 50 1-1/4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-BSP-PTFE-W-O-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-BSP-PTFE-W-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-BSP-RPTFE-W-O-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-BSP-RPTFE-W-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-NPT-PTFE-W-O-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-NPT-PTFE-W-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-NPT-RPTFE-W-O-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-NPT-RPTFE-W-LOCK": {
+    title: "1-1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-SW-PTFE-W-O-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-SW-PTFE-W-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-SW-RPTFE-W-O-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-SW-RPTFE-W-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-BW-PTFE-W-O-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-BW-PTFE-W-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Butt Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-1-1-2IN-BW-RPTFE-W-O-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a357.75, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-1-1-2IN-BW-RPTFE-W-LOCK": {
+    title: "1-1/2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 1-1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a358.21, order online.",
+    h1: "MARS Series 50 1-1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-BSP-PTFE-W-O-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-BSP-PTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-BSP-RPTFE-W-O-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-BSP-RPTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-NPT-PTFE-W-O-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-NPT-PTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-NPT-RPTFE-W-O-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-NPT-RPTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-SW-PTFE-W-O-LOCK": {
+    title: "2\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-SW-PTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, Socket Weld, PTFE, Locking",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-SW-RPTFE-W-O-LOCK": {
+    title: "2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-SW-RPTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-BW-PTFE-W-O-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-BW-PTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2IN-BW-RPTFE-W-O-LOCK": {
+    title: "2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 1000 PSI. \u00a3101.45, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2IN-BW-RPTFE-W-LOCK": {
+    title: "2\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 1000 PSI. \u00a3102.03, order online.",
+    h1: "MARS Series 50 2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-BSP-PTFE-W-O-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-BSP-PTFE-W-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-BSP-RPTFE-W-O-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-BSP-RPTFE-W-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-NPT-PTFE-W-O-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-NPT-PTFE-W-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-NPT-RPTFE-W-O-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-NPT-RPTFE-W-LOCK": {
+    title: "2-1/2\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-SW-PTFE-W-O-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-SW-PTFE-W-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Socket Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-SW-RPTFE-W-O-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-SW-RPTFE-W-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-BW-PTFE-W-O-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-BW-PTFE-W-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Butt Weld, PTFE, Locking | MARS",
+    description: "MARS Series 50 2-1/2\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-2-1-2IN-BW-RPTFE-W-O-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3228.88, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-2-1-2IN-BW-RPTFE-W-LOCK": {
+    title: "2-1/2\" 3-Piece Ball Valve, Butt Weld, RPTFE, Locking | MARS",
+    description: "MARS Series 50 2-1/2\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3229.46, order online.",
+    h1: "MARS Series 50 2-1/2\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-BSP-PTFE-W-O-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-BSP-PTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-BSP-RPTFE-W-O-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-BSP-RPTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-NPT-PTFE-W-O-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-NPT-PTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-NPT-RPTFE-W-O-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-NPT-RPTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-SW-PTFE-W-O-LOCK": {
+    title: "3\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-SW-PTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, Socket Weld, PTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-SW-RPTFE-W-O-LOCK": {
+    title: "3\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 3\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-SW-RPTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 3\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-BW-PTFE-W-O-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-BW-PTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 3\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-3IN-BW-RPTFE-W-O-LOCK": {
+    title: "3\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 3\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3308.96, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-3IN-BW-RPTFE-W-LOCK": {
+    title: "3\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 3\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3309.73, order online.",
+    h1: "MARS Series 50 3\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-BSP-PTFE-W-O-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Std Handle",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, BSP, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-BSP-PTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, BSP, PTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, PTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, BSP, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-BSP-RPTFE-W-O-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Std Handle",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, BSP, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-BSP-RPTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, BSP, RPTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, BSP thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, BSP, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-NPT-PTFE-W-O-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Std Handle",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, NPT, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-NPT-PTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, NPT, PTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, PTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, NPT, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-NPT-RPTFE-W-O-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Std Handle",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, NPT, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-NPT-RPTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, NPT, RPTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, NPT thread, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, NPT, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-SW-PTFE-W-O-LOCK": {
+    title: "4\" 3-Piece Ball Valve, Socket Weld, PTFE, Std Handle | MARS",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-SW-PTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, Socket Weld, PTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, socket-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Socket Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-SW-RPTFE-W-O-LOCK": {
+    title: "4\" 3-Piece Ball Valve, Socket Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-SW-RPTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, Socket Weld, RPTFE, Locking",
+    description: "MARS Series 50 4\" three-piece ball valve, CF8M stainless, socket-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Socket Weld, RPTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-BW-PTFE-W-O-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Std Handle",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-BW-PTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, Butt Weld, PTFE, Locking",
+    description: "MARS Series 50 4\" three-piece full-bore ball valve, CF8M stainless, butt-weld ends, PTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Butt Weld, PTFE Seat, with Locking Handle",
+  },
+  "V50-CF8M-4IN-BW-RPTFE-W-O-LOCK": {
+    title: "4\" 3-Piece Ball Valve, Butt Weld, RPTFE, Std Handle | MARS",
+    description: "MARS Series 50 4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, standard handle, 800 PSI. \u00a3537.65, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, Standard Handle",
+  },
+  "V50-CF8M-4IN-BW-RPTFE-W-LOCK": {
+    title: "4\" Stainless 3-Piece Ball Valve, Butt Weld, RPTFE, Locking",
+    description: "MARS Series 50 4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
+    h1: "MARS Series 50 4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
+  },
 };
