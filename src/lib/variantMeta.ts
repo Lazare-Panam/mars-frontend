@@ -1,7 +1,7 @@
-// AUTO-GENERATED from the MARS meta-tag CSVs (Series 10-10 / seriesId 4, Series 22 / seriesId 3).
+// AUTO-GENERATED from the MARS meta-tag CSVs (Series 10-10 / id 4, Series 22 / id 3, Series 83 / id 12).
 // Per-SKU meta title, meta description and H1, applied verbatim from the sheets.
-// "[PRICE]" placeholders (Series 10-10 only) were filled with the live price from the SeriesProduct API.
-// To extend to other series, add their CSV to the generator; the variant route reads this map by part number.
+// "[PRICE]" placeholders were filled with the live price from the SeriesProduct API.
+// Only SKUs that exist as live pages are emitted; mismatched rows are skipped (see generator output).
 
 export interface VariantMeta {
   /** Full <title>, used verbatim (no brand suffix appended). */
@@ -2352,5 +2352,155 @@ export const VARIANT_META: Record<string, VariantMeta> = {
     title: "3\" 2-Piece Ball Valve, BSP, SS/PTFE Seat, Bare Shaft | MARS",
     description: "MARS Series 22 3\" two-piece full-port ball valve, BSP, 50/50 stainless/PTFE seat, bare shaft with ISO 5211 pad for actuators, 1000 PSI. UK quotes.",
     h1: "MARS Series 22 3\" Two-Piece Full Port Ball Valve, BSP, 50/50 Stainless/PTFE Seat, Bare Shaft",
+  },
+  "V83-FS-1-4IN-FULL-PORT-WCB": {
+    title: "1/4\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 1/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 2000 PSI. \u00a333.88, order online.",
+    h1: "MARS Series 83 1/4\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-1-4IN-FULL-PORT-CF8M": {
+    title: "1/4\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 1/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 2000 PSI. \u00a342.16, order online.",
+    h1: "MARS Series 83 1/4\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-3-8IN-FULL-PORT-WCB": {
+    title: "3/8\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 3/8\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 2000 PSI. \u00a333.88, order online.",
+    h1: "MARS Series 83 3/8\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-3-8IN-FULL-PORT-CF8M": {
+    title: "3/8\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 3/8\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 2000 PSI. \u00a342.16, order online.",
+    h1: "MARS Series 83 3/8\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-1-2IN-FULL-PORT-WCB": {
+    title: "1/2\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 1/2\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 2000 PSI. \u00a336.58, order online.",
+    h1: "MARS Series 83 1/2\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-1-2IN-FULL-PORT-CF8M": {
+    title: "1/2\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 1/2\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 2000 PSI. \u00a345.62, order online.",
+    h1: "MARS Series 83 1/2\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-1-2IN-REDUCED-PORT-WCB": {
+    title: "1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB | MARS",
+    description: "MARS Series 83 1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a334.84, order online.",
+    h1: "MARS Series 83 1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-1-2IN-REDUCED-PORT-CF8M": {
+    title: "1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M | MARS",
+    description: "MARS Series 83 1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a343.31, order online.",
+    h1: "MARS Series 83 1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-3-4IN-FULL-PORT-WCB": {
+    title: "3/4\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 3/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 2000 PSI. \u00a344.85, order online.",
+    h1: "MARS Series 83 3/4\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-3-4IN-FULL-PORT-CF8M": {
+    title: "3/4\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 3/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 2000 PSI. \u00a356.02, order online.",
+    h1: "MARS Series 83 3/4\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-3-4IN-REDUCED-PORT-WCB": {
+    title: "3/4\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB | MARS",
+    description: "MARS Series 83 3/4\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a337.54, order online.",
+    h1: "MARS Series 83 3/4\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-3-4IN-REDUCED-PORT-CF8M": {
+    title: "3/4\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M | MARS",
+    description: "MARS Series 83 3/4\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a346.78, order online.",
+    h1: "MARS Series 83 3/4\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-1IN-FULL-PORT-WCB": {
+    title: "1\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 1\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 2000 PSI. \u00a358.71, order online.",
+    h1: "MARS Series 83 1\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-1IN-FULL-PORT-CF8M": {
+    title: "1\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 1\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 2000 PSI. \u00a373.34, order online.",
+    h1: "MARS Series 83 1\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-1IN-REDUCED-PORT-WCB": {
+    title: "1\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB | MARS",
+    description: "MARS Series 83 1\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a348.12, order online.",
+    h1: "MARS Series 83 1\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-1IN-REDUCED-PORT-CF8M": {
+    title: "1\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M | MARS",
+    description: "MARS Series 83 1\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a359.68, order online.",
+    h1: "MARS Series 83 1\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-1-1-4IN-FULL-PORT-WCB": {
+    title: "1-1/4\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 1-1/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 1500 PSI. \u00a382.00, order online.",
+    h1: "MARS Series 83 1-1/4\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-1-1-4IN-FULL-PORT-CF8M": {
+    title: "1-1/4\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 1-1/4\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 1500 PSI. \u00a3102.41, order online.",
+    h1: "MARS Series 83 1-1/4\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-1-1-4IN-REDUCED-PORT-WCB": {
+    title: "1-1/4\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB",
+    description: "MARS Series 83 1-1/4\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a361.41, order online.",
+    h1: "MARS Series 83 1-1/4\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-1-1-4IN-REDUCED-PORT-CF8M": {
+    title: "1-1/4\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M",
+    description: "MARS Series 83 1-1/4\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a377.00, order online.",
+    h1: "MARS Series 83 1-1/4\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-1-1-2IN-FULL-PORT-WCB": {
+    title: "1-1/2\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 1-1/2\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 1500 PSI. \u00a3110.88, order online.",
+    h1: "MARS Series 83 1-1/2\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-1-1-2IN-FULL-PORT-CF8M": {
+    title: "1-1/2\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 1-1/2\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 1500 PSI. \u00a3146.11, order online.",
+    h1: "MARS Series 83 1-1/2\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-1-1-2IN-REDUCED-PORT-WCB": {
+    title: "1-1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB",
+    description: "MARS Series 83 1-1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a387.78, order online.",
+    h1: "MARS Series 83 1-1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-1-1-2IN-REDUCED-PORT-CF8M": {
+    title: "1-1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M",
+    description: "MARS Series 83 1-1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a3115.31, order online.",
+    h1: "MARS Series 83 1-1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-2IN-FULL-PORT-WCB": {
+    title: "2\" Fire-Safe 3-Piece Ball Valve, Full Port, WCB | MARS",
+    description: "MARS Series 83 2\" three-piece fire-safe ball valve to API 607, anti-static, full port, WCB carbon steel body, 1500 PSI. \u00a3148.22, order online.",
+    h1: "MARS Series 83 2\" Three-Piece Fire-Safe Ball Valve, Full Port, WCB Body",
+  },
+  "V83-FS-2IN-FULL-PORT-CF8M": {
+    title: "2\" Fire-Safe 3-Piece Ball Valve, Full Port, CF8M | MARS",
+    description: "MARS Series 83 2\" three-piece fire-safe ball valve to API 607, anti-static, full port, CF8M stainless body, 1500 PSI. \u00a3195.19, order online.",
+    h1: "MARS Series 83 2\" Three-Piece Fire-Safe Ball Valve, Full Port, CF8M Body",
+  },
+  "V83-FS-2IN-REDUCED-PORT-WCB": {
+    title: "2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB | MARS",
+    description: "MARS Series 83 2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a3118.77, order online.",
+    h1: "MARS Series 83 2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-2IN-REDUCED-PORT-CF8M": {
+    title: "2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M | MARS",
+    description: "MARS Series 83 2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a3156.31, order online.",
+    h1: "MARS Series 83 2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
+  },
+  "V83-FS-2-1-2IN-ROUND-END-CAP-REDUCED-PORT-WCB": {
+    title: "2-1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, WCB",
+    description: "MARS Series 83 2-1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, WCB carbon steel body. \u00a3183.26, order online.",
+    h1: "MARS Series 83 2-1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, WCB Body",
+  },
+  "V83-FS-2-1-2IN-ROUND-END-CAP-REDUCED-PORT-CF8M": {
+    title: "2-1/2\" Fire-Safe 3-Piece Ball Valve, Reduced Port, CF8M",
+    description: "MARS Series 83 2-1/2\" three-piece fire-safe ball valve to API 607, anti-static, reduced port, CF8M stainless body. \u00a3236.58, order online.",
+    h1: "MARS Series 83 2-1/2\" Three-Piece Fire-Safe Ball Valve, Reduced Port, CF8M Body",
   },
 };
