@@ -29,6 +29,9 @@ export type SeriesFamily = {
   intro: string;
   /** No "All Models" table exists for this range (backend has no models). */
   noModelsPage?: boolean;
+  /** Series in this range are quote-only (no online price), so configure CTAs
+      read "Configure & quote" instead of "Configure & price". */
+  quoteOnly?: boolean;
   /** Links to the sub-ranges, shown on a category-level page (crawlable). */
   types?: { label: string; href: string }[];
   series: FamilySeries[];
@@ -89,8 +92,10 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
     title: "High Pressure 2-Piece Ball Valves",
     kind: "2-piece",
     intro: "Two-piece ball valves rated from 3000 to 6000 PSI for high pressure industrial service.",
+    // All five configurable series are quote-only (no online price).
+    quoteOnly: true,
     series: [
-      { name: "Series 24, 3000PSI, DM", image: IMG + "high-pressure-two-piece-ball-valve/series-24.jpg", specs: [["Design", "2-piece Direct Mount design Ball Valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "3000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "Delrin / Peek"], ["Ends", "Female x Female/Male x Male thread (NPT, BSP, BSPT)"]], href: "/products/two-piece-ball-valves/high-pressure-two-piece-ball-valve/variants/series-24", action: "view" },
+      { name: "Series 24, 3000PSI, DM", image: IMG + "high-pressure-two-piece-ball-valve/series-24.jpg", specs: [["Design", "2-piece Direct Mount design Ball Valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "3000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "Delrin / Peek"], ["Ends", "NPT, BSP, BSPT"]], href: "/products/two-piece-ball-valves/high-pressure-two-piece-ball-valve/variants/series-24", action: "view" },
       { name: "Series F21-70, 3000PSI, FS", image: IMG + "high-pressure-two-piece-ball-valve/series-f21-70.jpg", specs: [["Design", "2-piece Fire Safe Ball Valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "3000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "Delrin / Peek"], ["Ends", "NPT, BSP, BSPT"], ["Fire safe", "API 607, 5th Edition"]], href: "/series/38", action: "configure" },
       { name: "Series F21-90, 6000PSI", image: IMG + "high-pressure-two-piece-ball-valve/series-f21-90.jpg", specs: [["Design", "2-piece design Ball Valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 1 1/2\""], ["Pressure", "6000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "Delrin+5% carbon"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/34", action: "configure" },
       { name: "Series F21-9K, 6000PSI, FS", image: IMG + "high-pressure-two-piece-ball-valve/series-f21-9k.jpg", specs: [["Design", "2-piece Fire Safe Ball Valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "6000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "Delrin / Peek"], ["Ends", "NPT, BSP, BSPT"], ["Fire safe", "API 607, 5th Edition"]], href: "/series/35", action: "configure" },
@@ -643,6 +648,138 @@ SERIES_FAMILIES.push({
         ["Seats", "25% carbon + PTFE"],
       ],
       href: "/series/56",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// Cryogenic ball valves: a new category. Sub-types are Flanged (Series CG9) and
+// 3-piece. The cryogenic photos live on the ball-valves/cyrogenic/ blob path.
+const CRYO_IMG = "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/c1.jpg";
+const CRYO = "/products/cryogenic-ball-valves";
+
+SERIES_FAMILIES.push({
+  categoryId: "cryogenic-ball-valves",
+  title: "Cryogenic Ball Valves",
+  kind: "Cryogenic",
+  intro:
+    "Cryogenic ball valves for liquefied-gas and low-temperature service down to -196°C, with blow-out-proof stems and ISO 5211 direct-mount pads.",
+  series: [
+    {
+      name: "Flanged",
+      image: CRYO_IMG,
+      specs: [
+        ["Design", "2-piece cryogenic flanged ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 4"'],
+        ["Temperature", "-196 to +95°C"],
+        ["Body", "CF8M"],
+        ["Seats", "PCTFE"],
+      ],
+      href: `${CRYO}/flanged-ball-valve`,
+      action: "view" as const,
+    },
+    {
+      name: "3-Piece",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/84c.jpg",
+      specs: [
+        ["Design", "3-piece cryogenic ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/4" – 4"'],
+        ["Temperature", "-196 to +95°C"],
+        ["Body", "CF8M (alloys on request)"],
+        ["Seats", "TFM4215 / PCTFE"],
+      ],
+      href: `${CRYO}/three-piece-ball-valve`,
+      action: "view" as const,
+    },
+  ],
+});
+
+// Cryogenic → Flanged sub-page: Series CG9-10/30/40.
+SERIES_FAMILIES.push({
+  categoryId: "cryogenic-ball-valves",
+  productId: "flanged-ball-valve",
+  title: "Cryogenic Flanged Ball Valves",
+  kind: "Cryogenic",
+  intro:
+    "2-piece cryogenic flanged ball valves with an ISO 5211 direct-mount pad and a blow-out-proof stem, rated to -196°C.",
+  series: [
+    {
+      name: "Series CG9-10/30/40",
+      image: CRYO_IMG,
+      specs: [
+        ["Design", "2-piece cryogenic flanged ball valve"],
+        ["Port", "Full port"],
+        ["Mount", "ISO 5211 Direct Mount"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI #150, PN10/16, PN40"],
+        ["Body", "CF8M"],
+        ["Seats", "PCTFE"],
+        ["Temperature", "-196 to +95°C"],
+      ],
+      href: "/series/67",
+      action: "configure" as const,
+    },
+    {
+      name: "Series 94C-10/20/30/40",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/3-piece.jpg",
+      specs: [
+        ["Design", "2-piece cryogenic flanged ball valve"],
+        ["Port", "Full port"],
+        ["Mount", "ISO 5211"],
+        ["Size", '1/2" – 4"'],
+        ["Pressure", "ANSI #150/#300, PN16, PN40"],
+        ["Body", "CF8M (alloys on request)"],
+        ["Seats", "TFM4215 / PCTFE"],
+        ["Temperature", "-196 to +95°C"],
+      ],
+      href: "/series/68",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// Cryogenic → 3-Piece sub-page: Series 84C-10/20/30.
+SERIES_FAMILIES.push({
+  categoryId: "cryogenic-ball-valves",
+  productId: "three-piece-ball-valve",
+  title: "Cryogenic 3-Piece Ball Valves",
+  kind: "Cryogenic",
+  intro:
+    "3-piece cryogenic ball valves with ISO 5211 mounting pads and blow-out-proof stems, for threaded or welded lines down to -196°C.",
+  series: [
+    {
+      name: "Series 84C-10/20/30",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/84c.jpg",
+      specs: [
+        ["Design", "3-piece cryogenic ball valve"],
+        ["Port", "Full port"],
+        ["Mount", "ISO 5211"],
+        ["Size", '1/4" – 4"'],
+        ["Ends", "Threaded, Socket Weld, Butt Weld"],
+        ["Body", "CF8M (alloys on request)"],
+        ["Seats", "TFM4215 / PCTFE"],
+        ["Temperature", "-196 to +95°C"],
+      ],
+      href: "/series/69",
+      action: "configure" as const,
+    },
+    {
+      name: "Series 89C-10/20/30/60",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/series-89c.jpg",
+      specs: [
+        ["Design", "3-piece cryogenic ball valve"],
+        ["Port", "Full port"],
+        ["Mount", "ISO 5211"],
+        ["Size", '1/2" – 4"'],
+        ["Ends", "Threaded, SW, BW, Flanged"],
+        ["Pressure", "2250 PSI · ANSI #150/300/600"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "PCTFE / Metal seat"],
+        ["Temperature", "-196 to +120°C"],
+      ],
+      href: "/series/70",
       action: "configure" as const,
     },
   ],

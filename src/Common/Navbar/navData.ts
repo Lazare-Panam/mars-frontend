@@ -220,10 +220,7 @@ export const LEFT_NAV: NavItem[] = [
             href: "/products/fire-safe-ball-valves",
           },
           { label: "V-Port Ball Valve", href: "/products/v-port-ball-valves" },
-          // {
-          //   label: "Cryogenic Ball Valve",
-          //   href: "/products/cryogenic-ball-valves",
-          // },
+          { label: "Cryogenic Ball Valve", href: "/products/cryogenic-ball-valves" },
           {
             label: "Metal Seated Ball Valve",
             href: "/products/metal-seated-ball-valves",

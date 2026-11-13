@@ -183,7 +183,7 @@ export default function Hero() {
               ...fadeUp(mounted, 120),
             }}
           >
-            Genuine MARS ball valves from the authorised UK distributor
+         Genuine MARS ball valves from the authorised UK distributor
           </Typography>
 
           <Typography

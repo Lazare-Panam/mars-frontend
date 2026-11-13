@@ -4,6 +4,7 @@ import { canonicalProductPath } from "@/lib/canonicalCategory";
 import { SITE_URL } from "@/lib/site";
 import { variantTitleParts } from "@/lib/variantTitle";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { VARIANT_META } from "@/lib/variantMeta";
 
 type MetadataProps = {
   params: Promise<{ id: string; productId: string; sku: string }>;
@@ -39,20 +40,26 @@ export async function generateMetadata({
 
   const { detail, name } = variantTitleParts(data, sku);
   const readable = detail ? `${detail} — ${name}` : name;
+  // Hand-written per-SKU meta from the marketing sheet wins, verbatim, when we
+  // have one for this slug.
+  const override = VARIANT_META[sku];
   // Keep the <title> within the ~65-char SERP guideline. For very long,
   // multi-attribute variants (the V88 family) drop the product name so the
   // unique distinguishing specs still fit; fitBrandTitle then drops the brand
   // suffix when the result still wouldn't fit with it appended.
-  const metaTitle = fitBrandTitle(
-    readable.length > 65 && detail ? detail : readable,
-  );
+  const metaTitle = override
+    ? { absolute: override.title }
+    : fitBrandTitle(readable.length > 65 && detail ? detail : readable);
   const specSummary = Object.entries(variant.specs)
     .filter(([k]) => k !== "SKU" && k !== "Price")
     .map(([, v]) => v)
     .join(", ");
-  const description = specSummary
-    ? `${data.name} — ${specSummary}. SKU: ${variant.id}.`
-    : `${data.name}, SKU: ${variant.id}.`;
+  const description =
+    override?.description ??
+    (specSummary
+      ? `${data.name} — ${specSummary}. SKU: ${variant.id}.`
+      : `${data.name}, SKU: ${variant.id}.`);
+  const ogTitle = override?.title ?? readable;
   const ogImage = variant.thumbnailImage || data.thumbnailImage;
 
   // Variant pages are canonicalised to their parent product page (SEO audit,
@@ -71,14 +78,14 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       siteName: "Mars Valvenok",
-      title: readable,
+      title: ogTitle,
       description,
       url: canonical,
       images: ogImage ? [{ url: ogImage }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: readable,
+      title: ogTitle,
       description,
       images: ogImage ? [ogImage] : undefined,
     },

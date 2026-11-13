@@ -24,6 +24,7 @@ import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { productCrumbs } from "@/lib/breadcrumbs";
 import { useQuoteStore } from "@/store/useQuoteStore";
 import { variantTitleParts } from "@/lib/variantTitle";
+import { VARIANT_META } from "@/lib/variantMeta";
 
 const BRAND = "#E7390F";
 const BRAND_DARK = "#A8270A";
@@ -191,7 +192,7 @@ export default function VariantDetailClient({
                 component="h1"
                 sx={{ fontSize: { xs: "1.6rem", md: "2rem" }, fontWeight: 800, lineHeight: 1.15, wordBreak: "break-word" }}
               >
-                {skuLabel}
+                {VARIANT_META[sku]?.h1 ?? skuLabel}
               </Typography>
               {detail && detail !== skuLabel && (
                 <Typography sx={{ mt: 0.75, color: "text.secondary", fontSize: "0.95rem" }}>

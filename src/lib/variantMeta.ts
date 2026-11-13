@@ -3543,4 +3543,104 @@ export const VARIANT_META: Record<string, VariantMeta> = {
     description: "MARS Series 50 4\" three-piece ball valve, CF8M stainless, butt-weld ends, carbon-filled RPTFE seat, lockable handle, 800 PSI. \u00a3539.00, order online.",
     h1: "MARS Series 50 4\" Three-Piece Ball Valve, Butt Weld, RPTFE Seat, with Locking Handle",
   },
+  "v22-1-4in-w-handle": {
+    title: "1/4\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 1/4\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a324.18, order online.",
+    h1: "MARS Series 22 1/4\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-1-4in-bare-shaft": {
+    title: "1/4\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 1/4\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a321.87, order online.",
+    h1: "MARS Series 22 1/4\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-3-8in-w-handle": {
+    title: "3/8\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 3/8\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a324.18, order online.",
+    h1: "MARS Series 22 3/8\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-3-8in-bare-shaft": {
+    title: "3/8\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 3/8\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a321.87, order online.",
+    h1: "MARS Series 22 3/8\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-1-2in-w-handle": {
+    title: "1/2\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 1/2\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a324.18, order online.",
+    h1: "MARS Series 22 1/2\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-1-2in-bare-shaft": {
+    title: "1/2\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 1/2\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a321.87, order online.",
+    h1: "MARS Series 22 1/2\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-3-4in-w-handle": {
+    title: "3/4\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 3/4\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a326.95, order online.",
+    h1: "MARS Series 22 3/4\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-3-4in-bare-shaft": {
+    title: "3/4\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 3/4\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a324.64, order online.",
+    h1: "MARS Series 22 3/4\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-1in-w-handle": {
+    title: "1\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 1\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a338.81, order online.",
+    h1: "MARS Series 22 1\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-1in-bare-shaft": {
+    title: "1\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 1\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a335.73, order online.",
+    h1: "MARS Series 22 1\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-1-1-4in-w-handle": {
+    title: "1-1/4\" 2-Piece Full Port Ball Valve, Series 22, Handle",
+    description: "MARS Series 22 1-1/4\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a347.43, order online.",
+    h1: "MARS Series 22 1-1/4\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-1-1-4in-bare-shaft": {
+    title: "1-1/4\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 1-1/4\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a344.20, order online.",
+    h1: "MARS Series 22 1-1/4\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-1-1-2in-w-handle": {
+    title: "1-1/2\" 2-Piece Full Port Ball Valve, Series 22, Handle",
+    description: "MARS Series 22 1-1/2\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a378.23, order online.",
+    h1: "MARS Series 22 1-1/2\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-1-1-2in-bare-shaft": {
+    title: "1-1/2\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 1-1/2\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a373.30, order online.",
+    h1: "MARS Series 22 1-1/2\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-2in-w-handle": {
+    title: "2\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 2\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a399.02, order online.",
+    h1: "MARS Series 22 2\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-2in-bare-shaft": {
+    title: "2\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 2\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a394.09, order online.",
+    h1: "MARS Series 22 2\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-2-1-2in-w-handle": {
+    title: "2-1/2\" 2-Piece Full Port Ball Valve, Series 22, Handle",
+    description: "MARS Series 22 2-1/2\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a3177.41, order online.",
+    h1: "MARS Series 22 2-1/2\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-2-1-2in-bare-shaft": {
+    title: "2-1/2\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 2-1/2\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a3170.48, order online.",
+    h1: "MARS Series 22 2-1/2\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
+  "v22-3in-w-handle": {
+    title: "3\" 2-Piece Full Port Ball Valve, Series 22, Handle | MARS",
+    description: "MARS Series 22 3\" two-piece full-port ball valve with handle, CF8M ball, 316 stem, PTFE seat, ISO 5211 pad, 1000 PSI. \u00a3237.78, order online.",
+    h1: "MARS Series 22 3\" Two-Piece Full Port Ball Valve, with Handle",
+  },
+  "v22-3in-bare-shaft": {
+    title: "3\" 2-Piece Full Port Ball Valve, Series 22, Bare Shaft",
+    description: "MARS Series 22 3\" two-piece full-port ball valve, bare shaft with ISO 5211 pad, CF8M ball, 316 stem, PTFE seat, 1000 PSI. \u00a3230.85, order online.",
+    h1: "MARS Series 22 3\" Two-Piece Full Port Ball Valve, Bare Shaft",
+  },
 };

@@ -90,6 +90,14 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
           href: `${P}/v-port-ball-valves`,
           links: [{ label: "View all V-port ball valves", href: `${P}/v-port-ball-valves` }],
         },
+        {
+          heading: "Cryogenic",
+          href: `${P}/cryogenic-ball-valves`,
+          links: [
+            { label: "Cryogenic Flanged Ball Valves", href: `${P}/cryogenic-ball-valves/flanged-ball-valve` },
+            { label: "Cryogenic 3-Piece Ball Valves", href: `${P}/cryogenic-ball-valves/three-piece-ball-valve` },
+          ],
+        },
       ],
     ],
   },
