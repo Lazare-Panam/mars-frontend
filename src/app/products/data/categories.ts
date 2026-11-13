@@ -172,6 +172,15 @@ export const CATEGORIES = [
     href: "/products/flanged-ball-valves",
   },
   {
+    id: "cryogenic-ball-valves",
+    label: "Cryogenic Ball Valves",
+    description:
+      "Cryogenic ball valves for liquefied gas and low-temperature service down to -196°C.",
+    image:
+      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/c1.jpg",
+    href: "/products/cryogenic-ball-valves",
+  },
+  {
     id: "multi-port-ball-valves",
     label: "Multi-Port Ball Valves",
     description:

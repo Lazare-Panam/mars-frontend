@@ -49,8 +49,30 @@ function facts(family: SeriesFamily): [string, string][] {
   return out.slice(0, 4);
 }
 
-function SeriesCard({ s, title }: { s: FamilySeries; title: string }) {
+// Rows for the "Compare the range" table. Derived from each series' specs, so
+// it stays in step with the cards. Fire safe shows the certified standard ONLY
+// where the series actually lists one — series without a standard read "—"
+// rather than being counted as fire-safe.
+type CompRow = { series: string; port: string; pressure: string; mounting: string; fireSafe: string };
+function comparisonRows(family: SeriesFamily): CompRow[] {
+  return family.series.map((s) => {
+    const spec = (k: string) => s.specs?.find(([key]) => key === k)?.[1];
+    const fs = spec("Fire safe");
+    return {
+      series: splitName(s.name).title,
+      port: spec("Port") ?? "—",
+      pressure: spec("Pressure") ?? "—",
+      mounting: /direct mount|\bDM\b/i.test(`${s.name} ${spec("Design") ?? ""}`) ? "Direct mount" : "Standard",
+      fireSafe: fs ? (/api\s*607/i.test(fs) ? "API 607" : fs) : "—",
+    };
+  });
+}
+
+function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; quoteOnly?: boolean }) {
   const { title: seriesTitle, tags } = splitName(s.name);
+  // Quote-only ranges have no online price, so the configure CTA says "quote".
+  const actionLabel =
+    s.action === "configure" && quoteOnly ? "Configure & quote" : ACTION_LABEL[s.action];
   const href = s.href ?? "/contact#enquiry";
   // Shorter labels and values so the rows fit a card.
   const LABEL: Record<string, string> = { Pressure: "Pressure Rating" };
@@ -122,7 +144,7 @@ function SeriesCard({ s, title }: { s: FamilySeries; title: string }) {
           </Box>
         )}
         <Box className="card-cta" sx={{ mt: "auto", pt: 2, display: "flex", alignItems: "center", gap: 0.5, color: "primary.main", fontWeight: 700, fontSize: "0.92rem", transition: "gap .2s ease" }}>
-          {ACTION_LABEL[s.action]} <ArrowForwardIcon fontSize="small" />
+          {actionLabel} <ArrowForwardIcon fontSize="small" />
         </Box>
       </Box>
     </Box>
@@ -293,8 +315,55 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
         )}
         <Box sx={{ display: "grid", gap: 3, gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" } }}>
           {family.series.map((s) => (
-            <SeriesCard key={s.name} s={s} title={family.title} />
+            <SeriesCard key={s.name} s={s} title={family.title} quoteOnly={family.quoteOnly} />
           ))}
+        </Box>
+      </Container>
+
+      {/* Compare the range — scannable table of the series' key differences */}
+      <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 3, md: 6 }, pb: { xs: 5, md: 7 } }}>
+        <Typography component="h2" sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" }, mb: 2.5 }}>
+          Compare the range
+        </Typography>
+        <Box sx={{ overflowX: "auto", border: CARD_BORDER, borderRadius: "14px", bgcolor: "#fff" }}>
+          <Box
+            component="table"
+            sx={{
+              width: "100%",
+              minWidth: 640,
+              borderCollapse: "collapse",
+              "& th, & td": { textAlign: "left", px: { xs: 2, md: 2.5 }, py: 1.5, fontSize: "0.9rem", borderBottom: "1px solid rgba(43,27,20,0.08)" },
+              "& thead th": { fontWeight: 800, fontSize: "0.78rem", letterSpacing: "0.04em", textTransform: "uppercase", color: "text.secondary", bgcolor: "#FAF6F4" },
+              "& tbody tr:last-of-type td": { borderBottom: "none" },
+              "& tbody td:first-of-type": { fontWeight: 800 },
+            }}
+          >
+            <thead>
+              <tr>
+                <th>Series</th>
+                <th>Port</th>
+                <th>Pressure</th>
+                <th>Mounting</th>
+                <th>Fire safe</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows(family).map((r) => (
+                <Box component="tr" key={r.series}>
+                  <td className="no-capitalize">{r.series}</td>
+                  <td className="no-capitalize">{r.port}</td>
+                  <td className="no-capitalize">{r.pressure}</td>
+                  <td className="no-capitalize">{r.mounting}</td>
+                  <td
+                    className="no-capitalize"
+                    style={r.fireSafe !== "—" ? { color: "#A8270A", fontWeight: 700 } : undefined}
+                  >
+                    {r.fireSafe}
+                  </td>
+                </Box>
+              ))}
+            </tbody>
+          </Box>
         </Box>
       </Container>
 
