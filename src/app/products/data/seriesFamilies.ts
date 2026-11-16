@@ -914,6 +914,22 @@ SERIES_FAMILIES.push({
       href: "/series/76",
       action: "configure" as const,
     },
+    {
+      name: "Series FM-10",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/high-pressure/series-fm-10.jpg",
+      specs: [
+        ["Design", "3-piece metal seated ball valve"],
+        ["Port", "Full & Reduced port"],
+        ["Size", '1/2" – 2"'],
+        ["Pressure", "3600 PSI / ANSI #1500"],
+        ["Ends", "Threaded, BW, SW, Flanged"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "SS316 + Stellite"],
+        ["Stem", "17-4PH"],
+      ],
+      href: "/series/77",
+      action: "configure" as const,
+    },
   ],
 });
 
