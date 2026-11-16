@@ -310,6 +310,20 @@ SERIES_FAMILIES.push({
           href: "/products/metal-seated-ball-valves/high-pressure",
           action: "view" as const,
         },
+        {
+          name: "Metal Seated · Multi-Port",
+          image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/three-four-five-way-ball-valve/series-30m.jpg",
+          specs: [
+            ["Design", "3-way flanged trunnion ball valve"],
+            ["Port", "Full port"],
+            ["Ports", "L port, T port"],
+            ["Size", '1 1/2" – 6"'],
+            ["Pressure", "ANSI #150/#300, PN10/16, PN25/40"],
+            ["Body", "CF8M / WCB"],
+          ],
+          href: "/products/metal-seated-ball-valves/multi-port",
+          action: "view" as const,
+        },
       ],
     },
   ],
@@ -847,6 +861,7 @@ SERIES_FAMILIES.push({
 // High Pressure (Series F306); others get added as we go.
 const MS = "/products/metal-seated-ball-valves";
 const MS_HP_IMG = "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/high-pressure/series-F306.jpg";
+const MS_MP_IMG = "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/three-four-five-way-ball-valve/series-30m.jpg";
 
 SERIES_FAMILIES.push({
   categoryId: "metal-seated-ball-valves",
@@ -868,6 +883,63 @@ SERIES_FAMILIES.push({
       ],
       href: `${MS}/high-pressure`,
       action: "view" as const,
+    },
+    {
+      name: "Multi-Port",
+      image: MS_MP_IMG,
+      specs: [
+        ["Design", "3-way flanged trunnion ball valve"],
+        ["Port", "Full port"],
+        ["Ports", "L port, T port"],
+        ["Size", '1 1/2" – 6"'],
+        ["Pressure", "ANSI #150/#300, PN10/16, PN25/40"],
+        ["Body", "CF8M / WCB"],
+      ],
+      href: `${MS}/multi-port`,
+      action: "view" as const,
+    },
+  ],
+});
+
+// Metal Seated → Multi-Port sub-page: Series 30M (existing soft-seated 3-way, cross-listed here).
+SERIES_FAMILIES.push({
+  categoryId: "metal-seated-ball-valves",
+  productId: "multi-port",
+  title: "Metal Seated Multi-Port Ball Valves",
+  kind: "Metal seated",
+  intro:
+    "3-way flanged trunnion multi-port ball valves with L/T-port balls, SIL3-capable, in sizes 1 1/2\" to 6\".",
+  series: [
+    {
+      name: "Series 30M, SIL3",
+      image: MS_MP_IMG,
+      specs: [
+        ["Design", "3-way flanged trunnion ball valve"],
+        ["Port", "Full port"],
+        ["Ports", "L port, T port"],
+        ["Size", '1 1/2" – 6"'],
+        ["Pressure", "ANSI #150/#300, PN10/16, PN25/40"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "PTFE/RTFE (others on request)"],
+      ],
+      href: "/series/62",
+      action: "configure" as const,
+    },
+    {
+      name: "Series 33, SIL3",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/three-four-five-way-ball-valve/series-33.png",
+      specs: [
+        ["Design", "3-way, 4-way, 5-way ball valve"],
+        ["Port", "Full port"],
+        ["Ports", "L port, T port, I port, X port, LL port, TT Port"],
+        ["Size", '1/4" – 4"'],
+        ["Pressure", "ANSI Class 150, Class 300, PN16/40"],
+        ["Body", "CF8M"],
+        ["Seats", "PTFE/RTFE (others on request)"],
+        ["Ends", "Flanged, Threaded, Socket weld, Butt weld"],
+      ],
+      href: "/series/6",
+      action: "configure" as const,
     },
   ],
 });
