@@ -898,6 +898,22 @@ SERIES_FAMILIES.push({
       href: "/series/75",
       action: "configure" as const,
     },
+    {
+      name: "Series F306M, 3000PSI",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/high-pressure/f306.jpg",
+      specs: [
+        ["Design", "3-piece Direct Mount metal seated ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/4" – 2"'],
+        ["Pressure", "3000 PSI"],
+        ["Ends", "Threaded, Butt Weld, Socket Weld"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "SS316 + Stellite"],
+        ["Ball", "Stellite"],
+      ],
+      href: "/series/76",
+      action: "configure" as const,
+    },
   ],
 });
 
