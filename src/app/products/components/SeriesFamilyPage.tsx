@@ -318,6 +318,18 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
             <SeriesCard key={s.name} s={s} title={family.title} quoteOnly={family.quoteOnly} />
           ))}
         </Box>
+        {family.extraSections?.map((sec) => (
+          <Box key={sec.heading} sx={{ mt: 6 }}>
+            <Typography component="h2" sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" }, mb: 3 }}>
+              {sec.heading}
+            </Typography>
+            <Box sx={{ display: "grid", gap: 3, gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)" } }}>
+              {sec.series.map((s) => (
+                <SeriesCard key={s.name} s={s} title={sec.heading} />
+              ))}
+            </Box>
+          </Box>
+        ))}
       </Container>
 
       {/* Compare the range — scannable table of the series' key differences */}

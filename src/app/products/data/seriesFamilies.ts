@@ -35,6 +35,8 @@ export type SeriesFamily = {
   quoteOnly?: boolean;
   /** Links to the sub-ranges, shown on a category-level page (crawlable). */
   types?: { label: string; href: string }[];
+  /** Extra titled card sections rendered below the main grid (e.g. a related range). */
+  extraSections?: { heading: string; series: FamilySeries[] }[];
   series: FamilySeries[];
 };
 
@@ -290,6 +292,27 @@ SERIES_FAMILIES.push({
   kind: "Flanged",
   intro:
     "MARS flanged ball valves in ANSI, DIN and JIS flange ratings for direct in-line installation — uni-body, two-piece, three-piece, wafer and steam-jacketed designs.",
+  extraSections: [
+    {
+      heading: "Metal Seated Ball Valves",
+      series: [
+        {
+          name: "Metal Seated · High Pressure",
+          image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/high-pressure/series-F306.jpg",
+          specs: [
+            ["Design", "3-piece metal seated ball valve"],
+            ["Port", "Full port"],
+            ["Size", '1/2" – 1"'],
+            ["Pressure", "ANSI #1500"],
+            ["Body", "CF8M / WCB"],
+            ["Seats", "SS316 + Stellite"],
+          ],
+          href: "/products/metal-seated-ball-valves/high-pressure",
+          action: "view" as const,
+        },
+      ],
+    },
+  ],
   series: [
     {
       name: "Uni Flanged",
@@ -814,6 +837,65 @@ SERIES_FAMILIES.push({
         ["Temperature", "-196 to +95°C"],
       ],
       href: "/series/74",
+      action: "configure" as const,
+    },
+  ],
+});
+
+// Metal seated ball valves: existing category (see categories.ts). Sub-types per
+// the manufacturer: High Pressure, Multi-port, 3-piece, Flanged. Starting with
+// High Pressure (Series F306); others get added as we go.
+const MS = "/products/metal-seated-ball-valves";
+const MS_HP_IMG = "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/high-pressure/series-F306.jpg";
+
+SERIES_FAMILIES.push({
+  categoryId: "metal-seated-ball-valves",
+  title: "Metal Seated Ball Valves",
+  kind: "Metal seated",
+  intro:
+    "Metal-to-metal seated ball valves for high-temperature, abrasive and severe service — Stellite-faced seats and hard-chrome balls.",
+  series: [
+    {
+      name: "High Pressure",
+      image: MS_HP_IMG,
+      specs: [
+        ["Design", "3-piece metal seated ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 1"'],
+        ["Pressure", "ANSI #1500"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "SS316 + Stellite"],
+      ],
+      href: `${MS}/high-pressure`,
+      action: "view" as const,
+    },
+  ],
+});
+
+// Metal Seated → High Pressure sub-page: Series F306.
+SERIES_FAMILIES.push({
+  categoryId: "metal-seated-ball-valves",
+  productId: "high-pressure",
+  title: "Metal Seated High Pressure Ball Valves",
+  kind: "Metal seated",
+  intro:
+    "3-piece direct-mount metal-seated high-pressure ball valves with Stellite-faced seats and a hard-chrome ball, rated ANSI Class 1500.",
+  series: [
+    {
+      name: "Series F306",
+      image: MS_HP_IMG,
+      specs: [
+        ["Design", "3-piece Direct Mount metal seated ball valve"],
+        ["Port", "Full port"],
+        ["Size", '1/2" – 1"'],
+        ["Pressure", "ANSI #1500"],
+        ["Ends", "Flanged"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "SS316 + Stellite"],
+        ["Ball", "CF8M + Hard Chrome"],
+        ["Stem", "17-4PH"],
+      ],
+      href: "/series/75",
       action: "configure" as const,
     },
   ],

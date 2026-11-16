@@ -102,7 +102,7 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
     ],
   },
   {
-    label: "Flanged Ball Valves",
+    label: "Flanged & Metal Seated",
     href: `${P}/flanged-ball-valves`,
     columns: [
       {
@@ -115,6 +115,16 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
           { label: "Wafer Type Flanged", href: `${P}/flanged-ball-valves/wafer-type-flanged-ball-valve` },
           { label: "3-Piece Flanged", href: `${P}/flanged-ball-valves/three-piece-flanged-ball-valve` },
           { label: "Steam Jacketed Flanged", href: `${P}/flanged-ball-valves/steam-jacketed-flanged-ball-valve` },
+        ],
+      },
+      {
+        heading: "Metal Seated Ball Valves",
+        href: `${P}/metal-seated-ball-valves`,
+        links: [
+          { label: "High Pressure Ball Valve", href: `${P}/metal-seated-ball-valves/high-pressure` },
+          { label: "Multi-Port Ball Valve", href: `${P}/metal-seated-ball-valves/multi-port` },
+          { label: "3-Piece Ball Valve", href: `${P}/metal-seated-ball-valves/3-piece` },
+          { label: "Flanged Ball Valve", href: `${P}/metal-seated-ball-valves/flanged` },
         ],
       },
     ],
