@@ -20,6 +20,9 @@ export type FamilySeries = {
   specs?: [string, string][];
   href?: string;
   action: "configure" | "view" | "models" | "quote";
+  /** Descriptive alt text for the product photo (SEO/accessibility). Falls back
+      to a generated "MARS {series} ball valve" string when omitted. */
+  imageAlt?: string;
 };
 
 export type SeriesFamily = {
@@ -37,6 +40,16 @@ export type SeriesFamily = {
   types?: { label: string; href: string }[];
   /** Extra titled card sections rendered below the main grid (e.g. a related range). */
   extraSections?: { heading: string; series: FamilySeries[] }[];
+  /** Overrides the auto-derived hero stat boxes with explicit [value, label] pairs. */
+  heroFacts?: [string, string][];
+  /** Icon-less feature grid rendered below the hero (e.g. shared design features). */
+  features?: { heading: string; intro?: string; items: { title: string; text: string }[] };
+  /** FAQ section rendered near the bottom; also emitted as FAQPage structured data. */
+  faqs?: { q: string; a: string }[];
+  /** Overrides the bottom call-to-band copy. */
+  cta?: { title?: string; text?: string };
+  /** Per-page SEO metadata (title/description/canonical) for generateMetadata. */
+  seo?: { title: string; description: string; canonical?: string };
   series: FamilySeries[];
 };
 
@@ -785,11 +798,46 @@ SERIES_FAMILIES.push({
   title: "Cryogenic 3-Piece Ball Valves",
   kind: "Cryogenic",
   intro:
-    "3-piece cryogenic ball valves with ISO 5211 mounting pads and blow-out-proof stems, for threaded or welded lines down to -196°C.",
+    "Three-piece cryogenic ball valves for service down to -196°C, with a vented ball, an ISO 5211 direct-mount pad and oxygen cleaning as standard. Threaded, welded and flanged ends.",
+  seo: {
+    title: "Cryogenic 3-Piece Ball Valves to -196°C | Mars Valvenok",
+    description:
+      "MARS cryogenic 3-piece ball valves for service down to -196°C. ISO 5211 direct mount, vented ball and oxygen cleaning as standard. Request a quote.",
+    canonical:
+      "https://www.marsvalvenok.com/products/cryogenic-ball-valves/three-piece-ball-valve",
+  },
+  heroFacts: [
+    ["4", "Cryogenic series"],
+    ["-196°C", "Minimum service temperature"],
+    ["ISO 5211", "Direct-mount pad"],
+  ],
+  features: {
+    heading: "Built for cryogenic service",
+    intro: "Every MARS cryogenic ball valve shares these design features.",
+    items: [
+      { title: "Vented ball", text: "A vent in the ball stops pressure building up in the body cavity as trapped liquid warms and expands." },
+      { title: "Flow direction arrow", text: "Every valve is marked with a flow arrow, so the vented side is always installed the right way round." },
+      { title: "Oxygen cleaned as standard", text: "Every valve is oxygen cleaned as standard. Confirm your media when you ask for a quote." },
+      { title: "17-4 PH stainless stem", text: "A solid, high-strength 17-4 PH stainless stem keeps the ball turning reliably under high cryogenic torque." },
+      { title: "ISO 5211 direct mount", text: "The mounting pad and square shaft let an actuator bolt straight on, with no bracket or coupling, for easy, low-cost automation." },
+    ],
+  },
+  faqs: [
+    { q: "What temperature are MARS cryogenic ball valves rated for?", a: "They are designed for service down to -196°C, which covers liquid nitrogen and similar cryogenic media. Upper temperature limits vary by series; see each series card." },
+    { q: "Why does a cryogenic ball valve have a vented ball?", a: "Cryogenic liquid trapped in the ball cavity expands as it warms, which can build dangerous pressure. A vent in the ball releases it to one side of the valve. That is why every valve is marked with a flow direction arrow and must be installed the right way round." },
+    { q: "Can these valves be automated?", a: "Yes. The ISO 5211 mounting pad and square shaft let a pneumatic or electric actuator bolt directly onto the valve, with no bracket or coupling needed." },
+    { q: "Are they suitable for oxygen service?", a: "Oxygen cleaning is standard on MARS cryogenic ball valves. Tell us your media, pressure and temperature when you ask for a quote and we'll confirm the right specification." },
+    { q: "Which end connections are available?", a: "Threaded, socket weld and butt weld, plus ANSI Class 150/300 and DIN PN 10-40 flanges, depending on the series." },
+    { q: "How do I choose between the series?", a: "Send us the size, pressure, temperature, end connection and media, and we'll recommend the right series with a price." },
+  ],
+  cta: {
+    text: "Send us the size, pressure, temperature, end connection and media, and we'll recommend the right cryogenic valve with a price.",
+  },
   series: [
     {
       name: "Series 84C-10/20/30",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/84c.jpg",
+      imageAlt: "MARS Series 84C cryogenic three-piece ball valve with extended bonnet",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],
@@ -806,6 +854,7 @@ SERIES_FAMILIES.push({
     {
       name: "Series 89C-10/20/30/60",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/series-89c.jpg",
+      imageAlt: "MARS Series 89C cryogenic three-piece ball valve with extended bonnet",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],
@@ -823,6 +872,7 @@ SERIES_FAMILIES.push({
     {
       name: "Series CG3D-10/20/30",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/CG3D-10.jpg",
+      imageAlt: "MARS Series CG3D cryogenic three-piece ball valve, ISO 5211 direct mount",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],
@@ -908,8 +958,25 @@ SERIES_FAMILIES.push({
   title: "Metal Seated Multi-Port Ball Valves",
   kind: "Metal seated",
   intro:
-    "3-way flanged trunnion multi-port ball valves with L/T-port balls, SIL3-capable, in sizes 1 1/2\" to 6\".",
+    "Metal-to-metal seated 3-way / 4-way multi-port ball valves (SS316+Stellite seats, hard-chrome ball) for severe service, plus SIL3-capable soft-seated trunnion ranges.",
   series: [
+    {
+      name: "Series FM-30",
+      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/metal-seated/multi-port/FM-30.jpg",
+      specs: [
+        ["Design", "3-way / 4-way metal seated multi-port ball valve"],
+        ["Port", "Full & Reduced port"],
+        ["Size", '1/2" – 6"'],
+        ["Pressure", "ANSI #150/#300, PN10/40"],
+        ["Ends", "Threaded, BW, SW, Flanged"],
+        ["Body", "CF8M / WCB"],
+        ["Seats", "SS316 + Stellite"],
+        ["Ball", "CF8M + Hard Chrome"],
+        ["Options", "TC / CC / Stellite ball & seats on request"],
+      ],
+      href: "/series/78",
+      action: "configure" as const,
+    },
     {
       name: "Series 30M, SIL3",
       image: MS_MP_IMG,

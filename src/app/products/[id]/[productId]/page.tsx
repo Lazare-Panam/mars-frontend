@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { fetchCatalog } from "@/api/useProductCatalog";
@@ -10,6 +11,24 @@ import SeriesFamilyPage from "../../components/SeriesFamilyPage";
 import { findFamily } from "../../data/seriesFamilies";
 
 type Props = { params: Promise<{ id: string; productId: string }> };
+
+// Per-page SEO: a "by category" family can carry its own title/description/
+// canonical (data/seriesFamilies.ts). Families without `seo` fall back to the
+// site default, so nothing else changes.
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id, productId } = await params;
+  const family = findFamily(id, productId);
+  if (family?.seo) {
+    return {
+      title: family.seo.title,
+      description: family.seo.description,
+      ...(family.seo.canonical
+        ? { alternates: { canonical: family.seo.canonical } }
+        : {}),
+    };
+  }
+  return {};
+}
 
 // Prerender every product under every catalog. Self-contained (bottom-up): we
 // walk CATEGORIES and fetch each catalog's products ourselves rather than
@@ -62,7 +81,26 @@ export default async function ProductDetailPage({ params }: Props) {
   // "By category" ranges (economical 2-piece, high performance 3-piece...)
   // show the series grid from data/seriesFamilies.ts.
   const family = findFamily(id, productId);
-  if (family) return <SeriesFamilyPage family={family} />;
+  if (family) {
+    return (
+      <>
+        {family.faqs && family.faqs.length > 0 && (
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: family.faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            }}
+          />
+        )}
+        <SeriesFamilyPage family={family} />
+      </>
+    );
+  }
 
   // Prefetch the product detail server-side so the name, description, specs,
   // features and applications render into the static HTML for crawlers.

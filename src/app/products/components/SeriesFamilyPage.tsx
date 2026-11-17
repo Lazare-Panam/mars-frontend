@@ -33,6 +33,8 @@ const ACTION_LABEL: Record<FamilySeries["action"], string> = {
 };
 
 function facts(family: SeriesFamily): [string, string][] {
+  // An explicit override wins (e.g. cryogenic uses -196°C / ISO 5211, not a PSI max).
+  if (family.heroFacts?.length) return family.heroFacts.slice(0, 4);
   const out: [string, string][] = [[String(family.series.length), `${family.kind} series`]];
   const psi = family.series
     .map((s) => {
@@ -113,7 +115,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={s.image} alt={`MARS ${seriesTitle} ball valve`} loading="lazy" style={{ width: "82%", height: "100%", objectFit: "contain", mixBlendMode: "multiply" }} />
+        <img src={s.image} alt={s.imageAlt ?? `MARS ${seriesTitle} ball valve`} loading="lazy" style={{ width: "82%", height: "100%", objectFit: "contain", mixBlendMode: "multiply" }} />
         {s.action === "configure" && (
           <Box component="span" sx={{ position: "absolute", top: 12, left: 12, px: 1.25, py: 0.4, borderRadius: "999px", bgcolor: "primary.main", color: "#fff", fontSize: "0.72rem", fontWeight: 700 }}>
             Configure online
@@ -256,7 +258,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={s.image} alt="" style={{ width: "100%", height: i === 0 ? "75%" : "70%", objectFit: "contain" }} />
+                  <img src={s.image} alt={s.imageAlt ?? ""} style={{ width: "100%", height: i === 0 ? "75%" : "70%", objectFit: "contain" }} />
                   <Typography sx={{ mt: 1, fontWeight: 800, fontSize: "0.9rem", color: "text.primary" }} className="no-capitalize">
                     {splitName(s.name).title}
                   </Typography>
@@ -266,6 +268,25 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
           )}
         </Box>
       </Box>
+
+      {family.features && (
+        <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 3, md: 6 }, pt: { xs: 5, md: 7 } }}>
+          <Typography component="h2" sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" }, mb: family.features.intro ? 1 : 3 }}>
+            {family.features.heading}
+          </Typography>
+          {family.features.intro && (
+            <Typography sx={{ color: "text.secondary", mb: 3, fontSize: "1rem" }}>{family.features.intro}</Typography>
+          )}
+          <Box sx={{ display: "grid", gap: 2.5, gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)" } }}>
+            {family.features.items.map((f) => (
+              <Box key={f.title} sx={{ p: 3, borderRadius: "16px", bgcolor: "#fff", border: CARD_BORDER }}>
+                <Typography component="h3" sx={{ fontWeight: 800, fontSize: "1.05rem", mb: 0.75 }}>{f.title}</Typography>
+                <Typography sx={{ color: "text.secondary", fontSize: "0.92rem", lineHeight: 1.6 }}>{f.text}</Typography>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      )}
 
       <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 3, md: 6 }, py: { xs: 5, md: 7 } }}>
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 1, mb: 3 }}>
@@ -379,10 +400,26 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
         </Box>
       </Container>
 
+      {family.faqs && family.faqs.length > 0 && (
+        <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 3, md: 6 }, pb: { xs: 5, md: 7 } }}>
+          <Typography component="h2" sx={{ fontWeight: 800, fontSize: { xs: "1.4rem", md: "1.7rem" }, mb: 2.5 }}>
+            Frequently asked questions
+          </Typography>
+          <Box sx={{ display: "grid", gap: 2 }}>
+            {family.faqs.map((f) => (
+              <Box key={f.q} sx={{ p: { xs: 2.5, md: 3 }, borderRadius: "14px", bgcolor: "#fff", border: CARD_BORDER }}>
+                <Typography component="h3" sx={{ fontWeight: 800, fontSize: "1.02rem", mb: 0.75 }}>{f.q}</Typography>
+                <Typography sx={{ color: "text.secondary", fontSize: "0.92rem", lineHeight: 1.6 }}>{f.a}</Typography>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      )}
+
       <CtaBand
         maxWidth={WIDE}
-        title="Not sure which series you need?"
-        text="Send us the size, pressure, end connection and media and we'll recommend the right valve, with a price."
+        title={family.cta?.title ?? "Not sure which series you need?"}
+        text={family.cta?.text ?? "Send us the size, pressure, end connection and media and we'll recommend the right valve, with a price."}
         primary={{ label: "Ask Our Team", href: "/contact#enquiry" }}
         secondary={modelsHref ? { label: "Compare All Models", href: modelsHref } : { label: "Browse All Products", href: "/products" }}
       />
