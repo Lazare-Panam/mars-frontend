@@ -35,6 +35,8 @@ import { logout } from "@/lib/logout";
 import { useRouter } from "next/navigation";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
+import SearchIcon from "@mui/icons-material/Search";
+import SearchBar from "./SearchBar";
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -501,6 +503,14 @@ const Navbar: React.FC = () => {
                 gap: 1,
               }}
             >
+              <IconButton
+                component={Link}
+                href="/search"
+                aria-label="Search"
+                sx={{ color: INK }}
+              >
+                <SearchIcon />
+              </IconButton>
               <AccountButton size={22} />
               <CartButton size={22} />
               <IconButton
@@ -512,6 +522,17 @@ const Navbar: React.FC = () => {
             </Box>
           </Toolbar>
         </Container>
+
+        {/* Prominent search row: full-width, centered, its own line under the header. */}
+        <Box sx={{ display: { xs: "none", md: "block" }, borderTop: `1px solid ${LINE}`, bgcolor: PAPER }}>
+          <Container maxWidth="xl">
+            <Box sx={{ py: 1.75, display: "flex", justifyContent: "center" }}>
+              <Box sx={{ width: "100%", maxWidth: 680 }}>
+                <SearchBar fullWidth prominent />
+              </Box>
+            </Box>
+          </Container>
+        </Box>
 
         <CategoryBar />
       </AppBar>
