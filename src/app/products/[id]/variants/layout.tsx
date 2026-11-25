@@ -40,7 +40,7 @@ export async function generateMetadata({
   if (!data) {
     const moved = movedSeriesHref(id);
     return {
-      title: "MARS Ball Valves — All Models",
+      title: "Kronox Ball Valves — All Models",
       robots: { index: false, follow: true },
       ...(moved ? { alternates: { canonical: moved.variants } } : {}),
     };
@@ -59,7 +59,7 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       title: base,
       description,
       url: canonical,

@@ -20,7 +20,7 @@ export const VALVE_TYPES = [
       { name: "High Pressure Ball Valve", href: `/products/two-piece-ball-valves/high-pressure-two-piece-ball-valve`, image: `${IMG}/two-piece/hp-bv-2.jpg` },
     ],
     image: `${IMG}/two-piece/eco-2.jpg`,
-    alt: "MARS two-piece stainless steel ball valve",
+    alt: "Kronox two-piece stainless steel ball valve",
   },
   {
     label: "Three-piece ball valves",
@@ -32,7 +32,7 @@ export const VALVE_TYPES = [
       { name: "Steam Jacketed Ball Valve", href: `/products/three-piece-ball-valves/steam-jacketed-three-piece-ball-valve`, image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/steam-jacketed-three-piece-ball-valve/series-83j.jpg" },
     ],
     image: `${IMG}/three-piece/hp-3.png`,
-    alt: "MARS three-piece stainless steel ball valve",
+    alt: "Kronox three-piece stainless steel ball valve",
   },
   {
     label: "Flanged ball valves",
@@ -47,7 +47,7 @@ export const VALVE_TYPES = [
       { name: "Steam Jacketed Ball Valve", href: `/products/flanged-ball-valves/steam-jacketed-flanged-ball-valve`, image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/steam-jacketed-flanged-ball-valve/series-90j.jpg" },
     ],
     image: `${IMG}/flanged/hp-flanged.png`,
-    alt: "MARS flanged ball valve",
+    alt: "Kronox flanged ball valve",
   },
   {
     label: "Multi-port ball valves",
@@ -59,7 +59,7 @@ export const VALVE_TYPES = [
       { name: "Diverter Ball Valve", href: `/products/multi-port-ball-valves/diverter-ball-valve`, image: `${IMG}/multi-port-valve/diverter.png` },
     ],
     image: `${IMG}/multi-port-valve/3-way-multi.jpg`,
-    alt: "MARS 3-way multi-port ball valve",
+    alt: "Kronox 3-way multi-port ball valve",
   },
   {
     label: "Sanitary ball valves",
@@ -72,7 +72,7 @@ export const VALVE_TYPES = [
       { name: "Sanitary Multi-Port Ball Valve", href: `/products/sanitary-ball-valves/sanitary-multi-port-ball-valve`, image: `${IMG}/sanitary-ball-valves/multi-port-san.jpg` },
     ],
     image: `${IMG}/sanitary-ball-valves/hp-san.png`,
-    alt: "MARS sanitary ball valve with tri-clamp ends",
+    alt: "Kronox sanitary ball valve with tri-clamp ends",
   },
   {
     label: "Metal seated ball valves",
@@ -85,7 +85,7 @@ export const VALVE_TYPES = [
       { name: "Metal Seated Flanged Ball Valve", href: `/products/metal-seated-ball-valves/metal-seated-flanged-ball-valve`, image: `${IMG}/meta-seat/flanged-ball.jpg` },
     ],
     image: `${IMG}/meta-seat/3-p.jpg`,
-    alt: "MARS metal seated three-piece ball valve",
+    alt: "Kronox metal seated three-piece ball valve",
   },
 ];
 

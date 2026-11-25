@@ -35,24 +35,24 @@ const GA_MEASUREMENT_ID = "G-8E3P3CPW72";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Mars Valvenok | Authorised MARS Valve Distributor UK",
-    template: "%s | Mars Valvenok",
+    default: "Kronox Valves | Authorised Kronox Valve Distributor UK",
+    template: "%s | Kronox Valves",
   },
   description:
-    "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
+    "Kronox Valves manufactures industrial ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
   openGraph: {
     type: "website",
-    siteName: "Mars Valvenok",
-    title: "Mars Valvenok | Authorised MARS Valve Distributor UK",
+    siteName: "Kronox Valves",
+    title: "Kronox Valves | Authorised Kronox Valve Distributor UK",
     description:
-      "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
+      "Kronox Valves manufactures industrial ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mars Valvenok | Authorised MARS Valve Distributor UK",
+    title: "Kronox Valves | Authorised Kronox Valve Distributor UK",
     description:
-      "Mars Valvenok is an authorised UK distributor of MARS ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
+      "Kronox Valves manufactures industrial ball, flanged & fire-safe valves. Stainless SS316, API 607 tested, UK stock & delivery.",
   },
 };
 
@@ -76,12 +76,12 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   "@id": `${SITE_URL}/#organization`,
-                  name: "Mars Valvenok",
+                  name: "Kronox Valves",
                   legalName: "Valvenok Ltd",
                   url: SITE_URL,
-                  logo: "https://pblol2.blob.core.windows.net/mars-valves/logo.jpg",
+                  logo: "https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png",
                   description:
-                    "Authorised UK distributor of MARS ball valves from Mars Valve Co., Ltd., Taiwan.",
+                    "Kronox Valves manufactures industrial ball valves — UK stock, full documentation and fast delivery.",
                   email: "sales@marsvalvenok.com",
                   telephone: "+44 7368 137917",
                   address: {
@@ -96,7 +96,7 @@ export default function RootLayout({
                   "@type": "WebSite",
                   "@id": `${SITE_URL}/#website`,
                   url: SITE_URL,
-                  name: "Mars Valvenok",
+                  name: "Kronox Valves",
                   publisher: { "@id": `${SITE_URL}/#organization` },
                 },
               ],

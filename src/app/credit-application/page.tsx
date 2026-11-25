@@ -21,7 +21,7 @@ export default function CreditApplicationPage() {
               Apply for a credit line
             </Typography>
             <Typography sx={{ color: "text.secondary", fontSize: "1.05rem", lineHeight: 1.75 }}>
-              Set up trade credit terms with Mars Valvenok. Tell us about your
+              Set up trade credit terms with Kronox Valves. Tell us about your
               business and credit requirements, and our team will review your
               application and get back to you.
             </Typography>

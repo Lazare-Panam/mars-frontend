@@ -22,10 +22,10 @@ import { useCategoryMenu } from "./useCategoryMenu";
  */
 export default function CategoryBar() {
   // A different treatment from the cream main header: a white strip with
-  // labels in the MARS signature red (the logo/button colour).
+  // labels in the Kronox signature red (the logo/button colour).
   const theme = useTheme();
   const INK = theme.palette.text.primary;
-  const ACCENT = theme.palette.primary.main; // MARS red, #E7390F
+  const ACCENT = theme.palette.primary.main; // Kronox red, #E7390F
   const LINE = theme.palette.divider;
 
   // Open state lives in a shared store so the header's Products link can open it.

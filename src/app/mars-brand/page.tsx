@@ -5,7 +5,6 @@ import Image from "next/image";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 export default function MarsBrandPage() {
   const theme = useTheme();
@@ -27,7 +26,7 @@ export default function MarsBrandPage() {
       >
         <Image
           src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="MARS® ball valve"
+          alt="Kronox ball valve"
           fill
           priority
           style={{ objectFit: "cover" }}
@@ -64,7 +63,7 @@ export default function MarsBrandPage() {
                 opacity: 0.85,
               }}
             >
-              Authorised UK MARS® Distributor
+              The Kronox Brand
             </Typography>
 
             <Typography
@@ -79,7 +78,7 @@ export default function MarsBrandPage() {
                 maxWidth: 820,
               }}
             >
-              MARS valves: your authorised UK distributor
+              Kronox valves: genuine, documented, UK-stocked
             </Typography>
 
             <Typography
@@ -91,9 +90,9 @@ export default function MarsBrandPage() {
                 lineHeight: 1.6,
               }}
             >
-              Mars Valvenok (Valvenok Ltd) is an authorised distributor of
-              genuine MARS® ball valves in the UK — supplied with a letter of
-              authorisation, not an imitation.
+              Kronox Valves is the industrial ball valve brand of Valvenok Ltd.
+              We manufacture genuine Kronox product, supplied from UK stock with
+              full documentation — not an imitation.
             </Typography>
           </Reveal>
         </Container>
@@ -101,7 +100,7 @@ export default function MarsBrandPage() {
 
       <Divider sx={{ borderColor: LINE }} />
 
-      {/* INTRO — authorised distributor positioning */}
+      {/* INTRO — own-brand positioning */}
       <Container maxWidth="md" sx={{ pt: { xs: 8, md: 12 }, pb: { xs: 2, md: 4 } }}>
         <Reveal>
           <Typography
@@ -114,19 +113,18 @@ export default function MarsBrandPage() {
               mb: 2.5,
             }}
           >
-            An authorised MARS® valves distributor in the UK
+            Genuine Kronox ball valves
           </Typography>
           <Typography sx={{ color: RUST, fontSize: { xs: "1rem", md: "1.05rem" }, lineHeight: 1.85, mb: 2 }}>
-            Mars Valvenok supplies genuine MARS® ball valves — two-piece,
+            Kronox Valves manufactures genuine Kronox ball valves — two-piece,
             three-piece, flanged, multi-port, sanitary, fire-safe and
-            high-pressure ranges — direct from Mars Valve Co., Ltd. of Taiwan,
-            under a formal letter of authorisation. As an authorised UK
-            distributor, every valve we ship is an authentic MARS® product, held
-            in UK stock and backed by full certification and traceability.
+            high-pressure ranges — held in UK stock and backed by full
+            certification and traceability. Every valve we ship is an authentic
+            Kronox product.
           </Typography>
           <Typography sx={{ color: RUST, fontSize: { xs: "1rem", md: "1.05rem" }, lineHeight: 1.85 }}>
-            The notice below explains how to tell a genuine MARS® valve from a
-            copy, and why buying from an authorised distributor matters.
+            The notice below explains how to tell a genuine Kronox valve from a
+            copy, and why it matters.
           </Typography>
         </Reveal>
       </Container>
@@ -200,12 +198,12 @@ export default function MarsBrandPage() {
             }}
           >
             Some companies may claim that their ball valves are identical to
-            MARS
+            Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>
-            . They are not. Any claim that ball valves manufactured by a third
-            party are identical to MARS
+            . They are not. Any claim that ball valves made by a third party are
+            identical to Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
@@ -222,14 +220,13 @@ export default function MarsBrandPage() {
               mb: 3,
             }}
           >
-            MARS
+            Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
-            ball valves are designed, engineered and manufactured under
-            proprietary specification, strict quality control systems, and
-            decades of proven application expertise. These elements define the
-            true value of the brand — and cannot be replicated. MARS
+            ball valves are built to a proprietary specification under strict
+            quality control. These elements define the true value of the brand —
+            and cannot be replicated. Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
@@ -246,12 +243,12 @@ export default function MarsBrandPage() {
               mb: 3,
             }}
           >
-            Only products bearing the official MARS
+            Only products bearing the official Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
             logo are genuine. Products that do not carry the logo are not
-            authorized, not authentic, and do not represent MARS
+            authorised, not authentic, and do not represent Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
             </Box>{" "}
@@ -294,222 +291,10 @@ export default function MarsBrandPage() {
 
       <Divider sx={{ borderColor: LINE }} />
 
-      {/* LEADERSHIP / PARTNERSHIP */}
-      <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
-        <Container maxWidth="md">
-          <Reveal>
-            <Typography
-              sx={{
-                color: RUST,
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                textAlign: "center",
-                mb: 1.5,
-              }}
-            >
-              A Partnership Built on Trust
-            </Typography>
-            <Typography
-              component="h2"
-              sx={{
-                color: INK,
-                fontFamily: "Georgia, 'Times New Roman', serif",
-                fontWeight: 700,
-                fontSize: { xs: "1.6rem", md: "2rem" },
-                textAlign: "center",
-                mb: { xs: 5, md: 7 },
-              }}
-            >
-              Valvenok &amp; MARS
-            </Typography>
-          </Reveal>
-
-          <Reveal delay={150}>
-            <Box
-              sx={{
-                position: "relative",
-                maxWidth: 620,
-                mx: "auto",
-                border: `1px solid ${LINE}`,
-                p: { xs: 1.5, md: 2 },
-                bgcolor: theme.palette.background.paper,
-                transition:
-                  "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  borderColor: "primary.main",
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                },
-                "&:hover .brand-photo": {
-                  transform: "scale(1.06)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "4/3",
-                  overflow: "hidden",
-                }}
-              >
-                <Image
-                  src="https://pblol2.blob.core.windows.net/mars-valves/Hero/max-lazare.jpg"
-                  alt="Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of MARS®"
-                  fill
-                  className="brand-photo"
-                  style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
-                />
-              </Box>
-
-              <Typography
-                sx={{
-                  color: RUST,
-                  fontSize: "0.8rem",
-                  textAlign: "center",
-                  mt: 2,
-                  pb: 1,
-                }}
-              >
-                Lazare Kassi, CEO of Valvenok Ltd, and Max Hsu, co-founder of
-                MARS®, representing the agreement between our companies.
-              </Typography>
-            </Box>
-          </Reveal>
-        </Container>
-      </Box>
-
-      <Divider sx={{ borderColor: LINE }} />
-
-      {/* CERTIFICATE */}
-      <Box sx={{ bgcolor: PAPER, py: { xs: 8, md: 12 } }}>
-        <Container maxWidth="md">
-          <Reveal>
-            <Typography
-              sx={{
-                color: RUST,
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.14em",
-                textTransform: "uppercase",
-                textAlign: "center",
-                mb: 1.5,
-              }}
-            >
-              Official Trust Certificate
-            </Typography>
-            <Typography
-              component="h2"
-              sx={{
-                color: INK,
-                fontFamily: "Georgia, 'Times New Roman', serif",
-                fontWeight: 700,
-                fontSize: { xs: "1.6rem", md: "2rem" },
-                textAlign: "center",
-                mb: { xs: 5, md: 7 },
-              }}
-            >
-              Verified. Authorized. Genuine.
-            </Typography>
-          </Reveal>
-
-          <Reveal delay={150}>
-          <Box
-            sx={{
-              position: "relative",
-              maxWidth: 620,
-              mx: "auto",
-              border: `1px solid ${LINE}`,
-              p: { xs: 1.5, md: 2 },
-              bgcolor: theme.palette.background.paper,
-              transition:
-                "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-              "&:hover": {
-                borderColor: "primary.main",
-                transform: "translateY(-4px)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              },
-              "&:hover .brand-photo": {
-                transform: "scale(1.06)",
-              },
-            }}
-          >
-            {/* rotated stamp */}
-            <Box
-              sx={{
-                position: "absolute",
-                top: { xs: 12, md: 24 },
-                right: { xs: 12, md: 24 },
-                zIndex: 2,
-                transform: "rotate(-14deg)",
-                border: `2.5px solid ${ACCENT}`,
-                color: ACCENT,
-                borderRadius: "50%",
-                width: { xs: 66, md: 88 },
-                height: { xs: 66, md: 88 },
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                fontWeight: 800,
-                fontSize: { xs: "0.55rem", md: "0.65rem" },
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                bgcolor: PAPER,
-                lineHeight: 1.2,
-                px: 1,
-              }}
-            >
-              Genuine
-              <br />
-              MARS®
-            </Box>
-
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                aspectRatio: "4/3",
-                overflow: "hidden",
-              }}
-            >
-              <Image
-                src={LETTER_OF_AUTHORISATION_URL}
-                alt="MARS® official trust certificate"
-                fill
-                className="brand-photo"
-                style={{ objectFit: "contain", transition: "transform 0.5s ease" }}
-              />
-            </Box>
-
-            <Typography
-              sx={{
-                color: RUST,
-                fontSize: "0.8rem",
-                textAlign: "center",
-                mt: 2,
-                pb: 1,
-              }}
-            >
-              Our official authorization to sell genuine MARS
-              <Box component="sup" sx={{ fontSize: "0.6em" }}>
-                ®
-              </Box>{" "}
-              ball valves.
-            </Typography>
-          </Box>
-          </Reveal>
-        </Container>
-      </Box>
-
-      <Divider sx={{ borderColor: LINE }} />
-
       {/* REPORT COUNTERFEIT CTA */}
       <CtaBand
-        title="Seen a counterfeit MARS® valve?"
-        text="We actively investigate and act against unauthorised use of the MARS® name and mark. Send us the details and photos."
+        title="Seen a counterfeit Kronox valve?"
+        text="We actively investigate and act against unauthorised use of the Kronox name and mark. Send us the details and photos."
         primary={{ label: "Report a Counterfeit", href: "mailto:sales@marsvalvenok.com", external: true }}
         secondary={{ label: "Contact Us", href: "/contact#enquiry" }}
       />

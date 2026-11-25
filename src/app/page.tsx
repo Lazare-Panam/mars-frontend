@@ -16,11 +16,11 @@ import type { Metadata } from "next";
 // ("REPLACE — real customer quote goes here") entries. Re-add <TestimonialsSection/>
 // below only once TESTIMONIALS in that file holds real, named customer quotes.
 
-// ≤60 chars (SERP guideline) and accurate: Mars Valvenok is an authorised
-// distributor of MARS valves, not the manufacturer.
-const TITLE = "Mars Ball Valves UK | Authorised Distributor – Mars Valvenok";
+// ≤60 chars (SERP guideline). Kronox Valves is the industrial ball valve
+// brand of Valvenok Ltd.
+const TITLE = "Kronox Ball Valves UK | Industrial Valves & UK Stock";
 const DESCRIPTION =
-  "Authorised UK distributor of MARS ball valves from Mars Valve Co., Taiwan. 2-piece, 3-piece, flanged, sanitary and fire-safe ranges. Prices online.";
+  "Kronox Valves manufactures industrial ball valves. 2-piece, 3-piece, flanged, sanitary and fire-safe ranges, UK stock, prices online.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   // so the shared fields are repeated here.
   openGraph: {
     type: "website",
-    siteName: "Mars Valvenok",
+    siteName: "Kronox Valves",
     url: SITE_URL,
     title: TITLE,
     description: DESCRIPTION,

@@ -125,7 +125,7 @@ export default async function ProductDetailPage({ params }: Props) {
     name: detail.name,
     ...(detail.description ? { description: detail.description } : {}),
     ...(detail.image ? { image: detail.image } : {}),
-    brand: { "@type": "Brand", name: "MARS" },
+    brand: { "@type": "Brand", name: "Kronox" },
   };
   const crumbs = breadcrumbList([
     { name: "Home", path: "/" },

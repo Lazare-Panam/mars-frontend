@@ -19,7 +19,7 @@ export function fitDescription(text: string | null | undefined, max = MAX_DESCRI
 export function modelsDescription(name: string, count: number): string {
   const models = count === 1 ? "1 model" : `${count} models`;
   return fitDescription(
-    `Compare all ${models} of the MARS ${name} — sizes, specs and UK prices — and order online from Mars Valvenok, authorised MARS distributor.`,
+    `Compare all ${models} of the Kronox ${name} — sizes, specs and UK prices — and order online from Kronox Valves, authorised Kronox distributor.`,
   );
 }
 

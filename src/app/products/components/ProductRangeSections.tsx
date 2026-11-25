@@ -5,7 +5,7 @@ import { CATEGORIES, SERIES } from '../data/categories';
 import Reveal from '@/Common/Reveal';
 
 /**
- * The "Mars Ball Valves" (by series) and "Categories" sections. Shared by
+ * The "Kronox Ball Valves" (by series) and "Categories" sections. Shared by
  * /products and the homepage, so both always show the same range.
  */
 export default function ProductRangeSections() {
@@ -14,7 +14,7 @@ export default function ProductRangeSections() {
       {/* By Series — collapsible; white bg to contrast the tinted sections around it */}
       <Box sx={{ bgcolor: '#fff', py: { xs: 6, md: 10 }, px: { xs: 3, md: 8 } }}>
         <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
-          <CollapsibleSection title="Mars Ball Valves">
+          <CollapsibleSection title="Kronox Ball Valves">
             <Grid container rowSpacing={{ xs: 6, md: 9 }} columnSpacing={{ xs: 4, md: 8 }}>
               {SERIES.map((s, i) => (
                 <Grid size={{ xs: 12, md: 6 }} key={s.id}>
@@ -28,7 +28,7 @@ export default function ProductRangeSections() {
         </Box>
       </Box>
 
-      {/* Mars Ball Valves — 2-up grid, each cell: text left + image right */}
+      {/* Kronox Ball Valves — 2-up grid, each cell: text left + image right */}
       <Box sx={{ bgcolor: 'background.default', py: { xs: 6, md: 10 }, px: { xs: 3, md: 8 } }}>
         <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
           <Reveal>

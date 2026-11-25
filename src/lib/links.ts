@@ -1,6 +1,6 @@
 // Single source of truth for shared external asset URLs.
 
-// Scanned image of our MARS® letter of authorisation ("trust certificate"),
+// Scanned image of our Kronox letter of authorisation ("trust certificate"),
 // linked/shown from the homepage, about and mars-brand pages.
 //
 // NOTE: the blob filename is misspelled ("Trust-Certfilicate.jpeg"). The file

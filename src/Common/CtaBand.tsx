@@ -6,7 +6,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Reveal from "@/Common/Reveal";
 
 // The one call-to-action band used across the site (category, certifications,
-// MARS Brand, About...), so every "talk to us" section looks the same.
+// Kronox Brand, About...), so every "talk to us" section looks the same.
 
 export type CtaAction = { label: string; href: string; external?: boolean };
 

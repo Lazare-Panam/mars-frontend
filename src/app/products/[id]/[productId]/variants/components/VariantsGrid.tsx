@@ -270,7 +270,7 @@ export function FeaturedCard({
               mb: 2.5,
             }}
           >
-            Product Code: Mars
+            Product Code: Kronox
           </Typography>
         )}
 
@@ -433,7 +433,7 @@ export function GridCard({
                 mt: 0.5,
               }}
             >
-              Code: Mars
+              Code: Kronox
             </Typography>
           )}
           <Button

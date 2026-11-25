@@ -158,8 +158,8 @@ export const SECTIONS: FormSection[] = [
       heading: "By signing below, I confirm that:",
       points: [
         "The information provided is accurate and complete to the best of my knowledge.",
-        "I authorise Mars Valvenok to carry out credit checks and contact any references provided for verification.",
-        "I understand Mars Valvenok reserves the right to approve, decline or amend the credit facility.",
+        "I authorise Kronox Valves to carry out credit checks and contact any references provided for verification.",
+        "I understand Kronox Valves reserves the right to approve, decline or amend the credit facility.",
       ],
     },
     fields: ["signatoryName", "signatoryPosition", "signature", "date"],

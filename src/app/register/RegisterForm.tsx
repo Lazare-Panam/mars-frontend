@@ -257,7 +257,7 @@ export default function RegisterForm() {
             textAlign: "center",
           }}
         >
-          Register with Mars Valves
+          Register with Kronox Valves
         </Typography>
         <Typography
           variant="body1"

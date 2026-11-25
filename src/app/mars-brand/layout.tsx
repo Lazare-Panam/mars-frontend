@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   alternates: { canonical: "/mars-brand" },
   title: {
-    absolute: "MARS Valves Distributor UK | Authorised – Mars Valvenok",
+    absolute: "The Kronox Brand | Genuine Industrial Ball Valves",
   },
   description:
-    "Mars Valvenok is an authorised UK distributor of genuine MARS® ball valves. See our letter of authorisation and how to verify authentic MARS valves.",
+    "Kronox Valves is the industrial ball valve brand of Valvenok Ltd. Genuine Kronox valves, UK stock and full documentation — and how to verify authentic Kronox product.",
 };
 
 export default function MarsBrandLayout({

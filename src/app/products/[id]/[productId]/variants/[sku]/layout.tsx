@@ -35,7 +35,7 @@ export async function generateMetadata({
   const variant = data?.variants.find((v) => v.id === sku);
 
   if (!data || !variant) {
-    return { title: data?.name ?? "Mars Valvenok" };
+    return { title: data?.name ?? "Kronox Valves" };
   }
 
   const { detail, name } = variantTitleParts(data, sku);
@@ -77,7 +77,7 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       title: ogTitle,
       description,
       url: canonical,

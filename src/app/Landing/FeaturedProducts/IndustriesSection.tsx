@@ -135,7 +135,7 @@ export default function IndustriesSection() {
                 mb: 3,
               }}
             >
-              Where MARS valves are used
+              Where Kronox valves are used
             </Typography>
 
             <Button

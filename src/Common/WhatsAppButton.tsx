@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const WHATSAPP_NUMBER = "447368137917";
-const MESSAGE = "Hi Mars Valvenok, I have a question about MARS valves.";
+const MESSAGE = "Hi Kronox Valves, I have a question about Kronox valves.";
 
 /**
  * Round green WhatsApp chat button, fixed bottom-right on every page.

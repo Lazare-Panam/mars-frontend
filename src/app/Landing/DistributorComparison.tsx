@@ -15,13 +15,13 @@ import Reveal from "@/Common/Reveal";
 const POINTS = [
   {
     icon: VerifiedOutlinedIcon,
-    title: "Authorised by the manufacturer",
-    text: "Letter of authorisation from Mars Valve Co., Ltd. available to view.",
+    title: "Genuine Kronox product",
+    text: "Authentic Kronox ball valves, supplied from UK stock.",
   },
   {
     icon: DescriptionOutlinedIcon,
     title: "Traceable documentation",
-    text: "Manufacturer certificates and datasheets for the series you order.",
+    text: "Certificates and datasheets for the series you order.",
   },
   {
     icon: ScienceOutlinedIcon,
@@ -31,7 +31,7 @@ const POINTS = [
   {
     icon: ShieldOutlinedIcon,
     title: "Warranty",
-    text: "Mars Valve Co. manufacturer warranty, honoured through us.",
+    text: "Kronox manufacturer warranty on every valve.",
   },
   {
     icon: SupportAgentOutlinedIcon,
@@ -69,7 +69,7 @@ export default function DistributorComparison() {
             component="h2"
             sx={{ fontSize: { xs: "2rem", md: "2.5rem" }, fontWeight: 800, color: "text.primary", mb: 2 }}
           >
-            What you get when you order from Mars Valvenok
+            What you get when you order from Kronox Valves
           </Typography>
           <Typography sx={{ color: "text.secondary", maxWidth: 600, mx: "auto", lineHeight: 1.7 }}>
             On hazardous or fire-safe duty, the documentation matters as much

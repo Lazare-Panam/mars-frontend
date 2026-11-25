@@ -4,11 +4,11 @@ import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "About Mars Valvenok | Authorised UK MARS Valve Distributor",
+    absolute: "About Kronox Valves | Industrial Ball Valve Manufacturer",
   },
   alternates: { canonical: "/about" },
   description:
-    "Mars Valvenok is the MARS valve website of Valvenok Ltd, authorised by Mars Valve Co., Ltd. of Taiwan to supply genuine MARS ball valves in the UK.",
+    "Kronox Valves manufactures industrial ball valves — the Kronox brand of Valvenok Ltd, supplied from UK stock with full documentation.",
 };
 
 // The page is a Client Component, so its schema lives here in the layout.
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "About Mars Valvenok",
+  name: "About Kronox Valves",
   url: `${SITE_URL}/about`,
   about: { "@id": `${SITE_URL}/#organization` },
   mainEntity: { "@id": `${SITE_URL}/#organization` },

@@ -21,7 +21,7 @@ export type FamilySeries = {
   href?: string;
   action: "configure" | "view" | "models" | "quote";
   /** Descriptive alt text for the product photo (SEO/accessibility). Falls back
-      to a generated "MARS {series} ball valve" string when omitted. */
+      to a generated "Kronox {series} ball valve" string when omitted. */
   imageAlt?: string;
 };
 
@@ -223,7 +223,7 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
       { label: "Diverter Ball Valves", href: "/products/multi-port-ball-valves/diverter-ball-valve" },
     ],
     kind: "Multi-port",
-    intro: "3-way, 4-way and 5-way MARS ball valves for diverting, mixing and switching flow, including direct-mount, flanged and diverter designs.",
+    intro: "3-way, 4-way and 5-way Kronox ball valves for diverting, mixing and switching flow, including direct-mount, flanged and diverter designs.",
     series: [
       { name: "Series 38", image: IMG + "three-way-multi-port-ball-valve/series-38.jpg", specs: [["Design", "3-way threaded ball valve"], ["Port", "Reduced port"], ["Ports", "L port, T port"], ["Size", "1/4\" – 3\""], ["Pressure", "1000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE/RTFE (others on request)"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/57", action: "configure" },
       { name: "Series 39, SIL3", image: IMG + "three-way-multi-port-ball-valve/series-39.png", specs: [["Design", "3-way threaded ball valve"], ["Port", "Full port & Reduced port"], ["Ports", "L port, T port"], ["Size", "1/4\" – 2\""], ["Pressure", "1000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE/RTFE (others on request)"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/58", action: "configure" },
@@ -263,7 +263,7 @@ SERIES_FAMILIES.push({
   title: "Fire Safe Ball Valves",
   kind: "Fire safe",
   intro:
-    "MARS ball valves fire-type tested to API 607, for flammable fluids and hazardous areas in oil & gas, petrochemical and chemical plants.",
+    "Kronox ball valves fire-type tested to API 607, for flammable fluids and hazardous areas in oil & gas, petrochemical and chemical plants.",
   series: [
     pick("Series 28"),
     pick("Series 83, SIL3"),
@@ -304,7 +304,7 @@ SERIES_FAMILIES.push({
   title: "Flanged Ball Valves",
   kind: "Flanged",
   intro:
-    "MARS flanged ball valves in ANSI, DIN and JIS flange ratings for direct in-line installation — uni-body, two-piece, three-piece, wafer and steam-jacketed designs.",
+    "Kronox flanged ball valves in ANSI, DIN and JIS flange ratings for direct in-line installation — uni-body, two-piece, three-piece, wafer and steam-jacketed designs.",
   extraSections: [
     {
       heading: "Metal Seated Ball Valves",
@@ -800,9 +800,9 @@ SERIES_FAMILIES.push({
   intro:
     "Three-piece cryogenic ball valves for service down to -196°C, with a vented ball, an ISO 5211 direct-mount pad and oxygen cleaning as standard. Threaded, welded and flanged ends.",
   seo: {
-    title: "Cryogenic 3-Piece Ball Valves to -196°C | Mars Valvenok",
+    title: "Cryogenic 3-Piece Ball Valves to -196°C | Kronox Valves",
     description:
-      "MARS cryogenic 3-piece ball valves for service down to -196°C. ISO 5211 direct mount, vented ball and oxygen cleaning as standard. Request a quote.",
+      "Kronox cryogenic 3-piece ball valves for service down to -196°C. ISO 5211 direct mount, vented ball and oxygen cleaning as standard. Request a quote.",
     canonical:
       "https://www.marsvalvenok.com/products/cryogenic-ball-valves/three-piece-ball-valve",
   },
@@ -813,7 +813,7 @@ SERIES_FAMILIES.push({
   ],
   features: {
     heading: "Built for cryogenic service",
-    intro: "Every MARS cryogenic ball valve shares these design features.",
+    intro: "Every Kronox cryogenic ball valve shares these design features.",
     items: [
       { title: "Vented ball", text: "A vent in the ball stops pressure building up in the body cavity as trapped liquid warms and expands." },
       { title: "Flow direction arrow", text: "Every valve is marked with a flow arrow, so the vented side is always installed the right way round." },
@@ -823,10 +823,10 @@ SERIES_FAMILIES.push({
     ],
   },
   faqs: [
-    { q: "What temperature are MARS cryogenic ball valves rated for?", a: "They are designed for service down to -196°C, which covers liquid nitrogen and similar cryogenic media. Upper temperature limits vary by series; see each series card." },
+    { q: "What temperature are Kronox cryogenic ball valves rated for?", a: "They are designed for service down to -196°C, which covers liquid nitrogen and similar cryogenic media. Upper temperature limits vary by series; see each series card." },
     { q: "Why does a cryogenic ball valve have a vented ball?", a: "Cryogenic liquid trapped in the ball cavity expands as it warms, which can build dangerous pressure. A vent in the ball releases it to one side of the valve. That is why every valve is marked with a flow direction arrow and must be installed the right way round." },
     { q: "Can these valves be automated?", a: "Yes. The ISO 5211 mounting pad and square shaft let a pneumatic or electric actuator bolt directly onto the valve, with no bracket or coupling needed." },
-    { q: "Are they suitable for oxygen service?", a: "Oxygen cleaning is standard on MARS cryogenic ball valves. Tell us your media, pressure and temperature when you ask for a quote and we'll confirm the right specification." },
+    { q: "Are they suitable for oxygen service?", a: "Oxygen cleaning is standard on Kronox cryogenic ball valves. Tell us your media, pressure and temperature when you ask for a quote and we'll confirm the right specification." },
     { q: "Which end connections are available?", a: "Threaded, socket weld and butt weld, plus ANSI Class 150/300 and DIN PN 10-40 flanges, depending on the series." },
     { q: "How do I choose between the series?", a: "Send us the size, pressure, temperature, end connection and media, and we'll recommend the right series with a price." },
   ],
@@ -837,7 +837,7 @@ SERIES_FAMILIES.push({
     {
       name: "Series 84C-10/20/30",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/84c.jpg",
-      imageAlt: "MARS Series 84C cryogenic three-piece ball valve with extended bonnet",
+      imageAlt: "Kronox Series 84C cryogenic three-piece ball valve with extended bonnet",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],
@@ -854,7 +854,7 @@ SERIES_FAMILIES.push({
     {
       name: "Series 89C-10/20/30/60",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/series-89c.jpg",
-      imageAlt: "MARS Series 89C cryogenic three-piece ball valve with extended bonnet",
+      imageAlt: "Kronox Series 89C cryogenic three-piece ball valve with extended bonnet",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],
@@ -872,7 +872,7 @@ SERIES_FAMILIES.push({
     {
       name: "Series CG3D-10/20/30",
       image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/cyrogenic/CG3D-10.jpg",
-      imageAlt: "MARS Series CG3D cryogenic three-piece ball valve, ISO 5211 direct mount",
+      imageAlt: "Kronox Series CG3D cryogenic three-piece ball valve, ISO 5211 direct mount",
       specs: [
         ["Design", "3-piece cryogenic ball valve"],
         ["Port", "Full port"],

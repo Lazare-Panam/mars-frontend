@@ -115,7 +115,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={s.image} alt={s.imageAlt ?? `MARS ${seriesTitle} ball valve`} loading="lazy" style={{ width: "82%", height: "100%", objectFit: "contain", mixBlendMode: "multiply" }} />
+        <img src={s.image} alt={s.imageAlt ?? `Kronox ${seriesTitle} ball valve`} loading="lazy" style={{ width: "82%", height: "100%", objectFit: "contain", mixBlendMode: "multiply" }} />
         {s.action === "configure" && (
           <Box component="span" sx={{ position: "absolute", top: 12, left: 12, px: 1.25, py: 0.4, borderRadius: "999px", bgcolor: "primary.main", color: "#fff", fontSize: "0.72rem", fontWeight: 700 }}>
             Configure online
@@ -184,7 +184,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
           <Box>
             <PageBreadcrumbs items={crumbs} tone="onDark" sx={{ mb: 3 }} />
             <Typography sx={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.16em", fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", mb: 1 }}>
-              MARS Ball Valves
+              Kronox Ball Valves
             </Typography>
             <Typography component="h1" sx={{ fontSize: { xs: "2.2rem", md: "3.2rem" }, fontWeight: 800, lineHeight: 1.04, letterSpacing: "-0.03em" }}>
               {family.title}

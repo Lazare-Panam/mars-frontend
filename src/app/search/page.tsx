@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import SearchClient from "./SearchClient";
 
 export const metadata: Metadata = {
-  title: "Search | Mars Valvenok",
-  description: "Search MARS ball valves by series, part number or specification.",
+  title: "Search | Kronox Valves",
+  description: "Search Kronox ball valves by series, part number or specification.",
   robots: { index: false },
 };
 

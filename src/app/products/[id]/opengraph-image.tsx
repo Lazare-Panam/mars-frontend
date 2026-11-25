@@ -6,7 +6,7 @@ import { CATEGORIES, SERIES } from "../data/categories";
 // range, instead of the CMS banner photo (which was inconsistent — missing on
 // most, a ships photo on multi-port). Overrides the root default for these
 // routes.
-export const alt = "MARS Ball Valves — Authorised UK Distributor";
+export const alt = "Kronox Ball Valves — Industrial Ball Valve Manufacturer";
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 
@@ -24,5 +24,5 @@ export default async function Image({
 }) {
   const { id } = await params;
   const label = [...CATEGORIES, ...SERIES].find((c) => c.id === id)?.label;
-  return renderOgImage({ title: label ?? "MARS Ball Valves" });
+  return renderOgImage({ title: label ?? "Kronox Ball Valves" });
 }

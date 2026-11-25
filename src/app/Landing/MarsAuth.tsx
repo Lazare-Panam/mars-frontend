@@ -3,7 +3,6 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 const bodyText = {
   color: "text.secondary",
@@ -53,18 +52,17 @@ export default function MarsSection() {
               component="span"
               sx={{ fontWeight: 700, color: "primary.dark" }}
             >
-              Mars Valvenok, An Authorised Mars Valves Distributor
+              Kronox Valves — Industrial Ball Valve Manufacturer
             </Box>{" "}
-            — an authorised distributor of genuine MARS industrial valves,
-            supplying authentic products backed by full manufacturer
-            documentation, certification, and technical support.
+            — the maker of genuine Kronox industrial valves, supplying authentic
+            products backed by full documentation, certification, and technical
+            support.
           </Typography>
 
           <Typography sx={bodyText}>
-            We work closely with manufacturers to deliver valves that meet
-            demanding industry standards. Every product we supply is traceable
-            and quality-assured, with the documentation engineers and
-            procurement teams expect.
+            We design and manufacture valves that meet demanding industry
+            standards. Every product we supply is traceable and quality-assured,
+            with the documentation engineers and procurement teams expect.
           </Typography>
 
           <Typography component="h3" sx={heading}>
@@ -94,16 +92,12 @@ export default function MarsSection() {
               borderColor: "primary.main",
             }}
           >
-            <Link
-              href={LETTER_OF_AUTHORISATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href="/products">
               <Image
-                src={LETTER_OF_AUTHORISATION_URL}
-                alt="MARS fire-safe ball valve, API 607 certified"
+                src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
+                alt="Kronox fire-safe ball valve, API 607 certified"
                 fill
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </Link>

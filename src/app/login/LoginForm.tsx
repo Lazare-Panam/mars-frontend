@@ -131,7 +131,7 @@ export default function LoginForm() {
         component="h1"
         sx={{ color: "primary.main", fontWeight: 800, mb: 1 }}
       >
-        Sign in to Mars Valves
+        Sign in to Kronox Valves
       </Typography>
       <Typography variant="body2" sx={{ color: "text.secondary", mb: 4 }}>
         New here?{" "}

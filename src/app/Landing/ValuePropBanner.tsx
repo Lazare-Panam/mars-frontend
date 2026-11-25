@@ -5,7 +5,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Reveal from "@/Common/Reveal";
 
 const POINTS = [
-  "Supplied direct from Mars Valve Co.",
+  "Genuine Kronox product",
   "Prices online for standard items",
   "Quotes for project and non-standard orders",
 ];
@@ -37,12 +37,11 @@ export default function ValuePropBanner() {
                 mb: 0.5,
               }}
             >
-              Clear prices, supplied direct from the manufacturer
+              Clear prices on genuine Kronox valves
             </Typography>
             <Typography sx={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", maxWidth: 520 }}>
-              We buy directly from Mars Valve Co. in Taiwan and publish prices
-              for standard items online, so you can compare before you
-              enquire.
+              We hold Kronox valves in UK stock and publish prices for standard
+              items online, so you can compare before you enquire.
             </Typography>
           </Box>
 

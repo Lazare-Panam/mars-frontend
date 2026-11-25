@@ -60,7 +60,7 @@ export default function ShopLandingPage() {
               mb: 1.5,
             }}
           >
-            Mars Valves UK
+            Kronox Valves UK
           </Typography>
           <Typography
             component="h1"
@@ -73,7 +73,7 @@ export default function ShopLandingPage() {
               mb: 1.5,
             }}
           >
-            Welcome to Mars Valves Shop
+            Welcome to the Kronox Valves Shop
           </Typography>
           <Typography
             sx={{

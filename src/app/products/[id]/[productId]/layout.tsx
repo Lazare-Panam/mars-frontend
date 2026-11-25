@@ -30,7 +30,7 @@ export async function generateMetadata({
   }
 
   if (!data) {
-    return { title: "Mars Valvenok" };
+    return { title: "Kronox Valves" };
   }
 
   const { name: title, image: ogImage } = data;
@@ -41,13 +41,13 @@ export async function generateMetadata({
   const canonical = await canonicalProductPath(id, productId);
 
   return {
-    // Drop the " | Mars Valvenok" suffix when it would push the title past ~65 chars.
+    // Drop the " | Kronox Valves" suffix when it would push the title past ~65 chars.
     title: fitBrandTitle(title),
     description,
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       title,
       description,
       url: canonical,

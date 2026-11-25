@@ -35,8 +35,8 @@ export function variantTitleParts(
 }
 
 // Descriptive image alt text for a variant, e.g.
-// "MARS Economical 2-Piece Ball Valve, 1/4 Inch, V20-20-1-4IN-W-O-LOCK".
+// "Kronox Economical 2-Piece Ball Valve, 1/4 Inch, V20-20-1-4IN-W-O-LOCK".
 export function variantImageAlt(productName: string, variant: ProductVariant): string {
   const sku = variant.specs["SKU"] ?? variant.id;
-  return [`MARS ${productName}`, variant.specs["Size"], sku].filter(Boolean).join(", ");
+  return [`Kronox ${productName}`, variant.specs["Size"], sku].filter(Boolean).join(", ");
 }

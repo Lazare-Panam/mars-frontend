@@ -33,63 +33,63 @@ export const LEFT_NAV: NavItem[] = [
     href: "/products",
     megaMenu: [
       {
-        heading: "Mars Ball Valves",
+        heading: "Kronox Ball Valves",
         href: "/products",
         items: [
           {
-            label: "Series 10-10 (One-Piece)",
+            label: "KX Series 10-10 (One-Piece)",
             href: "/series/4",
           },
           {
-            label: "Series 20-20 (Two-Piece)",
+            label: "KX Series 20-20 (Two-Piece)",
             href: "/series/5",
           },
           {
-            label: "Series 20-40",
+            label: "KX Series 20-40",
             href: "/series/1",
           },
           {
-            label: "Series 22 (Two-Piece Direct Mount)",
+            label: "KX Series 22 (Two-Piece Direct Mount)",
             href: "/series/3",
           },
           {
-            label: "Series 33 (Three-Way Direct Mount)",
+            label: "KX Series 33 (Three-Way Direct Mount)",
             href: "/series/6",
           },
           {
-            label: "Series 36SN (Sanitary Three-Way)",
+            label: "KX Series 36SN (Sanitary Three-Way)",
             href: "/series/7",
           },
           {
-            label: "Series 50 (Three-Piece)",
+            label: "KX Series 50 (Three-Piece)",
             href: "/series/10",
           },
           {
-            label: "Series 50SN (Three-Piece Sanitary)",
+            label: "KX Series 50SN (Three-Piece Sanitary)",
             href: "/series/11",
           },
           {
-            label: "Series 77 (Three-Piece Direct Mount)",
+            label: "KX Series 77 (Three-Piece Direct Mount)",
             href: "/series/8",
           },
           {
-            label: "Series 77SN (Three-Piece Sanitary)",
+            label: "KX Series 77SN (Three-Piece Sanitary)",
             href: "/series/9",
           },
           {
-            label: "Series 83 (Three-Piece Fire Safe)",
+            label: "KX Series 83 (Three-Piece Fire Safe)",
             href: "/series/12",
           },
           {
-            label: "Series 88 (Three-Piece Metal Seated)",
+            label: "KX Series 88 (Three-Piece Metal Seated)",
             href: "/series/13",
           },
           {
-            label: "Series 90D (Two-Piece Flanged Metal Seated)",
+            label: "KX Series 90D (Two-Piece Flanged Metal Seated)",
             href: "/series/14",
           },
           {
-            label: "Series 99 (One-Piece Compact Wafer)",
+            label: "KX Series 99 (One-Piece Compact Wafer)",
             href: "/series/15",
           },
         ],
@@ -282,7 +282,7 @@ export const LEFT_NAV: NavItem[] = [
       // },
     ],
   },
-  { label: "MARS® Brand", href: "/mars-brand" },
+  { label: "Kronox Brand", href: "/mars-brand" },
   { label: "Applications", href: "/applications" },
   { label: "Certifications", href: "/certifications", wideOnly: true },
 ];

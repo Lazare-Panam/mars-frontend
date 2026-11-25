@@ -15,10 +15,9 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          This website is operated by {ADDRESS.name} (&ldquo;Mars Valvenok&rdquo;,
-          &ldquo;we&rdquo;, &ldquo;us&rdquo;), an authorised UK distributor of
-          MARS&reg; ball valves. We are the data controller responsible for your
-          personal data.
+          This website is operated by {ADDRESS.name} (&ldquo;Kronox Valves&rdquo;,
+          &ldquo;we&rdquo;, &ldquo;us&rdquo;), the manufacturer of Kronox ball
+          valves. We are the data controller responsible for your personal data.
         </p>
         <p>
           Registered address: {ADDRESS.street}, {ADDRESS.locality},{" "}

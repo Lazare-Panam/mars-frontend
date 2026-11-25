@@ -1,16 +1,16 @@
 // Visible <h1>s for the /series pages, built from the series "design" line and
 // the model specs so every series and part number gets a descriptive heading
-// ("MARS Series 77 Three-Piece Ball Valve") instead of a bare code
+// ("Kronox Series 77 Three-Piece Ball Valve") instead of a bare code
 // ("Series 77", "V77-...").
 
 type Spec = { filter: string; value: string };
 
 const THREAD_ENDS = ["BSP", "BSPT", "BSPP", "NPT", "Threaded"];
 
-// "Series 77SN" -> "MARS 77SN"; "Series 77" -> "MARS Series 77".
+// "Series 77SN" -> "Kronox 77SN"; "Series 77" -> "Kronox Series 77".
 function brandLabel(seriesName: string): string {
   const code = seriesName.replace(/^series\s+/i, "").trim();
-  return /SN$/i.test(code) ? `MARS ${code}` : `MARS ${seriesName}`;
+  return /SN$/i.test(code) ? `Kronox ${code}` : `Kronox ${seriesName}`;
 }
 
 function designParts(design: string | null | undefined): string[] {
@@ -85,7 +85,7 @@ function seriesBase(seriesName: string, design: string | null | undefined, plura
   return { parts, head: [brandLabel(seriesName), ...words, valve].join(" ") };
 }
 
-/** Series page heading, e.g. "MARS Series 33 Three-Way Ball Valve, L-Port and T-Port". */
+/** Series page heading, e.g. "Kronox Series 33 Three-Way Ball Valve, L-Port and T-Port". */
 export function seriesHeading(seriesName: string, design: string | null | undefined): string {
   const { parts, head } = seriesBase(seriesName, design, false);
   return hasLTPorts(parts) ? `${head}, L-Port and T-Port` : head;
@@ -108,7 +108,7 @@ export function seriesSubheading(design: string | null | undefined, endConnectio
   return [...rest, ends].filter(Boolean).join(", ");
 }
 
-/** "All models" page heading, e.g. "MARS Series 77 Three-Piece Ball Valves: All Models and Prices". */
+/** "All models" page heading, e.g. "Kronox Series 77 Three-Piece Ball Valves: All Models and Prices". */
 export function seriesModelsHeading(seriesName: string, design: string | null | undefined): string {
   const { parts, head } = seriesBase(seriesName, design, true);
   const lt = hasLTPorts(parts) ? head.replace(/ Ball Valves$/, " L-Port and T-Port Ball Valves") : head;
@@ -154,7 +154,7 @@ const DETAIL_ORDER = ["End Connection", "Flange Rating", "Body Material", "Seat"
 
 /**
  * Model (part number) page heading, e.g.
- * 'MARS Series 33 1-1/2" 3-Way T-Port Ball Valve, Butt Weld, Bare Shaft'.
+ * 'Kronox Series 33 1-1/2" 3-Way T-Port Ball Valve, Butt Weld, Bare Shaft'.
  */
 export function variantHeading(seriesName: string, design: string | null | undefined, specs: Spec[]): string {
   const parts = designParts(design);

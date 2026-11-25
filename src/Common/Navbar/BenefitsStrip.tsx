@@ -16,7 +16,7 @@ import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 const BENEFITS = [
   { label: "Prices Online For Standard Items", href: "/shop", icon: SellOutlinedIcon },
   { label: "Quotes For Projects", href: "/contact#enquiry", icon: RequestQuoteOutlinedIcon },
-  { label: "Authorised MARS Distributor", href: "/mars-brand", icon: VerifiedOutlinedIcon },
+  { label: "Genuine Kronox Valves", href: "/mars-brand", icon: VerifiedOutlinedIcon },
   { label: "Factory Lead Time 4–5 Weeks", href: "/delivery-information", icon: LocalShippingOutlinedIcon },
 ];
 

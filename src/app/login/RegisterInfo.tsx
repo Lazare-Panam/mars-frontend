@@ -38,7 +38,7 @@ export default function RegisterInfo() {
         New Here?
       </Typography>
       <Typography variant="body1" sx={{ color: "text.secondary", mb: 4 }}>
-        Create an account to get started with Mars Valves.
+        Create an account to get started with Kronox Valves.
       </Typography>
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mb: 5 }}>

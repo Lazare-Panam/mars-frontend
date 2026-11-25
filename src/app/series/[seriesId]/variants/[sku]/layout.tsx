@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   // have one for this part number; otherwise fall back to the generic template.
   const override = VARIANT_META[part];
   const series = await fetchSeriesCategory(seriesId).catch(() => null);
-  const name = series?.name ?? "MARS ball valve";
+  const name = series?.name ?? "Kronox ball valve";
   return {
     title: override ? { absolute: override.title } : fitBrandTitle(`${part} — ${name}`),
     description:
       override?.description ??
-      `MARS ${name} part number ${part}: specifications, price and quote request from an authorised UK distributor.`,
+      `Kronox ${name} part number ${part}: specifications, price and quote request direct from the manufacturer.`,
     alternates: { canonical: `${SITE_URL}/series/${seriesId}/variants` },
   };
 }

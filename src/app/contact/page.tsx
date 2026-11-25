@@ -27,20 +27,20 @@ const CATALOGUE_URL =
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: {
-    absolute: "Contact Mars Valvenok — MARS Ball Valve Quotes & Technical Help",
+    absolute: "Contact Kronox Valves — Kronox Ball Valve Quotes & Technical Help",
   },
   description:
-    "Ask for a MARS ball valve quote, datasheet or certificate. Send your size, pressure, end connection and media, and our UK team will reply.",
+    "Ask for a Kronox ball valve quote, datasheet or certificate. Send your size, pressure, end connection and media, and our UK team will reply.",
 };
 
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact Mars Valvenok",
+  name: "Contact Kronox Valves",
   url: `${SITE_URL}/contact`,
   mainEntity: {
     "@type": "Organization",
-    name: "Mars Valvenok",
+    name: "Kronox Valves",
     url: SITE_URL,
     email: EMAIL,
     telephone: PHONE,
@@ -72,7 +72,7 @@ const CONTACT_ROWS = [
 ];
 
 const RESOURCES = [
-  { icon: PictureAsPdfOutlinedIcon, title: "MARS e-catalogue", text: "Every series, part numbers, ratings and dimensions in one PDF.", cta: "Download PDF", href: CATALOGUE_URL, external: true },
+  { icon: PictureAsPdfOutlinedIcon, title: "Kronox e-catalogue", text: "Every series, part numbers, ratings and dimensions in one PDF.", cta: "Download PDF", href: CATALOGUE_URL, external: true },
   { icon: GridViewOutlinedIcon, title: "Browse by series", text: "One-piece, two-piece, three-piece, flanged, sanitary and fire safe ranges.", cta: "Browse products", href: "/products" },
   { icon: VerifiedOutlinedIcon, title: "Certifications", text: "API 607, SIL 3, CE/PED, ATEX and ISO 9001 certificates to download.", cta: "View certificates", href: "/certifications" },
   { icon: LocalShippingOutlinedIcon, title: "Delivery & lead times", text: "UK stock, factory lead times and how delivery works.", cta: "Read more", href: "/delivery-information" },
@@ -92,8 +92,8 @@ export default function ContactPage() {
 
       <ProductPageHero
         eyebrow="Contact"
-        title="MARS ball valve quotes and technical help"
-        subtitle="Send us your requirements and we'll come back with the right MARS series, datasheets, certificates and a price. Authorised UK distributor of Mars Valve Co., Ltd., Taiwan."
+        title="Kronox ball valve quotes and technical help"
+        subtitle="Send us your requirements and we'll come back with the right Kronox series, datasheets, certificates and a price. UK stock and fast delivery."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
       />
 
@@ -140,7 +140,7 @@ export default function ContactPage() {
               Talk to our team
             </Typography>
             <Typography sx={{ fontSize: { xs: "1.5rem", md: "1.7rem" }, fontWeight: 800, lineHeight: 1.2, mb: 1.5, position: "relative" }}>
-              Valve specialists for MARS ball valves
+              Valve specialists for Kronox ball valves
             </Typography>
             <Typography sx={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.7, mb: 4, position: "relative" }}>
               We&apos;ll come back with the right series, part numbers,
@@ -171,8 +171,8 @@ export default function ContactPage() {
             </Box>
 
             <Typography sx={{ mt: { xs: 4, md: "auto" }, pt: 4, borderTop: "1px solid rgba(255,255,255,0.2)", fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", position: "relative" }}>
-              Authorised UK distributor for Mars Valve Co., Ltd. Genuine MARS
-              valves, manufacturer documentation and UK-based support.
+              Genuine Kronox valves, full documentation, UK stock and UK-based
+              support.
             </Typography>
           </Box>
 

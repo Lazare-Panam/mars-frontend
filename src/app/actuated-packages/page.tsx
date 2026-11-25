@@ -18,9 +18,9 @@ import ProductCategoryRow from "@/app/products/components/ProductCategoryRow";
 // UK stock is 4–5 weeks. Not stated until confirmed: actuator brands, UK
 // testing, and a BOM upload on the quote form.
 
-const TITLE = "Actuated Ball Valve Packages UK | Mars Valvenok";
+const TITLE = "Actuated Ball Valve Packages UK | Kronox Valves";
 const DESCRIPTION =
-  "MARS actuated ball valve packages made to order: direct-mount valves matched with pneumatic or electric actuators, with certificates and datasheets.";
+  "Kronox actuated ball valve packages made to order: direct-mount valves matched with pneumatic or electric actuators, with certificates and datasheets.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/actuated-packages" },
@@ -113,7 +113,7 @@ export default function ActuatedPackagesPage() {
               component="h1"
               sx={{ fontSize: { xs: "2.25rem", md: "3.25rem" }, fontWeight: 800, lineHeight: 1.15, maxWidth: 820 }}
             >
-              MARS actuated ball valve packages, made to order
+              Kronox actuated ball valve packages, made to order
             </Typography>
             <Typography
               sx={{ mt: 2.5, mb: 4, color: "rgba(255,255,255,0.82)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 700 }}

@@ -33,7 +33,7 @@ export async function generateMetadata({
     const productUrl = await canonicalProductPath(id, productId);
     const name = await fetchProductDetail(productId).then((d) => d.name).catch(() => null);
     return {
-      title: fitBrandTitle(`${name ?? "MARS Ball Valve"} — All Models`),
+      title: fitBrandTitle(`${name ?? "Kronox Ball Valve"} — All Models`),
       robots: { index: false, follow: true },
       alternates: { canonical: productUrl },
     };

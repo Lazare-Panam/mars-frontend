@@ -32,7 +32,7 @@ const P = "/products";
 
 export const CATEGORY_BAR: CategoryBarItem[] = [
   {
-    label: "MARS Ball Valves",
+    label: "Kronox Ball Valves",
     href: P,
     columns: [
       {
@@ -41,10 +41,10 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         // Read from the series data, so new series pages appear here automatically.
         // Series 20-40 is the new SQL-backed configurator (/series/[categoryId]).
         links: [
-          { label: "Series 10-10", href: "/series/4" },
-          { label: "Series 20-20", href: "/series/5" },
-          { label: "Series 20-40", href: "/series/1" },
-          { label: "Series 22", href: "/series/3" },
+          { label: "KX Series 10-10", href: "/series/4" },
+          { label: "KX Series 20-20", href: "/series/5" },
+          { label: "KX Series 20-40", href: "/series/1" },
+          { label: "KX Series 22", href: "/series/3" },
           ...SERIES
             .filter(
               (series) =>
@@ -181,10 +181,10 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "Direct-Mount Series",
         href: "/actuated-packages",
         links: [
-          { label: "Series 22", href: "/series/3" },
-          { label: "Series 33", href: "/series/6" },
-          { label: "Series 77", href: "/series/8" },
-          { label: "Series 88", href: "/series/13" },
+          { label: "KX Series 22", href: "/series/3" },
+          { label: "KX Series 33", href: "/series/6" },
+          { label: "KX Series 77", href: "/series/8" },
+          { label: "KX Series 88", href: "/series/13" },
         ],
       },
     ],

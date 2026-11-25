@@ -32,7 +32,7 @@ export async function generateMetadata({
   }
 
   if (!data) {
-    return { title: "Mars Valvenok" };
+    return { title: "Kronox Valves" };
   }
 
   const base = `${data.name} — All Models`;
@@ -46,7 +46,7 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       title: base,
       description,
       url: canonical,

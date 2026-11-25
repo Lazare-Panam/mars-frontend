@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
@@ -159,7 +157,7 @@ export default function MarsStats() {
                 color: "primary.light",
               }}
             >
-              THE MARS® BRAND
+              THE Kronox BRAND
             </Typography>
           </Box>
 
@@ -173,13 +171,13 @@ export default function MarsStats() {
               color: "#fff",
             }}
           >
-            Made by Mars Valve Co.
+            Designed and made
             <br />
             <Box
               component="span"
               sx={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}
             >
-              in Taiwan.
+              by Kronox.
             </Box>
           </Typography>
 
@@ -191,10 +189,9 @@ export default function MarsStats() {
               lineHeight: 1.7,
             }}
           >
-            MARS valves are designed and manufactured by Mars Valve Co., Ltd.
-            in Taichung, Taiwan, with casting, machining, finishing and assembly
-            under one roof. Mars Valvenok supplies the range in the UK as an
-            authorised distributor.
+            Kronox valves are designed and manufactured in-house, with casting,
+            machining, finishing and assembly held to a single quality standard.
+            We supply the full range from UK stock.
           </Typography>
 
           <Box
@@ -248,28 +245,6 @@ export default function MarsStats() {
               }}
             >
               VIEW THE FULL RANGE
-            </Button>
-            <Button
-              component={Link}
-              href={LETTER_OF_AUTHORISATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outlined"
-              startIcon={<MenuBookIcon />}
-              sx={{
-                color: "#fff",
-                borderColor: "rgba(255,255,255,0.25)",
-                borderRadius: 0,
-                px: 3,
-                transition: "border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease",
-                "&:hover": {
-                  borderColor: "#fff",
-                  bgcolor: "rgba(255,255,255,0.06)",
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              LETTER OF AUTHORISATION
             </Button>
           </Box>
         </Box>

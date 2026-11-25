@@ -94,7 +94,9 @@ const Navbar: React.FC = () => {
     (item) => item.label !== "Contact Us",
   );
   // Desktop shows the e-catalogue in the red top bar instead.
-  const desktopRightNav = filteredRightNav.filter((item) => item.label !== "E-Catalogue");
+  const desktopRightNav = filteredRightNav.filter(
+    (item) => item.label !== "E-Catalogue",
+  );
 
   const CartButton = ({ size }: { size: number }) => (
     <IconButton
@@ -153,8 +155,18 @@ const Navbar: React.FC = () => {
             px: 0.5,
           }}
         >
-          <PersonOutlineOutlinedIcon sx={{ fontSize: size, color: REGISTER_RED }} />
-          <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.01em", color: REGISTER_RED, lineHeight: 1 }}>
+          <PersonOutlineOutlinedIcon
+            sx={{ fontSize: size, color: REGISTER_RED }}
+          />
+          <Typography
+            sx={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              letterSpacing: "0.01em",
+              color: REGISTER_RED,
+              lineHeight: 1,
+            }}
+          >
             Register
           </Typography>
         </Box>
@@ -188,7 +200,9 @@ const Navbar: React.FC = () => {
         <Box
           component="button"
           type="button"
-          aria-label={userName ? `Account menu for ${userName}` : "Account menu"}
+          aria-label={
+            userName ? `Account menu for ${userName}` : "Account menu"
+          }
           aria-haspopup="menu"
           aria-expanded={accountMenuOpen}
           onClick={() => setAccountMenuOpen((o) => !o)}
@@ -210,7 +224,9 @@ const Navbar: React.FC = () => {
             "&:hover": { boxShadow: "0 0 0 3px rgba(231,57,15,0.2)" },
           }}
         >
-          {initials ?? <PersonOutlineOutlinedIcon sx={{ fontSize: size - 4 }} />}
+          {initials ?? (
+            <PersonOutlineOutlinedIcon sx={{ fontSize: size - 4 }} />
+          )}
         </Box>
 
         {accountMenuOpen && (
@@ -235,15 +251,39 @@ const Navbar: React.FC = () => {
               }}
             >
               {userName && (
-                <Typography sx={{ px: 2, pt: 0.5, pb: 1, fontSize: "0.78rem", color: RUST, borderBottom: `1px solid ${LINE}`, mb: 0.5 }}>
+                <Typography
+                  sx={{
+                    px: 2,
+                    pt: 0.5,
+                    pb: 1,
+                    fontSize: "0.78rem",
+                    color: RUST,
+                    borderBottom: `1px solid ${LINE}`,
+                    mb: 0.5,
+                  }}
+                >
                   {userName}
                 </Typography>
               )}
-              <Box component={Link} href="/dashboard/carts" role="menuitem" onClick={() => setAccountMenuOpen(false)} sx={menuItemSx}>
-                <AccountCircleOutlinedIcon sx={{ fontSize: 20, color: ACCENT }} />
+              <Box
+                component={Link}
+                href="/dashboard/carts"
+                role="menuitem"
+                onClick={() => setAccountMenuOpen(false)}
+                sx={menuItemSx}
+              >
+                <AccountCircleOutlinedIcon
+                  sx={{ fontSize: 20, color: ACCENT }}
+                />
                 My Account
               </Box>
-              <Box component="button" type="button" role="menuitem" onClick={handleLogout} sx={{ ...menuItemSx, color: ACCENT }}>
+              <Box
+                component="button"
+                type="button"
+                role="menuitem"
+                onClick={handleLogout}
+                sx={{ ...menuItemSx, color: ACCENT }}
+              >
                 <LogoutIcon sx={{ fontSize: 20 }} />
                 Logout
               </Box>
@@ -284,8 +324,8 @@ const Navbar: React.FC = () => {
               sx={{ display: "flex", alignItems: "center", flexShrink: 0 }}
             >
               <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/logo.jpg"
-                alt="MARS Valve"
+                src="https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png"
+                alt="Kronox Valve"
                 width={120}
                 height={40}
                 priority
@@ -311,13 +351,20 @@ const Navbar: React.FC = () => {
                     key={item.label}
                     sx={
                       typeof item.wideOnly === "number"
-                        ? { display: "none", [`@media (min-width:${item.wideOnly}px)`]: { display: "block" } }
+                        ? {
+                            display: "none",
+                            [`@media (min-width:${item.wideOnly}px)`]: {
+                              display: "block",
+                            },
+                          }
                         : item.wideOnly
                           ? { display: { md: "none", lg: "block" } }
                           : undefined
                     }
                     // Other header links close the products dropdown.
-                    onMouseEnter={() => (item.megaMenu ? openProducts() : closeCategory())}
+                    onMouseEnter={() =>
+                      item.megaMenu ? openProducts() : closeCategory()
+                    }
                     onFocus={() => item.megaMenu && openProducts()}
                   >
                     <Box
@@ -325,11 +372,18 @@ const Navbar: React.FC = () => {
                       href={item.href}
                       onPointerDown={(e: React.PointerEvent) => {
                         if (item.megaMenu) {
-                          productsTap.current = { isTouch: e.pointerType !== "mouse", wasOpen: categoryOpen !== null };
+                          productsTap.current = {
+                            isTouch: e.pointerType !== "mouse",
+                            wasOpen: categoryOpen !== null,
+                          };
                         }
                       }}
                       onClick={(e: React.MouseEvent) => {
-                        if (item.megaMenu && productsTap.current.isTouch && !productsTap.current.wasOpen) {
+                        if (
+                          item.megaMenu &&
+                          productsTap.current.isTouch &&
+                          !productsTap.current.wasOpen
+                        ) {
                           e.preventDefault();
                           openProducts();
                         }
@@ -434,10 +488,16 @@ const Navbar: React.FC = () => {
               >
                 <CreditCardOutlinedIcon sx={{ fontSize: 19 }} />
                 {/* Short label on laptop widths so the nav doesn't wrap. */}
-                <Box component="span" sx={{ display: { xs: "none", xl: "inline" } }}>
+                <Box
+                  component="span"
+                  sx={{ display: { xs: "none", xl: "inline" } }}
+                >
                   Apply for Credit
                 </Box>
-                <Box component="span" sx={{ display: { xs: "inline", xl: "none" } }}>
+                <Box
+                  component="span"
+                  sx={{ display: { xs: "inline", xl: "none" } }}
+                >
                   Credit
                 </Box>
               </Box>
@@ -524,7 +584,13 @@ const Navbar: React.FC = () => {
         </Container>
 
         {/* Prominent search row: full-width, centered, its own line under the header. */}
-        <Box sx={{ display: { xs: "none", md: "block" }, borderTop: `1px solid ${LINE}`, bgcolor: PAPER }}>
+        <Box
+          sx={{
+            display: { xs: "none", md: "block" },
+            borderTop: `1px solid ${LINE}`,
+            bgcolor: PAPER,
+          }}
+        >
           <Container maxWidth="xl">
             <Box sx={{ py: 1.75, display: "flex", justifyContent: "center" }}>
               <Box sx={{ width: "100%", maxWidth: 680 }}>

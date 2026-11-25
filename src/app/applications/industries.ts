@@ -65,7 +65,7 @@ export const INDUSTRIES: Industry[] = [
     hook: "Fire-safe, API 607 tested series",
     heading: "Ball valves for oil & gas and refining",
     intro:
-      "In production, refining and processing, a valve may need to keep sealing when the line around it is on fire. That's why fire-safe testing matters. Selected MARS series are fire-tested to API 607.",
+      "In production, refining and processing, a valve may need to keep sealing when the line around it is on fire. That's why fire-safe testing matters. Selected Kronox series are fire-tested to API 607.",
     duties: [
       "Isolation on hydrocarbon process lines",
       "Emergency shutdown with actuated packages",
@@ -121,7 +121,7 @@ export const INDUSTRIES: Industry[] = [
     hook: "Tri-clamp sanitary valves in CF3M",
     heading: "Sanitary ball valves for food, beverage and pharmaceutical",
     intro:
-      "Hygienic lines need valves that clean easily, trap as little product as possible, and use the right grade of stainless steel. MARS sanitary ball valves have tri-clamp or tube OD butt weld ends, a full port and PTFE seats, with cavity filler seats available on selected series.",
+      "Hygienic lines need valves that clean easily, trap as little product as possible, and use the right grade of stainless steel. Kronox sanitary ball valves have tri-clamp or tube OD butt weld ends, a full port and PTFE seats, with cavity filler seats available on selected series.",
     duties: [
       "Product isolation in dairy, brewing and beverage lines",
       "Clean-in-place (CIP) circuits",
@@ -234,24 +234,24 @@ export const INDUSTRIES: Industry[] = [
 
 export const FAQS: { q: string; a: string }[] = [
   {
-    q: "Which MARS ball valves are fire-safe?",
+    q: "Which Kronox ball valves are fire-safe?",
     a: "Selected series are fire-tested to API 607, including Series 28, 83, 88, 90, 90D and 91D. Tell us your application and we'll confirm the right series and send the certificate.",
   },
   {
     q: "Which ball valve is best for food and pharmaceutical lines?",
-    a: "Sanitary ball valves with tri-clamp or tube OD ends. For welded lines, or where 316L is specified, choose a CF3M body, such as the MARS 77SN, 88SN or 83SN.",
+    a: "Sanitary ball valves with tri-clamp or tube OD ends. For welded lines, or where 316L is specified, choose a CF3M body, such as the Kronox 77SN, 88SN or 83SN.",
   },
   {
     q: "What's the difference between CF8M and CF3M?",
     a: "Both are cast 316-type stainless steels. CF3M is the low-carbon grade (equivalent to 316L), preferred where the valve is welded in or 316L is specified.",
   },
   {
-    q: "Can MARS ball valves be used for steam?",
+    q: "Can Kronox ball valves be used for steam?",
     a: "Yes, with the right seat. Carbon-filled RTFE seats suit steam service, and metal seats suit higher temperatures. Send us your pressure and temperature to confirm.",
   },
   {
     q: "Do you supply actuated valves for automated lines?",
-    a: "Yes. Direct mount MARS series can be supplied as pneumatic or electric actuated packages.",
+    a: "Yes. Direct mount Kronox series can be supplied as pneumatic or electric actuated packages.",
   },
 ];
 

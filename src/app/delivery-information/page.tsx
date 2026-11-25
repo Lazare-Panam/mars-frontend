@@ -23,7 +23,7 @@ import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 import { alpha } from "@mui/material/styles";
 import Reveal from "@/Common/Reveal";
 
-// Only what's confirmed (Oct 2026): UK supply only (the MARS authorisation
+// Only what's confirmed (Oct 2026): UK supply only (the Kronox authorisation
 // covers the UK), UK stock series, 4–5 week factory lead time, packages made
 // to order. Dispatch days, delivery charges and tracking are confirmed per
 // order rather than promised here.
@@ -31,12 +31,12 @@ const deliveryPoints = [
   {
     icon: <Inventory2Icon />,
     title: "UK Stock",
-    text: "We hold UK stock of MARS Series 10-10, 20-40, 77 and 88. Stock availability and the dispatch date are confirmed with your order.",
+    text: "We hold UK stock of Kronox Series 10-10, 20-40, 77 and 88. Stock availability and the dispatch date are confirmed with your order.",
   },
   {
     icon: <LocalShippingIcon />,
     title: "Factory Items",
-    text: "Series and sizes not held in UK stock are supplied from the MARS factory with a lead time of 4–5 weeks, confirmed when you order.",
+    text: "Series and sizes not held in UK stock are supplied from the Kronox factory with a lead time of 4–5 weeks, confirmed when you order.",
   },
   {
     icon: <PrecisionManufacturingIcon />,
@@ -46,7 +46,7 @@ const deliveryPoints = [
   {
     icon: <PlaceIcon />,
     title: "UK Delivery Only",
-    text: "We supply MARS valves to customers in the United Kingdom only, as an authorised UK distributor.",
+    text: "We supply Kronox valves to customers in the United Kingdom only.",
   },
   {
     icon: <PaymentsIcon />,
@@ -177,7 +177,7 @@ const DeliveryReturnsPage = () => {
               variant="body1"
               sx={{ color: "text.secondary", maxWidth: 640, mt: 2 }}
             >
-              How we supply MARS valves in the UK, our lead times, and how to
+              How we supply Kronox valves in the UK, our lead times, and how to
               return an order if something isn&apos;t right.
             </Typography>
           </Reveal>
@@ -223,7 +223,7 @@ const DeliveryReturnsPage = () => {
                   variant="body1"
                   sx={{ color: "text.secondary", lineHeight: 1.7 }}
                 >
-                  We supply MARS valves within the United Kingdom. Lead times
+                  We supply Kronox valves within the United Kingdom. Lead times
                   depend on whether your series and size is held in UK stock or
                   ordered from the factory; we confirm the lead time and delivery
                   cost with every quote and order.

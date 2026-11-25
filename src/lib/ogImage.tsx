@@ -18,7 +18,7 @@ const BRAND_GRADIENT =
 
 export function renderOgImage({
   title,
-  subtitle = "Authorised UK Distributor of MARS Ball Valves",
+  subtitle = "Industrial Ball Valve Manufacturer",
 }: {
   title: string;
   subtitle?: string;
@@ -48,7 +48,7 @@ export function renderOgImage({
             letterSpacing: "0.02em",
           }}
         >
-          MARS Valvenok
+          Kronox Valves
         </div>
 
         {/* Headline */}

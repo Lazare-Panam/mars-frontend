@@ -19,10 +19,10 @@ import { BANNER_GRADIENT } from "@/theme/brand";
 export const metadata: Metadata = {
   alternates: { canonical: "/applications" },
   title: {
-    absolute: "Marine Valve and Oil & Gas Valve Applications – MARS Valve",
+    absolute: "Marine Valve and Oil & Gas Valve Applications – Kronox Valve",
   },
   description:
-    "MARS ball valves for oil & gas, chemical, food & pharma, power, water and marine. Find the right series, material and end connection for your industry.",
+    "Kronox ball valves for oil & gas, chemical, food & pharma, power, water and marine. Find the right series, material and end connection for your industry.",
 };
 
 const ICONS: Record<IndustryId, typeof LocalFireDepartmentOutlinedIcon> = {
@@ -132,16 +132,15 @@ export default async function ApplicationsPage() {
             <Typography
               sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
             >
-              MARS valves are manufactured by Mars Valve Co., Ltd. in Taiwan, an
-              ISO 9001 certified manufacturer. The range covers stainless steel
-              ball valves in two-piece, three-piece, flanged, multi-port,
-              sanitary and metal-seated designs, with selected series
-              fire-tested to API 607.
+              Kronox valves are manufactured to an ISO 9001 quality management
+              system. The range covers stainless steel ball valves in two-piece,
+              three-piece, flanged, multi-port, sanitary and metal-seated
+              designs, with selected series fire-tested to API 607.
             </Typography>
             <Typography
               sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
             >
-              Mars Valvenok supplies the range in the UK as an authorised
+              Kronox Valves supplies the range in the UK as an authorised
               distributor. Choose your industry below to see which series,
               materials and end connections fit your duty.
             </Typography>
@@ -285,7 +284,7 @@ export default async function ApplicationsPage() {
                       )}
 
                       <Typography component="h3" sx={h3Sx}>
-                        Recommended MARS valves
+                        Recommended Kronox valves
                       </Typography>
                       <ItemList items={industry.recommended} />
 
@@ -328,7 +327,7 @@ export default async function ApplicationsPage() {
               Not sure which valve your application needs?
             </Typography>
             <Typography sx={{ color: "rgba(255,255,255,0.75)", mb: 1.5 }}>
-              Send us five details and we&apos;ll recommend the right MARS series:
+              Send us five details and we&apos;ll recommend the right Kronox series:
             </Typography>
             <Box component="ul" sx={{ m: 0, pl: 2.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.9 }}>
               <li>Media</li>
@@ -394,7 +393,7 @@ export default async function ApplicationsPage() {
             Browse Every Valve
           </Typography>
           <Typography sx={{ color: "text.secondary", mb: 4 }}>
-            Every MARS product and variant, grouped by valve type.
+            Every Kronox product and variant, grouped by valve type.
           </Typography>
           <ProductLinkList index={index} />
         </Container>

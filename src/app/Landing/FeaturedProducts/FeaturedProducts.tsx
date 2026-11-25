@@ -136,7 +136,7 @@ export default function FeaturedProducts() {
                 mt: 1,
               }}
             >
-              Featured MARS ball valves
+              Featured Kronox ball valves
             </Typography>
           </Box>
 

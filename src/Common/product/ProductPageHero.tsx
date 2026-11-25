@@ -19,7 +19,7 @@ export type HeroAction = { label: string; href: string; external?: boolean };
 
 export default function ProductPageHero({
   title,
-  eyebrow = "MARS Ball Valves",
+  eyebrow = "Kronox Ball Valves",
   subtitle,
   breadcrumbs,
   pills,

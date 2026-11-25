@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/shop" },
-  title: "Shop MARS Ball Valves",
+  title: "Shop Kronox Ball Valves",
   description:
-    "Shop MARS industrial ball valves online: prices for standard items, trade accounts, and quotes for projects from an authorised UK distributor.",
+    "Shop Kronox industrial ball valves online: prices for standard items, trade accounts, and quotes for projects, direct from the manufacturer.",
 };
 
 export default function ShopLandingLayout({

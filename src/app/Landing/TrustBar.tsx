@@ -1,10 +1,8 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import ScienceIcon from "@mui/icons-material/Science";
@@ -27,14 +25,14 @@ const CREDENTIALS = [
   {
     icon: <WorkspacePremiumIcon fontSize="small" />,
     label: "ISO 9001 manufacturer",
-    desc: "Mars Valve Co. quality system, LRQA",
+    desc: "Quality management system, LRQA",
     href: "/certifications#iso-9001",
   },
   {
     icon: <VerifiedIcon fontSize="small" />,
-    label: "Authorised by Mars Valve Co.",
-    desc: "Letter of authorisation on file",
-    href: "/certifications#distributor",
+    label: "Genuine Kronox product",
+    desc: "Authentic valves, UK stock",
+    href: "/mars-brand",
   },
 ];
 
@@ -67,12 +65,9 @@ export default function TrustBar() {
       <Box
         sx={{
           position: "relative",
-          maxWidth: "1280px",
+          maxWidth: 760,
           mx: "auto",
           px: { xs: 3, md: 8 },
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1.1fr 0.9fr" },
-          gap: { xs: 6, md: 8 },
           alignItems: "center",
         }}
       >
@@ -115,9 +110,8 @@ export default function TrustBar() {
                 lineHeight: 1.7,
               }}
             >
-              MARS valves are manufactured by Mars Valve Co., Ltd. in Taiwan.
-              We supply the manufacturer&apos;s certificates and datasheets for
-              the series you order, so your procurement and compliance teams
+              As the manufacturer, we supply full certificates and datasheets
+              for the series you order, so your procurement and compliance teams
               don&apos;t have to chase them.
             </Typography>
 
@@ -210,59 +204,6 @@ export default function TrustBar() {
               View all certifications &amp; downloads →
             </Box>
           </Box>
-        </Reveal>
-
-        {/* right: real certificate document */}
-        <Reveal delay={150} y={32}>
-          <Link
-            href={LETTER_OF_AUTHORISATION_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ display: "block", textDecoration: "none" }}
-          >
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                pt: "70%",
-                borderRadius: "6px",
-                overflow: "hidden",
-                border: "1px solid rgba(0,0,0,0.08)",
-                boxShadow: "0 12px 32px rgba(0,0,0,0.1)",
-                bgcolor: "#fff",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 20px 44px rgba(0,0,0,0.16)",
-                },
-              }}
-            >
-              <Image
-                src={LETTER_OF_AUTHORISATION_URL}
-                alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
-                fill
-                style={{ objectFit: "contain", padding: "16px" }}
-                sizes="(max-width: 768px) 100vw, 45vw"
-              />
-              <Box
-                sx={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  bgcolor: "rgba(74,18,6,0.85)",
-                  color: "#fff",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.06em",
-                  py: 1.1,
-                  textAlign: "center",
-                }}
-              >
-                VIEW LETTER OF AUTHORISATION ↗
-              </Box>
-            </Box>
-          </Link>
         </Reveal>
       </Box>
 

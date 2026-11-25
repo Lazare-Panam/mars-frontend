@@ -246,7 +246,7 @@ export default function SeriesConfiguratorPage({
             {image && <ZoomImage src={image} alt={resolvedSku ? `${name} — ${resolvedSku}` : name} onOpen={() => setZoomOpen(true)} />}
             <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1.5, mt: 2 }}>
               {[
-                { icon: VerifiedOutlinedIcon, t: "Genuine MARS", d: "Authorised UK distributor" },
+                { icon: VerifiedOutlinedIcon, t: "Genuine Kronox", d: "Made by Kronox" },
                 { icon: PictureAsPdfOutlinedIcon, t: "Documented", d: "Certificates with your order" },
                 { icon: MailOutlinedIcon, t: "UK support", d: "Help choosing a spec" },
               ].map(({ icon: Icon, t, d }) => (
@@ -285,7 +285,7 @@ export default function SeriesConfiguratorPage({
           {/* Details */}
           <Box>
             <Typography sx={{ color: BRAND, letterSpacing: "0.16em", fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", mb: 1 }}>
-              MARS Ball Valves
+              Kronox Ball Valves
             </Typography>
             <Typography component="h1" sx={{ fontSize: { xs: "2.3rem", md: "3.2rem" }, fontWeight: 800, lineHeight: 1.02, letterSpacing: "-0.03em" }}>
               {seriesHeading(name, category?.design)}

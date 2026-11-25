@@ -1,4 +1,4 @@
-// Manufacturer certificates for MARS valves (issued to Mars Valve Co., Ltd.),
+// Manufacturer certificates for Kronox valves (issued to Mars Valve Co., Ltd.),
 // hosted on our blob storage. Chosen for UK buyers: AGA (Australia) and CRN
 // (Canada) are left out. Dates are from the certificates themselves.
 
@@ -84,7 +84,7 @@ export const CERT_GROUPS: CertGroup[] = [
     title: "ISO 9001 quality management",
     standard: "ISO 9001:2015",
     issuer: "LRQA (UKAS accredited)",
-    summary: "Mars Valve Co., Ltd. quality management system for the design, sales and servicing of industrial valves and components.",
+    summary: "Kronox Valves quality management system for the design, manufacture and servicing of industrial valves and components.",
     validity: "Valid to 23 January 2027",
     files: [{ label: "ISO 9001 certificate", href: file("ISO 9001  .pdf") }],
   },

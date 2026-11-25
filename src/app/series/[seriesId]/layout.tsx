@@ -31,7 +31,7 @@ export async function generateMetadata({
   }
 
   if (!data) {
-    return { title: "Mars Valvenok" };
+    return { title: "Kronox Valves" };
   }
 
   const title = fitBrandTitle(data.name);
@@ -44,7 +44,7 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       title: data.name,
       description,
       url: canonical,

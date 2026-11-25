@@ -4,7 +4,6 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/Common/Reveal";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
 const bodyText = {
   color: "text.secondary",
@@ -43,25 +42,18 @@ export default function MarsSection() {
             </Typography>
 
             <Typography sx={bodyText}>
-              Mars Valvenok is an{" "}
+              Kronox Valves is a{" "}
               <Box
                 component="span"
                 sx={{ fontWeight: 700, color: "text.primary" }}
               >
-                authorised UK distributor of MARS industrial valves
+                manufacturer of industrial ball valves
               </Box>
-              , appointed by the manufacturer,{" "}
-              <Box
-                component="span"
-                sx={{ fontWeight: 700, color: "text.primary" }}
-              >
-                Mars Valve Co., Ltd. of Taichung, Taiwan
-              </Box>
-              . We are part of Valvenok Ltd.
+              , the Kronox brand of Valvenok Ltd.
             </Typography>
 
             <Typography sx={bodyText}>
-              We supply genuine MARS valves with the manufacturer&apos;s
+              We supply genuine Kronox valves with the manufacturer&apos;s
               documentation, pricing online for standard items, and technical
               help choosing the right series, material and end connection.
             </Typography>
@@ -99,16 +91,12 @@ export default function MarsSection() {
                 },
               }}
             >
-              <Link
-                href={LETTER_OF_AUTHORISATION_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href="/products">
                 <Image
-                  src={LETTER_OF_AUTHORISATION_URL}
-                  alt="Letter of authorisation from Mars Valve Co., Ltd. naming Valvenok as an authorised UK distributor"
+                  src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
+                  alt="Kronox industrial ball valves"
                   fill
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </Link>

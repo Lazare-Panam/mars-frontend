@@ -1,7 +1,7 @@
-const BRAND_SUFFIX = " | Mars Valvenok";
+const BRAND_SUFFIX = " | Kronox Valves";
 const MAX_TITLE = 65;
 
-// The root layout applies the `%s | Mars Valvenok` title template. Keep that
+// The root layout applies the `%s | Kronox Valves` title template. Keep that
 // brand suffix only when the finished title still fits within the ~65-char SERP
 // guideline; otherwise return an absolute title (no suffix) so a long base
 // title doesn't blow past the limit. Returns a value assignable to Metadata.title.

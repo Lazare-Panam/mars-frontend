@@ -12,9 +12,9 @@ const sections: LegalSection[] = [
     body: (
       <p>
         These terms and conditions govern your use of this website and the sale
-        of products by {ADDRESS.name} (&ldquo;Mars Valvenok&rdquo;,
-        &ldquo;we&rdquo;, &ldquo;us&rdquo;), an authorised UK distributor of
-        MARS&reg; ball valves. By using this site or placing an order you accept
+        of products by {ADDRESS.name} (&ldquo;Kronox Valves&rdquo;,
+        &ldquo;we&rdquo;, &ldquo;us&rdquo;), the manufacturer of Kronox ball
+        valves. By using this site or placing an order you accept
         these terms. Please also read our{" "}
         <Link href="/privacy">Privacy Policy</Link> and{" "}
         <Link href="/cookie-policy">Cookie Policy</Link>.
@@ -112,10 +112,9 @@ const sections: LegalSection[] = [
     heading: "10. Intellectual property",
     body: (
       <p>
-        MARS&reg; is a registered trademark of its owner. We use it as an
-        authorised distributor; we do not claim to be the manufacturer. All other
-        content on this site (text, images and layout) is owned by or licensed to
-        us and may not be reproduced without our permission.
+        Kronox&reg; is a trademark of Valvenok Ltd. All content on this site
+        (text, images and layout) is owned by or licensed to us and may not be
+        reproduced without our permission.
       </p>
     ),
   },

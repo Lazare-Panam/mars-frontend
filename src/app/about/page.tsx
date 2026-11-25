@@ -16,22 +16,17 @@ import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
-import { LETTER_OF_AUTHORISATION_URL } from "@/lib/links";
 
-const LETTER_URL = LETTER_OF_AUTHORISATION_URL;
-
-// Each claim here is backed by a document on file (the Mars Valve Co. letter
-// of authorisation) or matches the homepage copy (SEO audit, 29 Sep 2026).
 const VALUES = [
   {
     icon: VerifiedIcon,
-    title: "Authorised by the Manufacturer",
-    body: "Mars Valve Co., Ltd. has authorised Valvenok Ltd to market, distribute and sell MARS® valves in the United Kingdom. Every MARS valve we supply is genuine, with the manufacturer's documentation and warranty.",
+    title: "Genuine Kronox Product",
+    body: "Every Kronox valve we supply is genuine, with full documentation and a Kronox warranty.",
   },
   {
     icon: HandshakeOutlinedIcon,
-    title: "Supplied Direct",
-    body: "We buy directly from Mars Valve Co. in Taiwan and supply the manufacturer's certificates and datasheets for the series you order.",
+    title: "UK Stock",
+    body: "We hold Kronox valves in UK stock and supply certificates and datasheets for the series you order.",
   },
   {
     icon: EngineeringOutlinedIcon,
@@ -45,23 +40,17 @@ const VALUES = [
   },
 ];
 
-// Who's who: the three names people confuse (SEO audit: "must state plainly
-// what marsvalvenok is").
+// Who's who: the names people confuse.
 const ENTITIES = [
   {
-    role: "The manufacturer",
-    name: "Mars Valve Co., Ltd.",
-    detail: "Designs and manufactures MARS® valves in Taichung, Taiwan.",
-  },
-  {
-    role: "The UK distributor",
+    role: "The company",
     name: "Valvenok Ltd",
-    detail: "Authorised by Mars Valve Co. to market, distribute and sell MARS valves in the United Kingdom.",
+    detail: "The UK company behind the Kronox Valves brand.",
   },
   {
-    role: "This website",
-    name: "Mars Valvenok",
-    detail: "Valvenok's website for the MARS range: specifications, prices, datasheets and quotes.",
+    role: "The brand",
+    name: "Kronox Valves",
+    detail: "The ball valve range we design and manufacture: specifications, prices, datasheets and quotes.",
   },
 ];
 
@@ -85,7 +74,7 @@ export default function AboutUsPage() {
       >
         <Image
           src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="MARS industrial ball valves supplied by Mars Valvenok"
+          alt="Kronox industrial ball valves supplied by Kronox Valves"
           fill
           priority
           style={{ objectFit: "cover" }}
@@ -122,7 +111,7 @@ export default function AboutUsPage() {
                 opacity: 0.85,
               }}
             >
-              About Mars Valvenok
+              About Kronox Valves
             </Typography>
 
             <Typography
@@ -137,13 +126,13 @@ export default function AboutUsPage() {
                 maxWidth: 780,
               }}
             >
-              Authorised UK distributor
-              <br />
-              of MARS
+              Genuine Kronox
               <Box component="sup" sx={{ fontSize: "0.45em" }}>
                 ®
               </Box>{" "}
-              ball valves
+              ball valves,
+              <br />
+              UK stock &amp; delivery
             </Typography>
 
             <Typography
@@ -155,9 +144,9 @@ export default function AboutUsPage() {
                 lineHeight: 1.6,
               }}
             >
-              Mars Valvenok is the MARS® valve website of Valvenok Ltd,
-              authorised by the manufacturer, Mars Valve Co., Ltd. of Taichung,
-              Taiwan, to supply MARS valves in the United Kingdom.
+              Kronox Valves designs and manufactures industrial ball valves —
+              the Kronox brand of Valvenok Ltd — supplied from UK stock across
+              the United Kingdom.
             </Typography>
           </Reveal>
         </Container>
@@ -224,11 +213,10 @@ export default function AboutUsPage() {
               mb: 3,
             }}
           >
-            Mars Valvenok is run by Valvenok Ltd, a UK valve distributor. Mars
-            Valve Co., Ltd. has authorised Valvenok to market, distribute and
-            sell MARS valves in the United Kingdom, and this website is where
-            we publish the MARS range: specifications, prices for standard
-            items, datasheets and quotes.
+            Kronox Valves is the industrial ball valve brand of Valvenok Ltd. We
+            design and manufacture the Kronox range, and this website is where we
+            publish it: specifications, prices for standard items, datasheets and
+            quotes.
           </Typography>
 
           <Typography
@@ -240,18 +228,14 @@ export default function AboutUsPage() {
               mb: 0,
             }}
           >
-            That standard starts with MARS
+            That standard starts with Kronox
             <Box component="sup" sx={{ fontSize: "0.6em" }}>
               ®
-            </Box>
-            , the ball valve range designed and manufactured by Mars Valve Co.,
-            Ltd. in Taiwan. We buy directly from the manufacturer and supply
-            genuine MARS valves with the manufacturer&apos;s documentation and
-            warranty.{" "}
-            <a href={LETTER_URL} target="_blank" rel="noopener noreferrer" style={{ color: ACCENT }}>
-              View our letter of authorisation
-            </a>
-            .
+            </Box>{" "}
+            — our own industrial ball valve range, designed and manufactured to
+            recognised international standards. We supply genuine Kronox valves
+            from UK stock with full documentation and a manufacturer&apos;s
+            warranty.
           </Typography>
 
           <Box
@@ -412,7 +396,7 @@ export default function AboutUsPage() {
                 mb: { xs: 3, md: 4 },
               }}
             >
-              The Home of MARS
+              The Home of Kronox
               <Box component="sup" sx={{ fontSize: "0.55em" }}>
                 ®
               </Box>
@@ -429,18 +413,18 @@ export default function AboutUsPage() {
                 mx: "auto",
               }}
             >
-              MARS
+              Kronox
               <Box component="sup" sx={{ fontSize: "0.6em" }}>
                 ®
               </Box>{" "}
-              valves are designed and manufactured by Mars Valve Co., Ltd.
-              Mars Valvenok is an authorised UK distributor, so when you buy
-              MARS
+              is our own industrial ball valve range, designed and manufactured
+              to recognised international standards. When you buy Kronox
               <Box component="sup" sx={{ fontSize: "0.6em" }}>
                 ®
               </Box>{" "}
-              from us you get genuine MARS valves with the full manufacturer
-              documentation and warranty. For help choosing a series,{" "}
+              from us you get genuine Kronox valves from UK stock with full
+              documentation and a manufacturer&apos;s warranty. For help choosing
+              a series,{" "}
               <Link href="/contact" style={{ color: ACCENT }}>
                 get in touch with our team
               </Link>

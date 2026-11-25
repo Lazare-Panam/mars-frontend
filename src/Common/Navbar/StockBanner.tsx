@@ -9,7 +9,7 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import StockNotifyDialog from "./StockNotifyDialog";
 
 // Code-built stock-update banner: red engineering-grid background, a headline
-// block, an animated conveyor of MARS crates, and two CTAs.
+// block, an animated conveyor of Kronox crates, and two CTAs.
 const ARTICLE = "/news/mars-valve-stock-uk-november";
 const ENQUIRY = "/contact#enquiry";
 
@@ -42,10 +42,10 @@ function Crate({ i }: { i: number }) {
         animationDelay: `${(i % 6) * 0.22}s`,
       }}
     >
-      <Box sx={box}>MARS</Box>
+      <Box sx={box}>Kronox</Box>
       <Box sx={{ display: "flex", gap: 0.5 }}>
         <Box sx={box}>VALVE</Box>
-        <Box sx={box}>MARS</Box>
+        <Box sx={box}>Kronox</Box>
       </Box>
     </Box>
   );
@@ -72,7 +72,7 @@ export default function StockBanner() {
     <>
     <Box
       component="section"
-      aria-label="Stock update: a big MARS valve shipment is inbound from Taiwan to the UK"
+      aria-label="Stock update: a big Kronox valve shipment is inbound from Taiwan to the UK"
       sx={{
         position: "relative",
         overflow: "hidden",
@@ -165,7 +165,7 @@ export default function StockBanner() {
               display: { xs: "none", sm: "block" },
             }}
           >
-            A large shipment of MARS® valves is on its way from Taiwan to our UK warehouse.
+            A large shipment of Kronox valves is on its way from Taiwan to our UK warehouse.
           </Box>
         </Box>
 

@@ -168,7 +168,7 @@ export default function Hero() {
               ...fadeUp(mounted, 0),
             }}
           >
-            Authorised UK distributor · Mars Valve Co., Ltd., Taiwan
+            Kronox Valves · Industrial ball valve manufacturer
           </Typography>
 
           <Typography
@@ -183,7 +183,7 @@ export default function Hero() {
               ...fadeUp(mounted, 120),
             }}
           >
-         Genuine MARS ball valves from the authorised UK distributor
+         Genuine Kronox ball valves, UK stock and fast delivery
           </Typography>
 
           <Typography
@@ -197,10 +197,10 @@ export default function Hero() {
               ...fadeUp(mounted, 240),
             }}
           >
-            We supply the full MARS range, from 2- and 3-piece to flanged,
-            sanitary and API 607 fire-safe series, with manufacturer
-            documentation and prices for standard items online. Project and
-            non-standard orders are quoted with lead times confirmed up front.
+            We supply the full Kronox range, from 2- and 3-piece to flanged,
+            sanitary and API 607 fire-safe series, with full documentation and
+            prices for standard items online. Project and non-standard orders
+            are quoted with lead times confirmed up front.
           </Typography>
 
           <Stack

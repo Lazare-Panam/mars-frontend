@@ -45,19 +45,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) {
     // No catalogue record (e.g. a series that moved to /series/N): name the
     // page after the series/category and point Google at the live URL, so it
-    // never ships the generic "Mars Valvenok" title twice.
+    // never ships the generic "Kronox Valves" title twice.
     const moved = movedSeriesHref(id);
     const label = [...CATEGORIES, ...SERIES].find((c) => c.id === id)?.label;
     return {
-      title: label ?? "MARS Ball Valves",
+      title: label ?? "Kronox Ball Valves",
       ...(moved ? { alternates: { canonical: moved.page }, robots: { index: false, follow: true } } : {}),
     };
   }
 
-  // The %s | Mars Valvenok template (see root layout) appends the brand suffix,
+  // The %s | Kronox Valves template (see root layout) appends the brand suffix,
   // so strip any brand suffix the CMS already baked into the title — otherwise
-  // it renders "…| Mars Valves | Mars Valvenok".
-  const rawTitle = data.seo?.title ?? data.bannerTitle ?? "Mars Valvenok";
+  // it renders "…| Mars Valves | Kronox Valves".
+  const rawTitle = data.seo?.title ?? data.bannerTitle ?? "Kronox Valves";
   const title = rawTitle.replace(/\s*\|\s*Mars Valve(nok)?s?\s*$/i, "").trim();
   // Marketing's SEO title wins over the CMS one (see lib/categorySeo).
   const seoTitle = CATEGORY_SEO[id]?.title;
@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical },
     openGraph: {
       type: "website",
-      siteName: "Mars Valvenok",
+      siteName: "Kronox Valves",
       // Prefer the marketing SEO title (e.g. multi-port's "L-Port & T-Port")
       // for the share card, falling back to the plain banner title.
       title: seoTitle ?? title,

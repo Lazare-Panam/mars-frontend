@@ -11,9 +11,9 @@ import { CERT_GROUPS, FIRE_SAFE_SERIES } from "@/lib/certificates";
 import AccreditationBar from "@/Common/AccreditationBar";
 import CtaBand from "@/Common/CtaBand";
 
-const TITLE = "MARS Valve Certificates: API 607, SIL 3, ATEX & PED";
+const TITLE = "Kronox Valve Certificates: API 607, SIL 3, ATEX & PED";
 const DESCRIPTION =
-  "Download MARS valve certificates: API 607 fire safe, SIL 3 (exida), CE/PED, ATEX, ISO 9001, FDA and REACH. Authorised UK distributor, JOSCAR registered.";
+  "Download Kronox valve certificates: API 607 fire safe, SIL 3 (exida), CE/PED, ATEX, ISO 9001, FDA and REACH. JOSCAR-registered manufacturer.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/certifications" },
@@ -78,13 +78,13 @@ export default function CertificationsPage() {
               component="h1"
               sx={{ fontSize: { xs: "2.25rem", md: "3.25rem" }, fontWeight: 800, lineHeight: 1.15, maxWidth: 820 }}
             >
-              MARS valve certifications and approvals
+              Kronox valve certifications and approvals
             </Typography>
             <Typography sx={{ mt: 2.5, color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 720 }}>
-              Certificates issued to Mars Valve Co., Ltd., the manufacturer of
-              MARS valves. As an authorised UK distributor we supply the
-              certificates for the series you order. Download them here or ask
-              for them with your quote.
+              The certificates and approvals held by Kronox Valves, the
+              manufacturer of these ball valves. We supply the certificates for
+              the series you order. Download them here or ask for them with your
+              quote.
             </Typography>
             {/* Jump links */}
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 4 }}>
@@ -118,13 +118,13 @@ export default function CertificationsPage() {
       <Box id="distributor" sx={{ py: { xs: 7, md: 9 }, scrollMarginTop: 96 }}>
         <Container maxWidth="lg">
           <Typography component="h2" sx={{ fontSize: { xs: "1.6rem", md: "2rem" }, fontWeight: 800, mb: 4, textAlign: "center" }}>
-            Mars Valvenok as your supplier
+            Kronox Valves as your manufacturer
           </Typography>
           <AccreditationBar />
           <Typography sx={{ textAlign: "center", color: "text.secondary", fontSize: "0.9rem", mt: 2, maxWidth: 640, mx: "auto", lineHeight: 1.7 }}>
-            Authorised by Mars Valve Co., Ltd. to market, distribute and sell
-            MARS valves in the United Kingdom (1 July 2026 to 30 June 2029), and
-            registered on JOSCAR for approved-vendor lists.
+            The manufacturer of genuine Kronox ball valves, holding UK stock with
+            full documentation, and registered on JOSCAR for approved-vendor
+            lists.
           </Typography>
         </Container>
       </Box>

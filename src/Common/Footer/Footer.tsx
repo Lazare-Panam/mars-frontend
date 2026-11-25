@@ -13,7 +13,7 @@ const FOOTER_COLUMNS = [
     heading: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "MARS® Brand", href: "/mars-brand" },
+      { label: "Kronox Brand", href: "/mars-brand" },
       { label: "Certifications", href: "/certifications" },
       { label: "News", href: "/news" },
     ],
@@ -21,12 +21,24 @@ const FOOTER_COLUMNS = [
   {
     heading: "Products",
     links: [
-      { label: "Two-Piece Ball Valves", href: "/products/two-piece-ball-valves" },
-      { label: "Three-Piece Ball Valves", href: "/products/three-piece-ball-valves" },
+      {
+        label: "Two-Piece Ball Valves",
+        href: "/products/two-piece-ball-valves",
+      },
+      {
+        label: "Three-Piece Ball Valves",
+        href: "/products/three-piece-ball-valves",
+      },
       { label: "Flanged Ball Valves", href: "/products/flanged-ball-valves" },
-      { label: "Multi-Port Ball Valves", href: "/products/multi-port-ball-valves" },
+      {
+        label: "Multi-Port Ball Valves",
+        href: "/products/multi-port-ball-valves",
+      },
       { label: "Sanitary Ball Valves", href: "/products/sanitary-ball-valves" },
-      { label: "Fire Safe Ball Valves", href: "/products/fire-safe-ball-valves" },
+      {
+        label: "Fire Safe Ball Valves",
+        href: "/products/fire-safe-ball-valves",
+      },
       { label: "Actuated Packages", href: "/actuated-packages" },
       { label: "V-Port Ball Valves", href: "/products/v-port-ball-valves" },
       { label: "Product Index", href: "/product-index" },
@@ -79,8 +91,8 @@ export default function Footer() {
           >
             <Box sx={{ position: "relative", width: 40, height: 40 }}>
               <Image
-                src="https://pblol2.blob.core.windows.net/mars-valves/logo.jpg"
-                alt="MARS Valvenok UK logo"
+                src="https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png"
+                alt="Kronox Valves UK logo"
                 fill
                 style={{ objectFit: "contain" }}
                 sizes="40px"
@@ -94,15 +106,15 @@ export default function Footer() {
                 color: "#fff",
               }}
             >
-              MARS Valvenok
+              Kronox Valves
             </Typography>
           </Box>
 
           <Typography
             sx={{ fontSize: "0.85rem", lineHeight: 1.7, mb: 3, maxWidth: 320 }}
           >
-            Authorised UK distributor of MARS ball valves from Mars Valve Co.,
-            Ltd., Taiwan.
+            Manufacturer of genuine Kronox industrial ball valves — UK stock,
+            full documentation and fast delivery.
           </Typography>
 
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
@@ -150,7 +162,14 @@ export default function Footer() {
               <LocationOnOutlinedIcon
                 sx={{ fontSize: 16, color: "primary.light", mt: 0.2 }}
               />
-              <Typography component="address" sx={{ fontSize: "0.85rem", fontStyle: "normal", lineHeight: 1.6 }}>
+              <Typography
+                component="address"
+                sx={{
+                  fontSize: "0.85rem",
+                  fontStyle: "normal",
+                  lineHeight: 1.6,
+                }}
+              >
                 {ADDRESS.name}
                 <br />
                 {ADDRESS.street}
@@ -194,7 +213,10 @@ export default function Footer() {
                     color: "rgba(255,255,255,0.65)",
                     textDecoration: "none",
                     transition: "color 0.2s ease, transform 0.2s ease",
-                    "&:hover": { color: "primary.light", transform: "translateX(3px)" },
+                    "&:hover": {
+                      color: "primary.light",
+                      transform: "translateX(3px)",
+                    },
                   }}
                 >
                   {link.label}
@@ -223,7 +245,7 @@ export default function Footer() {
           <Typography
             sx={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}
           >
-            © {new Date().getFullYear()} MARS Valvenok All rights reserved.
+            © {new Date().getFullYear()} Kronox Valves All rights reserved.
           </Typography>
 
           {/* Google "Preferred sources" button. publisher.js (loaded in app/layout.tsx) injects the button
@@ -231,7 +253,13 @@ export default function Footer() {
               Box filters props through Emotion's is-prop-valid, which would strip this non-standard
               attribute. Attribute spread in (not in React's typed div props); suppressHydrationWarning
               because Google's async script may populate this node around hydration. */}
-          <div suppressHydrationWarning {...({ "google-add-preferred-source-btn": "", "data-theme": "dark" } as Record<string, string>)} />
+          <div
+            suppressHydrationWarning
+            {...({
+              "google-add-preferred-source-btn": "",
+              "data-theme": "dark",
+            } as Record<string, string>)}
+          />
         </Box>
       </Box>
     </Box>

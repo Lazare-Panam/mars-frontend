@@ -92,7 +92,7 @@ export default async function VariantDetailPage({ params }: Props) {
           name,
           sku: variant.id,
           ...(image ? { image } : {}),
-          brand: { "@type": "Brand", name: "MARS" },
+          brand: { "@type": "Brand", name: "Kronox" },
           ...(Number.isFinite(numericPrice)
             ? {
                 offers: {
