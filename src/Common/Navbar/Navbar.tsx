@@ -42,10 +42,12 @@ const Navbar: React.FC = () => {
   const theme = useTheme();
   const INK = theme.palette.text.primary;
   const RUST = theme.palette.text.secondary;
-  const PAPER = theme.palette.background.default;
+  // Header matches the logo PNG's own background (#F3F3F3) so the logo sits
+  // seamlessly, with no visible box around it.
+  const PAPER = "#F3F3F3";
   const ACCENT = theme.palette.primary.main;
   const LINE = theme.palette.divider;
-  const REGISTER_RED = "#D32F2F";
+  const REGISTER_RED = "#E0393E";
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -188,7 +190,7 @@ const Navbar: React.FC = () => {
       cursor: "pointer",
       font: "inherit",
       textAlign: "left" as const,
-      "&:hover": { bgcolor: "rgba(231,57,15,0.06)" },
+      "&:hover": { bgcolor: "rgba(224,57,62,0.06)" },
     };
 
     return (
@@ -221,7 +223,7 @@ const Navbar: React.FC = () => {
             alignItems: "center",
             justifyContent: "center",
             transition: "box-shadow 0.15s ease",
-            "&:hover": { boxShadow: "0 0 0 3px rgba(231,57,15,0.2)" },
+            "&:hover": { boxShadow: "0 0 0 3px rgba(224,57,62,0.2)" },
           }}
         >
           {initials ?? (
@@ -321,15 +323,25 @@ const Navbar: React.FC = () => {
             <Box
               component={Link}
               href="/"
-              sx={{ display: "flex", alignItems: "center", flexShrink: 0 }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                flexShrink: 0,
+                // Tightly cropped SVG (no built-in margins, about 5.7:1), so
+                // the letters fill the height: 40px tall is ~228px across on
+                // desktop, shrinking a little when the header compacts.
+                height: { xs: 32, md: scrolled ? 34 : 40, xl: scrolled ? 38 : 46 },
+                transition: "height 0.25s ease",
+              }}
             >
               <Image
-                src="https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png"
-                alt="Kronox Valve"
-                width={120}
-                height={40}
+                src="https://pblol2.blob.core.windows.net/kronox/favicons/kronox-logo-cropped.svg"
+                alt="Kronox Valves"
+                width={262}
+                height={46}
                 priority
-                style={{ objectFit: "contain", height: 40, width: "auto" }}
+                unoptimized
+                style={{ height: "100%", width: "auto" }}
               />
             </Box>
 
@@ -340,7 +352,7 @@ const Navbar: React.FC = () => {
                 flexDirection: "row",
                 whiteSpace: "nowrap",
                 gap: { md: 1.5, lg: 2, xl: 3.5 },
-                ml: { md: 3, xl: 6 },
+                ml: { md: 2, lg: 3, xl: 6 },
               }}
             >
               {LEFT_NAV.map((item) => {
@@ -395,13 +407,14 @@ const Navbar: React.FC = () => {
                         gap: 0.5,
                         textDecoration: "none",
                         color: active ? INK : RUST,
-                        fontSize: "0.88rem",
+                        fontSize: "0.9rem",
                         fontWeight: 600,
                         letterSpacing: "0.01em",
                         textTransform: "none",
                         py: 3,
                         transition: "color 0.15s ease",
                         "&:hover": { color: INK },
+                        "&:hover .nav-underline": { width: 22 },
                       }}
                     >
                       {item.label}
@@ -416,6 +429,7 @@ const Navbar: React.FC = () => {
                         />
                       )}
                       <Box
+                        className="nav-underline"
                         sx={{
                           position: "absolute",
                           bottom: 14,
@@ -441,6 +455,8 @@ const Navbar: React.FC = () => {
                 alignItems: "center",
                 // Tighter on laptop widths so the extra Credit button fits.
                 gap: { md: 1.5, lg: 2.5, xl: 4 },
+                // Keep a gap from the left group now the logo is larger.
+                ml: { md: 1.5, lg: 2.5, xl: 4 },
               }}
             >
               {desktopRightNav.map((item) => (
@@ -451,17 +467,35 @@ const Navbar: React.FC = () => {
                   target={item.newTab ? "_blank" : undefined}
                   rel={item.newTab ? "noopener noreferrer" : undefined}
                   sx={{
+                    position: "relative",
                     textDecoration: "none",
                     color: RUST,
-                    fontSize: "0.82rem",
-                    fontWeight: 500,
+                    fontSize: "0.9rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.01em",
+                    py: 3,
                     transition: "color 0.15s ease",
                     "&:hover": { color: INK },
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      bottom: 14,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      width: 0,
+                      height: 2,
+                      bgcolor: ACCENT,
+                      transition: "width 0.2s ease",
+                    },
+                    "&:hover::after": { width: 22 },
                   }}
                 >
                   {item.label}
                 </Box>
               ))}
+
+              {/* divider between page links and actions */}
+              <Box aria-hidden sx={{ width: "1px", height: 28, bgcolor: LINE, mx: { md: 0, lg: 0.5 } }} />
 
               <Box
                 component={Link}
@@ -471,19 +505,15 @@ const Navbar: React.FC = () => {
                   alignItems: "center",
                   gap: 0.75,
                   textDecoration: "none",
-                  border: `1.5px solid ${ACCENT}`,
-                  color: ACCENT,
+                  color: INK,
                   fontWeight: 700,
-                  fontSize: "0.78rem",
-                  letterSpacing: "0.04em",
-                  px: 2,
-                  py: 1,
+                  fontSize: "0.84rem",
+                  height: 40,
+                  px: 1,
                   whiteSpace: "nowrap",
-                  transition: "background-color 0.15s ease, color 0.15s ease",
-                  "&:hover": {
-                    bgcolor: ACCENT,
-                    color: theme.palette.primary.contrastText,
-                  },
+                  transition: "color 0.15s ease",
+                  "& svg": { color: ACCENT },
+                  "&:hover": { color: ACCENT },
                 }}
               >
                 <CreditCardOutlinedIcon sx={{ fontSize: 19 }} />
@@ -514,13 +544,15 @@ const Navbar: React.FC = () => {
                   bgcolor: ACCENT,
                   color: theme.palette.primary.contrastText,
                   fontWeight: 700,
-                  fontSize: "0.78rem",
-                  letterSpacing: "0.04em",
-                  px: 2,
-                  py: 1,
-                  transition: "background-color 0.15s ease",
+                  fontSize: "0.84rem",
+                  height: 40,
+                  px: 2.25,
+                  borderRadius: "3px",
+                  boxShadow: "0 6px 16px rgba(224,57,62,0.25)",
+                  transition: "background-color 0.15s ease, transform 0.15s ease",
                   "&:hover": {
-                    bgcolor: theme.palette.primary.dark ?? "#A8270A",
+                    bgcolor: theme.palette.primary.dark ?? "#B8262C",
+                    transform: "translateY(-1px)",
                   },
                 }}
               >
@@ -533,14 +565,17 @@ const Navbar: React.FC = () => {
                 href="/contact"
                 sx={{
                   textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
                   border: `1.5px solid ${ACCENT}`,
                   color: ACCENT,
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: "0.84rem",
                   letterSpacing: "0.01em",
                   textTransform: "none",
-                  px: 2.5,
-                  py: 1,
+                  height: 40,
+                  px: 2.25,
+                  borderRadius: "3px",
                   transition: "all 0.15s ease",
                   "&:hover": {
                     bgcolor: ACCENT,

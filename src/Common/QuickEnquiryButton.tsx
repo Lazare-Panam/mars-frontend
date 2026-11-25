@@ -50,7 +50,7 @@ export default function QuickEnquiryButton() {
           color: "#fff",
           px: 2.5,
           py: 1.5,
-          boxShadow: "0 8px 24px rgba(231,57,15,0.35)",
+          boxShadow: "0 8px 24px rgba(224,57,62,0.35)",
           transition: "background-color 0.2s ease, transform 0.2s ease",
           "&:hover": {
             bgcolor: "primary.dark",

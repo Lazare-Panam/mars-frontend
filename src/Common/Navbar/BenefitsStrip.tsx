@@ -99,17 +99,18 @@ export default function BenefitsStrip() {
                   gap: 1,
                   px: 2.5,
                   py: 1.25,
-                  color: "primary.main",
+                  color: "text.primary",
                   textDecoration: "none",
-                  fontSize: "0.85rem",
-                  fontWeight: 500,
+                  fontSize: "0.82rem",
+                  fontWeight: 600,
+                  "& svg": { color: "primary.main" },
                   whiteSpace: "nowrap",
                   transition: "background-color 0.15s ease",
-                  "&:hover": { bgcolor: "rgba(231,57,15,0.05)" },
+                  "&:hover": { bgcolor: "rgba(224,57,62,0.05)" },
                 }}
               >
-                {label}
                 <Icon sx={{ fontSize: 18 }} />
+                {label}
               </Box>
             </Box>
           ))}

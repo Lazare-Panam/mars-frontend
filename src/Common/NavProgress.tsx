@@ -68,7 +68,7 @@ export default function NavProgress() {
         pointerEvents: "none",
       }}
     >
-      <CircularProgress sx={{ color: "#E7390F" }} />
+      <CircularProgress sx={{ color: "#E0393E" }} />
     </Box>
   );
 }

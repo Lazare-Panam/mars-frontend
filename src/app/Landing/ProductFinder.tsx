@@ -45,7 +45,7 @@ export default function ProductFinder() {
           bgcolor: "#fff",
           borderRadius: selected ? { xs: "6px", md: "6px 0 0 6px" } : "6px",
           overflow: "hidden",
-          boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
+          boxShadow: "0 18px 44px rgba(58,61,66,0.14)",
         }}
       >
         <Box sx={{ textAlign: "center", px: 3, pt: { xs: 3, md: 2 }, pb: { xs: 2.5, md: 1.75 }, borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
@@ -94,7 +94,7 @@ export default function ProductFinder() {
                     bgcolor: isActive ? "primary.main" : "transparent",
                     borderTop: i === 0 ? "none" : "1px solid rgba(0,0,0,0.06)",
                     transition: "background-color 0.15s ease, color 0.15s ease",
-                    "&:hover": isActive ? undefined : { bgcolor: "rgba(231,57,15,0.05)", color: "primary.main" },
+                    "&:hover": isActive ? undefined : { bgcolor: "rgba(224,57,62,0.05)", color: "primary.main" },
                     "&:focus-visible": { outline: "2px solid", outlineColor: "primary.main", outlineOffset: -2 },
                   }}
                 >
@@ -134,7 +134,7 @@ export default function ProductFinder() {
             bgcolor: "#fff",
             borderLeft: "1px solid rgba(0,0,0,0.08)",
             borderRadius: "0 6px 6px 0",
-            boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
+            boxShadow: "0 18px 44px rgba(58,61,66,0.14)",
             overflowY: "auto",
             zIndex: 5,
             animation: "finderIn 0.18s ease",

@@ -9,6 +9,7 @@ import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturi
 import BuildCircleOutlinedIcon from "@mui/icons-material/BuildCircleOutlined";
 import TuneIcon from "@mui/icons-material/Tune";
 import Reveal from "@/Common/Reveal";
+import { KRONOX } from "@/theme/brand";
 
 function CountUp({ target }: { target: string }) {
   const numericPart = parseFloat(target.replace(/[^0-9.]/g, ""));
@@ -105,9 +106,8 @@ export default function MarsStats() {
         position: "relative",
         overflow: "hidden",
         py: { xs: 8, md: 12 },
-        color: "#fff",
-        background:
-          "linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)",
+        color: KRONOX.text,
+        bgcolor: KRONOX.white,
       }}
     >
       <Box
@@ -116,9 +116,44 @@ export default function MarsStats() {
           inset: 0,
           pointerEvents: "none",
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(rgba(110,113,117,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.09) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
           maskImage: "radial-gradient(circle at 75% 30%, #000 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Giant outlined wordmark behind the content */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          right: "-2vw",
+          bottom: "-3.5vw",
+          fontSize: "19vw",
+          fontWeight: 900,
+          lineHeight: 1,
+          whiteSpace: "nowrap",
+          color: "transparent",
+          WebkitTextStroke: "1.5px rgba(224,57,62,0.18)",
+          pointerEvents: "none",
+          userSelect: "none",
+        }}
+      >
+        KRONOX
+      </Box>
+      {/* Red slash, as on the X of the logo */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          top: 0,
+          right: { xs: "-30%", md: "6%" },
+          width: { xs: 120, md: 220 },
+          height: { xs: 90, md: 150 },
+          bgcolor: KRONOX.red,
+          clipPath: "polygon(55% 0, 100% 0, 45% 100%, 0 100%)",
+          opacity: 0.95,
+          pointerEvents: "none",
         }}
       />
 
@@ -142,8 +177,8 @@ export default function MarsStats() {
               display: "inline-flex",
               alignItems: "center",
               gap: 1,
-              bgcolor: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.15)",
+              bgcolor: KRONOX.red,
+              border: `1px solid ${KRONOX.red}`,
               px: 1.5,
               py: 0.5,
               mb: 3,
@@ -154,7 +189,7 @@ export default function MarsStats() {
                 fontWeight: 900,
                 fontSize: "0.7rem",
                 letterSpacing: "0.05em",
-                color: "primary.light",
+                color: "#fff",
               }}
             >
               THE Kronox BRAND
@@ -168,14 +203,14 @@ export default function MarsStats() {
               mb: 2,
               fontSize: { xs: "2.25rem", md: "3.2rem" },
               lineHeight: 1.1,
-              color: "#fff",
+              color: KRONOX.text,
             }}
           >
             Designed and made
             <br />
             <Box
               component="span"
-              sx={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}
+              sx={{ color: "primary.main", fontStyle: "italic", borderBottom: `4px solid ${KRONOX.red}` }}
             >
               by Kronox.
             </Box>
@@ -183,7 +218,7 @@ export default function MarsStats() {
 
           <Typography
             sx={{
-              color: "rgba(255,255,255,0.7)",
+              color: KRONOX.steel,
               mb: 5,
               maxWidth: 550,
               lineHeight: 1.7,
@@ -204,16 +239,16 @@ export default function MarsStats() {
           >
             {FEATURES.map((feat) => (
               <Box key={feat.title} sx={{ display: "flex", gap: 1.5 }}>
-                <Box sx={{ mt: 0.3, color: "primary.light" }}>{feat.icon}</Box>
+                <Box sx={{ mt: 0.3, color: "primary.main" }}>{feat.icon}</Box>
                 <Box>
                   <Typography
-                    sx={{ fontWeight: 700, fontSize: "0.9rem", color: "#fff" }}
+                    sx={{ fontWeight: 700, fontSize: "0.9rem", color: KRONOX.text }}
                   >
                     {feat.title}
                   </Typography>
                   <Typography
                     sx={{
-                      color: "rgba(255,255,255,0.6)",
+                      color: KRONOX.steel,
                       fontSize: "0.8rem",
                       lineHeight: 1.4,
                       mt: 0.5,
@@ -255,7 +290,9 @@ export default function MarsStats() {
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
-            border: "1px solid rgba(255,255,255,0.1)",
+            gap: "3px",
+            bgcolor: KRONOX.white,
+            boxShadow: `14px 14px 0 ${KRONOX.redTint}`,
           }}
         >
           {STATS.map((stat) => (
@@ -264,11 +301,11 @@ export default function MarsStats() {
               sx={{
                 p: 4,
                 textAlign: "center",
-                border: "1px solid rgba(255,255,255,0.1)",
-                bgcolor: "rgba(255,255,255,0.03)",
+                color: "#fff",
+                background: "linear-gradient(135deg, #E0393E 0%, #C42E33 100%)",
                 transition: "0.3s",
                 "&:hover": {
-                  bgcolor: "rgba(255,255,255,0.06)",
+                  boxShadow: "0 14px 28px rgba(224,57,62,0.3)",
                   transform: "translateY(-5px)",
                 },
               }}
@@ -292,7 +329,7 @@ export default function MarsStats() {
                       fontSize: "1rem",
                       ml: 0.5,
                       fontWeight: 700,
-                      color: "rgba(255,255,255,0.5)",
+                      color: "rgba(255,255,255,0.75)",
                     }}
                   >
                     {stat.unit}
@@ -301,7 +338,7 @@ export default function MarsStats() {
               </Typography>
               <Typography
                 sx={{
-                  color: "rgba(255,255,255,0.65)",
+                  color: "rgba(255,255,255,0.82)",
                   fontWeight: 700,
                   fontSize: "0.7rem",
                   letterSpacing: "0.05em",

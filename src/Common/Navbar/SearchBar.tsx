@@ -35,13 +35,13 @@ export default function SearchBar({
         display: "flex",
         alignItems: "center",
         width: fullWidth ? "100%" : { md: 180, lg: 230, xl: 290 },
-        border: `1.5px solid ${prominent ? "rgba(43,27,20,0.18)" : theme.palette.divider}`,
+        border: `1.5px solid ${prominent ? "rgba(58,61,66,0.18)" : theme.palette.divider}`,
         borderRadius: "999px",
         pl: prominent ? 2.5 : 1.75,
         pr: prominent ? 0.75 : 1.75,
         py: prominent ? 0.75 : 0.5,
         bgcolor: "#fff",
-        boxShadow: prominent ? "0 6px 20px rgba(43,27,20,0.07)" : "none",
+        boxShadow: prominent ? "0 6px 20px rgba(58,61,66,0.07)" : "none",
         transition: "border-color .15s ease, box-shadow .15s ease",
         "&:focus-within": {
           borderColor: theme.palette.primary.main,
@@ -91,7 +91,7 @@ export default function SearchBar({
             py: 1.1,
             borderRadius: "999px",
             transition: "background-color .15s ease",
-            "&:hover": { bgcolor: theme.palette.primary.dark ?? "#A8270A" },
+            "&:hover": { bgcolor: theme.palette.primary.dark ?? "#B8262C" },
           }}
         >
           <SearchIcon sx={{ fontSize: 18 }} />

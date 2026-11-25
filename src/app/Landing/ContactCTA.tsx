@@ -46,7 +46,7 @@ const fieldSx = {
     borderColor: "primary.main",
   },
   "& .MuiOutlinedInput-root.Mui-focused": {
-    boxShadow: "0 0 0 4px rgba(231,57,15,0.12)",
+    boxShadow: "0 0 0 4px rgba(224,57,62,0.12)",
   },
   "& .MuiInputLabel-root.Mui-focused": { color: "primary.main" },
 };
@@ -109,7 +109,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <Box id="contact" component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#FAF6F4" }}>
+    <Box id="contact" component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#F5F5F6" }}>
       <Box
         sx={{
           maxWidth: "1280px",

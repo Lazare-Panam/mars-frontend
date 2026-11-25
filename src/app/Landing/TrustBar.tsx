@@ -149,9 +149,9 @@ export default function TrustBar() {
                       width: 36,
                       height: 36,
                       flexShrink: 0,
-                      border: "1px solid rgba(231,57,15,0.3)",
+                      border: "1px solid rgba(224,57,62,0.3)",
                       color: "primary.dark",
-                      bgcolor: "rgba(231,57,15,0.06)",
+                      bgcolor: "rgba(224,57,62,0.06)",
                       transition: "background-color 0.25s ease, color 0.25s ease, transform 0.25s ease",
                     }}
                   >

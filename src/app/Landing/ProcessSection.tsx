@@ -151,7 +151,7 @@ export default function ProcessSection() {
                   textAlign: { xs: "left", md: "center" },
                   "&:hover .step-icon": {
                     transform: "scale(1.1) rotate(-6deg)",
-                    boxShadow: "0 12px 28px rgba(231,57,15,0.4)",
+                    boxShadow: "0 12px 28px rgba(224,57,62,0.4)",
                   },
                 }}
               >
@@ -176,7 +176,7 @@ export default function ProcessSection() {
                       alignItems: "center",
                       justifyContent: "center",
                       flexShrink: 0,
-                      boxShadow: "0 8px 20px rgba(231,57,15,0.25)",
+                      boxShadow: "0 8px 20px rgba(224,57,62,0.25)",
                       mx: { xs: 0, md: "auto" },
                       transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     }}

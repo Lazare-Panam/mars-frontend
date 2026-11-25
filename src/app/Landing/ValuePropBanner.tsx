@@ -12,7 +12,15 @@ const POINTS = [
 
 export default function ValuePropBanner() {
   return (
-    <Box component="section" id="pricing" sx={{ bgcolor: "primary.main", py: { xs: 5, md: 6 } }}>
+    <Box component="section" id="pricing" sx={{
+        background: "linear-gradient(120deg, #E0393E 0%, #C42E33 100%)",
+        // Angled top and bottom edges, cut like the K and X in the logo.
+        clipPath: { xs: "polygon(0 4%, 100% 0, 100% 96%, 0 100%)", md: "polygon(0 14%, 100% 0, 100% 86%, 0 100%)" },
+        my: { xs: -1, md: -3 },
+        position: "relative",
+        zIndex: 1,
+        py: { xs: 6, md: 9 },
+      }}>
       <Reveal>
         <Box
           sx={{
@@ -39,7 +47,7 @@ export default function ValuePropBanner() {
             >
               Clear prices on genuine Kronox valves
             </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.85)", fontSize: "0.95rem", maxWidth: 520 }}>
+            <Typography sx={{ color: "rgba(255,255,255,0.9)", fontSize: "0.95rem", maxWidth: 520 }}>
               We hold Kronox valves in UK stock and publish prices for standard
               items online, so you can compare before you enquire.
             </Typography>
