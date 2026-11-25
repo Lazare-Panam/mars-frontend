@@ -30,15 +30,17 @@ export default function BackToTop() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          border: "none",
+          // White with a red arrow, so it stays visible over the red footer.
+          border: "1.5px solid #E0393E",
           borderRadius: "2px",
           cursor: "pointer",
-          bgcolor: "primary.main",
-          color: "#fff",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
+          bgcolor: "#fff",
+          color: "primary.main",
+          boxShadow: "0 8px 24px rgba(58,61,66,0.22)",
           transition: "background-color 0.2s ease, transform 0.2s ease",
           "&:hover": {
-            bgcolor: "primary.dark",
+            bgcolor: "primary.main",
+            color: "#fff",
             transform: "translateY(-3px)",
           },
         }}

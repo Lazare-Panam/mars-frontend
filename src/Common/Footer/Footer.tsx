@@ -68,9 +68,9 @@ export default function Footer() {
       component="footer"
       id="footer"
       sx={{
-        background:
-          "linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)",
-        color: "rgba(255,255,255,0.7)",
+        // Kronox red, deepening slightly to the bottom-right.
+        background: "linear-gradient(135deg, #E0393E 0%, #C42E33 100%)",
+        color: "rgba(255,255,255,0.9)",
       }}
     >
       <Box
@@ -89,25 +89,17 @@ export default function Footer() {
           <Box
             sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 2.5 }}
           >
-            <Box sx={{ position: "relative", width: 40, height: 40 }}>
+            {/* Full-width wordmark: the logo is wide (about 3.6:1), so a
+                square box shrank it to an unreadable size. */}
+            <Box sx={{ position: "relative", width: 210, height: 58, bgcolor: "#F3F3F3", borderRadius: "2px" }}>
               <Image
-                src="https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png"
+                src="https://pblol2.blob.core.windows.net/kronox/favicons/kronox-logo-cropped.svg"
                 alt="Kronox Valves UK logo"
                 fill
-                style={{ objectFit: "contain" }}
-                sizes="40px"
+                unoptimized
+                style={{ objectFit: "contain", padding: "10px 14px" }}
               />
             </Box>
-            <Typography
-              sx={{
-                fontFamily: "serif",
-                fontWeight: 700,
-                fontSize: "1.1rem",
-                color: "#fff",
-              }}
-            >
-              Kronox Valves
-            </Typography>
           </Box>
 
           <Typography
@@ -127,7 +119,7 @@ export default function Footer() {
               }}
             >
               <EmailOutlinedIcon
-                sx={{ fontSize: 16, color: "primary.light" }}
+                sx={{ fontSize: 16, color: "#fff" }}
               />
               <Typography
                 className="no-capitalize"
@@ -145,7 +137,7 @@ export default function Footer() {
               }}
             >
               <PhoneOutlinedIcon
-                sx={{ fontSize: 16, color: "primary.light" }}
+                sx={{ fontSize: 16, color: "#fff" }}
               />
               <Typography sx={{ fontSize: "0.85rem" }}>
                 +44 7368 137917
@@ -160,7 +152,7 @@ export default function Footer() {
               }}
             >
               <LocationOnOutlinedIcon
-                sx={{ fontSize: 16, color: "primary.light", mt: 0.2 }}
+                sx={{ fontSize: 16, color: "#fff", mt: 0.2 }}
               />
               <Typography
                 component="address"
@@ -210,11 +202,14 @@ export default function Footer() {
                     display: "inline-block",
                     width: "fit-content",
                     fontSize: "0.85rem",
-                    color: "rgba(255,255,255,0.65)",
+                    color: "rgba(255,255,255,0.88)",
                     textDecoration: "none",
                     transition: "color 0.2s ease, transform 0.2s ease",
                     "&:hover": {
-                      color: "primary.light",
+                      color: "#fff",
+                      textDecoration: "underline",
+                      textDecorationColor: "#fff",
+                      textUnderlineOffset: "4px",
                       transform: "translateX(3px)",
                     },
                   }}
@@ -228,7 +223,7 @@ export default function Footer() {
       </Box>
 
       {/* bottom bar */}
-      <Box sx={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <Box sx={{ borderTop: "1px solid rgba(255,255,255,0.25)" }}>
         <Box
           sx={{
             maxWidth: "1280px",
@@ -243,7 +238,7 @@ export default function Footer() {
           }}
         >
           <Typography
-            sx={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}
+            sx={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.85)" }}
           >
             © {new Date().getFullYear()} Kronox Valves All rights reserved.
           </Typography>

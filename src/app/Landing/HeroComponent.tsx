@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Box, Typography, Stack, Button } from "@mui/material";
 import MagneticWrap from "@/Common/MagneticWrap";
 import ProductFinder from "./ProductFinder";
-import { BANNER_DARK } from "@/theme/brand";
+import ValveBlueprint from "./ValveBlueprint";
+import { KRONOX } from "@/theme/brand";
 
 const fadeUp = (visible: boolean, delayMs: number) => ({
   opacity: visible ? 1 : 0,
@@ -37,7 +38,7 @@ export default function Hero() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    el.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(231,57,15,0.22), transparent 45%)`;
+    el.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(224,57,62,0.10), transparent 45%)`;
   };
 
   const handleMouseLeave = () => {
@@ -60,49 +61,64 @@ export default function Hero() {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        bgcolor: BANNER_DARK,
+        bgcolor: KRONOX.mist,
+        borderBottom: `3px solid ${KRONOX.red}`,
       }}
     >
+      {/* Logo-style red slashes (the cut of the K and X), sitting behind
+          the drawing on the right. */}
       <Box
-        component="video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        src="https://pblol2.blob.core.windows.net/mars-valves/MARS_ball_valve_3D_video_20261001121052.mp4"
+        aria-hidden
         sx={{
           position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          // Fill the hero (no black bands). Anchored bottom-right: the valve
-          // stays in view, and the video's own black band and "3-PIECE DESIGN"
-          // title at its top edge are cropped off so they don't compete with
-          // the headline.
-          objectFit: "cover",
-          objectPosition: "right bottom",
           zIndex: 0,
-          transform: `translateY(${parallax}px) scale(1.08)`,
-          willChange: "transform",
+          top: 0,
+          bottom: 0,
+          right: { xs: "-40%", lg: "-6%" },
+          width: { xs: "90%", lg: "46%" },
+          background: "linear-gradient(135deg, rgba(224,57,62,0.10), rgba(224,57,62,0.03))",
+          clipPath: "polygon(38% 0, 100% 0, 100% 100%, 0 100%)",
+        }}
+      />
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          zIndex: 0,
+          top: 0,
+          bottom: 0,
+          right: { xs: "-10%", lg: "1.5%" },
+          width: { xs: 60, lg: 90 },
+          bgcolor: KRONOX.red,
+          clipPath: "polygon(70% 0, 100% 0, 30% 100%, 0 100%)",
+          opacity: 0.9,
+          display: { xs: "none", lg: "block" },
         }}
       />
 
-      {/* Steel-blue fade to match the video's tones: solid behind the text,
-          clear over the valve. On phones the text spans the full width, so
-          the fade runs bottom-to-top instead. */}
+      {/* Giant outlined wordmark along the bottom edge, drifting on scroll. */}
       <Box
+        aria-hidden
         sx={{
           position: "absolute",
-          inset: 0,
-          zIndex: 1,
-          background: {
-            xs: "linear-gradient(0deg, rgba(8,16,28,0.92) 0%, rgba(8,16,28,0.75) 55%, rgba(8,16,28,0.45) 100%)",
-            // Two layers: a top fade that hides the video's black band and
-            // burned-in title, and the left-to-right fade behind the text.
-            md: "linear-gradient(180deg, rgba(8,16,28,0.97) 0%, rgba(8,16,28,0.85) 12%, rgba(8,16,28,0) 30%), linear-gradient(90deg, rgba(8,16,28,0.94) 0%, rgba(8,16,28,0.85) 42%, rgba(8,16,28,0.3) 62%, rgba(8,16,28,0) 74%)",
-          },
+          zIndex: 0,
+          left: "-1vw",
+          bottom: { xs: "-3vw", lg: "-4.2vw" },
+          fontSize: "21vw",
+          fontWeight: 900,
+          lineHeight: 1,
+          letterSpacing: "-0.02em",
+          whiteSpace: "nowrap",
+          color: "transparent",
+          WebkitTextStroke: "1.5px rgba(110,113,117,0.16)",
+          transform: `translateX(${-parallax}px)`,
+          willChange: "transform",
+          pointerEvents: "none",
+          userSelect: "none",
         }}
-      />
+      >
+        KRONOX
+      </Box>
 
       {/* blueprint grid texture — technical/engineered feel */}
       <Box
@@ -110,11 +126,11 @@ export default function Hero() {
           position: "absolute",
           inset: 0,
           zIndex: 1,
-          opacity: 0.5,
           pointerEvents: "none",
+          // Drawing-paper grid: fine 12px minor lines, stronger 60px major.
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+            "linear-gradient(rgba(110,113,117,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.10) 1px, transparent 1px), linear-gradient(rgba(110,113,117,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.045) 1px, transparent 1px)",
+          backgroundSize: "60px 60px, 60px 60px, 12px 12px, 12px 12px",
         }}
       />
 
@@ -141,59 +157,90 @@ export default function Hero() {
           mx: "auto",
           px: { xs: 3, md: 8, lg: 3, xl: 6 },
           py: { xs: 6, md: 3 },
-          // One column on the left: headline, then the product finder below it.
-          // The right side is left empty so the valve video stays visible.
+          // Left: headline, then the product finder. Right: the animated
+          // valve drawing, spanning both rows.
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 840px) 1fr", xl: "minmax(0, 1000px) 1fr" },
-          rowGap: { xs: 5, lg: 3 },
-          alignItems: "start",
+          gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 600px) minmax(0, 1fr)", xl: "minmax(0, 680px) minmax(0, 1fr)" },
+          columnGap: { lg: 6, xl: 10 },
+          rowGap: { xs: 4, lg: 3 },
+          alignItems: "center",
         }}
       >
         <Stack
-          spacing={{ xs: 3, lg: 2 }}
+          spacing={{ xs: 3, lg: 3.5 }}
           sx={{
             // Wide text block on desktop, so the copy runs in long lines.
-            maxWidth: { xs: 720, lg: 840, xl: 1000 },
+            maxWidth: { xs: 720, lg: 600, xl: 680 },
             gridColumn: { lg: 1 },
+            gridRow: { lg: 1 },
           }}
         >
-          <Typography
-            component="span"
-            sx={{
-              color: "primary.light",
-              letterSpacing: "0.3em",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              ...fadeUp(mounted, 0),
-            }}
-          >
-            Kronox Valves · Industrial ball valve manufacturer
-          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, ...fadeUp(mounted, 0) }}>
+            <Box
+              aria-hidden
+              sx={{ width: 28, height: 14, flexShrink: 0, bgcolor: "primary.main", clipPath: "polygon(45% 0, 100% 0, 55% 100%, 0 100%)" }}
+            />
+            <Typography
+              component="span"
+              sx={{
+                color: "primary.main",
+                letterSpacing: "0.16em",
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+              }}
+            >
+              Kronox Valves · Industrial ball valve manufacturer
+            </Typography>
+          </Box>
 
           <Typography
             component="h1"
             sx={{
-              color: "#fff",
+              color: KRONOX.text,
               // Fits on two lines in the desktop column above the finder.
-              fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3.5rem", lg: "2.6rem" },
+              fontSize: { xs: "2rem", sm: "2.6rem", md: "3.1rem", lg: "2.7rem", xl: "3.1rem" },
               fontWeight: 800,
-              lineHeight: 1.02,
-              letterSpacing: "-0.03em",
+              lineHeight: 1.14,
+              letterSpacing: "-0.02em",
+              textWrap: "balance",
+              maxWidth: { lg: 560, xl: 640 },
               ...fadeUp(mounted, 120),
             }}
           >
-         Genuine Kronox ball valves, UK stock and fast delivery
+            Genuine{" "}
+            <Box component="span" sx={{ color: "primary.main", position: "relative", whiteSpace: "nowrap" }}>
+              Kronox
+              <Box
+                component="span"
+                aria-hidden
+                sx={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: "0.02em",
+                  height: "0.14em",
+                  bgcolor: "primary.main",
+                  clipPath: "polygon(2% 0, 100% 0, 98% 100%, 0 100%)",
+                  transformOrigin: "left",
+                  transform: mounted ? "scaleX(1)" : "scaleX(0)",
+                  transition: "transform 0.7s cubic-bezier(.6,.05,.3,1) 700ms",
+                }}
+              />
+            </Box>{" "}
+            ball valves, UK stock and fast delivery
           </Typography>
 
           <Typography
             sx={{
-              color: "rgba(255,255,255,0.75)",
-              fontSize: { xs: "1rem", md: "1.15rem", lg: "1.05rem" },
+              color: KRONOX.steel,
+              fontSize: { xs: "1rem", md: "1.08rem", lg: "1.02rem" },
+              lineHeight: 1.75,
+              textTransform: "none",
               // On short desktop screens, drop the sentence so the finder fits.
               "@media (min-width: 1200px) and (max-height: 960px)": { display: "none" },
               // Two lines on wide screens.
-              maxWidth: { xs: 560, lg: 840, xl: 920 },
+              maxWidth: { xs: 560, lg: 520, xl: 580 },
               ...fadeUp(mounted, 240),
             }}
           >
@@ -206,7 +253,7 @@ export default function Hero() {
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={2}
-            sx={{ pt: 1, ...fadeUp(mounted, 360) }}
+            sx={{ pt: 1.5, ...fadeUp(mounted, 360) }}
           >
             <MagneticWrap>
               <Button
@@ -241,12 +288,13 @@ export default function Hero() {
                   textTransform: "none",
                   fontSize: "1rem",
                   borderRadius: "2px",
-                  color: "#fff",
-                  borderColor: "rgba(255,255,255,0.4)",
+                  color: KRONOX.text,
+                  borderColor: KRONOX.steel,
                   transition: "border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease",
                   "&:hover": {
-                    borderColor: "#fff",
-                    bgcolor: "rgba(255,255,255,0.05)",
+                    borderColor: KRONOX.red,
+                    color: KRONOX.red,
+                    bgcolor: "rgba(224,57,62,0.04)",
                     transform: "translateY(-2px)",
                   },
                 }}
@@ -257,7 +305,19 @@ export default function Hero() {
           </Stack>
         </Stack>
 
-        <Box sx={{ maxWidth: 440, width: "100%", gridColumn: { lg: 1 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
+        <Box
+          sx={{
+            gridColumn: { lg: 2 },
+            gridRow: { lg: "1 / span 2" },
+            position: "relative",
+            zIndex: 1,
+            ...fadeUp(mounted, 200),
+          }}
+        >
+          <ValveBlueprint />
+        </Box>
+
+        <Box sx={{ maxWidth: 440, width: "100%", gridColumn: { lg: 1 }, gridRow: { lg: 2 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
           <ProductFinder />
         </Box>
       </Box>
@@ -281,7 +341,7 @@ export default function Hero() {
       >
         <Typography
           sx={{
-            color: "rgba(255,255,255,0.5)",
+            color: KRONOX.steel,
             fontSize: "0.7rem",
             fontWeight: 600,
             letterSpacing: "0.2em",
@@ -294,7 +354,7 @@ export default function Hero() {
           sx={{
             width: "1px",
             height: 36,
-            bgcolor: "rgba(255,255,255,0.3)",
+            bgcolor: KRONOX.line,
             position: "relative",
             overflow: "hidden",
             "&::after": {

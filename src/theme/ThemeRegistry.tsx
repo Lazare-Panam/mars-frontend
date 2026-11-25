@@ -7,19 +7,29 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 const theme = createTheme({
   palette: {
+    // Kronox Valves palette, taken from the v6 logo. Light only: no black
+    // or dark backgrounds anywhere on the site.
     primary: {
-      main: "#E7390F",
-      dark: "#A8270A",
-      light: "#F2A78F",
+      main: "#E0393E", // Kronox red (logo accent)
+      dark: "#B8262C",
+      light: "#F09A9D",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#6E7175", // steel grey (logo letters)
+      dark: "#575A5F",
+      light: "#A3A6AB",
       contrastText: "#fff",
     },
     background: {
-      default: "#FAF6F4",
+      default: "#EDEEF0",
+      paper: "#FFFFFF",
     },
     text: {
-      primary: "#000000",
-      secondary: "#6B3424",
+      primary: "#3A3D42", // charcoal grey, replaces pure black
+      secondary: "#6E7175",
     },
+    divider: "#DFE0E2",
   },
   typography: {
     fontFamily: "var(--font-body), sans-serif",

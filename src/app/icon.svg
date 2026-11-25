@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#F3F3F3"/>
+  <g transform="translate(5,15) scale(0.34)">
+    <!-- K: stem + grey upper arm + red lower leg, as in the wordmark -->
+    <g fill="#6E7175">
+      <rect x="0" y="0" width="24" height="100"/>
+      <polygon points="24,44 62,0 92,0 24,78"/>
+    </g>
+    <polygon fill="#E0393E" points="34,66 50,48 86,100 56,100"/>
+    <!-- X: grey main stroke + grey lower-left arm, red upper-right arm cut away -->
+    <g transform="translate(70,0)" fill="#6E7175">
+      <polygon points="0,0 30,0 98,100 68,100"/>
+      <polygon points="0,100 30,100 54,66 39,45"/>
+    </g>
+    <polygon fill="#E0393E" points="138,0 168,0 136,46 121,25"/>
+  </g>
+</svg>

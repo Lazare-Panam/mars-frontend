@@ -25,7 +25,7 @@ export default function CategoryBar() {
   // labels in the Kronox signature red (the logo/button colour).
   const theme = useTheme();
   const INK = theme.palette.text.primary;
-  const ACCENT = theme.palette.primary.main; // Kronox red, #E7390F
+  const ACCENT = theme.palette.primary.main; // Kronox red, #E0393E
   const LINE = theme.palette.divider;
 
   // Open state lives in a shared store so the header's Products link can open it.
@@ -116,10 +116,10 @@ export default function CategoryBar() {
                     fontWeight: 600,
                     whiteSpace: "nowrap",
                     color: ACCENT,
-                    bgcolor: isOpen ? "rgba(231,57,15,0.06)" : "transparent",
+                    bgcolor: isOpen ? "rgba(224,57,62,0.06)" : "transparent",
                     boxShadow: isOpen ? `inset 0 -2px 0 ${ACCENT}` : "none",
                     transition: "background-color 0.15s ease, box-shadow 0.15s ease",
-                    "&:hover": { bgcolor: "rgba(231,57,15,0.06)" },
+                    "&:hover": { bgcolor: "rgba(224,57,62,0.06)" },
                   }}
                 >
                   {item.label}

@@ -101,9 +101,9 @@ export default function DistributorComparison() {
                 border: "1px solid",
                 borderColor: "divider",
                 borderRadius: "6px",
-                bgcolor: "rgba(231,57,15,0.02)",
+                bgcolor: "rgba(224,57,62,0.02)",
                 transition: "border-color 0.2s ease, background-color 0.2s ease",
-                "&:hover": { borderColor: "primary.main", bgcolor: "rgba(231,57,15,0.05)" },
+                "&:hover": { borderColor: "primary.main", bgcolor: "rgba(224,57,62,0.05)" },
               }}
             >
               <Icon sx={{ color: "primary.main", fontSize: 28, mb: 1.5 }} />

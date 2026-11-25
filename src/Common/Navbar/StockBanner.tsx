@@ -7,8 +7,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import StockNotifyDialog from "./StockNotifyDialog";
+import { KRONOX } from "@/theme/brand";
 
-// Code-built stock-update banner: red engineering-grid background, a headline
+// Code-built stock-update banner: light engineering-grid background, a headline
 // block, an animated conveyor of Kronox crates, and two CTAs.
 const ARTICLE = "/news/mars-valve-stock-uk-november";
 const ENQUIRY = "/contact#enquiry";
@@ -16,7 +17,7 @@ const ENQUIRY = "/contact#enquiry";
 // One crate stack (top box over two base boxes) with a gentle belt-bob.
 function Crate({ i }: { i: number }) {
   const box = {
-    border: "1.5px solid rgba(255,255,255,0.92)",
+    border: `1.5px solid ${KRONOX.steel}`,
     borderRadius: "2px",
     px: 0.9,
     py: 0.4,
@@ -24,8 +25,8 @@ function Crate({ i }: { i: number }) {
     fontWeight: 800,
     letterSpacing: "0.06em",
     lineHeight: 1,
-    color: "#fff",
-    bgcolor: "rgba(255,255,255,0.06)",
+    color: KRONOX.steel,
+    bgcolor: KRONOX.white,
   } as const;
   return (
     <Box
@@ -76,16 +77,16 @@ export default function StockBanner() {
       sx={{
         position: "relative",
         overflow: "hidden",
-        color: "#fff",
-        // depth: brand red with a darker corner + a soft top-left glow
-        background:
-          "radial-gradient(120% 180% at 12% -40%, rgba(255,255,255,0.18), transparent 55%), linear-gradient(120deg, #e7390f 0%, #cf310c 60%, #b62b0b 100%)",
+        color: KRONOX.text,
+        // light: white to pale grey with a red bottom edge (Kronox direction C)
+        background: "linear-gradient(120deg, #FFFFFF 0%, #ECEDEF 100%)",
+        borderBottom: `3px solid ${KRONOX.red}`,
         "&::before": {
           content: '""',
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(rgba(110,113,117,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.07) 1px, transparent 1px)",
           backgroundSize: "38px 38px",
           pointerEvents: "none",
         },
@@ -115,7 +116,7 @@ export default function StockBanner() {
               fontWeight: 800,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.88)",
+              color: KRONOX.red,
               mb: 1.25,
             }}
           >
@@ -125,12 +126,12 @@ export default function StockBanner() {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                bgcolor: "#fff",
+                bgcolor: KRONOX.red,
                 flexShrink: 0,
                 "@keyframes sb-pulse": {
-                  "0%": { boxShadow: "0 0 0 0 rgba(255,255,255,0.55)" },
-                  "70%": { boxShadow: "0 0 0 7px rgba(255,255,255,0)" },
-                  "100%": { boxShadow: "0 0 0 0 rgba(255,255,255,0)" },
+                  "0%": { boxShadow: "0 0 0 0 rgba(224,57,62,0.45)" },
+                  "70%": { boxShadow: "0 0 0 7px rgba(224,57,62,0)" },
+                  "100%": { boxShadow: "0 0 0 0 rgba(224,57,62,0)" },
                 },
                 animation: "sb-pulse 2s ease-out infinite",
               }}
@@ -142,13 +143,12 @@ export default function StockBanner() {
             href={ARTICLE}
             sx={{
               display: "block",
-              color: "#fff",
+              color: KRONOX.text,
               textDecoration: "none",
               fontWeight: 800,
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.85rem" },
-              textShadow: "0 1px 10px rgba(0,0,0,0.12)",
               "&:hover": { textDecoration: "underline" },
             }}
           >
@@ -160,7 +160,7 @@ export default function StockBanner() {
               maxWidth: { xs: 460, lg: "none" },
               whiteSpace: { lg: "nowrap" },
               fontSize: { xs: "0.72rem", md: "0.82rem" },
-              color: "rgba(255,255,255,0.92)",
+              color: KRONOX.steel,
               lineHeight: 1.5,
               display: { xs: "none", sm: "block" },
             }}
@@ -185,7 +185,7 @@ export default function StockBanner() {
               fontSize: "0.7rem",
               fontWeight: 800,
               letterSpacing: "0.1em",
-              color: "rgba(255,255,255,0.95)",
+              color: KRONOX.steel,
             }}
           >
             <LocalShippingOutlinedIcon sx={{ fontSize: 15 }} /> TW → UK
@@ -218,10 +218,10 @@ export default function StockBanner() {
             </Box>
           </Box>
           {/* belt line + rollers */}
-          <Box sx={{ borderTop: "2px solid rgba(255,255,255,0.9)", borderRadius: 1 }} />
+          <Box sx={{ borderTop: `2px solid ${KRONOX.steel}`, borderRadius: 1 }} />
           <Box sx={{ display: "flex", justifyContent: "space-between", mt: 0.5 }}>
             {Array.from({ length: 16 }).map((_, i) => (
-              <Box key={i} sx={{ width: 6, height: 6, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.75)" }} />
+              <Box key={i} sx={{ width: 6, height: 6, borderRadius: "50%", border: `1.5px solid ${KRONOX.steel}` }} />
             ))}
           </Box>
         </Box>
@@ -237,10 +237,10 @@ export default function StockBanner() {
               border: "none",
               cursor: "pointer",
               fontFamily: "inherit",
-              bgcolor: "#fff",
-              color: "primary.main",
-              boxShadow: "0 6px 18px rgba(0,0,0,0.18)",
-              "&:hover": { bgcolor: "#fff", transform: "translateY(-1px)", boxShadow: "0 9px 24px rgba(0,0,0,0.26)" },
+              bgcolor: "primary.main",
+              color: "#fff",
+              boxShadow: "0 6px 18px rgba(224,57,62,0.22)",
+              "&:hover": { bgcolor: "primary.dark", transform: "translateY(-1px)", boxShadow: "0 9px 24px rgba(224,57,62,0.3)" },
             }}
           >
             <NotificationsNoneRoundedIcon sx={{ fontSize: 17 }} /> Get Notified
@@ -250,10 +250,10 @@ export default function StockBanner() {
             href={ENQUIRY}
             sx={{
               ...btnBase,
-              border: "1.5px solid rgba(255,255,255,0.9)",
-              color: "#fff",
+              border: `1.5px solid ${KRONOX.steel}`,
+              color: KRONOX.text,
               display: { xs: "none", sm: "inline-flex" },
-              "&:hover": { bgcolor: "rgba(255,255,255,0.14)", transform: "translateY(-1px)" },
+              "&:hover": { borderColor: KRONOX.red, color: KRONOX.red, transform: "translateY(-1px)" },
             }}
           >
             Request a Quote <ArrowForwardIcon sx={{ fontSize: 16 }} />

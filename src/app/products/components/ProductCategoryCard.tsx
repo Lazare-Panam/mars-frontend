@@ -51,7 +51,7 @@ export default function ProductCategoryCard({ label, description, image, href }:
       <Box sx={{ height: '1px', bgcolor: 'rgba(0,0,0,0.06)' }} />
 
       {/* Content */}
-      <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: 1.5, bgcolor: '#FAF6F4' }}>
+      <CardContent sx={{ p: 3, display: 'flex', flexDirection: 'column', gap: 1.5, bgcolor: '#F5F5F6' }}>
         <Typography sx={{ fontWeight: 700, fontSize: '1rem', color: 'text.primary' }}>
           {label}
         </Typography>

@@ -74,7 +74,7 @@ export default function MegaMenuPanel({
                   fontSize: "0.9rem",
                   whiteSpace: "nowrap",
                   color: isActive ? "primary.main" : "text.primary",
-                  bgcolor: isActive ? "rgba(231,57,15,0.06)" : "transparent",
+                  bgcolor: isActive ? "rgba(224,57,62,0.06)" : "transparent",
                   borderLeft: "3px solid",
                   borderColor: isActive ? "primary.main" : "transparent",
                   transition: "all 0.15s ease",
