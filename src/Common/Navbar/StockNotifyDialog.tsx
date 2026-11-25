@@ -83,7 +83,7 @@ export default function StockNotifyDialog({
               {isError && (
                 <Alert severity="error" sx={{ fontSize: "0.85rem" }}>
                   Something went wrong. Please try again, or email{" "}
-                  <a href="mailto:sales@marsvalvenok.com">sales@marsvalvenok.com</a>.
+                  <a href="mailto:sales@kronoxvalve.com">sales@kronoxvalve.com</a>.
                 </Alert>
               )}
               <TextField

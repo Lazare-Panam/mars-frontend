@@ -22,7 +22,7 @@ const sections: LegalSection[] = [
         <p>
           Registered address: {ADDRESS.street}, {ADDRESS.locality},{" "}
           {ADDRESS.postcode}, {ADDRESS.country}. You can contact us about this
-          policy at <a href="mailto:sales@marsvalvenok.com">sales@marsvalvenok.com</a>.
+          policy at <a href="mailto:sales@kronoxvalve.com">sales@kronoxvalve.com</a>.
           [ICO registration number to be confirmed.]
         </p>
       </>
@@ -155,7 +155,7 @@ const sections: LegalSection[] = [
         </ul>
         <p>
           To exercise any of these rights, contact{" "}
-          <a href="mailto:sales@marsvalvenok.com">sales@marsvalvenok.com</a>. You
+          <a href="mailto:sales@kronoxvalve.com">sales@kronoxvalve.com</a>. You
           also have the right to complain to the Information Commissioner&rsquo;s
           Office (ICO) at{" "}
           <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">

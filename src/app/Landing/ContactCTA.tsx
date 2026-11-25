@@ -182,7 +182,7 @@ export default function ContactCTA() {
                 className="no-capitalize"
                 sx={{ color: "text.secondary", fontSize: "0.9rem" }}
               >
-                sales@marsvalvenok.com
+                sales@kronoxvalve.com
               </Typography>
             </Box>
             <Box>

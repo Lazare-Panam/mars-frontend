@@ -94,7 +94,7 @@ const sections: LegalSection[] = [
       <p>
         We may update this policy as the services we use change. For any
         questions, email{" "}
-        <a href="mailto:sales@marsvalvenok.com">sales@marsvalvenok.com</a>.
+        <a href="mailto:sales@kronoxvalve.com">sales@kronoxvalve.com</a>.
       </p>
     ),
   },

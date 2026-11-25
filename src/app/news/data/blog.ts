@@ -49,7 +49,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Apply for a Trade Credit Account",
       body: "Approved UK businesses can buy Kronox ball valves on up to 30 days to pay, subject to review. [Start your credit application](/credit-application).",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -102,7 +102,7 @@ export const blogs: BlogData[] = [
       heading: "Reserve Your November Allocation",
       body: "Send your size, pressure, connection and quantity and we'll put your RFQ at the front of the November shipment.",
       contactLabel: "Send your RFQ",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -163,7 +163,7 @@ export const blogs: BlogData[] = [
       heading: "Not Sure Which Body Style Your Line Needs?",
       body: "Send us your size, pressure, end connection and media, and we'll recommend the right Kronox series.",
       contactLabel: "Discuss your application",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -260,7 +260,7 @@ export const blogs: BlogData[] = [
       heading: "Not Sure Which Grade Your Line Needs?",
       body: "Tell us your media, cleaning regime, end connection and whether 316L is specified. We'll recommend the right Kronox series and material.",
       contactLabel: "Discuss your application",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -308,7 +308,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Become a Kronox Valves Distributor",
       body: "Enquire about distribution opportunities or request a catalogue to learn more about the full Kronox Valves product range.",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -370,7 +370,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Need help specifying a fire-safe valve?",
       body: "Not sure whether your line needs an API 607 valve? [Ask which series are fire-safe](/contact) and we'll send the certificate.",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -469,7 +469,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Need Help Specifying an Actuated Valve Package?",
       body: "Need a valve, actuator and solenoid supplied as one package? [Talk to us about an actuated package](/contact).",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
   },
@@ -483,7 +483,7 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/hp-flanged.png",
     excerpt:
-      "Looking for an actuated ball valve package that is built for demanding industrial service, with full documentation and technical back-up? Kronox Valves supplies genuine Kronox automated ball valve solutions, combining proven industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for hazardous duty. For specification support or project pricing, contact the technical sales team via sales@marsvalvenok.com or call +44 7368 137917.",
+      "Looking for an actuated ball valve package that is built for demanding industrial service, with full documentation and technical back-up? Kronox Valves supplies genuine Kronox automated ball valve solutions, combining proven industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for hazardous duty. For specification support or project pricing, contact the technical sales team via sales@kronoxvalve.com or call +44 7368 137917.",
     metaDescription:
       "Actuated ball valve packages engineered with Kronox valves and electric or pneumatic actuators, with documentation, UK supply and technical support.",
     tags: [
@@ -557,7 +557,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Specify Your Next Actuated Ball Valve Package",
       body: "For your next actuated ball valve requirement — from a single critical replacement to a standardised project specification — contact Kronox Valves to discuss application details, documentation needs, and supply options.",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
     jsonLd: [
@@ -596,7 +596,7 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-way-multi.jpg",
     excerpt:
-      "Looking for a process control valve solution you can specify with confidence? Kronox Valves supplies genuine Kronox industrial valves and ball-valve-based control assemblies for demanding process and industrial applications. From tight shut-off isolation to modulating duty with actuation and accessories, every valve is backed by traceability, documentation, and engineering support. Email sales@marsvalvenok.com or call +44 7368 137917 to discuss your application and put a fully documented package in place.",
+      "Looking for a process control valve solution you can specify with confidence? Kronox Valves supplies genuine Kronox industrial valves and ball-valve-based control assemblies for demanding process and industrial applications. From tight shut-off isolation to modulating duty with actuation and accessories, every valve is backed by traceability, documentation, and engineering support. Email sales@kronoxvalve.com or call +44 7368 137917 to discuss your application and put a fully documented package in place.",
     metaDescription:
       "Process control valve solutions using genuine Kronox ball valves, actuation and accessories for UK and international industrial applications. Enquire today.",
     tags: [
@@ -666,7 +666,7 @@ export const blogs: BlogData[] = [
     cta: {
       heading: "Talk to the Team About Your Next Process Control Valve Project",
       body: "Whether you are upgrading a single line or specifying a full skid, the Kronox Valves team can help configure a ball-valve-based process control valve solution with the right materials, actuation, and certification.",
-      email: "sales@marsvalvenok.com",
+      email: "sales@kronoxvalve.com",
       phone: "+44 7368 137917",
     },
     jsonLd: [

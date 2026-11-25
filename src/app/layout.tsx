@@ -82,7 +82,7 @@ export default function RootLayout({
                   logo: "https://pblol2.blob.core.windows.net/kronox/logos/kronox-logo-v6-light.png",
                   description:
                     "Kronox Valves manufactures industrial ball valves — UK stock, full documentation and fast delivery.",
-                  email: "sales@marsvalvenok.com",
+                  email: "sales@kronoxvalve.com",
                   telephone: "+44 7368 137917",
                   address: {
                     "@type": "PostalAddress",

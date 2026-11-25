@@ -125,7 +125,7 @@ export default function Footer() {
                 className="no-capitalize"
                 sx={{ fontSize: "0.85rem" }}
               >
-                sales@marsvalvenok.com
+                sales@kronoxvalve.com
               </Typography>
             </Box>
             <Box
