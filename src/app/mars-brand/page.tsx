@@ -295,7 +295,7 @@ export default function MarsBrandPage() {
       <CtaBand
         title="Seen a counterfeit Kronox valve?"
         text="We actively investigate and act against unauthorised use of the Kronox name and mark. Send us the details and photos."
-        primary={{ label: "Report a Counterfeit", href: "mailto:sales@marsvalvenok.com", external: true }}
+        primary={{ label: "Report a Counterfeit", href: "mailto:sales@kronoxvalve.com", external: true }}
         secondary={{ label: "Contact Us", href: "/contact#enquiry" }}
       />
     </Box>

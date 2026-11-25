@@ -146,7 +146,7 @@ const sections: LegalSection[] = [
     body: (
       <p>
         Questions about these terms? Email{" "}
-        <a href="mailto:sales@marsvalvenok.com">sales@marsvalvenok.com</a> or
+        <a href="mailto:sales@kronoxvalve.com">sales@kronoxvalve.com</a> or
         write to us at {ADDRESS.street}, {ADDRESS.locality}, {ADDRESS.postcode}.
       </p>
     ),

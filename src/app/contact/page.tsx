@@ -19,7 +19,7 @@ import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const EMAIL = "sales@marsvalvenok.com";
+const EMAIL = "sales@kronoxvalve.com";
 const PHONE = "+44 7368 137917";
 const CATALOGUE_URL =
   "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf";
