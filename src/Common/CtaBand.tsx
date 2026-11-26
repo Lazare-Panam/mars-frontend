@@ -36,8 +36,8 @@ export default function CtaBand({
       whiteSpace: "nowrap",
       transition: "background-color 0.15s ease, transform 0.15s ease",
       ...(main
-        ? { bgcolor: "primary.main", color: "#fff", boxShadow: "0 8px 20px rgba(231,57,15,0.25)", "&:hover": { bgcolor: "primary.dark", transform: "translateY(-1px)" } }
-        : { border: "1.5px solid", borderColor: "primary.main", color: "primary.main", bgcolor: "#fff", "&:hover": { bgcolor: "#FFF5F1", transform: "translateY(-1px)" } }),
+        ? { bgcolor: "primary.main", color: "#fff", boxShadow: "0 8px 20px rgba(224,57,62,0.25)", "&:hover": { bgcolor: "primary.dark", transform: "translateY(-1px)" } }
+        : { border: "1.5px solid", borderColor: "primary.main", color: "primary.main", bgcolor: "#fff", "&:hover": { bgcolor: "#FDF3F3", transform: "translateY(-1px)" } }),
     } as const;
     const inner = (
       <>
@@ -65,8 +65,8 @@ export default function CtaBand({
             borderRadius: "24px",
             // Soft brand-red tint that blends with the cream page, with a
             // fine red edge and a faint glow in the corner.
-            background: "linear-gradient(120deg, #FDEDE7 0%, #FFF6F2 55%, #FDE8E0 100%)",
-            border: "1px solid rgba(231,57,15,0.18)",
+            background: "linear-gradient(120deg, #FCE9EA 0%, #FDF3F3 55%, #FCE9EA 100%)",
+            border: "1px solid rgba(224,57,62,0.18)",
             position: "relative",
             overflow: "hidden",
             "&::after": {
@@ -77,7 +77,7 @@ export default function CtaBand({
               width: 260,
               height: 260,
               borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(231,57,15,0.14) 0%, rgba(231,57,15,0) 70%)",
+              background: "radial-gradient(circle, rgba(224,57,62,0.14) 0%, rgba(224,57,62,0) 70%)",
               pointerEvents: "none",
             },
             display: "flex",

@@ -6,23 +6,19 @@ import Reveal from "@/Common/Reveal";
 import { JsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
 import { ADDRESS } from "@/lib/address";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import ProductPageHero from "@/Common/product/ProductPageHero";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
-import PictureAsPdfOutlinedIcon from "@mui/icons-material/PictureAsPdfOutlined";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const EMAIL = "sales@kronoxvalve.com";
 const PHONE = "+44 7368 137917";
-const CATALOGUE_URL =
-  "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
@@ -71,23 +67,21 @@ const CONTACT_ROWS = [
   { icon: PublicOutlinedIcon, label: "We supply", value: "Customers across the United Kingdom" },
 ];
 
-const RESOURCES = [
-  { icon: PictureAsPdfOutlinedIcon, title: "Kronox e-catalogue", text: "Every series, part numbers, ratings and dimensions in one PDF.", cta: "Download PDF", href: CATALOGUE_URL, external: true },
+const RESOURCES: { icon: typeof GridViewOutlinedIcon; title: string; text: string; cta: string; href: string; external?: boolean }[] = [
   { icon: GridViewOutlinedIcon, title: "Browse by series", text: "One-piece, two-piece, three-piece, flanged, sanitary and fire safe ranges.", cta: "Browse products", href: "/products" },
-  { icon: VerifiedOutlinedIcon, title: "Certifications", text: "API 607, SIL 3, CE/PED, ATEX and ISO 9001 certificates to download.", cta: "View certificates", href: "/certifications" },
   { icon: LocalShippingOutlinedIcon, title: "Delivery & lead times", text: "UK stock, factory lead times and how delivery works.", cta: "Read more", href: "/delivery-information" },
 ];
 
 const cardSx = {
   bgcolor: "#fff",
   borderRadius: "20px",
-  border: "1px solid rgba(43,27,20,0.08)",
-  boxShadow: "0 10px 40px rgba(43,27,20,0.05)",
+  border: "1px solid rgba(58,61,66,0.08)",
+  boxShadow: "0 10px 40px rgba(58,61,66,0.05)",
 };
 
 export default function ContactPage() {
   return (
-    <Box component="main" sx={{ bgcolor: "#F7F4F2", pb: { xs: 8, md: 12 } }}>
+    <Box component="main" sx={{ bgcolor: "#fff", pb: { xs: 8, md: 12 } }}>
       <JsonLd data={contactPageSchema} />
 
       <ProductPageHero
@@ -109,7 +103,7 @@ export default function ContactPage() {
             </Typography>
             <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "repeat(3, 1fr)" }, gap: 1.5 }}>
               {WHAT_TO_INCLUDE.map((item) => (
-                <Box key={item} sx={{ display: "flex", gap: 1.5, alignItems: "flex-start", p: 2, borderRadius: "12px", bgcolor: "#F8F5F3" }}>
+                <Box key={item} sx={{ display: "flex", gap: 1.5, alignItems: "flex-start", p: 2, borderRadius: "12px", bgcolor: "#F5F5F6" }}>
                   <CheckCircleIcon sx={{ color: "primary.main", fontSize: 22, flexShrink: 0 }} />
                   <Typography sx={{ fontSize: "0.92rem", lineHeight: 1.5, color: "text.primary" }}>{item}</Typography>
                 </Box>
@@ -123,26 +117,31 @@ export default function ContactPage() {
           <Box
             id="details"
             sx={{
-              position: "relative",
-              overflow: "hidden",
-              background: BANNER_GRADIENT,
-              color: "#fff",
+              ...LIGHT_BANNER,
+              // side panel: plain light grey, no slash or angled panel
+              backgroundColor: "#F3F3F4",
+              backgroundImage: "none",
+              borderBottom: "none",
+              borderTop: `3px solid ${KRONOX.red}`,
+              "&::before": { display: "none" },
+              "&::after": { display: "none" },
+              color: KRONOX.text,
               p: { xs: 3.5, md: 4.5 },
               display: "flex",
               flexDirection: "column",
             }}
           >
             {/* decorative rings */}
-            <Box aria-hidden sx={{ position: "absolute", top: -60, right: -60, width: 180, height: 180, borderRadius: "50%", bgcolor: "rgba(255,255,255,0.08)" }} />
-            <Box aria-hidden sx={{ position: "absolute", bottom: -90, right: -40, width: 220, height: 220, borderRadius: "50%", border: "28px solid rgba(255,255,255,0.06)" }} />
+            <Box aria-hidden sx={{ position: "absolute", top: -60, right: -60, width: 180, height: 180, borderRadius: "50%", bgcolor: "rgba(224,57,62,0.08)" }} />
+            <Box aria-hidden sx={{ position: "absolute", bottom: -90, right: -40, width: 220, height: 220, borderRadius: "50%", border: "28px solid rgba(224,57,62,0.10)" }} />
 
-            <Typography sx={{ fontSize: "0.72rem", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", mb: 1.5, position: "relative" }}>
+            <Typography sx={{ fontSize: "0.72rem", fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase", color: KRONOX.steel, mb: 1.5, position: "relative" }}>
               Talk to our team
             </Typography>
             <Typography sx={{ fontSize: { xs: "1.5rem", md: "1.7rem" }, fontWeight: 800, lineHeight: 1.2, mb: 1.5, position: "relative" }}>
               Valve specialists for Kronox ball valves
             </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.82)", lineHeight: 1.7, mb: 4, position: "relative" }}>
+            <Typography sx={{ color: KRONOX.steel, lineHeight: 1.7, mb: 4, position: "relative" }}>
               We&apos;ll come back with the right series, part numbers,
               certificates and a price.
             </Typography>
@@ -151,17 +150,17 @@ export default function ContactPage() {
               {CONTACT_ROWS.map(({ icon: Icon, label, value, href }) => {
                 const inner = (
                   <>
-                    <Box sx={{ width: 40, height: 40, borderRadius: "10px", bgcolor: "rgba(255,255,255,0.14)", display: "grid", placeItems: "center", flexShrink: 0 }}>
+                    <Box sx={{ width: 40, height: 40, borderRadius: "10px", bgcolor: "rgba(224,57,62,0.1)", color: "primary.main", display: "grid", placeItems: "center", flexShrink: 0 }}>
                       <Icon sx={{ fontSize: 20 }} />
                     </Box>
                     <Box>
-                      <Typography sx={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.7)" }}>{label}</Typography>
+                      <Typography sx={{ fontSize: "0.75rem", color: KRONOX.steel }}>{label}</Typography>
                       <Typography className="no-capitalize" sx={{ fontWeight: 600, lineHeight: 1.4 }}>{value}</Typography>
                     </Box>
                   </>
                 );
                 return href ? (
-                  <Box key={label} component="a" href={href} sx={{ display: "flex", gap: 1.75, alignItems: "center", color: "#fff", textDecoration: "none", "&:hover p:last-of-type": { textDecoration: "underline" } }}>
+                  <Box key={label} component="a" href={href} sx={{ display: "flex", gap: 1.75, alignItems: "center", color: KRONOX.text, textDecoration: "none", "&:hover p:last-of-type": { textDecoration: "underline" } }}>
                     {inner}
                   </Box>
                 ) : (
@@ -170,7 +169,7 @@ export default function ContactPage() {
               })}
             </Box>
 
-            <Typography sx={{ mt: { xs: 4, md: "auto" }, pt: 4, borderTop: "1px solid rgba(255,255,255,0.2)", fontSize: "0.85rem", lineHeight: 1.7, color: "rgba(255,255,255,0.8)", position: "relative" }}>
+            <Typography sx={{ mt: { xs: 4, md: "auto" }, pt: 4, borderTop: "1px solid rgba(110,113,117,0.28)", fontSize: "0.85rem", lineHeight: 1.7, color: KRONOX.steel, position: "relative" }}>
               Genuine Kronox valves, full documentation, UK stock and UK-based
               support.
             </Typography>
@@ -188,9 +187,9 @@ export default function ContactPage() {
               Before you enquire
             </Typography>
             <Typography sx={{ color: "text.secondary", mb: 3 }}>
-              Most questions are answered in the catalogue and these pages.
+              Most questions are answered on these pages.
             </Typography>
-            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "repeat(4, 1fr)" }, gap: 2 }}>
+            <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, gap: 2 }}>
               {RESOURCES.map(({ icon: Icon, title, text, cta, href, external }) => {
                 const tile = (
                   <Box
@@ -200,14 +199,14 @@ export default function ContactPage() {
                       flexDirection: "column",
                       p: 2.75,
                       borderRadius: "16px",
-                      border: "1px solid rgba(43,27,20,0.09)",
+                      border: "1px solid rgba(58,61,66,0.09)",
                       color: "text.primary",
                       transition: "border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
-                      "&:hover": { borderColor: "primary.main", boxShadow: "0 12px 30px rgba(43,27,20,0.08)", transform: "translateY(-3px)" },
+                      "&:hover": { borderColor: "primary.main", boxShadow: "0 12px 30px rgba(58,61,66,0.08)", transform: "translateY(-3px)" },
                       "&:hover .res-cta": { gap: 1 },
                     }}
                   >
-                    <Box sx={{ width: 42, height: 42, borderRadius: "12px", bgcolor: "rgba(231,57,15,0.1)", display: "grid", placeItems: "center", mb: 2 }}>
+                    <Box sx={{ width: 42, height: 42, borderRadius: "12px", bgcolor: "rgba(224,57,62,0.1)", display: "grid", placeItems: "center", mb: 2 }}>
                       <Icon sx={{ color: "primary.main", fontSize: 22 }} />
                     </Box>
                     <Typography sx={{ fontWeight: 800, mb: 0.75 }}>{title}</Typography>

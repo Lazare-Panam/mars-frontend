@@ -8,13 +8,12 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
-const FOOTER_COLUMNS = [
+const FOOTER_COLUMNS: { heading: string; links: { label: string; href: string; newTab?: boolean }[] }[] = [
   {
     heading: "Company",
     links: [
       { label: "About Us", href: "/about" },
       { label: "Kronox Brand", href: "/mars-brand" },
-      { label: "Certifications", href: "/certifications" },
       { label: "News", href: "/news" },
     ],
   },
@@ -49,11 +48,6 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Returns Policy", href: "/return-policy" },
       { label: "Delivery Information", href: "/delivery-information" },
-      {
-        label: "Download E-Catalogue (PDF)",
-        href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
-        newTab: true,
-      },
       { label: "Contact Us", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms & Conditions", href: "/terms" },

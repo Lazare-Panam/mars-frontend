@@ -26,7 +26,7 @@
   font-weight: 700;
   margin: 0 0 4px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e6e2df;
+  border-bottom: 1px solid #E6E7E9;
 }
 
 .catLink {
@@ -35,7 +35,7 @@
 }
 
 .catLink:hover {
-  color: #e7390f;
+  color: #E0393E;
 }
 
 .empty {
@@ -54,7 +54,7 @@
 }
 
 .productLink {
-  color: #e7390f;
+  color: #E0393E;
   text-decoration: none;
 }
 
@@ -72,7 +72,7 @@
   display: inline-block;
   max-width: 100%;
   padding: 5px 12px;
-  border: 1px solid #e0dcd8;
+  border: 1px solid #E2E3E5;
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 500;
@@ -82,8 +82,8 @@
 }
 
 .chip:hover {
-  border-color: #e7390f;
-  color: #e7390f;
+  border-color: #E0393E;
+  color: #E0393E;
 }
 
 @media (prefers-color-scheme: dark) {

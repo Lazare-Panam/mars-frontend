@@ -24,7 +24,7 @@ function RelatedProductCard({ catalogId, productId }: { catalogId: string; produ
       onClick={() => router.push(`/products/${catalogId}/${productId}`)}
       elevation={0}
       sx={{
-        border: '1px solid rgba(43,27,20,0.09)',
+        border: '1px solid rgba(58,61,66,0.09)',
         borderRadius: '16px',
         overflow: 'hidden',
         cursor: 'pointer',
@@ -35,7 +35,7 @@ function RelatedProductCard({ catalogId, productId }: { catalogId: string; produ
         },
       }}
     >
-      <Box sx={{ position: 'relative', pt: '65%', background: 'radial-gradient(circle at 50% 40%, #FFFFFF 0%, #F6F1ED 100%)' }}>
+      <Box sx={{ position: 'relative', pt: '65%', background: 'radial-gradient(circle at 50% 40%, #FFFFFF 0%, #F3F3F4 100%)' }}>
         {data.image ? (
           <Image
             src={data.image}

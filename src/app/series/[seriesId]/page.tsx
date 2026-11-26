@@ -32,7 +32,7 @@ import { PRODUCT_MAXW, ProductSectionTitle } from "@/Common/product/ProductPageH
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { seriesHeading, seriesSubheading } from "@/lib/seriesHeadings";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 const MAXW = PRODUCT_MAXW;
 
 const docLinkSx = {
@@ -98,7 +98,7 @@ function ZoomImage({
       sx={{
         position: "relative",
         borderRadius: "28px",
-        background: "radial-gradient(120% 90% at 50% 35%, #FFFFFF 0%, #F4EEEA 70%, #EDE5E0 100%)",
+        background: "radial-gradient(120% 90% at 50% 35%, #FFFFFF 0%, #ECEDEE 70%, #E6E7E9 100%)",
         aspectRatio: "1 / 1",
         overflow: "hidden",
         cursor: "zoom-in",
@@ -232,7 +232,7 @@ export default function SeriesConfiguratorPage({
   return (
     <Box sx={{ bgcolor: "#fff", minHeight: "100vh" }}>
       {/* Breadcrumb strip */}
-      <Box sx={{ borderBottom: "1px solid rgba(43,27,20,0.07)" }}>
+      <Box sx={{ borderBottom: "1px solid rgba(58,61,66,0.07)" }}>
         <Box sx={{ maxWidth: MAXW, mx: "auto", px: { xs: 3, md: 6 }, py: 1.75 }}>
           <PageBreadcrumbs items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: name }]} />
         </Box>
@@ -250,7 +250,7 @@ export default function SeriesConfiguratorPage({
                 { icon: PictureAsPdfOutlinedIcon, t: "Documented", d: "Certificates with your order" },
                 { icon: MailOutlinedIcon, t: "UK support", d: "Help choosing a spec" },
               ].map(({ icon: Icon, t, d }) => (
-                <Box key={t} sx={{ p: 1.75, borderRadius: "16px", bgcolor: "#FAF6F4", textAlign: "center" }}>
+                <Box key={t} sx={{ p: 1.75, borderRadius: "16px", bgcolor: "#F5F5F6", textAlign: "center" }}>
                   <Icon sx={{ color: BRAND, fontSize: 22, mb: 0.5 }} />
                   <Typography sx={{ fontSize: "0.82rem", fontWeight: 800 }}>{t}</Typography>
                   <Typography sx={{ fontSize: "0.72rem", color: "text.secondary", lineHeight: 1.35 }}>{d}</Typography>
@@ -296,9 +296,9 @@ export default function SeriesConfiguratorPage({
 
             {/* Spec strip */}
             {stats.length > 0 && (
-              <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr 1fr", sm: `repeat(${stats.length}, 1fr)` }, mt: 3.5, border: "1px solid rgba(43,27,20,0.09)", borderRadius: "16px", overflow: "hidden" }}>
+              <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr 1fr", sm: `repeat(${stats.length}, 1fr)` }, mt: 3.5, border: "1px solid rgba(58,61,66,0.09)", borderRadius: "16px", overflow: "hidden" }}>
                 {stats.map(([k, v], i) => (
-                  <Box key={k} sx={{ px: 2, py: 1.75, borderLeft: { sm: i === 0 ? "none" : "1px solid rgba(43,27,20,0.09)" }, borderTop: { xs: i > 1 ? "1px solid rgba(43,27,20,0.09)" : "none", sm: "none" } }}>
+                  <Box key={k} sx={{ px: 2, py: 1.75, borderLeft: { sm: i === 0 ? "none" : "1px solid rgba(58,61,66,0.09)" }, borderTop: { xs: i > 1 ? "1px solid rgba(58,61,66,0.09)" : "none", sm: "none" } }}>
                     <Typography sx={{ fontSize: "0.68rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "text.secondary" }}>{k}</Typography>
                     <Typography sx={{ fontWeight: 800, fontSize: "0.98rem", mt: 0.25 }}>{v}</Typography>
                   </Box>
@@ -315,7 +315,7 @@ export default function SeriesConfiguratorPage({
                 </Typography>
               </Box>
               {/* progress bar */}
-              <Box sx={{ height: 4, borderRadius: 2, bgcolor: "rgba(43,27,20,0.07)", mb: 3, overflow: "hidden" }}>
+              <Box sx={{ height: 4, borderRadius: 2, bgcolor: "rgba(58,61,66,0.07)", mb: 3, overflow: "hidden" }}>
                 <Box sx={{ height: "100%", width: `${options.length ? (selectedCount / options.length) * 100 : 0}%`, bgcolor: BRAND, transition: "width 0.3s ease" }} />
               </Box>
 
@@ -345,13 +345,13 @@ export default function SeriesConfiguratorPage({
                             fontSize: "0.9rem",
                             fontWeight: 600,
                             border: "1.5px solid",
-                            borderColor: selected ? "#2B1B14" : "rgba(43,27,20,0.14)",
-                            bgcolor: selected ? "#2B1B14" : "#fff",
+                            borderColor: selected ? "#3A3D42" : "rgba(58,61,66,0.14)",
+                            bgcolor: selected ? "#3A3D42" : "#fff",
                             color: selected ? "#fff" : "text.primary",
                             transition: "all 0.15s ease",
                             opacity: available ? 1 : 0.35,
                             textDecoration: available ? "none" : "line-through",
-                            "&:hover": available ? { borderColor: selected ? "#2B1B14" : BRAND } : {},
+                            "&:hover": available ? { borderColor: selected ? "#3A3D42" : BRAND } : {},
                           }}
                         >
                           {v.value}
@@ -363,7 +363,7 @@ export default function SeriesConfiguratorPage({
               ))}
 
               {/* Result + actions */}
-              <Box sx={{ mt: 1, p: { xs: 2.5, md: 3 }, borderRadius: "20px", bgcolor: "#FAF6F4" }}>
+              <Box sx={{ mt: 1, p: { xs: 2.5, md: 3 }, borderRadius: "20px", bgcolor: "#F5F5F6" }}>
                 {isFetching ? (
                   <Box>
                     <Skeleton animation="wave" variant="text" width={110} height={14} />
@@ -401,7 +401,7 @@ export default function SeriesConfiguratorPage({
                     variant="contained"
                     disableElevation
                     endIcon={<ArrowForwardIcon />}
-                    sx={{ textTransform: "none", fontWeight: 800, borderRadius: "999px", bgcolor: BRAND, py: 1.4, "&:hover": { bgcolor: "#A8270A" } }}
+                    sx={{ textTransform: "none", fontWeight: 800, borderRadius: "999px", bgcolor: BRAND, py: 1.4, "&:hover": { bgcolor: "#B8262C" } }}
                   >
                     Request a Quote
                   </Button>
@@ -409,7 +409,7 @@ export default function SeriesConfiguratorPage({
                     component={NextLink}
                     href={`/series/${seriesId}/variants`}
                     variant="outlined"
-                    sx={{ textTransform: "none", fontWeight: 700, borderRadius: "999px", py: 1.4, borderColor: "rgba(43,27,20,0.2)", color: "text.primary", bgcolor: "#fff", "&:hover": { borderColor: BRAND, bgcolor: "#fff" } }}
+                    sx={{ textTransform: "none", fontWeight: 700, borderRadius: "999px", py: 1.4, borderColor: "rgba(58,61,66,0.2)", color: "text.primary", bgcolor: "#fff", "&:hover": { borderColor: BRAND, bgcolor: "#fff" } }}
                   >
                     View all {config.totalCount} models
                   </Button>
@@ -441,15 +441,15 @@ export default function SeriesConfiguratorPage({
       </Box>
 
       {/* Details band */}
-      <Box sx={{ bgcolor: "#FAF6F4", py: { xs: 7, md: 10 } }}>
+      <Box sx={{ bgcolor: "#F5F5F6", py: { xs: 7, md: 10 } }}>
         <Box sx={{ maxWidth: MAXW, mx: "auto", px: { xs: 3, md: 6 }, }}>
           {techAttrs.length > 0 && (
             <Reveal delay={100}>
               <Box>
                 <ProductSectionTitle>Technical attributes</ProductSectionTitle>
-                <Box sx={{ borderRadius: "20px", overflow: "hidden", bgcolor: "#fff", boxShadow: "0 12px 40px rgba(43,27,20,0.06)", display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, columnGap: 4, px: { xs: 0, md: 2 } }}>
+                <Box sx={{ borderRadius: "20px", overflow: "hidden", bgcolor: "#fff", boxShadow: "0 12px 40px rgba(58,61,66,0.06)", display: "grid", gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" }, columnGap: 4, px: { xs: 0, md: 2 } }}>
                   {techAttrs.map(([label, value]) => (
-                    <Box key={label} sx={{ display: "flex", gap: 2, px: { xs: 2.5, md: 1.5 }, py: 1.75, borderBottom: "1px solid rgba(43,27,20,0.06)" }}>
+                    <Box key={label} sx={{ display: "flex", gap: 2, px: { xs: 2.5, md: 1.5 }, py: 1.75, borderBottom: "1px solid rgba(58,61,66,0.06)" }}>
                       <Box sx={{ width: { xs: 120, sm: 190 }, flexShrink: 0, fontSize: "0.85rem", color: "text.secondary" }}>{label}</Box>
                       <Box sx={{ fontSize: "0.88rem", fontWeight: 600 }}>{value}</Box>
                     </Box>

@@ -17,7 +17,7 @@ import { useQuoteStore } from "@/store/useQuoteStore";
 import { useCartStore } from "@/store/useCartStore";
 import { toAddToCartRequest } from "@/lib/cartRequest";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 const PAGE_SIZE = 12;
 
 const SORT_OPTIONS: { key: string; label: string }[] = [
@@ -322,7 +322,7 @@ export function FeaturedCard({
               boxShadow: "none",
               px: 3,
               py: 1,
-              "&:hover": { bgcolor: "#A8270A", boxShadow: "none" },
+              "&:hover": { bgcolor: "#B8262C", boxShadow: "none" },
             }}
           >
             {price ? (cart.added ? "Added" : "Add to Cart") : "Request Quote"}

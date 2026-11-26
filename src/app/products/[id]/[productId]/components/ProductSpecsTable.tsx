@@ -21,8 +21,8 @@ export default function ProductSpecsTable({ specs }: { specs: Record<string, str
               gap: 3,
               px: 2.5,
               py: 1.4,
-              bgcolor: i % 2 ? '#FCFAF8' : '#fff',
-              borderTop: i === 0 ? 'none' : '1px solid rgba(43,27,20,0.06)',
+              bgcolor: i % 2 ? '#FAFAFB' : '#fff',
+              borderTop: i === 0 ? 'none' : '1px solid rgba(58,61,66,0.06)',
             }}
           >
             <Typography sx={{ color: 'text.secondary', fontSize: '0.88rem', flexShrink: 0 }}>{label}</Typography>

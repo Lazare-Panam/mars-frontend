@@ -18,7 +18,7 @@ import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { variantHeading } from "@/lib/seriesHeadings";
 import { VARIANT_META } from "@/lib/variantMeta";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 const MAXW = 1160;
 
 export default function SeriesVariantDetailPage({
@@ -171,7 +171,7 @@ export default function SeriesVariantDetailPage({
                   variant="contained"
                   disableElevation
                   startIcon={<MailOutlinedIcon />}
-                  sx={{ textTransform: "none", fontWeight: 800, borderRadius: "8px", bgcolor: BRAND, px: 3, py: 1, "&:hover": { bgcolor: "#A8270A" } }}
+                  sx={{ textTransform: "none", fontWeight: 800, borderRadius: "8px", bgcolor: BRAND, px: 3, py: 1, "&:hover": { bgcolor: "#B8262C" } }}
                 >
                   Request a Quote
                 </Button>

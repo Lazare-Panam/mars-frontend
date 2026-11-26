@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import { ProductVariant } from "@/api/useProductVariants";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 
 // Keys that are reference/pricing data, never rendered as a filter group.
 const NON_FILTERABLE_KEYS = new Set(["SKU", "Price"]);

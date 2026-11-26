@@ -14,7 +14,7 @@ export const OG_CONTENT_TYPE = "image/png";
 
 // Brand gradient mirrors the footer (Common/Footer/Footer.tsx).
 const BRAND_GRADIENT =
-  "linear-gradient(135deg, #E7390F 0%, #A8270A 60%, #6b1a08 100%)";
+  "linear-gradient(135deg, #E0393E 0%, #B8262C 60%, #C42E33 100%)";
 
 export function renderOgImage({
   title,

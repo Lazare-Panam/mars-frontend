@@ -26,8 +26,8 @@ import { useQuoteStore } from "@/store/useQuoteStore";
 import { variantTitleParts } from "@/lib/variantTitle";
 import { VARIANT_META } from "@/lib/variantMeta";
 
-const BRAND = "#E7390F";
-const BRAND_DARK = "#A8270A";
+const BRAND = "#E0393E";
+const BRAND_DARK = "#B8262C";
 const RELATED_COUNT = 4;
 // Shown elsewhere on the page (heading / price box), so left out of the spec table.
 const HIDDEN_SPEC_KEYS = new Set(["SKU", "Price"]);

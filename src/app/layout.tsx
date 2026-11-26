@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import StockBanner from "@/Common/Navbar/StockBanner";
 import TopBar from "@/Common/Navbar/TopBar";
-import BenefitsStrip from "@/Common/Navbar/BenefitsStrip";
 import Navbar from "@/Common/Navbar/Navbar";
 import Footer from "@/Common/Footer/Footer";
 import QueryProvider from "@/Common/QueryProvider";
@@ -134,7 +133,6 @@ export default function RootLayout({
             <StockBanner />
             <TopBar />
             <Navbar />
-            <BenefitsStrip />
             {children}
             <Footer />
             <CookieBanner />

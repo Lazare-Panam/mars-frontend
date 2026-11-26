@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import {
   AppBar,
@@ -37,6 +38,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchBar from "./SearchBar";
+
 
 const Navbar: React.FC = () => {
   const theme = useTheme();
@@ -83,6 +85,8 @@ const Navbar: React.FC = () => {
   // On desktop, "Products" (the item with a megaMenu) no longer has its own
   // dropdown: hovering it opens the category bar's first dropdown instead.
   // (megaMenu data is still used by the mobile drawer.)
+  const pathname = usePathname() ?? "/";
+  const isCurrent = (href: string) => href !== "/" && (pathname === href || pathname.startsWith(`${href}/`));
   const categoryOpen = useCategoryMenu((s) => s.open);
   const openCategory = useCategoryMenu((s) => s.openItem);
   const scheduleCategoryClose = useCategoryMenu((s) => s.scheduleClose);
@@ -100,12 +104,27 @@ const Navbar: React.FC = () => {
     (item) => item.label !== "E-Catalogue",
   );
 
+  // Account and cart share one look: a square icon button with a hairline
+  // border that turns red on hover.
+  const iconBtnSx = {
+    // smaller on phones so the logo, search, account, cart and menu fit
+    width: { xs: 36, md: 42 },
+    height: { xs: 36, md: 42 },
+    borderRadius: "3px",
+    border: `1px solid ${LINE}`,
+    bgcolor: "#fff",
+    color: INK,
+    transition: "border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease",
+    "&:hover": { borderColor: ACCENT, color: ACCENT, bgcolor: "#fff" },
+  } as const;
+
   const CartButton = ({ size }: { size: number }) => (
     <IconButton
       component={Link}
       href="/cart"
       aria-label={`Cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
-      sx={{ color: INK }}
+      title="Cart"
+      sx={iconBtnSx}
     >
       <Box
         component="span"
@@ -143,35 +162,15 @@ const Navbar: React.FC = () => {
   const AccountButton = ({ size }: { size: number }) => {
     if (!loggedIn) {
       return (
-        <Box
+        <IconButton
           component={Link}
           href={accountHref}
-          aria-label="Login or register"
-          sx={{
-            display: "inline-flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 0.25,
-            textDecoration: "none",
-            color: REGISTER_RED,
-            px: 0.5,
-          }}
+          aria-label="Sign in or register"
+          title="Sign in or register"
+          sx={iconBtnSx}
         >
-          <PersonOutlineOutlinedIcon
-            sx={{ fontSize: size, color: REGISTER_RED }}
-          />
-          <Typography
-            sx={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              letterSpacing: "0.01em",
-              color: REGISTER_RED,
-              lineHeight: 1,
-            }}
-          >
-            Register
-          </Typography>
-        </Box>
+          <PersonOutlineOutlinedIcon sx={{ fontSize: size }} />
+        </IconButton>
       );
     }
 
@@ -296,6 +295,91 @@ const Navbar: React.FC = () => {
     );
   };
 
+  const subtotal = useCartStore((s) => s.subtotal());
+
+  // Desktop account: a labelled box when signed out, the initials circle
+  // (with its menu) when signed in.
+  const DesktopAccount = () =>
+    loggedIn ? (
+      <AccountButton size={24} />
+    ) : (
+      <Box
+        component={Link}
+        href={accountHref}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1.25,
+          height: 48,
+          px: 1.75,
+          flexShrink: 0,
+          textDecoration: "none",
+          color: INK,
+          bgcolor: "#fff",
+          border: `1px solid ${LINE}`,
+          borderRadius: "3px",
+          transition: "border-color 0.15s ease",
+          "&:hover": { borderColor: ACCENT },
+          "&:hover .acc-top": { color: ACCENT },
+        }}
+      >
+        <PersonOutlineOutlinedIcon sx={{ fontSize: 24, color: ACCENT }} />
+        <Box sx={{ lineHeight: 1.15, whiteSpace: "nowrap", display: { md: "none", lg: "block" } }}>
+          <Box component="span" className="acc-top" sx={{ display: "block", fontSize: "0.7rem", fontWeight: 600, color: RUST, transition: "color 0.15s ease" }}>
+            Sign in
+          </Box>
+          <Box component="span" sx={{ display: "block", fontSize: "0.86rem", fontWeight: 800 }}>
+            Register
+          </Box>
+        </Box>
+      </Box>
+    );
+
+  // Desktop cart: a slanted red block with the item count and subtotal.
+  const DesktopCart = () => (
+    <Box
+      component={Link}
+      href="/cart"
+      aria-label={`Cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+      sx={{
+        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        height: 48,
+        px: 2.25,
+        ml: 0.75,
+        flexShrink: 0,
+        textDecoration: "none",
+        color: "#fff",
+        background: "linear-gradient(135deg, #E0393E 0%, #C42E33 100%)",
+        transform: "skewX(-14deg)",
+        boxShadow: "0 8px 20px rgba(224,57,62,0.28)",
+        transition: "transform 0.15s ease, box-shadow 0.15s ease",
+        "&:hover": { transform: "skewX(-14deg) translateY(-2px)", boxShadow: "0 12px 26px rgba(224,57,62,0.38)" },
+        "& > .inner": { transform: "skewX(14deg)", display: "flex", alignItems: "center", gap: 1.25 },
+      }}
+    >
+      <span className="inner">
+        <Badge
+          badgeContent={itemCount}
+          max={99}
+          invisible={itemCount === 0}
+          sx={{ "& .MuiBadge-badge": { bgcolor: "#fff", color: ACCENT, fontWeight: 800, fontSize: "0.65rem" } }}
+        >
+          <ShoppingCartOutlinedIcon sx={{ fontSize: 24 }} />
+        </Badge>
+        <Box component="span" sx={{ lineHeight: 1.15, whiteSpace: "nowrap", display: { md: "none", lg: "block" } }}>
+          <Box component="span" sx={{ display: "block", fontSize: "0.7rem", fontWeight: 600, opacity: 0.9 }}>
+            {itemCount} {itemCount === 1 ? "item" : "items"}
+          </Box>
+          <Box component="span" sx={{ display: "block", fontSize: "0.9rem", fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
+            £{subtotal.toFixed(2)}
+          </Box>
+        </Box>
+      </span>
+    </Box>
+  );
+
   return (
     <>
       <AppBar
@@ -305,6 +389,11 @@ const Navbar: React.FC = () => {
           bgcolor: PAPER,
           color: INK,
           borderBottom: `1px solid ${LINE}`,
+          "& a:focus:not(:focus-visible), & button:focus:not(:focus-visible)": { outline: "none" },
+          "& a:focus-visible, & button:focus-visible": { outline: `2px solid ${ACCENT}`, outlineOffset: 3, borderRadius: "3px" },
+          // Links show focus with their red text and slanted highlight instead
+          // of a box (a box appeared around the menu link after a click).
+          "& a:focus-visible": { outline: "none", color: ACCENT },
           boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "none",
           transition: "box-shadow 0.25s ease",
         }}
@@ -323,6 +412,8 @@ const Navbar: React.FC = () => {
             <Box
               component={Link}
               href="/"
+              className="kx-logo"
+              aria-label="Kronox Valves home"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -330,7 +421,7 @@ const Navbar: React.FC = () => {
                 // Tightly cropped SVG (no built-in margins, about 5.7:1), so
                 // the letters fill the height: 40px tall is ~228px across on
                 // desktop, shrinking a little when the header compacts.
-                height: { xs: 32, md: scrolled ? 34 : 40, xl: scrolled ? 38 : 46 },
+                height: { xs: 22, sm: 28, md: scrolled ? 34 : 40, xl: scrolled ? 38 : 46 },
                 transition: "height 0.25s ease",
               }}
             >
@@ -345,19 +436,68 @@ const Navbar: React.FC = () => {
               />
             </Box>
 
+            {/* Search + account + cart (desktop), all on the logo line */}
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "flex-end",
+                gap: { md: 1.5, lg: 2 },
+                ml: { md: 3, lg: 5 },
+              }}
+            >
+              <Box sx={{ flex: 1, maxWidth: 760, mx: "auto", pr: { md: 0.5, lg: 2 } }}>
+                <SearchBar fullWidth prominent />
+              </Box>
+              <DesktopAccount />
+              <DesktopCart />
+            </Box>
+
+            {/* Mobile trigger */}
+            <Box
+              sx={{
+                display: { xs: "flex", md: "none" },
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              <IconButton
+                component={Link}
+                href="/search"
+                aria-label="Search"
+                sx={{ color: INK }}
+              >
+                <SearchIcon />
+              </IconButton>
+              <AccountButton size={22} />
+              <CartButton size={22} />
+              <IconButton
+                onClick={() => setMobileOpen(true)}
+                sx={{ color: INK }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
+
+        {/* Second line (desktop): page links left, actions right */}
+        <Box sx={{ display: { xs: "none", md: "block" }, bgcolor: "#fff", borderTop: `1px solid ${LINE}` }}>
+          <Container maxWidth="xl" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 56 }}>
             {/* Left nav (desktop) */}
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
                 flexDirection: "row",
                 whiteSpace: "nowrap",
-                gap: { md: 1.5, lg: 2, xl: 3.5 },
-                ml: { md: 2, lg: 3, xl: 6 },
+                gap: { md: 2.5, lg: 3.5, xl: 4.5 },
               }}
             >
               {LEFT_NAV.map((item) => {
                 // Products shows as open while any category dropdown is open.
                 const active = !!item.megaMenu && categoryOpen !== null;
+                const current = isCurrent(item.href);
                 return (
                   <Box
                     key={item.label}
@@ -406,15 +546,30 @@ const Navbar: React.FC = () => {
                         alignItems: "center",
                         gap: 0.5,
                         textDecoration: "none",
-                        color: active ? INK : RUST,
-                        fontSize: "0.9rem",
-                        fontWeight: 600,
+                        color: active || current ? ACCENT : INK,
+                        fontSize: "0.98rem",
+                        fontWeight: 700,
                         letterSpacing: "0.01em",
                         textTransform: "none",
-                        py: 3,
+                        py: 1.6,
                         transition: "color 0.15s ease",
-                        "&:hover": { color: INK },
-                        "&:hover .nav-underline": { width: 22 },
+                        isolation: "isolate",
+                        "&::before": {
+                          content: '""',
+                          position: "absolute",
+                          zIndex: -1,
+                          top: "50%",
+                          left: -10,
+                          right: -10,
+                          height: 30,
+                          mt: "-15px",
+                          bgcolor: "rgba(224,57,62,0.1)",
+                          transform: current ? "skewX(-18deg) scaleX(1)" : "skewX(-18deg) scaleX(0)",
+                          transformOrigin: "left center",
+                          transition: "transform 0.25s cubic-bezier(.6,.05,.3,1)",
+                        },
+                        "&:hover": { color: ACCENT },
+                        "&:hover::before": { transform: "skewX(-18deg) scaleX(1)" },
                       }}
                     >
                       {item.label}
@@ -424,7 +579,7 @@ const Navbar: React.FC = () => {
                             fontSize: 16,
                             transition: "transform 0.2s ease",
                             transform: active ? "rotate(180deg)" : "none",
-                            color: active ? ACCENT : RUST,
+                            color: active || current ? ACCENT : INK,
                           }}
                         />
                       )}
@@ -432,7 +587,7 @@ const Navbar: React.FC = () => {
                         className="nav-underline"
                         sx={{
                           position: "absolute",
-                          bottom: 14,
+                          bottom: 4,
                           left: "50%",
                           transform: "translateX(-50%)",
                           width: active ? 22 : 0,
@@ -453,10 +608,7 @@ const Navbar: React.FC = () => {
                 display: { xs: "none", md: "flex" },
                 flexDirection: "row",
                 alignItems: "center",
-                // Tighter on laptop widths so the extra Credit button fits.
-                gap: { md: 1.5, lg: 2.5, xl: 4 },
-                // Keep a gap from the left group now the logo is larger.
-                ml: { md: 1.5, lg: 2.5, xl: 4 },
+                gap: { md: 1.25, lg: 1.75, xl: 2.25 },
               }}
             >
               {desktopRightNav.map((item) => (
@@ -473,7 +625,7 @@ const Navbar: React.FC = () => {
                     fontSize: "0.9rem",
                     fontWeight: 600,
                     letterSpacing: "0.01em",
-                    py: 3,
+                    py: 1.6,
                     transition: "color 0.15s ease",
                     "&:hover": { color: INK },
                     "&::after": {
@@ -494,8 +646,6 @@ const Navbar: React.FC = () => {
                 </Box>
               ))}
 
-              {/* divider between page links and actions */}
-              <Box aria-hidden sx={{ width: "1px", height: 28, bgcolor: LINE, mx: { md: 0, lg: 0.5 } }} />
 
               <Box
                 component={Link}
@@ -541,23 +691,45 @@ const Navbar: React.FC = () => {
                   alignItems: "center",
                   gap: 0.75,
                   textDecoration: "none",
-                  bgcolor: ACCENT,
+                  position: "relative",
+                  overflow: "hidden",
+                  background: "linear-gradient(135deg, #E0393E 0%, #C42E33 100%)",
                   color: theme.palette.primary.contrastText,
-                  fontWeight: 700,
+                  fontWeight: 800,
                   fontSize: "0.84rem",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
                   height: 40,
-                  px: 2.25,
-                  borderRadius: "3px",
-                  boxShadow: "0 6px 16px rgba(224,57,62,0.25)",
-                  transition: "background-color 0.15s ease, transform 0.15s ease",
-                  "&:hover": {
-                    bgcolor: theme.palette.primary.dark ?? "#B8262C",
-                    transform: "translateY(-1px)",
+                  px: 2.5,
+                  transform: "skewX(-14deg)",
+                  boxShadow: "0 8px 20px rgba(224,57,62,0.3)",
+                  transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                  "& > .inner": { transform: "skewX(14deg)", display: "inline-flex", alignItems: "center", gap: 0.75 },
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    width: "40%",
+                    left: "-60%",
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent)",
+                    animation: "kxShine 3.6s ease-in-out infinite",
                   },
+                  "@keyframes kxShine": {
+                    "0%, 60%": { left: "-60%" },
+                    "100%": { left: "130%" },
+                  },
+                  "&:hover": {
+                    transform: "skewX(-14deg) translateY(-2px)",
+                    boxShadow: "0 12px 26px rgba(224,57,62,0.4)",
+                  },
+                  "@media (prefers-reduced-motion: reduce)": { "&::after": { animation: "none" } },
                 }}
               >
-                <StorefrontOutlinedIcon sx={{ fontSize: 19 }} />
-                Shop
+                <span className="inner">
+                  <StorefrontOutlinedIcon sx={{ fontSize: 19 }} />
+                  Shop
+                </span>
               </Box>
 
               <Box
@@ -569,69 +741,27 @@ const Navbar: React.FC = () => {
                   alignItems: "center",
                   border: `1.5px solid ${ACCENT}`,
                   color: ACCENT,
-                  fontWeight: 700,
+                  bgcolor: "#fff",
+                  fontWeight: 800,
                   fontSize: "0.84rem",
-                  letterSpacing: "0.01em",
-                  textTransform: "none",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
                   height: 40,
-                  px: 2.25,
-                  borderRadius: "3px",
-                  transition: "all 0.15s ease",
+                  px: 2.5,
+                  transform: "skewX(-14deg)",
+                  transition: "background-color 0.15s ease, color 0.15s ease",
+                  "& > .inner": { transform: "skewX(14deg)", display: "inline-block" },
                   "&:hover": {
                     bgcolor: ACCENT,
                     color: theme.palette.primary.contrastText,
                   },
                 }}
               >
-                Contact
+                <span className="inner">Contact</span>
               </Box>
 
-              <AccountButton size={24} />
-              <CartButton size={24} />
             </Box>
 
-            {/* Mobile trigger */}
-            <Box
-              sx={{
-                display: { xs: "flex", md: "none" },
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
-              <IconButton
-                component={Link}
-                href="/search"
-                aria-label="Search"
-                sx={{ color: INK }}
-              >
-                <SearchIcon />
-              </IconButton>
-              <AccountButton size={22} />
-              <CartButton size={22} />
-              <IconButton
-                onClick={() => setMobileOpen(true)}
-                sx={{ color: INK }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-          </Toolbar>
-        </Container>
-
-        {/* Prominent search row: full-width, centered, its own line under the header. */}
-        <Box
-          sx={{
-            display: { xs: "none", md: "block" },
-            borderTop: `1px solid ${LINE}`,
-            bgcolor: PAPER,
-          }}
-        >
-          <Container maxWidth="xl">
-            <Box sx={{ py: 1.75, display: "flex", justifyContent: "center" }}>
-              <Box sx={{ width: "100%", maxWidth: 680 }}>
-                <SearchBar fullWidth prominent />
-              </Box>
-            </Box>
           </Container>
         </Box>
 

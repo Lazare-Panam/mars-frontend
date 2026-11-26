@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Box, Typography, Button, Divider, Chip, Grid } from '@mui/material';
 import Image from 'next/image';
 import { ProductCatalog } from '@/api/useProductCatalog';
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 
 interface Props {
   data: ProductCatalog;
@@ -19,15 +19,15 @@ export default function ProductDetailView({ data, id }: Props) {
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
       {/* Hero */}
-      <Box sx={{ background: BANNER_GRADIENT, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
+      <Box sx={{ ...LIGHT_BANNER, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}>
         <Box sx={{ maxWidth: '1280px', mx: 'auto' }}>
-          <Typography sx={{ color: 'primary.light', letterSpacing: '0.2em', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', mb: 1 }}>
+          <Typography sx={{ color: 'primary.main', letterSpacing: '0.2em', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', mb: 1 }}>
             Ball Valves
           </Typography>
-          <Typography component="h1" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.6rem' }, fontWeight: 800, lineHeight: 1.1 }}>
+          <Typography component="h1" sx={{ color: KRONOX.text, fontSize: { xs: '1.8rem', md: '2.6rem' }, fontWeight: 800, lineHeight: 1.1 }}>
             {data.bannerTitle}
           </Typography>
-          <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', mt: 1 }}>
+          <Typography sx={{ color: KRONOX.steel, fontSize: '0.9rem', mt: 1 }}>
             {data.bannerSubtitle}
           </Typography>
         </Box>
@@ -90,7 +90,7 @@ export default function ProductDetailView({ data, id }: Props) {
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                     {first.features.map((f) => (
-                      <Chip key={f} label={f} size="small" sx={{ fontSize: '0.75rem', height: 26, bgcolor: 'rgba(231,57,15,0.08)', color: 'primary.main', fontWeight: 600, borderRadius: '3px' }} />
+                      <Chip key={f} label={f} size="small" sx={{ fontSize: '0.75rem', height: 26, bgcolor: 'rgba(224,57,62,0.08)', color: 'primary.main', fontWeight: 600, borderRadius: '3px' }} />
                     ))}
                   </Box>
                 </Box>

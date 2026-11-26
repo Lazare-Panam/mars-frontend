@@ -161,7 +161,7 @@ export default function CartPage() {
                       borderColor: "divider",
                       transition: "background-color 0.2s ease",
                       "&:hover": {
-                        bgcolor: "rgba(231,57,15,0.03)",
+                        bgcolor: "rgba(224,57,62,0.03)",
                       },
                     }}
                   >
@@ -248,7 +248,7 @@ export default function CartPage() {
                           transition:
                             "background-color 0.2s ease, transform 0.2s ease",
                           "&:hover": {
-                            bgcolor: "rgba(231,57,15,0.08)",
+                            bgcolor: "rgba(224,57,62,0.08)",
                             transform: "scale(1.05)",
                           },
                         }}
@@ -277,7 +277,7 @@ export default function CartPage() {
                           transition:
                             "background-color 0.2s ease, transform 0.2s ease",
                           "&:hover": {
-                            bgcolor: "rgba(231,57,15,0.08)",
+                            bgcolor: "rgba(224,57,62,0.08)",
                             transform: "scale(1.05)",
                           },
                         }}

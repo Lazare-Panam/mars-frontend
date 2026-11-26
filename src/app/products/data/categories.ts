@@ -8,7 +8,7 @@ export const SERIES = [
     description:
       "Robust 1-piece reduced port ball valves rated to 2000 PSI for high pressure threaded-line service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/one-piece-ball-valves/series-10-10.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/One-piece-ball-valves/series-10-10.png",
     href: "/series/4",
     pricesHref: "/series/4/variants",
   },
@@ -141,7 +141,7 @@ export const CATEGORIES = [
     description:
       "Compact, high pressure stainless steel ball valves for industrial fluid control.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/one-piece-ball-valves/series-10-10.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/One-piece-ball-valves/series-10-10.png",
     href: "/products/one-piece-ball-valves",
   },
   {

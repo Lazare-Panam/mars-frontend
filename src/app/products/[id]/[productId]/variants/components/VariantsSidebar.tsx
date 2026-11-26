@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-const BRAND = "#E7390F"; // red checkbox outline
+const BRAND = "#E0393E"; // red checkbox outline
 const NAVY = "#1b3a5c"; // chevron colour
 const CARD_BG = "#f3f3f5"; // grey header bar
 

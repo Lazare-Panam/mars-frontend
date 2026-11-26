@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axiosClient from "./axiosClient";
 import { serverMemo } from "@/lib/serverMemo";
 import { ProductSeriesVariants, ProductVariant } from "./useProductVariants";
+import { kronoxImage } from "@/lib/kronoxImage";
 
 // --- Shapes returned by the new SQL-backed SeriesProduct API (Mars.API) ---
 
@@ -80,7 +81,7 @@ export const fetchSeriesVariants = async (
   const category = cats.find((c) => String(c.categoryId) === id);
   const name =
     category?.name ?? products[0]?.familyDescription ?? `Series ${id}`;
-  const thumbnailImage = products[0]?.imageUrl ?? "";
+  const thumbnailImage = kronoxImage(products[0]?.imageUrl) ?? "";
 
   const variants: ProductVariant[] = products.map((p) => {
     const specs: Record<string, string> = { SKU: p.partNumber };
@@ -88,7 +89,7 @@ export const fetchSeriesVariants = async (
     if (p.price != null) specs["Price"] = p.price.toFixed(2);
     return {
       id: p.partNumber,
-      thumbnailImage: p.imageUrl ?? undefined,
+      thumbnailImage: kronoxImage(p.imageUrl) ?? undefined,
       specs,
     };
   });
@@ -154,7 +155,11 @@ export const fetchConfiguratorState = async (
   const { data } = await axiosClient.get<ConfiguratorState>(
     `/api/SeriesProduct/categories/${id}/configure${qs ? `?${qs}` : ""}`,
   );
-  return data;
+  return {
+    ...data,
+    imageUrl: kronoxImage(data.imageUrl),
+    resolved: data.resolved ? { ...data.resolved, imageUrl: kronoxImage(data.resolved.imageUrl) } : data.resolved,
+  };
 };
 
 export const fetchSeriesProduct = async (
@@ -163,7 +168,7 @@ export const fetchSeriesProduct = async (
   const { data } = await axiosClient.get<ResolvedProduct>(
     `/api/SeriesProduct/products/${encodeURIComponent(partNumber)}`,
   );
-  return data;
+  return { ...data, imageUrl: kronoxImage(data.imageUrl) };
 };
 
 export const useSeriesProduct = (partNumber: string) =>

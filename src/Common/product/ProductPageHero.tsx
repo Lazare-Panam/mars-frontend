@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import type { Crumb } from "@/lib/breadcrumbs";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 
 // Shared look for product, series and category pages: the same red banner as
 // the rest of the site (Certifications, Applications, Actuated Packages) over a
@@ -13,7 +13,7 @@ import { BANNER_GRADIENT } from "@/theme/brand";
 
 export const PRODUCT_MAXW = 1200;
 export const PANEL_BG = "#fff";
-export const CARD_BORDER = "1px solid rgba(43,27,20,0.09)";
+export const CARD_BORDER = "1px solid rgba(58,61,66,0.09)";
 
 export type HeroAction = { label: string; href: string; external?: boolean };
 
@@ -35,7 +35,7 @@ export default function ProductPageHero({
   actions?: HeroAction[];
 }) {
   return (
-    <Box sx={{ background: BANNER_GRADIENT, color: "#fff", position: "relative", overflow: "hidden" }}>
+    <Box sx={{ ...LIGHT_BANNER, position: "relative", overflow: "hidden" }}>
       <Box
         sx={{
           position: "relative",
@@ -46,10 +46,10 @@ export default function ProductPageHero({
         }}
       >
         <Box>
-          {breadcrumbs && <PageBreadcrumbs items={breadcrumbs} tone="onDark" sx={{ mb: { xs: 2.5, md: 3 } }} />}
+          {breadcrumbs && <PageBreadcrumbs items={breadcrumbs} sx={{ mb: { xs: 2.5, md: 3 } }} />}
           <Typography
             sx={{
-              color: "rgba(255,255,255,0.75)",
+              color: KRONOX.steel,
               letterSpacing: "0.16em",
               fontSize: "0.72rem",
               fontWeight: 800,
@@ -61,12 +61,12 @@ export default function ProductPageHero({
           </Typography>
           <Typography
             component="h1"
-            sx={{ fontSize: { xs: "2.1rem", md: "3rem" }, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.02em", color: "#fff" }}
+            sx={{ fontSize: { xs: "2.1rem", md: "3rem" }, fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.02em", color: KRONOX.text }}
           >
             {title}
           </Typography>
           {subtitle && (
-            <Typography sx={{ color: "rgba(255,255,255,0.85)", fontSize: { xs: "1rem", md: "1.08rem" }, mt: 1.75, maxWidth: 640, lineHeight: 1.6 }}>
+            <Typography sx={{ color: KRONOX.steel, fontSize: { xs: "1rem", md: "1.08rem" }, mt: 1.75, maxWidth: 640, lineHeight: 1.6 }}>
               {subtitle}
             </Typography>
           )}
@@ -80,11 +80,11 @@ export default function ProductPageHero({
                     px: 1.5,
                     py: 0.6,
                     borderRadius: "999px",
-                    bgcolor: "rgba(255,255,255,0.12)",
-                    border: "1px solid rgba(255,255,255,0.3)",
+                    bgcolor: "#fff",
+                    border: "1px solid rgba(110,113,117,0.28)",
                     fontSize: "0.8rem",
                     fontWeight: 600,
-                    color: "#fff",
+                    color: KRONOX.text,
                   }}
                 >
                   {p}
@@ -112,8 +112,8 @@ export default function ProductPageHero({
                     textDecoration: "none",
                     transition: "background-color 0.15s ease, transform 0.15s ease",
                     ...(i === 0
-                      ? { bgcolor: "#fff", color: "primary.main", "&:hover": { bgcolor: "rgba(255,255,255,0.92)", transform: "translateY(-1px)" } }
-                      : { color: "#fff", border: "1.5px solid rgba(255,255,255,0.55)", "&:hover": { bgcolor: "rgba(255,255,255,0.1)", transform: "translateY(-1px)" } }),
+                      ? { bgcolor: "primary.main", color: "#fff", "&:hover": { bgcolor: "primary.dark", transform: "translateY(-1px)" } }
+                      : { color: KRONOX.text, bgcolor: "#fff", border: `1.5px solid ${KRONOX.steel}`, "&:hover": { borderColor: "#E0393E", color: "#E0393E", transform: "translateY(-1px)" } }),
                   }}
                 >
                   {a.label}

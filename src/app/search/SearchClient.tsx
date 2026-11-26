@@ -20,7 +20,7 @@ import { useSearch, type ProductHit } from "@/api/useSearch";
 import SearchBar from "@/Common/Navbar/SearchBar";
 
 const WIDE = 1320;
-const CARD_BORDER = "1px solid rgba(43,27,20,0.10)";
+const CARD_BORDER = "1px solid rgba(58,61,66,0.10)";
 const PAGE_SIZE = 24;       // products per page
 const VALUE_LIMIT = 6;      // values shown per filter before "Show all"
 const DEFAULT_OPEN = 4;     // first N filter groups open by default
@@ -141,7 +141,7 @@ export default function SearchClient({ q }: { q: string }) {
   const hasQuery = q.trim().length > 0;
 
   return (
-    <Box sx={{ bgcolor: "#FAF6F4", minHeight: "70vh" }}>
+    <Box sx={{ bgcolor: "#F5F5F6", minHeight: "70vh" }}>
       <Container maxWidth={false} sx={{ maxWidth: WIDE, px: { xs: 2.5, md: 5 }, py: { xs: 4, md: 5 } }}>
         <Box sx={{ maxWidth: 560, mb: 3 }}>
           <SearchBar fullWidth prominent initial={q} />
@@ -192,7 +192,7 @@ export default function SearchClient({ q }: { q: string }) {
                       label={value}
                       size="small"
                       onDelete={() => toggle(name, value)}
-                      sx={{ bgcolor: "rgba(231,57,15,0.08)", color: "primary.dark", fontWeight: 600, maxWidth: "100%" }}
+                      sx={{ bgcolor: "rgba(224,57,62,0.08)", color: "primary.dark", fontWeight: 600, maxWidth: "100%" }}
                     />
                   ))}
                 </Box>
@@ -208,7 +208,7 @@ export default function SearchClient({ q }: { q: string }) {
                   const expanded = showAll[g.name] ?? false;
                   const shown = expanded ? g.values : g.values.slice(0, VALUE_LIMIT);
                   return (
-                    <Box key={g.name} sx={{ borderTop: idx === 0 ? "none" : "1px solid rgba(43,27,20,0.08)", py: 1.25 }}>
+                    <Box key={g.name} sx={{ borderTop: idx === 0 ? "none" : "1px solid rgba(58,61,66,0.08)", py: 1.25 }}>
                       <Box
                         component="button"
                         type="button"
@@ -230,13 +230,13 @@ export default function SearchClient({ q }: { q: string }) {
                               <Box
                                 key={value}
                                 component="label"
-                                sx={{ display: "flex", alignItems: "center", gap: 0.75, cursor: "pointer", py: 0.4, borderRadius: "8px", px: 0.5, mx: -0.5, "&:hover": { bgcolor: "rgba(43,27,20,0.03)" } }}
+                                sx={{ display: "flex", alignItems: "center", gap: 0.75, cursor: "pointer", py: 0.4, borderRadius: "8px", px: 0.5, mx: -0.5, "&:hover": { bgcolor: "rgba(58,61,66,0.03)" } }}
                               >
                                 <Checkbox
                                   checked={checked}
                                   onChange={() => toggle(g.name, value)}
                                   size="small"
-                                  sx={{ p: 0.25, color: "rgba(43,27,20,0.3)", "&.Mui-checked": { color: "primary.main" } }}
+                                  sx={{ p: 0.25, color: "rgba(58,61,66,0.3)", "&.Mui-checked": { color: "primary.main" } }}
                                 />
                                 <Typography className="no-capitalize" sx={{ flex: 1, fontSize: "0.9rem", fontWeight: checked ? 700 : 400, color: checked ? "text.primary" : "text.secondary" }}>
                                   {value}
@@ -287,7 +287,7 @@ export default function SearchClient({ q }: { q: string }) {
                         label={value}
                         size="small"
                         onDelete={() => toggle(name, value)}
-                        sx={{ bgcolor: "rgba(231,57,15,0.08)", color: "primary.dark", fontWeight: 600 }}
+                        sx={{ bgcolor: "rgba(224,57,62,0.08)", color: "primary.dark", fontWeight: 600 }}
                       />
                     ))}
                     {activeChips.length > 0 && (
@@ -303,9 +303,9 @@ export default function SearchClient({ q }: { q: string }) {
                         key={p.id}
                         component={Link}
                         href={p.href}
-                        sx={{ display: "flex", flexDirection: "column", bgcolor: "#fff", border: CARD_BORDER, borderRadius: "14px", overflow: "hidden", textDecoration: "none", color: "inherit", transition: "border-color .15s ease, transform .15s ease, box-shadow .15s ease", "&:hover": { borderColor: "rgba(231,57,15,0.45)", transform: "translateY(-3px)", boxShadow: "0 14px 32px rgba(43,27,20,0.10)" } }}
+                        sx={{ display: "flex", flexDirection: "column", bgcolor: "#fff", border: CARD_BORDER, borderRadius: "14px", overflow: "hidden", textDecoration: "none", color: "inherit", transition: "border-color .15s ease, transform .15s ease, box-shadow .15s ease", "&:hover": { borderColor: "rgba(224,57,62,0.45)", transform: "translateY(-3px)", boxShadow: "0 14px 32px rgba(58,61,66,0.10)" } }}
                       >
-                        <Box sx={{ height: 120, display: "flex", alignItems: "center", justifyContent: "center", p: 1.5, background: "radial-gradient(120% 90% at 50% 40%, #FFFFFF 0%, #F4EEEA 100%)" }}>
+                        <Box sx={{ height: 120, display: "flex", alignItems: "center", justifyContent: "center", p: 1.5, background: "radial-gradient(120% 90% at 50% 40%, #FFFFFF 0%, #ECEDEE 100%)" }}>
                           {p.image && (
                             // eslint-disable-next-line @next/next/no-img-element
                             <img src={p.image} alt="" loading="lazy" style={{ maxWidth: "80%", maxHeight: "100%", objectFit: "contain", mixBlendMode: "multiply" } as React.CSSProperties} />

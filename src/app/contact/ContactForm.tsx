@@ -53,12 +53,12 @@ const MAX_MESSAGE = 5000;
 // Labels sit above soft filled inputs; the outline only appears on focus.
 const fieldSx = {
   '& .MuiOutlinedInput-root': {
-    bgcolor: '#F8F5F3',
+    bgcolor: '#F5F5F6',
     borderRadius: '10px',
     transition: 'box-shadow 0.2s ease, background-color 0.2s ease',
     '& fieldset': { borderColor: 'transparent' },
-    '&:hover fieldset': { borderColor: 'rgba(43,27,20,0.15)' },
-    '&.Mui-focused': { bgcolor: '#fff', boxShadow: '0 0 0 4px rgba(231,57,15,0.12)' },
+    '&:hover fieldset': { borderColor: 'rgba(58,61,66,0.15)' },
+    '&.Mui-focused': { bgcolor: '#fff', boxShadow: '0 0 0 4px rgba(224,57,62,0.12)' },
     '&.Mui-focused fieldset': { borderColor: 'primary.main', borderWidth: '1.5px' },
   },
   '& .MuiInputBase-input::placeholder': { color: 'text.secondary', opacity: 0.7 },
@@ -263,9 +263,9 @@ export default function ContactForm() {
                   textTransform: 'none',
                   fontWeight: 700,
                   fontSize: '1rem',
-                  boxShadow: '0 10px 24px rgba(231,57,15,0.28)',
+                  boxShadow: '0 10px 24px rgba(224,57,62,0.28)',
                   transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 14px 30px rgba(231,57,15,0.34)' },
+                  '&:hover': { transform: 'translateY(-2px)', boxShadow: '0 14px 30px rgba(224,57,62,0.34)' },
                 }}
               >
                 {isPending ? <CircularProgress size={22} color="inherit" /> : 'Submit Enquiry'}

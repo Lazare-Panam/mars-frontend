@@ -13,6 +13,8 @@
 // Our copies of Mars Valve Co.'s series photos, on Azure blob storage,
 // stored as <range folder>/<series-id>.<ext>.
 const IMG = "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/";
+// Rebranded Kronox product photos (replacing the MARS-branded ones above, batch by batch).
+const KX_IMG = "https://pblol2.blob.core.windows.net/kronox/products/";
 
 export type FamilySeries = {
   name: string;
@@ -60,14 +62,14 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
     kind: "One-piece",
     intro: "Compact, high-pressure stainless steel one-piece ball valves. Choose a series to configure sizes, ends and options.",
     series: [
-      { name: "Series 10-10", image: IMG + "one-piece-ball-valves/series-10-10.png", href: "/series/4", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "800 PSI"], ["Body", "SS316 (CF8M)"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], action: "configure" },
-      { name: "Series 10-30", image: IMG + "one-piece-ball-valves/series-10-30.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 1\""], ["Pressure", "800 PSI"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/16", action: "configure" },
-      { name: "Series 10-40", image: IMG + "one-piece-ball-valves/series-10-40.jpg", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/8\" \u2013 1/2\""], ["Pressure", "PN50"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT (female-female thread)"]], href: "/series/17", action: "configure" },
-      { name: "Series 10-50", image: IMG + "one-piece-ball-valves/series-10-50.jpg", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/8\" \u2013 1/2\""], ["Pressure", "PN50"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT (female-male thread)"]], href: "/series/18", action: "configure" },
-      { name: "Series F10-20, Direct Mount", image: IMG + "one-piece-ball-valves/series-f10-20.jpg", specs: [["Design", "1-piece direct mount ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "1000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/19", action: "configure" },
-      { name: "Series F10-30", image: IMG + "one-piece-ball-valves/series-f10-30.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE / TFM1600"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/20", action: "configure" },
-      { name: "Series F10-50, 2000PSI", image: IMG + "one-piece-ball-valves/series-f10-50.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "2000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE / RTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/21", action: "configure" },
-      { name: "Series F10-60, Fire Safe", image: IMG + "one-piece-ball-valves/series-f10-60.jpg", specs: [["Design", "1-piece fire safe ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "2000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE"], ["Ends", "NPT, BSP, BSPT"], ["Fire safe", "API 607,4th Edition"]], href: "/series/22", action: "configure" },
+      { name: "Series 10-10", image: KX_IMG + "One-piece-ball-valves/series-10-10.png", href: "/series/4", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "800 PSI"], ["Body", "SS316 (CF8M)"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], action: "configure" },
+      { name: "Series 10-30", image: KX_IMG + "One-piece-ball-valves/series-10-30.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 1\""], ["Pressure", "800 PSI"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/16", action: "configure" },
+      { name: "Series 10-40", image: KX_IMG + "One-piece-ball-valves/series-10-40.jpg", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/8\" \u2013 1/2\""], ["Pressure", "PN50"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT (female-female thread)"]], href: "/series/17", action: "configure" },
+      { name: "Series 10-50", image: KX_IMG + "One-piece-ball-valves/series-10-50.jpg", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/8\" \u2013 1/2\""], ["Pressure", "PN50"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT (female-male thread)"]], href: "/series/18", action: "configure" },
+      { name: "Series F10-20, Direct Mount", image: KX_IMG + "One-piece-ball-valves/series-f10-20.jpg", specs: [["Design", "1-piece direct mount ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "1000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/19", action: "configure" },
+      { name: "Series F10-30", image: KX_IMG + "One-piece-ball-valves/series-f10-30.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE / TFM1600"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/20", action: "configure" },
+      { name: "Series F10-50, 2000PSI", image: KX_IMG + "One-piece-ball-valves/series-f10-50.png", specs: [["Design", "1-piece design ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "2000 PSI"], ["Body", "CF8M"], ["Seats", "PTFE / RTFE"], ["Ends", "NPT, BSP, BSPT"]], href: "/series/21", action: "configure" },
+      { name: "Series F10-60, Fire Safe", image: KX_IMG + "One-piece-ball-valves/series-f10-60.jpg", specs: [["Design", "1-piece fire safe ball valve"], ["Port", "Reduced port"], ["Size", "1/4\" \u2013 2\""], ["Pressure", "2000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE"], ["Ends", "NPT, BSP, BSPT"], ["Fire safe", "API 607,4th Edition"]], href: "/series/22", action: "configure" },
     ],
   },
   {

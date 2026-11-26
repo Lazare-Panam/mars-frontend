@@ -2,7 +2,7 @@ import { SERIES } from "@/app/products/data/categories";
 
 // The product category bar under the main header (modelled on marsselect.co.uk).
 //
-// Classification follows the manufacturer's own catalogue (marsvalve.com.tw):
+// Classification follows the manufacturer's own catalogue:
 // body construction first (1/2/3-piece, flanged), then configuration
 // (multi-port, V-port), then service (sanitary, fire safe, metal seated), plus
 // a by-series list. Only ranges we actually list are included; every link was

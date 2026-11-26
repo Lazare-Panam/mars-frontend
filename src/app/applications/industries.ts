@@ -77,7 +77,6 @@ export const INDUSTRIES: Industry[] = [
       { link: "Metal seated ball valves", href: URLS.metalSeated, after: " (ANSI Class 600 three-piece) for abrasive or high-temperature duty" },
       { link: "Actuated packages", href: URLS.actuated },
     ],
-    readNext: { link: "Fire-safe ball valves: protecting critical systems during a fire", href: URLS.fireSafeBlog },
     cta: { lead: "Need a fire-safe valve for a hydrocarbon line?", link: "Ask which series are API 607 tested" },
     image:
       "https://images.unsplash.com/photo-1726111262949-e22631a8c376?fm=jpg&q=80&w=1600&auto=format&fit=crop",
@@ -97,12 +96,7 @@ export const INDUSTRIES: Industry[] = [
     ],
     specify: [
       "Body: CF8M (316) or CF3M (316L) stainless as standard",
-      {
-        before: "Seats: PTFE for most media; RPTFE, carbon-filled RTFE, PEEK or metal seats for higher temperatures, pressures or abrasion (see the seat guide in the ",
-        link: "e-catalogue",
-        href: URLS.catalogue,
-        after: ")",
-      },
+      "Seats: PTFE for most media; RPTFE, carbon-filled RTFE, PEEK or metal seats for higher temperatures, pressures or abrasion",
       "Stem sealing: live-loaded stem packing on selected series",
     ],
     recommended: [
@@ -134,7 +128,6 @@ export const INDUSTRIES: Industry[] = [
       { link: "Economical sanitary ball valves", href: URLS.sanitaryEconomical, after: ": Series 55SN and 50SN" },
       { link: "Sanitary butterfly valves", href: URLS.sanitaryButterfly },
     ],
-    readNext: { link: "Tri-Clamp Sanitary Ball Valves: CF3M vs CF8M", href: URLS.triClampBlog },
     cta: { lead: "Need a surface finish, certificate or cavity filler seats?", link: "Ask us about sanitary specifications" },
     image: "https://pblol2.blob.core.windows.net/hiflux/food-beverage-mars.jpg",
     imageAlt: "Fresh food bowl representing the food and beverage industry",
@@ -200,7 +193,7 @@ export const INDUSTRIES: Industry[] = [
     recommended: [
       { link: "Flanged ball valves", href: URLS.flanged, after: " (ANSI / DIN)" },
       { link: "Three-piece ball valves", href: URLS.threePiece },
-      { link: "Fire-safe series", href: URLS.fireSafeBlog, after: " for fuel lines" },
+      { link: "Fire-safe series", href: URLS.fireSafe, after: " for fuel lines" },
     ],
     cta: { link: "Ask about marine specifications" },
     image:

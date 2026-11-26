@@ -1,38 +1,33 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import Link from "next/link";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import ScienceIcon from "@mui/icons-material/Science";
 import Reveal from "@/Common/Reveal";
 
-// Only badges backed by a manufacturer certificate (see /certifications).
+// Only badges backed by a manufacturer certificate.
 const CREDENTIALS = [
   {
     icon: <LocalFireDepartmentIcon fontSize="small" />,
     label: "API 607 fire-safe",
     desc: "Selected series: 28, 83, 88, 90, 90D, 91D",
-    href: "/certifications#fire-safe",
   },
   {
     icon: <ScienceIcon fontSize="small" />,
     label: "SIL 3 capable",
     desc: "exida · IEC 61508, selected series",
-    href: "/certifications#sil-3",
   },
   {
     icon: <WorkspacePremiumIcon fontSize="small" />,
     label: "ISO 9001 manufacturer",
     desc: "Quality management system, LRQA",
-    href: "/certifications#iso-9001",
   },
   {
     icon: <VerifiedIcon fontSize="small" />,
     label: "Genuine Kronox product",
     desc: "Authentic valves, UK stock",
-    href: "/mars-brand",
   },
 ];
 
@@ -125,8 +120,6 @@ export default function TrustBar() {
               {CREDENTIALS.map((c) => (
                 <Box
                   key={c.label}
-                  component={Link}
-                  href={c.href}
                   sx={{
                     display: "flex",
                     alignItems: "center",
@@ -184,24 +177,6 @@ export default function TrustBar() {
                   </Box>
                 </Box>
               ))}
-            </Box>
-            <Box
-              component={Link}
-              href="/certifications"
-              sx={{
-                display: "inline-flex",
-                mt: 4,
-                color: "primary.main",
-                fontWeight: 700,
-                fontSize: "0.92rem",
-                textDecoration: "none",
-                borderBottom: "2px solid",
-                borderColor: "primary.main",
-                pb: 0.25,
-                "&:hover": { color: "primary.dark", borderColor: "primary.dark" },
-              }}
-            >
-              View all certifications &amp; downloads →
             </Box>
           </Box>
         </Reveal>

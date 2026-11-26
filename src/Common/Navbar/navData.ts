@@ -284,17 +284,11 @@ export const LEFT_NAV: NavItem[] = [
   },
   { label: "Kronox Brand", href: "/mars-brand" },
   { label: "Applications", href: "/applications" },
-  { label: "Certifications", href: "/certifications", wideOnly: true },
+  { label: "News", href: "/news" },
+  // Certifications hidden for now.
 ];
 
 export const RIGHT_NAV: NavItem[] = [
-  // Was two links ("Download" and "E-catalog") to the same PDF. On desktop it
-  // now lives in the red top bar (TopBar.tsx); the mobile drawer lists it here.
-  {
-    label: "E-Catalogue",
-    href: "https://pblol2.blob.core.windows.net/mars-valves/catalogs/mars-e-catalog.pdf",
-    newTab: true,
-  },
-  { label: "News", href: "/news" },
+  // E-Catalogue hidden for now.
   { label: "Contact Us", href: "/contact" },
 ];

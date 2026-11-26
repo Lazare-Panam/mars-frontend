@@ -73,7 +73,7 @@ export default function StockBanner() {
     <>
     <Box
       component="section"
-      aria-label="Stock update: a big Kronox valve shipment is inbound from Taiwan to the UK"
+      aria-label="Stock update: a big Kronox valve shipment is on its way to our UK warehouse"
       sx={{
         position: "relative",
         overflow: "hidden",
@@ -142,6 +142,7 @@ export default function StockBanner() {
             component={Link}
             href={ARTICLE}
             sx={{
+              "&:hover": { textDecoration: "underline" },
               display: "block",
               color: KRONOX.text,
               textDecoration: "none",
@@ -149,7 +150,6 @@ export default function StockBanner() {
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
               fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.85rem" },
-              "&:hover": { textDecoration: "underline" },
             }}
           >
             A Big Order Is Coming Soon
@@ -165,7 +165,7 @@ export default function StockBanner() {
               display: { xs: "none", sm: "block" },
             }}
           >
-            A large shipment of Kronox valves is on its way from Taiwan to our UK warehouse.
+            A large shipment of Kronox valves is on its way to our UK warehouse.
           </Box>
         </Box>
 
@@ -188,7 +188,7 @@ export default function StockBanner() {
               color: KRONOX.steel,
             }}
           >
-            <LocalShippingOutlinedIcon sx={{ fontSize: 15 }} /> TW → UK
+            <LocalShippingOutlinedIcon sx={{ fontSize: 15 }} /> INBOUND · UK STOCK
           </Box>
           {/* belt window: crates slide across, soft-faded at both edges */}
           <Box

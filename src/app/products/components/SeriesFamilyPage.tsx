@@ -5,7 +5,7 @@ import { Box, Container, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import CtaBand from "@/Common/CtaBand";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import { CATEGORIES } from "../data/categories";
 import { familyModelsHref, type FamilySeries, type SeriesFamily } from "../data/seriesFamilies";
 
@@ -14,7 +14,7 @@ import { familyModelsHref, type FamilySeries, type SeriesFamily } from "../data/
 // data/seriesFamilies.ts, so ranges are edited there, not here.
 
 const WIDE = 1440;
-const CARD_BORDER = "1px solid rgba(43,27,20,0.09)";
+const CARD_BORDER = "1px solid rgba(58,61,66,0.09)";
 
 const TAG_LABELS: Record<string, string> = { DM: "Direct mount", FS: "Fire safe" };
 
@@ -98,7 +98,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
         bgcolor: "#fff",
         transition: "box-shadow .25s ease, transform .25s ease, border-color .25s ease",
         "& img": { transition: "transform .4s ease" },
-        "&:hover": { boxShadow: "0 18px 44px rgba(43,27,20,0.10)", transform: "translateY(-4px)", borderColor: "rgba(231,57,15,0.45)" },
+        "&:hover": { boxShadow: "0 18px 44px rgba(58,61,66,0.10)", transform: "translateY(-4px)", borderColor: "rgba(224,57,62,0.45)" },
         "&:hover img": { transform: "scale(1.05)" },
         "&:hover .card-cta": { gap: 1 },
       }}
@@ -108,7 +108,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
           position: "relative",
           height: 210,
           p: 2,
-          background: "radial-gradient(120% 90% at 50% 40%, #FFFFFF 0%, #F4EEEA 100%)",
+          background: "radial-gradient(120% 90% at 50% 40%, #FFFFFF 0%, #ECEDEE 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -129,7 +129,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
         {tags.length > 0 && (
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.75, mt: 1 }}>
             {tags.map((t) => (
-              <Box key={t} component="span" sx={{ px: 1, py: 0.25, borderRadius: "999px", bgcolor: "rgba(231,57,15,0.08)", color: "primary.dark", fontSize: "0.72rem", fontWeight: 700 }}>
+              <Box key={t} component="span" sx={{ px: 1, py: 0.25, borderRadius: "999px", bgcolor: "rgba(224,57,62,0.08)", color: "primary.dark", fontSize: "0.72rem", fontWeight: 700 }}>
                 {t}
               </Box>
             ))}
@@ -138,7 +138,7 @@ function SeriesCard({ s, title, quoteOnly }: { s: FamilySeries; title: string; q
         {specs.length > 0 && (
           <Box sx={{ mt: 1.5 }}>
             {specs.map(([k, v], i) => (
-              <Box key={k} sx={{ display: "flex", justifyContent: "space-between", gap: 2, py: 0.85, borderTop: i === 0 ? "none" : "1px solid rgba(43,27,20,0.06)" }}>
+              <Box key={k} sx={{ display: "flex", justifyContent: "space-between", gap: 2, py: 0.85, borderTop: i === 0 ? "none" : "1px solid rgba(58,61,66,0.06)" }}>
                 <Typography sx={{ fontSize: "0.85rem", color: "text.secondary", flexShrink: 0 }}>{k}</Typography>
                 <Typography sx={{ fontSize: "0.85rem", fontWeight: 700, textAlign: "right" }} className="no-capitalize">{v}</Typography>
               </Box>
@@ -166,9 +166,9 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
   const modelsHref = familyModelsHref(family);
 
   return (
-    <Box sx={{ bgcolor: "#FAF6F4" }}>
+    <Box sx={{ bgcolor: "#fff" }}>
       {/* Hero: copy + facts on the left, a showcase of the range on the right */}
-      <Box sx={{ background: BANNER_GRADIENT, color: "#fff", overflow: "hidden" }}>
+      <Box sx={{ ...LIGHT_BANNER, overflow: "hidden" }}>
         <Box
           sx={{
             maxWidth: WIDE,
@@ -182,32 +182,32 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
           }}
         >
           <Box>
-            <PageBreadcrumbs items={crumbs} tone="onDark" sx={{ mb: 3 }} />
-            <Typography sx={{ color: "rgba(255,255,255,0.75)", letterSpacing: "0.16em", fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", mb: 1 }}>
+            <PageBreadcrumbs items={crumbs} sx={{ mb: 3 }} />
+            <Typography sx={{ color: KRONOX.steel, letterSpacing: "0.16em", fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", mb: 1 }}>
               Kronox Ball Valves
             </Typography>
             <Typography component="h1" sx={{ fontSize: { xs: "2.2rem", md: "3.2rem" }, fontWeight: 800, lineHeight: 1.04, letterSpacing: "-0.03em" }}>
               {family.title}
             </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.88)", fontSize: { xs: "1rem", md: "1.1rem" }, mt: 2, maxWidth: 560, lineHeight: 1.6 }}>
+            <Typography sx={{ color: KRONOX.steel, fontSize: { xs: "1rem", md: "1.1rem" }, mt: 2, maxWidth: 560, lineHeight: 1.6 }}>
               {family.intro}
             </Typography>
 
             <Box sx={{ display: "flex", flexWrap: "wrap", mt: 3.5, rowGap: 2 }}>
               {facts(family).map(([v, l], i, arr) => (
                 <Box
-                  key={l}
-                  sx={{ pr: 3, mr: 3, minWidth: { xs: "40%", md: 0 }, borderRight: { md: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.3)" : "none" } }}
+                  key={`${v}-${l}`}
+                  sx={{ pr: 3, mr: 3, minWidth: { xs: "40%", md: 0 }, borderRight: { md: i < arr.length - 1 ? "1px solid rgba(110,113,117,0.28)" : "none" } }}
                 >
                   <Typography sx={{ fontWeight: 800, fontSize: { xs: "1.2rem", md: "1.4rem" }, lineHeight: 1.1 }} className="no-capitalize">{v}</Typography>
-                  <Typography sx={{ color: "rgba(255,255,255,0.75)", fontSize: "0.8rem", mt: 0.25 }}>{l}</Typography>
+                  <Typography sx={{ color: KRONOX.steel, fontSize: "0.8rem", mt: 0.25 }}>{l}</Typography>
                 </Box>
               ))}
             </Box>
 
             <Box sx={{ display: "flex", gap: 1.5, flexWrap: "wrap", mt: 4 }}>
               {configurable?.href && (
-                <Box component={Link} href={configurable.href} sx={{ display: "inline-flex", alignItems: "center", gap: 1, px: 3, py: 1.4, borderRadius: "999px", bgcolor: "#fff", color: "primary.main", fontWeight: 700, textDecoration: "none", "&:hover": { bgcolor: "rgba(255,255,255,0.92)" } }}>
+                <Box component={Link} href={configurable.href} sx={{ display: "inline-flex", alignItems: "center", gap: 1, px: 3, py: 1.4, borderRadius: "999px", bgcolor: "primary.main", color: "#fff", fontWeight: 700, textDecoration: "none", "&:hover": { bgcolor: "primary.dark" } }}>
                   Configure {splitName(configurable.name).title} <ArrowForwardIcon fontSize="small" />
                 </Box>
               )}
@@ -224,8 +224,8 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
                   fontWeight: 700,
                   textDecoration: "none",
                   ...(configurable
-                    ? { border: "1.5px solid rgba(255,255,255,0.55)", color: "#fff", "&:hover": { bgcolor: "rgba(255,255,255,0.1)" } }
-                    : { bgcolor: "#fff", color: "primary.main", "&:hover": { bgcolor: "rgba(255,255,255,0.92)" } }),
+                    ? { border: `1.5px solid ${KRONOX.steel}`, color: KRONOX.text, bgcolor: "#fff", "&:hover": { borderColor: "#E0393E", color: "#E0393E" } }
+                    : { bgcolor: "primary.main", color: "#fff", "&:hover": { bgcolor: "primary.dark" } }),
                 }}
               >
                 Request a Quote {!configurable && <ArrowForwardIcon fontSize="small" />}
@@ -244,6 +244,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
                     gridRow: i === 0 ? "span 2" : "auto",
                     gridColumn: showcase.length === 2 ? "span 1" : "auto",
                     bgcolor: "#fff",
+                    border: `1px solid ${KRONOX.line}`,
                     borderRadius: "24px",
                     p: 2.5,
                     display: "flex",
@@ -365,8 +366,8 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
               width: "100%",
               minWidth: 640,
               borderCollapse: "collapse",
-              "& th, & td": { textAlign: "left", px: { xs: 2, md: 2.5 }, py: 1.5, fontSize: "0.9rem", borderBottom: "1px solid rgba(43,27,20,0.08)" },
-              "& thead th": { fontWeight: 800, fontSize: "0.78rem", letterSpacing: "0.04em", textTransform: "uppercase", color: "text.secondary", bgcolor: "#FAF6F4" },
+              "& th, & td": { textAlign: "left", px: { xs: 2, md: 2.5 }, py: 1.5, fontSize: "0.9rem", borderBottom: "1px solid rgba(58,61,66,0.08)" },
+              "& thead th": { fontWeight: 800, fontSize: "0.78rem", letterSpacing: "0.04em", textTransform: "uppercase", color: "text.secondary", bgcolor: "#F5F5F6" },
               "& tbody tr:last-of-type td": { borderBottom: "none" },
               "& tbody td:first-of-type": { fontWeight: 800 },
             }}
@@ -389,7 +390,7 @@ export default function SeriesFamilyPage({ family }: { family: SeriesFamily }) {
                   <td className="no-capitalize">{r.mounting}</td>
                   <td
                     className="no-capitalize"
-                    style={r.fireSafe !== "—" ? { color: "#A8270A", fontWeight: 700 } : undefined}
+                    style={r.fireSafe !== "—" ? { color: "#B8262C", fontWeight: 700 } : undefined}
                   >
                     {r.fireSafe}
                   </td>

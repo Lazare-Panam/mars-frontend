@@ -112,7 +112,7 @@ export default async function BlogPage({
         related={[1, 2, 3]
           .map((step) => blogs[(blogs.indexOf(blog) + step) % blogs.length])
           .filter((b) => b.slug !== blog.slug)
-          .map((b) => ({ slug: b.slug, title: b.title, category: b.category }))}
+          .map((b) => ({ slug: b.slug, title: b.title, category: b.category, heroImage: b.heroImage, date: b.date }))}
       />
     </>
   );

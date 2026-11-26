@@ -20,8 +20,8 @@ import axios from "axios";
 import MagneticWrap from "@/Common/MagneticWrap";
 import { useCartStore } from "@/store/useCartStore";
 
-const ERROR_SOFT = "#B3453A";
-const ERROR_SOFT_BG = "rgba(179, 69, 58, 0.06)";
+const ERROR_SOFT = "#C42E33";
+const ERROR_SOFT_BG = "rgba(196,46,51, 0.06)";
 
 const fieldSx = {
   "& .MuiOutlinedInput-root": {
@@ -35,7 +35,7 @@ const fieldSx = {
     },
   },
   "& .MuiOutlinedInput-root.Mui-focused": {
-    boxShadow: "0 0 0 4px rgba(231,57,15,0.12)",
+    boxShadow: "0 0 0 4px rgba(224,57,62,0.12)",
   },
   "& .MuiFormHelperText-root": { fontWeight: 600, ml: 0 },
   "& .MuiFormHelperText-root.Mui-error": { color: ERROR_SOFT },

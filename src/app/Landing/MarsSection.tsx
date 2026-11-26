@@ -46,7 +46,7 @@ export default function MarsSection() {
         position: "relative",
         overflow: "hidden",
         py: { xs: 8, md: 12 },
-        bgcolor: "background.default",
+        bgcolor: "#FBEBEC", // faded Kronox red, same as the page banners
       }}
     >
       {/* faint drawing grid, fading out towards the left */}
@@ -57,7 +57,7 @@ export default function MarsSection() {
           inset: 0,
           pointerEvents: "none",
           backgroundImage:
-            "linear-gradient(rgba(110,113,117,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.08) 1px, transparent 1px)",
+            "linear-gradient(rgba(224,57,62,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(224,57,62,0.08) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           maskImage: "linear-gradient(90deg, transparent 0%, #000 60%)",
           WebkitMaskImage: "linear-gradient(90deg, transparent 0%, #000 60%)",

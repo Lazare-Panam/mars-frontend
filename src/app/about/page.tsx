@@ -8,12 +8,12 @@ import {
   Grid,
   useTheme,
 } from "@mui/material";
-import Image from "next/image";
 import Link from "next/link";
 import EngineeringOutlinedIcon from "@mui/icons-material/EngineeringOutlined";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
 
@@ -67,48 +67,26 @@ export default function AboutUsPage() {
       {/* HERO */}
       <Box
         sx={{
-          position: "relative",
-          height: { xs: 420, md: 560 },
-          overflow: "hidden",
+          ...LIGHT_BANNER,
+          py: { xs: 8, md: 12 },
         }}
       >
-        <Image
-          src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="Kronox industrial ball valves supplied by Kronox Valves"
-          fill
-          priority
-          style={{ objectFit: "cover" }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(74,18,6,0.35) 0%, rgba(74,18,6,0.75) 100%)",
-          }}
-        />
 
         <Container
           maxWidth="lg"
           sx={{
             position: "relative",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            pb: { xs: 5, md: 8 },
           }}
         >
           <Reveal>
             <Typography
               sx={{
-                color: "#fff",
+                color: "primary.main",
                 fontSize: "0.72rem",
                 fontWeight: 700,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 mb: 2,
-                opacity: 0.85,
               }}
             >
               About Kronox Valves
@@ -117,8 +95,7 @@ export default function AboutUsPage() {
             <Typography
               component="h1"
               sx={{
-                color: "#fff",
-                fontFamily: "Georgia, 'Times New Roman', serif",
+                color: KRONOX.text,
                 fontWeight: 700,
                 fontSize: { xs: "2.4rem", md: "4rem" },
                 lineHeight: 1.05,
@@ -137,7 +114,7 @@ export default function AboutUsPage() {
 
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.82)",
+                color: KRONOX.steel,
                 fontSize: { xs: "0.95rem", md: "1.05rem" },
                 mt: 2.5,
                 maxWidth: 560,
@@ -154,8 +131,8 @@ export default function AboutUsPage() {
 
       <Divider sx={{ borderColor: LINE }} />
 
-      {/* OUR STORY */}
-      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
+      {/* OUR STORY (white band under the banner, full-bleed) */}
+      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fff", boxShadow: "0 0 0 100vmax #fff", clipPath: "inset(0 -100vmax)" }}>
         <Reveal>
         <Box
           sx={{

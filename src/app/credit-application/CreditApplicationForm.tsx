@@ -87,7 +87,7 @@ const fieldSx = {
     transition: 'box-shadow 0.2s ease',
   },
   '& .MuiOutlinedInput-root.Mui-focused': {
-    boxShadow: '0 0 0 4px rgba(231,57,15,0.12)',
+    boxShadow: '0 0 0 4px rgba(224,57,62,0.12)',
   },
 };
 

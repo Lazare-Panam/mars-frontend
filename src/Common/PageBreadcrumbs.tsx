@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import type { SxProps, Theme } from "@mui/material/styles";
 import type { Crumb } from "@/lib/breadcrumbs";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 
 /**
  * Visible breadcrumb trail. The last crumb is the current page (not a link).

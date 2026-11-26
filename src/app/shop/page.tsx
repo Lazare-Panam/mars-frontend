@@ -10,7 +10,7 @@ import {
 import { SHOP_PRODUCTS } from "./shopData";
 import Reveal from "@/Common/Reveal";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 const CATEGORY_ID = "ball-valves";
 
 // The cheapest curated item becomes the big featured card — same

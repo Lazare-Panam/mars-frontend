@@ -5,7 +5,7 @@ import EventOutlinedIcon from "@mui/icons-material/EventOutlined";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import { fitBrandTitle } from "@/lib/seoTitle";
 import { CERT_GROUPS, FIRE_SAFE_SERIES } from "@/lib/certificates";
 import AccreditationBar from "@/Common/AccreditationBar";
@@ -51,7 +51,7 @@ function DownloadButton({ label, href }: { label: string; href: string }) {
         fontSize: "0.88rem",
         fontWeight: 600,
         transition: "border-color 0.15s ease, background-color 0.15s ease",
-        "&:hover": { borderColor: "primary.main", bgcolor: "rgba(231,57,15,0.04)", color: "primary.main" },
+        "&:hover": { borderColor: "primary.main", bgcolor: "rgba(224,57,62,0.04)", color: "primary.main" },
       }}
     >
       <PictureAsPdfOutlinedIcon sx={{ fontSize: 20, color: "primary.main", flexShrink: 0 }} />
@@ -66,12 +66,12 @@ export default function CertificationsPage() {
       <JsonLd data={crumbs} />
 
       {/* Hero */}
-      <Box sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 8, md: 11 } }}>
+      <Box sx={{ ...LIGHT_BANNER, py: { xs: 8, md: 11 } }}>
         <Container maxWidth="lg">
           <Reveal>
             <PageBreadcrumbs
               items={[{ label: "Home", href: "/" }, { label: "Certifications" }]}
-              tone="onDark"
+             
               sx={{ mb: 3 }}
             />
             <Typography
@@ -80,7 +80,7 @@ export default function CertificationsPage() {
             >
               Kronox valve certifications and approvals
             </Typography>
-            <Typography sx={{ mt: 2.5, color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 720 }}>
+            <Typography sx={{ mt: 2.5, color: KRONOX.steel, fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 720 }}>
               The certificates and approvals held by Kronox Valves, the
               manufacturer of these ball valves. We supply the certificates for
               the series you order. Download them here or ask for them with your
@@ -97,13 +97,13 @@ export default function CertificationsPage() {
                     px: 1.75,
                     py: 0.6,
                     borderRadius: "999px",
-                    border: "1px solid rgba(255,255,255,0.4)",
-                    color: "#fff",
+                    border: "1px solid rgba(110,113,117,0.28)",
+                    color: KRONOX.text,
                     textDecoration: "none",
                     fontSize: "0.85rem",
                     fontWeight: 600,
                     transition: "background-color 0.15s ease",
-                    "&:hover": { bgcolor: "rgba(255,255,255,0.15)" },
+                    "&:hover": { bgcolor: "rgba(224,57,62,0.08)", borderColor: "#E0393E" },
                   }}
                 >
                   {g.title}
@@ -159,7 +159,7 @@ export default function CertificationsPage() {
                         px: 1.25,
                         py: 0.5,
                         borderRadius: "999px",
-                        bgcolor: "rgba(231,57,15,0.08)",
+                        bgcolor: "rgba(224,57,62,0.08)",
                         color: "primary.dark",
                         fontSize: "0.8rem",
                         fontWeight: 600,
@@ -219,7 +219,7 @@ export default function CertificationsPage() {
         </Box>
       ))}
 
-      <Box sx={{ bgcolor: "#FAF6F4" }}>
+      <Box sx={{ bgcolor: "#F5F5F6" }}>
         <CtaBand
           title="Need certificates with your order?"
           text="Tell us the series, size and material and we'll send the datasheet and the matching certificates with your quote."

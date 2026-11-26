@@ -1,10 +1,10 @@
 "use client";
 
 import { Box, Container, Typography, Divider, useTheme } from "@mui/material";
-import Image from "next/image";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Reveal from "@/Common/Reveal";
 import CtaBand from "@/Common/CtaBand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 
 export default function MarsBrandPage() {
   const theme = useTheme();
@@ -19,48 +19,26 @@ export default function MarsBrandPage() {
       {/* HERO */}
       <Box
         sx={{
-          position: "relative",
-          height: { xs: 420, md: 560 },
-          overflow: "hidden",
+          ...LIGHT_BANNER,
+          py: { xs: 8, md: 12 },
         }}
       >
-        <Image
-          src="https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg"
-          alt="Kronox ball valve"
-          fill
-          priority
-          style={{ objectFit: "cover" }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(15,15,15,0.35) 0%, rgba(15,15,15,0.75) 100%)",
-          }}
-        />
 
         <Container
           maxWidth="lg"
           sx={{
             position: "relative",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            pb: { xs: 5, md: 8 },
           }}
         >
           <Reveal>
             <Typography
               sx={{
-                color: "#fff",
+                color: "primary.main",
                 fontSize: "0.72rem",
                 fontWeight: 700,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 mb: 2,
-                opacity: 0.85,
               }}
             >
               The Kronox Brand
@@ -69,10 +47,9 @@ export default function MarsBrandPage() {
             <Typography
               component="h1"
               sx={{
-                color: "#fff",
-                fontFamily: "Georgia, 'Times New Roman', serif",
-                fontWeight: 700,
-                fontSize: { xs: "2.4rem", md: "4rem" },
+                color: KRONOX.text,
+                fontWeight: 800,
+                fontSize: { xs: "2.4rem", md: "3.6rem" },
                 lineHeight: 1.05,
                 letterSpacing: "-0.01em",
                 maxWidth: 820,
@@ -83,7 +60,7 @@ export default function MarsBrandPage() {
 
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.82)",
+                color: KRONOX.steel,
                 fontSize: { xs: "0.95rem", md: "1.05rem" },
                 mt: 2.5,
                 maxWidth: 600,
@@ -101,7 +78,8 @@ export default function MarsBrandPage() {
       <Divider sx={{ borderColor: LINE }} />
 
       {/* INTRO — own-brand positioning */}
-      <Container maxWidth="md" sx={{ pt: { xs: 8, md: 12 }, pb: { xs: 2, md: 4 } }}>
+      {/* white band under the banner (full-bleed) */}
+      <Container maxWidth="md" sx={{ pt: { xs: 8, md: 12 }, pb: { xs: 6, md: 8 }, bgcolor: "#fff", boxShadow: "0 0 0 100vmax #fff", clipPath: "inset(0 -100vmax)" }}>
         <Reveal>
           <Typography
             component="h2"

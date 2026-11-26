@@ -8,7 +8,7 @@ export const blogs: BlogData[] = [
     date: "October 26, 2026",
     category: "Trade Accounts",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/blog-mars.jpeg",
+      "https://pblol2.blob.core.windows.net/kronox/news/trade-credit-accounts.jpeg",
     excerpt:
       "Approved UK businesses can now open a trade credit account with Kronox Valves: up to 30 days to pay, with every application subject to review. Prices stay online and manufacturer paperwork still ships with every order.",
     metaDescription:
@@ -60,7 +60,7 @@ export const blogs: BlogData[] = [
     date: "October 20, 2026",
     category: "Stock Update",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars-stock-coming.jpeg",
+      "https://pblol2.blob.core.windows.net/kronox/news/kronox-stock-arriving-november.jpeg",
     excerpt:
       "Kronox valve stock lands in the UK this November and we're taking RFQs now. Early requests get priority on the first allocation — including the most-requested Series 77 (V77).",
     metaDescription:
@@ -113,7 +113,7 @@ export const blogs: BlogData[] = [
     date: "October 1, 2026",
     category: "Selection Guide",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/Hero/mars-hero-3.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/news/one-two-three-piece-ball-valves.jpg",
     excerpt:
       "Body construction is the first decision when you specify a ball valve. Here is how one-piece, two-piece and three-piece Kronox ball valves compare on port size, pressure, end connections and maintenance.",
     metaDescription:
@@ -175,7 +175,7 @@ export const blogs: BlogData[] = [
     date: "September 29, 2026",
     category: "Material Guide",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/blogs/blog-image.jpeg",
+      "https://pblol2.blob.core.windows.net/kronox/news/blog-image.jpeg",
     excerpt:
       "Both are 316-type stainless steel. The real difference is carbon content, and whether anyone is going to weld the valve.",
     metaDescription:
@@ -269,7 +269,7 @@ export const blogs: BlogData[] = [
     title: "Kronox Valves Is Looking for New Distribution Partners",
     date: "August 5, 2026",
     category: "Distribution",
-    heroImage: "https://pblol2.blob.core.windows.net/mars-valves/blog-img.jpeg",
+    heroImage: "https://pblol2.blob.core.windows.net/kronox/news/kronox-distributors.jpeg",
     excerpt:
       "Kronox Valves is expanding its international distribution network, inviting established industrial flow-control distributors to represent a comprehensive ball valve range built for demanding applications.",
     tags: [
@@ -284,7 +284,7 @@ export const blogs: BlogData[] = [
         heading: null,
         body: `Kronox Valves is expanding its international distribution network and is looking to work with established distributors across the industrial flow-control sector.\n\nWith a comprehensive range of ball valves engineered for demanding applications, Kronox Valves supports industries including oil and gas, chemical processing, petrochemical, power generation, marine, water treatment and general industrial services.\n\nThe product range includes floating and trunnion-mounted ball valves, fire-safe valves, metal-seated designs, automated valve solutions and specialist configurations for high-pressure, high-temperature and abrasive operating conditions.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/eco-3.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/eco-3.jpg",
       },
       {
         heading: "Built for Industrial Duty",
@@ -298,7 +298,7 @@ export const blogs: BlogData[] = [
         heading: "Why Partner with Kronox Valves?",
         body: `The Kronox Valves range spans floating and trunnion-mounted designs across the working pressure range, fire-safe certified constructions for hazardous service, metal-seated valves for high-temperature and abrasive media, and automated valve packages with specialist configurations.\n\nDistribution partners can benefit from:\n\n• A broad portfolio of industrial ball valve solutions.\n• Products manufactured to recognised international standards.\n• Full technical documentation and product certification.\n• Engineering and application support.\n• Solutions for both standard and demanding operating conditions.\n• Opportunities to expand within established and developing industrial markets.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/hp-3.png",
+          "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/hp-3.png",
       },
       {
         heading: "Engineered for Safety. Built to Perform.",
@@ -319,7 +319,7 @@ export const blogs: BlogData[] = [
     date: "July 29, 2026",
     category: "Technical",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-1.jpeg",
+      "https://pblol2.blob.core.windows.net/kronox/news/fire-safe-ball-valves.jpg",
     excerpt:
       "How Kronox fire-safe ball valves support reliable isolation in hazardous industrial applications, certified to API 607 and ISO 10497 across the Series 83, 88, 90, 90D and 91D ranges.",
     tags: ["Fire-Safe", "Ball Valves", "API 607", "ISO 10497", "Industrial"],
@@ -328,7 +328,7 @@ export const blogs: BlogData[] = [
         heading: null,
         body: `Industrial systems carrying fuels, gases, solvents and other hazardous media require valves that can provide dependable isolation during both normal operation and emergency conditions.\n\nDuring a fire, extreme heat can damage soft valve seats, stem seals and body gaskets. A fire-safe ball valve is designed to limit internal and external leakage if these primary sealing components deteriorate.\n\nKronox offers several fire-tested ball valve ranges, including the Series 83, Series 88, Series 90, Series 90D and Series 91D. These ranges carry fire-safe certification following testing by Southwest Research Institute and TÜV Germany.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/blogs/bg-2.jpeg",
+          "https://pblol2.blob.core.windows.net/kronox/news/bg-2.jpeg",
       },
       {
         heading: "What Makes a Ball Valve Fire-Safe?",
@@ -382,7 +382,7 @@ export const blogs: BlogData[] = [
     date: "September 10, 2026",
     category: "Technical",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/hp-3.png",
+      "https://pblol2.blob.core.windows.net/kronox/news/actuated-ball-valve-guide.jpg",
     excerpt:
       "This guide explains what an actuated ball valve is, how valve and actuator assemblies work, and when to choose electric versus pneumatic actuation. It covers ISO 5211 direct-mount interfaces, torque and fail-safe sizing, environmental and certification requirements, and the documentation needed for compliant projects so engineers and buyers can specify reliable automated valve packages.",
     metaDescription:
@@ -405,7 +405,7 @@ export const blogs: BlogData[] = [
         heading: null,
         body: `Actuated ball valves combine a shut-off ball valve with a powered actuator so you can open, close, or modulate flow automatically. They are used where access is difficult, cycles are frequent, or safety requires remote control.\n\nThis guide keeps it practical. You will find clear definitions, how the assemblies work, when to choose electric vs pneumatic, why ISO 5211 direct-mount matters, and how to size and specify with confidence, including certification and documentation points that keep projects compliant.\n\nKronox Valves supplies genuine Kronox actuated packages with full traceability and support. If your application is hazardous or regulated, that combination of product integrity and documentation is often the difference between approval and delay.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/eco-3.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/eco-3.jpg",
       },
       {
         heading: "What an actuated ball valve is",
@@ -423,13 +423,13 @@ export const blogs: BlogData[] = [
         heading: "Why ISO 5211 direct-mount matters",
         body: `ISO 5211 defines a standardised actuator mounting pad and drive interface. Direct-mount designs, such as the Kronox Series 88 three-piece fire-safe valve, allow the actuator to mount straight onto the valve without a separate bracket and keyed coupling. Benefits include:\n\n• Better alignment and reduced side loading.\n• Less backlash and more accurate travel.\n• Fewer parts to loosen, maintain, or corrode.\n• Quicker assembly and fewer pinch points.\n\nIn practice, direct-mount cuts mechanical play that can show up as deadband in modulating control and can reduce maintenance on high-cycle services.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/hp-flanged.png",
+          "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/hp-flanged.png",
       },
       {
         heading: "Selection criteria that prevent problems later",
         body: `Confirm the valve build first, then the actuator.\n\n• Torque — use manufacturer break-away and running torque data for the exact media, pressure, temperature, and seat material. Apply a safety factor that matches your duty and standards, with extra margin for sticky or particulate service.\n• Fail-safe position — define fail-closed or fail-open early, based on process risk. Pneumatic spring-return is the most straightforward method; validate the spring size against worst-case torque.\n• Duty cycle and control mode — high cycle counts favour pneumatic. Electric actuators must be rated for the commanded duty cycle, especially on modulating service; check starts per hour and ambient conditions.\n• Environment — specify enclosure (IP/NEMA), temperature range, vibration, and corrosion resistance. Consider PFA-lined or corrosion-resistant valves where media demands it, and a cryogenic ball valve with extended bonnet for cryogenic service.\n• Certification — for fire exposure risk, specify an API 607 and ISO 10497 compliant fire-safe ball valve, and confirm the exact series and test reports align with your approval needs.\n• Documentation and traceability — require serialised build records, material test reports, pressure test certificates, and actuator wiring or pneumatic schematics to speed site acceptance and audits.\n• Valve form and porting — full bore for minimal pressure drop, V-port for control, three-way or multi-port valve for mixing and diversion, flanged or threaded ends to match piping.\n• Accessories — solenoid valves, limit switch boxes, and a digital valve positioner for closed-loop control. Ensure brackets and couplings are ISO 5211 matched when direct mount is not used.\n\nFor engineered packages, Kronox direct-mount Series 88 with a pneumatic valve actuator or electric valve actuators provides a compact, aligned build with API 607 and ISO 10497 fire compliance on the valve body where specified.`,
         image:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-way-multi.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/3-way-multi.jpg",
       },
       {
         heading: "What size actuator do you need",
@@ -481,7 +481,7 @@ export const blogs: BlogData[] = [
     date: "September 10, 2026",
     category: "Technical",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/hp-flanged.png",
+      "https://pblol2.blob.core.windows.net/kronox/news/actuated-ball-valves.jpg",
     excerpt:
       "Looking for an actuated ball valve package that is built for demanding industrial service, with full documentation and technical back-up? Kronox Valves supplies genuine Kronox automated ball valve solutions, combining proven industrial ball valves with electric or pneumatic actuators, accessories, and fire-safe options for hazardous duty. For specification support or project pricing, contact the technical sales team via sales@kronoxvalve.com or call +44 7368 137917.",
     metaDescription:
@@ -594,7 +594,7 @@ export const blogs: BlogData[] = [
     date: "September 10, 2026",
     category: "Technical",
     heroImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/multi-port-valve/3-way-multi.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/news/control-valves.jpg",
     excerpt:
       "Looking for a process control valve solution you can specify with confidence? Kronox Valves supplies genuine Kronox industrial valves and ball-valve-based control assemblies for demanding process and industrial applications. From tight shut-off isolation to modulating duty with actuation and accessories, every valve is backed by traceability, documentation, and engineering support. Email sales@kronoxvalve.com or call +44 7368 137917 to discuss your application and put a fully documented package in place.",
     metaDescription:

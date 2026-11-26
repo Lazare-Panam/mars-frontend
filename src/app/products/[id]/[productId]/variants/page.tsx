@@ -10,10 +10,10 @@ import VariantsActiveFilters from "./components/VariantsActiveFilters";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { productCrumbs } from "@/lib/breadcrumbs";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 
 // Keys we manage ourselves in the query string that are NOT spec filters
 // (add 'sort', 'minPrice', 'maxPrice' here later if/when you build those)
@@ -177,7 +177,7 @@ export default function ProductVariantsPage({
     <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       {/* Hero */}
       <Box
-        sx={{ background: BANNER_GRADIENT, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
+        sx={{ ...LIGHT_BANNER, px: { xs: 3, md: 8 }, py: { xs: 4, md: 5 } }}
       >
         <Reveal>
         <Box sx={{ maxWidth: "1280px", mx: "auto" }}>
@@ -187,12 +187,12 @@ export default function ProductVariantsPage({
               product: { id: productId, name: data.name },
               extra: [{ label: "All models" }],
             })}
-            tone="onDark"
+           
             sx={{ mb: 2.5 }}
           />
           <Typography
             sx={{
-              color: "primary.light",
+              color: "primary.main",
               letterSpacing: "0.2em",
               fontSize: "0.72rem",
               fontWeight: 700,
@@ -205,7 +205,7 @@ export default function ProductVariantsPage({
           <Typography
             component="h1"
             sx={{
-              color: "#fff",
+              color: KRONOX.text,
               fontSize: { xs: "1.8rem", md: "2.6rem" },
               fontWeight: 800,
               lineHeight: 1.1,
@@ -214,7 +214,7 @@ export default function ProductVariantsPage({
             {data.name}
           </Typography>
           <Typography
-            sx={{ color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", mt: 1 }}
+            sx={{ color: KRONOX.steel, fontSize: "0.85rem", mt: 1 }}
           >
             {filtered.length} model{filtered.length !== 1 ? "s" : ""} available
           </Typography>

@@ -35,7 +35,7 @@ import { toAddToCartRequest } from "@/lib/cartRequest";
 import { variantImageAlt } from "@/lib/variantTitle";
 import { useQuoteStore } from "@/store/useQuoteStore";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 
 // Price + action columns stay pinned to the right edge while wide spec tables
 // scroll sideways, so the price and cart button are always visible. Pinned
@@ -45,7 +45,7 @@ const ACTION_WIDTH = 140;
 const PRICE_WIDTH = 110;
 const ROW_BG = "#fff";
 const ROW_BG_ZEBRA = "#f5f6f8";
-const ROW_BG_OPEN = "#fef9f8";
+const ROW_BG_OPEN = "#FDF6F6";
 const ROW_BORDER = "1px solid rgba(0,0,0,0.1)";
 
 // Spec keys that read as reference/lookup data rather than a shoppable
@@ -183,7 +183,7 @@ function VariantRow({
           transition: "background-color 0.2s ease, box-shadow 0.2s ease",
         },
         "& > td:first-of-type": { boxShadow: "inset 3px 0 0 transparent" },
-        "&:hover > td": { bgcolor: "#fdf1ee" },
+        "&:hover > td": { bgcolor: "#FCE9EA" },
         "&:hover > td:first-of-type": { boxShadow: `inset 3px 0 0 ${BRAND}` },
         "&:hover .variant-sku": { color: BRAND, textDecoration: "underline" },
       }}
@@ -464,7 +464,7 @@ function VariantRow({
                       borderRadius: "6px",
                       bgcolor: BRAND,
                       px: 3,
-                      "&:hover": { bgcolor: "#A8270A" },
+                      "&:hover": { bgcolor: "#B8262C" },
                     }}
                   >
                     Add to Cart
@@ -483,7 +483,7 @@ function VariantRow({
                       borderRadius: "6px",
                       bgcolor: BRAND,
                       px: 3,
-                      "&:hover": { bgcolor: "#A8270A" },
+                      "&:hover": { bgcolor: "#B8262C" },
                     }}
                   >
                     Request quote

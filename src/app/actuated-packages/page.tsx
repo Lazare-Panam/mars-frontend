@@ -9,7 +9,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import Reveal from "@/Common/Reveal";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import { SERIES as SERIES_DATA } from "@/app/products/data/categories";
 import ProductCategoryRow from "@/app/products/components/ProductCategoryRow";
 
@@ -101,12 +101,12 @@ export default function ActuatedPackagesPage() {
       <JsonLd data={crumbs} />
 
       {/* Hero */}
-      <Box sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 8, md: 12 } }}>
+      <Box sx={{ ...LIGHT_BANNER, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Reveal>
             <PageBreadcrumbs
               items={[{ label: "Home", href: "/" }, { label: "Actuated Packages" }]}
-              tone="onDark"
+             
               sx={{ mb: 3 }}
             />
             <Typography
@@ -116,7 +116,7 @@ export default function ActuatedPackagesPage() {
               Kronox actuated ball valve packages, made to order
             </Typography>
             <Typography
-              sx={{ mt: 2.5, mb: 4, color: "rgba(255,255,255,0.82)", fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 700 }}
+              sx={{ mt: 2.5, mb: 4, color: KRONOX.steel, fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 700 }}
             >
               Series 22, 77 and 88 have an ISO 5211 direct-mount pad, so the
               actuator bolts straight on with no bracket or coupling. Tell us
@@ -124,7 +124,7 @@ export default function ActuatedPackagesPage() {
               actuator package for your order, with the documentation your site
               needs.
             </Typography>
-            <QuoteButton light />
+            <QuoteButton />
           </Reveal>
         </Container>
       </Box>

@@ -2,7 +2,7 @@
 
 import { Box, Chip, Typography } from "@mui/material";
 
-const BRAND = "#E7390F";
+const BRAND = "#E0393E";
 
 interface Props {
   activeFilters: Record<string, string[]>;

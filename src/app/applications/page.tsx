@@ -12,9 +12,9 @@ import Reveal from "@/Common/Reveal";
 import FAQSection from "@/app/Landing/FAQSection";
 import { JsonLd, breadcrumbList } from "@/lib/jsonLd";
 import ProductLinkList, { buildProductIndex } from "../product-index/ProductLinkList";
-import { INDUSTRIES, FAQS, URLS, type IndustryId, type Item } from "./industries";
+import { INDUSTRIES, FAQS, type IndustryId, type Item } from "./industries";
 import type { Metadata } from "next";
-import { BANNER_GRADIENT } from "@/theme/brand";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/applications" },
@@ -102,13 +102,13 @@ export default async function ApplicationsPage() {
       <JsonLd data={faqSchema} />
 
       {/* 1. Intro */}
-      <Box id="intro" sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 8, md: 12 } }}>
+      <Box id="intro" sx={{ ...LIGHT_BANNER, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Reveal>
             <Typography
               component="span"
               sx={{
-                color: "primary.light",
+                color: "primary.main",
                 letterSpacing: "0.3em",
                 fontSize: "0.75rem",
                 fontWeight: 600,
@@ -130,7 +130,7 @@ export default async function ApplicationsPage() {
               Marine valve solutions for demanding environments
             </Typography>
             <Typography
-              sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
+              sx={{ mt: 2, color: KRONOX.steel, fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
             >
               Kronox valves are manufactured to an ISO 9001 quality management
               system. The range covers stainless steel ball valves in two-piece,
@@ -138,7 +138,7 @@ export default async function ApplicationsPage() {
               designs, with selected series fire-tested to API 607.
             </Typography>
             <Typography
-              sx={{ mt: 2, color: "rgba(255,255,255,0.75)", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
+              sx={{ mt: 2, color: KRONOX.steel, fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 680 }}
             >
               Kronox Valves supplies the range in the UK as an authorised
               distributor. Choose your industry below to see which series,
@@ -149,7 +149,7 @@ export default async function ApplicationsPage() {
       </Box>
 
       {/* 2. Industry quick-finder */}
-      <Box id="quick-finder" sx={{ bgcolor: "background.default", py: { xs: 5, md: 7 } }}>
+      <Box id="quick-finder" sx={{ bgcolor: "#fff", py: { xs: 5, md: 7 } }}>
         <Container maxWidth="lg">
           <Box
             component="nav"
@@ -320,16 +320,16 @@ export default async function ApplicationsPage() {
       </Container>
 
       {/* 11. Not sure which valve? */}
-      <Box id="help" sx={{ background: BANNER_GRADIENT, color: "#fff", py: { xs: 7, md: 9 } }}>
+      <Box id="help" sx={{ ...LIGHT_BANNER, py: { xs: 7, md: 9 } }}>
         <Container maxWidth="md">
           <Reveal>
-            <Typography component="h2" sx={{ ...h2Sx, color: "#fff", mb: 2 }}>
+            <Typography component="h2" sx={{ ...h2Sx, color: KRONOX.text, mb: 2 }}>
               Not sure which valve your application needs?
             </Typography>
-            <Typography sx={{ color: "rgba(255,255,255,0.75)", mb: 1.5 }}>
+            <Typography sx={{ color: KRONOX.steel, mb: 1.5 }}>
               Send us five details and we&apos;ll recommend the right Kronox series:
             </Typography>
-            <Box component="ul" sx={{ m: 0, pl: 2.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.9 }}>
+            <Box component="ul" sx={{ m: 0, pl: 2.5, color: KRONOX.steel, lineHeight: 1.9 }}>
               <li>Media</li>
               <li>Pressure and temperature</li>
               <li>Size and end connection</li>
@@ -359,24 +359,6 @@ export default async function ApplicationsPage() {
               <Link href="/contact" className="help-primary">
                 Discuss your application
               </Link>
-              <Box
-                component="a"
-                href={URLS.catalogue}
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  border: "1px solid rgba(255,255,255,0.4)",
-                  color: "#fff",
-                  fontWeight: 700,
-                  px: 3,
-                  py: 1.5,
-                  borderRadius: "2px",
-                  textDecoration: "none",
-                  "&:hover": { borderColor: "#fff" },
-                }}
-              >
-                Download the e-catalogue
-              </Box>
             </Box>
           </Reveal>
         </Container>

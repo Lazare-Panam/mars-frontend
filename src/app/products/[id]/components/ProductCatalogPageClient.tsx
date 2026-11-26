@@ -14,6 +14,7 @@ import { ProductType, useProductCatalog } from "@/api/useProductCatalog";
 import ProductCard from "./ProductCard";
 import ProductDetailContent from "../../components/ProductDetailContent";
 import Reveal from "@/Common/Reveal";
+import { KRONOX, LIGHT_BANNER } from "@/theme/brand";
 import PageBreadcrumbs from "@/Common/PageBreadcrumbs";
 import { productCrumbs } from "@/lib/breadcrumbs";
 import { CATEGORY_SEO } from "@/lib/categorySeo";
@@ -79,25 +80,22 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
   const hero = seoH1 ? { ...baseHero, title: seoH1, titleAccent: undefined } : baseHero;
 
   return (
-    <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: "#fff", minHeight: "100vh" }}>
       {/* HERO */}
       <Box
         sx={{
-          position: "relative",
+          // Light Kronox banner (replaces the old photo hero with the API's
+          // MARS-era banner image).
+          ...LIGHT_BANNER,
           width: "100%",
-          minHeight: { xs: "60vh", md: "75vh" },
           display: "flex",
           alignItems: "center",
-          overflow: "hidden",
-          backgroundImage: `linear-gradient(rgba(74,18,6,0.52), rgba(74,18,6,0.52)), url("${hero.bannerImage}")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          py: { xs: 8, md: 12 },
+          py: { xs: 7, md: 10 },
         }}
       >
         <Container maxWidth="lg">
           <Reveal>
-            <PageBreadcrumbs items={productCrumbs({ categoryId: id })} tone="onDark" sx={{ mb: 3 }} />
+            <PageBreadcrumbs items={productCrumbs({ categoryId: id })} sx={{ mb: 3 }} />
             {hero.overline && (
               <Typography
                 variant="overline"
@@ -116,8 +114,8 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
               sx={{
                 // Sentence-length SEO headings get a smaller size.
                 fontSize: seoH1 ? { xs: 34, md: 52 } : { xs: 38, md: 68 },
-                fontWeight: 900,
-                color: "#fff",
+                fontWeight: 800,
+                color: KRONOX.text,
                 mt: 1,
                 mb: 3,
                 lineHeight: 1.08,
@@ -139,7 +137,7 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
               <Typography
                 sx={{
                   fontSize: { xs: 16, md: 19 },
-                  color: "rgba(255,255,255,0.88)",
+                  color: KRONOX.steel,
                   maxWidth: 580,
                   mb: 5,
                   lineHeight: 1.75,
@@ -167,15 +165,17 @@ export default function ProductCatalogPageClient({ id }: { id: string }) {
                   size="large"
                   href={ctaHref(hero.secondaryCta.link)}
                   sx={{
-                    borderColor: "rgba(255,255,255,0.5)",
-                    color: "#fff",
+                    borderColor: KRONOX.steel,
+                    color: KRONOX.text,
+                    bgcolor: "#fff",
                     borderRadius: 0,
                     px: 4,
                     py: 1.5,
                     fontWeight: 600,
                     "&:hover": {
-                      bgcolor: "rgba(255,255,255,0.08)",
-                      borderColor: "#fff",
+                      bgcolor: "#fff",
+                      borderColor: "#E0393E",
+                      color: "#E0393E",
                     },
                   }}
                 >
