@@ -18,7 +18,7 @@ export const SERIES = [
     description:
       "2-piece full port ball valves rated to 1000 PSI for general industrial service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
     href: "/series/5",
     pricesHref: "/series/5/variants",
   },
@@ -150,7 +150,7 @@ export const CATEGORIES = [
     description:
       "Versatile two-piece ball valves available in economical, high performance, and high pressure variants.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
     href: "/products/two-piece-ball-valves",
   },
   {

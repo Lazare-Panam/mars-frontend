@@ -86,12 +86,12 @@ export const SHOP_PRODUCTS: {
     productId: "economical-two-piece-ball-valve",
     productName: "Economical 2-Piece Ball Valve",
     thumbnailImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
     variants: [
       {
         id: "V20-20-1-4IN-W-O-LOCK",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
         specs: {
           SKU: "V20-20-1-4IN-W-O-LOCK",
           Size: "1/4 inch",
@@ -108,7 +108,7 @@ export const SHOP_PRODUCTS: {
       {
         id: "V20-20-1-2IN-W-O-LOCK",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-two-piece-ball-valve/series-20-20.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
         specs: {
           SKU: "V20-20-1-2IN-W-O-LOCK",
           Size: "1/2 inch",
