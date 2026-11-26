@@ -27,6 +27,14 @@ const REBRANDED: Record<string, string> = {
   "series-f20-60.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20-60.jpg",
   "series-f20b-2c.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-2c.jpg",
   "series-f20b-3c.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-3c.jpg",
+  // Batch 3: high-performance two-piece ball valves
+  "series-20-50.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-20-50.jpg",
+  "series-22.png": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
+  "series-28.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-28.jpg",
+  "series-f20-80.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f20-80.jpg",
+  "series-f202d.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f202d.jpg",
+  "series-f21-10.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-10.jpg",
+  "series-f21-20.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-20.jpg",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the

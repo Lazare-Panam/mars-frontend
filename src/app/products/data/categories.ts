@@ -28,7 +28,7 @@ export const SERIES = [
     description:
       "2-piece direct mount full port ball valves with ISO 5211 mounting pad for actuated service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-two-piece-ball-valve/series-22.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
     href: "/series/3",
     pricesHref: "/series/3/variants",
   },
