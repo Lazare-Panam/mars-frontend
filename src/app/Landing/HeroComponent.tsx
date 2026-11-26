@@ -5,7 +5,9 @@ import Link from "next/link";
 import { Box, Typography, Stack, Button } from "@mui/material";
 import MagneticWrap from "@/Common/MagneticWrap";
 import ProductFinder from "./ProductFinder";
-import ValveBlueprint from "./ValveBlueprint";
+// "…" is part of the uploaded file's real name.
+const HERO_VIDEO =
+  "https://pblol2.blob.core.windows.net/kronox/Hero%20video/Hero%20video/kronox-hero-video.mp4";
 import { KRONOX } from "@/theme/brand";
 
 const fadeUp = (visible: boolean, delayMs: number) => ({
@@ -131,6 +133,42 @@ export default function Hero() {
           backgroundImage:
             "linear-gradient(rgba(110,113,117,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.10) 1px, transparent 1px), linear-gradient(rgba(110,113,117,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(110,113,117,0.045) 1px, transparent 1px)",
           backgroundSize: "60px 60px, 60px 60px, 12px 12px, 12px 12px",
+        }}
+      />
+
+      {/* Full-width background video, anchored to the right */}
+      <Box
+        component="video"
+        src={HERO_VIDEO}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden
+        sx={{
+          position: "absolute",
+          zIndex: 0,
+          top: 0,
+          bottom: 0,
+          right: 0,
+          height: "100%",
+          width: { xs: "100%", md: "66%" },
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
+      />
+      {/* Light fade over the left so the text reads (light site, no dark band) */}
+      <Box
+        aria-hidden
+        sx={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 1,
+          background: {
+            xs: "linear-gradient(0deg, rgba(237,238,240,0.97) 0%, rgba(237,238,240,0.9) 55%, rgba(237,238,240,0.55) 100%)",
+            md: "linear-gradient(90deg, rgba(237,238,240,1) 0%, rgba(237,238,240,1) 34%, rgba(237,238,240,0.8) 42%, rgba(237,238,240,0.2) 52%, rgba(237,238,240,0) 58%)",
+          },
         }}
       />
 
@@ -305,17 +343,6 @@ export default function Hero() {
           </Stack>
         </Stack>
 
-        <Box
-          sx={{
-            gridColumn: { lg: 2 },
-            gridRow: { lg: "1 / span 2" },
-            position: "relative",
-            zIndex: 1,
-            ...fadeUp(mounted, 200),
-          }}
-        >
-          <ValveBlueprint />
-        </Box>
 
         <Box sx={{ maxWidth: 440, width: "100%", gridColumn: { lg: 1 }, gridRow: { lg: 2 }, position: "relative", zIndex: 2, ...fadeUp(mounted, 480) }}>
           <ProductFinder />
