@@ -168,7 +168,7 @@ export const CATEGORIES = [
     description:
       "A complete range of flanged ball valves for industrial pipeline applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/flanged/hp-flanged.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/Fire%20Safe%20Ball%20Valves/series-90.png",
     href: "/products/flanged-ball-valves",
   },
   {

@@ -184,6 +184,24 @@ const REBRANDED: Record<string, string> = {
     KX + "By%20Series/series77sn.png",
   "ball-valves/v-port/99v.png":
     KX + "By%20Series/series-99.png",
+  "ball-valves/fire-safe/series-90.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90.png",
+  "ball-valves/fire-safe/series-90d.jpg":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90d.jpg",
+  "ball-valves/fire-safe/series-91d.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-91d.png",
+  "ball-valves/flanged/hp-flanged.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90.png",
+  "ball-valves/series90D.jpg":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90d.jpg",
+  "ball-valves/v-port/90v.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90.png",
+  "ball-valves/v-port/91dv.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-91d.png",
+  "mars series images/fire-safe-ball-valves/series-90.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-90.png",
+  "mars series images/fire-safe-ball-valves/series-91d.png":
+    KX + "Fire%20Safe%20Ball%20Valves/series-91d.png",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the

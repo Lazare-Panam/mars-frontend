@@ -267,26 +267,26 @@ SERIES_FAMILIES.push({
   intro:
     "Kronox ball valves fire-type tested to API 607, for flammable fluids and hazardous areas in oil & gas, petrochemical and chemical plants.",
   series: [
-    pick("Series 28"),
-    pick("Series 83, SIL3"),
-    pick("Series 88, SIL3"),
+    pick("KX Series 28"),
+    pick("KX Series 83, SIL3"),
+    pick("KX Series 88, SIL3"),
     {
-      name: "Series 90",
-      image: IMG + "fire-safe-ball-valves/series-90.png",
+      name: "KX Series 90",
+      image: KX_IMG + "Fire%20Safe%20Ball%20Valves/series-90.png",
       specs: flangedSpecs('1/2" – 4"', "ANSI Class 150/300, PN16/40", "Full port", "2-piece fire safe flanged"),
       href: "/series/44",
       action: "configure" as const,
     },
     {
-      name: "Series 90D",
-      image: IMG + "fire-safe-ball-valves/series-90d.jpg",
+      name: "KX Series 90D",
+      image: KX_IMG + "Fire%20Safe%20Ball%20Valves/series-90d.jpg",
       specs: flangedSpecs('1/2" – 12"', "ANSI Class 150/300, PN16/40, JIS 10K/20K", "Full port", "2-piece fire safe flanged"),
       href: "/series/14",
       action: "configure" as const,
     },
     {
-      name: "Series 91D",
-      image: IMG + "fire-safe-ball-valves/series-91d.png",
+      name: "KX Series 91D",
+      image: KX_IMG + "Fire%20Safe%20Ball%20Valves/series-91d.png",
       specs: flangedSpecs('1/2" – 6"', "ANSI Class 150/300", "Reduced port", "Uni-body fire safe flanged"),
       href: "/series/45",
       action: "configure" as const,
@@ -509,14 +509,14 @@ SERIES_FAMILIES.push({
   series: [
     {
       name: "Series 90",
-      image: IMG + "fire-safe-ball-valves/series-90.png",
+      image: KX_IMG + "Fire%20Safe%20Ball%20Valves/series-90.png",
       specs: flangedSpecs('1/2" – 4"', "ANSI Class 150/300, PN16/40", "Full port", "2-piece fire safe flanged"),
       href: "/series/44",
       action: "configure" as const,
     },
     {
       name: "Series 90D",
-      image: IMG + "fire-safe-ball-valves/series-90d.jpg",
+      image: KX_IMG + "Fire%20Safe%20Ball%20Valves/series-90d.jpg",
       specs: flangedSpecs('1/2" – 12"', "ANSI Class 150/300, PN16/40, JIS 10K/20K", "Full port", "2-piece fire safe flanged"),
       href: "/series/14",
       action: "configure" as const,
