@@ -58,7 +58,7 @@ export const SERIES = [
     description:
       "3-piece full bore maintainable ball valves with blow-out proof stem, lockable lever and steam-rated carbon-filled R-PTFE seats.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-three-piece-ball-valve/series-50.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/Economical%203-Piece%20Ball%20Valves/series-50.jpg",
     href: "/series/10",
     pricesHref: "/series/10/variants",
   },
@@ -159,7 +159,7 @@ export const CATEGORIES = [
     description:
       "Fully maintainable three-piece ball valves for process and industrial applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/economical-three-piece-ball-valve/series-50.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/Economical%203-Piece%20Ball%20Valves/series-50.jpg",
     href: "/products/three-piece-ball-valves",
   },
   {

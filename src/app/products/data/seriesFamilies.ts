@@ -128,9 +128,9 @@ export const SERIES_FAMILIES: SeriesFamily[] = [
     kind: "3-piece",
     intro: "Cost-effective three-piece ball valves that can be maintained in-line without removing the end caps.",
     series: [
-      { name: "Series 50", image: IMG + "economical-three-piece-ball-valve/series-50.jpg", href: "/series/10", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], action: "configure" },
-      { name: "Series 55", image: IMG + "economical-three-piece-ball-valve/series-55.jpg", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], href: "/series/39", action: "configure" },
-      { name: "Series 55A", image: IMG + "economical-three-piece-ball-valve/series-55a.jpg", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], href: "/series/40", action: "configure" },
+      { name: "KX Series 50", image: KX_IMG + "Economical%203-Piece%20Ball%20Valves/series-50.jpg", href: "/series/10", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], action: "configure" },
+      { name: "KX Series 55", image: KX_IMG + "Economical%203-Piece%20Ball%20Valves/series-55.jpg", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], href: "/series/39", action: "configure" },
+      { name: "KX Series 55A", image: KX_IMG + "Economical%203-Piece%20Ball%20Valves/series-55a.jpg", specs: [["Design", "3-piece economical ball valve"], ["Port", "Full port"], ["Size", "1/4\" \u2013 4\""], ["Pressure", "1000 PSI"], ["Body", "CF8M / WCB"], ["Seats", "PTFE / RTFE (others on request)"], ["Ends", "Threaded, Butt weld, Socket weld"]], href: "/series/40", action: "configure" },
     ],
   },
   {

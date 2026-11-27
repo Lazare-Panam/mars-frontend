@@ -106,6 +106,18 @@ const REBRANDED: Record<string, string> = {
     KX + "One-piece-ball-valves/series-f10-50.png",
   "mars series images/one-piece-ball-valves/series-f10-60.jpg":
     KX + "One-piece-ball-valves/series-f10-60.jpg",
+  "ball-valves/series-50.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-50.jpg",
+  "ball-valves/three-piece/eco-3.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-50.jpg",
+  "catalogs/series-50.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-50.jpg",
+  "mars series images/economical-three-piece-ball-valve/series-50.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-50.jpg",
+  "mars series images/economical-three-piece-ball-valve/series-55.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-55.jpg",
+  "mars series images/economical-three-piece-ball-valve/series-55a.jpg":
+    KX + "Economical%203-Piece%20Ball%20Valves/series-55a.jpg",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the
