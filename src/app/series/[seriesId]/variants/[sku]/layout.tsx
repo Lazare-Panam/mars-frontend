@@ -4,7 +4,9 @@ import { makeQueryClient } from "@/lib/getQueryClient";
 import { fetchSeriesCategory, fetchSeriesProduct } from "@/api/useSeriesCatalog";
 import { SITE_URL } from "@/lib/site";
 import { fitBrandTitle } from "@/lib/seoTitle";
+import { permanentRedirect } from "next/navigation";
 import { VARIANT_META } from "@/lib/variantMeta";
+import { kxSku } from "@/lib/kxSku";
 
 type Props = { params: Promise<{ seriesId: string; sku: string }>; children: React.ReactNode };
 
@@ -31,7 +33,10 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 // Prefetch the model on the server so its heading and specs are in the HTML
 // crawlers read, not only after the page loads in a browser.
 export default async function SeriesSkuLayout({ params, children }: Props) {
-  const { sku } = await params;
+  const { seriesId, sku } = await params;
+  // Old Mars "V…" part-number links go to the renamed "KX-…" page.
+  const renamed = kxSku(decodeURIComponent(sku));
+  if (renamed) permanentRedirect(`/series/${seriesId}/variants/${encodeURIComponent(renamed)}`);
   const queryClient = makeQueryClient();
   await queryClient.prefetchQuery({ queryKey: ["series-product", sku], queryFn: () => fetchSeriesProduct(sku) });
   return <HydrationBoundary state={dehydrate(queryClient)}>{children}</HydrationBoundary>;
