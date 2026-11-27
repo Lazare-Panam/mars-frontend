@@ -29,7 +29,7 @@ export const VALVE_TYPES = [
     products: [
       { name: "Economical 3-Piece Ball Valve", href: `/products/three-piece-ball-valves/economical-three-piece-ball-valve`, image: `${IMG}/three-piece/eco-3.jpg` },
       { name: "High Performance 3-Piece Ball Valve", href: `/products/three-piece-ball-valves/high-performance-three-piece-ball-valve`, image: `${IMG}/three-piece/hp-3.png` },
-      { name: "Steam Jacketed Ball Valve", href: `/products/three-piece-ball-valves/steam-jacketed-three-piece-ball-valve`, image: "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/steam-jacketed-three-piece-ball-valve/series-83j.jpg" },
+      { name: "Steam Jacketed Ball Valve", href: `/products/three-piece-ball-valves/steam-jacketed-three-piece-ball-valve`, image: "https://pblol2.blob.core.windows.net/kronox/products/Steam%20Jacketed%203-Piece%20Ball%20Valves/series-83j.jpg" },
     ],
     image: `${IMG}/three-piece/hp-3.png`,
     alt: "Kronox three-piece stainless steel ball valve",

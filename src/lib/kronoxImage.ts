@@ -152,6 +152,12 @@ const REBRANDED: Record<string, string> = {
     KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
   "mars series images/high-performance-three-piece-ball-valve/series-88.png":
     KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
+  "ball-valves/three-piece/jacket-3.jpg":
+    KX + "Steam%20Jacketed%203-Piece%20Ball%20Valves/series-83j.jpg",
+  "mars series images/steam-jacketed-three-piece-ball-valve/series-83j.jpg":
+    KX + "Steam%20Jacketed%203-Piece%20Ball%20Valves/series-83j.jpg",
+  "mars series images/steam-jacketed-three-piece-ball-valve/series-88j.jpg":
+    KX + "Steam%20Jacketed%203-Piece%20Ball%20Valves/series-88j.jpg",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the
