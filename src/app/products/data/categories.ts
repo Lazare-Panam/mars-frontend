@@ -78,7 +78,7 @@ export const SERIES = [
     description:
       "3-piece high performance direct mount ball valves with full port and a wide range of end connections.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-77.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
     href: "/series/8",
     pricesHref: "/series/8/variants",
   },
@@ -98,7 +98,7 @@ export const SERIES = [
     description:
       "3-piece fire safe ball valves certified to API 607 7th Edition, rated to 2000 PSI.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-83.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
     href: "/series/12",
     pricesHref: "/series/12/variants",
   },
@@ -108,7 +108,7 @@ export const SERIES = [
     description:
       "3-piece fire safe metal seated ball valves with direct mount design for severe service up to 2000 PSI.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-88.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
     href: "/series/13",
     pricesHref: "/series/13/variants",
   },

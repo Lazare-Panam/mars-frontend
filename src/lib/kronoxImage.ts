@@ -118,6 +118,40 @@ const REBRANDED: Record<string, string> = {
     KX + "Economical%203-Piece%20Ball%20Valves/series-55.jpg",
   "mars series images/economical-three-piece-ball-valve/series-55a.jpg":
     KX + "Economical%203-Piece%20Ball%20Valves/series-55a.jpg",
+  "ball-valves/fire-safe/series-83.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "ball-valves/fire-safe/series-88.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
+  "ball-valves/meta-seat/3-p.jpg":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "ball-valves/series-77.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
+  "ball-valves/series-83.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "ball-valves/series-88.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
+  "ball-valves/three-piece/hp-3.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
+  "ball-valves/three-piece/series-77.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
+  "ball-valves/three-piece/series-83.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "ball-valves/three-piece/series-88.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
+  "ball-valves/v-port/77v.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
+  "ball-valves/v-port/83v.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "ball-valves/v-port/88v.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
+  "mars series images/high-performance-three-piece-ball-valve/series-f86a.jpg":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-f86a.jpg",
+  "mars series images/high-performance-three-piece-ball-valve/series-77.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
+  "mars series images/high-performance-three-piece-ball-valve/series-83.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-83.png",
+  "mars series images/high-performance-three-piece-ball-valve/series-88.png":
+    KX + "High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the

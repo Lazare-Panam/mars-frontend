@@ -128,12 +128,12 @@ export const SHOP_PRODUCTS: {
     productId: "high-performance-three-piece-ball-valve",
     productName: "High Performance 3-Piece Ball Valve",
     thumbnailImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-77.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
     variants: [
       {
         id: "v77-1-4in-w-o-handle",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-77.png",
+          "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
         specs: {
           SKU: "V77-1-4IN-W-O-HANDLE",
           Size: '1/4"',
@@ -148,7 +148,7 @@ export const SHOP_PRODUCTS: {
       {
         id: "v77-1-2in-w-handle",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/mars%20series%20images/high-performance-three-piece-ball-valve/series-77.png",
+          "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-77.png",
         specs: {
           SKU: "V77-1-2IN-W-HANDLE",
           Size: '1/2"',
