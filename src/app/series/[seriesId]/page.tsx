@@ -172,7 +172,10 @@ export default function SeriesConfiguratorPage({
         : { ...prev, [filterName]: value },
     );
 
-  if (isLoading) {
+  // No data yet and no error = still loading. The server render has no data
+  // when its prefetch failed (failed queries aren't sent to the browser), so
+  // it must show the same spinner the browser shows, or hydration fails.
+  if (isLoading || (!config && !isError)) {
     return (
       <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "60vh" }}>
         <CircularProgress color="primary" />
