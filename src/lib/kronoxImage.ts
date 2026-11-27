@@ -1,46 +1,136 @@
 // Rebranded Kronox product photos.
 //
-// The original product photos carry MARS marks. As each batch is rebranded
-// and uploaded to the `kronox/products/` blob folder, add its files here.
-// Image URLs from the backend API (which still point at the old MARS images)
-// are passed through `kronoxImage()` so the site shows the Kronox version
-// without a database change.
+// The original product photos carry MARS marks. Each rebranded batch is
+// uploaded to the `kronox/products/` blob folder and listed here, keyed by the
+// old image's path inside the `mars-valves` container. The backend API still
+// returns the old links, so every API response is passed through
+// `rebrandImages()` (see api/axiosClient.ts) and every hard-coded link through
+// `kronoxImage()`. Keys are exact paths, matched by comparing the photos
+// themselves, because the API reuses the same photo under different names
+// (e.g. two-piece/hp-bv-2.jpg is the Series 24 photo).
 
 const KX = "https://pblol2.blob.core.windows.net/kronox/products/";
+const OLD_PREFIX = "pblol2.blob.core.windows.net/mars-valves/";
 
-/** Old image file name -> rebranded Kronox URL. */
+/** Old path inside mars-valves (decoded) -> rebranded Kronox URL. */
 const REBRANDED: Record<string, string> = {
-  // Batch 1: one-piece ball valves
-  "series-10-10.png": KX + "One-piece-ball-valves/series-10-10.png",
-  "series-10-30.png": KX + "One-piece-ball-valves/series-10-30.png",
-  "series-f10-30.png": KX + "One-piece-ball-valves/series-f10-30.png",
-  "series-f10-50.png": KX + "One-piece-ball-valves/series-f10-50.png",
-  "series-f10-60.jpg": KX + "One-piece-ball-valves/series-f10-60.jpg",
-  "series-f10-20.jpg": KX + "One-piece-ball-valves/series-f10-20.jpg",
-  "series-10-50.jpg": KX + "One-piece-ball-valves/series-10-50.jpg",
-  "series-10-40.jpg": KX + "One-piece-ball-valves/series-10-40.jpg",
-  // Batch 2: economical two-piece ball valves
-  "series-20-10.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-20-10.jpg",
-  "series-20-20.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
-  "series-20-30.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-20-30.jpg",
-  "series-20-40.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-20-40.jpg",
-  "series-f20-60.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20-60.jpg",
-  "series-f20b-2c.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-2c.jpg",
-  "series-f20b-3c.jpg": KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-3c.jpg",
-  // Batch 3: high-performance two-piece ball valves
-  "series-20-50.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-20-50.jpg",
-  "series-22.png": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
-  "series-28.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-28.jpg",
-  "series-f20-80.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f20-80.jpg",
-  "series-f202d.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f202d.jpg",
-  "series-f21-10.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-10.jpg",
-  "series-f21-20.jpg": KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-20.jpg",
+  "ball-valves/fire-safe/series-28.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-28.jpg",
+  "ball-valves/one-piece/10-10.png":
+    KX + "One-piece-ball-valves/series-10-10.png",
+  "ball-valves/one-piece/10-30.png":
+    KX + "One-piece-ball-valves/series-10-30.png",
+  "ball-valves/one-piece/10-40.jpg":
+    KX + "One-piece-ball-valves/series-10-40.jpg",
+  "ball-valves/one-piece/10-50.jpg":
+    KX + "One-piece-ball-valves/series-10-50.jpg",
+  "ball-valves/one-piece/F10-20.jpg":
+    KX + "One-piece-ball-valves/series-f10-20.jpg",
+  "ball-valves/one-piece/F10-30.png":
+    KX + "One-piece-ball-valves/series-f10-30.png",
+  "ball-valves/one-piece/F10-50.png":
+    KX + "One-piece-ball-valves/series-f10-50.png",
+  "ball-valves/one-piece/F10-60.jpg":
+    KX + "One-piece-ball-valves/series-f10-60.jpg",
+  "ball-valves/series-10-10.png":
+    KX + "One-piece-ball-valves/series-10-10.png",
+  "ball-valves/series-20-20.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
+  "ball-valves/series-20-40.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-40.jpg",
+  // The API's Series 22 photo is actually the Series 20-20 lever valve; show
+  // the real Series 22 (direct mount, actuated) photo instead, as on the cards.
+  "ball-valves/series-22.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
+  "ball-valves/two-piece/eco-2.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-10.jpg",
+  "ball-valves/two-piece/eco-2/20-20.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-10.jpg",
+  "ball-valves/two-piece/hp-2.png":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
+  "ball-valves/two-piece/hp-bv-2.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-24.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-20-10.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-10.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-20-20.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-20-30.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-30.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-20-40.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-20-40.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-f20-60.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-f20-60.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-f20b-2c.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-2c.jpg",
+  "mars series images/economical-two-piece-ball-valve/series-f20b-3c.jpg":
+    KX + "Economical%202-Piece%20Ball%20Valves/series-f20b-3c.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-20-50.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-20-50.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-22.png":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
+  "mars series images/high-performance-two-piece-ball-valve/series-28.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-28.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-f20-80.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f20-80.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-f202d.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f202d.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-f21-10.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-10.jpg",
+  "mars series images/high-performance-two-piece-ball-valve/series-f21-20.jpg":
+    KX + "High%20Performance%202-Piece%20Ball%20Valves/series-f21-20.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-24.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-24.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-f21-70.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-f21-70.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-f21-90.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-f21-90.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-f21-9k.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-f21-9k.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-f22-40.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-f22-50.jpg",
+  "mars series images/high-pressure-two-piece-ball-valve/series-f22-50.jpg":
+    KX + "High%20Pressure%202-Piece%20Ball%20Valves/series-f22-50.jpg",
+  "mars series images/one-piece-ball-valves/series-10-10.png":
+    KX + "One-piece-ball-valves/series-10-10.png",
+  "mars series images/one-piece-ball-valves/series-10-30.png":
+    KX + "One-piece-ball-valves/series-10-30.png",
+  "mars series images/one-piece-ball-valves/series-10-40.jpg":
+    KX + "One-piece-ball-valves/series-10-40.jpg",
+  "mars series images/one-piece-ball-valves/series-10-50.jpg":
+    KX + "One-piece-ball-valves/series-10-50.jpg",
+  "mars series images/one-piece-ball-valves/series-f10-20.jpg":
+    KX + "One-piece-ball-valves/series-f10-20.jpg",
+  "mars series images/one-piece-ball-valves/series-f10-30.png":
+    KX + "One-piece-ball-valves/series-f10-30.png",
+  "mars series images/one-piece-ball-valves/series-f10-50.png":
+    KX + "One-piece-ball-valves/series-f10-50.png",
+  "mars series images/one-piece-ball-valves/series-f10-60.jpg":
+    KX + "One-piece-ball-valves/series-f10-60.jpg",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the
  *  URL unchanged if that image hasn't been rebranded yet. */
 export function kronoxImage<T extends string | null | undefined>(url: T): T {
-  if (!url || !url.includes("pblol2.blob.core.windows.net/mars-valves/")) return url;
-  const file = decodeURIComponent(url.split("?")[0].split("/").pop() ?? "").toLowerCase();
-  return (REBRANDED[file] ?? url) as T;
+  if (!url) return url;
+  const i = url.indexOf(OLD_PREFIX);
+  if (i < 0) return url;
+  let path = url.slice(i + OLD_PREFIX.length).split("?")[0];
+  try {
+    path = decodeURIComponent(path);
+  } catch {
+    /* keep as is */
+  }
+  return (REBRANDED[path] ?? url) as T;
+}
+
+/** Deep-replaces old image links anywhere in an API response. */
+export function rebrandImages<T>(data: T): T {
+  if (typeof data === "string") return kronoxImage(data) as T;
+  if (Array.isArray(data)) return data.map(rebrandImages) as T;
+  if (data && typeof data === "object") {
+    const out: Record<string, unknown> = {};
+    for (const [k, v] of Object.entries(data as Record<string, unknown>)) out[k] = rebrandImages(v);
+    return out as T;
+  }
+  return data;
 }
