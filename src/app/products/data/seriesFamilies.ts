@@ -536,7 +536,7 @@ SERIES_FAMILIES.push({
   series: [
     {
       name: "Series 99",
-      image: "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-99.png",
+      image: "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-99.png",
       specs: [
         ["Design", "1-piece compact wafer ball valve"],
         ["Port", "Full port"],

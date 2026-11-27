@@ -158,6 +158,32 @@ const REBRANDED: Record<string, string> = {
     KX + "Steam%20Jacketed%203-Piece%20Ball%20Valves/series-83j.jpg",
   "mars series images/steam-jacketed-three-piece-ball-valve/series-88j.jpg":
     KX + "Steam%20Jacketed%203-Piece%20Ball%20Valves/series-88j.jpg",
+  "ball-valves/flanged/water-type.png":
+    KX + "By%20Series/series-99.png",
+  "ball-valves/meta-seat/flanged-ball.jpg":
+    KX + "By%20Series/series-90d.jpg",
+  "ball-valves/s33.jpg":
+    KX + "By%20Series/s33.jpg",
+  "ball-valves/sanitary-ball-valves/eco-san.png":
+    KX + "By%20Series/series-50sn.png",
+  "ball-valves/sanitary-ball-valves/hp-san.png":
+    KX + "By%20Series/series77sn.png",
+  "ball-valves/sanitary-ball-valves/multi-port-san.jpg":
+    KX + "By%20Series/series-36sn.jpg",
+  "ball-valves/series-36sn.jpg":
+    KX + "By%20Series/series-36sn.jpg",
+  "ball-valves/series-50sn.png":
+    KX + "By%20Series/series-50sn.png",
+  "ball-valves/series-77sn.png":
+    KX + "By%20Series/series77sn.png",
+  "ball-valves/series-99.png":
+    KX + "By%20Series/series-99.png",
+  "ball-valves/three-piece/series-90d.jpg":
+    KX + "By%20Series/series-90d.jpg",
+  "ball-valves/three-piece/series77sn.png":
+    KX + "By%20Series/series77sn.png",
+  "ball-valves/v-port/99v.png":
+    KX + "By%20Series/series-99.png",
 };
 
 /** Returns the rebranded Kronox photo for an old MARS-era image URL, or the

@@ -38,7 +38,7 @@ export const SERIES = [
     description:
       "3-way full port direct mount ball valves with ISO 5211 pad and L/T port for diverting and mixing service.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/s33.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/s33.jpg",
     href: "/series/6",
     pricesHref: "/series/6/variants",
   },
@@ -48,7 +48,7 @@ export const SERIES = [
     description:
       "Sanitary 3-way / 4-way full port direct mount ball valves with Tri-clamp or OD tube ends, FDA approved and 3-A certified.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-36sn.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-36sn.jpg",
     href: "/series/7",
     pricesHref: "/series/7/variants",
   },
@@ -68,7 +68,7 @@ export const SERIES = [
     description:
       "3-piece full bore hygienic manual ball valves with cavity-filled PTFE seats and Tri-clamp or short-welding ends, FDA compliant.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-50sn.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-50sn.png",
     href: "/series/11",
     pricesHref: "/series/11/variants",
   },
@@ -88,7 +88,7 @@ export const SERIES = [
     description:
       "3-piece high performance sanitary ball valves with Tri-clamp and OD tube ends for hygienic process lines.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series77sn.png",
     href: "/series/9",
     pricesHref: "/series/9/variants",
   },
@@ -118,7 +118,7 @@ export const SERIES = [
     description:
       "2-piece fire safe flanged metal seated ball valves, full port, from 1/2\" to 12\".",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series-90d.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-90d.jpg",
     href: "/series/14",
     pricesHref: "/series/14/variants",
   },
@@ -128,7 +128,7 @@ export const SERIES = [
     description:
       "1-piece compact wafer ball valves with ISO 5211 pad for direct actuator mounting, in PN16/40 and PN25/40 flange ratings.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-99.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-99.png",
     href: "/series/15",
     pricesHref: "/series/15/variants",
   },
@@ -204,7 +204,7 @@ export const CATEGORIES = [
     description:
       "API 607 certified fire safe ball valves for critical and hazardous applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/fire-safe/series-28.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%202-Piece%20Ball%20Valves/series-28.jpg",
     href: "/products/fire-safe-ball-valves",
   },
   {
@@ -213,7 +213,7 @@ export const CATEGORIES = [
     description:
       "Hygienic ball valves designed for food, beverage, pharmaceutical and biotechnology applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-50sn.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-50sn.png",
     href: "/products/sanitary-ball-valves",
   },
   {
@@ -222,7 +222,7 @@ export const CATEGORIES = [
     description:
       "High performance V-port ball valves for precise flow control in demanding industrial applications.",
     image:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/v-port/88v.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/High%20Performance%203-Piece%20Ball%20Valves/series-88.png",
     href: "/products/v-port-ball-valves",
   },
 ];

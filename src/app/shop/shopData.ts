@@ -14,12 +14,12 @@ export const SHOP_PRODUCTS: {
     productId: "three-four-five-way-ball-valve",
     productName: "3/4/5-Way Ball Valve",
     thumbnailImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/s33.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/s33.jpg",
     variants: [
       {
         id: "v33-123-1-4into1-2in-t-port-bare-shaft",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/s33.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/s33.jpg",
         specs: {
           SKU: "V33-123-1-4INto1-2IN-T-PORT-BARE-SHAFT",
           Size: '1/4"~1/2"',
@@ -32,7 +32,7 @@ export const SHOP_PRODUCTS: {
       {
         id: "v33-123-3-4in-t-port-bare-shaft",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/s33.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/s33.jpg",
         specs: {
           SKU: "V33-123-3-4IN-T-PORT-BARE-SHAFT",
           Size: '3/4"',
@@ -48,12 +48,12 @@ export const SHOP_PRODUCTS: {
     productId: "sanitary-multi-port-ball-valve",
     productName: "Sanitary Multi-Port Ball Valve",
     thumbnailImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-36sn.jpg",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-36sn.jpg",
     variants: [
       {
         id: "v36sn-1020-1-2in-cavity-filler-seat-w-handle",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-36sn.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-36sn.jpg",
         specs: {
           SKU: "V36SN-1020-1-2IN-CAVITY-FILLER-SEAT-W-HANDLE",
           Size: '1/2"',
@@ -68,7 +68,7 @@ export const SHOP_PRODUCTS: {
       {
         id: "v36sn-1020-3-4in-cavity-filler-seat-w-handle",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/series-36sn.jpg",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series-36sn.jpg",
         specs: {
           SKU: "V36SN-1020-3-4IN-CAVITY-FILLER-SEAT-W-HANDLE",
           Size: '3/4"',
@@ -166,12 +166,12 @@ export const SHOP_PRODUCTS: {
     productId: "high-performance-sanitary-ball-valve",
     productName: "High Performance Sanitary Ball Valve",
     thumbnailImage:
-      "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
+      "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series77sn.png",
     variants: [
       {
         id: "v77sn-10-2a-1-2in-t-clamp-std-ptfe-seat",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series77sn.png",
         specs: {
           SKU: "V77SN-10-2A-1-2IN-T-CLAMP-STD-PTFE-SEAT",
           Size: '1/2"',
@@ -186,7 +186,7 @@ export const SHOP_PRODUCTS: {
       {
         id: "v77sn-10-2a-3-4in-t-clamp-std-ptfe-seat",
         thumbnailImage:
-          "https://pblol2.blob.core.windows.net/mars-valves/ball-valves/three-piece/series77sn.png",
+          "https://pblol2.blob.core.windows.net/kronox/products/By%20Series/series77sn.png",
         specs: {
           SKU: "V77SN-10-2A-3-4IN-T-CLAMP-STD-PTFE-SEAT",
           Size: '3/4"',
