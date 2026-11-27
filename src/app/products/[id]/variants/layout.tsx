@@ -46,7 +46,7 @@ export async function generateMetadata({
     };
   }
 
-  // Shorter fallbacks for long names (e.g. Series 77SN) so the title fits.
+  // Shorter fallbacks for long names (e.g. KX-77SN) so the title fits.
   const base = firstThatFits([`${data.name} — All Models`, `${data.name} Models`, data.name]);
   const title = fitBrandTitle(base);
   const description = modelsDescription(data.name, data.variants.length);

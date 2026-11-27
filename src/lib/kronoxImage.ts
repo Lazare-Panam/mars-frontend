@@ -7,7 +7,7 @@
 // `rebrandImages()` (see api/axiosClient.ts) and every hard-coded link through
 // `kronoxImage()`. Keys are exact paths, matched by comparing the photos
 // themselves, because the API reuses the same photo under different names
-// (e.g. two-piece/hp-bv-2.jpg is the Series 24 photo).
+// (e.g. two-piece/hp-bv-2.jpg is the KX-24 photo).
 
 const KX = "https://pblol2.blob.core.windows.net/kronox/products/";
 const OLD_PREFIX = "pblol2.blob.core.windows.net/mars-valves/";
@@ -38,8 +38,8 @@ const REBRANDED: Record<string, string> = {
     KX + "Economical%202-Piece%20Ball%20Valves/series-20-20.jpg",
   "ball-valves/series-20-40.jpg":
     KX + "Economical%202-Piece%20Ball%20Valves/series-20-40.jpg",
-  // The API's Series 22 photo is actually the Series 20-20 lever valve; show
-  // the real Series 22 (direct mount, actuated) photo instead, as on the cards.
+  // The API's KX-22 photo is actually the KX-20-20 lever valve; show
+  // the real KX-22 (direct mount, actuated) photo instead, as on the cards.
   "ball-valves/series-22.jpg":
     KX + "High%20Performance%202-Piece%20Ball%20Valves/series-22.png",
   "ball-valves/two-piece/eco-2.jpg":

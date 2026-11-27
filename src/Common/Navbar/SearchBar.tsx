@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 // Example searches the big header search cycles through as its placeholder.
 const EXAMPLES = [
   "Search by part number, series, size, thread…",
-  "Try “Series 83 fire-safe”",
+  "Try “KX-83 fire-safe”",
   "Try “DN50 3-piece 316”",
   "Try “½″ BSP 2-piece”",
   "Try “flanged PN40”",

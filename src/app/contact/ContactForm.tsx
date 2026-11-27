@@ -215,7 +215,7 @@ export default function ContactForm() {
           <Grid size={{ xs: 12, md: 6 }}>{field('userEmail', { label: 'Email', placeholder: 'jane@company.com', required: true, Icon: MailOutlineIcon, type: 'email' })}</Grid>
           <Grid size={{ xs: 12, md: 6 }}>{field('userCompany', { label: 'Company', placeholder: 'Company name', required: true, Icon: BusinessOutlinedIcon })}</Grid>
           <Grid size={{ xs: 12, md: 6 }}>{field('userCountry', { label: 'Country', placeholder: 'United Kingdom', Icon: PublicOutlinedIcon })}</Grid>
-          <Grid size={12}>{field('product', { label: 'Product or part number', placeholder: 'e.g. Series 77, 1" NPT', hint: 'Optional', Icon: Inventory2OutlinedIcon })}</Grid>
+          <Grid size={12}>{field('product', { label: 'Product or part number', placeholder: 'e.g. KX-77, 1" NPT', hint: 'Optional', Icon: Inventory2OutlinedIcon })}</Grid>
           <Grid size={12}>
             <FieldLabel required>Message</FieldLabel>
             <TextField

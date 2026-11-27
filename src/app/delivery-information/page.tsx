@@ -31,7 +31,7 @@ const deliveryPoints = [
   {
     icon: <Inventory2Icon />,
     title: "UK Stock",
-    text: "We hold UK stock of Kronox Series 10-10, 20-40, 77 and 88. Stock availability and the dispatch date are confirmed with your order.",
+    text: "We hold UK stock of Kronox KX-10-10, KX-20-40, KX-77 and KX-88. Stock availability and the dispatch date are confirmed with your order.",
   },
   {
     icon: <LocalShippingIcon />,

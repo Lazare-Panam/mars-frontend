@@ -18,7 +18,7 @@ const CARD_BORDER = "1px solid rgba(58,61,66,0.09)";
 
 const TAG_LABELS: Record<string, string> = { DM: "Direct mount", FS: "Fire safe" };
 
-/** "Series F21-70, 3000PSI, FS" → title "Series F21-70", tags ["3000 PSI", "Fire safe"]. */
+/** "KX-F21-70, 3000PSI, FS" → title "KX-F21-70", tags ["3000 PSI", "Fire safe"]. */
 function splitName(name: string): { title: string; tags: string[] } {
   const [title, ...rest] = name.split(",").map((s) => s.trim());
   const tags = rest.map((t) => TAG_LABELS[t] ?? t.replace(/(\d)PSI$/i, "$1 PSI"));

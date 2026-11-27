@@ -4,7 +4,7 @@
 export const SERIES = [
   {
     id: "series-10-10",
-    label: "KX Series 10-10",
+    label: "KX-10-10",
     description:
       "Robust 1-piece reduced port ball valves rated to 2000 PSI for high pressure threaded-line service.",
     image:
@@ -14,7 +14,7 @@ export const SERIES = [
   },
   {
     id: "series-20-20",
-    label: "KX Series 20-20",
+    label: "KX-20-20",
     description:
       "2-piece full port ball valves rated to 1000 PSI for general industrial service.",
     image:
@@ -24,7 +24,7 @@ export const SERIES = [
   },
   {
     id: "series-22",
-    label: "KX Series 22",
+    label: "KX-22",
     description:
       "2-piece direct mount full port ball valves with ISO 5211 mounting pad for actuated service.",
     image:
@@ -34,7 +34,7 @@ export const SERIES = [
   },
   {
     id: "series-33",
-    label: "KX Series 33",
+    label: "KX-33",
     description:
       "3-way full port direct mount ball valves with ISO 5211 pad and L/T port for diverting and mixing service.",
     image:
@@ -44,7 +44,7 @@ export const SERIES = [
   },
   {
     id: "series-36sn",
-    label: "KX Series 36SN",
+    label: "KX-36SN",
     description:
       "Sanitary 3-way / 4-way full port direct mount ball valves with Tri-clamp or OD tube ends, FDA approved and 3-A certified.",
     image:
@@ -54,7 +54,7 @@ export const SERIES = [
   },
   {
     id: "series-50",
-    label: "KX Series 50",
+    label: "KX-50",
     description:
       "3-piece full bore maintainable ball valves with blow-out proof stem, lockable lever and steam-rated carbon-filled R-PTFE seats.",
     image:
@@ -64,7 +64,7 @@ export const SERIES = [
   },
   {
     id: "series-50sn",
-    label: "KX Series 50SN",
+    label: "KX-50SN",
     description:
       "3-piece full bore hygienic manual ball valves with cavity-filled PTFE seats and Tri-clamp or short-welding ends, FDA compliant.",
     image:
@@ -74,7 +74,7 @@ export const SERIES = [
   },
   {
     id: "series-77",
-    label: "KX Series 77",
+    label: "KX-77",
     description:
       "3-piece high performance direct mount ball valves with full port and a wide range of end connections.",
     image:
@@ -84,7 +84,7 @@ export const SERIES = [
   },
   {
     id: "series-77sn",
-    label: "KX Series 77SN",
+    label: "KX-77SN",
     description:
       "3-piece high performance sanitary ball valves with Tri-clamp and OD tube ends for hygienic process lines.",
     image:
@@ -94,7 +94,7 @@ export const SERIES = [
   },
   {
     id: "series-83",
-    label: "KX Series 83",
+    label: "KX-83",
     description:
       "3-piece fire safe ball valves certified to API 607 7th Edition, rated to 2000 PSI.",
     image:
@@ -104,7 +104,7 @@ export const SERIES = [
   },
   {
     id: "series-88",
-    label: "KX Series 88",
+    label: "KX-88",
     description:
       "3-piece fire safe metal seated ball valves with direct mount design for severe service up to 2000 PSI.",
     image:
@@ -114,7 +114,7 @@ export const SERIES = [
   },
   {
     id: "series-90d",
-    label: "KX Series 90D",
+    label: "KX-90D",
     description:
       "2-piece fire safe flanged metal seated ball valves, full port, from 1/2\" to 12\".",
     image:
@@ -124,7 +124,7 @@ export const SERIES = [
   },
   {
     id: "series-99",
-    label: "KX Series 99",
+    label: "KX-99",
     description:
       "1-piece compact wafer ball valves with ISO 5211 pad for direct actuator mounting, in PN16/40 and PN25/40 flange ratings.",
     image:

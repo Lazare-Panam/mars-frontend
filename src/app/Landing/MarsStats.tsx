@@ -78,7 +78,7 @@ const FEATURES = [
   {
     icon: <VerifiedIcon fontSize="small" />,
     title: "Fire-Safe Series",
-    desc: "Selected series tested to API 607: Series 28, 83, 88, 90, 90D and 91D.",
+    desc: "Selected series tested to API 607: KX-28, KX-83, KX-88, KX-90, KX-90D and KX-91D.",
   },
   {
     icon: <PrecisionManufacturingIcon fontSize="small" />,

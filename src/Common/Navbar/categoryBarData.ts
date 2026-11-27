@@ -6,7 +6,7 @@ import { SERIES } from "@/app/products/data/categories";
 // body construction first (1/2/3-piece, flanged), then configuration
 // (multi-port, V-port), then service (sanitary, fire safe, metal seated), plus
 // a by-series list. Only ranges we actually list are included; every link was
-// checked to open a real page (1 Oct 2026). Series 28 is left out because its
+// checked to open a real page (1 Oct 2026). KX-28 is left out because its
 // fire-safe product page currently has no content.
 
 export type CategoryLink = { label: string; href: string };
@@ -39,12 +39,12 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "By Series",
         href: P,
         // Read from the series data, so new series pages appear here automatically.
-        // Series 20-40 is the new SQL-backed configurator (/series/[categoryId]).
+        // KX-20-40 is the new SQL-backed configurator (/series/[categoryId]).
         links: [
-          { label: "KX Series 10-10", href: "/series/4" },
-          { label: "KX Series 20-20", href: "/series/5" },
-          { label: "KX Series 20-40", href: "/series/1" },
-          { label: "KX Series 22", href: "/series/3" },
+          { label: "KX-10-10", href: "/series/4" },
+          { label: "KX-20-20", href: "/series/5" },
+          { label: "KX-20-40", href: "/series/1" },
+          { label: "KX-22", href: "/series/3" },
           ...SERIES
             .filter(
               (series) =>
@@ -181,10 +181,10 @@ export const CATEGORY_BAR: CategoryBarItem[] = [
         heading: "Direct-Mount Series",
         href: "/actuated-packages",
         links: [
-          { label: "KX Series 22", href: "/series/3" },
-          { label: "KX Series 33", href: "/series/6" },
-          { label: "KX Series 77", href: "/series/8" },
-          { label: "KX Series 88", href: "/series/13" },
+          { label: "KX-22", href: "/series/3" },
+          { label: "KX-33", href: "/series/6" },
+          { label: "KX-77", href: "/series/8" },
+          { label: "KX-88", href: "/series/13" },
         ],
       },
     ],

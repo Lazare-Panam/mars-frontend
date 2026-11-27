@@ -62,7 +62,7 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/kronox/news/kronox-stock-arriving-november.jpeg",
     excerpt:
-      "Kronox valve stock lands in the UK this November and we're taking RFQs now. Early requests get priority on the first allocation — including the most-requested Series 77 (V77).",
+      "Kronox valve stock lands in the UK this November and we're taking RFQs now. Early requests get priority on the first allocation — including the most-requested KX-77 (V77).",
     metaDescription:
       "Kronox Valve stock lands in the UK this November. Send your RFQ now for priority on the V77, V88, V22 and Kronox ball valves.",
     tags: ["Stock Update", "Kronox Valves", "V77", "UK Stock", "RFQ"],
@@ -73,7 +73,7 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "What's Coming",
-        body: `The Series 77 (V77) has been our most-requested Kronox line this year, so if it's on your list, now is the time to tell us. Kronox ball valves are also coming into UK stock, and we're seeing steady interest in the V88 (Series 88) and V22 (Series 22) as well.`,
+        body: `The KX-77 (V77) has been our most-requested Kronox line this year, so if it's on your list, now is the time to tell us. Kronox ball valves are also coming into UK stock, and we're seeing steady interest in the V88 (KX-88) and V22 (KX-22) as well.`,
       },
       {
         heading: "How to Get Priority Allocation",
@@ -90,8 +90,8 @@ export const blogs: BlogData[] = [
         a: "The next Kronox allocation lands in the UK in November. Send your RFQ now and we'll confirm the arrival window for your models.",
       },
       {
-        q: "What is the Series 77 (V77)?",
-        a: "The Series 77 has been our most-requested Kronox line this year. Tell us your size, connection, body and seat material and we'll quote it from the incoming November stock.",
+        q: "What is the KX-77 (V77)?",
+        a: "The KX-77 has been our most-requested Kronox line this year. Tell us your size, connection, body and seat material and we'll quote it from the incoming November stock.",
       },
       {
         q: "How do I reserve stock from the November shipment?",
@@ -126,7 +126,7 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "One-Piece Ball Valves",
-        body: `A one-piece valve has a body made from a single casting. Because there is no joint to open, the ball is fitted through the end of the body, which means the bore has to be smaller than the pipe: one-piece valves are reduced port. They generally can't be taken apart for repair, so a worn valve is replaced rather than serviced.\n\nThe Kronox one-piece range covers Series 10-10, 10-30, 10-40, 10-50, F10-20, F10-30, F10-50 and F10-60:\n\n• Sizes from 1/8" to 2".\n• Pressure ratings up to 2,000 PSI (Series 10-10, F10-50 and F10-60).\n• Threaded ends: NPT, BSP or BSPT.\n• A direct-mount version (F10-20) for actuators, and a fire-safe version (F10-60).\n\nOne-piece valves suit small-bore, general on/off service where low cost matters more than repairability: water, air and utility lines, and instrumentation. [Browse one-piece ball valves](/products/one-piece-ball-valves).`,
+        body: `A one-piece valve has a body made from a single casting. Because there is no joint to open, the ball is fitted through the end of the body, which means the bore has to be smaller than the pipe: one-piece valves are reduced port. They generally can't be taken apart for repair, so a worn valve is replaced rather than serviced.\n\nThe Kronox one-piece range covers KX-10-10, KX-10-30, KX-10-40, KX-10-50, KX-F10-20, KX-F10-30, KX-F10-50 and KX-F10-60:\n\n• Sizes from 1/8" to 2".\n• Pressure ratings up to 2,000 PSI (KX-10-10, KX-F10-50 and KX-F10-60).\n• Threaded ends: NPT, BSP or BSPT.\n• A direct-mount version (F10-20) for actuators, and a fire-safe version (F10-60).\n\nOne-piece valves suit small-bore, general on/off service where low cost matters more than repairability: water, air and utility lines, and instrumentation. [Browse one-piece ball valves](/products/one-piece-ball-valves).`,
       },
       {
         heading: "Two-Piece Ball Valves",
@@ -223,7 +223,7 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "Kronox Sanitary Ball Valves at a Glance",
-        body: `Kronox offers two sanitary ball valve families. Both come in ½" to 4" (83SN: ½" to 2") with tri-clamp or tube OD butt weld ends, PTFE seats, and a 1,000 psi (≈ 69 bar) maximum rating.\n\n• Series 77SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port. See the [high performance sanitary ball valve](/products/ball-valves/high-performance-sanitary-ball-valve/variants).\n• Series 88SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port.\n• Series 83SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. ½"–2", true tube full port.\n• Series 33SN (multi-port) — CF3M body, CF3M or 316L ball / 316L stem. 3-, 4- and 5-way, cavity filler seats available. See the [sanitary multi-port ball valve](/products/ball-valves/sanitary-multi-port-ball-valve/variants).\n• Series 55SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Live-loaded stem, ISO 5211 pad.\n• Series 50SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Gland stem packing.\n\nWhich series for which line:\n\n• Welded pharma or high-purity lines: 77SN, 88SN or 83SN keep a low-carbon path through body, ball and stem.\n• Automated lines: 77SN and 88SN take an actuator directly. The 55SN has an ISO 5211 pad. See our [actuated ball valve guide](/news/actuated-ball-valve-guide).\n• Clamp-in food and beverage: 55SN or 50SN in CF8M keep costs down.\n• Diverting or mixing: 33SN multi-port replaces several two-way valves and cuts dead legs.`,
+        body: `Kronox offers two sanitary ball valve families. Both come in ½" to 4" (83SN: ½" to 2") with tri-clamp or tube OD butt weld ends, PTFE seats, and a 1,000 psi (≈ 69 bar) maximum rating.\n\n• KX-77SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port. See the [high performance sanitary ball valve](/products/ball-valves/high-performance-sanitary-ball-valve/variants).\n• KX-88SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. Direct mounting, true tube full port.\n• KX-83SN (high performance) — CF3M body, CF3M or 316L ball / 316L stem. ½"–2", true tube full port.\n• KX-33SN (multi-port) — CF3M body, CF3M or 316L ball / 316L stem. 3-, 4- and 5-way, cavity filler seats available. See the [sanitary multi-port ball valve](/products/ball-valves/sanitary-multi-port-ball-valve/variants).\n• KX-55SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Live-loaded stem, ISO 5211 pad.\n• KX-50SN (economical) — CF8M or CF3M body, CF8M or 316 ball / 316 stem. Gland stem packing.\n\nWhich series for which line:\n\n• Welded pharma or high-purity lines: 77SN, 88SN or 83SN keep a low-carbon path through body, ball and stem.\n• Automated lines: 77SN and 88SN take an actuator directly. The 55SN has an ISO 5211 pad. See our [actuated ball valve guide](/news/actuated-ball-valve-guide).\n• Clamp-in food and beverage: 55SN or 50SN in CF8M keep costs down.\n• Diverting or mixing: 33SN multi-port replaces several two-way valves and cuts dead legs.`,
       },
       {
         heading: "Common Specification Mistakes",
@@ -321,12 +321,12 @@ export const blogs: BlogData[] = [
     heroImage:
       "https://pblol2.blob.core.windows.net/kronox/news/fire-safe-ball-valves.jpg",
     excerpt:
-      "How Kronox fire-safe ball valves support reliable isolation in hazardous industrial applications, certified to API 607 and ISO 10497 across the Series 83, 88, 90, 90D and 91D ranges.",
+      "How Kronox fire-safe ball valves support reliable isolation in hazardous industrial applications, certified to API 607 and ISO 10497 across the KX-83, KX-88, KX-90, KX-90D and KX-91D ranges.",
     tags: ["Fire-Safe", "Ball Valves", "API 607", "ISO 10497", "Industrial"],
     sections: [
       {
         heading: null,
-        body: `Industrial systems carrying fuels, gases, solvents and other hazardous media require valves that can provide dependable isolation during both normal operation and emergency conditions.\n\nDuring a fire, extreme heat can damage soft valve seats, stem seals and body gaskets. A fire-safe ball valve is designed to limit internal and external leakage if these primary sealing components deteriorate.\n\nKronox offers several fire-tested ball valve ranges, including the Series 83, Series 88, Series 90, Series 90D and Series 91D. These ranges carry fire-safe certification following testing by Southwest Research Institute and TÜV Germany.`,
+        body: `Industrial systems carrying fuels, gases, solvents and other hazardous media require valves that can provide dependable isolation during both normal operation and emergency conditions.\n\nDuring a fire, extreme heat can damage soft valve seats, stem seals and body gaskets. A fire-safe ball valve is designed to limit internal and external leakage if these primary sealing components deteriorate.\n\nKronox offers several fire-tested ball valve ranges, including the KX-83, KX-88, KX-90, KX-90D and KX-91D. These ranges carry fire-safe certification following testing by Southwest Research Institute and TÜV Germany.`,
         image:
           "https://pblol2.blob.core.windows.net/kronox/news/bg-2.jpeg",
       },
@@ -340,15 +340,15 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "Kronox Fire-Safe Ball Valve Range",
-        body: `• Series 28 — Two-piece, ¼″–3″, seal-welded, full port, API 607 tested.\n• Series 83 — Three-piece, ¼″–2″, full or reduced port, multiple end connections.\n• Series 88 — Three-piece direct mount, ¼″–4″, fire-safe, direct actuator mounting.\n• Series 90 — Flanged, ½″–4″, full port, ANSI Class 150 and PN16/40.\n• Series 90D — Flanged direct mount, ½″–12″, full port, ANSI Class 150/300.\n• Series 91D — Flanged direct mount, ½″–6″, reduced port, ANSI Class 150/300.\n\nAvailable end connections across the range include threaded, socket-weld, butt-weld, flanged and extended welding configurations.`,
+        body: `• KX-28 — Two-piece, ¼″–3″, seal-welded, full port, API 607 tested.\n• KX-83 — Three-piece, ¼″–2″, full or reduced port, multiple end connections.\n• KX-88 — Three-piece direct mount, ¼″–4″, fire-safe, direct actuator mounting.\n• KX-90 — Flanged, ½″–4″, full port, ANSI Class 150 and PN16/40.\n• KX-90D — Flanged direct mount, ½″–12″, full port, ANSI Class 150/300.\n• KX-91D — Flanged direct mount, ½″–6″, reduced port, ANSI Class 150/300.\n\nAvailable end connections across the range include threaded, socket-weld, butt-weld, flanged and extended welding configurations.`,
       },
       {
         heading: "Kronox SealMax® Stem-Sealing System",
         body: `Kronox uses its SealMax® triple-sealing system on high-performance ball valve designs:\n\n• Pyramidal stem and stem seal — forms the first barrier against leakage.\n• O-ring packing — provides additional sealing and stem alignment.\n• V-ring chevron packing — expands under compression to block leak paths.\n\nThe design also uses Belleville washers to maintain packing load during wear, temperature changes and pressure fluctuations. A spring-loaded anti-static device provides contact between the ball, stem and body.`,
       },
       {
-        heading: "Series 88 Technical Overview",
-        body: `The Kronox Series 88 is a three-piece fire-safe ball valve designed for manual or automated operation.\n\n• Design: three-piece\n• Port: full or reduced\n• Size: ¼″–4″, DN 8–DN 100\n• Pressure, ¼″–1″: 2,000 psi / PN125\n• Pressure, 1¼″–2″: 1,500 psi / PN100\n• Pressure, 2½″–4″: 1,000 psi / PN63\n• Mounting: ISO 5211 direct mount\n• Standard seat: RTFE\n• Anti-static device: standard\n• Fire compliance: API 607 and ISO 10497\n\nBody materials include CF8M stainless steel, WCB carbon steel, CF3M, Alloy 20, Duplex and Hastelloy C. Optional seat materials include PEEK, TFM1600, CTFE, Delrin, UHMWPE, stainless-steel-filled PTFE and metal seats.`,
+        heading: "KX-88 Technical Overview",
+        body: `The Kronox KX-88 is a three-piece fire-safe ball valve designed for manual or automated operation.\n\n• Design: three-piece\n• Port: full or reduced\n• Size: ¼″–4″, DN 8–DN 100\n• Pressure, ¼″–1″: 2,000 psi / PN125\n• Pressure, 1¼″–2″: 1,500 psi / PN100\n• Pressure, 2½″–4″: 1,000 psi / PN63\n• Mounting: ISO 5211 direct mount\n• Standard seat: RTFE\n• Anti-static device: standard\n• Fire compliance: API 607 and ISO 10497\n\nBody materials include CF8M stainless steel, WCB carbon steel, CF3M, Alloy 20, Duplex and Hastelloy C. Optional seat materials include PEEK, TFM1600, CTFE, Delrin, UHMWPE, stainless-steel-filled PTFE and metal seats.`,
       },
       {
         heading: "Direct Mounting for Automated Isolation",
@@ -364,7 +364,7 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "Conclusion",
-        body: `Kronox fire-safe ball valves combine tested fire performance with secondary sealing, anti-static protection and multiple design options.\n\nRanges such as the Series 83, Series 88, Series 90, Series 90D and Series 91D provide solutions for threaded, welded and flanged piping systems. Direct-mount options also make it easier to create compact automated isolation packages.\n\nSelecting the correct valve requires more than choosing the pipe size. Pressure, temperature, materials, seat design, actuation and certification must all be reviewed to ensure dependable operation in critical industrial service.`,
+        body: `Kronox fire-safe ball valves combine tested fire performance with secondary sealing, anti-static protection and multiple design options.\n\nRanges such as the KX-83, KX-88, KX-90, KX-90D and KX-91D provide solutions for threaded, welded and flanged piping systems. Direct-mount options also make it easier to create compact automated isolation packages.\n\nSelecting the correct valve requires more than choosing the pipe size. Pressure, temperature, materials, seat design, actuation and certification must all be reviewed to ensure dependable operation in critical industrial service.`,
       },
     ],
     cta: {
@@ -421,13 +421,13 @@ export const blogs: BlogData[] = [
       },
       {
         heading: "Why ISO 5211 direct-mount matters",
-        body: `ISO 5211 defines a standardised actuator mounting pad and drive interface. Direct-mount designs, such as the Kronox Series 88 three-piece fire-safe valve, allow the actuator to mount straight onto the valve without a separate bracket and keyed coupling. Benefits include:\n\n• Better alignment and reduced side loading.\n• Less backlash and more accurate travel.\n• Fewer parts to loosen, maintain, or corrode.\n• Quicker assembly and fewer pinch points.\n\nIn practice, direct-mount cuts mechanical play that can show up as deadband in modulating control and can reduce maintenance on high-cycle services.`,
+        body: `ISO 5211 defines a standardised actuator mounting pad and drive interface. Direct-mount designs, such as the Kronox KX-88 three-piece fire-safe valve, allow the actuator to mount straight onto the valve without a separate bracket and keyed coupling. Benefits include:\n\n• Better alignment and reduced side loading.\n• Less backlash and more accurate travel.\n• Fewer parts to loosen, maintain, or corrode.\n• Quicker assembly and fewer pinch points.\n\nIn practice, direct-mount cuts mechanical play that can show up as deadband in modulating control and can reduce maintenance on high-cycle services.`,
         image:
           "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/hp-flanged.png",
       },
       {
         heading: "Selection criteria that prevent problems later",
-        body: `Confirm the valve build first, then the actuator.\n\n• Torque — use manufacturer break-away and running torque data for the exact media, pressure, temperature, and seat material. Apply a safety factor that matches your duty and standards, with extra margin for sticky or particulate service.\n• Fail-safe position — define fail-closed or fail-open early, based on process risk. Pneumatic spring-return is the most straightforward method; validate the spring size against worst-case torque.\n• Duty cycle and control mode — high cycle counts favour pneumatic. Electric actuators must be rated for the commanded duty cycle, especially on modulating service; check starts per hour and ambient conditions.\n• Environment — specify enclosure (IP/NEMA), temperature range, vibration, and corrosion resistance. Consider PFA-lined or corrosion-resistant valves where media demands it, and a cryogenic ball valve with extended bonnet for cryogenic service.\n• Certification — for fire exposure risk, specify an API 607 and ISO 10497 compliant fire-safe ball valve, and confirm the exact series and test reports align with your approval needs.\n• Documentation and traceability — require serialised build records, material test reports, pressure test certificates, and actuator wiring or pneumatic schematics to speed site acceptance and audits.\n• Valve form and porting — full bore for minimal pressure drop, V-port for control, three-way or multi-port valve for mixing and diversion, flanged or threaded ends to match piping.\n• Accessories — solenoid valves, limit switch boxes, and a digital valve positioner for closed-loop control. Ensure brackets and couplings are ISO 5211 matched when direct mount is not used.\n\nFor engineered packages, Kronox direct-mount Series 88 with a pneumatic valve actuator or electric valve actuators provides a compact, aligned build with API 607 and ISO 10497 fire compliance on the valve body where specified.`,
+        body: `Confirm the valve build first, then the actuator.\n\n• Torque — use manufacturer break-away and running torque data for the exact media, pressure, temperature, and seat material. Apply a safety factor that matches your duty and standards, with extra margin for sticky or particulate service.\n• Fail-safe position — define fail-closed or fail-open early, based on process risk. Pneumatic spring-return is the most straightforward method; validate the spring size against worst-case torque.\n• Duty cycle and control mode — high cycle counts favour pneumatic. Electric actuators must be rated for the commanded duty cycle, especially on modulating service; check starts per hour and ambient conditions.\n• Environment — specify enclosure (IP/NEMA), temperature range, vibration, and corrosion resistance. Consider PFA-lined or corrosion-resistant valves where media demands it, and a cryogenic ball valve with extended bonnet for cryogenic service.\n• Certification — for fire exposure risk, specify an API 607 and ISO 10497 compliant fire-safe ball valve, and confirm the exact series and test reports align with your approval needs.\n• Documentation and traceability — require serialised build records, material test reports, pressure test certificates, and actuator wiring or pneumatic schematics to speed site acceptance and audits.\n• Valve form and porting — full bore for minimal pressure drop, V-port for control, three-way or multi-port valve for mixing and diversion, flanged or threaded ends to match piping.\n• Accessories — solenoid valves, limit switch boxes, and a digital valve positioner for closed-loop control. Ensure brackets and couplings are ISO 5211 matched when direct mount is not used.\n\nFor engineered packages, Kronox direct-mount KX-88 with a pneumatic valve actuator or electric valve actuators provides a compact, aligned build with API 607 and ISO 10497 fire compliance on the valve body where specified.`,
         image:
           "https://pblol2.blob.core.windows.net/kronox/news/blog-product-photos/3-way-multi.jpg",
       },
@@ -497,7 +497,7 @@ export const blogs: BlogData[] = [
     sections: [
       {
         heading: "Engineered actuated ball valve solutions",
-        body: `An actuated ball valve from the Kronox range is designed as a complete, field-ready package for remote, automated, or safety-critical isolation and control.\n\nTypical packages can include:\n\n• Direct-mount fire-safe ball valves (e.g. Series 88) for compact actuator mounting.\n• Electric actuators with manual override for safe local operation during maintenance.\n• Pneumatic rack-and-pinion actuators in double-acting or spring-return options.\n• Solenoid valves, limit switch boxes and other valve accessories to complete the automation loop.\n• Stainless steel and specialist alloys for corrosive, high-pressure, or high-temperature service.\n\nGenuine Kronox automated packages are backed by manufacturer documentation, traceability, and technical support, helping engineers and buyers specify with confidence for oil and gas, chemical processing, power, water, marine, and general industrial applications.\n\nNew to actuated valves? Start with our [actuated ball valve guide](/news/actuated-ball-valve-guide) for a walkthrough of how these assemblies work and how to size one.`,
+        body: `An actuated ball valve from the Kronox range is designed as a complete, field-ready package for remote, automated, or safety-critical isolation and control.\n\nTypical packages can include:\n\n• Direct-mount fire-safe ball valves (e.g. KX-88) for compact actuator mounting.\n• Electric actuators with manual override for safe local operation during maintenance.\n• Pneumatic rack-and-pinion actuators in double-acting or spring-return options.\n• Solenoid valves, limit switch boxes and other valve accessories to complete the automation loop.\n• Stainless steel and specialist alloys for corrosive, high-pressure, or high-temperature service.\n\nGenuine Kronox automated packages are backed by manufacturer documentation, traceability, and technical support, helping engineers and buyers specify with confidence for oil and gas, chemical processing, power, water, marine, and general industrial applications.\n\nNew to actuated valves? Start with our [actuated ball valve guide](/news/actuated-ball-valve-guide) for a walkthrough of how these assemblies work and how to size one.`,
       },
       {
         heading: "What to expect when specifying an actuated ball valve",
@@ -535,7 +535,7 @@ export const blogs: BlogData[] = [
       },
       {
         q: "Can I get a fire-safe actuated ball valve package in the UK?",
-        a: "Yes. Fire-safe ball valve series from the Kronox range are tested to API 607 and, on specific models such as Series 88, also to ISO 10497. These can be combined with suitable actuators and accessories to create complete actuated fire-safe assemblies for UK and international projects, subject to correct application specification.",
+        a: "Yes. Fire-safe ball valve series from the Kronox range are tested to API 607 and, on specific models such as KX-88, also to ISO 10497. These can be combined with suitable actuators and accessories to create complete actuated fire-safe assemblies for UK and international projects, subject to correct application specification.",
       },
       {
         q: "Are documentation and certification provided with actuated valves?",

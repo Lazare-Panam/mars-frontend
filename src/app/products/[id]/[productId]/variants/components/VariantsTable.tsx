@@ -269,7 +269,7 @@ function VariantRow({
                     transition: "color 0.2s ease",
                     letterSpacing: "0.01em",
                     color: "#444",
-                    // Long SKUs (e.g. Series 88) wrap at their hyphens instead
+                    // Long SKUs (e.g. KX-88) wrap at their hyphens instead
                     // of stretching the table past the screen.
                     maxWidth: 260,
                     whiteSpace: "normal",

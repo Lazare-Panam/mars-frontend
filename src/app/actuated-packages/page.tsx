@@ -118,7 +118,7 @@ export default function ActuatedPackagesPage() {
             <Typography
               sx={{ mt: 2.5, mb: 4, color: KRONOX.steel, fontSize: "1.1rem", lineHeight: 1.7, maxWidth: 700 }}
             >
-              Series 22, 77 and 88 have an ISO 5211 direct-mount pad, so the
+              KX-22, KX-77 and KX-88 have an ISO 5211 direct-mount pad, so the
               actuator bolts straight on with no bracket or coupling. Tell us
               what you need and we&apos;ll put together a matched valve and
               actuator package for your order, with the documentation your site

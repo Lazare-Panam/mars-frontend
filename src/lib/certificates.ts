@@ -17,13 +17,13 @@ export type CertGroup = {
 };
 
 export const FIRE_SAFE_SERIES = [
-  { series: "Series 28 / 28M", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
-  { series: "Series 83", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
-  { series: "Series 88", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
-  { series: "Series 90", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 12"' },
-  { series: "Series 90D", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 12"' },
-  { series: "Series 91D", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 6"' },
-  { series: "Series 96D", edition: "API 607 6th Ed.", sizes: '1/2" – 4"' },
+  { series: "KX-28 / KX-28M", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
+  { series: "KX-83", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
+  { series: "KX-88", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/4" – 4"' },
+  { series: "KX-90", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 12"' },
+  { series: "KX-90D", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 12"' },
+  { series: "KX-91D", edition: "API 607 7th Ed. · ISO 10497 3rd Ed.", sizes: '1/2" – 6"' },
+  { series: "KX-96D", edition: "API 607 6th Ed.", sizes: '1/2" – 4"' },
 ];
 
 export const CERT_GROUPS: CertGroup[] = [
@@ -35,16 +35,16 @@ export const CERT_GROUPS: CertGroup[] = [
     summary:
       "Soft-seated quarter-turn valves that keep sealing during and after fire exposure. Specified for oil & gas, petrochemical and chemical plants handling flammable fluids. Certificates are per series and body material (CF8M stainless or WCB carbon steel).",
     files: [
-      { label: "Series 83 · CF8M", href: file("V83, CF8M.pdf") },
-      { label: "Series 83 · WCB", href: file("V83, WCB.pdf") },
-      { label: "Series 88 · CF8M", href: file("V88, CF8M.pdf") },
-      { label: "Series 88 · WCB", href: file("V88, WCB.pdf") },
-      { label: "Series 90 · CF8M", href: file("V90, CF8M.pdf") },
-      { label: "Series 90 · WCB", href: file("V90, WCB.pdf") },
-      { label: "Series 90D · CF8M", href: file("V90D, CF8M.pdf") },
-      { label: "Series 90D · WCB", href: file("V90D, WCB.pdf") },
-      { label: "Series 91D · CF8M", href: file("V91D, CF8M.pdf") },
-      { label: "Series 91D · WCB", href: file("V91D, WCB.pdf") },
+      { label: "KX-83 · CF8M", href: file("V83, CF8M.pdf") },
+      { label: "KX-83 · WCB", href: file("V83, WCB.pdf") },
+      { label: "KX-88 · CF8M", href: file("V88, CF8M.pdf") },
+      { label: "KX-88 · WCB", href: file("V88, WCB.pdf") },
+      { label: "KX-90 · CF8M", href: file("V90, CF8M.pdf") },
+      { label: "KX-90 · WCB", href: file("V90, WCB.pdf") },
+      { label: "KX-90D · CF8M", href: file("V90D, CF8M.pdf") },
+      { label: "KX-90D · WCB", href: file("V90D, WCB.pdf") },
+      { label: "KX-91D · CF8M", href: file("V91D, CF8M.pdf") },
+      { label: "KX-91D · WCB", href: file("V91D, WCB.pdf") },
     ],
   },
   {
@@ -56,9 +56,9 @@ export const CERT_GROUPS: CertGroup[] = [
       "For safety instrumented functions (emergency shutdown, isolation). The SIL of the complete function must still be verified for each application, per the manufacturer's safety manual.",
     validity: "Surveillance audit due 1 October 2027",
     files: [
-      { label: "2-way: Series 22, 77, 83, 88, 90, 90D, 91D and more", href: file("SIL3 Certificate.pdf") },
-      { label: "3-way: Series 33, 39 & 39M", href: file("SIL3 Certificate (1).pdf") },
-      { label: "3-way: Series 30M", href: file("SIL3 Certificate (2).pdf") },
+      { label: "2-way: KX-22, KX-77, KX-83, KX-88, KX-90, KX-90D, KX-91D and more", href: file("SIL3 Certificate.pdf") },
+      { label: "3-way: KX-33, KX-39 & 39M", href: file("SIL3 Certificate (1).pdf") },
+      { label: "3-way: KX-30M", href: file("SIL3 Certificate (2).pdf") },
     ],
   },
   {

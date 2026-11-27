@@ -12,7 +12,7 @@ const CREDENTIALS = [
   {
     icon: <LocalFireDepartmentIcon fontSize="small" />,
     label: "API 607 fire-safe",
-    desc: "Selected series: 28, 83, 88, 90, 90D, 91D",
+    desc: "Selected series: KX-28, KX-83, KX-88, KX-90, KX-90D, KX-91D",
   },
   {
     icon: <ScienceIcon fontSize="small" />,

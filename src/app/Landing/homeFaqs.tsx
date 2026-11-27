@@ -15,8 +15,8 @@ export const HOME_FAQS: { q: string; a: ReactNode; text: string }[] = [
   },
   {
     q: "Which Kronox valves are fire-safe to API 607?",
-    text: "Fire-safe testing applies to specific series, including Series 28, 83, 88, 90, 90D and 91D. Tell us your application and we'll confirm the right series and send the certificate.",
-    a: "Fire-safe testing applies to specific series, including Series 28, 83, 88, 90, 90D and 91D. Tell us your application and we'll confirm the right series and send the certificate.",
+    text: "Fire-safe testing applies to specific series, including KX-28, KX-83, KX-88, KX-90, KX-90D and KX-91D. Tell us your application and we'll confirm the right series and send the certificate.",
+    a: "Fire-safe testing applies to specific series, including KX-28, KX-83, KX-88, KX-90, KX-90D and KX-91D. Tell us your application and we'll confirm the right series and send the certificate.",
   },
   {
     q: "Do you supply custom sizes or non-standard specs?",

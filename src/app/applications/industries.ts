@@ -4,7 +4,7 @@
 //
 // Claims are limited to what the product data (mars-api catalog) and the
 // existing blog posts back up: fire-safe series 28/83/88/90/90D/91D (API 607),
-// NACE MR0175 optional on those series, live-loaded packing on Series 88/90,
+// NACE MR0175 optional on those series, live-loaded packing on KX-88/KX-90,
 // carbon-filled RTFE seats on the steam-jacketed valves (to +200 °C), metal
 // seated valves to +450/+550 °C, sanitary 77SN/88SN/83SN, 33SN, 55SN/50SN.
 // Cryogenic, PFA-lined, knife gate and DBB valves aren't listed on the site, so
@@ -72,7 +72,7 @@ export const INDUSTRIES: Industry[] = [
       "Sour service, with NACE MR0175 available as an option on selected fire-safe series",
     ],
     recommended: [
-      { link: "Fire-safe ball valves", href: URLS.fireSafe, after: ": Series 28, 83, 88, 90, 90D and 91D" },
+      { link: "Fire-safe ball valves", href: URLS.fireSafe, after: ": KX-28, KX-83, KX-88, KX-90, KX-90D and KX-91D" },
       { link: "Flanged ball valves", href: URLS.flanged },
       { link: "Metal seated ball valves", href: URLS.metalSeated, after: " (ANSI Class 600 three-piece) for abrasive or high-temperature duty" },
       { link: "Actuated packages", href: URLS.actuated },
@@ -123,9 +123,9 @@ export const INDUSTRIES: Industry[] = [
       "Diverting between tanks with multi-port sanitary valves",
     ],
     recommended: [
-      { link: "High-performance sanitary ball valves", href: URLS.sanitaryHp, after: ": Series 77SN, 88SN and 83SN, with a CF3M body and 316L stem" },
-      { link: "Sanitary multi-port valves", href: URLS.sanitaryMultiPort, after: ": Series 33SN, 3-way L-port or T-port" },
-      { link: "Economical sanitary ball valves", href: URLS.sanitaryEconomical, after: ": Series 55SN and 50SN" },
+      { link: "High-performance sanitary ball valves", href: URLS.sanitaryHp, after: ": KX-77SN, KX-88SN and KX-83SN, with a CF3M body and 316L stem" },
+      { link: "Sanitary multi-port valves", href: URLS.sanitaryMultiPort, after: ": KX-33SN, 3-way L-port or T-port" },
+      { link: "Economical sanitary ball valves", href: URLS.sanitaryEconomical, after: ": KX-55SN and KX-50SN" },
       { link: "Sanitary butterfly valves", href: URLS.sanitaryButterfly },
     ],
     cta: { lead: "Need a surface finish, certificate or cavity filler seats?", link: "Ask us about sanitary specifications" },
@@ -228,7 +228,7 @@ export const INDUSTRIES: Industry[] = [
 export const FAQS: { q: string; a: string }[] = [
   {
     q: "Which Kronox ball valves are fire-safe?",
-    a: "Selected series are fire-tested to API 607, including Series 28, 83, 88, 90, 90D and 91D. Tell us your application and we'll confirm the right series and send the certificate.",
+    a: "Selected series are fire-tested to API 607, including KX-28, KX-83, KX-88, KX-90, KX-90D and KX-91D. Tell us your application and we'll confirm the right series and send the certificate.",
   },
   {
     q: "Which ball valve is best for food and pharmaceutical lines?",
