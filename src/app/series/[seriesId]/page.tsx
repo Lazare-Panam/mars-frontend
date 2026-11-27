@@ -210,7 +210,11 @@ export default function SeriesConfiguratorPage({
       ["Approvals", category?.approvals],
       ...options.map((o) => [o.name, sortOptionValues(o.values).map((v) => v.value).join(", ")]),
     ] as [string, string | null | undefined][]
-  ).filter((e): e is [string, string] => Boolean(e[1]));
+  )
+    .filter((e): e is [string, string] => Boolean(e[1]))
+    // Some series also list e.g. "Seat Material" as a configurator option:
+    // keep the first row for each label so it isn't shown twice.
+    .filter(([label], i, arr) => arr.findIndex(([l]) => l.toLowerCase() === label.toLowerCase()) === i);
 
   // Headline numbers for the spec strip: each option's range (smallest–largest).
   const rangeOf = (optName: string) => {
